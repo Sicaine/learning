@@ -75,7 +75,7 @@ Ein EU-Gesetz entsteht meist so: Die **[[europaeische-kommission|Kommission]]** 
       md: `
 Zwei Dinge machen die EU im Alltag spürbar:
 
-- **Der Euro**: 1999 als Buchgeld, seit **1. Januar 2002** als Bargeld. Seit dem Beitritt Bulgariens am 1. Januar 2026 nutzen ihn **21 der 27 EU-Staaten** (Stand 2026). Die Geldpolitik macht die Europäische Zentralbank in Frankfurt.
+- **Der [[euro|Euro]]**: 1999 als Buchgeld, seit **1. Januar 2002** als Bargeld. Seit dem Beitritt Bulgariens am 1. Januar 2026 nutzen ihn **21 der 27 EU-Staaten** (Stand 2026). Die Geldpolitik macht die Europäische Zentralbank in Frankfurt.
 - **[[schengen|Schengen]]**: Das 1985 im luxemburgischen Winzerort Schengen unterzeichnete Abkommen schaffte die Personenkontrollen an den Binnengrenzen ab. Zum Schengen-Raum gehören 29 Staaten — auch Nicht-EU-Länder wie die Schweiz und Norwegen, dafür nicht die EU-Mitglieder Irland und Zypern.`,
     },
     {

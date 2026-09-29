@@ -17,7 +17,7 @@ Im Sommer 1948 beauftragten die drei westlichen Besatzungsmächte die Ministerpr
 
 Am **23. Mai 1949** wurde das [[grundgesetz]] verkündet; dieser Tag gilt als Geburtstag der Bundesrepublik. Den Namen „Verfassung“ vermied man bewusst: Man wollte die Teilung Deutschlands nicht festschreiben. Das Grundgesetz sollte nur gelten, bis das ganze deutsche Volk „in freier Selbstbestimmung“ eine Verfassung beschließt.[^wiki-grundgesetz]
 
-Es kam anders: Die Wiedervereinigung 1990 erfolgte durch den Beitritt der DDR zum Geltungsbereich des Grundgesetzes. Das Provisorium wurde zur dauerhaften, weltweit geachteten Verfassung.`,
+Es kam anders: Die Wiedervereinigung 1990 erfolgte durch den Beitritt der DDR zum Geltungsbereich des Grundgesetzes. Das Provisorium wurde zur dauerhaften, weltweit geachteten Verfassung. Eine gut lesbare, neutrale Einführung in das ganze politische System bietet die Bundeszentrale für politische Bildung.[^bpb]`,
     },
     {
       id: 'fact-muetter', type: 'callout', tone: 'fact', title: 'Die „Mütter des Grundgesetzes“',

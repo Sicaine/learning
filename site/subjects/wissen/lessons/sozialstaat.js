@@ -77,6 +77,15 @@ Zwei Leitideen prägen den deutschen Sozialstaat:
 Daneben gilt in der Sozialversicherung das **Versicherungsprinzip**: Wer länger und mehr einzahlt, bekommt z. B. mehr Rente.`,
     },
     {
+      id: 'match-prinzipien', type: 'match', title: 'Prinzip und Beispiel',
+      pairs: [
+        ['Solidaritätsprinzip', 'Kinder sind in der Krankenkasse beitragsfrei mitversichert'],
+        ['Subsidiaritätsprinzip', 'Vor der Grundsicherung wird eigenes Vermögen angerechnet'],
+        ['Versicherungsprinzip', 'Wer länger einzahlt, bekommt mehr Rente'],
+        ['Umlageverfahren', 'Heutige Beiträge zahlen heutige Renten'],
+      ],
+    },
+    {
       id: 'grundsicherung', type: 'text', title: 'Hartz IV, Bürgergeld, Grundsicherung',
       md: `
 Wer arbeitsfähig ist, aber kein ausreichendes Einkommen hat und kein Arbeitslosengeld (mehr) bekommt, erhält eine steuerfinanzierte [[grundsicherung|Grundsicherung]]. Ihr Name hat sich mehrfach geändert:

@@ -4,9 +4,9 @@ export default {
   title: 'Recht & Gesellschaft',
   summary: 'Rechtsordnung, Sozialstaat und die großen gesellschaftlichen Entwicklungen.',
   lessons: [
-    { id: 'rechtsordnung', title: 'Die Rechtsordnung', summary: 'Zivil-, Straf- und öffentliches Recht, Gerichtsbarkeiten und Instanzen.', minutes: 20, ready: false },
-    { id: 'sozialstaat', title: 'Der Sozialstaat', summary: 'Die fünf Säulen der Sozialversicherung, Generationenvertrag und Bürgergeld.', minutes: 20, ready: false },
-    { id: 'gesellschaft-wandel', title: 'Gesellschaft im Wandel', summary: 'Demografischer Wandel, Migration, Urbanisierung und Digitalisierung.', minutes: 20, ready: false },
-    { id: 'medien-oeffentlichkeit', title: 'Medien & Öffentlichkeit', summary: 'Pressefreiheit, öffentlich-rechtlicher Rundfunk, Social Media und Desinformation.', minutes: 20, ready: false },
+    { id: 'rechtsordnung', title: 'Die Rechtsordnung', summary: 'Zivil-, Straf- und öffentliches Recht, Gerichtsbarkeiten und Instanzen.', minutes: 20, ready: true },
+    { id: 'sozialstaat', title: 'Der Sozialstaat', summary: 'Die fünf Säulen der Sozialversicherung, der Generationenvertrag und die Grundsicherung.', minutes: 20, ready: true },
+    { id: 'gesellschaft-wandel', title: 'Gesellschaft im Wandel', summary: 'Demografischer Wandel, Migration, Urbanisierung und Digitalisierung.', minutes: 20, ready: true },
+    { id: 'medien-oeffentlichkeit', title: 'Medien & Öffentlichkeit', summary: 'Pressefreiheit, öffentlich-rechtlicher Rundfunk, Social Media und Desinformation.', minutes: 20, ready: true },
   ],
 };
