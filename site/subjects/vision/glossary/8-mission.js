@@ -1,0 +1,106 @@
+// Glossary terms introduced in stage 8-mission. See CLAUDE.md for the term format.
+export default [
+  {
+    id: 'domain-gap', term: 'Domain gap', de: 'Domänenlücke', cat: 'data', aka: ['domain shift', 'reality gap', 'Domänenverschiebung'],
+    short: 'The systematic difference between the data a model was trained on (e.g. renders) and the data it must work on (real photos).',
+    long: `The difference between the **source** distribution (training data, e.g. synthetic renders) and the **target** distribution (deployment data, e.g. real photos). A model can score 90% [[miou|mIoU]] on renders and 55% on photos — the missing 35 points are the gap.\n\nIt is measurable: train a small classifier to tell *real* from *synthetic* on [[embedding|embeddings]] (a [[domain-classifier]]). If it succeeds easily, the model "sees" the difference too.`,
+    related: ['sim-to-real', 'domain-randomization', 'domain-classifier', 'generalization'],
+  },
+  {
+    id: 'sim-to-real', term: 'Sim-to-real transfer', inline: 'sim-to-real transfer', de: 'Sim-to-Real-Transfer (Übertragung Simulation → Realität)', cat: 'data',
+    short: 'Training on simulated or rendered data and making the model work on real-world images.',
+    long: `Training on data from a simulator or renderer — cheap, unlimited, with perfect labels — and deploying on real images. Works when the synthetic distribution *covers* reality (see [[domain-randomization]]) or when a little real data closes the rest of the [[domain-gap]].`,
+    related: ['domain-gap', 'domain-randomization'],
+  },
+  {
+    id: 'domain-randomization', term: 'Domain randomization', de: 'Domänen-Randomisierung', cat: 'data',
+    short: 'Randomizing rendering parameters (lighting, materials, backgrounds, camera) so widely that reality looks like just another variation.',
+    long: `Instead of making renders photorealistic, make them *diverse*: random lighting, HDRI environments, materials, textures, backgrounds, camera pose, focal length, blur, noise. If the model has seen enough variation, the real world becomes "one more random sample".[^domain-randomization] Too little randomization leaves a [[domain-gap]]; randomizing things that never vary in reality wastes model capacity.`,
+    related: ['sim-to-real', 'domain-gap', 'data-augmentation'],
+  },
+  {
+    id: 'domain-classifier', term: 'Domain classifier', de: 'Domänen-Klassifikator', cat: 'data',
+    short: 'A small probe trained to tell real from synthetic samples; its accuracy measures the domain gap (50% = indistinguishable).',
+    long: `A diagnostic: take [[embedding|embeddings]] of real and synthetic images (e.g. from a frozen [[dinov3|DINOv3]] [[backbone]]), train a [[linear-probe]] or k-NN to predict "real or synthetic?". Accuracy near **50%** → the domains overlap in feature space. Near **100%** → a clear [[domain-gap]]. Looking at *which* samples are classified confidently tells you what the renderer gets wrong.`,
+    related: ['domain-gap', 'linear-probe', 'knn-eval'],
+  },
+  {
+    id: 'pseudo-label', term: 'Pseudo-label', de: 'Pseudo-Label (automatisch erzeugtes Label)', cat: 'data',
+    short: 'A label produced by a model rather than a human, used as (noisy) training target.',
+    long: `A label generated automatically — by a trained model, a foundation model like [[sam|SAM]], or a heuristic — and then used for training. Cheap at scale, but inherits the generating model's errors. Standard practice: keep only confident pseudo-labels, audit a sample, and never put them in the **evaluation** set.`,
+    related: ['active-learning', 'label-noise', 'sam'],
+  },
+  {
+    id: 'active-learning', term: 'Active learning', de: 'Aktives Lernen', cat: 'data',
+    short: 'Letting the model choose which unlabeled samples a human should label next — usually the ones it is most uncertain about or that cover unexplored regions.',
+    long: `A loop: train → score the unlabeled pool → send the most *informative* samples to annotators → retrain. "Informative" = high uncertainty (disagreement, low margin, high [[entropy]]) and/or *diversity* (covering regions of feature space not yet labeled).[^coreset-al] With 100k images you cannot label everything at pixel level; active learning spends the budget where it moves [[miou|mIoU]] most.`,
+    related: ['pseudo-label', 'entropy'],
+  },
+  {
+    id: 'class-taxonomy', term: 'Class taxonomy', de: 'Klassen-Taxonomie', cat: 'data',
+    short: 'The exact list of classes and the rules for where one class ends and the next begins.',
+    long: `The set of segmentation classes *plus* written rules for ambiguous cases: Is the crown guard part of the case? Is the date window part of the dial? Does a reflection on the crystal belong to the crystal or to what it reflects? Inconsistent rules create [[label-noise]] that caps achievable [[iou|IoU]] — no model can learn a boundary that humans (or renderer and humans) draw differently.`,
+    related: ['label-noise', 'semantic-segmentation'],
+  },
+  {
+    id: 'label-noise', term: 'Label noise', de: 'Label-Rauschen (fehlerhafte Labels)', cat: 'data',
+    short: 'Errors or inconsistencies in the training or evaluation labels.',
+    long: `Wrong or inconsistent labels. In training data it slows learning and blurs boundaries; in **evaluation** data it silently distorts rankings between models.[^label-errors] For segmentation, the most common forms are sloppy boundaries, inconsistent [[class-taxonomy]] decisions, and systematic differences between render masks and human masks.`,
+    related: ['class-taxonomy', 'pseudo-label'],
+  },
+  {
+    id: 'copy-paste-augmentation', term: 'Copy-paste augmentation', de: 'Copy-Paste-Augmentierung', cat: 'data',
+    short: 'Cutting segmented objects out of one image and pasting them onto another to create new training images with free masks.',
+    long: `Cut out an object using its mask and paste it onto another image (random position/scale). Surprisingly strong for instance segmentation.[^copy-paste] For watches: paste real, masked watches onto varied real backgrounds — a cheap middle ground between renders and fully real data.`,
+    related: ['data-augmentation', 'domain-randomization'],
+  },
+  {
+    id: 'vram', term: 'VRAM', de: 'Grafikspeicher (VRAM)', cat: 'compute', inline: 'VRAM',
+    short: 'Memory on the GPU. Weights, gradients, optimizer state and activations must all fit — 24 GB per RTX 4090.',
+    long: `Video RAM: the GPU's own memory. During training it holds **weights**, **gradients**, **optimizer state** (AdamW: two extra values per parameter) and **activations** (intermediate results saved for [[backpropagation]]). Activations grow with [[batch]] size × [[token|tokens]] × depth — and tokens grow with the *square* of the resolution. Running out produces the famous \`CUDA out of memory\`.`,
+    related: ['mixed-precision', 'gradient-checkpointing', 'fsdp', 'lora'],
+  },
+  {
+    id: 'mixed-precision', term: 'Mixed precision (bf16)', inline: 'mixed precision', de: 'Gemischte Genauigkeit', cat: 'compute', aka: ['AMP', 'bfloat16'],
+    short: 'Computing in 16-bit floats (bf16/fp16) while keeping sensitive values (master weights, optimizer state) in 32-bit.',
+    long: `Matrix multiplications run in 16-bit (bf16 on RTX 4090: same exponent range as fp32, less precision), while a 32-bit master copy of the weights and the optimizer state keep updates accurate.[^mixed-precision-paper] Roughly halves activation memory and uses the fast tensor cores. For training with [[adamw|AdamW]] the per-parameter cost is still ~16 bytes (4 fp32 weight + 4 gradient + 8 optimizer) — the savings are mostly in activations and speed.`,
+    related: ['vram', 'gradient-checkpointing'],
+  },
+  {
+    id: 'gradient-checkpointing', term: 'Gradient checkpointing', de: 'Gradienten-Checkpointing (Aktivierungs-Neuberechnung)', cat: 'compute', aka: ['activation checkpointing', 'rematerialization'],
+    short: 'Storing only a few activations and recomputing the rest during the backward pass: much less memory for ~30% more compute.',
+    long: `Instead of saving every intermediate activation for [[backpropagation]], save only each block's input and recompute the inside of the block during the backward pass.[^grad-checkpointing] Activation memory drops from "all layers" to roughly "one layer + a small tensor per layer"; compute rises by about one extra forward pass (~+30%). The standard trick for fitting large ViTs or high resolutions on 24 GB.`,
+    related: ['vram', 'mixed-precision'],
+  },
+  {
+    id: 'ddp', term: 'DDP (data parallel)', inline: 'DDP', de: 'Datenparallelität (DDP)', cat: 'compute', aka: ['DistributedDataParallel'],
+    short: 'Each GPU holds a full model copy and processes different images; gradients are averaged after every step.',
+    long: `PyTorch **DistributedDataParallel**: every GPU keeps a *full* copy of weights, gradients and optimizer state, processes its own slice of the [[batch]], and the gradients are all-reduced (averaged) after each backward pass. Simple and efficient — but it does **not** save memory per GPU; it only doubles throughput. On 2× RTX 4090 (no NVLink, PCIe only) gradient sync costs a bit, but for models up to ViT-L it is usually fine.`,
+    related: ['fsdp', 'vram', 'batch'],
+  },
+  {
+    id: 'fsdp', term: 'FSDP (sharded data parallel)', inline: 'FSDP', de: 'Voll geshardete Datenparallelität (FSDP)', cat: 'compute', aka: ['ZeRO-3', 'Fully Sharded Data Parallel'],
+    short: 'Splits weights, gradients and optimizer state across GPUs so each holds only its share; gathers weights on demand.',
+    long: `**Fully Sharded Data Parallel** (the PyTorch implementation of the ZeRO idea[^zero][^pytorch-fsdp]): each of $N$ GPUs stores only $1/N$ of weights, gradients and optimizer state, and gathers the full weights layer by layer when needed. Saves parameter memory, costs communication — painful over PCIe between two consumer cards. With only 2 GPUs it at best halves parameter memory; activations are not reduced.`,
+    related: ['ddp', 'vram'],
+  },
+  {
+    id: 'lora', term: 'LoRA', de: 'LoRA (Low-Rank-Adaptation)', cat: 'compute', inline: 'LoRA',
+    short: 'Fine-tuning by freezing the model and learning small low-rank updates $\\Delta W = BA$ for chosen weight matrices.',
+    symbol: '$W\' = W + \\tfrac{\\alpha}{r}\\,BA,\\quad B \\in \\mathbb{R}^{d\\times r},\\ A \\in \\mathbb{R}^{r\\times d},\\ r \\ll d$',
+    long: `**Low-Rank Adaptation**:[^lora] keep the pretrained [[matrix]] $W$ frozen and learn $\\Delta W = BA$ with a small rank $r$ (e.g. 8–32). For a ViT-L with LoRA on the four attention projections, that is ~3M trainable parameters instead of 300M — tiny optimizer state. **Caveat:** activations still flow through the full model and must be stored for [[backpropagation]], so activation memory is as large as in full [[fine-tuning]].`,
+    related: ['fine-tuning', 'frozen-backbone', 'vram'],
+  },
+  {
+    id: 'ablation', term: 'Ablation', de: 'Ablation (Ablationsstudie)', cat: 'method',
+    short: 'An experiment that removes or changes exactly one component to measure its contribution.',
+    long: `Change *one* thing relative to a fixed baseline — remove the synthetic data, freeze the [[backbone]], halve the resolution — and measure the effect on a fixed evaluation set. Ablations turn "it works" into "*this* is why it works". Run several seeds when differences are small; see the eval-set-size lesson for how small is too small.`,
+    related: ['error-analysis'],
+  },
+  {
+    id: 'error-analysis', term: 'Error analysis', de: 'Fehleranalyse', cat: 'method',
+    short: 'Systematically looking at where and why a model fails — per class, per condition, per image — instead of only the average score.',
+    long: `Looking beyond the single [[miou|mIoU]] number: per-class [[iou|IoU]], confusion between classes, performance per condition (lighting, angle, reflections, dial color), and a ranked gallery of the worst images. Usually reveals a handful of failure modes that explain most of the lost points — and tells you whether the fix is more data, better labels, a better renderer or a better model.`,
+    related: ['ablation', 'miou', 'label-noise'],
+  },
+];

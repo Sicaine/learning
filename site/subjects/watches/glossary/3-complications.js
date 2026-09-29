@@ -1,0 +1,20 @@
+// Glossary terms introduced in stage 3-complications.
+export default [
+  { id: 'complication', term: 'Complication', de: 'Komplikation', cat: 'complication',
+    short: 'Any function beyond hours, minutes and seconds — date, chronograph, moonphase, …',
+    related: ['chronograph', 'tourbillon', 'perpetual-calendar', 'moonphase'] },
+  { id: 'chronograph', term: 'Chronograph', de: 'Chronograph (Stoppuhr)', cat: 'complication',
+    short: 'A watch with a built-in stopwatch, started, stopped and reset with pushers.',
+    long: 'Not to be confused with [[chronometer]] (a precision certificate). Visually recognizable by the [[pusher|pushers]] next to the crown and [[subdial|subdials]] that count elapsed minutes and hours.',
+    related: ['pusher', 'subdial', 'complication'] },
+  { id: 'moonphase', term: 'Moonphase', de: 'Mondphase', cat: 'complication',
+    short: 'A disc showing the phase of the moon through an aperture in the dial.',
+    related: ['complication', 'perpetual-calendar'] },
+  { id: 'perpetual-calendar', term: 'Perpetual calendar', de: 'Ewiger Kalender', cat: 'complication',
+    short: 'A calendar that knows month lengths and leap years and needs no correction until 2100.',
+    related: ['complication', 'moonphase'] },
+  { id: 'tourbillon', term: 'Tourbillon', de: 'Tourbillon', cat: 'complication',
+    short: 'A rotating cage carrying the balance and escapement, usually once per minute, to average out gravity’s effect; patented by Breguet in 1801.',
+    long: 'Conceived by John Arnold, developed and patented by Abraham-Louis Breguet (26 June 1801). In a pocket watch hanging vertically, gravity pulls the balance slightly off-center, causing errors that depend on position; spinning the whole escapement averages them out. In wristwatches its accuracy benefit is debated — today it is mostly a showpiece of skill.',
+    related: ['complication', 'balance-wheel', 'escapement'] },
+];

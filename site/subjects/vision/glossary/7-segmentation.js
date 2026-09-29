@@ -1,0 +1,108 @@
+// Glossary terms introduced in stage 7-segmentation. See CLAUDE.md for the term format.
+export default [
+  {
+    id: 'mask-rcnn', term: 'Mask R-CNN', de: 'Mask R-CNN', cat: 'model', inline: 'Mask R-CNN',
+    short: 'Two-stage instance segmenter (2017): propose boxes, then predict a class, a refined box and a small binary mask for each.',
+    long: `Faster R-CNN plus a mask branch. A [[backbone]] with a [[feature-pyramid]] feeds a *region proposal network*; each proposal is cropped with [[roi-align]] and passed to heads that predict class, box refinement and a 28×28 binary mask per class. Simple, strong, and for years *the* [[instance-segmentation]] baseline. Weakness: masks live at 28×28 per box, so fine structures are coarse.`,
+    related: ['roi-align', 'instance-segmentation', 'backbone', 'mask2former'],
+  },
+  {
+    id: 'roi-align', term: 'RoIAlign', de: 'RoIAlign', cat: 'ml', inline: 'RoIAlign',
+    short: 'Crops features for a box using bilinear interpolation instead of rounding to the grid, so masks stay pixel-aligned.',
+    long: `The layer that turns an arbitrary box into a fixed-size feature crop (e.g. 14×14). Its predecessor RoIPool *rounded* box coordinates to the [[feature-map]] grid, misaligning features by up to a stride; RoIAlign samples at exact positions with bilinear interpolation. A small change that noticeably improved mask accuracy in [[mask-rcnn]].`,
+    related: ['mask-rcnn', 'feature-map'],
+  },
+  {
+    id: 'detr', term: 'DETR', de: 'DETR', cat: 'model', inline: 'DETR',
+    short: 'DEtection TRansformer (2020): predicts a fixed-size set of objects with learned object queries and Hungarian matching — no anchors, no NMS.',
+    long: `Casts detection as **set prediction**. A [[transformer]] decoder turns $N$ learned [[object-query|object queries]] into $N$ predictions (class or "no object", plus a box). Training uses [[hungarian-matching]] to pair each ground-truth object with exactly one prediction, which is why duplicate removal (non-maximum suppression) is unnecessary. Ancestor of MaskFormer, [[mask2former]] and the *detector* DINO.`,
+    related: ['object-query', 'hungarian-matching', 'mask2former', 'grounding-dino'],
+  },
+  {
+    id: 'object-query', term: 'Object query', de: 'Objekt-Query (Anfragevektor)', cat: 'ml',
+    short: 'A learned vector that a transformer decoder turns into one predicted object (class + box or mask).',
+    long: `A learned [[embedding]] fed to the decoder of [[detr]]-style models. Through cross-[[attention]] to image features, each query "claims" one object and outputs its class and box — or, in [[mask2former]], a mask embedding whose [[dot-product]] with per-pixel features gives the mask. Typically 100–200 queries; unused queries predict "no object" (∅).`,
+    related: ['detr', 'mask2former', 'hungarian-matching', 'query-key-value'],
+  },
+  {
+    id: 'hungarian-matching', term: 'Hungarian matching', de: 'Ungarische Methode (Zuordnungsproblem)', cat: 'math', aka: ['bipartite matching', 'linear assignment', 'bipartites Matching'],
+    short: 'Finds the one-to-one assignment between predictions and ground truth with the lowest total cost.',
+    symbol: '$\\hat\\sigma = \\arg\\min_{\\sigma \\in \\mathfrak{S}_N} \\sum_{i} \\mathcal{C}(y_i, \\hat y_{\\sigma(i)})$',
+    long: `Solves the linear assignment problem: given a cost matrix $\\mathcal{C}$ (rows = predictions, columns = targets), choose a permutation $\\sigma$ that minimises total cost, each prediction used at most once. In [[detr]]/[[mask2former]] the cost mixes class probability and box/mask overlap. Only matched predictions get "this object" targets; all others are trained to say ∅ — so the model learns *not* to produce duplicates.`,
+    related: ['detr', 'object-query'],
+  },
+  {
+    id: 'masked-attention', term: 'Masked attention', de: 'maskierte Attention', cat: 'ml',
+    short: 'Cross-attention restricted to the region of the mask predicted by the previous decoder layer.',
+    symbol: '$\\mathrm{softmax}(\\mathcal{M} + QK^\\top)V,\\quad \\mathcal{M}(x,y) = 0 \\text{ inside mask}, -\\infty \\text{ outside}$',
+    long: `The key idea of [[mask2former]]. Adding $-\\infty$ to [[attention]] logits outside the current mask makes their [[softmax]] weight exactly 0, so each [[object-query]] only looks at *its* object. Faster convergence and better small-object masks than attending to the whole image.`,
+    related: ['mask2former', 'attention', 'softmax'],
+  },
+  {
+    id: 'mask2former', term: 'Mask2Former', de: 'Mask2Former', cat: 'model', inline: 'Mask2Former',
+    short: 'Universal query-based segmenter (2022): one architecture for semantic, instance and panoptic segmentation using masked attention.',
+    long: `Predicts $N$ pairs (class, mask). Each mask is $\\sigma(\\mathbf{q}_i \\cdot \\mathbf{e}(x,y))$ — the [[dot-product]] between a query's mask embedding and per-pixel embeddings from a pixel decoder. Adds [[masked-attention]] and multi-scale features. Reported 57.8 PQ (COCO panoptic), 50.1 AP (COCO instance), 57.7 mIoU (ADE20K) — state of the art on all three with one design. Still the default "heavy head" on top of strong backbones.`,
+    related: ['masked-attention', 'object-query', 'detr', 'panoptic-segmentation', 'mask-rcnn'],
+  },
+  {
+    id: 'panoptic-quality', term: 'Panoptic quality (PQ)', de: 'Panoptische Qualität (PQ)', cat: 'metric', inline: 'panoptic quality',
+    short: 'Panoptic metric: average IoU of matched segments, penalised by unmatched predictions and missed objects.',
+    symbol: '$\\mathrm{PQ} = \\dfrac{\\sum_{(p,g)\\in TP} \\mathrm{IoU}(p,g)}{|TP| + \\tfrac12|FP| + \\tfrac12|FN|}$',
+    long: `A predicted segment matches a ground-truth segment when their [[iou]] exceeds 0.5 (such matches are unique). PQ factors into *segmentation quality* (mean IoU of matches) × *recognition quality* (an F1 score). Used for [[panoptic-segmentation]].`,
+    related: ['iou', 'panoptic-segmentation'],
+  },
+  {
+    id: 'promptable-segmentation', term: 'Promptable segmentation', de: 'promptbare Segmentierung', cat: 'ml',
+    short: 'Return a valid mask for whatever a prompt (points, box, mask, text) points at — even when the prompt is ambiguous.',
+    long: `The task defined by [[sam]]: the input is an image plus a *prompt* — foreground/background points, a box, a rough mask (and in [[sam3]] a noun phrase or example image). The output must be a reasonable mask for at least one object the prompt could mean. Ambiguity is expected: one point on a watch index could mean the index, the dial or the whole watch.`,
+    related: ['sam', 'sam2', 'sam3'],
+  },
+  {
+    id: 'sam', term: 'Segment Anything (SAM)', de: 'Segment Anything (SAM)', cat: 'model', inline: 'SAM',
+    short: 'Meta’s promptable segmentation foundation model (2023): heavy image encoder once, tiny prompt-dependent mask decoder per click.',
+    long: `Three parts: an MAE-pretrained [[vit]] image encoder (ViT-H, 1024×1024 input → a 64×64 grid of 256-d embeddings) that runs once per image; a prompt encoder for points/boxes/masks; and a lightweight mask decoder (≈50 ms in a browser) that outputs **three** candidate masks with predicted IoU scores to handle ambiguity. Trained on SA-1B (11M images, 1.1B masks) produced by a [[data-engine]]. SAM outputs masks, **not class labels**.`,
+    related: ['promptable-segmentation', 'sam2', 'sam3', 'data-engine', 'mae'],
+  },
+  {
+    id: 'data-engine', term: 'Data engine', de: 'Daten-Engine (Datenkreislauf)', cat: 'ml',
+    short: 'A loop where the model helps annotate data, the new data retrains the model, and the better model annotates faster.',
+    long: `SAM's SA-1B came from three stages: *assisted-manual* (annotators click, SAM proposes), *semi-automatic* (SAM pre-fills confident masks, humans add missed objects) and *fully automatic* (a 32×32 grid of point prompts, keeping confident and stable masks). 99.1% of SA-1B's masks are automatic. The same pattern — model-assisted labeling + human QA + retraining — is the practical path for your 100k watch images ([[pseudo-label]], [[active-learning]]).`,
+    related: ['sam', 'pseudo-label', 'active-learning'],
+  },
+  {
+    id: 'sam2', term: 'SAM 2', de: 'SAM 2', cat: 'model', inline: 'SAM 2',
+    short: 'SAM for images and video (2024): a streaming memory lets one click propagate a mask through a whole video.',
+    long: `Adds a **memory bank** (FIFO queues of recent frames and prompted frames, plus object-pointer vectors), a memory encoder and *memory attention* that conditions each frame on the past, plus an occlusion head ("is the object visible?"). Uses a hierarchical MAE-pretrained Hiera encoder. Trained with the SA-V dataset (50.9K videos, 642.6K masklets, ~35.5M masks). Reported 6× faster and more accurate than SAM on images, and 3× fewer interactions for video.`,
+    related: ['sam', 'sam3', 'promptable-segmentation'],
+  },
+  {
+    id: 'sam3', term: 'SAM 3', de: 'SAM 3', cat: 'model', inline: 'SAM 3',
+    short: 'SAM with concepts (2025): prompt with a short noun phrase or example images and get masks for *all* matching instances.',
+    long: `Introduces **Promptable Concept Segmentation**: "watch hands" or an exemplar crop → every instance, in images and video. A shared [[backbone]] feeds an image-level detector and a memory-based tracker; a *presence head* first decides whether the concept is in the image at all, decoupling recognition from localization. Its data engine produced 4M unique concept labels including hard negatives; reported about 2× the accuracy of prior concept-segmentation systems (SA-Co benchmark).`,
+    related: ['sam', 'sam2', 'open-vocabulary', 'grounding-dino'],
+  },
+  {
+    id: 'clip', term: 'CLIP', de: 'CLIP', cat: 'model', inline: 'CLIP',
+    short: 'Contrastive Language–Image Pre-training (2021): image and text encoders trained so matching image–caption pairs have high cosine similarity.',
+    long: `Trained on 400M (image, text) pairs from the web with a symmetric [[contrastive-learning|contrastive]] loss over a batch similarity matrix (batch size 32,768). At test time, embed prompts like "a photo of a {class}" and pick the class with the highest [[cosine-similarity]] — [[zero-shot]] classification. Matched the original ResNet-50 on ImageNet without using its 1.28M labeled training images. Global image–text alignment makes its *patch* features weaker for dense tasks than [[dinov2]]'s.`,
+    related: ['zero-shot', 'open-vocabulary', 'contrastive-learning', 'cosine-similarity', 'temperature'],
+  },
+  {
+    id: 'zero-shot', term: 'Zero-shot', de: 'Zero-Shot (ohne Trainingsbeispiele)', cat: 'ml',
+    short: 'Solving a task or recognising a class the model never saw labeled examples of — e.g. from a text description.',
+    long: `A model is used on a new task/class with **no** task-specific training examples. [[clip]] classifies with class names alone; [[sam]] segments image domains it wasn't trained on. "Zero-shot" results are a statement about transfer, not magic: rare or domain-specific concepts (horology jargon!) can still fail.`,
+    related: ['clip', 'open-vocabulary', 'sam'],
+  },
+  {
+    id: 'open-vocabulary', term: 'Open vocabulary', de: 'offenes Vokabular', cat: 'ml',
+    short: 'Classes are specified at test time as free text, instead of being fixed by the final layer at training time.',
+    long: `A closed-set model has $K$ classes baked into its last layer. An open-vocabulary model maps both regions and text into a shared [[embedding]] space, so any phrase can act as a class: [[clip]] for images, [[grounding-dino]] for boxes, [[sam3]] for masks.`,
+    related: ['clip', 'grounding-dino', 'sam3', 'zero-shot'],
+  },
+  {
+    id: 'grounding-dino', term: 'Grounding DINO', de: 'Grounding DINO', cat: 'model', inline: 'Grounding DINO',
+    short: 'Open-set detector (2023): text phrase in, boxes out. Built on the DINO *detector* (a DETR variant), not on self-supervised DINO.',
+    long: `Fuses image and text features (feature enhancer), selects [[object-query|queries]] guided by the language (language-guided query selection) and decodes with cross-modal attention. Reported 52.5 AP zero-shot on COCO. Paired with [[sam]] ("Grounded SAM"), its boxes become prompts: text → boxes → masks.\n\n**Naming trap:** the detector "DINO" = *DETR with Improved deNoising anchOr boxes*. Self-supervised [[dino]] = *self-DIstillation with NO labels*. Unrelated methods.`,
+    related: ['detr', 'open-vocabulary', 'sam', 'dino'],
+  },
+];

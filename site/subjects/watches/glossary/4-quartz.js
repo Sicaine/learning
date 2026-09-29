@@ -1,0 +1,21 @@
+// Glossary terms introduced in stage 4-quartz.
+export default [
+  { id: 'quartz-oscillator', term: 'Quartz oscillator', de: 'Schwingquarz', cat: 'quartz', aka: ['quartz crystal', 'Quarzoszillator'],
+    short: 'A tiny tuning fork of quartz crystal that vibrates at exactly 32,768 Hz when driven electrically.',
+    long: 'Cut in the shape of a tuning fork and trimmed to vibrate at 32,768 Hz ($2^{15}$). Because of [[piezoelectricity]] a circuit can both drive it and sense its vibration. Compared with a [[balance-wheel]] at 4 Hz it oscillates ~8,000 times faster and is far less sensitive to position and shocks.',
+    related: ['piezoelectricity', 'frequency-divider', 'stepper-motor'] },
+  { id: 'piezoelectricity', term: 'Piezoelectricity', de: 'Piezoelektrizität', cat: 'physics',
+    short: 'Some crystals produce a voltage when bent — and bend when a voltage is applied.',
+    related: ['quartz-oscillator'] },
+  { id: 'frequency-divider', term: 'Frequency divider', de: 'Frequenzteiler', cat: 'quartz',
+    short: 'A chain of flip-flops, each halving the frequency: 15 halvings turn 32,768 Hz into 1 Hz.',
+    symbol: '$32768 / 2^{15} = 1$',
+    related: ['quartz-oscillator', 'stepper-motor'] },
+  { id: 'stepper-motor', term: 'Stepper motor', de: 'Schrittmotor', cat: 'quartz', aka: ['Lavet motor'],
+    short: 'A tiny motor that advances the gear train one step per electric pulse — the once-per-second jump of a quartz seconds hand.',
+    related: ['frequency-divider', 'quartz-oscillator'] },
+  { id: 'quartz-crisis', term: 'Quartz crisis', de: 'Quarzkrise', cat: 'history',
+    short: 'The collapse of the Swiss mechanical watch industry in the 1970s–80s after cheap, accurate quartz watches arrived.',
+    long: 'Swiss watch industry employment fell from about 90,000 (1970) to 28,000 (1988). The two largest Swiss groups, ASUAG and SSIH, merged in 1983 — the core of what became the Swatch Group.',
+    related: ['quartz-oscillator'] },
+];
