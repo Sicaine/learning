@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "python3 -m http.server 8000 --directory site",
+    "dev": "node --watch tools/dev-server.mjs",
     "check": "node tools/validate.mjs"
   }
 }

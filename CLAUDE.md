@@ -6,7 +6,7 @@ vanilla ES modules, KaTeX from CDN, all learner state in `localStorage`, JSON ex
 ## Run & check locally
 
 ```sh
-npm run dev      # python3 -m http.server 8000 --directory site  → http://localhost:8000
+npm run dev      # node --watch tools/dev-server.mjs → http://0.0.0.0:12121, no-cache + live reload
 npm run check    # node tools/validate.mjs — validates all content cross-references
 ```
 
