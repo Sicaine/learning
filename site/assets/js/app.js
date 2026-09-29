@@ -11,7 +11,8 @@ import * as store from './store.js';
 import { subjects, subjectMeta, loadSubject } from './content.js';
 import { deckStats } from './progress.js';
 import { el, $, $$, icon } from './ui.js';
-import { md, mdInline, sourceLine, wikiLinks, esc } from './markup.js';
+import { md, mdInline, sourceLine, wikiLinks, altName, altLabel, esc } from './markup.js';
+import { t as tr, setLang } from './i18n.js';
 import home from './views/home.js';
 import overview from './views/subject.js';
 import lessonView from './views/lesson.js';
@@ -44,6 +45,7 @@ async function route() {
     return;
   }
   current = { subject, route: r };
+  setLang(subject?.lang || 'en');
   applyTheme(subject);
   renderHeader();
 
@@ -84,10 +86,10 @@ function renderHeader() {
   const due = subject ? deckStats(subject.id).due : 0;
   const nav = subject ? `
     <nav class="subnav">
-      <a href="#/s/${subject.id}" class="${r.section === 'overview' ? 'on' : ''}">${icon.map}<span>Path</span></a>
-      <a href="#/s/${subject.id}/review" class="${r.section === 'review' ? 'on' : ''}">${icon.cards}<span>Review</span>${due ? `<b class="badge">${due}</b>` : ''}</a>
-      <a href="#/s/${subject.id}/glossary" class="${r.section === 'glossary' ? 'on' : ''}">${icon.book}<span>Glossary</span></a>
-      <a href="#/s/${subject.id}/sources" class="${r.section === 'sources' ? 'on' : ''}">${icon.quote}<span>Sources</span></a>
+      <a href="#/s/${subject.id}" class="${r.section === 'overview' ? 'on' : ''}">${icon.map}<span>${tr('nav.path')}</span></a>
+      <a href="#/s/${subject.id}/review" class="${r.section === 'review' ? 'on' : ''}">${icon.cards}<span>${tr('nav.review')}</span>${due ? `<b class="badge">${due}</b>` : ''}</a>
+      <a href="#/s/${subject.id}/glossary" class="${r.section === 'glossary' ? 'on' : ''}">${icon.book}<span>${tr('nav.glossary')}</span></a>
+      <a href="#/s/${subject.id}/sources" class="${r.section === 'sources' ? 'on' : ''}">${icon.quote}<span>${tr('nav.sources')}</span></a>
     </nav>` : '';
 
   header.innerHTML = `
@@ -104,7 +106,7 @@ function renderHeader() {
       </div>
       ${nav}
       <div class="tools">
-        <button class="de-toggle ${st.settings.german ? 'on' : ''}" title="Show German names for terms (Deutsch)"><span>DE</span></button>
+        <button class="de-toggle ${st.settings.german ? 'on' : ''}" title="${tr('de.toggle')}"><span>${altLabel(subject)}</span></button>
         <a class="tool-btn ${r.section === 'backup' ? 'on' : ''}" href="#/backup" title="Backup & settings">${icon.save}</a>
       </div>
     </div>`;
@@ -152,9 +154,9 @@ document.addEventListener('mouseover', e => {
     const t = subj.glossary[term.dataset.term];
     if (!t) return;
     showPop(term, `
-      <div class="pop-head"><b>${esc(t.term)}</b>${t.de ? `<span class="pop-de">DE · ${esc(t.de)}</span>` : ''}</div>
+      <div class="pop-head"><b>${esc(t.term)}</b>${altName(t, subj) ? `<span class="pop-de">${altLabel(subj)} · ${esc(altName(t, subj))}</span>` : ''}</div>
       <div class="pop-body">${mdInline(t.short, { subject: subj })}</div>
-      <div class="pop-foot"><span>Click for glossary</span>${t.wiki ? `<span class="pop-wiki">${wikiLinks(t)}</span>` : ''}</div>`);
+      <div class="pop-foot"><span>${tr('pop.glossary')}</span>${t.wiki ? `<span class="pop-wiki">${wikiLinks(t)}</span>` : ''}</div>`);
   } else if (fn) {
     const s = subj.sources[fn.dataset.source];
     if (!s) return;

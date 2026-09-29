@@ -84,7 +84,6 @@ input, textarea { font: inherit; color: inherit; }
 .tools { margin-left: auto; display: flex; gap: 8px; align-items: center; }
 .de-toggle { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 5px 10px; font-size: .78rem; font-weight: 700; letter-spacing: .05em; color: var(--muted); }
 .de-toggle.on { background: var(--ink); color: #fff; border-color: var(--ink); }
-.de-toggle.on span::before { content: '🇩🇪 '; }
 .tool-btn { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: var(--ink-2); border: 1px solid var(--line); background: var(--surface); }
 .tool-btn.on { color: var(--accent); }
 
@@ -293,7 +292,7 @@ figcaption, .viz-caption { font-size: .88rem; color: var(--muted); margin: 12px 
 .option.revealed.right, .option.revealed.missed { border-color: var(--good); background: var(--good-soft); }
 .option.revealed.wrong { border-color: var(--bad); background: var(--bad-soft); }
 .option.revealed.right .opt-why, .option.revealed.wrong .opt-why, .option.revealed.missed .opt-why { display: block; }
-.option.revealed.missed .opt-text::after { content: ' ← you missed this'; color: var(--good); font-size: .8rem; font-weight: 600; }
+.option.revealed.missed .opt-text::after { content: ' ' attr(data-missed); color: var(--good); font-size: .8rem; font-weight: 600; }
 
 .recall textarea { width: 100%; border-radius: 12px; border: 1.5px solid var(--line); padding: 12px 14px; resize: vertical; background: var(--surface-2); line-height: 1.55; transition: border-color .15s, background .15s; }
 .recall textarea:focus, .num-row input:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px var(--accent-soft); }
@@ -524,3 +523,5 @@ figcaption, .viz-caption { font-size: .88rem; color: var(--muted); margin: 12px 
 .pop-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .wiki-list ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
 .wiki-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-size: .9rem; }
+.callout.fact { background: linear-gradient(135deg, color-mix(in oklab, var(--accent-2) 10%, white), white 75%); border-color: color-mix(in oklab, var(--accent-2) 35%, white); }
+.callout.fact .callout-tag { color: color-mix(in oklab, var(--accent-2) 70%, black); }

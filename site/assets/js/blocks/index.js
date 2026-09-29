@@ -6,12 +6,10 @@ import { el, $, $$, icon, shuffle, toast } from '../ui.js';
 import { md, mdInline, esc } from '../markup.js';
 import * as store from '../store.js';
 import { addCards } from '../progress.js';
+import { t } from '../i18n.js';
 
-const DEFAULT_LABELS = {
-  video: 'Watch', quiz: 'Check yourself', recall: 'Explain it', numeric: 'Calculate',
-  order: 'Put in order', match: 'Match up', viz: 'Explore', game: 'Play',
-};
-export function blockLabel(b) { return b.title || DEFAULT_LABELS[b.type] || 'Read'; }
+const LABELLED = new Set(['video', 'quiz', 'recall', 'numeric', 'order', 'match', 'viz', 'game']);
+export function blockLabel(b) { return b.title || t(LABELLED.has(b.type) ? `label.${b.type}` : 'label.read'); }
 
 export async function renderBlock(b, ctx) {
   const r = renderers[b.type];
@@ -31,12 +29,11 @@ const renderers = {
   },
 
   callout(b, ctx) {
-    const labels = { insight: 'Key insight', warning: 'Watch out', mission: 'Your project', deep: 'Deep dive', german: 'Auf Deutsch', history: 'History' };
     const tone = b.tone || 'insight';
     if (tone === 'deep') {
-      return el(`<details class="callout deep"><summary><span class="callout-tag">${labels.deep}</span>${esc(b.title || '')}</summary><div class="prose">${md(b.md, ctx)}</div></details>`);
+      return el(`<details class="callout deep"><summary><span class="callout-tag">${t('callout.deep')}</span>${esc(b.title || '')}</summary><div class="prose">${md(b.md, ctx)}</div></details>`);
     }
-    return el(`<div class="callout ${tone}"><span class="callout-tag">${esc(b.label || labels[tone] || tone)}</span>${b.title ? `<h3>${esc(b.title)}</h3>` : ''}<div class="prose">${md(b.md, ctx)}</div></div>`);
+    return el(`<div class="callout ${tone}"><span class="callout-tag">${esc(b.label || t(`callout.${tone}`))}</span>${b.title ? `<h3>${esc(b.title)}</h3>` : ''}<div class="prose">${md(b.md, ctx)}</div></div>`);
   },
 
   figure(b, ctx) {
@@ -46,13 +43,13 @@ const renderers = {
   video(b, ctx) {
     const root = el(`
       <div class="task video">
-        ${head(b, ctx, 'Watch')}
+        ${head(b, ctx, t('kind.watch'))}
         <div class="video-frame" style="background-image:url(https://i.ytimg.com/vi/${b.youtube}/hqdefault.jpg)">
-          <button class="video-play" aria-label="Play video">${icon.play}</button>
+          <button class="video-play" aria-label="${t('video.play')}">${icon.play}</button>
         </div>
         <div class="video-meta">
           <div><b>${esc(b.label || '')}</b><span>${esc([b.channel, b.minutes && `${b.minutes} min`].filter(Boolean).join(' · '))}</span></div>
-          <button class="btn small watched">${ctx.task(b.id).done ? `${icon.check} Watched` : 'Mark as watched'}</button>
+          <button class="btn small watched">${ctx.task(b.id).done ? `${icon.check} ${t('video.watched')}` : t('video.mark')}</button>
         </div>
         ${b.why ? `<div class="prose small">${md(b.why, ctx)}</div>` : ''}
       </div>`);
@@ -60,7 +57,7 @@ const renderers = {
       const start = b.start ? `&start=${b.start}` : '';
       $(root, '.video-frame').innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.youtube}?autoplay=1&rel=0${start}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${esc(b.label || 'video')}"></iframe>`;
     };
-    $(root, '.watched').onclick = e => { ctx.done(b.id); e.target.closest('button').innerHTML = `${icon.check} Watched`; setDone(root); };
+    $(root, '.watched').onclick = e => { ctx.done(b.id); e.target.closest('button').innerHTML = `${icon.check} ${t('video.watched')}`; setDone(root); };
     if (ctx.task(b.id).done) root.classList.add('solved');
     return root;
   },
@@ -71,16 +68,16 @@ const renderers = {
     const saved = ctx.task(b.id);
     const root = el(`
       <div class="task quiz">
-        ${head(b, ctx, multi ? 'Select all that apply' : 'Check yourself')}
+        ${head(b, ctx, multi ? t('kind.multi') : t('kind.single'))}
         <div class="prose q">${md(b.question, ctx)}</div>
         <div class="options">${order.map(i => `
           <label class="option" data-i="${i}">
             <input type="${multi ? 'checkbox' : 'radio'}" name="q-${b.id}" value="${i}">
-            <span class="opt-text">${mdInline(b.options[i].text, ctx)}</span>
+            <span class="opt-text" data-missed="${t('quiz.missed')}">${mdInline(b.options[i].text, ctx)}</span>
             <span class="opt-why">${b.options[i].why ? mdInline(b.options[i].why, ctx) : ''}</span>
           </label>`).join('')}
         </div>
-        <div class="task-actions"><button class="btn primary check">Check</button><span class="feedback"></span></div>
+        <div class="task-actions"><button class="btn primary check">${t('check')}</button><span class="feedback"></span></div>
       </div>`);
     const check = () => {
       const chosen = $$(root, 'input:checked').map(i => +i.value);
@@ -94,7 +91,7 @@ const renderers = {
         else if (!picked && o.correct) { if (multi) opt.classList.add('missed'); allRight = false; }
         opt.classList.add('revealed');
       });
-      $(root, '.feedback').textContent = allRight ? 'Correct.' : multi ? 'Not quite — read the notes and try again.' : 'Not quite — try again.';
+      $(root, '.feedback').textContent = allRight ? t('correct') : multi ? t('quiz.retryMulti') : t('quiz.retry');
       $(root, '.feedback').className = `feedback ${allRight ? 'good' : 'bad'}`;
       if (allRight) { ctx.done(b.id, { chosen }); setDone(root); }
     };
@@ -110,29 +107,29 @@ const renderers = {
     const saved = ctx.task(b.id);
     const root = el(`
       <div class="task recall">
-        ${head(b, ctx, 'Explain in your own words')}
+        ${head(b, ctx, t('kind.recall'))}
         <div class="prose q">${md(b.prompt, ctx)}</div>
-        <textarea rows="4" placeholder="Write your answer first. Retrieval beats re-reading."></textarea>
+        <textarea rows="4" placeholder="${t('recall.placeholder')}"></textarea>
         <div class="hints"></div>
         <div class="task-actions">
-          ${b.hints?.length ? '<button class="btn ghost hint">Hint</button>' : ''}
-          <button class="btn primary reveal">Reveal answer</button>
-          <button class="btn ghost copy" title="Copy a prompt to ask Claude for feedback on your answer">${icon.copy} Ask Claude</button>
+          ${b.hints?.length ? `<button class="btn ghost hint">${t('hint')}</button>` : ''}
+          <button class="btn primary reveal">${t('recall.reveal')}</button>
+          <button class="btn ghost copy" title="${t('recall.askTitle')}">${icon.copy} ${t('recall.ask')}</button>
         </div>
         <div class="model" hidden>
-          <span class="eyebrow">Reference answer</span>
+          <span class="eyebrow">${t('recall.reference')}</span>
           <div class="prose">${md(b.answer, ctx)}</div>
-          <div class="rate"><span>How close were you?</span>
-            <button class="btn small" data-r="2">Nailed it</button>
-            <button class="btn small" data-r="1">Partly</button>
-            <button class="btn small" data-r="0">Missed it</button>
+          <div class="rate"><span>${t('recall.how')}</span>
+            <button class="btn small" data-r="2">${t('recall.nailed')}</button>
+            <button class="btn small" data-r="1">${t('recall.partly')}</button>
+            <button class="btn small" data-r="0">${t('recall.missed')}</button>
           </div>
         </div>
       </div>`);
     const ta = $(root, 'textarea');
     ta.value = saved.answer || '';
-    let t;
-    ta.oninput = () => { clearTimeout(t); t = setTimeout(() => ctx.save(b.id, { answer: ta.value }), 400); };
+    let saveTimer;
+    ta.oninput = () => { clearTimeout(saveTimer); saveTimer = setTimeout(() => ctx.save(b.id, { answer: ta.value }), 400); };
     let hintI = 0;
     $(root, '.hint')?.addEventListener('click', () => {
       if (hintI < b.hints.length) $(root, '.hints').append(el(`<div class="hint-line">${mdInline(b.hints[hintI++], ctx)}</div>`));
@@ -141,9 +138,9 @@ const renderers = {
     $(root, '.reveal').onclick = () => { ctx.save(b.id, { answer: ta.value }); reveal(); };
     $(root, '.copy').onclick = async () => {
       const plain = s => String(s).replace(/\[\[([\w-]+)(?:\|([^\]]+))?\]\]/g, (_, id, shown) => shown || ctx.subject.glossary[id]?.term || id).replace(/\[\^[\w-]+\]/g, '');
-      const prompt = `I'm studying "${ctx.subject.title}", lesson "${ctx.lesson.title}".\n\nQuestion:\n${plain(b.prompt)}\n\nMy answer:\n${ta.value || '(not answered yet)'}\n\nReference answer from my course:\n${plain(b.answer)}\n\nPlease give me feedback: what I got right, what is missing or wrong, and ask me one follow-up question that tests deeper understanding.`;
-      try { await navigator.clipboard.writeText(prompt); toast('Prompt copied — paste it into Claude'); }
-      catch { toast('Clipboard blocked by the browser'); }
+      const prompt = t('recall.prompt', { subject: ctx.subject.title, lesson: ctx.lesson.title, q: plain(b.prompt), a: ta.value || t('recall.none'), ref: plain(b.answer) });
+      try { await navigator.clipboard.writeText(prompt); toast(t('recall.copied')); }
+      catch { toast(t('recall.blocked')); }
     };
     $$(root, '.rate button').forEach(btn => btn.onclick = () => {
       const r = +btn.dataset.r;
@@ -153,7 +150,7 @@ const renderers = {
       if (r < 2 && b.cards?.length) {
         let n = 0;
         store.update(() => { n = addCards(ctx.sid, ctx.lesson, b.cards); });
-        if (n) toast(`${icon.cards} Added ${n} card${n > 1 ? 's' : ''} to your deck so this sticks`);
+        if (n) toast(`${icon.cards} ${t('recall.cardsAdded', { n })}`);
       }
     });
     if (saved.done) { reveal(); $(root, `.rate button[data-r="${saved.rating}"]`)?.classList.add('on'); }
@@ -164,12 +161,12 @@ const renderers = {
     const saved = ctx.task(b.id);
     const root = el(`
       <div class="task numeric">
-        ${head(b, ctx, 'Calculate')}
+        ${head(b, ctx, t('kind.numeric'))}
         <div class="prose q">${md(b.question, ctx)}</div>
         <div class="num-row">
-          <input type="text" inputmode="decimal" placeholder="Your answer">${b.unit ? `<span class="unit">${esc(b.unit)}</span>` : ''}
-          <button class="btn primary check">Check</button>
-          ${b.hint ? '<button class="btn ghost hint">Hint</button>' : ''}
+          <input type="text" inputmode="decimal" placeholder="${t('num.placeholder')}">${b.unit ? `<span class="unit">${esc(b.unit)}</span>` : ''}
+          <button class="btn primary check">${t('check')}</button>
+          ${b.hint ? `<button class="btn ghost hint">${t('hint')}</button>` : ''}
         </div>
         <div class="feedback"></div>
         <div class="explain prose" hidden>${md(b.explain || '', ctx)}</div>
@@ -182,7 +179,7 @@ const renderers = {
       const ok = Math.abs(v - b.answer) <= tol;
       const fb = $(root, '.feedback');
       fb.className = `feedback ${ok ? 'good' : 'bad'}`;
-      fb.textContent = ok ? 'Correct.' : v > b.answer ? 'Too high — try again.' : 'Too low — try again.';
+      fb.textContent = ok ? t('correct') : v > b.answer ? t('num.high') : t('num.low');
       if (ok) { $(root, '.explain').hidden = !b.explain; ctx.done(b.id, { value: v }); setDone(root); }
     };
     $(root, '.check').onclick = check;
@@ -198,10 +195,10 @@ const renderers = {
     if (order.every((v, i) => v === i) && b.items.length > 2 && !saved.done) order = [...order.slice(1), order[0]];
     const root = el(`
       <div class="task order">
-        ${head(b, ctx, 'Put in order')}
+        ${head(b, ctx, t('kind.order'))}
         <div class="prose q">${md(b.prompt, ctx)}</div>
         <ol class="order-list"></ol>
-        <div class="task-actions"><button class="btn primary check">Check order</button><span class="feedback"></span></div>
+        <div class="task-actions"><button class="btn primary check">${t('order.check')}</button><span class="feedback"></span></div>
         ${b.explain ? `<div class="explain prose" hidden>${md(b.explain, ctx)}</div>` : ''}
       </div>`);
     const list = $(root, '.order-list');
@@ -209,7 +206,7 @@ const renderers = {
       list.innerHTML = order.map((i, pos) => `
         <li draggable="true" data-pos="${pos}" class="${mark ? (i === pos ? 'right' : 'wrong') : ''}">
           <span class="grip">⋮⋮</span><span class="ord-text">${mdInline(b.items[i], ctx)}</span>
-          <span class="ord-btns"><button data-mv="-1" aria-label="Move up">↑</button><button data-mv="1" aria-label="Move down">↓</button></span>
+          <span class="ord-btns"><button data-mv="-1" aria-label="${t('order.up')}">↑</button><button data-mv="1" aria-label="${t('order.down')}">↓</button></span>
         </li>`).join('');
     };
     draw(saved.done);
@@ -230,7 +227,7 @@ const renderers = {
       draw(true);
       const fb = $(root, '.feedback');
       fb.className = `feedback ${ok ? 'good' : 'bad'}`;
-      fb.textContent = ok ? 'Perfect order.' : `${order.filter((v, i) => v === i).length} of ${order.length} in the right place.`;
+      fb.textContent = ok ? t('order.perfect') : t('order.partial', { k: order.filter((v, i) => v === i).length, n: order.length });
       if (ok) { ctx.done(b.id); setDone(root); const ex = $(root, '.explain'); if (ex) ex.hidden = false; }
     };
     if (saved.done) { const ex = $(root, '.explain'); if (ex) ex.hidden = false; }
@@ -240,23 +237,23 @@ const renderers = {
   match(b, ctx) {
     const root = el(`
       <div class="task match">
-        ${head(b, ctx, 'Match up')}
+        ${head(b, ctx, t('kind.match'))}
         ${b.prompt ? `<div class="prose q">${md(b.prompt, ctx)}</div>` : ''}
         <div class="match-board"></div>
-        <div class="task-actions"><span class="feedback"></span><button class="btn ghost small again">Shuffle again</button></div>
+        <div class="task-actions"><span class="feedback"></span><button class="btn ghost small again">${t('match.again')}</button></div>
       </div>`);
     renderMatchGame($(root, '.match-board'), b.pairs, ctx, (mistakes) => {
       const fb = $(root, '.feedback');
       fb.className = 'feedback good';
-      fb.textContent = mistakes ? `All matched · ${mistakes} slip${mistakes > 1 ? 's' : ''}` : 'Flawless.';
+      fb.textContent = mistakes ? t('match.done', { n: mistakes }) : t('match.flawless');
       ctx.done(b.id, { mistakes }); setDone(root);
     });
     $(root, '.again').onclick = () => renderMatchGame($(root, '.match-board'), b.pairs, ctx, () => {});
     return root;
   },
 
-  async viz(b, ctx) { return mountModule(b, ctx, 'Explore'); },
-  async game(b, ctx) { return mountModule(b, ctx, 'Play'); },
+  async viz(b, ctx) { return mountModule(b, ctx, t('kind.viz')); },
+  async game(b, ctx) { return mountModule(b, ctx, t('kind.game')); },
 };
 
 async function mountModule(b, ctx, kind) {
@@ -267,9 +264,9 @@ async function mountModule(b, ctx, kind) {
       ${b.intro ? `<div class="prose">${md(b.intro, ctx)}</div>` : ''}
       <div class="viz-stage"></div>
       ${b.caption ? `<p class="viz-caption">${mdInline(b.caption, ctx)}</p>` : ''}
-      ${b.task ? `<div class="viz-task"><span class="eyebrow">Your task</span><div class="prose">${md(b.task, ctx)}</div><button class="btn small did">${ctx.task(b.id).done ? `${icon.check} Done` : 'I did it'}</button></div>` : ''}
+      ${b.task ? `<div class="viz-task"><span class="eyebrow">${t('viz.task')}</span><div class="prose">${md(b.task, ctx)}</div><button class="btn small did">${ctx.task(b.id).done ? `${icon.check} ${t('viz.done')}` : t('viz.did')}</button></div>` : ''}
     </div>`);
-  const complete = () => { if (!ctx.task(b.id).done) { ctx.done(b.id); } setDone(root); const d = $(root, '.did'); if (d) d.innerHTML = `${icon.check} Done`; };
+  const complete = () => { if (!ctx.task(b.id).done) { ctx.done(b.id); } setDone(root); const d = $(root, '.did'); if (d) d.innerHTML = `${icon.check} ${t('viz.done')}`; };
   $(root, '.did')?.addEventListener('click', complete);
   if (ctx.task(b.id).done) root.classList.add('solved');
   const mod = await import(`../../../subjects/${ctx.sid}/viz/${b.viz}.js`);

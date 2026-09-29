@@ -4,6 +4,7 @@ import { GRADES, schedule, preview, isDue, formatSpan } from '../srs.js';
 import { deckStats } from '../progress.js';
 import { el, $, $$, icon, shuffle } from '../ui.js';
 import { md, mdInline, esc } from '../markup.js';
+import { t } from '../i18n.js';
 
 export default async function review(main, { subject }) {
   const sid = subject.id;
@@ -27,20 +28,20 @@ export default async function review(main, { subject }) {
     root.innerHTML = `
       <div class="review-empty">
         <div class="big-icon">${icon.cards}</div>
-        <h1 class="display">${reviewed ? 'Session complete' : d.total ? 'All caught up' : 'Your deck is empty'}</h1>
+        <h1 class="display">${reviewed ? t('review.sessionDone') : d.total ? t('review.caughtUp') : t('review.empty')}</h1>
         <p class="lede">${reviewed
-          ? `You reviewed ${reviewed} card${reviewed > 1 ? 's' : ''}. ${session.again ? `${session.again} will come back shortly.` : 'Nice and clean.'}`
-          : d.total ? `Nothing due right now.${upcoming ? ` Next card in ${formatSpan(upcoming.due - Date.now())}.` : ''}`
-          : 'Cards join your deck automatically when you complete a lesson, or when you miss a recall question.'}</p>
+          ? `${t('review.reviewed', { n: reviewed })} ${session.again ? t('review.again', { n: session.again }) : t('review.clean')}`
+          : d.total ? `${t('review.nothing')}${upcoming ? ` ${t('review.nextIn', { t: formatSpan(upcoming.due - Date.now()) })}` : ''}`
+          : t('review.howAdd')}</p>
         <div class="deck-stats">
-          <div><b>${d.total}</b><span>in deck</span></div>
-          <div><b>${d.due}</b><span>due</span></div>
-          <div><b>${d.learned}</b><span>mastered (21d+)</span></div>
+          <div><b>${d.total}</b><span>${t('review.inDeck')}</span></div>
+          <div><b>${d.due}</b><span>${t('review.due')}</span></div>
+          <div><b>${d.learned}</b><span>${t('review.mastered')}</span></div>
         </div>
         <div class="hero-actions">
-          ${d.due ? `<button class="btn primary again-btn">Review ${d.due} more</button>` : ''}
-          <a class="btn" href="#/s/${sid}">${icon.map} Back to path</a>
-          ${d.total ? '<button class="btn ghost browse">Browse all cards</button>' : ''}
+          ${d.due ? `<button class="btn primary again-btn">${t('review.more', { n: d.due })}</button>` : ''}
+          <a class="btn" href="#/s/${sid}">${icon.map} ${t('review.back')}</a>
+          ${d.total ? `<button class="btn ghost browse">${t('review.browse')}</button>` : ''}
         </div>
         <div class="card-browser"></div>
       </div>`;
@@ -51,7 +52,7 @@ export default async function review(main, { subject }) {
       for (const k of Object.keys(deck())) if (cardIndex[k]) (byLesson[cardIndex[k].lesson.title] ??= []).push(k);
       $(root, '.card-browser').innerHTML = Object.entries(byLesson).map(([title, keys]) => `
         <h3>${esc(title)}</h3>
-        ${keys.map(k => `<details class="browse-card"><summary>${mdInline(cardIndex[k].front, ctx)}<span class="due-in">${isDue(deck()[k]) ? 'due' : formatSpan(deck()[k].due - Date.now())}</span></summary><div class="prose">${md(cardIndex[k].back, ctx)}</div></details>`).join('')}`).join('');
+        ${keys.map(k => `<details class="browse-card"><summary>${mdInline(cardIndex[k].front, ctx)}<span class="due-in">${isDue(deck()[k]) ? t('review.dueTag') : formatSpan(deck()[k].due - Date.now())}</span></summary><div class="prose">${md(cardIndex[k].back, ctx)}</div></details>`).join('')}`).join('');
     });
   }
 
@@ -63,16 +64,16 @@ export default async function review(main, { subject }) {
     root.innerHTML = `
       <div class="review-top">
         <span class="eyebrow">${esc(card.lesson.title)}</span>
-        <span class="review-count">${queue.length} left</span>
+        <span class="review-count">${t('review.left', { n: queue.length })}</span>
       </div>
       <div class="flash-card" tabindex="0">
-        <div class="face front"><div class="prose">${md(card.front, ctx)}</div><span class="flip-hint">Space to reveal</span></div>
+        <div class="face front"><div class="prose">${md(card.front, ctx)}</div><span class="flip-hint">${t('review.reveal')}</span></div>
         <div class="face back" hidden><div class="prose q-small">${md(card.front, ctx)}</div><hr><div class="prose">${md(card.back, ctx)}</div></div>
       </div>
       <div class="review-actions">
-        <button class="btn primary big show">Show answer</button>
+        <button class="btn primary big show">${t('review.show')}</button>
         <div class="grades" hidden>
-          ${GRADES.map(g => `<button class="grade g${g.id}" data-g="${g.id}"><b>${g.label}</b><span>${preview(st, g.id)}</span></button>`).join('')}
+          ${GRADES.map(g => `<button class="grade g${g.id}" data-g="${g.id}"><b>${t(`grade.${g.id}`)}</b><span>${preview(st, g.id)}</span></button>`).join('')}
         </div>
       </div>`;
     const flip = () => {

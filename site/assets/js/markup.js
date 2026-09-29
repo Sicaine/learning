@@ -80,6 +80,10 @@ function inline(s, ctx) {
     .replace(/\n/g, ' ');
 }
 
+// The "language aid" name of a term: German for English subjects, English for German ones.
+export function altName(term, subject) { return subject?.lang === 'de' ? term.en : term.de; }
+export function altLabel(subject) { return subject?.lang === 'de' ? 'EN' : 'DE'; }
+
 export function termLink(id, shown, ctx) {
   const subj = ctx.subject;
   const t = subj?.glossary?.[id];
@@ -87,7 +91,8 @@ export function termLink(id, shown, ctx) {
     console.warn(`[markup] unknown term "${id}"`);
     return `<span class="term-missing">${shown || id}</span>`;
   }
-  const de = t.de ? `<span class="de">${esc(t.de)}</span>` : '';
+  const alt = altName(t, subj);
+  const de = alt ? `<span class="de">${esc(alt)}</span>` : '';
   return `<a class="term" data-term="${id}" href="#/s/${subj.id}/glossary/${id}">${shown || inlineName(t)}${de}</a>`;
 }
 

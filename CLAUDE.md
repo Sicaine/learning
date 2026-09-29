@@ -34,7 +34,8 @@ Use these words everywhere — code, UI copy, commit messages, conversation. Do 
 | **Review** | A spaced-repetition session over due cards (SM-2 variant, grades Again/Hard/Good/Easy). | `views/review.js`, `srs.js` |
 | **Term** | A glossary entry with English name, German name (`de`), short + long explanation, related terms. Referenced inline as `[[term-id]]`. | `subjects/<sid>/glossary/*.js` |
 | **Source** | A citation (paper, book, video). Referenced inline as `[^source-id]`, rendered as numbered footnotes per lesson and in the subject's Sources library. | `subjects/<sid>/sources/*.js` |
-| **German aid** | The DE toggle: shows the German name next to every term link. | `settings.german`, CSS `.lang-de` |
+| **Language aid** | The header toggle that shows a term's name in the *other* language next to every term link: German (`de`) in English subjects, English (`en`) in German subjects. | `settings.german`, `altName()`, CSS `.lang-de` |
+| **Subject language** | `lang` in `subjects/index.js` (`'en'` default, `'de'`). Content is written in that language; framework UI strings switch via `assets/js/i18n.js` (`t(key)`). | `i18n.js` |
 
 ## Architecture
 
@@ -50,6 +51,7 @@ site/
     srs.js                   spaced repetition scheduling
     markup.js                content dialect → HTML (see below)
     ui.js                    DOM helpers, icons, toast, progress ring
+    i18n.js                  UI strings (en, de); never hard-code user-visible framework text — add a key
     blocks/index.js          block renderers + shared match game
     views/                   home, subject (path), lesson, review, glossary, sources, backup
   subjects/
@@ -68,6 +70,9 @@ generalize the framework feature instead of special-casing a subject.
 
 ## Content model
 
+Stages are usually difficulty bands (Basics → Mastery); a breadth subject like *Allgemeinwissen* uses them
+as topic areas instead (`level` is then a free-text group label such as "Kultur").
+
 ### Stage (`stages/<n>-<key>.js`)
 ```js
 export default { id, level: 'Basics'|'Intermediate'|'Advanced'|'Mastery', title, summary,
@@ -80,7 +85,7 @@ export default { id, title, summary, minutes, goals: [..], blocks: [..], cards: 
 ```
 Block types (all text fields use the markup dialect):
 - `text` `{ title?, md }`
-- `callout` `{ tone: insight|warning|mission|deep|german|history, title?, md }` — `mission` ties content to the user's real goal; `deep` is collapsible; `german` holds vocabulary tables.
+- `callout` `{ tone: insight|warning|mission|deep|german|history|fact, title?, md }` — `mission` ties content to the user's real goal; `deep` is collapsible; `german` holds vocabulary tables.
 - `figure` `{ title?, html (inline SVG), caption? }`
 - `video` `{ youtube: <11-char id>, label, channel, minutes?, why?, start? }` — **verify every id** via `curl "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<id>&format=json"`.
 - `quiz` `{ question, options: [{ text, correct, why }] }` — multi-select when >1 correct.
@@ -102,13 +107,14 @@ Render into `stage`, call `complete()` when the learner reaches the goal. Use th
 
 ### Term (`glossary/*.js`)
 ```js
-{ id, term, de, cat: 'math'|'ml'|…, short, long?, symbol?, aka?: [], related?: [ids], inline?, wiki?: { en?, de? } }
+{ id, term, de?, en?, cat: 'math'|'ml'|…, short, long?, symbol?, aka?: [], related?: [ids], inline?, wiki?: { en?, de? } }
 ```
 Wikipedia links: `wiki` holds English/German article titles (`#fragment` allowed). Most live in the
 subject's `glossary/wiki.js` map (id → `{ en, de }`), which the loader merges into terms. They appear in
 the glossary, the term popover, and a "Read more on Wikipedia" list at the end of each lesson.
 Pick articles by hand (automatic matching picks wrong pages), derive `de` from the English article's
 interlanguage link where possible, and run `node tools/check-wiki.mjs` (network) to verify every title.
+`de` is the German name (English subjects), `en` the English name (German subjects) — used by the language aid.
 `inline` overrides how the term reads mid-sentence (default lowercases "Vector" → "vector", keeps "ViT").
 
 ### Source (`sources/*.js`)

@@ -3,6 +3,7 @@ import { loadLesson, tasksOf } from '../content.js';
 import { lessonProgress, completeLesson, reopenLesson, touch, markTask, saveTaskData } from '../progress.js';
 import { renderBlock, blockLabel } from '../blocks/index.js';
 import { el, $, $$, ring, icon, toast } from '../ui.js';
+import { t } from '../i18n.js';
 import { md, mdInline, createNotes, sourceLine, wikiLinks, esc } from '../markup.js';
 
 export default async function lessonView(main, { subject, arg: lid }) {
@@ -37,10 +38,10 @@ export default async function lessonView(main, { subject, arg: lid }) {
       </aside>
       <div class="lesson-main">
         <header class="lesson-head">
-          <span class="eyebrow">Stage ${meta.stage.index + 1} · ${esc(meta.stage.title)}</span>
+          <span class="eyebrow">${t('lesson.stage', { n: meta.stage.index + 1 })} · ${esc(meta.stage.title)}</span>
           <h1 class="display">${esc(lesson.title)}</h1>
           ${lesson.summary ? `<div class="lede">${md(lesson.summary, ctx)}</div>` : ''}
-          ${lesson.goals?.length ? `<div class="goals"><span class="eyebrow">After this lesson you can</span><ul>${lesson.goals.map(g => `<li>${mdInline(g, ctx)}</li>`).join('')}</ul></div>` : ''}
+          ${lesson.goals?.length ? `<div class="goals"><span class="eyebrow">${t('lesson.goals')}</span><ul>${lesson.goals.map(g => `<li>${mdInline(g, ctx)}</li>`).join('')}</ul></div>` : ''}
         </header>
         <div class="blocks"></div>
         <footer class="lesson-end"></footer>
@@ -64,33 +65,33 @@ export default async function lessonView(main, { subject, arg: lid }) {
     end.innerHTML = `
       ${cards.length ? `
         <div class="end-cards">
-          <div class="end-cards-head">${icon.cards}<div><b>${cards.length} review cards</b><span>${prog.complete ? 'are in your deck and will come back when due.' : 'join your spaced-repetition deck when you complete this lesson.'}</span></div></div>
+          <div class="end-cards-head">${icon.cards}<div><b>${t('lesson.cards', { n: cards.length })}</b><span>${prog.complete ? t('lesson.cardsIn') : t('lesson.cardsJoin')}</span></div></div>
           <div class="card-peek">${cards.slice(0, 3).map(c => `<div class="peek">${mdInline(c.front, ctx)}</div>`).join('')}${cards.length > 3 ? `<div class="peek more">+${cards.length - 3}</div>` : ''}</div>
         </div>` : ''}
       <div class="complete-row">
         ${prog.complete
-          ? `<div class="completed">${icon.check} Completed</div><button class="btn ghost reopen">Mark as not done</button>`
-          : `<button class="btn primary big complete">Complete lesson ${prog.total ? `<small>${prog.done}/${prog.total} tasks</small>` : ''}</button>`}
+          ? `<div class="completed">${icon.check} ${t('lesson.completed')}</div><button class="btn ghost reopen">${t('lesson.reopen')}</button>`
+          : `<button class="btn primary big complete">${t('lesson.complete')} ${prog.total ? `<small>${t('lesson.tasks', { d: prog.done, t: prog.total })}</small>` : ''}</button>`}
       </div>
       ${notes.order.length ? `
         <div class="footnotes">
-          <span class="eyebrow">Sources</span>
+          <span class="eyebrow">${t('lesson.sources')}</span>
           <ol>${notes.order.map(id => `<li id="fn-${id}">${sourceLine(subject.sources[id], ctx)}</li>`).join('')}</ol>
         </div>` : ''}
       ${wikiTerms.length ? `
         <div class="wiki-list">
-          <span class="eyebrow">Read more on Wikipedia</span>
+          <span class="eyebrow">${t('lesson.wiki')}</span>
           <ul>${wikiTerms.map(t => `<li><a class="term" data-term="${t.id}" href="#/s/${sid}/glossary/${t.id}">${esc(t.term)}</a><span class="wiki-pills">${wikiLinks(t)}</span></li>`).join('')}</ul>
         </div>` : ''}
       <nav class="pager">
-        ${prev ? `<a href="#/s/${sid}/l/${prev.id}" class="prev">${icon.back}<span><small>Previous</small>${esc(prev.title)}</span></a>` : '<span></span>'}
-        ${next ? `<a href="#/s/${sid}/l/${next.id}" class="next"><span><small>Next</small>${esc(next.title)}</span>${icon.arrow}</a>` : `<a href="#/s/${sid}" class="next"><span><small>Back to</small>Learning path</span>${icon.arrow}</a>`}
+        ${prev ? `<a href="#/s/${sid}/l/${prev.id}" class="prev">${icon.back}<span><small>${t('lesson.prev')}</small>${esc(prev.title)}</span></a>` : '<span></span>'}
+        ${next ? `<a href="#/s/${sid}/l/${next.id}" class="next"><span><small>${t('lesson.next')}</small>${esc(next.title)}</span>${icon.arrow}</a>` : `<a href="#/s/${sid}" class="next"><span><small>${t('lesson.backTo')}</small>${t('lesson.path')}</span>${icon.arrow}</a>`}
       </nav>`;
     $(end, '.complete')?.addEventListener('click', () => {
       const open = prog.total - prog.done;
-      if (open > 0 && !confirm(`${open} task${open > 1 ? 's are' : ' is'} still open. Complete anyway?`)) return;
+      if (open > 0 && !confirm(t('lesson.openConfirm', { n: open }))) return;
       const added = completeLesson(sid, lesson);
-      toast(`${icon.spark} Lesson complete${added ? ` · ${added} cards added to your deck` : ''}`);
+      toast(`${icon.spark} ${t('lesson.doneToast')}${added ? ` · ${t('lesson.addedToast', { n: added })}` : ''}`);
       refresh();
       $(end, '.complete-row')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
@@ -99,7 +100,7 @@ export default async function lessonView(main, { subject, arg: lid }) {
 
   function renderRail() {
     const prog = lessonProgress(sid, lesson);
-    $(page, '.rail-prog').innerHTML = `${ring(prog.pct, 38, 4)}<div><b>${prog.complete ? 'Complete' : `${prog.done} of ${prog.total} tasks`}</b><span>${lesson.minutes || meta.minutes || 15} min lesson</span></div>`;
+    $(page, '.rail-prog').innerHTML = `${ring(prog.pct, 38, 4)}<div><b>${prog.complete ? t('lesson.railDone') : t('lesson.railTasks', { d: prog.done, t: prog.total })}</b><span>${t('lesson.min', { n: lesson.minutes || meta.minutes || 15 })}</span></div>`;
     $(page, '.rail-steps').innerHTML = lesson.blocks
       .filter(b => b.title || taskIds.has(b.id))
       .map(b => {
@@ -124,7 +125,7 @@ export default async function lessonView(main, { subject, arg: lid }) {
   if (resumeId && resumeId !== lesson.blocks[0]?.id) {
     requestAnimationFrame(() => {
       document.getElementById(`b-${resumeId}`)?.scrollIntoView({ block: 'start' });
-      toast('Resumed where you left off');
+      toast(t('lesson.resumed'));
     });
   } else window.scrollTo({ top: 0 });
 
