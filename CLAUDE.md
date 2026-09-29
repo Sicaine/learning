@@ -8,6 +8,7 @@ vanilla ES modules, KaTeX from CDN, all learner state in `localStorage`, JSON ex
 ```sh
 npm run dev      # node --watch tools/dev-server.mjs → http://0.0.0.0:12121, no-cache + live reload
 npm run check    # node tools/validate.mjs — validates all content cross-references
+node tools/check-wiki.mjs  # verifies all Wikipedia titles exist (needs network)
 ```
 
 Always run `npm run check` after touching content; it must report 0 errors.
@@ -101,8 +102,13 @@ Render into `stage`, call `complete()` when the learner reaches the goal. Use th
 
 ### Term (`glossary/*.js`)
 ```js
-{ id, term, de, cat: 'math'|'ml'|…, short, long?, symbol?, aka?: [], related?: [ids], inline? }
+{ id, term, de, cat: 'math'|'ml'|…, short, long?, symbol?, aka?: [], related?: [ids], inline?, wiki?: { en?, de? } }
 ```
+Wikipedia links: `wiki` holds English/German article titles (`#fragment` allowed). Most live in the
+subject's `glossary/wiki.js` map (id → `{ en, de }`), which the loader merges into terms. They appear in
+the glossary, the term popover, and a "Read more on Wikipedia" list at the end of each lesson.
+Pick articles by hand (automatic matching picks wrong pages), derive `de` from the English article's
+interlanguage link where possible, and run `node tools/check-wiki.mjs` (network) to verify every title.
 `inline` overrides how the term reads mid-sentence (default lowercases "Vector" → "vector", keeps "ViT").
 
 ### Source (`sources/*.js`)

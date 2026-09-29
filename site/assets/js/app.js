@@ -11,7 +11,7 @@ import * as store from './store.js';
 import { subjects, subjectMeta, loadSubject } from './content.js';
 import { deckStats } from './progress.js';
 import { el, $, $$, icon } from './ui.js';
-import { md, mdInline, sourceLine, esc } from './markup.js';
+import { md, mdInline, sourceLine, wikiLinks, esc } from './markup.js';
 import home from './views/home.js';
 import overview from './views/subject.js';
 import lessonView from './views/lesson.js';
@@ -154,7 +154,7 @@ document.addEventListener('mouseover', e => {
     showPop(term, `
       <div class="pop-head"><b>${esc(t.term)}</b>${t.de ? `<span class="pop-de">DE · ${esc(t.de)}</span>` : ''}</div>
       <div class="pop-body">${mdInline(t.short, { subject: subj })}</div>
-      <div class="pop-foot">Click to open in glossary</div>`);
+      <div class="pop-foot"><span>Click for glossary</span>${t.wiki ? `<span class="pop-wiki">${wikiLinks(t)}</span>` : ''}</div>`);
   } else if (fn) {
     const s = subj.sources[fn.dataset.source];
     if (!s) return;

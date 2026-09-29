@@ -27,11 +27,13 @@ import sSsl from './sources/5-ssl.js';
 import sDino from './sources/6-dino.js';
 import sSegmentation from './sources/7-segmentation.js';
 import sMission from './sources/8-mission.js';
+import wiki from './glossary/wiki.js';
 
 export default {
   intro: `From vectors and gradients to **self-supervised Vision Transformers** like DINOv2 and DINOv3, and on to modern **segmentation**. Every stage builds on the one before it; math shows up exactly when it is needed.`,
   mission: `**Why this path exists.** You have ~100k watch images and a synthetic 3D render pipeline, and segmentation quality is not yet where you want it. A human glances at a watch and sees case, bezel, dial, hands, crown, strap — instantly. By the end of this path you should understand *why* that is hard for a model, what today's best models (DINOv3 features, SAM-style segmenters) actually do, how synthetic data helps and hurts, and what experiments fit on **2× RTX 4090 (24 GB each) + 128 GB RAM**.`,
   stages: [foundations, networks, cnn, transformers, ssl, dino, segmentation, mission],
   glossary: [gFoundations, gNetworks, gCnn, gTransformers, gSsl, gDino, gSegmentation, gMission],
+  wiki,
   sources: [sFoundations, sNetworks, sCnn, sTransformers, sSsl, sDino, sSegmentation, sMission],
 };

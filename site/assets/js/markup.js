@@ -113,6 +113,18 @@ export function sourceLine(src, ctx = {}) {
   return `<span class="src-title">${title}</span>${meta ? `<span class="src-meta">${esc(meta)}</span>` : ''}${src.note ? `<span class="src-note">${mdInline(src.note, ctx)}</span>` : ''}`;
 }
 
+// Wikipedia links for a term: { en: 'Title', de: 'Titel' } → small EN/DE pills.
+export function wikiUrl(lang, title) {
+  const [page, frag] = title.split('#');
+  return `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(page.replace(/ /g, '_'))}${frag ? '#' + encodeURIComponent(frag.replace(/ /g, '_')) : ''}`;
+}
+
+export function wikiLinks(t, { titles = false } = {}) {
+  if (!t?.wiki) return '';
+  return ['en', 'de'].filter(l => t.wiki[l]).map(l =>
+    `<a class="wiki" href="${wikiUrl(l, t.wiki[l])}" target="_blank" rel="noopener" title="Wikipedia (${l.toUpperCase()}): ${esc(t.wiki[l])}"><span class="wiki-w">W</span>${l.toUpperCase()}${titles ? `<span class="wiki-title">${esc(t.wiki[l].replace(/#.*/, ''))}</span>` : ''}</a>`).join('');
+}
+
 export function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }

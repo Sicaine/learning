@@ -3,7 +3,7 @@ import { loadLesson, tasksOf } from '../content.js';
 import { lessonProgress, completeLesson, reopenLesson, touch, markTask, saveTaskData } from '../progress.js';
 import { renderBlock, blockLabel } from '../blocks/index.js';
 import { el, $, $$, ring, icon, toast } from '../ui.js';
-import { md, mdInline, createNotes, sourceLine, esc } from '../markup.js';
+import { md, mdInline, createNotes, sourceLine, wikiLinks, esc } from '../markup.js';
 
 export default async function lessonView(main, { subject, arg: lid }) {
   const meta = subject.lessons[lid];
@@ -15,6 +15,11 @@ export default async function lessonView(main, { subject, arg: lid }) {
   const prev = subject.lessons[subject.order[idx - 1]];
   const next = subject.lessons[subject.order[idx + 1]];
   const taskIds = new Set(tasksOf(lesson).map(t => t.id));
+  // Terms this lesson links to that have Wikipedia articles, one entry per article.
+  const seenWiki = new Set();
+  const wikiTerms = [...new Set([...JSON.stringify(lesson).matchAll(/\[\[([\w-]+)/g)].map(m => m[1]))]
+    .map(id => subject.glossary[id])
+    .filter(t => t?.wiki && !seenWiki.has(t.wiki.en || t.wiki.de) && seenWiki.add(t.wiki.en || t.wiki.de));
 
   const ctx = {
     subject, lesson, notes, sid,
@@ -71,6 +76,11 @@ export default async function lessonView(main, { subject, arg: lid }) {
         <div class="footnotes">
           <span class="eyebrow">Sources</span>
           <ol>${notes.order.map(id => `<li id="fn-${id}">${sourceLine(subject.sources[id], ctx)}</li>`).join('')}</ol>
+        </div>` : ''}
+      ${wikiTerms.length ? `
+        <div class="wiki-list">
+          <span class="eyebrow">Read more on Wikipedia</span>
+          <ul>${wikiTerms.map(t => `<li><a class="term" data-term="${t.id}" href="#/s/${sid}/glossary/${t.id}">${esc(t.term)}</a><span class="wiki-pills">${wikiLinks(t)}</span></li>`).join('')}</ul>
         </div>` : ''}
       <nav class="pager">
         ${prev ? `<a href="#/s/${sid}/l/${prev.id}" class="prev">${icon.back}<span><small>Previous</small>${esc(prev.title)}</span></a>` : '<span></span>'}

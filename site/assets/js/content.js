@@ -21,6 +21,7 @@ export async function loadSubject(id) {
   for (const t of raw.glossary.flat()) {
     if (glossary[t.id]) console.warn(`[content:${id}] duplicate term "${t.id}"`);
     glossary[t.id] = t;
+    t.wiki ??= raw.wiki?.[t.id];
   }
   const sources = {};
   for (const s of raw.sources.flat()) {

@@ -1,7 +1,7 @@
 import { termUsage } from '../content.js';
 import { renderMatchGame } from '../blocks/index.js';
 import { el, $, $$, icon, shuffle } from '../ui.js';
-import { md, mdInline, termLink, esc } from '../markup.js';
+import { md, mdInline, termLink, wikiLinks, esc } from '../markup.js';
 
 export default async function glossary(main, { subject, arg }) {
   const ctx = { subject };
@@ -58,6 +58,7 @@ export default async function glossary(main, { subject, arg }) {
         ${t.aka?.length ? `<p class="aka">Also: ${t.aka.map(esc).join(', ')}</p>` : ''}
         ${t.symbol ? `<div class="gl-symbol">${md(t.symbol, ctx)}</div>` : ''}
         <div class="prose">${md(t.long || t.short, ctx)}</div>
+        ${t.wiki ? `<div class="gl-sec"><span class="eyebrow">Read more on Wikipedia</span><div class="wiki-row">${wikiLinks(t, { titles: true })}</div></div>` : ''}
         ${t.related?.length ? `<div class="gl-sec"><span class="eyebrow">Related</span><div class="rel">${t.related.map(r => termLink(r, null, ctx)).join('')}</div></div>` : ''}
         ${used.length ? `<div class="gl-sec"><span class="eyebrow">Appears in</span><div class="used">${used.map(l => `<a href="#/s/${subject.id}/l/${l.id}">${esc(l.title)}</a>`).join('')}</div></div>` : ''}
       </div>`;

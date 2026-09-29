@@ -31,6 +31,10 @@ for (const meta of subjects) {
     for (const r of t.related || []) if (!terms.has(r)) err(`term ${t.id}: related unknown "${r}"`);
     scan(`term ${t.id}`, JSON.stringify(t));
   }
+  for (const [id, w] of Object.entries(raw.wiki || {})) {
+    if (!terms.has(id)) err(`wiki.js: unknown term "${id}"`);
+    if (!w || !(w.en || w.de) || Object.keys(w).some(k => !['en', 'de'].includes(k))) err(`wiki.js: "${id}" needs { en?, de? } titles`);
+  }
   scan('subject intro', JSON.stringify({ a: raw.intro, b: raw.mission }));
 
   let ready = 0, cards = 0;
@@ -59,7 +63,7 @@ for (const meta of subjects) {
     scan(l.id, JSON.stringify(lesson));
   }
   for (const s of sources.keys()) if (!usedSources.has(s)) warn(`source ${s} is never cited`);
-  console.log(`  ${ready}/${lessons.size} lessons ready · ${terms.size} terms · ${sources.size} sources · ${cards} cards`);
+  console.log(`  ${ready}/${lessons.size} lessons ready · ${terms.size} terms (${[...terms.values()].filter(t => t.wiki || raw.wiki?.[t.id]).length} with Wikipedia) · ${sources.size} sources · ${cards} cards`);
 }
 console.log(`\n${errors} error(s), ${warnings} warning(s)`);
 process.exit(errors ? 1 : 0);
