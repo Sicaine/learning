@@ -14,6 +14,7 @@ export default function mount(stage, { params, complete }) {
   const eqP = () => (80 + dShift - sShift) / 16;
   const X = q => L + q / QMAX * (W - L - R);
   const Y = p => H - B - p / PMAX * (H - T - B);
+  const eur = v => `${v.toFixed(2).replace('.', ',')} €`;
 
   stage.innerHTML = `
     <div class="vz">
@@ -65,7 +66,7 @@ export default function mount(stage, { params, complete }) {
       <circle cx="${X(qe)}" cy="${Y(pe)}" r="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
       <text x="${X(qe) + 10}" y="${Y(pe) - 10}" font-size="12" font-family="Inter" fill="var(--ink)">Gleichgewicht</text>`;
 
-    q('.o-p').textContent = `${price.toFixed(2)} €`;
+    q('.o-p').textContent = eur(price);
     q('.o-d').textContent = dShift > 0 ? `+${dShift}` : dShift;
     q('.o-s').textContent = sShift > 0 ? `+${sShift}` : sShift;
     const state = Math.abs(d - s) <= 1.5 ? '<b style="color:var(--good)">Markt geräumt</b>'
@@ -74,7 +75,7 @@ export default function mount(stage, { params, complete }) {
     q('.main').innerHTML = `
       <span class="vz-stat">Nachgefragt<b>${Math.round(d)}</b></span>
       <span class="vz-stat">Angeboten<b>${Math.round(s)}</b></span>
-      <span class="vz-stat hl">Gleichgewichtspreis<b>${pe.toFixed(2)} €</b></span>
+      <span class="vz-stat hl">Gleichgewichtspreis<b>${eur(pe)}</b></span>
       <span class="vz-stat">${state}</span>`;
 
     if (Math.abs(d - s) <= 1.5) reached.add('gleichgewicht');

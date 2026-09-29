@@ -60,7 +60,7 @@ export default function mount(stage, { complete }) {
           <circle cx="${xPos(p.au)}" cy="85" r="${rPl(p.d) + 8}" fill="transparent"/>
           <circle cx="${xPos(p.au)}" cy="85" r="${rPl(p.d)}" fill="${p.color}" stroke="${seen.has(i) ? 'var(--ink)' : '#fff'}" stroke-width="${seen.has(i) ? 2 : 1}"/>
           ${p.name === 'Saturn' ? `<ellipse cx="${xPos(p.au)}" cy="85" rx="${rPl(p.d) * 1.8}" ry="${rPl(p.d) * 0.45}" fill="none" stroke="#b8a46b" stroke-width="1.5"/>` : ''}
-          <text x="${xPos(p.au)}" y="${i % 2 ? 140 : 40}" text-anchor="middle" font-size="11" font-family="Inter" fill="var(--ink)">${p.name}</text>
+          ${!log && i < 4 && i !== 2 ? '' : `<text x="${xPos(p.au)}" y="${i % 2 ? 140 : 40}" text-anchor="${i === 7 ? 'end' : 'middle'}" font-size="11" font-family="Inter" fill="var(--ink)">${!log && i === 2 ? 'innere Planeten' : p.name}</text>`}
         </g>`).join('')}
       <text x="${x1}" y="163" text-anchor="end" font-size="10" font-family="Inter" fill="var(--muted)">Planetengrößen vergrößert, Verhältnisse untereinander stimmen</text>`;
     svg.querySelectorAll('.pl').forEach(g => g.addEventListener('click', () => {

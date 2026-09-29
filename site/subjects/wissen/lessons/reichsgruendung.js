@@ -16,6 +16,7 @@ export default {
 Nach 1815 wollten viele Bürger, Studenten und Professoren zweierlei: einen **Nationalstaat** statt rund 40 Einzelstaaten und **Freiheit** — Verfassung, Pressefreiheit, Mitsprache. Die Fürsten des [[deutscher-bund|Deutschen Bundes]] reagierten mit Zensur und Verfolgung (**Karlsbader Beschlüsse 1819**).
 
 Stationen des **[[vormaerz|Vormärz]]**:
+
 - **Wartburgfest 1817**: Burschenschaften fordern nationale Einheit.
 - **Hambacher Fest 1832**: 20.000 bis 30.000 Menschen auf dem Hambacher Schloss (Pfalz) — **Schwarz-Rot-Gold** wird zum Symbol von Einheit und Freiheit.
 - **Göttinger Sieben 1837**: sieben Professoren (darunter die Brüder **Grimm**) protestieren gegen einen Verfassungsbruch und werden entlassen.
@@ -28,6 +29,7 @@ Wirtschaftlich wuchs Deutschland schneller zusammen als politisch: Der **Deutsch
 Im Februar 1848 stürzte in Paris der König; im **März** sprang die Revolution auf die deutschen Staaten über. In Berlin kam es zu Barrikadenkämpfen (18. März). Die Fürsten gaben zunächst nach und beriefen liberale „Märzminister".
 
 Am **18. Mai 1848** trat in der Frankfurter **Paulskirche** die **[[paulskirche|Nationalversammlung]]** zusammen — das erste frei gewählte gesamtdeutsche Parlament. Sie verabschiedete einen modernen **Grundrechtekatalog** und am **28. März 1849** eine Reichsverfassung. Zentrale Streitfrage:
+
 - **großdeutsch**: mit den deutschsprachigen Gebieten Österreichs, oder
 - **kleindeutsch**: ohne Österreich, unter Führung Preußens.
 
@@ -40,9 +42,10 @@ Man entschied sich kleindeutsch und bot dem preußischen König **Friedrich Wilh
     {
       id: 'bismarck', type: 'text', title: 'Bismarck: Einheit durch „Eisen und Blut"',
       md: `
-1862 wurde **[[bismarck|Otto von Bismarck]]** preußischer Ministerpräsident, mitten in einem Verfassungskonflikt um die Heeresreform. Vor dem Landtag sagte er: *„Nicht durch Reden und Majoritätsbeschlüsse werden die großen Fragen der Zeit entschieden — das ist der große Fehler von 1848 und 1849 gewesen —, sondern durch Eisen und Blut."*
+1862 wurde **[[bismarck|Otto von Bismarck]]** preußischer Ministerpräsident, mitten in einem Verfassungskonflikt um die Heeresreform.[^lemo-reaktionszeit] Vor dem Landtag sagte er: *„Nicht durch Reden und Majoritätsbeschlüsse werden die großen Fragen der Zeit entschieden — das ist der große Fehler von 1848 und 1849 gewesen —, sondern durch Eisen und Blut."*
 
 Die Einheit kam durch drei **[[einigungskriege]]**:
+
 1. **1864** gegen **Dänemark** (gemeinsam mit Österreich) — um Schleswig und Holstein.
 2. **1866** gegen **Österreich** — Entscheidungsschlacht bei **Königgrätz**. Der Deutsche Bund zerbricht, Preußen gründet den **Norddeutschen Bund** (1867).
 3. **1870/71** gegen **Frankreich** — ausgelöst durch die von Bismarck zugespitzte **Emser Depesche**. Nach dem Sieg bei **Sedan** (September 1870) schließen sich die süddeutschen Staaten an.`,
@@ -53,6 +56,7 @@ Die Einheit kam durch drei **[[einigungskriege]]**:
 Im **Spiegelsaal von Versailles** — im besiegten Frankreich — wurde der preußische König **Wilhelm I.** am **18. Januar 1871** zum **Deutschen Kaiser** ausgerufen. Frankreich musste **Elsass-Lothringen** abtreten und hohe Reparationen zahlen — eine Demütigung mit langen Folgen.
 
 Das **Deutsche Kaiserreich** war ein Bundesstaat aus 25 Staaten und dem Reichsland Elsass-Lothringen:
+
 - **Kaiser** = König von Preußen; er ernannte den **Reichskanzler** (Bismarck bis 1890).
 - Der **Reichstag** wurde nach allgemeinem, gleichem und geheimem Wahlrecht für **Männer** ab 25 gewählt — für damalige Verhältnisse fortschrittlich. Die Regierung war ihm aber nicht verantwortlich.
 - **Preußen** stellte rund zwei Drittel von Fläche und Bevölkerung.
@@ -63,6 +67,7 @@ Die Einheit war eine „Revolution von oben" — geschaffen von Fürsten, Milit�
       id: 'innenpolitik', type: 'text', title: 'Zuckerbrot und Peitsche',
       md: `
 Bismarck bekämpfte, wen er für „Reichsfeinde" hielt: im **Kulturkampf** (ab 1871) die katholische Kirche, mit dem **Sozialistengesetz** (1878–1890) die Sozialdemokratie. Gleichzeitig wollte er den Arbeitern die SPD abspenstig machen — und schuf die erste staatliche **Sozialversicherung** der Welt:
+
 - **1883** Krankenversicherung
 - **1884** Unfallversicherung
 - **1889** Invaliditäts- und Altersversicherung

@@ -33,6 +33,7 @@ Kaiser Augustus wollte Germanien bis zur **Elbe** zur Provinz machen. Statthalte
 Im Herbst 9 n. Chr. lockte Arminius Varus mit der Meldung eines Aufstands in unwegsames Gelände. Auf dem Marsch wurden drei Legionen samt Hilfstruppen in einem tagelangen Hinterhalt vernichtet — die **[[varusschlacht]]**. Varus nahm sich das Leben. Überliefert ist Augustus' Ausruf: *„Varus, gib mir meine Legionen wieder!"*
 
 Die Folgen:
+
 - Rom gab den Plan einer Provinz bis zur Elbe auf; nach Strafzügen unter Germanicus (bis 16 n. Chr.) wurde der **Rhein** zur dauerhaften Grenze.
 - Später sicherten die Römer das Gebiet zwischen Rhein und Donau mit dem **[[limes]]**.
 - Der genaue Ort war lange umstritten; seit den Funden ab 1987 gilt **Kalkriese** bei Osnabrück als wahrscheinlicher Schauplatz.[^museum-kalkriese][^wp-varusschlacht]`,

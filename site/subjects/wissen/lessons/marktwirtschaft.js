@@ -43,6 +43,7 @@ Die Initialzündung war die **[[waehrungsreform-1948|Währungsreform]] vom 20./2
         { year: 1967, label: 'Stabilitätsgesetz', detail: 'Legt die Ziele des „magischen Vierecks“ fest.' },
         { year: 1990, label: 'Währungsunion mit DDR', detail: '1. Juli 1990: D-Mark in der DDR; der Staatsvertrag nennt die Soziale Marktwirtschaft als Wirtschaftsordnung.' },
       ] },
+      task: 'Tippe auf die Währungsreform und das Stabilitätsgesetz und lies die Details. Was verbindet beide mit Ludwig Erhard?',
     },
     {
       id: 'staat', type: 'text', title: 'Was der Staat in der Sozialen Marktwirtschaft tut',

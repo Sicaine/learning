@@ -32,6 +32,7 @@ Zugleich galt Friedrich als Musterbeispiel des **[[aufgeklaerter-absolutismus|au
       id: 'napoleon', type: 'text', title: 'Napoleon verändert Deutschland',
       md: `
 Nach der Französischen Revolution (1789) überrollten französische Armeen Europa. Für Deutschland hatte **Napoleon Bonaparte** enorme Folgen:
+
 - **Flurbereinigung**: Geistliche Fürstentümer und fast alle Reichsstädte wurden aufgelöst und größeren Staaten zugeschlagen (Reichsdeputationshauptschluss **1803**). Aus Hunderten Herrschaften wurden einige Dutzend Staaten; Bayern, Württemberg und Baden wuchsen stark.
 - **1806** gründeten 16 Staaten unter Napoleons Schutz den **[[rheinbund]]** und traten aus dem Reich aus. Am **6. August 1806** legte Franz II. die Kaiserkrone nieder — das **[[heiliges-roemisches-reich|Heilige Römische Reich]]** endete nach über 800 Jahren.
 - Im Oktober **1806** wurde **Preußen bei Jena und Auerstedt** vernichtend geschlagen; im Frieden von Tilsit 1807 verlor es rund die Hälfte seines Gebiets.
@@ -44,6 +45,7 @@ Nach der Französischen Revolution (1789) überrollten französische Armeen Euro
       id: 'reformen', type: 'text', title: 'Die preußischen Reformen',
       md: `
 Die Niederlage zwang Preußen zur Modernisierung „von oben" — die **[[preussische-reformen|preußischen Reformen]]**:[^wp-preussische-reformen]
+
 - **Bauernbefreiung** (Oktoberedikt 1807): Ende der Erbuntertänigkeit.
 - **Städteordnung** (1808): kommunale Selbstverwaltung — Grundlage unserer heutigen Gemeindeselbstverwaltung.
 - **Gewerbefreiheit** und die **Emanzipation der Juden** (Edikt von 1812).

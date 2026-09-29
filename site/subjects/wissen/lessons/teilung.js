@@ -23,6 +23,7 @@ Die „Stunde Null" war nie ganz null: Viele Belastete kehrten in Justiz, Verwal
       id: 'zwei-staaten', type: 'text', title: '1948/49: Der Weg in die Teilung',
       md: `
 Im beginnenden [[kalter-krieg|Kalten Krieg]] entwickelten sich West- und Ostzonen auseinander:
+
 - Die USA boten mit dem **[[marshallplan|Marshallplan]]** (1948) Wiederaufbauhilfe an — die Sowjetunion lehnte für ihren Machtbereich ab.
 - Am **20. Juni 1948** führte die **[[waehrungsreform|Währungsreform]]** in den Westzonen die **D-Mark** ein.
 - Die Sowjetunion antwortete mit der **[[berlin-blockade|Berlin-Blockade]]** (Juni 1948 – Mai 1949). Die Westmächte versorgten West-Berlin über die **Luftbrücke** mit „Rosinenbombern".

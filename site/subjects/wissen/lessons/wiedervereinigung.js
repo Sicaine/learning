@@ -14,6 +14,7 @@ export default {
       id: 'ursachen', type: 'text', title: 'Warum 1989?',
       md: `
 In den 1980er-Jahren war die DDR wirtschaftlich am Ende: Mangelwirtschaft, marode Industrie, Umweltzerstörung, wachsende Auslandsschulden. Gleichzeitig veränderte sich der Ostblock:
+
 - In der **Sowjetunion** leitete **Michail Gorbatschow** ab 1985 Reformen ein — **Glasnost** (Offenheit) und **Perestroika** (Umbau). Er ließ erkennen, dass Moskau Aufstände nicht mehr mit Panzern niederschlagen würde.
 - In **Polen** erkämpfte die Gewerkschaft **Solidarność** 1989 halbfreie Wahlen, **Ungarn** öffnete sich.
 - Die SED-Führung unter **Erich Honecker** verweigerte Reformen („Den Sozialismus in seinem Lauf halten weder Ochs noch Esel auf").
@@ -49,6 +50,7 @@ Aus „Wir sind das Volk" wurde bald „**Wir sind ein Volk**" — die Forderung
       id: 'einheit', type: 'text', title: 'In 328 Tagen zur Einheit',
       md: `
 Nach dem Mauerfall ging es schnell:
+
 - **Runder Tisch** (ab Dezember 1989): Regierung und Opposition verhandelten gemeinsam; die Stasi-Zentralen wurden besetzt, Akten gesichert.
 - **28. November 1989**: Bundeskanzler **Helmut Kohl** legte einen Zehn-Punkte-Plan zur Einheit vor.
 - **18. März 1990**: erste und einzige freie **Volkskammerwahl** — klarer Sieg der „Allianz für Deutschland" (CDU-Ost); **Lothar de Maizière** wurde Ministerpräsident.

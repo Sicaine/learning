@@ -16,6 +16,7 @@ export default {
 **1888** ging als „Dreikaiserjahr" in die Geschichte ein: Wilhelm I. starb, sein Sohn Friedrich III. regierte nur 99 Tage, dann bestieg der 29-jährige **Wilhelm II.** den Thron. Er entließ 1890 Bismarck und wollte „persönlich regieren".
 
 Der **[[wilhelminismus|Wilhelminismus]]** stand für:
+
 - **Weltpolitik**: Deutschland sollte neben Großbritannien Weltmacht sein. Staatssekretär Bülow forderte 1897 einen „**Platz an der Sonne**".
 - **Flottenbau** unter Admiral Tirpitz — ein Wettrüsten mit Großbritannien, das die Briten an die Seite Frankreichs und Russlands trieb (**Entente**).
 - **Militarismus** im Alltag: Uniformen, Reserveoffiziere, Obrigkeitsdenken — satirisch verewigt im „Hauptmann von Köpenick" (1906) und in Heinrich Manns „Der Untertan".
@@ -55,6 +56,7 @@ Bilanz: rund **17 Millionen Tote**, davon etwa 2 Millionen deutsche Soldaten.[^w
       id: 'versailles', type: 'text', title: 'Der Versailler Vertrag',
       md: `
 Der **[[versailler-vertrag|Versailler Vertrag]]** wurde am **28. Juni 1919** — genau fünf Jahre nach Sarajevo — im Spiegelsaal von Versailles unterzeichnet, ohne dass Deutschland mitverhandeln durfte:[^wp-versailles]
+
 - **Gebietsverluste**: Elsass-Lothringen an Frankreich, Westpreußen und Posen an Polen (Danzig wurde Freie Stadt), alle **Kolonien**; insgesamt etwa ein Siebtel des Reichsgebiets.
 - **Abrüstung**: Heer von höchstens **100.000 Mann**, keine Luftwaffe, keine U-Boote; das Rheinland wurde besetzt und entmilitarisiert.
 - **Reparationen**: Zahlungen, deren Höhe 1921 auf 132 Milliarden Goldmark festgesetzt wurde.

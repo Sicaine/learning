@@ -25,6 +25,7 @@ Die Kirche finanzierte u. a. den Neubau des Petersdoms durch den **Ablasshandel*
 Der Augustinermönch und Theologieprofessor **Martin Luther** (1483–1546) veröffentlichte am **31. Oktober 1517** in **Wittenberg** seine **95 Thesen** gegen den Ablass. Ob er sie tatsächlich an die Tür der Schlosskirche schlug, ist unter Historikern umstritten; der 31. Oktober ist bis heute **Reformationstag**.
 
 Luthers Kernideen:
+
 - **Allein durch Glauben** (*sola fide*) und allein durch Gottes **Gnade** wird der Mensch gerettet — nicht durch gute Werke oder Ablass.
 - **Allein die Schrift** (*sola scriptura*): Die Bibel steht über Papst und Konzilien.
 - **Priestertum aller Gläubigen**: Kein besonderer Priesterstand vermittelt zwischen Mensch und Gott.[^wp-reformation]`,
@@ -66,6 +67,7 @@ Söldnerheere lebten vom Land, Seuchen und Hunger folgten ihnen. Die Zerstörung
       id: 'westfalen', type: 'text', title: '1648: der Westfälische Friede',
       md: `
 Nach jahrelangen Verhandlungen in **Münster** und **Osnabrück** endete der Krieg mit dem **[[westfaelischer-friede|Westfälischen Frieden]] 1648**:
+
 - Der **Calvinismus** wird als dritte Konfession anerkannt.
 - Die Reichsstände erhalten weitgehende Souveränität — der Kaiser verliert an Macht, das Reich bleibt ein lockerer Verband.
 - Die **Niederlande** und die **Schweiz** scheiden endgültig aus dem Reich aus.

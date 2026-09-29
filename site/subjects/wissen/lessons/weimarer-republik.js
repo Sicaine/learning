@@ -36,6 +36,7 @@ Die größte Schwäche war aber keine Paragrafenfrage: Viele Eliten in Militär,
 Die junge Republik wurde von links und rechts angegriffen: **Kapp-Putsch** (1920) rechtsradikaler Militärs, kommunistische Aufstände, politische Morde (Finanzminister Erzberger 1921, Außenminister **Walther Rathenau** 1922).
 
 **1923** wurde zum Krisenjahr:
+
 - Frankreich und Belgien besetzten im Januar das **Ruhrgebiet**, weil Deutschland mit Reparationen im Rückstand war. Die Regierung rief zum passiven Widerstand auf und bezahlte die Streikenden mit frisch gedrucktem Geld.
 - Die **[[hyperinflation]]** explodierte: Im November 1923 kostete ein US-Dollar **4,2 Billionen Mark**, ein Brot Milliarden. Ersparnisse des Mittelstands wurden vernichtet.
 - Am **8./9. November 1923** versuchte **Adolf Hitler** in München einen Putsch („Hitlerputsch"). Er scheiterte; Hitler schrieb in der Festungshaft „Mein Kampf".
@@ -110,6 +111,7 @@ Die **NSDAP** wuchs von 2,6 % (1928) auf **37,3 %** im Juli 1932 und wurde stär
       id: 'recall-lehren', type: 'recall', title: 'Lehren aus Weimar',
       prompt: 'Das Grundgesetz von 1949 zog bewusst Lehren aus dem Scheitern von Weimar. Nenne mindestens drei Unterschiede und erkläre, welches Weimarer Problem sie jeweils lösen sollen.',
       answer: `- **Schwacher Bundespräsident** (von der Bundesversammlung gewählt, kein Notverordnungsrecht) statt eines übermächtigen Reichspräsidenten mit Art. 48.
+
 - **Konstruktives Misstrauensvotum**: Der Kanzler kann nur gestürzt werden, wenn gleichzeitig ein Nachfolger gewählt wird — gegen rein destruktive Mehrheiten.
 - **Fünf-Prozent-Hürde** gegen Parteienzersplitterung.
 - **Ewigkeitsklausel** und unantastbare Grundrechte (Art. 1, Art. 79 Abs. 3), dazu das **Bundesverfassungsgericht** und die Möglichkeit von Parteiverboten — die „**wehrhafte Demokratie**", damit die Demokratie nicht legal abgeschafft werden kann.`,

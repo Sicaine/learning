@@ -93,12 +93,13 @@ export function termLink(id, shown, ctx) {
   }
   const alt = altName(t, subj);
   const de = alt ? `<span class="de">${esc(alt)}</span>` : '';
-  return `<a class="term" data-term="${id}" href="#/s/${subj.id}/glossary/${id}">${shown || inlineName(t)}${de}</a>`;
+  return `<a class="term" data-term="${id}" href="#/s/${subj.id}/glossary/${id}">${shown || inlineName(t, subj)}${de}</a>`;
 }
 
 // How a term reads mid-sentence: "Norm (L2)" -> "norm", but "ViT" stays "ViT".
-function inlineName(t) {
+function inlineName(t, subject) {
   if (t.inline) return t.inline;
+  if (subject?.lang === 'de') return t.term.replace(/\s*\(.*\)$/, '');  // German nouns keep their capital
   const name = t.term.replace(/\s*\(.*\)$/, '');
   return /^[A-Z][a-z]/.test(name) ? name[0].toLowerCase() + name.slice(1) : name;
 }

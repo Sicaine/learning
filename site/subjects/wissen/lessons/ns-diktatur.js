@@ -39,17 +39,19 @@ Am **30. Januar 1933** ernannte Hindenburg Hitler zum Reichskanzler einer Koalit
       id: 'ideologie', type: 'text', title: 'Die Ideologie',
       md: `
 Kern der NS-Weltanschauung war ein **rassistischer Antisemitismus**: Juden wurden zu einer „Rasse" und zum Weltfeind erklärt. Dazu kamen:
+
 - **Rassenideologie**: Menschen wurden in „wertvolle" und „minderwertige" eingeteilt; Menschen mit Behinderungen, Sinti und Roma und slawische Völker wurden abgewertet.
 - **„Volksgemeinschaft"**: Wer dazugehörte, sollte bevorzugt werden — wer nicht, wurde ausgeschlossen.
 - **„Lebensraum im Osten"**: Eroberung, Versklavung und Vertreibung der Bevölkerung Osteuropas.
 - **Führerprinzip**: absolute Autorität Hitlers statt Demokratie und Rechtsstaat.
 
-Viele Deutsche stimmten dem Regime zu — wegen sinkender Arbeitslosigkeit (Aufrüstung, Autobahnbau, Arbeitsdienst), außenpolitischer „Erfolge" und Propaganda (Joseph Goebbels). Wer widersprach, riskierte Verfolgung durch Gestapo und KZ.`,
+Viele Deutsche stimmten dem Regime zu — wegen sinkender Arbeitslosigkeit (Aufrüstung, Autobahnbau, Arbeitsdienst), außenpolitischer „Erfolge" und Propaganda (Joseph Goebbels). Wer widersprach, riskierte Verfolgung durch Gestapo und KZ.[^bpb-ns]`,
     },
     {
       id: 'verfolgung', type: 'text', title: 'Stufen der Verfolgung',
       md: `
 Die Verfolgung der Jüdinnen und Juden verschärfte sich Schritt für Schritt:
+
 1. **1. April 1933**: Boykott jüdischer Geschäfte; ab April Entlassung jüdischer Beamter.
 2. **September 1935**: Die **[[nuernberger-gesetze|Nürnberger Gesetze]]** nehmen Juden die vollen Bürgerrechte und verbieten Ehen mit Nichtjuden.
 3. **9./10. November 1938**: Die **[[novemberpogrome|Novemberpogrome]]** — Synagogen brennen, Geschäfte werden zerstört, Menschen ermordet, rund 30.000 jüdische Männer in KZs verschleppt. Danach werden Juden aus dem Wirtschaftsleben verdrängt.
@@ -64,7 +66,7 @@ Hunderttausende konnten bis 1941 emigrieren — wenn sie ein Aufnahmeland fanden
 Der **[[holocaust|Holocaust]]** (hebräisch **Shoah**) war der planmäßige, industriell organisierte Völkermord an den europäischen Jüdinnen und Juden. Etwa **sechs Millionen** Menschen wurden ermordet — rund zwei Drittel der jüdischen Bevölkerung im damaligen Europa.
 
 - Nach dem Überfall auf die Sowjetunion 1941 erschossen **Einsatzgruppen** von SS und Polizei, unterstützt von Wehrmacht und örtlichen Helfern, über eine Million Menschen (z. B. **Babyn Jar** bei Kiew, September 1941: über 33.000 Menschen in zwei Tagen).
-- Auf der **[[wannseekonferenz|Wannseekonferenz]]** am **20. Januar 1942** koordinierten Spitzenbeamte unter Reinhard Heydrich die Deportation und Ermordung der Juden ganz Europas.
+- Auf der **[[wannseekonferenz|Wannseekonferenz]]** am **20. Januar 1942** koordinierten Spitzenbeamte unter Reinhard Heydrich die Deportation und Ermordung der Juden ganz Europas.[^wp-wannsee]
 - In den **Vernichtungslagern** im besetzten Polen — **Auschwitz-Birkenau**, Treblinka, Sobibór, Bełżec, Chełmno, Majdanek — wurden Menschen in Gaskammern ermordet. In Auschwitz allein starben etwa 1,1 Millionen Menschen, ganz überwiegend Juden.
 
 Verfolgt und ermordet wurden auch **Sinti und Roma** (bis zu 500.000 Opfer, *Porajmos*), Millionen **sowjetische Kriegsgefangene**, polnische Zivilisten, politische Gegner, Zeugen Jehovas, Homosexuelle und als „asozial" Stigmatisierte. Am **27. Januar 1945** befreite die Rote Armee Auschwitz — heute der internationale Holocaust-Gedenktag.[^ushmm][^wp-holocaust]`,
@@ -109,6 +111,7 @@ Weltweit starben im Zweiten Weltkrieg schätzungsweise **60 bis 70 Millionen Men
       id: 'widerstand', type: 'text', title: 'Widerstand',
       md: `
 Widerstand leistete nur eine kleine Minderheit — unter Lebensgefahr:
+
 - **Georg Elser**, ein schwäbischer Schreiner, verübte am 8. November 1939 allein ein Bombenattentat im Münchner Bürgerbräukeller; Hitler hatte den Saal Minuten vorher verlassen.
 - Die **Weiße Rose**: Münchner Studierende um **Sophie und Hans Scholl** verteilten Flugblätter; sie wurden im Februar 1943 verhaftet und hingerichtet.
 - Das **[[widerstand-20-juli|Attentat vom 20. Juli 1944]]**: Oberst **Claus Schenk Graf von Stauffenberg** zündete in der „Wolfsschanze" eine Bombe; Hitler überlebte, der Umsturz scheiterte. Rund 200 Beteiligte wurden hingerichtet.
