@@ -1,0 +1,21 @@
+// Quellen der Etappe 3-weltgeschichte. Format: siehe CLAUDE.md.
+export default [
+  { id: 'wp-alter-orient', kind: 'Nachschlagewerk', title: 'Alter Orient', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Alter_Orient' },
+  { id: 'wp-altes-aegypten', kind: 'Nachschlagewerk', title: 'Altes Ägypten', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Altes_%C3%84gypten' },
+  { id: 'wp-antikes-griechenland', kind: 'Nachschlagewerk', title: 'Antikes Griechenland', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Antikes_Griechenland' },
+  { id: 'wp-roemisches-reich', kind: 'Nachschlagewerk', title: 'Römisches Reich', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/R%C3%B6misches_Reich' },
+  { id: 'wp-byzanz', kind: 'Nachschlagewerk', title: 'Byzantinisches Reich', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Byzantinisches_Reich' },
+  { id: 'wp-islamische-expansion', kind: 'Nachschlagewerk', title: 'Islamische Expansion', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Islamische_Expansion' },
+  { id: 'wp-kreuzzug', kind: 'Nachschlagewerk', title: 'Kreuzzug', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Kreuzzug' },
+  { id: 'wp-schwarzer-tod', kind: 'Nachschlagewerk', title: 'Schwarzer Tod', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Schwarzer_Tod' },
+  { id: 'wp-mongolisches-reich', kind: 'Nachschlagewerk', title: 'Mongolisches Reich', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Mongolisches_Reich' },
+  { id: 'wp-entdeckungsfahrten', kind: 'Nachschlagewerk', title: 'Zeitalter der Entdeckungen', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Zeitalter_der_Entdeckungen' },
+  { id: 'slavevoyages', kind: 'Webseite', title: 'Trans-Atlantic Slave Trade Database (SlaveVoyages)', authors: 'Emory University u. a.', year: 2025, url: 'https://www.slavevoyages.org/', note: 'Schätzung: rund 12,5 Millionen verschleppte Menschen.' },
+  { id: 'wp-deutsche-kolonien', kind: 'Nachschlagewerk', title: 'Deutsche Kolonien', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Deutsche_Kolonien' },
+  { id: 'wp-franz-revolution', kind: 'Nachschlagewerk', title: 'Französische Revolution', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Franz%C3%B6sische_Revolution' },
+  { id: 'wp-amerikanische-revolution', kind: 'Nachschlagewerk', title: 'Amerikanische Revolution', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Amerikanische_Revolution' },
+  { id: 'wp-industrielle-revolution', kind: 'Nachschlagewerk', title: 'Industrielle Revolution', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Industrielle_Revolution' },
+  { id: 'wp-kalter-krieg', kind: 'Nachschlagewerk', title: 'Kalter Krieg', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Kalter_Krieg' },
+  { id: 'wp-dekolonisation', kind: 'Nachschlagewerk', title: 'Dekolonisation', authors: 'Wikipedia', year: 2025, url: 'https://de.wikipedia.org/wiki/Dekolonisation' },
+  { id: 'bpb-kalter-krieg', kind: 'Webseite', title: 'Dossier: Kalter Krieg', authors: 'Bundeszentrale für politische Bildung', year: 2025, url: 'https://www.bpb.de/themen/zeit-kulturgeschichte/kalter-krieg/' },
+];

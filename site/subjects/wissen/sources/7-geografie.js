@@ -1,0 +1,21 @@
+// Quellen der Etappe 7-geografie. Format: siehe CLAUDE.md.
+export default [
+  { id: 'wp-land-deutschland', kind: 'Nachschlagewerk', title: 'Land (Deutschland)', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Land_(Deutschland)', note: 'Tabelle mit Hauptstädten, Flächen und Einwohnerzahlen der 16 Länder.' },
+  { id: 'destatis-laender', kind: 'Webseite', title: 'Bundesländer mit Hauptstädten nach Fläche, Bevölkerung und Bevölkerungsdichte', authors: 'Statistisches Bundesamt (Destatis)', year: 2024, url: 'https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/02-bundeslaender.html' },
+  { id: 'bpb-bundeslaender', kind: 'Nachschlagewerk', title: 'Bundesländer (Politiklexikon)', authors: 'Bundeszentrale für politische Bildung', year: 2021, url: 'https://www.bpb.de/kurz-knapp/lexika/politiklexikon/17269/bundeslaender/' },
+  { id: 'geojson-de', kind: 'Webseite', title: 'deutschlandGeoJSON — Grenzen der Bundesländer', authors: 'isellsoap (GitHub), Daten: DIVA-GIS', year: 2014, url: 'https://github.com/isellsoap/deutschlandGeoJSON', note: 'Kartengrundlage der Bundesländer-Karte; „The Unlicense“ (gemeinfrei). Für die Karte vereinfacht.' },
+  { id: 'natural-earth', kind: 'Webseite', title: 'Natural Earth — 1:50m Admin 0 Countries', authors: 'Natural Earth (via nvkelso/natural-earth-vector)', year: 2024, url: 'https://github.com/nvkelso/natural-earth-vector', note: 'Kartengrundlage der Europakarte; gemeinfrei (Public Domain). Für die Karte vereinfacht.' },
+  { id: 'wp-geographie-deutschlands', kind: 'Nachschlagewerk', title: 'Geographie Deutschlands', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Geographie_Deutschlands' },
+  { id: 'wp-rhein', kind: 'Nachschlagewerk', title: 'Rhein', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Rhein' },
+  { id: 'wp-donau', kind: 'Nachschlagewerk', title: 'Donau', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Donau' },
+  { id: 'unesco-wattenmeer', kind: 'Webseite', title: 'Wadden Sea (World Heritage List, Nr. 1314)', authors: 'UNESCO World Heritage Centre', year: 2009, url: 'https://whc.unesco.org/en/list/1314' },
+  { id: 'wp-europa', kind: 'Nachschlagewerk', title: 'Europa', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Europa' },
+  { id: 'wp-erde', kind: 'Nachschlagewerk', title: 'Erde', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Erde' },
+  { id: 'wp-kontinent', kind: 'Nachschlagewerk', title: 'Kontinent', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Kontinent' },
+  { id: 'wp-wegener', kind: 'Nachschlagewerk', title: 'Alfred Wegener', authors: 'Wikipedia', year: 2026, url: 'https://de.wikipedia.org/wiki/Alfred_Wegener' },
+  { id: 'un-8-milliarden', kind: 'Webseite', title: 'Day of Eight Billion (15. November 2022)', authors: 'Vereinte Nationen', year: 2022, url: 'https://www.un.org/en/dayof8billion' },
+  { id: 'dwd-klimawandel', kind: 'Webseite', title: 'Klimawandel — ein Überblick', authors: 'Deutscher Wetterdienst', year: 2026, url: 'https://www.dwd.de/DE/klimaumwelt/klimawandel/klimawandel_node.html', note: 'Temperaturanstieg in Deutschland seit 1881.' },
+  { id: 'ipcc-ar6', kind: 'Artikel', title: 'AR6 Synthesis Report: Climate Change 2023', authors: 'IPCC', year: 2023, url: 'https://www.ipcc.ch/report/ar6/syr/' },
+  { id: 'copernicus-2024', kind: 'Webseite', title: 'Global Climate Highlights 2024', authors: 'Copernicus Climate Change Service', year: 2025, url: 'https://climate.copernicus.eu/global-climate-highlights-2024', note: '2024: 1,60 °C über vorindustriell, erstes Kalenderjahr über 1,5 °C; CO₂ ≈ 422 ppm.' },
+  { id: 'unfccc-paris', kind: 'Webseite', title: 'The Paris Agreement', authors: 'UNFCCC', year: 2015, url: 'https://unfccc.int/process-and-meetings/the-paris-agreement' },
+];

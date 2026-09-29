@@ -39,4 +39,17 @@ export const subjects = [
         <g transform="translate(125 -20)" stroke-opacity=".45"><circle r="34" stroke-dasharray="5 4" stroke-width="6"/><circle r="12"/></g>
       </g></svg>`,
   },
+  {
+    id: 'wissen',
+    lang: 'de',
+    title: 'Allgemeinwissen',
+    tagline: 'Was man in Deutschland wissen sollte: Geschichte, Politik, Wissenschaft, Kultur — breit, nicht zu tief, nicht zu banal.',
+    accent: '#b8322a',
+    accent2: '#d9971c',
+    load: () => import('./wissen/subject.js'),
+    art: `<svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><g fill="#fff">
+      ${Array.from({ length: 9 }, (_, i) => { const h = 62 + (i * 37 % 45), w = 16 + (i * 7 % 10), x = 40 + i * 25; return `<rect x="${x}" y="${150 - h}" width="${w}" height="${h}" rx="2" opacity="${(0.35 + (i % 3) * 0.2).toFixed(2)}"/><rect x="${x + 3}" y="${150 - h + 8}" width="${w - 6}" height="2" opacity=".5" fill="#000"/>`; }).join('')}
+      <rect x="28" y="150" width="240" height="4" rx="2" opacity=".85"/></g>
+      <g transform="translate(318 82)" fill="none" stroke="#fff"><circle r="50" stroke-width="2" opacity=".85"/><ellipse rx="22" ry="50" opacity=".6"/><ellipse rx="50" ry="18" opacity=".6"/><line x1="-50" x2="50" opacity=".6"/><line y1="-50" y2="50" opacity=".6"/></g></svg>`,
+  },
 ];

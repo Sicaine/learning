@@ -1,0 +1,23 @@
+// Quellen der Etappe 2-geschichte-de-2. Format: siehe CLAUDE.md.
+export default [
+  { id: 'lemo-erster-weltkrieg', kind: 'Webseite', title: 'LeMO: Erster Weltkrieg', authors: 'Deutsches Historisches Museum / Haus der Geschichte', year: 2025, url: 'https://www.dhm.de/lemo/kapitel/erster-weltkrieg' },
+  { id: 'wp-erster-weltkrieg', kind: 'Nachschlagewerk', title: 'Erster Weltkrieg', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Erster_Weltkrieg' },
+  { id: 'wp-versailles', kind: 'Nachschlagewerk', title: 'Friedensvertrag von Versailles', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Friedensvertrag_von_Versailles' },
+  { id: 'lemo-weimar', kind: 'Webseite', title: 'LeMO: Weimarer Republik', authors: 'Deutsches Historisches Museum / Haus der Geschichte', year: 2025, url: 'https://www.dhm.de/lemo/kapitel/weimarer-republik' },
+  { id: 'bpb-weimar', kind: 'Webseite', title: 'Themenseite Weimarer Republik', authors: 'Bundeszentrale für politische Bildung', year: 2025, url: 'https://www.bpb.de/themen/weimarer-republik/' },
+  { id: 'wp-inflation', kind: 'Nachschlagewerk', title: 'Deutsche Inflation 1914 bis 1923', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Deutsche_Inflation_1914_bis_1923' },
+  { id: 'lemo-ns', kind: 'Webseite', title: 'LeMO: NS-Regime', authors: 'Deutsches Historisches Museum / Haus der Geschichte', year: 2025, url: 'https://www.dhm.de/lemo/kapitel/ns-regime' },
+  { id: 'lemo-zweiter-weltkrieg', kind: 'Webseite', title: 'LeMO: Zweiter Weltkrieg', authors: 'Deutsches Historisches Museum / Haus der Geschichte', year: 2025, url: 'https://www.dhm.de/lemo/kapitel/zweiter-weltkrieg' },
+  { id: 'bpb-ns', kind: 'Webseite', title: 'Themenseite Nationalsozialismus und Zweiter Weltkrieg', authors: 'Bundeszentrale für politische Bildung', year: 2025, url: 'https://www.bpb.de/themen/nationalsozialismus-zweiter-weltkrieg/' },
+  { id: 'ushmm', kind: 'Nachschlagewerk', title: 'Holocaust-Enzyklopädie', authors: 'United States Holocaust Memorial Museum', year: 2025, url: 'https://encyclopedia.ushmm.org/de', note: 'Deutschsprachige Artikel zu Holocaust, Verfolgtengruppen und Lagern.' },
+  { id: 'wp-holocaust', kind: 'Nachschlagewerk', title: 'Holocaust', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Holocaust' },
+  { id: 'wp-wannsee', kind: 'Nachschlagewerk', title: 'Wannseekonferenz', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Wannseekonferenz' },
+  { id: 'wp-20-juli', kind: 'Nachschlagewerk', title: 'Attentat vom 20. Juli 1944', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Attentat_vom_20._Juli_1944' },
+  { id: 'wp-berliner-mauer', kind: 'Nachschlagewerk', title: 'Berliner Mauer', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Berliner_Mauer' },
+  { id: 'chronik-mauer', kind: 'Webseite', title: 'Chronik der Mauer', authors: 'Zentrum für Zeithistorische Forschung Potsdam, bpb, Deutschlandradio', year: 2025, url: 'https://www.chronik-der-mauer.de/', note: 'Dokumentation zu Bau, Alltag, Todesopfern und Fall der Mauer.' },
+  { id: 'wp-ostpolitik', kind: 'Nachschlagewerk', title: 'Neue Ostpolitik', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Neue_Ostpolitik' },
+  { id: 'bpb-einheit', kind: 'Webseite', title: 'Themenseite Deutsche Einheit', authors: 'Bundeszentrale für politische Bildung', year: 2025, url: 'https://www.bpb.de/themen/deutsche-einheit/' },
+  { id: 'wp-wiedervereinigung', kind: 'Nachschlagewerk', title: 'Deutsche Wiedervereinigung', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Deutsche_Wiedervereinigung' },
+  { id: 'wp-zwei-plus-vier', kind: 'Nachschlagewerk', title: 'Zwei-plus-Vier-Vertrag', authors: 'Wikipedia (de)', year: 2025, url: 'https://de.wikipedia.org/wiki/Zwei-plus-Vier-Vertrag' },
+  { id: 'weizsaecker-1985', kind: 'Webseite', title: 'Rede zum 40. Jahrestag des Kriegsendes (8. Mai 1985)', authors: 'Richard von Weizsäcker', year: 1985, url: 'https://www.bundespraesident.de/SharedDocs/Reden/DE/Richard-von-Weizsaecker/Reden/1985/05/19850508_Rede.html' },
+];
