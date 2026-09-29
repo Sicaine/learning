@@ -83,7 +83,7 @@ Seit 2024 erlaubt das Staatsangehörigkeitsrecht grundsätzlich die **doppelte S
 
 **Digitalisierung**: Smartphone, Onlinehandel, Homeoffice und künstliche Intelligenz verändern Arbeit, Kommunikation und Verwaltung. Deutschland gilt dabei im europäischen Vergleich oft als Nachzügler — etwa bei digitalen Behördendiensten oder beim Glasfaserausbau.
 
-**Individualisierung und Pluralisierung**: Familienformen werden vielfältiger (Alleinerziehende, Patchwork-Familien, gleichgeschlechtliche Ehe seit 2017), die Bindung an Kirchen, Parteien und Gewerkschaften nimmt ab. Seit 2023 gehört weniger als die Hälfte der Bevölkerung einer der beiden großen christlichen Kirchen an.`,
+**Individualisierung und Pluralisierung**: Familienformen werden vielfältiger (Alleinerziehende, Patchwork-Familien, gleichgeschlechtliche Ehe seit 2017), die Bindung an Kirchen, Parteien und Gewerkschaften nimmt ab. Seit Anfang der 2020er-Jahre gehört weniger als die Hälfte der Bevölkerung einer der beiden großen christlichen Kirchen an.`,
     },
     {
       id: 'match-begriffe', type: 'match', title: 'Begriffe zuordnen',
