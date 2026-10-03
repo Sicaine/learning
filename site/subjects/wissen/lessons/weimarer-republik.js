@@ -13,18 +13,18 @@ export default {
     {
       id: 'revolution', type: 'text', title: 'November 1918: Die Republik entsteht',
       md: `
-Anfang November 1918 meuterten die Matrosen in **Kiel**, als die Admiralität die Flotte zu einem letzten, sinnlosen Gefecht auslaufen lassen wollte. Binnen Tagen bildeten sich im ganzen Reich Arbeiter- und Soldatenräte — die **[[novemberrevolution|Novemberrevolution]]**.
+Anfang November 1918 meuterten die Matrosen in **[Kiel](wiki:Kieler Matrosenaufstand|Kiel mutiny)**, als die Admiralität die Flotte zu einem letzten, sinnlosen Gefecht auslaufen lassen wollte. Binnen Tagen bildeten sich im ganzen Reich Arbeiter- und Soldatenräte — die **[[novemberrevolution|Novemberrevolution]]**.
 
-Am **9. November 1918** überschlugen sich die Ereignisse: Reichskanzler Max von Baden verkündete eigenmächtig die Abdankung des Kaisers; **Philipp Scheidemann** (SPD) rief vom Reichstagsgebäude die „deutsche Republik" aus, zwei Stunden später **Karl Liebknecht** vom Berliner Schloss die „freie sozialistische Republik". Wilhelm II. ging ins Exil in die Niederlande. **Friedrich Ebert** (SPD) führte die Übergangsregierung — und setzte, gestützt auf das alte Militär, auf Wahlen statt Räterepublik. Den kommunistischen Spartakusaufstand im Januar 1919 schlugen Freikorps blutig nieder; Rosa Luxemburg und Karl Liebknecht wurden ermordet.`,
+Am **9. November 1918** überschlugen sich die Ereignisse: Reichskanzler [Max von Baden](wiki:Max von Baden|Prince Maximilian of Baden) verkündete eigenmächtig die Abdankung des Kaisers; **[Philipp Scheidemann](wiki:Philipp Scheidemann|Philipp Scheidemann)** (SPD) rief vom Reichstagsgebäude die „deutsche Republik" aus, zwei Stunden später **[Karl Liebknecht](wiki:Karl Liebknecht|Karl Liebknecht)** vom Berliner Schloss die „freie sozialistische Republik". Wilhelm II. ging ins Exil in die Niederlande. **[Friedrich Ebert](wiki:Friedrich Ebert|Friedrich Ebert)** (SPD) führte die Übergangsregierung — und setzte, gestützt auf das alte Militär, auf Wahlen statt Räterepublik. Den kommunistischen [Spartakusaufstand](wiki:Spartakusaufstand|Spartacist uprising) im Januar 1919 schlugen [Freikorps](wiki:Freikorps|Freikorps) blutig nieder; [Rosa Luxemburg](wiki:Rosa Luxemburg|Rosa Luxemburg) und Karl Liebknecht wurden ermordet.`,
     },
     {
       id: 'verfassung', type: 'text', title: 'Eine Verfassung aus Weimar',
       md: `
-Am **19. Januar 1919** wählten erstmals auch **Frauen** — 37 Frauen zogen in die Nationalversammlung ein. Sie tagte im ruhigeren **Weimar** und beschloss am **11. August 1919** die **[[weimarer-verfassung|Weimarer Verfassung]]**. Ebert wurde erster Reichspräsident.
+Am **19. Januar 1919** wählten erstmals auch **[Frauen](wiki:Frauenwahlrecht|Women's suffrage)** — 37 Frauen zogen in die Nationalversammlung ein. Sie tagte im ruhigeren **[Weimar](wiki:Weimar|Weimar)** und beschloss am **11. August 1919** die **[[weimarer-verfassung|Weimarer Verfassung]]**. Ebert wurde erster Reichspräsident.
 
 <table><tr><th>Stärken</th><th>Schwächen</th></tr>
 <tr><td>Allgemeines Wahlrecht für Männer und Frauen ab 20</td><td>Sehr mächtiger, direkt gewählter <strong>Reichspräsident</strong> („Ersatzkaiser")</td></tr>
-<tr><td>Umfangreiche Grundrechte</td><td><strong>Artikel 48</strong>: Regieren per Notverordnung</td></tr>
+<tr><td>Umfangreiche Grundrechte</td><td><strong>[Artikel 48](wiki:Notverordnung|Article 48 of the Weimar Constitution)</strong>: Regieren per Notverordnung</td></tr>
 <tr><td>Parlamentarische Regierung</td><td>Reines Verhältniswahlrecht <strong>ohne Sperrklausel</strong> → viele Kleinparteien</td></tr>
 <tr><td>Volksbegehren und Volksentscheid</td><td>Grundrechte nicht unabänderlich, kein Verfassungsgericht wie heute</td></tr></table>
 
@@ -33,15 +33,28 @@ Die größte Schwäche war aber keine Paragrafenfrage: Viele Eliten in Militär,
     {
       id: 'krisen', type: 'text', title: 'Krisenjahre 1919–1923',
       md: `
-Die junge Republik wurde von links und rechts angegriffen: **Kapp-Putsch** (1920) rechtsradikaler Militärs, kommunistische Aufstände, politische Morde (Finanzminister Erzberger 1921, Außenminister **Walther Rathenau** 1922).
+Die junge Republik wurde von links und rechts angegriffen: **[Kapp-Putsch](wiki:Kapp-Putsch|Kapp Putsch)** (1920) rechtsradikaler Militärs, kommunistische Aufstände, politische Morde (Finanzminister [Erzberger](wiki:Matthias Erzberger|Matthias Erzberger) 1921, Außenminister **[Walther Rathenau](wiki:Walther Rathenau|Walther Rathenau)** 1922).
 
 **1923** wurde zum Krisenjahr:
 
-- Frankreich und Belgien besetzten im Januar das **Ruhrgebiet**, weil Deutschland mit Reparationen im Rückstand war. Die Regierung rief zum passiven Widerstand auf und bezahlte die Streikenden mit frisch gedrucktem Geld.
+- Frankreich und Belgien besetzten im Januar das **[Ruhrgebiet](wiki:Ruhrbesetzung|Occupation of the Ruhr)**, weil Deutschland mit Reparationen im Rückstand war. Die Regierung rief zum passiven Widerstand auf und bezahlte die Streikenden mit frisch gedrucktem Geld.
 - Die **[[hyperinflation]]** explodierte: Im November 1923 kostete ein US-Dollar **4,2 Billionen Mark**, ein Brot Milliarden. Ersparnisse des Mittelstands wurden vernichtet.
-- Am **8./9. November 1923** versuchte **Adolf Hitler** in München einen Putsch („Hitlerputsch"). Er scheiterte; Hitler schrieb in der Festungshaft „Mein Kampf".
+- Am **8./9. November 1923** versuchte **[Adolf Hitler](wiki:Adolf Hitler|Adolf Hitler)** in München einen Putsch („[Hitlerputsch](wiki:Hitlerputsch|Beer Hall Putsch)"). Er scheiterte; Hitler schrieb in der Festungshaft „[Mein Kampf](wiki:Mein Kampf|Mein Kampf)".
 
-Die **Rentenmark** (November 1923) stabilisierte die Währung.[^wp-inflation]`,
+Die **[Rentenmark](wiki:Rentenmark|Rentenmark)** (November 1923) stabilisierte die Währung.[^wp-inflation]`,
+    },
+    {
+      id: 'map-weimar-orte', type: 'map', title: 'Weimarer Republik: Orte der Ereignisse',
+      view: 'de',
+      rivers: [{ name: 'Rhein', labelAt: 0.35 }, { name: 'Elbe', labelAt: 0.6 }],
+      places: [
+        { name: 'Kiel', num: 1, pos: 'r', detail: '**[Kiel](wiki:Kieler Matrosenaufstand|Kiel mutiny)** — Anfang November 1918 meutern hier die Matrosen: Beginn der Novemberrevolution.' },
+        { name: 'Berlin', num: 2, pos: 'r', detail: '**[Berlin](wiki:Berlin|Berlin)** — 9. November 1918: Scheidemann und Liebknecht rufen zwei Republiken aus.' },
+        { name: 'Weimar', num: 3, pos: 'l', detail: '**[Weimar](wiki:Weimar|Weimar)** — hier tagt 1919 die Nationalversammlung und beschließt die Verfassung; die Republik trägt den Namen der Stadt.' },
+        { name: 'Essen', num: 4, pos: 'l', detail: '**[Ruhrgebiet](wiki:Ruhrbesetzung|Occupation of the Ruhr)** — im Januar 1923 besetzen Frankreich und Belgien das Industrierevier.' },
+        { name: 'München', num: 5, pos: 'r', detail: '**[München](wiki:München|Munich)** — 8./9. November 1923: der Hitlerputsch scheitert.' },
+      ],
+      caption: 'Ziffern in zeitlicher Reihenfolge: 1 Kiel (1918), 2 Berlin (1918), 3 Weimar (1919), 4 Ruhrgebiet (1923), 5 München (1923).',
     },
     {
       id: 'video-1923', type: 'video', youtube: 'sVkEY87L-xI', label: 'Die Weimarer Republik – Das Krisenjahr 1923', channel: 'musstewissen Geschichte | Terra X',
@@ -56,18 +69,18 @@ Die **Rentenmark** (November 1923) stabilisierte die Währung.[^wp-inflation]`,
     {
       id: 'zwanziger', type: 'text', title: 'Die „Goldenen Zwanziger" (1924–1929)',
       md: `
-Mit dem **Dawes-Plan** (1924) wurden die Reparationen tragbar geregelt, amerikanische Kredite flossen. Außenminister **Gustav Stresemann** führte Deutschland zurück in die internationale Gemeinschaft: **Locarno-Verträge** (1925), Aufnahme in den **Völkerbund** (1926), Friedensnobelpreis 1926 gemeinsam mit dem Franzosen Aristide Briand.
+Mit dem **[Dawes-Plan](wiki:Dawes-Plan|Dawes Plan)** (1924) wurden die Reparationen tragbar geregelt, amerikanische Kredite flossen. Außenminister **[Gustav Stresemann](wiki:Gustav Stresemann|Gustav Stresemann)** führte Deutschland zurück in die internationale Gemeinschaft: **[Locarno-Verträge](wiki:Locarno-Verträge|Locarno Treaties)** (1925), Aufnahme in den **[Völkerbund](wiki:Völkerbund|League of Nations)** (1926), Friedensnobelpreis 1926 gemeinsam mit dem Franzosen [Aristide Briand](wiki:Aristide Briand|Aristide Briand).
 
-Kulturell erlebte vor allem Berlin eine Blütezeit: das **Bauhaus** (gegründet 1919 in Weimar), der Film „**Metropolis**" (Fritz Lang, 1927), die „**Dreigroschenoper**" (Brecht/Weill, 1928), Kabarett, Jazz, die „Neue Frau". Doch der Aufschwung stand auf Pump — auf kurzfristigen Krediten aus den USA.[^lemo-weimar]`,
+Kulturell erlebte vor allem Berlin eine Blütezeit: das **[Bauhaus](wiki:Bauhaus|Bauhaus)** (gegründet 1919 in Weimar), der Film „**[Metropolis](wiki:Metropolis (Film)|Metropolis (1927 film))**" ([Fritz Lang](wiki:Fritz Lang|Fritz Lang), 1927), die „**[Dreigroschenoper](wiki:Die Dreigroschenoper|The Threepenny Opera)**" ([Brecht](wiki:Bertolt Brecht|Bertolt Brecht)/[Weill](wiki:Kurt Weill|Kurt Weill), 1928), Kabarett, Jazz, die „Neue Frau". Doch der Aufschwung stand auf Pump — auf kurzfristigen Krediten aus den USA.[^lemo-weimar]`,
     },
     {
       id: 'untergang', type: 'text', title: 'Weltwirtschaftskrise und Untergang 1929–1933',
       md: `
-Nach dem New Yorker Börsenkrach im **Oktober 1929** zogen US-Banken ihr Geld ab. Die **[[weltwirtschaftskrise|Weltwirtschaftskrise]]** traf Deutschland besonders hart: Anfang 1932 waren über **6 Millionen** Menschen arbeitslos.
+Nach dem New Yorker [Börsenkrach](wiki:Schwarzer Donnerstag|Wall Street crash of 1929) im **Oktober 1929** zogen US-Banken ihr Geld ab. Die **[[weltwirtschaftskrise|Weltwirtschaftskrise]]** traf Deutschland besonders hart: Anfang 1932 waren über **6 Millionen** Menschen arbeitslos.
 
-Im März 1930 zerbrach die letzte Regierung mit parlamentarischer Mehrheit (Große Koalition unter Hermann Müller) am Streit um die Arbeitslosenversicherung. Reichspräsident **Paul von Hindenburg** ernannte nun **Präsidialkabinette**, die mit Notverordnungen nach Artikel 48 regierten (Brüning, Papen, Schleicher). Brünings Sparpolitik verschärfte die Not.
+Im März 1930 zerbrach die letzte Regierung mit parlamentarischer Mehrheit (Große Koalition unter [Hermann Müller](wiki:Hermann Müller (Reichskanzler)|Hermann Müller (politician, born 1876))) am Streit um die Arbeitslosenversicherung. Reichspräsident **[Paul von Hindenburg](wiki:Paul von Hindenburg|Paul von Hindenburg)** ernannte nun **[Präsidialkabinette](wiki:Präsidialkabinett|Presidential cabinets of the Weimar Republic)**, die mit Notverordnungen nach Artikel 48 regierten ([Brüning](wiki:Heinrich Brüning|Heinrich Brüning), [Papen](wiki:Franz von Papen|Franz von Papen), [Schleicher](wiki:Kurt von Schleicher|Kurt von Schleicher)). Brünings Sparpolitik verschärfte die Not.
 
-Die **NSDAP** wuchs von 2,6 % (1928) auf **37,3 %** im Juli 1932 und wurde stärkste Partei; auch die KPD legte zu. Demokratische Parteien hatten keine Mehrheit mehr. Konservative Kreise um Papen überredeten Hindenburg, Hitler zum Reichskanzler zu machen — in der Erwartung, ihn „einrahmen" zu können. Am **30. Januar 1933** wurde Hitler ernannt.[^bpb-weimar]`,
+Die **[NSDAP](wiki:Nationalsozialistische Deutsche Arbeiterpartei|Nazi Party)** wuchs von 2,6 % (1928) auf **37,3 %** im Juli 1932 und wurde stärkste Partei; auch die KPD legte zu. Demokratische Parteien hatten keine Mehrheit mehr. Konservative Kreise um Papen überredeten Hindenburg, Hitler zum Reichskanzler zu machen — in der Erwartung, ihn „einrahmen" zu können. Am **30. Januar 1933** wurde Hitler ernannt.[^bpb-weimar]`,
     },
     {
       id: 'timeline-weimar', type: 'game', viz: 'timeline', title: 'Weimar in der richtigen Reihenfolge',
@@ -84,6 +97,13 @@ Die **NSDAP** wuchs von 2,6 % (1928) auf **37,3 %** im Juli 1932 und wurde stär
           { year: 1933, label: 'Hitler Reichskanzler' },
         ],
       },
+    },
+    {
+      id: 'map-quiz-weimar', type: 'map', title: 'Wo geschah was?',
+      view: 'de',
+      layers: { cities: false },
+      quiz: { rounds: 5 },
+      places: [{ name: 'Kiel' }, { name: 'Weimar' }, { name: 'München' }, { name: 'Berlin' }, { name: 'Essen' }],
     },
     {
       id: 'match-weimar', type: 'match', title: 'Köpfe der Weimarer Republik',

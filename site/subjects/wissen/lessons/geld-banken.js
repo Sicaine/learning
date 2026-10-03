@@ -19,36 +19,36 @@ Geld ist alles, was eine Gesellschaft als Zahlungsmittel **akzeptiert**. Ökonom
 2. **Recheneinheit** — alles bekommt einen vergleichbaren Preis.
 3. **Wertaufbewahrungsmittel** — man kann heute sparen und morgen ausgeben (solange die [[inflation|Inflation]] nicht zu hoch ist).
 
-Die Geschichte des Geldes ist eine Geschichte der Abstraktion: Vom **Warengeld** (Muscheln, Salz, Vieh) über **Münzen** aus Edelmetall zum **Papiergeld** und schließlich zum **Buchgeld** — Zahlen auf Konten. Heute ist der allergrößte Teil des Geldes Buchgeld; Bargeld macht nur einen kleinen Teil aus.
+Die Geschichte des Geldes ist eine Geschichte der Abstraktion: Vom **[Warengeld](wiki:Warengeld|History of money)** (Muscheln, Salz, Vieh) über **[Münzen](wiki:Münze|Coin)** aus Edelmetall zum **[Papiergeld](wiki:Papiergeld|Banknote)** und schließlich zum **[Buchgeld](wiki:Buchgeld|Demand deposit)** — Zahlen auf Konten. Heute ist der allergrößte Teil des Geldes Buchgeld; Bargeld macht nur einen kleinen Teil aus.
 
-Unser Geld ist **„Fiatgeld“** (lat. *fiat*: es werde): Es ist nicht durch Gold gedeckt, sondern hat Wert, weil der Staat es als gesetzliches Zahlungsmittel festlegt und alle darauf vertrauen, dass es knapp gehalten wird.`,
+Unser Geld ist **„[Fiatgeld](wiki:Fiatgeld|Fiat money)“** (lat. *fiat*: es werde): Es ist nicht durch Gold gedeckt, sondern hat Wert, weil der Staat es als gesetzliches Zahlungsmittel festlegt und alle darauf vertrauen, dass es knapp gehalten wird.`,
     },
     {
       id: 'banken', type: 'text', title: 'Wie Banken arbeiten',
       md: `
-Banken sind **Vermittler**: Sie nehmen Einlagen an (Girokonto, Sparbuch) und vergeben **Kredite** an Haushalte, Unternehmen und den Staat. Ihr Gewinn entsteht vor allem aus der **Zinsdifferenz** — für Kredite verlangen sie höhere Zinsen, als sie Sparern zahlen.
+Banken sind **Vermittler**: Sie nehmen Einlagen an ([Girokonto](wiki:Girokonto|Transaction account), Sparbuch) und vergeben **Kredite** an Haushalte, Unternehmen und den Staat. Ihr Gewinn entsteht vor allem aus der **Zinsdifferenz** — für Kredite verlangen sie höhere Zinsen, als sie Sparern zahlen.
 
 Das deutsche Bankensystem hat **drei Säulen**:
 
-- **Sparkassen** und Landesbanken (öffentlich-rechtlich, regional verankert)
-- **Genossenschaftsbanken** (Volks- und Raiffeisenbanken; gehören ihren Mitgliedern)
-- **Private Geschäftsbanken** (z. B. Deutsche Bank, Commerzbank)
+- **[Sparkassen](wiki:Sparkasse|Savings bank)** und [Landesbanken](wiki:Landesbank) (öffentlich-rechtlich, regional verankert)
+- **[Genossenschaftsbanken](wiki:Genossenschaftsbank|Cooperative banking)** (Volks- und Raiffeisenbanken; gehören ihren Mitgliedern)
+- **Private Geschäftsbanken** (z. B. [Deutsche Bank](wiki:Deutsche Bank), [Commerzbank](wiki:Commerzbank))
 
-**Geld aus dem Nichts?** Vergibt eine Bank einen Kredit, schreibt sie dem Kunden den Betrag einfach auf dem Konto gut — dabei entsteht **neues Buchgeld** (Geldschöpfung). Wird der Kredit zurückgezahlt, verschwindet es wieder. Begrenzt wird das durch Vorschriften: Eigenkapitalregeln, die Mindestreserve bei der Zentralbank und die Zinsen, zu denen sich Banken bei der Zentralbank Geld leihen.
+**Geld aus dem Nichts?** Vergibt eine Bank einen Kredit, schreibt sie dem Kunden den Betrag einfach auf dem Konto gut — dabei entsteht **neues Buchgeld** ([Geldschöpfung](wiki:Geldschöpfung|Money creation)). Wird der Kredit zurückgezahlt, verschwindet es wieder. Begrenzt wird das durch Vorschriften: Eigenkapitalregeln, die [Mindestreserve](wiki:Mindestreserve|Reserve requirement) bei der Zentralbank und die Zinsen, zu denen sich Banken bei der Zentralbank Geld leihen.
 
-Guthaben sind in der EU durch die **Einlagensicherung** bis **100.000 € pro Kunde und Bank** geschützt.`,
+Guthaben sind in der EU durch die **[Einlagensicherung](wiki:Einlagensicherung|Deposit insurance)** bis **100.000 € pro Kunde und Bank** geschützt.`,
     },
     {
       id: 'calc-zins', type: 'numeric', title: 'Zinseszins',
       question: 'Du legst 1.000 € für **zwei Jahre** zu **3 %** Zinsen pro Jahr an; die Zinsen werden mitverzinst. Wie viel Geld hast du am Ende?',
       answer: 1060.9, tolerance: 0.1, unit: '€',
       hint: 'Nach einem Jahr: 1.030 €. Im zweiten Jahr bekommst du 3 % auf 1.030 €.',
-      explain: '$1000 \\cdot 1{,}03^2 = 1060{,}90$ €. Ohne Zinseszins wären es 1.060 €. Der Unterschied wächst mit der Zeit enorm — Albert Einstein wird (vermutlich fälschlich) der Satz zugeschrieben, der Zinseszins sei das achte Weltwunder.',
+      explain: '$1000 \\cdot 1{,}03^2 = 1060{,}90$ €. Ohne [Zinseszins](wiki:Zinseszins|Compound interest) wären es 1.060 €. Der Unterschied wächst mit der Zeit enorm — [Albert Einstein](wiki:Albert Einstein) wird (vermutlich fälschlich) der Satz zugeschrieben, der Zinseszins sei das achte Weltwunder.',
     },
     {
       id: 'ezb', type: 'text', title: 'Die Europäische Zentralbank',
       md: `
-Die **[[ezb|Europäische Zentralbank (EZB)]]** wurde **1998** gegründet und hat ihren Sitz in **Frankfurt am Main**. Sie ist für die Geldpolitik aller Länder zuständig, die den Euro nutzen. Präsidentin ist seit November 2019 die Französin **Christine Lagarde**; ihre Vorgänger waren Wim Duisenberg, Jean-Claude Trichet und Mario Draghi. Zusammen mit den nationalen Zentralbanken — in Deutschland die **Deutsche Bundesbank** (gegründet 1957, ebenfalls Frankfurt) — bildet sie das Eurosystem.
+Die **[[ezb|Europäische Zentralbank (EZB)]]** wurde **1998** gegründet und hat ihren Sitz in **[Frankfurt am Main](wiki:Frankfurt am Main|Frankfurt)**. Sie ist für die Geldpolitik aller Länder zuständig, die den Euro nutzen. Präsidentin ist seit November 2019 die Französin **[Christine Lagarde](wiki:Christine Lagarde)**; ihre Vorgänger waren [Wim Duisenberg](wiki:Wim Duisenberg), [Jean-Claude Trichet](wiki:Jean-Claude Trichet) und [Mario Draghi](wiki:Mario Draghi). Zusammen mit den nationalen Zentralbanken — in Deutschland die **[Deutsche Bundesbank](wiki:Deutsche Bundesbank)** (gegründet 1957, ebenfalls Frankfurt) — bildet sie das [Eurosystem](wiki:Eurosystem).
 
 **Hauptziel: Preisstabilität**, konkret eine Inflation von **2 %** auf mittlere Sicht. Die EZB ist **unabhängig**: Regierungen dürfen ihr keine Weisungen erteilen, und sie darf Staaten nicht direkt finanzieren. Dieses Modell folgt dem Vorbild der Bundesbank.
 
@@ -57,7 +57,7 @@ Ihr wichtigstes Werkzeug ist der **[[leitzins|Leitzins]]**. Maßgeblich ist heut
 - **Zinsen hoch** → Kredite werden teurer, es wird weniger gekauft und investiert → die Inflation sinkt (aber die Konjunktur bremst ab).
 - **Zinsen runter** → Kredite werden billiger, die Wirtschaft wird angekurbelt → die Preise können steigen.
 
-**Stand September 2026:** Einlagesatz **2,50 %** (seit 16. September 2026), Hauptrefinanzierungssatz 2,65 %. Die EZB hatte die Zinsen im Juni und September 2026 wegen steigender Energiepreise infolge des Nahostkonflikts jeweils um 0,25 Prozentpunkte angehoben.[^ezb-2026-09]`,
+**Stand September 2026:** Einlagesatz **2,50 %** (seit 16. September 2026), Hauptrefinanzierungssatz 2,65 %. Die EZB hatte die Zinsen im Juni und September 2026 wegen steigender Energiepreise infolge des [Nahostkonflikts](wiki:Nahostkonflikt|Arab–Israeli conflict) jeweils um 0,25 Prozentpunkte angehoben.[^ezb-2026-09]`,
     },
     {
       id: 'timeline-zins', type: 'viz', viz: 'timeline', title: 'Euro und Zinsen: eine Zeitleiste',
@@ -89,9 +89,22 @@ Ihr wichtigstes Werkzeug ist der **[[leitzins|Leitzins]]**. Maßgeblich ist heut
       md: `
 Der **[[euro|Euro]]** wurde am **1. Januar 1999** als Buchgeld eingeführt; seit dem **1. Januar 2002** gibt es Scheine und Münzen. Die D-Mark wurde zum Kurs von **1 € = 1,95583 DM** umgetauscht — noch heute kann man D-Mark unbefristet bei der Bundesbank umtauschen.
 
-Seit **1. Januar 2026** zahlen **21 EU-Staaten** mit dem Euro; jüngstes Mitglied ist **Bulgarien**, davor kam 2023 Kroatien dazu. Nicht dabei sind unter anderem Dänemark, Schweden, Polen, Tschechien und Ungarn.
+Seit **1. Januar 2026** zahlen **21 EU-Staaten** mit dem Euro; jüngstes Mitglied ist **[Bulgarien](wiki:Bulgarien|Bulgaria)**, davor kam 2023 [Kroatien](wiki:Kroatien|Croatia) dazu. Nicht dabei sind unter anderem [Dänemark](wiki:Dänemark|Denmark), [Schweden](wiki:Schweden|Sweden), [Polen](wiki:Polen|Poland), [Tschechien](wiki:Tschechien|Czech Republic) und [Ungarn](wiki:Ungarn|Hungary).
 
-Die **Scheine** sind in allen Ländern gleich und zeigen keine realen Bauwerke, sondern Baustile Europas (Fenster, Tore, Brücken). Die **Münzen** haben eine gemeinsame und eine nationale Seite: Deutsche Münzen zeigen den **Bundesadler** (1 €, 2 €), das **Brandenburger Tor** (10, 20, 50 Cent) und einen **Eichenzweig** (1, 2, 5 Cent).`,
+Die **Scheine** sind in allen Ländern gleich und zeigen keine realen Bauwerke, sondern Baustile Europas (Fenster, Tore, Brücken). Die **Münzen** haben eine gemeinsame und eine nationale Seite: Deutsche Münzen zeigen den **Bundesadler** (1 €, 2 €), das **[Brandenburger Tor](wiki:Brandenburger Tor|Brandenburg Gate)** (10, 20, 50 Cent) und einen **[Eichenzweig](wiki:Eiche|Oak)** (1, 2, 5 Cent).`,
+    },
+    {
+      id: 'map-euroraum', type: 'map', title: 'Wer zahlt mit dem Euro? (Stand 2026)',
+      view: [-11.5, 34.5, 32.0, 62.5],
+      layers: { cities: false },
+      highlight: [
+        { countries: ['Deutschland', 'Frankreich', 'Italien', 'Spanien', 'Portugal', 'Irland', 'Belgien', 'Niederlande', 'Luxemburg', 'Österreich', 'Finnland', 'Estland', 'Lettland', 'Litauen', 'Slowakei', 'Slowenien', 'Griechenland', 'Malta', 'Republik Zypern', 'Kroatien', 'Bulgarien'], label: 'Euroraum (21 Staaten)', color: '#2563eb' },
+        { countries: ['Dänemark', 'Schweden', 'Polen', 'Tschechien', 'Ungarn', 'Rumänien'], label: 'EU, aber ohne Euro', color: '#ca8a04' },
+      ],
+      points: [
+        { lon: 8.683, lat: 50.110, label: 'Frankfurt am Main', kind: 'capital', pos: 'r', detail: '**[Frankfurt am Main](wiki:Frankfurt am Main|Frankfurt)** — Sitz der **[Europäischen Zentralbank](wiki:Europäische Zentralbank|European Central Bank)** (seit 1998) und der **[Deutschen Bundesbank](wiki:Deutsche Bundesbank)**. Von hier aus wird die Geldpolitik für alle Euro-Staaten gemacht.' },
+      ],
+      caption: 'Kroatien kam 2023 dazu, **Bulgarien am 1. Januar 2026**. Die Karte zeigt die heutigen Staatsgebiete; alle anderen Länder sind grau.',
     },
     {
       id: 'match-euro', type: 'match', title: 'Zuordnen',

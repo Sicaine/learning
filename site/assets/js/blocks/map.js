@@ -49,7 +49,8 @@ function naturalEarth(lonC) {
 function makeView(bbox, kind) {
   const [x0, y0, x1, y1] = bbox;
   const lonSpan = x1 - x0, latSpan = y1 - y0;
-  const world = kind === 'natural' || (!kind && lonSpan > 100);
+  const nearEquator = Math.abs((y0 + y1) / 2) < 14 && latSpan > 25;   // conic cone degenerates here
+  const world = kind === 'natural' || (!kind && (lonSpan > 100 || nearEquator));
   const project = world ? naturalEarth((x0 + x1) / 2) : lcc((x0 + x1) / 2, (y0 + y1) / 2, y0 + latSpan * 0.2, y1 - latSpan * 0.2);
   // Bounds of the bbox in projected space (sample its outline and a grid).
   let minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
@@ -214,7 +215,7 @@ export async function renderMap(b, ctx) {
     for (const n of h.countries || []) { const c = geo.countries.find(x => x.n === n) || (lodName !== 'central' ? null : null); if (c) ds.push(polysPath(c.p, to, vis)); else console.warn(`[map ${b.id}] unknown country "${n}" in this detail level`); }
     for (const n of h.states || []) { const s = states?.find(x => x.n === n || x.n.replace('Freie Hansestadt ', '') === n); if (s) ds.push(polysPath(s.p, to, vis)); else console.warn(`[map ${b.id}] unknown state "${n}"`); }
     if (ds.length) hlPaths.push(`<path class="mp-hl" data-q="hl${hi}" data-name="${esc(h.label || '')}" style="--c:${col}" d="${ds.join('')}"/>`);
-    if (h.quiz && h.label) hit.push({ id: `hl${hi}`, name: h.label, kind: 'area' });
+    if (h.quiz && h.label) hit.push({ id: `hl${hi}`, name: h.label, ask: h.ask, kind: 'area' });
   });
   if (layers.states && states) parts.push(`<g class="mp-states">${states.map(s => `<path data-name="${esc(lang === 'en' ? (STATES_EN[s.n] || s.n) : s.n)}" d="${polysPath(s.p, to, vis)}"/>`).join('')}</g>`);
   parts.push(`<g class="mp-hls">${hlPaths.join('')}</g>`);
@@ -242,7 +243,7 @@ export async function renderMap(b, ctx) {
     if (pts[0][0] > pts[pts.length - 1][0]) pts.reverse();
     const d = pts.map(([x, y], i) => (i ? 'L' : 'M') + num(x) + ' ' + num(y)).join('');
     emphasised.push({ id, name: nm('river', r.n), rq, d, all: r.l.map(l => linePath(l, to)).join(''), col: rq.color });
-    if (rq.quiz) hit.push({ id, name: nm('river', r.n), kind: 'line' });
+    if (rq.quiz) hit.push({ id, name: nm('river', r.n), ask: rq.ask, kind: 'line' });
   });
   parts.push(`<g class="mp-rivers-hi">${emphasised.map(e => `<path class="mp-river hi" data-q="${e.id}" data-name="${esc(e.name)}" style="${e.col ? `--c:${e.col}` : ''}" d="${e.all}"/><path class="mp-hitline" data-q="${e.id}" data-name="${esc(e.name)}" d="${e.all}"/><path id="${e.id}" d="${e.d}" fill="none" stroke="none"/>`).join('')}</g>`);
 
@@ -250,7 +251,7 @@ export async function renderMap(b, ctx) {
   const areaEls = areas.map((a, i) => {
     const col = colorOf(a.color, '#7c3aed');
     const d = a.coords.map(([x, y], j) => { const [px, py] = to(x, y); return (j ? 'L' : 'M') + num(px) + ' ' + num(py); }).join('') + 'Z';
-    if (a.quiz && a.label) hit.push({ id: `ar${i}`, name: a.label, kind: 'area' });
+    if (a.quiz && a.label) hit.push({ id: `ar${i}`, name: a.label, ask: a.ask, kind: 'area' });
     return `<path class="mp-area" data-q="ar${i}" data-name="${esc(a.label || '')}" style="--c:${col}" d="${d}"/>`;
   });
   parts.push(`<g class="mp-areas">${areaEls.join('')}</g>`);
@@ -264,7 +265,7 @@ export async function renderMap(b, ctx) {
     if (pts[0][0] > pts[pts.length - 1][0]) pts = [...pts].reverse();
     const dl = pts.map(([x, y], j) => (j ? 'L' : 'M') + num(x) + ' ' + num(y)).join('');
     if (l.label) lineLabels.push({ id: `ln-${b.id}-${i}`, d: dl, text: l.label, col, at: l.labelAt ?? 0.5 });
-    if (l.quiz && l.label) hit.push({ id: `ln${i}`, name: l.label, kind: 'line' });
+    if (l.quiz && l.label) hit.push({ id: `ln${i}`, name: l.label, ask: l.ask, kind: 'line' });
     return `<path class="mp-line ${l.dashed ? 'dashed' : ''}" data-q="ln${i}" data-name="${esc(l.label || '')}" style="--c:${col};${l.width ? `--w:${l.width}px` : ''}" d="${d}"/>` +
       `<path class="mp-hitline" data-q="ln${i}" data-name="${esc(l.label || '')}" d="${d}"/>` +
       (l.label ? `<path id="ln-${b.id}-${i}" d="${dl}" fill="none" stroke="none"/>` : '');
@@ -284,8 +285,10 @@ export async function renderMap(b, ctx) {
   if (showCountryLabels) {
     // Greedy culling: biggest countries first; a label must fit inside its country and not overlap another label.
     const uEst = 0.7, placed = [], cand = [];
+    const onlyHl = layers.countryLabels === 'highlight' ? new Set(highlight.flatMap(h => h.countries || [])) : null;
     for (const c of geo.countries) {
       if (!c.p.length || (b.layers?.countryLabels === undefined && lodName === 'world' && lonSpan > 100)) continue;
+      if (onlyHl && !onlyHl.has(c.n)) continue;
       const bb = polysBox(c.p, to); if (!bb) continue;
       const cx = (bb[0] + bb[2]) / 2, cy = (bb[1] + bb[3]) / 2;
       if (cx < 0 || cx > W || cy < 0 || cy > view.H) continue;
@@ -302,7 +305,8 @@ export async function renderMap(b, ctx) {
     }
   }
   if (layers.states && layers.stateLabels && states) for (const s of states) { const bb = polysBox(s.p, to); if (bb) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, (lang === 'en' ? (STATES_EN[s.n] || s.n) : s.n).replace('Freie Hansestadt ', ''), 'state'); }
-  if (layers.mountains && geo.mountains && b.layers?.mountainLabels !== false) for (const m of geo.mountains) { const bb = polysBox(m.p, to); if (bb && (bb[2] - bb[0]) > 24 && bb[2] > 0 && bb[0] < W) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, nm('range', m.n), 'range'); }
+  if (layers.mountains && geo.mountains && b.layers?.mountainLabels !== false) for (const m of geo.mountains) {
+    if (Array.isArray(b.layers?.mountainLabels) && !b.layers.mountainLabels.includes(m.n)) continue; const bb = polysBox(m.p, to); if (bb && (bb[2] - bb[0]) > 24 && bb[2] > 0 && bb[0] < W) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, nm('range', m.n), 'range'); }
   if (b.landscapes) {
     const places = await load('places');
     const want = b.landscapes === true ? null : new Set(b.landscapes);
@@ -351,9 +355,24 @@ export async function renderMap(b, ctx) {
     const off = p.num != null ? 6 : 0;
     g.innerHTML = `<circle r="16" class="hit"/>${shape}${p.label ? `<text class="mp-t pt ${p.kind === 'land' ? 'range' : ''}" x="${lx + (pos === 'r' ? off : pos === 'l' ? -off : 0)}" y="${ly}" text-anchor="${an}">${esc(p.label)}</text>` : ''}`;
     pg.append(g);
-    if (quiz && p.quiz !== false && p.label) hit.push({ id: `pt${i}`, name: p.label, kind: 'point' });
+    if (quiz && p.quiz !== false && p.label) hit.push({ id: `pt${i}`, name: p.label, ask: p.ask, kind: 'point' });
     return { g, p, xy: [x, y] };
   });
+
+  // Peaks from the map data: layers.peaks = true (the high ones in view) or ['Zugspitze', …]
+  if (layers.peaks && geo.peaks) {
+    const only = Array.isArray(layers.peaks) ? new Set(layers.peaks) : null;
+    const minH = lonSpan < 8 ? 1100 : lonSpan < 25 ? 2400 : 3500;
+    for (const [n, lon, lat, h] of geo.peaks) {
+      if (only ? !only.has(n) : h < minH) continue;
+      if (lon < bbox[0] || lon > bbox[2] || lat < bbox[1] || lat > bbox[3] || points.some(p => p.label === n)) continue;
+      const [x, y] = to(lon, lat);
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class', 'mp-pt-g mp-peak'); g.dataset.name = `${n} (${h} m)`; g.style.transform = `translate(${num(x)}px, ${num(y)}px) scale(calc(1 / var(--u) / var(--k)))`;
+      g.innerHTML = `<path d="M-6 4.5L0 -6L6 4.5Z" class="mk" style="fill:#8a6f48"/><text class="mp-t range" x="9" y="4" style="font-style:normal">${esc(n)} ${h} m</text>`;
+      pg.append(g);
+    }
+  }
 
   // Arrowheads (screen-sized, rotated along the last segment)
   lines.forEach((l, i) => {
@@ -372,15 +391,33 @@ export async function renderMap(b, ctx) {
   const apply = () => {
     clamp(); vg.setAttribute('transform', `translate(${num(tx)} ${num(ty)}) scale(${k})`);
     svg.classList.toggle('zoomed', k > 1.001);
-    svg.style.setProperty('--k', k); layoutCities(); scaleBar();
+    svg.style.setProperty('--k', k); layoutCities(); scaleBar(); hideClipped();
   };
   const measure = () => { u = svg.clientWidth / W || 1; svg.style.setProperty('--u', u); };
   const ro = new ResizeObserver(() => { measure(); apply(); });
 
+  // Geographic labels that would be cut off by the map frame are hidden (they reappear when panned into view).
+  let clipQueued = false;
+  function hideClipped() {
+    if (clipQueued) return; clipQueued = true;
+    requestAnimationFrame(() => {
+      clipQueued = false;
+      const r = svg.getBoundingClientRect();
+      L.querySelectorAll('.mp-t.country, .mp-t.state, .mp-t.range, .mp-t.sea').forEach(txt => {
+        const g = txt.parentNode; g.style.display = '';
+        const b = txt.getBoundingClientRect();
+        if (b.width && (b.left < r.left + 3 || b.right > r.right - 3 || b.top < r.top + 3 || b.bottom > r.bottom - 3)) g.style.display = 'none';
+      });
+    });
+  }
+
   function layoutCities() {
     cg.innerHTML = '';
     if (!cityList.length) return;
-    const boxes = pointEls.map(({ xy, p }) => { const sx = (xy[0] * k + tx) * u, sy = (xy[1] * k + ty) * u; return [sx - 12, sy - 12, sx + 12 + (p.label ? (p.label.length * 6.4 + 16) : 0), sy + 12]; });
+    const boxes = pointEls.map(({ xy, p }) => {
+      const sx = (xy[0] * k + tx) * u, sy = (xy[1] * k + ty) * u, w = p.label ? p.label.length * 6.6 + 16 : 0, pos = p.pos || 'r';
+      return pos === 'l' ? [sx - 12 - w, sy - 12, sx + 12, sy + 12] : pos === 't' ? [sx - w / 2, sy - 30, sx + w / 2, sy + 12] : pos === 'b' ? [sx - w / 2, sy - 12, sx + w / 2, sy + 30] : [sx - 12, sy - 12, sx + 12 + w, sy + 12];
+    });
     const cap = Math.round(10 * k * k) + (layers.cities === 'all' ? 25 : 0);
     let shown = 0;
     for (const c of cityList) {
@@ -432,8 +469,8 @@ export async function renderMap(b, ctx) {
   svg.addEventListener('pointerleave', () => { $(root, '.mp-tip').hidden = true; });
 
   // Focus (animate to a bbox given in lon/lat)
-  function focus(lon0, lat0, lon1, lat1) {
-    const [x0, y0] = to(lon0, lat1), [x1, y1] = to(lon1, lat0);
+  function focus(lon0, lat0, lon1, lat1) { const [x0, y0] = to(lon0, lat1), [x1, y1] = to(lon1, lat0); focusRect(x0, y0, x1, y1); }
+  function focusRect(x0, y0, x1, y1) {
     const w = Math.max(30, Math.abs(x1 - x0)), h = Math.max(30, Math.abs(y1 - y0));
     const nk = Math.max(1, Math.min(8, 0.8 * Math.min(W / w, view.H / h)));
     const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, ntx = W / 2 - cx * nk, nty = view.H / 2 - cy * nk;
@@ -464,11 +501,17 @@ export async function renderMap(b, ctx) {
   const legend = [];
   lines.forEach((l, i) => l.label && legend.push({ col: colorOf(l.color, i % 2 ? '#0d9488' : '#c2410c'), label: l.label, kind: 'line', bb: bboxOf(l.coords) }));
   areas.forEach((a, i) => a.label && legend.push({ col: colorOf(a.color, '#7c3aed'), label: a.label, kind: 'area', bb: bboxOf(a.coords) }));
-  highlight.forEach((h, i) => h.label && legend.push({ col: colorOf(h.color, ['#c2410c', '#2563eb', '#059669', '#9333ea', '#ca8a04'][i % 5]), label: h.label, kind: 'area' }));
+  highlight.forEach((h, i) => h.label && legend.push({ col: colorOf(h.color, ['#c2410c', '#2563eb', '#059669', '#9333ea', '#ca8a04'][i % 5]), label: h.label, kind: 'area', hl: i }));
   function bboxOf(c) { const xs = c.map(p => p[0]), ys = c.map(p => p[1]); return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)]; }
   if (legend.length && !quiz) {
     $(root, '.mp-legend').innerHTML = legend.map((l, i) => `<button class="mp-lg-item" data-i="${i}"><span class="sw ${l.kind}" style="--c:${l.col}"></span>${esc(l.label)}</button>`).join('');
-    $(root, '.mp-legend').addEventListener('click', e => { const it = e.target.closest('.mp-lg-item'); if (it && legend[+it.dataset.i].bb) focus(...legend[+it.dataset.i].bb); });
+    $(root, '.mp-legend').addEventListener('click', e => {
+      const it = e.target.closest('.mp-lg-item'); if (!it) return;
+      const l = legend[+it.dataset.i];
+      if (l.bb) focus(...l.bb);
+      else if (l.hl != null) { const p = $(root, `.mp-hl[data-q="hl${l.hl}"]`); if (p) { const bb = p.getBBox(); focusRect(bb.x, bb.y, bb.x + bb.width, bb.y + bb.height); } }
+      if (l.hl != null && highlight[l.hl].detail) showDetail(highlight[l.hl]);
+    });
   }
 
   // ----- quiz -----
@@ -485,7 +528,7 @@ export async function renderMap(b, ctx) {
       return;
     }
     qState.tries = 0;
-    prompt.innerHTML = `<span class="mp-q-n">${qState.i + 1}/${qState.items.length}</span> ${t('map.find', { n: `<b>${esc(qState.items[qState.i].name)}</b>` })}`;
+    prompt.innerHTML = `<span class="mp-q-n">${qState.i + 1}/${qState.items.length}</span> ${t('map.find', { n: `<b>${esc(qState.items[qState.i].ask || qState.items[qState.i].name)}</b>` })}`;
   }
   function startQuiz() {
     qState.done = false; qState.revealed = new Set(); qState.mistakes = 0; qState.i = 0;
@@ -501,7 +544,12 @@ export async function renderMap(b, ctx) {
     const tgt = e.target.closest?.('[data-q]');
     if (!quiz) {
       const pt = tgt && /^pt\d+$/.test(tgt.dataset.q) ? pointEls[+tgt.dataset.q.slice(2)] : null;
-      if (pt) showDetail(pt.p); else if (tgt?.dataset.q?.startsWith('ln')) { const l = lines[+tgt.dataset.q.slice(2)]; if (l?.detail || l?.label) showDetail(l); } else if (!tgt) detail.hidden = true;
+      const q = tgt?.dataset.q || '';
+      if (pt) showDetail(pt.p);
+      else if (q.startsWith('ln')) { const l = lines[+q.slice(2)]; if (l?.detail || l?.label) showDetail(l); }
+      else if (q.startsWith('ar')) { const a = areas[+q.slice(2)]; if (a?.detail || a?.label) showDetail(a); }
+      else if (q.startsWith('hl')) { const h = highlight[+q.slice(2)]; if (h?.detail || h?.label) showDetail(h); }
+      else if (!tgt) detail.hidden = true;
       return;
     }
     if (qState.done || !qState.items.length) return;
@@ -516,7 +564,7 @@ export async function renderMap(b, ctx) {
     } else {
       qState.mistakes++; qState.tries++;
       const said = tgt?.dataset.name;
-      prompt.innerHTML = `<span class="mp-q-n">${qState.i + 1}/${qState.items.length}</span> ${t('map.find', { n: `<b>${esc(goal.name)}</b>` })} <span class="bad">${said ? t('map.wrong', { n: esc(said) }) : t('map.miss')}</span>`;
+      prompt.innerHTML = `<span class="mp-q-n">${qState.i + 1}/${qState.items.length}</span> ${t('map.find', { n: `<b>${esc(goal.ask || goal.name)}</b>` })} <span class="bad">${said ? t('map.wrong', { n: esc(said) }) : t('map.miss')}</span>`;
       if (qState.tries >= 2) els.forEach(n => n.classList.add('pulse'));
     }
   }

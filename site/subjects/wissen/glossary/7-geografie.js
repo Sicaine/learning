@@ -49,7 +49,7 @@ export default [
     short: 'Gebirge mittlerer Höhe (meist unter 1.500 m), die sich quer durch die Mitte und den Süden Deutschlands ziehen.',
     long: 'Die **Mittelgebirgsschwelle** trennt das Tiefland vom Süden. Bekannte Mittelgebirge: Harz (Brocken, 1.141 m), Schwarzwald (Feldberg, 1.493 m — höchster Mittelgebirgsgipfel Deutschlands), Bayerischer Wald (Großer Arber, 1.456 m), Erzgebirge, Thüringer Wald, Rhön, Eifel, Taunus.',
     related: ['norddeutsches-tiefland', 'alpen'],
-    wiki: { de: 'Mittelgebirge' },
+    wiki: { de: 'Mittelgebirge', en: 'Mittelgebirge' },
   },
   {
     id: 'alpen', term: 'Alpen', en: 'Alps', cat: 'Europa',
@@ -227,7 +227,7 @@ export default [
     short: 'Die aktuelle, vom Menschen verursachte globale Erwärmung und ihre Folgen — im Mittel der letzten zehn Jahre gut 1,2 °C wärmer als vor der Industrialisierung.',
     long: 'Laut [[weltklimarat|Weltklimarat]] ist es „eindeutig“, dass der Mensch die Erwärmung verursacht. Folgen: steigender Meeresspiegel, schmelzende Gletscher und Eisschilde, häufigere Hitzewellen, Dürren und Starkregen. 2024 war das erste Kalenderjahr, das im globalen Mittel mehr als 1,5 °C über dem vorindustriellen Niveau lag.',
     related: ['treibhauseffekt', 'pariser-klimaabkommen', 'weltklimarat'],
-    wiki: { de: 'Globale Erwärmung', en: 'Climate change' },
+    wiki: { de: 'Klimawandel', en: 'Climate change' },
   },
   {
     id: 'pariser-klimaabkommen', term: 'Pariser Klimaabkommen', en: 'Paris Agreement', cat: 'Klima',

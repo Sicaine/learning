@@ -15,9 +15,9 @@ export default {
       md: `
 Classic segmenters have a fixed list of classes. Segment Anything (2023)[^sam] defines a different task, **[[promptable-segmentation]]**: given an image and a *prompt* — one or more foreground/background points, a box, or a rough mask — return a valid mask for the thing the prompt refers to.
 
-The model never outputs a class name. It answers "*where* is the object you mean?", not "*what* is it?". That makes it a general-purpose tool: the same model works on microscopy, satellite images and — hopefully — watches, without retraining.
+The model never outputs a class name. It answers "*where* is the object you mean?", not "*what* is it?". That makes it a general-purpose tool: the same model works on [microscopy](wiki:Microscopy|Mikroskopie), [satellite images](wiki:Satellite imagery) and — hopefully — watches, without retraining.
 
-To learn this, Meta built SA-1B: **11 million images with 1.1 billion masks**, about 100 masks per image, far more than any earlier segmentation dataset.`,
+To learn this, [Meta](wiki:Meta Platforms|Meta Platforms) built SA-1B: **11 million images with 1.1 billion masks**, about 100 masks per image, far more than any earlier segmentation dataset.`,
     },
     {
       id: 'fig-arch', type: 'figure', title: 'SAM: heavy once, light per click',
@@ -87,7 +87,7 @@ so each output slot is free to specialise on one level of granularity. With seve
       md: `
 Nobody hand-draws a billion masks. SAM was trained with a **[[data-engine]]**: model and dataset grew together in three stages.
 
-1. **Assisted-manual** — annotators click; an early SAM proposes masks; humans correct them. The model is retrained as data accumulates.
+1. **Assisted-manual** — [annotators](wiki:Annotation|Annotation) click; an early SAM proposes masks; humans correct them. The model is retrained as data accumulates.
 2. **Semi-automatic** — SAM pre-fills the masks it is confident about; annotators focus on the objects it missed, increasing diversity.
 3. **Fully automatic** — SAM is prompted with a regular 32×32 grid of points on each image; confident, *stable* masks (unchanged when the threshold shifts slightly) are kept, duplicates filtered.
 
@@ -102,7 +102,7 @@ Nobody hand-draws a billion masks. SAM was trained with a **[[data-engine]]**: m
       md: `
 [[sam2]] (2024)[^sam2] extends promptable segmentation to video. Click on an object in one frame; the mask follows it through the clip. The additions:
 
-- A **memory bank**: FIFO queues holding features of the last few frames and of the frames where you clicked, plus compact *object-pointer* vectors.
+- A **memory bank**: [FIFO](wiki:FIFO (computing and electronics)|First In – First Out) queues holding features of the last few frames and of the frames where you clicked, plus compact *object-pointer* vectors.
 - **Memory attention**: each new frame's features cross-attend to that memory before decoding — "what did the object look like before?"
 - An **occlusion head** that predicts whether the object is visible at all in the current frame.
 - A hierarchical, MAE-pretrained **Hiera** image encoder (multi-scale features, faster than SAM's plain ViT-H).
@@ -112,9 +112,9 @@ It was trained with the SA-V dataset (50.9K videos, 642.6K *masklets* — masks 
     {
       id: 'sam3', type: 'text', title: 'SAM 3: prompts become concepts',
       md: `
-[[sam3]] (2025)[^sam3] changes the prompt from "*this* thing" to "*every* thing of this kind". **Promptable Concept Segmentation**: give a short noun phrase ("yellow school bus", "watch hands") or example crops, and get masks for **all** matching instances, in images and videos.
+[[sam3]] (2025)[^sam3] changes the prompt from "*this* thing" to "*every* thing of this kind". **Promptable Concept Segmentation**: give a short [noun phrase](wiki:Noun phrase|Nominalphrase) ("yellow school bus", "watch hands") or example crops, and get masks for **all** matching instances, in images and videos.
 
-Architecturally: a shared [[backbone]] feeds an image-level detector and a memory-based video tracker (SAM 2 style). A **presence head** first answers "is this concept in the image at all?", separately from "where are the instances?" — decoupling recognition from localization cuts down false positives on hard negatives. The data engine produced 4 million unique concept labels, including hard negatives, and SAM 3 is reported at about twice the accuracy of earlier systems on its new SA-Co benchmark.
+Architecturally: a shared [[backbone]] feeds an image-level [detector](wiki:Object detection) and a memory-based video tracker (SAM 2 style). A **presence head** first answers "is this concept in the image at all?", separately from "where are the instances?" — decoupling recognition from localization cuts down false positives on hard negatives. The data engine produced 4 million unique concept labels, including hard negatives, and SAM 3 is reported at about twice the accuracy of earlier systems on its new SA-Co benchmark.
 
 With SAM 3, SAM moves from a pure "where" model toward the [[open-vocabulary]] world of the next lesson.`,
     },

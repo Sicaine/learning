@@ -14,9 +14,9 @@ export default {
     {
       id: 'from-dino', type: 'text', title: 'Where DINO left off',
       md: `
-[[dino|DINO]] (2021) trained a [[vit|ViT]] on ImageNet — 1.3M images — with [[self-distillation]]: a student matches an [[ema|EMA]] teacher on different crops of the same image. Its attention maps segmented objects without ever seeing a mask.[^dino]
+[[dino|DINO]] (2021) trained a [[vit|ViT]] on [ImageNet](wiki:ImageNet|ImageNet) — 1.3M images — with [[self-distillation]]: a student matches an [[ema|EMA]] teacher on different crops of the same image. Its attention maps segmented objects without ever seeing a mask.[^dino]
 
-But in 2022 the best *general-purpose* features still came from text–image models like CLIP, trained on hundreds of millions of image–caption pairs. The DINOv2 team asked a simple question: **if we scale self-supervised learning the same way — more and better data, bigger models — do we get features that work out of the box for everything?**[^dinov2]
+But in 2022 the best *general-purpose* features still came from text–image models like [CLIP](wiki:Contrastive Language-Image Pre-training), trained on hundreds of millions of image–caption pairs. The DINOv2 team asked a simple question: **if we scale self-supervised learning the same way — more and better data, bigger models — do we get features that work out of the box for everything?**[^dinov2]
 
 Their definition of "works out of the box": the [[backbone]] stays **frozen**, and a linear layer or k-NN on top must perform well — on classification, retrieval, segmentation, depth. No [[fine-tuning]]. That is exactly the situation you want for 100k watch images: extract features once, train small heads quickly.`,
     },
@@ -27,17 +27,17 @@ Their definition of "works out of the box": the [[backbone]] stays **frozen**, a
     {
       id: 'curation', type: 'text', title: 'Ingredient 1: data you choose, not data you scrape',
       md: `
-Training on raw web images sounds like the obvious way to scale — but the web is a **long tail**: millions of near-identical product shots and memes, very few images of rare concepts. A model trained on that learns the head of the distribution very well and everything else poorly.
+Training on raw web images sounds like the obvious way to scale — but the web is a **[long tail](wiki:Long tail)**: millions of near-identical product shots and memes, very few images of rare concepts. A model trained on that learns the head of the distribution very well and everything else poorly.
 
 DINOv2 built **LVD-142M** automatically, without any labels:[^dinov2]
 
 1. Start from ~1.2B uncurated web images and a set of *curated* seed datasets (ImageNet-22k, ImageNet-1k train, Google Landmarks, several fine-grained datasets).
-2. **Deduplicate** with a copy-detection model — remove near-duplicates, including copies of evaluation images.
+2. **[Deduplicate](wiki:Data deduplication|Deduplikation)** with a copy-detection model — remove near-duplicates, including copies of evaluation images.
 3. **Embed** every image with a self-supervised ViT and compare embeddings by [[cosine-similarity]].
-4. **Retrieve**: for each curated image, take its nearest neighbours from the web pool (e.g. N = 4); for smaller seed sets, sample from the matching k-means cluster instead.
+4. **Retrieve**: for each curated image, take its [nearest neighbours](wiki:Nearest neighbor search) from the web pool (e.g. N = 4); for smaller seed sets, sample from the matching [k-means](wiki:K-means clustering|K-Means-Algorithmus) cluster instead.
 5. Result: 142M images that *look like* the curated data but are far more diverse.
 
-The whole pipeline ran in under two days on 20 nodes with 8 V100 GPUs each. The key idea — **[[data-curation]] by embedding similarity** — is something you can reuse directly: your 100k watch images plus a few hand-picked "hard" examples can serve as seeds to mine more relevant images from a larger unlabeled pool.`,
+The whole pipeline ran in under two days on 20 nodes with 8 [V100](wiki:Volta (microarchitecture)) GPUs each. The key idea — **[[data-curation]] by embedding similarity** — is something you can reuse directly: your 100k watch images plus a few hand-picked "hard" examples can serve as seeds to mine more relevant images from a larger unlabeled pool.`,
     },
     {
       id: 'curation-figure', type: 'figure', title: 'The LVD-142M pipeline',
@@ -90,18 +90,18 @@ This is what makes the *patch* features — the [[dense-features]] you need for 
 
 **Untied heads.** DINO and iBOT get *separate* projection heads. Sharing one head (as in iBOT) worked worse at scale.
 
-**Sinkhorn-Knopp [[centering]].** Instead of subtracting a running mean from the teacher's scores, DINOv2 normalizes them with 3 iterations of the Sinkhorn-Knopp algorithm — a balancing step (borrowed from SwAV[^swav]) that forces the batch to use all prototypes roughly equally. This fights [[collapse]].
+**Sinkhorn-Knopp [[centering]].** Instead of subtracting a running mean from the teacher's scores, DINOv2 normalizes them with 3 iterations of the [Sinkhorn-Knopp algorithm](wiki:Sinkhorn's theorem) — a balancing step (borrowed from SwAV[^swav]) that forces the batch to use all prototypes roughly equally. This fights [[collapse]].
 
 **KoLeo regularizer.** A small extra term that spreads features out in the space — see below.`,
     },
     {
       id: 'koleo-text', type: 'text', title: 'KoLeo: every feature wants some personal space',
       md: `
-Take a batch of $n$ L2-normalized features $\\mathbf{x}_1, \\dots, \\mathbf{x}_n$ (points on a hypersphere). For each one, let $d_{n,i}$ be the distance to its **nearest neighbour** in the batch. The [[koleo]] loss is
+Take a batch of $n$ L2-normalized features $\\mathbf{x}_1, \\dots, \\mathbf{x}_n$ (points on a [hypersphere](wiki:N-sphere|Sphäre (Mathematik))). For each one, let $d_{n,i}$ be the distance to its **nearest neighbour** in the batch. The [[koleo]] loss is
 
 $$\\mathcal{L}_{\\text{KoLeo}} = -\\frac{1}{n} \\sum_{i=1}^{n} \\log d_{n,i}$$
 
-Minimizing it means *making the smallest distances larger*. The $\\log$ makes it brutal on near-duplicates: as $d \\to 0$, $-\\log d \\to \\infty$. It comes from the Kozachenko–Leonenko estimator of differential [[entropy]] — high entropy = features spread uniformly.[^koleo-paper]
+Minimizing it means *making the smallest distances larger*. The $\\log$ makes it brutal on near-duplicates: as $d \\to 0$, $-\\log d \\to \\infty$. It comes from the Kozachenko–Leonenko estimator of [differential entropy](wiki:Differential entropy|Differentielle Entropie) — high entropy = features spread uniformly.[^koleo-paper]
 
 Why bother? Features that crowd into a few dense regions are bad for nearest-neighbour search: everything looks similar to everything. DINOv2 reports KoLeo mainly helps retrieval, at almost no cost elsewhere.`,
     },
@@ -131,7 +131,7 @@ The recipe only pays off with big models trained on lots of data, so half of the
 - **FlashAttention**[^flashattention], **sequence packing** (crops of different sizes packed into one sequence with a block-diagonal mask), **stochastic depth** at 40% (skipping computation for dropped blocks) and **FSDP** (sharding student, teacher and optimizer states over GPUs).
 - Net effect: about **2× faster and 3× less memory** than the iBOT implementation they started from.
 
-Training the biggest model, ViT-g/14, took **22,016 A100 GPU-hours**.`,
+Training the biggest model, ViT-g/14, took **22,016 [A100](wiki:Nvidia A100) GPU-hours**.`,
     },
     {
       id: 'calc-attn', type: 'numeric', title: 'Why high resolution is saved for last',
@@ -151,7 +151,7 @@ Instead of training every model size from scratch, DINOv2 trains **ViT-g/14** on
 <tr><td>ViT-L/14</td><td>~304M</td><td>1024</td><td>distilled</td></tr>
 <tr><td>ViT-g/14</td><td>~1.1B</td><td>1536</td><td>the teacher</td></tr></table>
 
-Frozen ViT-g features reach 86.5% ImageNet top-1 with a linear classifier and **49.0 mIoU** on ADE20k semantic segmentation with only a *linear* head on the patch features. Code and weights are Apache 2.0,[^dinov2-repo] which made DINOv2 the default backbone of 2023–2024. Later "_reg" checkpoints add [[registers]] — the next lesson explains why.`,
+Frozen ViT-g features reach 86.5% [ImageNet](wiki:ImageNet|ImageNet) top-1 with a linear classifier and **49.0 mIoU** on ADE20k semantic segmentation with only a *linear* head on the patch features. Code and weights are [Apache 2.0](wiki:Apache License|Apache-Lizenz),[^dinov2-repo] which made DINOv2 the default backbone of 2023–2024. Later "_reg" checkpoints add [[registers]] — the next lesson explains why.`,
     },
     {
       id: 'calc-gpu', type: 'numeric', title: 'Could you train DINOv2 yourself?',
@@ -164,8 +164,8 @@ Frozen ViT-g features reach 86.5% ImageNet top-1 with a linear classifier and **
       id: 'mission-dinov2', type: 'callout', tone: 'mission', title: 'What this means for your 100k watch images',
       md: `
 - **Don't pretrain, adapt.** You will start from released weights. The practical choices are: which model, which resolution, frozen or adapted.
-- **ViT-B/14 or ViT-L/14 are the sweet spot on a 4090.** Feature extraction (inference only, fp16) for ViT-L at 518×518 fits easily on one card. It costs roughly 1 TFLOP per image, so 100k images take well under an hour per GPU at realistic utilization.
-- **But mind the disk:** caching *all* patch features of ViT-L at 518 px is $100{,}000 \times 1369 \times 1024 \times 2$ bytes ≈ **280 GB** in fp16. Cache a labelled subset, reduce dimensions (PCA to 128–256 dims), or compute features on the fly while training the head.
+- **ViT-B/14 or ViT-L/14 are the sweet spot on a [4090](wiki:GeForce RTX 40 series|Nvidia-GeForce-40-Serie).** Feature extraction (inference only, fp16) for ViT-L at 518×518 fits easily on one card. It costs roughly 1 [TFLOP](wiki:FLOPS|Floating Point Operations Per Second) per image, so 100k images take well under an hour per GPU at realistic utilization.
+- **But mind the disk:** caching *all* patch features of ViT-L at 518 px is $100{,}000 \times 1369 \times 1024 \times 2$ bytes ≈ **280 GB** in fp16. Cache a labelled subset, reduce dimensions ([PCA](wiki:Principal component analysis|Hauptkomponentenanalyse) to 128–256 dims), or compute features on the fly while training the head.
 - **Curation applies to you too.** Your renders are a "curated seed set" you control. Embed renders and real photos with DINOv2, and look at which real photos have *no* nearby render — those are the conditions your generator doesn't cover yet (lighting, reflections, angles, straps).
 - **Patch size 14 at 518 px = 37×37 tokens.** A seconds hand only a few pixels wide is far smaller than one patch. Keep that in mind; the last lesson of this stage returns to it.`,
     },

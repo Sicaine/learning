@@ -17,12 +17,12 @@ Nach dem Satz von der [[energieerhaltung]] „erzeugt“ kein Kraftwerk Energie 
 
 <table>
 <tr><th>Gruppe</th><th>Beispiele</th><th>Vorteile</th><th>Nachteile</th></tr>
-<tr><td><b>Fossil</b></td><td>Braunkohle, Steinkohle, Erdöl, Erdgas</td><td>jederzeit abrufbar, hohe Energiedichte</td><td>CO₂ und Klimawandel, endlich, Importabhängigkeit</td></tr>
-<tr><td><b>Nuklear</b></td><td>Kernspaltung von Uran</td><td>kaum CO₂ im Betrieb, grundlastfähig</td><td>Unfallrisiko, Atommüll für Hunderttausende Jahre, teuer im Neubau</td></tr>
-<tr><td><b>Erneuerbar</b></td><td>Wind, Sonne (Photovoltaik), Wasser, Biomasse, Erdwärme</td><td>unerschöpflich, kaum CO₂, heimisch</td><td>schwankend (Wetter, Tageszeit), braucht Speicher und Netze, Flächenbedarf</td></tr>
+<tr><td><b>Fossil</b></td><td>[Braunkohle](wiki:Braunkohle|Lignite), [Steinkohle](wiki:Steinkohle|Bituminous coal), [Erdöl](wiki:Erdöl|Petroleum), [Erdgas](wiki:Erdgas|Natural gas)</td><td>jederzeit abrufbar, hohe Energiedichte</td><td>CO₂ und [Klimawandel](wiki:Klimawandel|Climate change), endlich, Importabhängigkeit</td></tr>
+<tr><td><b>Nuklear</b></td><td>[Kernspaltung](wiki:Kernspaltung|Nuclear fission) von [Uran](wiki:Uran|Uranium)</td><td>kaum CO₂ im Betrieb, [grundlastfähig](wiki:Grundlast|Base load)</td><td>Unfallrisiko, [Atommüll](wiki:Radioaktiver Abfall|Radioactive waste) für Hunderttausende Jahre, teuer im Neubau</td></tr>
+<tr><td><b>Erneuerbar</b></td><td>Wind, Sonne ([Photovoltaik](wiki:Photovoltaik|Photovoltaics)), Wasser, [Biomasse](wiki:Biomasse|Biomass), [Erdwärme](wiki:Geothermie|Geothermal energy)</td><td>unerschöpflich, kaum CO₂, heimisch</td><td>schwankend (Wetter, Tageszeit), braucht Speicher und Netze, Flächenbedarf</td></tr>
 </table>
 
-Fossile Brennstoffe sind gespeicherte Sonnenenergie: Pflanzen, die vor Jahrmillionen per Photosynthese wuchsen. Beim Verbrennen wird ihr Kohlenstoff als **CO₂** frei — die Hauptursache des menschengemachten Klimawandels. Deutschland hat große **Braunkohle**-Vorkommen (Rheinisches Revier, Lausitz, Mitteldeutschland); Braunkohle ist der klimaschädlichste Energieträger.`,
+Fossile Brennstoffe sind gespeicherte Sonnenenergie: Pflanzen, die vor Jahrmillionen per [Photosynthese](wiki:Photosynthese|Photosynthesis) wuchsen. Beim Verbrennen wird ihr Kohlenstoff als **CO₂** frei — die Hauptursache des menschengemachten Klimawandels. Deutschland hat große **Braunkohle**-Vorkommen ([Rheinisches Revier](wiki:Rheinisches Braunkohlerevier|Rheinisches Braunkohlerevier), [Lausitz](wiki:Lausitzer Braunkohlerevier), [Mitteldeutschland](wiki:Mitteldeutsches Braunkohlerevier)); Braunkohle ist der klimaschädlichste Energieträger.`,
     },
     {
       id: 'match-quellen', type: 'match', title: 'Quelle und Prinzip',
@@ -31,17 +31,32 @@ Fossile Brennstoffe sind gespeicherte Sonnenenergie: Pflanzen, die vor Jahrmilli
     {
       id: 'atom', type: 'text', title: 'Der Atomausstieg',
       md: `
-Grundlage der Kernenergie ist die [[kernspaltung]], entdeckt im Dezember **1938** von **Otto Hahn** und **Fritz Straßmann** in Berlin, gedeutet von **Lise Meitner** und Otto Frisch.[^tech-wp-kernspaltung] Das erste deutsche Kernkraftwerk ging 1961 in Kahl (Bayern) ans Netz. Seit den 1970ern war Atomkraft heftig umstritten — die Anti-AKW-Bewegung (Wyhl, Brokdorf, Gorleben) war eine Wurzel der Grünen. Die Katastrophe von **Tschernobyl** (26. April 1986) verstärkte die Skepsis.
+Grundlage der Kernenergie ist die [[kernspaltung]], entdeckt im Dezember **1938** von **[Otto Hahn](wiki:Otto Hahn|Otto Hahn)** und **[Fritz Straßmann](wiki:Fritz Straßmann|Fritz Strassmann)** in Berlin, gedeutet von **[Lise Meitner](wiki:Lise Meitner|Lise Meitner)** und [Otto Frisch](wiki:Otto Robert Frisch|Otto Robert Frisch).[^tech-wp-kernspaltung] Das erste deutsche Kernkraftwerk ging 1961 in [Kahl](wiki:Versuchsatomkraftwerk Kahl|Kahl Nuclear Power Plant) (Bayern) ans Netz. Seit den 1970ern war Atomkraft heftig umstritten — die [Anti-AKW-Bewegung](wiki:Anti-Atomkraft-Bewegung) ([Wyhl](wiki:Wyhl am Kaiserstuhl|Wyhl), [Brokdorf](wiki:Kernkraftwerk Brokdorf|Brokdorf Nuclear Power Plant), [Gorleben](wiki:Gorleben|Gorleben)) war eine Wurzel der [Grünen](wiki:Bündnis 90/Die Grünen|Alliance 90/The Greens). Die Katastrophe von **[Tschernobyl](wiki:Nuklearkatastrophe von Tschernobyl|Chernobyl disaster)** (26. April 1986) verstärkte die Skepsis.
 
 Die Stationen des [[atomausstieg|Atomausstiegs]]:[^tech-wp-atomausstieg]
 
-1. **2000/2002:** Die rot-grüne Regierung Schröder vereinbart mit den Energieversorgern den Ausstieg („Atomkonsens“).
-2. **2010:** Die schwarz-gelbe Regierung Merkel verlängert die Laufzeiten.
-3. **11. März 2011:** Reaktorkatastrophe von **Fukushima** in Japan. Wenige Monate später beschließt der Bundestag mit großer Mehrheit den beschleunigten Ausstieg bis Ende 2022; acht Reaktoren gehen sofort vom Netz.
+1. **2000/2002:** Die rot-grüne Regierung [Schröder](wiki:Gerhard Schröder|Gerhard Schröder) vereinbart mit den Energieversorgern den Ausstieg („[Atomkonsens](wiki:Atomkonsens)“).
+2. **2010:** Die schwarz-gelbe Regierung [Merkel](wiki:Angela Merkel|Angela Merkel) verlängert die Laufzeiten.
+3. **11. März 2011:** Reaktorkatastrophe von **[Fukushima](wiki:Nuklearkatastrophe von Fukushima|Fukushima nuclear accident)** in Japan. Wenige Monate später beschließt der [Bundestag](wiki:Deutscher Bundestag|Bundestag) mit großer Mehrheit den beschleunigten Ausstieg bis Ende 2022; acht Reaktoren gehen sofort vom Netz.
 4. **2022:** Wegen der Energiekrise nach dem russischen Angriff auf die Ukraine laufen die letzten drei Kraftwerke länger.
-5. **15. April 2023:** **Isar 2, Emsland und Neckarwestheim 2** werden abgeschaltet — Deutschland ist aus der Kernenergie ausgestiegen.
+5. **15. April 2023:** **[Isar 2](wiki:Kernkraftwerk Isar|Isar Nuclear Power Plant), [Emsland](wiki:Kernkraftwerk Emsland|Emsland Nuclear Power Plant) und [Neckarwestheim 2](wiki:Kernkraftwerk Neckarwestheim|Neckarwestheim Nuclear Power Plant)** werden abgeschaltet — Deutschland ist aus der Kernenergie ausgestiegen.
 
-Offen bleibt die **Endlagerfrage**: Für hochradioaktiven Müll wird ein Standort gesucht, der eine Million Jahre sicher ist.`,
+Offen bleibt die **[Endlagerfrage](wiki:Endlager (Kerntechnik)|Deep geological repository)**: Für hochradioaktiven Müll wird ein Standort gesucht, der eine Million Jahre sicher ist.`,
+    },
+    {
+      id: 'map-atom', type: 'map', title: 'Kernkraft in Deutschland: Meiler, Proteste, Endlager',
+      view: 'de',
+      layers: { cities: false },
+      points: [
+        { lon: 8.987, lat: 50.059, kind: 'site', label: 'Kahl', pos: 'l', detail: 'Das [Versuchsatomkraftwerk Kahl](wiki:Versuchsatomkraftwerk Kahl|Kahl Nuclear Power Plant) am Main ging 1961 als erstes deutsches Kernkraftwerk ans Netz.' },
+        { lon: 12.293, lat: 48.606, kind: 'site', label: 'Isar 2', pos: 'r', detail: '[Isar 2](wiki:Kernkraftwerk Isar|Isar Nuclear Power Plant) bei Landshut: am 15. April 2023 abgeschaltet.' },
+        { lon: 7.318, lat: 52.474, kind: 'site', label: 'Emsland', pos: 'l', detail: 'Das [Kernkraftwerk Emsland](wiki:Kernkraftwerk Emsland|Emsland Nuclear Power Plant) bei Lingen: am 15. April 2023 abgeschaltet.' },
+        { lon: 9.175, lat: 49.041, kind: 'site', label: 'Neckarwestheim 2', pos: 'r', detail: '[Neckarwestheim 2](wiki:Kernkraftwerk Neckarwestheim|Neckarwestheim Nuclear Power Plant): am 15. April 2023 abgeschaltet — damit endete die Kernenergie in Deutschland.' },
+        { lon: 9.345, lat: 53.851, kind: 'battle', color: '#d97706', label: 'Brokdorf', pos: 'r', detail: 'Gegen den Bau des [Kernkraftwerks Brokdorf](wiki:Kernkraftwerk Brokdorf|Brokdorf Nuclear Power Plant) gab es große Demonstrationen; es ging Ende 2021 vom Netz.' },
+        { lon: 7.649, lat: 48.166, kind: 'battle', color: '#d97706', label: 'Wyhl', pos: 'l', detail: 'Der Protest gegen ein geplantes Kernkraftwerk in [Wyhl](wiki:Wyhl am Kaiserstuhl|Wyhl) 1975 gilt als Keimzelle der deutschen Anti-Atomkraft-Bewegung.' },
+        { lon: 11.356, lat: 53.048, kind: 'battle', color: '#d97706', label: 'Gorleben', pos: 'r', detail: 'Bei [Gorleben](wiki:Gorleben|Gorleben) im Wendland wurde von 1977 bis 2020 ein Salzstock als mögliches Endlager erkundet; 2020 schied er aus der Suche aus.' },
+      ],
+      caption: 'Rot: Kernkraftwerke · Orange ✕: Orte des Protests und der Endlagersuche.',
     },
     {
       id: 'order-atom', type: 'order', title: 'Atomausstieg in der richtigen Reihenfolge',
@@ -54,12 +69,28 @@ Offen bleibt die **Endlagerfrage**: Für hochradioaktiven Müll wird ein Standor
       md: `
 Die [[energiewende]] bezeichnet den Umbau der gesamten Energieversorgung weg von fossilen und nuklearen Quellen hin zu [[erneuerbare-energien|erneuerbaren Energien]].[^tech-wp-energiewende] Zentrale Bausteine:
 
-- **Erneuerbare-Energien-Gesetz (EEG), 2000:** garantierte Einspeisevergütungen machten Wind- und Solarstrom wirtschaftlich; Deutschland löste damit weltweit einen Preissturz bei Solarzellen mit aus.
-- **Atomausstieg** (abgeschlossen 2023) und **Kohleausstieg** (gesetzlich spätestens **2038**).
-- **Klimaneutralität bis 2045** laut Klimaschutzgesetz (verschärft 2021 nach einem Urteil des Bundesverfassungsgerichts).
-- Ausbau von **Stromnetzen** (Windstrom aus dem Norden muss in den industriestarken Süden) und **Speichern**; **Elektrifizierung** von Verkehr (E-Autos) und Wärme (Wärmepumpen); grüner **Wasserstoff** für die Industrie.
+- **[Erneuerbare-Energien-Gesetz](wiki:Erneuerbare-Energien-Gesetz|German Renewable Energy Sources Act) (EEG), 2000:** garantierte [Einspeisevergütungen](wiki:Einspeisevergütung|Feed-in tariff) machten Wind- und Solarstrom wirtschaftlich; Deutschland löste damit weltweit einen Preissturz bei Solarzellen mit aus.
+- **Atomausstieg** (abgeschlossen 2023) und **[Kohleausstieg](wiki:Kohleausstieg|Coal phase-out)** (gesetzlich spätestens **2038**).
+- **[Klimaneutralität](wiki:Klimaneutralität|Carbon neutrality) bis 2045** laut [Klimaschutzgesetz](wiki:Bundes-Klimaschutzgesetz) (verschärft 2021 nach einem Urteil des [Bundesverfassungsgerichts](wiki:Bundesverfassungsgericht|Federal Constitutional Court)).
+- Ausbau von **[Stromnetzen](wiki:Stromnetz|Electrical grid)** (Windstrom aus dem Norden muss in den industriestarken Süden) und **Speichern**; **Elektrifizierung** von Verkehr ([E-Autos](wiki:Elektroauto|Electric car)) und Wärme ([Wärmepumpen](wiki:Wärmepumpe|Heat pump)); grüner **[Wasserstoff](wiki:Wasserstoff|Hydrogen)** für die Industrie.
 
 **Wo stehen wir?** Beim **Strom** stammten 2025 bereits rund **55 %** des Verbrauchs aus erneuerbaren Quellen, vor allem aus Wind und Sonne. Beim **gesamten Energieverbrauch** — also inklusive Heizen, Verkehr und Industrie — waren es aber erst knapp **24 %**.[^tech-uba-ee] Die Stromwende ist also weit, die Wärme- und Verkehrswende steht noch am Anfang.`,
+    },
+    {
+      id: 'map-wende', type: 'map', title: 'Energiewende auf der Karte: Kohle, Wind, Netze',
+      view: 'de',
+      layers: { cities: false },
+      points: [
+        { lon: 6.502, lat: 51.064, kind: 'site', color: '#78350f', label: 'Rheinisches Revier', pos: 'l', detail: 'Das [Rheinische Braunkohlerevier](wiki:Rheinisches Braunkohlerevier) mit dem Tagebau Garzweiler ist das größte der drei deutschen Braunkohlereviere.' },
+        { lon: 14.18, lat: 51.66, kind: 'site', color: '#78350f', label: 'Lausitz', pos: 'r', detail: 'Das [Lausitzer Braunkohlerevier](wiki:Lausitzer Braunkohlerevier) liegt in Brandenburg und Sachsen.' },
+        { lon: 12.4, lat: 51.119, kind: 'site', color: '#78350f', label: 'Mitteldeutschland', pos: 'l', detail: 'Das [Mitteldeutsche Braunkohlerevier](wiki:Mitteldeutsches Braunkohlerevier) liegt südlich von Leipzig.' },
+        { lon: 6.608, lat: 54.011, kind: 'site', color: '#0369a1', label: 'alpha ventus', pos: 'r', detail: 'Der [Windpark alpha ventus](wiki:Offshore-Windpark alpha ventus|Alpha Ventus Offshore Wind Farm), rund 45 km nördlich von Borkum, war 2010 der erste deutsche Offshore-Windpark.' },
+      ],
+      lines: [
+        { label: 'Nord-Süd-Stromtrasse (schematisch)', color: '#0369a1', arrow: true, labelAt: 0.35, coords: [[9.139,53.896],[9.2,52.0],[9.1,50.5],[9.117,49.15]],
+          detail: 'Windstrom aus dem Norden muss in den industriestarken Süden: [SuedLink](wiki:SuedLink|SuedLink) soll als Erdkabel Brunsbüttel in Schleswig-Holstein mit Großgartach in Baden-Württemberg verbinden. Der Verlauf ist hier stark vereinfacht.' },
+      ],
+      caption: 'Braun: Braunkohlereviere · Blau: Windstrom im Norden und die geplante Nord-Süd-Trasse (schematisch).',
     },
     {
       id: 'calc-anteil', type: 'numeric', title: 'Strom gegen Gesamtenergie',
@@ -83,8 +114,8 @@ Die [[energiewende]] bezeichnet den Umbau der gesamten Energieversorgung weg von
       id: 'timeline-energie', type: 'viz', viz: 'timeline', title: 'Energiegeschichte Deutschlands',
       params: {
         events: [
-          { year: 1938, label: 'Kernspaltung entdeckt', detail: 'Otto Hahn, Fritz Straßmann; Deutung Lise Meitner, Otto Frisch.' },
-          { year: 1961, label: 'Erstes AKW (Kahl)', detail: 'Versuchsatomkraftwerk Kahl in Bayern.' },
+          { year: 1938, label: 'Kernspaltung entdeckt', detail: '[Otto Hahn](wiki:Otto Hahn|Otto Hahn), [Fritz Straßmann](wiki:Fritz Straßmann|Fritz Strassmann); Deutung [Lise Meitner](wiki:Lise Meitner|Lise Meitner), [Otto Frisch](wiki:Otto Robert Frisch|Otto Robert Frisch).' },
+          { year: 1961, label: 'Erstes AKW (Kahl)', detail: 'Versuchsatomkraftwerk [Kahl](wiki:Versuchsatomkraftwerk Kahl|Kahl Nuclear Power Plant) in Bayern.' },
           { year: 1986, label: 'Tschernobyl', detail: 'Reaktorkatastrophe in der heutigen Ukraine.' },
           { year: 2000, label: 'EEG & Atomkonsens', detail: 'Erneuerbare-Energien-Gesetz und Ausstiegsvereinbarung.' },
           { year: 2011, label: 'Fukushima', detail: 'Beschleunigter Atomausstieg bis 2022 beschlossen.' },
@@ -96,12 +127,12 @@ Die [[energiewende]] bezeichnet den Umbau der gesamten Energieversorgung weg von
     },
     {
       id: 'fact-energiewende', type: 'callout', tone: 'fact', title: 'Ein deutsches Wort geht um die Welt',
-      md: `Wie *Kindergarten*, *Angst* oder *Zeitgeist* ist auch **„Energiewende“** ins Englische eingewandert — internationale Medien verwenden das Wort meist unübersetzt, wenn sie über Deutschlands Energiepolitik berichten.`,
+      md: `Wie *[Kindergarten](wiki:Kindergarten|Kindergarten)*, *Angst* oder *[Zeitgeist](wiki:Zeitgeist|Zeitgeist)* ist auch **„[Energiewende](wiki:Energiewende in Deutschland|Energiewende)“** ins Englische eingewandert — internationale Medien verwenden das Wort meist unübersetzt, wenn sie über Deutschlands Energiepolitik berichten.`,
     },
     {
       id: 'recall-wende', type: 'recall', title: 'Argumentiere ausgewogen',
       prompt: 'Warum ist es schwieriger, die Energieversorgung vollständig auf Wind und Sonne umzustellen, als nur den Strom „grüner“ zu machen? Nenne mindestens zwei Gründe.',
-      answer: `Erstens sind Wind und Sonne **wetterabhängig und schwankend** („Dunkelflaute“); man braucht **Speicher**, flexible Reservekraftwerke und große **Netze**, um Strom vom windreichen Norden in den Süden zu bringen. Zweitens ist Strom nur ein Teil des Energiebedarfs: **Heizen, Verkehr und Industrie** laufen noch überwiegend mit Öl, Gas und Kohle. Sie müssen erst **elektrifiziert** werden (Wärmepumpen, E-Autos) oder auf grünen **Wasserstoff** umsteigen — das erfordert neue Geräte, Fahrzeuge, Anlagen und viel Zeit und Geld. Deshalb liegt der Erneuerbaren-Anteil beim Strom bei rund 55 %, bei der gesamten Energie aber erst bei knapp einem Viertel.`,
+      answer: `Erstens sind Wind und Sonne **wetterabhängig und schwankend** („[Dunkelflaute](wiki:Dunkelflaute|Dunkelflaute)“); man braucht **Speicher**, flexible Reservekraftwerke und große **Netze**, um Strom vom windreichen Norden in den Süden zu bringen. Zweitens ist Strom nur ein Teil des Energiebedarfs: **Heizen, Verkehr und Industrie** laufen noch überwiegend mit Öl, Gas und Kohle. Sie müssen erst **elektrifiziert** werden ([Wärmepumpen](wiki:Wärmepumpe|Heat pump), E-Autos) oder auf grünen **[Wasserstoff](wiki:Wasserstoff|Hydrogen)** umsteigen — das erfordert neue Geräte, Fahrzeuge, Anlagen und viel Zeit und Geld. Deshalb liegt der Erneuerbaren-Anteil beim Strom bei rund 55 %, bei der gesamten Energie aber erst bei knapp einem Viertel.`,
       hints: ['Was passiert nachts bei Windstille?', 'Welche Bereiche verbrauchen Energie, aber (noch) kaum Strom?'],
       cards: ['strom-gesamt'],
     },

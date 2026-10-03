@@ -24,21 +24,21 @@ When a collector glances at a watch, they parse it instantly: *round steel case,
       id: 'case-parts', type: 'text', title: 'Case, bezel, lugs, crown',
       md: `
 - **[[case|Case]]** (*Gehäuse*): the housing. Shapes: round, cushion, tonneau (barrel-shaped), rectangular (tank), octagonal. The middle part carries the lugs and the crown; finishes alternate brushed and polished surfaces.
-- **[[bezel|Bezel]]** (*Lünette*): the ring holding the crystal. Plain, fluted, gem-set, or a functional scale: rotating diver's bezel (elapsed minutes), 24-hour GMT bezel, tachymeter.
+- **[[bezel|Bezel]]** (*Lünette*): the ring holding the crystal. Plain, fluted, gem-set, or a functional scale: rotating [diver's](wiki:Diving watch|Taucheruhr) bezel (elapsed minutes), 24-hour [GMT](wiki:Greenwich Mean Time|Greenwich Mean Time) bezel, [tachymeter](wiki:Tachymeter (watch)|Tachymeter (Uhr)).
 - **[[lugs|Lugs]]** (*Bandanstöße*): the four horns where strap or bracelet attaches with spring bars. Some watches have an *integrated* bracelet that flows directly out of the case.
-- **[[crown|Crown]]** (*Krone*): winds and sets. Often screw-down for water resistance, sometimes protected by *crown guards*. Chronographs add **[[pusher|pushers]]** (*Drücker*) around it.
+- **[[crown|Crown]]** (*Krone*): winds and sets. Often screw-down for water resistance, sometimes protected by *crown guards*. [Chronographs](wiki:Chronograph|Chronograph (Uhr)) add **[[pusher|pushers]]** (*Drücker*) around it.
 - **[[case-back|Case back]]** (*Gehäuseboden*): solid or with a sapphire window.`,
     },
     {
       id: 'dial-parts', type: 'text', title: 'Dial, indices, hands, crystal',
       md: `
-- **[[crystal|Crystal]]** (*Uhrglas*): acrylic (domed, warm, distorts at the edge), mineral glass, or sapphire (hard, often anti-reflective coated). Invisible when perfect — but it reflects windows and lamps.
-- **[[dial|Dial]]** (*Zifferblatt*): finishes include sunburst (radial brushing that changes brightness with angle), matte, lacquer, enamel, guilloché (engine-turned patterns), and skeletonized (cut away to show the movement).
-- **[[indices|Indices]]** (*Indizes*): batons, dots, triangles, Arabic or Roman numerals; *applied* (separate metal pieces, casting shadows) or *printed*. Often with luminous material.
+- **[[crystal|Crystal]]** (*Uhrglas*): [acrylic](wiki:Poly(methyl methacrylate)|Polymethylmethacrylat) (domed, warm, distorts at the edge), mineral glass, or [sapphire](wiki:Sapphire|Saphir) (hard, often anti-reflective coated). Invisible when perfect — but it reflects windows and lamps.
+- **[[dial|Dial]]** (*Zifferblatt*): finishes include sunburst (radial brushing that changes brightness with angle), matte, lacquer, enamel, [guilloché](wiki:Guilloché|Guilloche) (engine-turned patterns), and [skeletonized](wiki:Skeleton watch) (cut away to show the movement).
+- **[[indices|Indices]]** (*Indizes*): batons, dots, triangles, Arabic or Roman numerals; *applied* (separate metal pieces, casting shadows) or *printed*. Often with [luminous material](wiki:Luminous paint|Leuchtfarbe).
 - **[[chapter-ring|Chapter ring]]** (*Minuterie*): the minute track around the edge.
-- **[[hands|Hands]]** (*Zeiger*): hour, minute, seconds — styles such as baton, dauphine, sword, leaf, Mercedes (on Rolex divers), Breguet ("moon" tips), and bright-red or arrow-tipped GMT hands.
+- **[[hands|Hands]]** (*Zeiger*): hour, minute, seconds — styles such as baton, dauphine, sword, leaf, Mercedes (on [Rolex](wiki:Rolex|Rolex) divers), [Breguet](wiki:Abraham-Louis Breguet|Abraham Louis Breguet) ("moon" tips), and bright-red or arrow-tipped GMT hands.
 - **[[subdial|Subdials]]** (*Hilfszifferblätter*) and the **[[date-window|date window]]** (*Datumsfenster*).
-- **[[strap|Strap / bracelet]]** (*Armband*): leather, rubber, textile, or metal links with a clasp.`,
+- **[[strap|Strap / bracelet]]** (*Armband*): leather, rubber, textile, or metal links with a clasp ([watch strap](wiki:Watch strap|Uhrenarmband)).`,
     },
     {
       id: 'game', type: 'game', viz: 'anatomy', title: 'Name that part',

@@ -27,6 +27,7 @@ export default [
   },
   {
     id: 'channel', term: 'Channel', de: 'Kanal', cat: 'ml',
+    wiki: { en: 'Channel (digital image)' },
     short: 'One “layer” of a feature tensor: RGB images have 3 channels; deep feature maps have hundreds.',
     long: `The third axis of an image-like [[tensor]] ($H \\times W \\times C$). Input: R, G, B. After a conv layer: one channel per kernel, each answering "how much does my pattern appear here?". A kernel always spans *all* input channels.`,
     related: ['kernel', 'feature-map', 'tensor'],

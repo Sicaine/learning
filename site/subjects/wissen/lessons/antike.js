@@ -13,11 +13,33 @@ export default {
     {
       id: 'fluesse', type: 'text', title: 'Am Anfang war der Fluss',
       md: `
-Die ersten **[[hochkultur|Hochkulturen]]** entstanden dort, wo große Flüsse fruchtbares Land schufen: zwischen **Euphrat und Tigris** (Mesopotamien, „Zwischenstromland“, heute vor allem Irak), am **Nil**, am **Indus** und am **Gelben Fluss** in China. Bewässerung brauchte Organisation — und Organisation brauchte Aufzeichnungen.
+Die ersten **[[hochkultur|Hochkulturen]]** entstanden dort, wo große Flüsse fruchtbares Land schufen: zwischen **[Euphrat](wiki:Euphrat|Euphrates) und [Tigris](wiki:Tigris|Tigris)** ([Mesopotamien](wiki:Mesopotamien|Mesopotamia), „Zwischenstromland“, heute vor allem Irak), am **[Nil](wiki:Nil|Nile)**, am **[Indus](wiki:Indus|Indus River)** und am **[Gelben Fluss](wiki:Huang He|Yellow River)** in China. Bewässerung brauchte Organisation — und Organisation brauchte Aufzeichnungen.
 
-So erfanden die **Sumerer** um 3300 v. Chr. in Städten wie Uruk die **[[keilschrift|Keilschrift]]**, zunächst für Buchhaltung: Wie viel Getreide hat wer abgeliefert? Später hielt man damit Gesetze fest — berühmt ist der **Codex Hammurapi** aus Babylon (um 1750 v. Chr.) mit dem Prinzip „Auge um Auge“ — und die erste große Dichtung, das **Gilgamesch-Epos**.[^wp-alter-orient]
+So erfanden die **[Sumerer](wiki:Sumerer|Sumerians)** um 3300 v. Chr. in Städten wie [Uruk](wiki:Uruk|Uruk) die **[[keilschrift|Keilschrift]]**, zunächst für Buchhaltung: Wie viel Getreide hat wer abgeliefert? Später hielt man damit Gesetze fest — berühmt ist der **[Codex Hammurapi](wiki:Codex Hammurapi|Code of Hammurabi)** aus [Babylon](wiki:Babylon|Babylon) (um 1750 v. Chr.) mit dem Prinzip „Auge um Auge“ — und die erste große Dichtung, das **[Gilgamesch-Epos](wiki:Gilgamesch-Epos|Epic of Gilgamesh)**.[^wp-alter-orient]
 
-In **Ägypten** wurden Ober- und Unterägypten um 3000 v. Chr. vereint. Die Pharaonen galten als göttlich; die **Cheops-Pyramide** von Gizeh (um 2600–2500 v. Chr.) war rund 3800 Jahre lang das höchste Bauwerk der Welt. Geschrieben wurde in **Hieroglyphen**, die erst 1822 mithilfe des *Steins von Rosette* entziffert wurden. Mit dem Tod **Kleopatras VII.** 30 v. Chr. wurde Ägypten römisch.[^wp-altes-aegypten]`,
+In **Ägypten** wurden Ober- und Unterägypten um 3000 v. Chr. vereint. Die [Pharaonen](wiki:Pharao|Pharaoh) galten als göttlich; die **[Cheops-Pyramide](wiki:Cheops-Pyramide|Great Pyramid of Giza)** von [Gizeh](wiki:Nekropole von Gizeh|Giza Necropolis) (um 2600–2500 v. Chr.) war rund 3800 Jahre lang das höchste Bauwerk der Welt. Geschrieben wurde in **[Hieroglyphen](wiki:Ägyptische Hieroglyphen|Egyptian hieroglyphs)**, die erst 1822 mithilfe des *[Steins von Rosette](wiki:Stein von Rosette|Rosetta Stone)* entziffert wurden. Mit dem Tod **[Kleopatras VII.](wiki:Kleopatra VII.|Cleopatra)** 30 v. Chr. wurde Ägypten römisch.[^wp-altes-aegypten]`,
+    },
+    {
+      id: 'map-hochkulturen', type: 'map', title: 'Flusskulturen der Alten Welt',
+      view: [24, 16, 123, 46],
+      layers: { cities: false, countryLabels: false },
+      rivers: [
+        { name: 'Nil', labelAt: 0.55 },
+        { name: 'Euphrat', labelAt: 0.4 },
+        { name: 'Tigris', labelAt: 0.75 },
+        { name: 'Indus', labelAt: 0.55 },
+        { name: 'Huang', label: 'Gelber Fluss', labelAt: 0.5 },
+      ],
+      places: [
+        { name: 'Uruk', kind: 'site', pos: 'l', detail: `**[Uruk](wiki:Uruk|Uruk)** — eine der ersten Städte der Welt, im Süden Mesopotamiens; hier entstand um 3300 v. Chr. die Keilschrift.` },
+        { name: 'Babylon', kind: 'site', pos: 't', detail: `**[Babylon](wiki:Babylon|Babylon)** — Hauptstadt des Königs Hammurapi (um 1750 v. Chr.), später Zentrum des Neubabylonischen Reichs.` },
+        { name: 'Gizeh', kind: 'site', pos: 'l', detail: `**[Gizeh](wiki:Nekropole von Gizeh|Giza Necropolis)** — hier stehen die großen Pyramiden, darunter die Cheops-Pyramide, am Rand des Niltals bei Kairo.` },
+      ],
+      points: [
+        { lon: 68.139, lat: 27.329, label: 'Mohenjo-Daro', kind: 'site', pos: 'b', detail: `**[Mohenjo-Daro](wiki:Mohenjo-Daro|Mohenjo-daro)** — Stadt der [Indus-Kultur](wiki:Indus-Kultur|Indus Valley Civilisation) (um 2500 v. Chr.) im heutigen Pakistan, mit geplanten Straßen und Abwasserkanälen.` },
+        { lon: 114.392, lat: 36.099, label: 'Anyang', kind: 'site', pos: 'b', detail: `**[Anyang](wiki:Anyang (Henan)|Anyang)** — Hauptstadt der [Shang-Dynastie](wiki:Shang-Dynastie|Shang dynasty) (um 1300 v. Chr.) am Gelben Fluss; hier finden sich die ältesten chinesischen Schriftzeichen auf Orakelknochen.` },
+      ],
+      caption: 'Alle vier frühen Hochkulturen liegen an großen Strömen: Wasser, Schlamm und Bewässerung machten Landwirtschaft im Überfluss möglich. Tippe auf die Orte.',
     },
     {
       id: 'fact-kleopatra', type: 'callout', tone: 'fact', title: 'Kleopatra lebte näher an uns als an den Pyramiden',
@@ -26,20 +48,67 @@ In **Ägypten** wurden Ober- und Unterägypten um 3000 v. Chr. vereint. Die Phar
     {
       id: 'griechenland', type: 'text', title: 'Griechenland: Stadtstaaten, Demokratie, Denken',
       md: `
-Griechenland war nie ein einheitlicher Staat, sondern eine Welt vieler **[[polis|Poleis]]** (Stadtstaaten) wie Athen, Sparta oder Korinth. Gemeinsam waren Sprache, Götter (Zeus und die Olympier) und Feste — etwa die **Olympischen Spiele**, der Überlieferung nach seit 776 v. Chr.
+Griechenland war nie ein einheitlicher Staat, sondern eine Welt vieler **[[polis|Poleis]]** (Stadtstaaten) wie [Athen](wiki:Athen|Athens), [Sparta](wiki:Sparta|Sparta) oder [Korinth](wiki:Korinth|Corinth (modern city)). Gemeinsam waren Sprache, Götter ([Zeus](wiki:Zeus|Zeus) und die Olympier) und Feste — etwa die **[Olympischen Spiele](wiki:Olympische Spiele der Antike|Ancient Olympic Games)**, der Überlieferung nach seit 776 v. Chr.
 
-In **Athen** führte Kleisthenes 508/507 v. Chr. die **[[attische-demokratie|Demokratie]]** ein: Die Volksversammlung entschied direkt. Mitbestimmen durften allerdings nur freie Männer mit Bürgerrecht. Gegen das riesige Perserreich siegten die Griechen bei **Marathon** (490 v. Chr.) und in der Seeschlacht von **Salamis** (480 v. Chr.). Im „perikleischen Zeitalter“ entstand die Akropolis mit dem Parthenon; Theater, Geschichtsschreibung (Herodot) und Philosophie (Sokrates, Platon, Aristoteles) blühten.[^wp-antikes-griechenland]
+In **Athen** führte [Kleisthenes](wiki:Kleisthenes von Athen|Cleisthenes) 508/507 v. Chr. die **[[attische-demokratie|Demokratie]]** ein: Die Volksversammlung entschied direkt. Mitbestimmen durften allerdings nur freie Männer mit Bürgerrecht. Gegen das riesige [Perserreich](wiki:Achämenidenreich|Achaemenid Empire) siegten die Griechen bei **[Marathon](wiki:Schlacht bei Marathon|Battle of Marathon)** (490 v. Chr.) und in der Seeschlacht von **[Salamis](wiki:Schlacht von Salamis|Battle of Salamis)** (480 v. Chr.). Im „perikleischen Zeitalter“ entstand die [Akropolis](wiki:Akropolis von Athen|Acropolis of Athens) mit dem [Parthenon](wiki:Parthenon|Parthenon); Theater, Geschichtsschreibung ([Herodot](wiki:Herodot|Herodotus)) und Philosophie ([Sokrates](wiki:Sokrates|Socrates), [Platon](wiki:Platon|Plato), [Aristoteles](wiki:Aristoteles|Aristotle)) blühten.[^wp-antikes-griechenland]
 
-**Alexander der Große** (356–323 v. Chr.) aus Makedonien eroberte in nur elf Jahren ein Reich bis nach Ägypten und Indien. Nach seinem Tod zerfiel es, aber griechische Sprache und Kultur prägten die Region weiter: der **[[hellenismus|Hellenismus]]**. Alexandria in Ägypten mit seiner berühmten Bibliothek wurde zum geistigen Zentrum der Welt.`,
+**[Alexander der Große](wiki:Alexander der Große|Alexander the Great)** (356–323 v. Chr.) aus [Makedonien](wiki:Makedonien|Macedonia (region)) eroberte in nur elf Jahren ein Reich bis nach Ägypten und Indien. Nach seinem Tod zerfiel es, aber griechische Sprache und Kultur prägten die Region weiter: der **[[hellenismus|Hellenismus]]**. [Alexandria](wiki:Alexandria|Alexandria) in Ägypten mit seiner berühmten Bibliothek wurde zum geistigen Zentrum der Welt.`,
+    },
+    {
+      id: 'map-alexander', type: 'map', title: 'Alexanders Zug von Pella bis zum Indus',
+      view: [14, 24, 80, 46],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Troja', pos: 'l', detail: `**[Troja](wiki:Troja|Troy)** — hier setzte Alexander 334 v. Chr. nach Kleinasien über, bei Troja lag der Schauplatz der Ilias.` },
+        { name: 'Alexandria', pos: 'b', detail: `**[Alexandria](wiki:Alexandria|Alexandria)** — 331 v. Chr. von Alexander gegründet, später Sitz der berühmten Bibliothek.` },
+        { name: 'Babylon', pos: 'b', detail: `**[Babylon](wiki:Babylon|Babylon)** — Alexander zog 331 v. Chr. ein; hier starb er 323 v. Chr.` },
+        { name: 'Persepolis', pos: 'b', detail: `**[Persepolis](wiki:Persepolis|Persepolis)** — Residenz der persischen Könige; 330 v. Chr. brannten Alexanders Truppen den Palast nieder.` },
+        { name: 'Samarkand', pos: 't', detail: `**[Samarkand](wiki:Samarkand|Samarkand)** — das antike Marakanda, 329 v. Chr. von Alexander erobert.` },
+      ],
+      points: [
+        { lon: 22.417, lat: 40.783, label: 'Pella', pos: 'l', detail: `**[Pella](wiki:Pella (Makedonien)|Pella (municipality))** — Hauptstadt Makedoniens und Geburtsort Alexanders (356 v. Chr.).` },
+        { lon: 35.2, lat: 33.267, label: 'Tyros', pos: 'l', detail: `**[Tyros](wiki:Tyros|Tyre, Lebanon)** — die Inselstadt der Phönizier wurde 332 v. Chr. nach monatelanger Belagerung erobert.` },
+        { lon: 36.157, lat: 36.854, label: 'Issos (333)', kind: 'battle', pos: 'r', detail: `**[Schlacht bei Issos](wiki:Schlacht bei Issos|Battle of Issus)** (333 v. Chr.) — Alexander besiegt den Perserkönig [Dareios III.](wiki:Dareios III.|Darius III).` },
+        { lon: 43.44, lat: 36.56, label: 'Gaugamela (331)', kind: 'battle', pos: 'r', detail: `**[Schlacht von Gaugamela](wiki:Schlacht von Gaugamela|Battle of Gaugamela)** (331 v. Chr.) — die Entscheidung gegen das Perserreich; der genaue Ort ist unsicher.` },
+        { lon: 72.829, lat: 33.757, label: 'Taxila', kind: 'site', pos: 'r', detail: `**[Taxila](wiki:Taxila|Taxila)** — Stadt im Indus-Gebiet, wo Alexander 326 v. Chr. ankam; am Hyphasis ließen ihn seine Soldaten umkehren.` },
+      ],
+      lines: [
+        { label: 'Alexanders Zug (schematisch)', color: '#b91c1c', arrow: true, labelAt: 0.8, coords: [[22.417, 40.783], [26.2, 39.96], [36.157, 36.854], [35.2, 33.267], [29.9, 31.2], [44.4, 32.54], [52.89, 29.93], [66.97, 39.65], [72.829, 33.757]], detail: `Von Pella (336/334 v. Chr.) über Issos, Tyros und Ägypten nach Babylon, Persepolis und Baktrien bis zum Indus (326 v. Chr.). Die Linie verbindet nur die Stationen; Alexanders tatsächliche Wege waren verschlungener.` },
+      ],
+      caption: 'Der Weg ist schematisch; die Linie verbindet die wichtigsten Stationen in zeitlicher Reihenfolge.',
     },
     {
       id: 'rom', type: 'text', title: 'Rom: vom Stadtstaat zum Weltreich',
       md: `
-Der Sage nach gründeten **Romulus und Remus** Rom im Jahr **753 v. Chr.** Nach der Vertreibung der Könige wurde Rom **509 v. Chr.** eine Republik, regiert von Senat und zwei jährlich gewählten Konsuln. In den **Punischen Kriegen** (264–146 v. Chr.) besiegte Rom Karthago — trotz Hannibals Zug mit Elefanten über die Alpen.
+Der Sage nach gründeten **[Romulus und Remus](wiki:Romulus und Remus|Romulus and Remus)** Rom im Jahr **753 v. Chr.** Nach der Vertreibung der Könige wurde Rom **509 v. Chr.** eine Republik, regiert von [Senat](wiki:Römischer Senat|Roman Senate) und zwei jährlich gewählten Konsuln. In den **[Punischen Kriegen](wiki:Punische Kriege|Punic Wars)** (264–146 v. Chr.) besiegte Rom [Karthago](wiki:Karthago|Carthage) — trotz [Hannibals](wiki:Hannibal|Hannibal) Zug mit Elefanten über die Alpen.
 
-Im 1. Jahrhundert v. Chr. zerbrach die Republik in Bürgerkriegen. **Gaius Julius Caesar** eroberte Gallien und machte sich zum Diktator auf Lebenszeit; an den Iden des März (**15. März 44 v. Chr.**) wurde er ermordet. Sein Adoptivsohn **Augustus** wurde **27 v. Chr.** der erste Kaiser. Es folgten rund 200 Jahre relativer Stabilität, die **[[pax-romana|Pax Romana]]**. Unter Trajan erreichte das Reich um **117 n. Chr.** seine größte Ausdehnung — vom Hadrianswall in Britannien bis Mesopotamien.[^wp-roemisches-reich]
+Im 1. Jahrhundert v. Chr. zerbrach die Republik in Bürgerkriegen. **[Gaius Julius Caesar](wiki:Gaius Iulius Caesar|Julius Caesar)** eroberte [Gallien](wiki:Gallischer Krieg|Gallic Wars) und machte sich zum [Diktator](wiki:Diktator|Dictatorship) auf Lebenszeit; an den [Iden des März](wiki:Iden des März|Ides of March) (**15. März 44 v. Chr.**) wurde er ermordet. Sein Adoptivsohn **[Augustus](wiki:Augustus|Augustus)** wurde **27 v. Chr.** der erste Kaiser. Es folgten rund 200 Jahre relativer Stabilität, die **[[pax-romana|Pax Romana]]**. Unter [Trajan](wiki:Trajan|Trajan) erreichte das Reich um **117 n. Chr.** seine größte Ausdehnung — vom [Hadrianswall](wiki:Hadrianswall|Hadrian's Wall) in Britannien bis [Mesopotamien](wiki:Mesopotamien|Mesopotamia).[^wp-roemisches-reich]
 
-Das Christentum, anfangs verfolgt, wurde unter **Konstantin** geduldet (313) und unter Theodosius **380** Staatsreligion. **395** wurde das Reich endgültig geteilt. Das **Weströmische Reich** endete **476**, als der germanische Heerführer Odoaker den letzten Kaiser absetzte. Das **Oströmische Reich** ([[byzanz|Byzanz]]) bestand bis **1453**.`,
+Das [Christentum](wiki:Christentum|Christianity), anfangs verfolgt, wurde unter **[Konstantin](wiki:Konstantin der Große|Constantine the Great)** geduldet (313) und unter [Theodosius](wiki:Theodosius I.|Theodosius I) **380** Staatsreligion. **395** wurde das Reich endgültig geteilt. Das **Weströmische Reich** endete **476**, als der germanische Heerführer [Odoaker](wiki:Odoaker|Odoacer) den letzten Kaiser absetzte. Das **Oströmische Reich** ([[byzanz|Byzanz]]) bestand bis **1453**.`,
+    },
+    {
+      id: 'map-imperium', type: 'map', title: 'Das Römische Reich um 117 n. Chr.',
+      view: [-12, 28, 48, 58],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      highlight: [
+        { label: 'ganz oder überwiegend römisch', color: '#9a3412', countries: ['Italien', 'Spanien', 'Portugal', 'Frankreich', 'Schweiz', 'Belgien', 'Luxemburg', 'Griechenland', 'Türkei', 'Syrien', 'Libanon', 'Israel', 'Jordanien', 'Palästina', 'Ägypten', 'Libyen', 'Tunesien', 'Algerien', 'Bulgarien', 'Kroatien', 'Serbien', 'Bosnien und Herzegowina', 'Albanien', 'Nordmazedonien', 'Slowenien', 'Montenegro', 'Kosovo', 'Österreich', 'Malta'] },
+        { label: 'nur teilweise römisch', color: '#f59e0b', countries: ['Vereinigtes Königreich', 'Deutschland', 'Niederlande', 'Ungarn', 'Rumänien', 'Marokko', 'Irak'] },
+      ],
+      places: [
+        { name: 'Rom', kind: 'capital', pos: 'r', detail: `**[Rom](wiki:Rom|Rome)** — Hauptstadt des Reichs und mit rund einer Million Einwohnern die größte Stadt der Antike.` },
+        { name: 'Konstantinopel', kind: 'site', pos: 'r', detail: `**[Konstantinopel](wiki:Konstantinopel|Constantinople)** — erst 330 n. Chr. von Konstantin zur neuen Hauptstadt gemacht, später Hauptstadt des Oströmischen Reichs.` },
+        { name: 'Karthago', pos: 'b', detail: `**[Karthago](wiki:Karthago|Carthage)** — Roms große Gegnerin in den Punischen Kriegen, 146 v. Chr. zerstört und später als römische Stadt neu gegründet.` },
+        { name: 'Alexandria', pos: 'b', detail: `**[Alexandria](wiki:Alexandria|Alexandria)** — nach Rom die zweitgrößte Stadt des Reichs.` },
+        { name: 'Trier', pos: 'l', detail: `**[Trier](wiki:Trier|Trier)** — römische Kaiserresidenz im Norden, mit der Porta Nigra.` },
+        { name: 'Köln', pos: 'l', detail: `**[Köln](wiki:Köln|Cologne)** — Hauptstadt der Provinz Niedergermanien.` },
+      ],
+      points: [
+        { lon: -2.6, lat: 55.0, label: 'Hadrianswall', kind: 'site', pos: 'r', detail: `**[Hadrianswall](wiki:Hadrianswall|Hadrian's Wall)** — ab 122 n. Chr. unter Kaiser Hadrian gebaut; er sicherte die Nordgrenze der Provinz Britannien.` },
+      ],
+      lines: [
+        { label: 'Hannibal 218 v. Chr.', color: '#1d4ed8', arrow: true, labelAt: 0.3, coords: [[-0.983, 37.6], [4.8, 43.95], [7.68, 45.07], [16.13, 41.3]], detail: `Von Carthago Nova (Cartagena) über Pyrenäen, Rhône und Alpen nach Italien; 216 v. Chr. besiegte Hannibal die Römer bei [Cannae](wiki:Schlacht bei Cannae|Battle of Cannae). Die Linie ist nur schematisch.` },
+      ],
+      caption: 'Die Farben zeigen **heutige Staaten**, die ganz oder teilweise zum Reich gehörten — die damaligen Grenzen verliefen anders.',
     },
     {
       id: 'tl-explore', type: 'viz', viz: 'timeline', title: 'Die Antike auf einen Blick',
@@ -52,7 +121,7 @@ Das Christentum, anfangs verfolgt, wurde unter **Konstantin** geduldet (313) und
         { year: -323, label: 'Tod Alexanders', detail: 'Beginn des Hellenismus.' },
         { year: -44, label: 'Caesar ermordet', detail: 'Iden des März, 15. März 44 v. Chr.' },
         { year: -27, label: 'Augustus erster Kaiser', detail: 'Beginn der römischen Kaiserzeit.' },
-        { year: 476, label: 'Ende Westroms', detail: 'Odoaker setzt Romulus Augustulus ab.' },
+        { year: 476, label: 'Ende Westroms', detail: 'Odoaker setzt [Romulus Augustulus](wiki:Romulus Augustulus|Romulus Augustulus) ab.' },
       ] },
       caption: 'Beachte die Abstände: Die ägyptische Geschichte allein umfasst fast 3000 Jahre.',
     },
@@ -81,6 +150,14 @@ Das Christentum, anfangs verfolgt, wurde unter **Konstantin** geduldet (313) und
       ],
     },
     {
+      id: 'map-quiz-antike', type: 'map', title: 'Wo lagen die Zentren der Antike?',
+      view: [-10, 22, 50, 48],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      quiz: { rounds: 8 },
+      rivers: [{ name: 'Nil', quiz: true }],
+      places: [{ name: 'Athen' }, { name: 'Rom' }, { name: 'Karthago' }, { name: 'Alexandria' }, { name: 'Babylon' }, { name: 'Sparta' }, { name: 'Troja' }, { name: 'Gizeh' }],
+    },
+    {
       id: 'quiz-demokratie', type: 'quiz', title: 'Athens Demokratie',
       question: 'Wer durfte in der attischen Demokratie in der Volksversammlung abstimmen?',
       options: [
@@ -102,11 +179,11 @@ Das Christentum, anfangs verfolgt, wurde unter **Konstantin** geduldet (313) und
       md: `
 Vieles, was uns selbstverständlich scheint, stammt aus der Antike:
 
-- **Schrift und Alphabet:** Unser lateinisches Alphabet geht über die Griechen auf die Phönizier zurück.
-- **Recht:** Das römische Recht, gesammelt im *Corpus iuris civilis*, prägt bis heute das deutsche Bürgerliche Gesetzbuch.
+- **Schrift und Alphabet:** Unser lateinisches Alphabet geht über die Griechen auf die [Phönizier](wiki:Phönizier|Phoenicians) zurück.
+- **Recht:** Das [römische Recht](wiki:Römisches Recht|Roman law), gesammelt im *[Corpus iuris civilis](wiki:Corpus iuris civilis|Corpus Juris Civilis)*, prägt bis heute das deutsche [Bürgerliche Gesetzbuch](wiki:Bürgerliches Gesetzbuch|Bürgerliches Gesetzbuch).
 - **Politik und Sprache:** Demokratie, Republik, Senat, Diktator — alles antike Begriffe.
-- **Kalender:** Unser Kalender geht auf den *Julianischen Kalender* Caesars zurück; die Monate Juli und August sind nach Caesar und Augustus benannt.
-- **Städte:** Köln, Trier, Mainz, Augsburg und Regensburg waren römische Gründungen. Trier gilt als älteste Stadt Deutschlands.`,
+- **Kalender:** Unser Kalender geht auf den *[Julianischen Kalender](wiki:Julianischer Kalender|Julian calendar)* Caesars zurück; die Monate Juli und August sind nach Caesar und Augustus benannt.
+- **Städte:** [Köln](wiki:Köln|Cologne), [Trier](wiki:Trier|Trier), [Mainz](wiki:Mainz|Mainz), [Augsburg](wiki:Augsburg|Augsburg) und [Regensburg](wiki:Regensburg|Regensburg) waren römische Gründungen. Trier gilt als älteste Stadt Deutschlands.`,
     },
     {
       id: 'recall-rom', type: 'recall', title: 'Erkläre den Wandel Roms',

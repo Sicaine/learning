@@ -15,50 +15,118 @@ export default {
       md: `
 1945 liegen die Städte in Trümmern — und auch die Sprache ist beschädigt: Zwölf Jahre NS-Propaganda haben Wörter wie „Volk“ oder „Heimat“ vergiftet. Junge Autoren, viele selbst Kriegsheimkehrer, schreiben deshalb bewusst **karg und ungeschönt**: die [[truemmerliteratur|Trümmerliteratur]].[^wp-truemmerliteratur]
 
-Das bekannteste Beispiel ist **Wolfgang Borcherts** Drama *Draußen vor der Tür* (1947): Der Heimkehrer Beckmann findet keinen Platz mehr in der Gesellschaft. Borchert starb einen Tag vor der Uraufführung, mit 26 Jahren.
+Das bekannteste Beispiel ist **Wolfgang [Borcherts](wiki:Wolfgang Borchert|Wolfgang Borchert)** Drama *[Draußen vor der Tür](wiki:Draußen vor der Tür|The Man Outside)* (1947): Der Heimkehrer Beckmann findet keinen Platz mehr in der Gesellschaft. Borchert starb einen Tag vor der Uraufführung, mit 26 Jahren.
 
-1947 gründet **Hans Werner Richter** die [[gruppe-47|Gruppe 47]]: Autorinnen und Autoren lesen einander unveröffentlichte Texte vor und müssen sich sofort der Kritik stellen. Bis 1967 wird die Gruppe zur wichtigsten Bühne der westdeutschen Literatur.[^wp-gruppe-47]`,
+1947 gründet **[Hans Werner Richter](wiki:Hans Werner Richter|Hans Werner Richter)** die [[gruppe-47|Gruppe 47]]: Autorinnen und Autoren lesen einander unveröffentlichte Texte vor und müssen sich sofort der Kritik stellen. Bis 1967 wird die Gruppe zur wichtigsten Bühne der westdeutschen Literatur.[^wp-gruppe-47]`,
     },
     {
       id: 'celan', type: 'callout', tone: 'history', title: 'Paul Celan: „Todesfuge“',
       md: `
-Der jüdische Dichter **Paul Celan** (1920–1970), dessen Eltern in einem Lager umkamen, schrieb mit der *Todesfuge* das bekannteste Gedicht über den Holocaust. Es beginnt: „Schwarze Milch der Frühe wir trinken sie abends“ — und wiederholt die Zeile „der Tod ist ein Meister aus Deutschland“. Das Gedicht wurde zu einer Antwort auf Adornos berühmten Satz, nach Auschwitz ein Gedicht zu schreiben, sei barbarisch.`,
+Der jüdische Dichter **[Paul Celan](wiki:Paul Celan|Paul Celan)** (1920–1970), dessen Eltern in einem Lager umkamen, schrieb mit der *[Todesfuge](wiki:Todesfuge|Todesfuge)* das bekannteste Gedicht über den Holocaust. Es beginnt: „Schwarze Milch der Frühe wir trinken sie abends“ — und wiederholt die Zeile „der Tod ist ein Meister aus Deutschland“. Das Gedicht wurde zu einer Antwort auf [Adornos](wiki:Theodor W. Adorno|Theodor W. Adorno) berühmten Satz, nach Auschwitz ein Gedicht zu schreiben, sei barbarisch.`,
     },
     {
       id: 'bundesrepublik', type: 'text', title: 'Die großen Namen der Bundesrepublik',
       md: `
-- **Heinrich Böll** (1917–1985), Köln: kritischer Chronist der jungen Bundesrepublik — *Billard um halb zehn* (1959), *Ansichten eines Clowns* (1963), *Die verlorene Ehre der Katharina Blum* (1974, über Boulevardpresse und Hysterie im „Deutschen Herbst“). Literaturnobelpreis **1972**.[^wp-boell]
-- **Günter Grass** (1927–2015), Danzig: *Die Blechtrommel* (1959) — Oskar Matzerath beschließt mit drei Jahren, nicht mehr zu wachsen, und erlebt die NS-Zeit als trommelnder Zwerg. Mit *Katz und Maus* und *Hundejahre* bildet der Roman die „Danziger Trilogie“. Literaturnobelpreis **1999**. 2006 wurde bekannt, dass Grass als 17-Jähriger Mitglied der Waffen-SS gewesen war — eine späte Offenbarung, die heftige Debatten auslöste.[^wp-grass]
-- **Siegfried Lenz**: *Deutschstunde* (1968) — über Pflichterfüllung im NS-Staat.
-- **Ingeborg Bachmann** (Österreich): Lyrikerin; nach ihr ist der Preis beim Klagenfurter Wettlesen benannt.
+- **[Heinrich Böll](wiki:Heinrich Böll|Heinrich Böll)** (1917–1985), [Köln](wiki:Köln|Cologne): kritischer Chronist der jungen Bundesrepublik — *[Billard um halb zehn](wiki:Billard um halb zehn|Billiards at Half-Past Nine)* (1959), *[Ansichten eines Clowns](wiki:Ansichten eines Clowns|The Clown (novel))* (1963), *[Die verlorene Ehre der Katharina Blum](wiki:Die verlorene Ehre der Katharina Blum|The Lost Honour of Katharina Blum)* (1974, über Boulevardpresse und Hysterie im „[Deutschen Herbst](wiki:Deutscher Herbst|German Autumn)“). Literaturnobelpreis **1972**.[^wp-boell]
+- **[Günter Grass](wiki:Günter Grass|Günter Grass)** (1927–2015), [Danzig](wiki:Danzig|Gdańsk): *[Die Blechtrommel](wiki:Die Blechtrommel|The Tin Drum)* (1959) — Oskar Matzerath beschließt mit drei Jahren, nicht mehr zu wachsen, und erlebt die NS-Zeit als trommelnder Zwerg. Mit *[Katz und Maus](wiki:Katz und Maus (Novelle)|Cat and Mouse (novella))* und *[Hundejahre](wiki:Hundejahre|Dog Years (novel))* bildet der Roman die „Danziger Trilogie“. Literaturnobelpreis **1999**. 2006 wurde bekannt, dass Grass als 17-Jähriger Mitglied der [Waffen-SS](wiki:Waffen-SS|Waffen-SS) gewesen war — eine späte Offenbarung, die heftige Debatten auslöste.[^wp-grass]
+- **[Siegfried Lenz](wiki:Siegfried Lenz|Siegfried Lenz)**: *[Deutschstunde](wiki:Deutschstunde|The German Lesson)* (1968) — über Pflichterfüllung im NS-Staat.
+- **[Ingeborg Bachmann](wiki:Ingeborg Bachmann|Ingeborg Bachmann)** (Österreich): Lyrikerin; nach ihr ist der Preis beim Klagenfurter Wettlesen benannt.
 
 Und aus der Schweiz zwei Dramatiker, die jede Schulklasse kennt:
 
-- **Max Frisch**: *Homo faber* (1957), *Andorra* (1961), *Biedermann und die Brandstifter*
-- **Friedrich Dürrenmatt**: *Der Besuch der alten Dame* (1956), *Die Physiker* (1962), *Der Richter und sein Henker*`,
+- **[Max Frisch](wiki:Max Frisch|Max Frisch)**: *[Homo faber](wiki:Homo faber (Roman)|Homo Faber (novel))* (1957), *[Andorra](wiki:Andorra (Frisch)|Andorra (play))* (1961), *[Biedermann und die Brandstifter](wiki:Biedermann und die Brandstifter|The Fire Raisers (play))*
+- **[Friedrich Dürrenmatt](wiki:Friedrich Dürrenmatt|Friedrich Dürrenmatt)**: *[Der Besuch der alten Dame](wiki:Der Besuch der alten Dame|The Visit (play))* (1956), *[Die Physiker](wiki:Die Physiker|The Physicists)* (1962), *[Der Richter und sein Henker](wiki:Der Richter und sein Henker|The Judge and His Hangman)*`,
     },
     {
       id: 'ddr', type: 'text', title: 'Literatur in der DDR',
       md: `
 In der DDR sollte Literatur den Sozialismus unterstützen („sozialistischer Realismus“) und unterlag der Zensur. Dennoch entstanden eigenständige Werke:
 
-- **Christa Wolf** (1929–2011): *Der geteilte Himmel* (1963) über ein Paar, das die Teilung trennt; *Kassandra* (1983).[^wp-christa-wolf]
-- **Ulrich Plenzdorf**: *Die neuen Leiden des jungen W.* (1972) — ein junger Mann in der DDR, der sich in Goethes *Werther* wiederfindet.
-- **Anna Seghers** kehrte aus dem Exil zurück (*Das siebte Kreuz*).
-- **Wolf Biermann**, Liedermacher, wurde **1976** während einer Konzertreise im Westen ausgebürgert — viele Künstler protestierten, und die Ausbürgerung gilt als Wendepunkt im Verhältnis von DDR-Staat und Künstlern.`,
+- **[Christa Wolf](wiki:Christa Wolf|Christa Wolf)** (1929–2011): *[Der geteilte Himmel](wiki:Der geteilte Himmel|Der geteilte Himmel)* (1963) über ein Paar, das die Teilung trennt; *[Kassandra](wiki:Kassandra (Christa Wolf)|Cassandra (novel))* (1983).[^wp-christa-wolf]
+- **[Ulrich Plenzdorf](wiki:Ulrich Plenzdorf|Ulrich Plenzdorf)**: *[Die neuen Leiden des jungen W.](wiki:Die neuen Leiden des jungen W.|The New Sorrows of Young W.)* (1972) — ein junger Mann in der DDR, der sich in [Goethes](wiki:Johann Wolfgang von Goethe|Johann Wolfgang von Goethe) *[Werther](wiki:Die Leiden des jungen Werthers|The Sorrows of Young Werther)* wiederfindet.
+- **[Anna Seghers](wiki:Anna Seghers|Anna Seghers)** kehrte aus dem Exil zurück (*[Das siebte Kreuz](wiki:Das siebte Kreuz|The Seventh Cross)*).
+- **[Wolf Biermann](wiki:Wolf Biermann|Wolf Biermann)**, Liedermacher, wurde **1976** während einer Konzertreise im Westen ausgebürgert — viele Künstler protestierten, und die Ausbürgerung gilt als Wendepunkt im Verhältnis von DDR-Staat und Künstlern.`,
     },
     {
       id: 'gegenwart', type: 'text', title: 'Gegenwart: Preise, Messen, Bestseller',
       md: `
 Einige Romane der letzten Jahrzehnte sind längst Klassiker:
 
-- **Patrick Süskind**, *Das Parfum* (1985) — die Geschichte eines Mörders mit dem absoluten Geruchssinn, weltweit millionenfach verkauft
-- **Bernhard Schlink**, *Der Vorleser* (1995) — Liebe und NS-Schuld, verfilmt mit Kate Winslet
-- **Daniel Kehlmann**, *Die Vermessung der Welt* (2005) — Gauß und Humboldt als komisches Doppelporträt
-- **Wolfgang Herrndorf**, *Tschick* (2010) — ein Roadtrip zweier Jugendlicher, heute Schullektüre
-- **Uwe Tellkamp**, *Der Turm* (2008) — das Dresdner Bildungsbürgertum in der späten DDR
+- **[Patrick Süskind](wiki:Patrick Süskind|Patrick Süskind)**, *[Das Parfum](wiki:Das Parfum|Perfume (novel))* (1985) — die Geschichte eines Mörders mit dem absoluten Geruchssinn, weltweit millionenfach verkauft
+- **[Bernhard Schlink](wiki:Bernhard Schlink|Bernhard Schlink)**, *[Der Vorleser](wiki:Der Vorleser|The Reader)* (1995) — Liebe und NS-Schuld, verfilmt mit [Kate Winslet](wiki:Kate Winslet|Kate Winslet)
+- **[Daniel Kehlmann](wiki:Daniel Kehlmann|Daniel Kehlmann)**, *[Die Vermessung der Welt](wiki:Die Vermessung der Welt|Measuring the World)* (2005) — [Gauß](wiki:Carl Friedrich Gauß|Carl Friedrich Gauss) und [Humboldt](wiki:Alexander von Humboldt|Alexander von Humboldt) als komisches Doppelporträt
+- **[Wolfgang Herrndorf](wiki:Wolfgang Herrndorf|Wolfgang Herrndorf)**, *[Tschick](wiki:Tschick (Roman)|Why We Took the Car)* (2010) — ein Roadtrip zweier Jugendlicher, heute Schullektüre
+- **[Uwe Tellkamp](wiki:Uwe Tellkamp|Uwe Tellkamp)**, *[Der Turm](wiki:Der Turm (Tellkamp))* (2008) — das Dresdner Bildungsbürgertum in der späten DDR
 
-Wichtige Institutionen: der [[georg-buechner-preis|Georg-Büchner-Preis]] (seit 1951, wichtigster Preis), der **Deutsche Buchpreis** (seit 2005), der **Friedenspreis des Deutschen Buchhandels** in der Frankfurter Paulskirche — und die **Frankfurter Buchmesse**, die größte Buchmesse der Welt.[^wp-buechner-preis]`,
+Wichtige Institutionen: der [[georg-buechner-preis|Georg-Büchner-Preis]] (seit 1951, wichtigster Preis), der **[Deutsche Buchpreis](wiki:Deutscher Buchpreis|German Book Prize)** (seit 2005), der **[Friedenspreis des Deutschen Buchhandels](wiki:Friedenspreis des Deutschen Buchhandels|Friedenspreis des Deutschen Buchhandels)** in der Frankfurter Paulskirche — und die **[Frankfurter Buchmesse](wiki:Frankfurter Buchmesse|Frankfurt Book Fair)**, die größte Buchmesse der Welt.[^wp-buechner-preis]`,
+    },
+    {
+      id: 'map-nachkriegsliteratur',
+      type: 'map',
+      title: 'Literaturorte nach 1945',
+      view: [5.6, 45.9, 19.6, 55.2],
+      rivers: [
+        { name: 'Rhein', label: false },
+        { name: 'Elbe', label: false },
+        { name: 'Oder', label: false },
+      ],
+      places: [
+        {
+          name: 'Köln',
+          pos: 'l',
+          detail: 'Heinrich Böll, 1917 in Köln geboren, blieb der Stadt zeitlebens verbunden; Literaturnobelpreis 1972.',
+        },
+        {
+          name: 'Danzig',
+          pos: 'l',
+          detail: 'Günter Grass wurde 1927 in Danzig (heute Gdańsk) geboren; hier spielt der Anfang der *Blechtrommel*.',
+        },
+        {
+          name: 'Frankfurt am Main',
+          pos: 'l',
+          detail: 'Sitz der Frankfurter Buchmesse; in der Paulskirche wird der Friedenspreis des Deutschen Buchhandels verliehen, und der Deutsche Buchpreis wird zur Buchmesse vergeben.',
+        },
+        {
+          name: 'Darmstadt',
+          pos: 'l',
+          detail: 'Hier hat die Deutsche Akademie für Sprache und Dichtung ihren Sitz, die den Georg-Büchner-Preis verleiht.',
+        },
+        {
+          name: 'Berlin',
+          pos: 'l',
+          detail: 'In Ost-Berlin lebten und schrieben unter anderem Christa Wolf und Wolf Biermann.',
+        },
+        {
+          name: 'Leipzig',
+          pos: 'r',
+          detail: 'Die Leipziger Buchmesse war die wichtigste Buchmesse der DDR; hier sitzt auch das Deutsche Literaturinstitut.',
+        },
+        {
+          name: 'Dresden',
+          pos: 'r',
+          detail: 'Schauplatz von Uwe Tellkamps *Der Turm*: das Dresdner Villenviertel Weißer Hirsch in den 1980er Jahren.',
+        },
+        { name: 'Zürich', pos: 'l', detail: 'Max Frisch wurde 1911 in Zürich geboren und starb dort 1991.' },
+      ],
+      points: [
+        {
+          lon: 14.307,
+          lat: 46.6253,
+          label: 'Klagenfurt',
+          pos: 'r',
+          detail: 'Ingeborg Bachmann wurde 1926 in Klagenfurt geboren; beim Wettlesen der *Tage der deutschsprachigen Literatur* wird der Ingeborg-Bachmann-Preis vergeben.',
+        },
+        {
+          lon: 12.1494,
+          lat: 47.7778,
+          label: 'Altenbeuern',
+          kind: 'site',
+          pos: 'r',
+          detail: 'Erste Tagung der Gruppe 47 im September 1947 im Haus der Schriftstellerin Ilse Schneider-Lengyel.',
+        },
+      ],
+      layers: { cities: false },
+      caption: 'Literaturpreise, Messen und Schauplätze: Im Westen war Frankfurt das Zentrum, in der DDR Leipzig und Ost-Berlin.',
     },
     {
       id: 'nobel-timeline', type: 'game', viz: 'timeline', title: 'Nobelpreise in die richtige Reihenfolge',
@@ -101,7 +169,7 @@ Wichtige Institutionen: der [[georg-buechner-preis|Georg-Büchner-Preis]] (seit 
     },
     {
       id: 'fact-blechtrommel', type: 'callout', tone: 'fact', title: 'Oscar für die Blechtrommel',
-      md: `Volker Schlöndorffs Verfilmung der *Blechtrommel* gewann 1979 die Goldene Palme in Cannes und 1980 als erster deutscher Film den **Oscar für den besten fremdsprachigen Film**.`,
+      md: `[Volker Schlöndorffs](wiki:Volker Schlöndorff|Volker Schlöndorff) Verfilmung der *[Blechtrommel](wiki:Die Blechtrommel|The Tin Drum)* gewann 1979 die [Goldene Palme](wiki:Goldene Palme|Palme d'Or) in Cannes und 1980 als erster deutscher Film den **Oscar für den besten fremdsprachigen Film**.`,
     },
     {
       id: 'grass-alter', type: 'numeric', title: 'Kurze Rechnung',

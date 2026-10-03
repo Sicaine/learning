@@ -13,15 +13,15 @@ export default {
     {
       id: 'images-are-vectors', type: 'text', title: 'An image is already a vector',
       md: `
-A 224 × 224 RGB photo of a watch is just $224 \\cdot 224 \\cdot 3 = 150{,}528$ numbers. Write them in a row and you have a **[[vector]]** — a point in a space with 150,528 [[dimension|dimensions]].
+A 224 × 224 [RGB](wiki:RGB color model) photo of a watch is just $224 \\cdot 224 \\cdot 3 = 150{,}528$ numbers. Write them in a row and you have a **[[vector]]** — a point in a space with 150,528 [[dimension|dimensions]].
 
-That raw pixel space is almost useless for understanding: shift the watch by three pixels and nearly every number changes, even though a human sees *the same watch*. So vision models learn a function that maps the image to a much shorter vector — an **[[embedding]]** — where "similar to a human" means "close together".
+That raw [pixel](wiki:Pixel|Pixel) space is almost useless for understanding: shift the watch by three pixels and nearly every number changes, even though a human sees *the same watch*. So vision models learn a function that maps the image to a much shorter vector — an **[[embedding]]** — where "similar to a human" means "close together".
 
-A DINOv2 ViT-B model, for instance, turns the whole image into a 768-dimensional vector *and* gives every 14×14-pixel patch its own 768-dimensional vector.[^dinov2] Everything in this course — attention, self-supervised learning, segmentation — is ultimately about producing and comparing such vectors.`,
+A DINOv2 [ViT-B](wiki:Vision transformer) model, for instance, turns the whole image into a 768-dimensional vector *and* gives every 14×14-pixel patch its own 768-dimensional vector.[^dinov2] Everything in this course — attention, self-supervised learning, segmentation — is ultimately about producing and comparing such vectors.`,
     },
     {
       id: 'video-dot', type: 'video', youtube: 'LyGKycYT2v0', label: 'Dot products and duality', channel: '3Blue1Brown', minutes: 14,
-      why: 'Watch the first ~6 minutes for the geometric meaning of the dot product (projection). The duality part is a bonus.[^3b1b-linalg]',
+      why: 'Watch the first ~6 minutes for the geometric meaning of the dot product ([projection](wiki:Projection (linear algebra)|Projektion (lineare Algebra))). The duality part is a bonus.[^3b1b-linalg]',
     },
     {
       id: 'two-views', type: 'text', title: 'Two ways to see a vector',
@@ -32,7 +32,7 @@ A DINOv2 ViT-B model, for instance, turns the whole image into a 768-dimensional
 
 $$\\lVert \\mathbf{v} \\rVert = \\sqrt{3^2 + 4^2} = 5$$
 
-The same formula works in 768 dimensions — it's Pythagoras applied over and over: $\\lVert\\mathbf{v}\\rVert = \\sqrt{\\sum_i v_i^2}$.`,
+The same formula works in 768 dimensions — it's [Pythagoras](wiki:Pythagorean theorem|Satz des Pythagoras) applied over and over: $\\lVert\\mathbf{v}\\rVert = \\sqrt{\\sum_i v_i^2}$.`,
     },
     {
       id: 'dot-def', type: 'text', title: 'The dot product: one number that says “how aligned?”',
@@ -70,7 +70,7 @@ Raw dot products mix two things: *alignment* and *length*. A long vector has lar
 
 $$\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{\\lVert\\mathbf{a}\\rVert\\,\\lVert\\mathbf{b}\\rVert} \\in [-1, 1]$$
 
-Equivalent trick used everywhere in practice: first scale every vector to length 1 (a **[[unit-vector]]**, "L2-normalize"), then plain dot products *are* cosine similarities. DINO's projection head, for example, L2-normalizes its features before the final layer,[^dino] and k-NN evaluation of self-supervised features uses cosine similarity.`,
+Equivalent trick used everywhere in practice: first scale every vector to length 1 (a **[[unit-vector]]**, "L2-normalize"), then plain dot products *are* cosine similarities. DINO's projection head, for example, L2-normalizes its features before the final layer,[^dino] and [k-NN](wiki:K-nearest neighbors algorithm|Nächste-Nachbarn-Klassifikation) evaluation of self-supervised features uses cosine similarity.`,
     },
     {
       id: 'calc-cos', type: 'numeric', title: 'Cosine similarity',
@@ -102,9 +102,9 @@ A great first experiment for your data (later in this path): take 20 real photos
     {
       id: 'deep-highdim', type: 'callout', tone: 'deep', title: 'Why random high-dimensional vectors are almost orthogonal',
       md: `
-Draw two random directions in 2D and the angle can be anything. In 768 dimensions, the cosine similarity of two random unit vectors is roughly normally distributed around 0 with standard deviation $1/\\sqrt{d} \\approx 0.036$.
+Draw two random directions in 2D and the angle can be anything. In 768 dimensions, the cosine similarity of two random unit vectors is roughly [normally distributed](wiki:Normal distribution|Normalverteilung) around 0 with [standard deviation](wiki:Standard deviation|Standardabweichung (Stochastik)) $1/\\sqrt{d} \\approx 0.036$.
 
-Consequence: in a trained embedding space, a cosine similarity of 0.3 can already be a *strong* signal — it's many standard deviations above chance. Don't judge similarity scores by 2D intuition.`,
+Consequence: in a trained embedding space, a cosine similarity of 0.3 can already be a *strong* signal — it's many standard deviations above chance. Don't judge similarity scores by 2D intuition. (This is one face of the [curse of dimensionality](wiki:Curse of dimensionality|Fluch der Dimensionalität).)`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',

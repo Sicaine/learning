@@ -40,7 +40,7 @@ export default [
     short: 'Erzählendes Gedicht, das Lyrik, Epik und Drama verbindet — oft mit dramatischer Handlung und Dialog.',
     long: `Ein Gedicht, das eine spannende Geschichte erzählt und dabei alle drei [[gattungen|Gattungen]] mischt: Verse (Lyrik), Handlung (Epik), wörtliche Rede (Drama). Das **Balladenjahr 1797** von Goethe und Schiller brachte *Der Zauberlehrling*, *Der Taucher*, *Der Handschuh* und *Die Kraniche des Ibykus*. Weitere Klassiker: Goethes *Erlkönig* (1782), Schillers *Die Bürgschaft* (1798), Fontanes *John Maynard*.`,
     related: ['gattungen', 'weimarer-klassik'],
-    wiki: { en: 'Ballad' },
+    wiki: { de: 'Ballade (Gedicht)', en: 'Ballad' },
   },
   {
     id: 'gattungen', term: 'Literarische Gattungen', inline: 'Gattungen', en: 'Literary genres', cat: 'Grundbegriff',

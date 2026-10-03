@@ -12,14 +12,14 @@ export default {
   blocks: [
     {
       id: 'video', type: 'video', youtube: 'rL0_vOw6eCc', label: 'How a Watch Works (1949)', channel: 'Hamilton Watch',
-      why: 'A charming classic: Hamilton’s training film explains the escapement with a giant working model. The escapement section is the heart of this lesson.[^hamilton-1949]',
+      why: 'A charming classic: [Hamilton](wiki:Hamilton Watch Company|Hamilton Watch Company)’s training film explains the escapement with a giant working model. The escapement section is the heart of this lesson.[^hamilton-1949]',
     },
     {
       id: 'problem', type: 'text', title: 'A gear train that wants to run away',
       md: `
-Left alone, the mainspring would spin the whole [[gear-train]] down in seconds. The **[[escapement]]** stops that. It sits between the gear train and the oscillator and does two jobs:[^ciechanowski]
+Left alone, the mainspring would spin the whole [[gear-train]] down in seconds. The **[[escapement]]** stops that. It sits between the gear train and the [oscillator](wiki:Oscillation|Schwingung) and does two jobs:[^ciechanowski]
 
-1. **Lock and unlock.** The **[[pallet-fork]]** (*Anker*) has two ruby pallets that alternately block the teeth of the **[[escape-wheel]]** (*Ankerrad*). Each time the fork flips, the wheel escapes by a small step — and with it the whole train.
+1. **Lock and unlock.** The **[[pallet-fork]]** (*Anker*) has two [ruby](wiki:Corundum|Korund) pallets that alternately block the teeth of the **[[escape-wheel]]** (*Ankerrad*). Each time the fork flips, the wheel escapes by a small step — and with it the whole train.
 2. **Impulse.** As an escape wheel tooth slides across a pallet's slanted face, it pushes the fork, which passes a tiny kick to the balance. That replaces the energy the balance loses to friction, so it keeps swinging.
 
 In the **[[lever-escapement]]** the balance only meets the fork briefly near the center of its swing. The rest of the time it swings freely — which is why it keeps such good time.`,
@@ -32,9 +32,9 @@ In the **[[lever-escapement]]** the balance only meets the fork briefly near the
     {
       id: 'balance', type: 'text', title: 'The balance: a pendulum you can carry',
       md: `
-The **[[balance-wheel]]** (*Unruh*) is a small, finely poised wheel; the **[[hairspring]]** (*Unruhspirale*) connects it to the movement. Turn the wheel and the spring pulls it back; inertia carries it past center; the spring pulls it back again. Like a pendulum, this is a true oscillator — but it works in any orientation, because it does not rely on gravity.
+The **[[balance-wheel]]** (*Unruh*) is a small, finely poised wheel; the **[[hairspring]]** (*Unruhspirale*) connects it to the movement. Turn the wheel and the spring pulls it back; inertia carries it past center; the spring pulls it back again. Like a pendulum, this is a true oscillator — but it works in any orientation, because it does not rely on [gravity](wiki:Gravity|Gravitation).
 
-Its period depends on the wheel's moment of inertia $I$ and the spring's stiffness $\\kappa$:
+Its period depends on the wheel's [moment of inertia](wiki:Moment of inertia|Trägheitsmoment) $I$ and the spring's [stiffness](wiki:Hooke's law|Hookesches Gesetz) $\\kappa$:
 
 $$T = 2\\pi\\sqrt{\\frac{I}{\\kappa}}$$
 
@@ -43,18 +43,18 @@ To make a watch run faster, you either stiffen the spring (effectively shorten i
     {
       id: 'bph', type: 'text', title: 'Beats, bph and hertz',
       md: `
-Each swing in one direction is one **[[beat]]** — one tick. A full oscillation, there and back, is two beats. Watchmakers quote the **[[beat-rate]]** in beats (half-oscillations) per hour, *bph*:
+Each swing in one direction is one **[[beat]]** — one tick. A full oscillation, there and back, is two beats. Watchmakers quote the **[[beat-rate]]** in beats (half-oscillations) per hour, *bph*, rather than in [hertz](wiki:Hertz|Hertz (Einheit)):
 
 $$\\text{ticks per second} = \\frac{\\text{bph}}{3600} \\qquad f\\,[\\text{Hz}] = \\frac{\\text{bph}}{7200}$$
 
-Common rates: 18,000 bph (2.5 Hz), 21,600 (3 Hz), 28,800 (4 Hz, the most common today), 36,000 (5 Hz, "high-beat", e.g. Zenith El Primero). Faster rates keep better time under shocks and let a seconds hand move more smoothly, but they wear the escapement faster and consume more energy.`,
+Common rates: 18,000 bph (2.5 Hz), 21,600 (3 Hz), 28,800 (4 Hz, the most common today), 36,000 (5 Hz, "high-beat", e.g. the [Zenith](wiki:Zenith (watchmaker)|Zenith (Uhrenmanufaktur)) El Primero). Faster rates keep better time under shocks and let a seconds hand move more smoothly, but they wear the escapement faster and consume more energy.`,
     },
     {
       id: 'calc-hz', type: 'numeric', title: 'bph → Hz',
       question: 'A movement beats at **28,800 bph**. What is its frequency in hertz?',
       answer: 4, tolerance: 0, unit: 'Hz',
       hint: 'Divide by 3600 for beats per second, then by 2 for full oscillations.',
-      explain: '28,800 / 7,200 = 4 Hz — eight ticks per second. Look at a seconds hand of such a watch: it moves in 8 small steps per second.',
+      explain: '28,800 / 7,200 = 4 [Hz](wiki:Hertz|Hertz (Einheit)) — eight ticks per second. Look at a seconds hand of such a watch: it moves in 8 small steps per second.',
     },
     {
       id: 'calc-ticks', type: 'numeric', title: 'Ticks per second',
@@ -64,10 +64,10 @@ Common rates: 18,000 bph (2.5 Hz), 21,600 (3 Hz), 28,800 (4 Hz, the most common 
     },
     {
       id: 'calc-ppm', type: 'numeric', title: 'How good is +10 seconds a day?',
-      question: 'A watch gains 10 seconds per day. Express this as a relative error in **parts per million** (ppm). A day has 86,400 s.',
+      question: 'A watch gains 10 seconds per day. Express this as a relative error in **[parts per million](wiki:Parts-per notation)** (ppm). A day has 86,400 s.',
       answer: 115.7, tolerance: 1.5, unit: 'ppm',
       hint: 'Relative error = 10 / 86,400. Multiply by 1,000,000.',
-      explain: '$10/86400 \\approx 0.0001157 = 115.7$ ppm. The balance runs 0.012% too fast. Hold this number — a quartz watch will beat it by a factor of ~20 in the quartz stage.',
+      explain: '$10/86400 \\approx 0.0001157 = 115.7$ ppm. The balance runs 0.012% too fast. Hold this number — a [quartz watch](wiki:Quartz clock|Quarzuhr) will beat it by a factor of ~20 in the quartz stage.',
     },
     {
       id: 'order-beat', type: 'order', title: 'One beat, step by step',
@@ -96,7 +96,7 @@ Common rates: 18,000 bph (2.5 Hz), 21,600 (3 Hz), 28,800 (4 Hz, the most common 
     {
       id: 'mission', type: 'callout', tone: 'mission', title: 'Why this matters for your images',
       md: `
-Hand positions are *continuous*: at 28,800 bph the seconds hand takes 480 steps per minute, so in your dataset every angle occurs. Your synthetic generator should sample hand angles **uniformly and independently** (real watches in marketing photos cluster around 10:10, which a model may learn as a shortcut). The visible balance on open-heart dials and exhibition case backs is a fine, repetitive structure that often confuses segmentation — worth a dedicated class or at least explicit examples.`,
+Hand positions are *continuous*: at 28,800 bph the seconds hand takes 480 steps per minute, so in your dataset every angle occurs. Your synthetic generator should sample hand angles **uniformly and independently** (real watches in marketing photos cluster around 10:10, which a model may learn as a shortcut). The visible balance on open-heart dials and exhibition case backs is a fine, repetitive structure that often confuses [segmentation](wiki:Image segmentation|Segmentierung (Bildverarbeitung)) — worth a dedicated class or at least explicit examples.`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',

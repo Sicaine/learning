@@ -13,7 +13,7 @@ export default [
     related: ['domain-gap', 'domain-randomization'],
   },
   {
-    id: 'domain-randomization', term: 'Domain randomization', de: 'Domänen-Randomisierung', cat: 'data',
+    id: 'domain-randomization', term: 'Domain randomization', de: 'Domänen-Randomisierung', cat: 'data', wiki: { en: 'Domain randomization' },
     short: 'Randomizing rendering parameters (lighting, materials, backgrounds, camera) so widely that reality looks like just another variation.',
     long: `Instead of making renders photorealistic, make them *diverse*: random lighting, HDRI environments, materials, textures, backgrounds, camera pose, focal length, blur, noise. If the model has seen enough variation, the real world becomes "one more random sample".[^domain-randomization] Too little randomization leaves a [[domain-gap]]; randomizing things that never vary in reality wastes model capacity.`,
     related: ['sim-to-real', 'domain-gap', 'data-augmentation'],
@@ -37,7 +37,7 @@ export default [
     related: ['pseudo-label', 'entropy'],
   },
   {
-    id: 'class-taxonomy', term: 'Class taxonomy', de: 'Klassen-Taxonomie', cat: 'data',
+    id: 'class-taxonomy', term: 'Class taxonomy', de: 'Klassen-Taxonomie', cat: 'data', wiki: { en: 'Taxonomy (general)', de: 'Taxonomie' },
     short: 'The exact list of classes and the rules for where one class ends and the next begins.',
     long: `The set of segmentation classes *plus* written rules for ambiguous cases: Is the crown guard part of the case? Is the date window part of the dial? Does a reflection on the crystal belong to the crystal or to what it reflects? Inconsistent rules create [[label-noise]] that caps achievable [[iou|IoU]] — no model can learn a boundary that humans (or renderer and humans) draw differently.`,
     related: ['label-noise', 'semantic-segmentation'],

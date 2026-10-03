@@ -15,7 +15,7 @@ export default {
       md: `
 A classic classifier ends in a layer with one weight vector per class: $K$ classes, $K$ rows. The class list is frozen at training time. Want to add "skeleton dial"? Collect labels and retrain.
 
-An **[[open-vocabulary]]** model instead maps images (or regions) *and text* into the same [[embedding]] space. Any phrase you can type becomes a class, at test time. The key model that made this practical is CLIP.`,
+An **[[open-vocabulary]]** model instead maps images (or regions) *and text* into the same [[embedding]] space. Any phrase you can type becomes a class, at test time. The key model that made this practical is [CLIP](wiki:Contrastive Language-Image Pre-training).`,
     },
     {
       id: 'clip', type: 'text', title: 'CLIP: learn from 400 million captions',
@@ -56,9 +56,9 @@ To classify an image among classes you choose at test time:
 2. Embed each prompt with the text encoder → vectors $\\mathbf{v}_1, \\dots, \\mathbf{v}_K$.
 3. Embed the image → $\\mathbf{u}$. Pick the class with the highest $\\mathbf{u} \\cdot \\mathbf{v}_k$; a [[softmax]] over $\\mathbf{u}\\cdot\\mathbf{v}_k/\\tau$ gives probabilities.
 
-Look closely: the text embeddings play exactly the role of the $K$ rows of a classifier's last layer — they *are* the weights, generated from language. That's **[[zero-shot]]** transfer: CLIP matched the accuracy of the original, fully supervised ResNet-50 on ImageNet without using any of its 1.28 million labeled training images.
+Look closely: the text embeddings play exactly the role of the $K$ rows of a classifier's last layer — they *are* the weights, generated from language. That's **[[zero-shot]]** transfer: CLIP matched the accuracy of the original, fully supervised [ResNet-50](wiki:Residual neural network) on [ImageNet](wiki:ImageNet|ImageNet) without using any of its 1.28 million labeled training images.
 
-Prompt wording matters ("a photo of a {class}" beats the bare class name), and averaging several prompts per class (prompt ensembling) helps further.`,
+[Prompt](wiki:Prompt engineering|Prompt-Engineering) wording matters ("a photo of a {class}" beats the bare class name), and averaging several prompts per class (prompt ensembling) helps further.`,
     },
     {
       id: 'viz-clip', type: 'viz', viz: 'clip-space', title: 'Zero-shot in two dimensions',
@@ -85,7 +85,7 @@ CLIP learns $\\tau$ as a parameter (stored as a log-scale "logit scale", initial
 This trips up everyone reading the literature:
 
 - **DINO** (Caron et al., 2021) = *self-**DI**stillation with **NO** labels* — the self-supervised method of the previous stage, parent of **DINOv2** and **DINOv3**.[^dino]
-- **DINO** (Zhang et al., 2022) = *DETR with Improved deNoising anchOr boxes* — an object **detector** in the [[detr]] family.[^dino-detr]
+- **DINO** (Zhang et al., 2022) = *DETR with Improved deNoising anchOr boxes* — an object **[detector](wiki:Object detection)** in the [[detr]] family.[^dino-detr]
 - **Grounding DINO** (2023) builds on the *detector* DINO and adds text. It has nothing to do with self-supervised DINO features.[^grounding-dino]
 
 Rule of thumb: if it outputs boxes, it's the detector family; if it outputs general-purpose features, it's the self-supervised family.`,

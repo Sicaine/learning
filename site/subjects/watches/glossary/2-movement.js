@@ -52,7 +52,7 @@ export default [
     symbol: '$f\\,[\\text{Hz}] = \\dfrac{\\text{bph}}{7200}$',
     long: 'Common rates: 18,000 bph (2.5 Hz), 21,600 bph (3 Hz), 28,800 bph (4 Hz), 36,000 bph (5 Hz). Since each oscillation has two [[beat|beats]], $\\text{beats/s} = \\text{bph}/3600$ and $f = \\text{bph}/7200$. Faster rates resist shocks better and allow finer timing, but wear parts faster and need more energy.',
     related: ['beat', 'balance-wheel', 'amplitude'] },
-  { id: 'amplitude', term: 'Amplitude', de: 'Amplitude (Schwingungsweite)', cat: 'movement',
+  { id: 'amplitude', wiki: { en: 'Amplitude', de: 'Amplitude' }, term: 'Amplitude', de: 'Amplitude (Schwingungsweite)', cat: 'movement',
     short: 'How far the balance swings from center, in degrees; a healthy watch lying flat shows roughly 270–300°.',
     related: ['beat-rate', 'isochronism'] },
   { id: 'manual-winding', term: 'Manual winding', de: 'Handaufzug', cat: 'movement',

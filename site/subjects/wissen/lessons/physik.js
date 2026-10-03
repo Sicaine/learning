@@ -13,17 +13,17 @@ export default {
     {
       id: 'newton', type: 'text', title: 'Newton: Warum der Apfel fällt — und der Mond nicht',
       md: `
-1687 veröffentlichte **Isaac Newton** sein Hauptwerk *Philosophiae Naturalis Principia Mathematica*.[^nat-wp-newton] Darin stehen die drei Grundgesetze der Bewegung, die [[newtonsche-gesetze]]:
+1687 veröffentlichte **[Isaac Newton](wiki:Isaac Newton|Isaac Newton)** sein Hauptwerk *[Philosophiae Naturalis Principia Mathematica](wiki:Philosophiae Naturalis Principia Mathematica|Philosophiæ Naturalis Principia Mathematica)*.[^nat-wp-newton] Darin stehen die drei Grundgesetze der Bewegung, die [[newtonsche-gesetze]]:
 
 1. **Trägheit:** Ohne Kraft bleibt ein Körper in Ruhe oder fliegt geradeaus weiter. (Deshalb schiebt es dich beim Bremsen im Bus nach vorn.)
 2. **Kraft = Masse × Beschleunigung:** $F = m \\cdot a$. Die Einheit der Kraft heißt ihm zu Ehren **Newton** (N).
 3. **Actio = reactio:** Jede Kraft hat eine gleich große Gegenkraft. Eine Rakete stößt Gas nach hinten — und wird dadurch nach vorn gedrückt.
 
-Dazu kam das Gravitationsgesetz: Dieselbe [[gravitation]], die den Apfel zu Boden zieht, hält den Mond auf seiner Bahn. Der Mond „fällt“ ständig um die Erde herum, nur ist er so schnell, dass er sie immer wieder verfehlt. Auf der Erdoberfläche beschleunigt die Schwerkraft alles mit rund $g \\approx 9{,}81\\,\\text{m/s}^2$ — ohne Luftwiderstand fallen Feder und Hammer gleich schnell (Apollo 15 hat das 1971 auf dem Mond vorgeführt).`,
+Dazu kam das [Gravitationsgesetz](wiki:Newtonsches Gravitationsgesetz|Newton's law of universal gravitation): Dieselbe [[gravitation]], die den Apfel zu Boden zieht, hält den Mond auf seiner Bahn. Der Mond „fällt“ ständig um die Erde herum, nur ist er so schnell, dass er sie immer wieder verfehlt. Auf der Erdoberfläche beschleunigt die Schwerkraft alles mit rund $g \\approx 9{,}81\\,\\text{m/s}^2$ — ohne Luftwiderstand fallen Feder und Hammer gleich schnell ([Apollo 15](wiki:Apollo 15|Apollo 15) hat das 1971 auf dem Mond vorgeführt).`,
     },
     {
       id: 'quiz-newton', type: 'quiz', title: 'Welches Gesetz ist das?',
-      question: 'Ein Astronaut wirft im All einen Schraubenschlüssel von sich weg — und treibt dabei selbst in die entgegengesetzte Richtung. Welches Prinzip zeigt das am direktesten?',
+      question: 'Ein Astronaut wirft im All einen [Schraubenschlüssel](wiki:Schraubenschlüssel|Wrench) von sich weg — und treibt dabei selbst in die entgegengesetzte Richtung. Welches Prinzip zeigt das am direktesten?',
       options: [
         { text: 'Das Trägheitsprinzip', correct: false, why: 'Trägheit erklärt, warum der Schlüssel danach immer weiterfliegt — nicht, warum der Astronaut zurückweicht.' },
         { text: 'Actio = reactio (Wechselwirkungsprinzip)', correct: true, why: 'Der Astronaut drückt auf den Schlüssel, der Schlüssel drückt gleich stark zurück — genau wie bei einer Rakete.' },
@@ -34,13 +34,13 @@ Dazu kam das Gravitationsgesetz: Dieselbe [[gravitation]], die den Apfel zu Bode
     {
       id: 'energie', type: 'text', title: 'Energie: nichts geht verloren',
       md: `
-Der vielleicht wichtigste Satz der Physik: **Energie kann weder erzeugt noch vernichtet, nur umgewandelt werden** — die [[energieerhaltung]].[^nat-wp-energieerhaltung] Ein Fahrraddynamo wandelt Bewegungsenergie in elektrische Energie, eine Glühbirne elektrische Energie in Licht und (vor allem) Wärme. Wenn wir von „Energieverbrauch“ sprechen, meinen wir eigentlich: Energie wird in eine Form umgewandelt, mit der wir nichts mehr anfangen können, meist Abwärme.
+Der vielleicht wichtigste Satz der Physik: **Energie kann weder erzeugt noch vernichtet, nur umgewandelt werden** — die [[energieerhaltung]].[^nat-wp-energieerhaltung] Ein [Fahrraddynamo](wiki:Fahrraddynamo|Bicycle lighting#Dynamo systems) wandelt Bewegungsenergie in elektrische Energie, eine Glühbirne elektrische Energie in Licht und (vor allem) Wärme. Wenn wir von „Energieverbrauch“ sprechen, meinen wir eigentlich: Energie wird in eine Form umgewandelt, mit der wir nichts mehr anfangen können, meist Abwärme.
 
 Drei Begriffe werden ständig verwechselt:
 
 <table>
 <tr><th>Größe</th><th>Einheit</th><th>Bedeutung</th><th>Beispiel</th></tr>
-<tr><td>Energie</td><td>Joule (J), Kilowattstunde (kWh)</td><td>Wie viel Arbeit insgesamt</td><td>Ein 2-Personen-Haushalt braucht gut 2.000–3.000 kWh Strom im Jahr</td></tr>
+<tr><td>Energie</td><td>[Joule](wiki:Joule|Joule) (J), [Kilowattstunde](wiki:Kilowattstunde|Watt hour) (kWh)</td><td>Wie viel Arbeit insgesamt</td><td>Ein 2-Personen-Haushalt braucht gut 2.000–3.000 kWh Strom im Jahr</td></tr>
 <tr><td>Leistung</td><td>Watt (W)</td><td>Energie pro Zeit — wie schnell</td><td>Wasserkocher: rund 2.000 W</td></tr>
 <tr><td>Kraft</td><td>Newton (N)</td><td>Was eine Bewegung ändert</td><td>Gewichtskraft von 1 kg: rund 9,81 N</td></tr>
 </table>
@@ -57,15 +57,15 @@ Merke: **Kilowattstunde = Leistung × Zeit.** Ein Gerät mit 1.000 Watt, das ein
     {
       id: 'strom', type: 'text', title: 'Strom: Spannung, Stromstärke, Widerstand',
       md: `
-[[elektrischer-strom|Elektrischer Strom]] ist die Bewegung von Ladungen — in Metallkabeln fließen Elektronen.[^nat-wp-strom] Das beste Bild ist ein Wasserkreislauf:
+[[elektrischer-strom|Elektrischer Strom]] ist die Bewegung von Ladungen — in Metallkabeln fließen [Elektronen](wiki:Elektron|Electron).[^nat-wp-strom] Das beste Bild ist ein Wasserkreislauf:
 
-- **Spannung** $U$ (Volt) ist der Druck, der das Wasser antreibt. Steckdose in Deutschland: **230 V**, Autobatterie: 12 V.
-- **Stromstärke** $I$ (Ampere) ist, wie viel Wasser pro Sekunde fließt.
-- **Widerstand** $R$ (Ohm, Ω) ist, wie eng das Rohr ist.
+- **[Spannung](wiki:Elektrische Spannung|Voltage)** $U$ (Volt) ist der Druck, der das Wasser antreibt. Steckdose in Deutschland: **230 V**, Autobatterie: 12 V.
+- **[Stromstärke](wiki:Elektrische Stromstärke|Electric current intensity)** $I$ (Ampere) ist, wie viel Wasser pro Sekunde fließt.
+- **[Widerstand](wiki:Elektrischer Widerstand|Electrical resistance)** $R$ (Ohm, Ω) ist, wie eng das Rohr ist.
 
-Das **Ohmsche Gesetz** verbindet sie: $U = R \\cdot I$. Und die Leistung ist $P = U \\cdot I$ — bei 230 V und 10 A also 2.300 Watt.
+Das **[Ohmsche Gesetz](wiki:Ohmsches Gesetz|Ohm's law)** verbindet sie: $U = R \\cdot I$. Und die Leistung ist $P = U \\cdot I$ — bei 230 V und 10 A also 2.300 Watt.
 
-Die Einheiten ehren Pioniere: **Volta** (Batterie, um 1800), **Ampère**, **Georg Simon Ohm** (ein deutscher Physiker, 1827) und **James Watt**. Den Zusammenhang von Elektrizität und Magnetismus fassten James Clerk Maxwells Gleichungen in den 1860ern zusammen — die Grundlage für Motoren, Generatoren und Funk.`,
+Die Einheiten ehren Pioniere: **[Volta](wiki:Alessandro Volta|Alessandro Volta)** (Batterie, um 1800), **[Ampère](wiki:André-Marie Ampère|André-Marie Ampère)**, **[Georg Simon Ohm](wiki:Georg Simon Ohm|Georg Ohm)** (ein deutscher Physiker, 1827) und **[James Watt](wiki:James Watt|James Watt)**. Den Zusammenhang von Elektrizität und Magnetismus fassten [James Clerk Maxwell](wiki:James Clerk Maxwell|James Clerk Maxwell)s Gleichungen in den 1860ern zusammen — die Grundlage für Motoren, Generatoren und Funk.`,
     },
     {
       id: 'match-einheiten', type: 'match', title: 'Größe und Einheit',
@@ -77,19 +77,19 @@ Die Einheiten ehren Pioniere: **Volta** (Batterie, um 1800), **Ampère**, **Geor
       md: `
 Um 1900 zeigten sich Risse in Newtons Weltbild. Zwei neue Theorien lösten sie — und beide gehören zum Allgemeinwissen:
 
-**[[relativitaetstheorie|Relativitätstheorie]] (Albert Einstein).**[^nat-wp-einstein] 1905, in seinem „Wunderjahr“, veröffentlichte der damals 26-jährige Patentprüfer in Bern die *spezielle* Relativitätstheorie: Die Lichtgeschwindigkeit (rund 300.000 km/s) ist für alle gleich; dafür sind Zeit und Raum relativ. Daraus folgt die berühmteste Formel der Welt:
+**[[relativitaetstheorie|Relativitätstheorie]] ([Albert Einstein](wiki:Albert Einstein|Albert Einstein)).**[^nat-wp-einstein] 1905, in seinem „Wunderjahr“, veröffentlichte der damals 26-jährige Patentprüfer in [Bern](wiki:Bern|Bern) die *spezielle* Relativitätstheorie: Die [Lichtgeschwindigkeit](wiki:Lichtgeschwindigkeit|Speed of light) (rund 300.000 km/s) ist für alle gleich; dafür sind Zeit und Raum relativ. Daraus folgt die berühmteste Formel der Welt:
 
 $$E = m c^2$$
 
-Schon eine winzige Masse entspricht einer riesigen Energie — das erklärt, warum die Sonne leuchtet und warum Kernspaltung so viel Energie freisetzt. 1915 folgte die *allgemeine* Relativitätstheorie: Masse krümmt Raum und Zeit, und diese Krümmung spüren wir als Schwerkraft.
+Schon eine winzige Masse entspricht einer riesigen Energie — das erklärt, warum die Sonne leuchtet und warum [Kernspaltung](wiki:Kernspaltung|Nuclear fission) so viel Energie freisetzt. 1915 folgte die *allgemeine* Relativitätstheorie: Masse krümmt Raum und Zeit, und diese Krümmung spüren wir als Schwerkraft.
 
-**[[quantenphysik|Quantenphysik]].**[^nat-wp-quanten] 1900 stellte **Max Planck** in Berlin fest, dass Energie nur in winzigen Portionen, *Quanten*, abgegeben wird — die Geburtsstunde der Quantenphysik. In der Welt der Atome gelten seltsame Regeln: Teilchen sind zugleich Wellen, und man kann Ort und Impuls nicht gleichzeitig genau kennen (**Heisenbergsche Unschärferelation**, 1927). Ohne Quantenphysik gäbe es keine Laser, keine Computerchips, keine LEDs.
+**[[quantenphysik|Quantenphysik]].**[^nat-wp-quanten] 1900 stellte **[Max Planck](wiki:Max Planck|Max Planck)** in Berlin fest, dass Energie nur in winzigen Portionen, *[Quanten](wiki:Quant|Quantum)*, abgegeben wird — die Geburtsstunde der Quantenphysik. In der Welt der Atome gelten seltsame Regeln: Teilchen sind zugleich Wellen, und man kann Ort und Impuls nicht gleichzeitig genau kennen (**[Heisenbergsche Unschärferelation](wiki:Heisenbergsche Unschärferelation|Uncertainty principle)**, 1927). Ohne Quantenphysik gäbe es keine [Laser](wiki:Laser|Laser), keine Computerchips, keine [LEDs](wiki:Leuchtdiode|Light-emitting diode).
 
-Einstein bekam seinen Nobelpreis 1921 übrigens nicht für die Relativitätstheorie, sondern für die Erklärung des Photoeffekts — ein Beitrag zur Quantenphysik.`,
+Einstein bekam seinen [Nobelpreis](wiki:Nobelpreis für Physik|Nobel Prize in Physics) 1921 übrigens nicht für die Relativitätstheorie, sondern für die Erklärung des [Photoeffekts](wiki:Photoelektrischer Effekt|Photoelectric effect) — ein Beitrag zur Quantenphysik.`,
     },
     {
       id: 'fact-gps', type: 'callout', tone: 'fact', title: 'Einstein in deiner Hosentasche',
-      md: `Die Uhren in GPS-Satelliten gehen wegen ihrer hohen Geschwindigkeit langsamer (spezielle Relativität), wegen der schwächeren Schwerkraft in 20.000 km Höhe aber schneller (allgemeine Relativität). Unterm Strich laufen sie pro Tag rund 38 Mikrosekunden vor. Ohne Korrektur läge dein Navi nach einem Tag um etwa 10 Kilometer daneben.`,
+      md: `Die Uhren in [GPS](wiki:Global Positioning System|Global Positioning System)-Satelliten gehen wegen ihrer hohen Geschwindigkeit langsamer (spezielle Relativität), wegen der schwächeren Schwerkraft in 20.000 km Höhe aber schneller (allgemeine Relativität). Unterm Strich laufen sie pro Tag rund 38 Mikrosekunden vor. Ohne Korrektur läge dein Navi nach einem Tag um etwa 10 Kilometer daneben.`,
     },
     {
       id: 'timeline-physik', type: 'viz', viz: 'timeline', title: 'Meilensteine der Physik',
@@ -97,14 +97,14 @@ Einstein bekam seinen Nobelpreis 1921 übrigens nicht für die Relativitätstheo
         events: [
           { year: 1687, label: 'Newtons Principia', detail: 'Bewegungsgesetze und Gravitationsgesetz.' },
           { year: 1800, label: 'Voltas Batterie', detail: 'Erste Quelle für dauerhaften elektrischen Strom.' },
-          { year: 1827, label: 'Ohmsches Gesetz', detail: 'Georg Simon Ohm: $U = R \\cdot I$.' },
-          { year: 1847, label: 'Energieerhaltung', detail: 'Hermann von Helmholtz formuliert den Energieerhaltungssatz allgemein.' },
+          { year: 1827, label: 'Ohmsches Gesetz', detail: '[Georg Simon Ohm](wiki:Georg Simon Ohm|Georg Ohm): $U = R \\cdot I$.' },
+          { year: 1847, label: 'Energieerhaltung', detail: '[Hermann von Helmholtz](wiki:Hermann von Helmholtz|Hermann von Helmholtz) formuliert den Energieerhaltungssatz allgemein.' },
           { year: 1864, label: 'Maxwell-Gleichungen', detail: 'Elektrizität, Magnetismus und Licht in einer Theorie.' },
-          { year: 1900, label: 'Plancks Quanten', detail: 'Max Planck: Energie kommt in Portionen.' },
+          { year: 1900, label: 'Plancks Quanten', detail: '[Max Planck](wiki:Max Planck|Max Planck): Energie kommt in Portionen.' },
           { year: 1905, label: 'Spezielle Relativität', detail: 'Einsteins Wunderjahr, $E = mc^2$.' },
           { year: 1915, label: 'Allgemeine Relativität', detail: 'Gravitation als Krümmung der Raumzeit.' },
-          { year: 1927, label: 'Unschärferelation', detail: 'Werner Heisenberg.' },
-          { year: 1938, label: 'Kernspaltung', detail: 'Otto Hahn und Fritz Straßmann in Berlin; Deutung durch Lise Meitner und Otto Frisch.' },
+          { year: 1927, label: 'Unschärferelation', detail: '[Werner Heisenberg](wiki:Werner Heisenberg|Werner Heisenberg).' },
+          { year: 1938, label: 'Kernspaltung', detail: '[Otto Hahn](wiki:Otto Hahn|Otto Hahn) und [Fritz Straßmann](wiki:Fritz Straßmann|Fritz Strassmann) in Berlin; Deutung durch [Lise Meitner](wiki:Lise Meitner|Lise Meitner) und [Otto Frisch](wiki:Otto Robert Frisch|Otto Robert Frisch).' },
         ],
       },
     },
@@ -126,17 +126,17 @@ Einstein bekam seinen Nobelpreis 1921 übrigens nicht für die Relativitätstheo
       id: 'quiz-irrtum', type: 'quiz', title: 'Mythen-Check',
       question: 'Welche Aussagen sind **richtig**?',
       options: [
-        { text: 'Ohne Luftwiderstand fallen eine Feder und ein Hammer gleich schnell.', correct: true, why: 'Die Fallbeschleunigung hängt nicht von der Masse ab — David Scott hat es auf dem Mond vorgeführt.' },
+        { text: 'Ohne Luftwiderstand fallen eine Feder und ein Hammer gleich schnell.', correct: true, why: 'Die Fallbeschleunigung hängt nicht von der Masse ab — [David Scott](wiki:David Scott (Astronaut)|David Scott) hat es auf dem Mond vorgeführt.' },
         { text: 'Ein Kraftwerk erzeugt Energie aus dem Nichts.', correct: false, why: 'Es *wandelt* Energie um (chemische, nukleare, Bewegungsenergie) — Energieerhaltung.' },
-        { text: 'Einstein erhielt den Nobelpreis für die Relativitätstheorie.', correct: false, why: 'Er erhielt ihn 1921 für die Erklärung des Photoeffekts.' },
+        { text: 'Einstein erhielt den Nobelpreis für die Relativitätstheorie.', correct: false, why: 'Er erhielt ihn 1921 für die Erklärung des [Photoeffekts](wiki:Photoelektrischer Effekt|Photoelectric effect).' },
         { text: 'Kilowattstunde ist eine Einheit der Energie, Watt eine der Leistung.', correct: true, why: 'kWh = Leistung × Zeit.' },
-        { text: 'Im Weltall gibt es keine Schwerkraft.', correct: false, why: 'Auch auf der ISS wirkt fast 90 % der Erdschwerkraft — die Astronauten schweben, weil sie ständig um die Erde „fallen“.' },
+        { text: 'Im Weltall gibt es keine Schwerkraft.', correct: false, why: 'Auch auf der [ISS](wiki:Internationale Raumstation|International Space Station) wirkt fast 90 % der Erdschwerkraft — die Astronauten schweben, weil sie ständig um die Erde „fallen“.' },
       ],
     },
     {
       id: 'recall-emc2', type: 'recall', title: 'Erkläre es einem Freund',
       prompt: 'Was bedeutet $E = mc^2$ — und warum ist diese Formel so folgenreich? Antworte in 2–4 Sätzen.',
-      answer: `Die Formel sagt, dass **Masse eine Form von Energie** ist: Energie $E$ = Masse $m$ mal Lichtgeschwindigkeit $c$ zum Quadrat. Weil $c^2$ riesig ist (rund $9 \\cdot 10^{16}\\,\\text{m}^2/\\text{s}^2$), steckt schon in einer winzigen Masse eine gewaltige Energie. Das erklärt, warum die Sonne durch Kernfusion Milliarden Jahre leuchten kann und warum Kernkraftwerke und Atombomben aus wenigen Kilogramm Uran so viel Energie freisetzen. Einstein leitete sie 1905 aus der speziellen Relativitätstheorie ab.`,
+      answer: `Die Formel sagt, dass **Masse eine Form von Energie** ist: Energie $E$ = Masse $m$ mal Lichtgeschwindigkeit $c$ zum Quadrat. Weil $c^2$ riesig ist (rund $9 \\cdot 10^{16}\\,\\text{m}^2/\\text{s}^2$), steckt schon in einer winzigen Masse eine gewaltige Energie. Das erklärt, warum die Sonne durch [Kernfusion](wiki:Kernfusion|Nuclear fusion) Milliarden Jahre leuchten kann und warum [Kernkraftwerke](wiki:Kernkraftwerk|Nuclear power plant) und Atombomben aus wenigen Kilogramm [Uran](wiki:Uran|Uranium) so viel Energie freisetzen. Einstein leitete sie 1905 aus der speziellen Relativitätstheorie ab.`,
       hints: ['Welche zwei Dinge setzt die Formel gleich?', 'Wie groß ist die Lichtgeschwindigkeit — und was passiert beim Quadrieren?'],
       cards: ['emc2'],
     },

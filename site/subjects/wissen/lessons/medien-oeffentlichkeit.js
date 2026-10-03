@@ -13,26 +13,26 @@ export default {
     {
       id: 'art5', type: 'text', title: '„Eine Zensur findet nicht statt“',
       md: `
-Art. 5 Abs. 1 GG garantiert die **Meinungsfreiheit**, die **Informationsfreiheit** und die **[[pressefreiheit|Freiheit von Presse und Rundfunk]]**. Der kürzeste Satz dazu hat es in sich: „**Eine Zensur findet nicht statt.**“
+Art. 5 Abs. 1 GG garantiert die **[Meinungsfreiheit](wiki:Meinungsfreiheit|Freedom of speech)**, die **[Informationsfreiheit](wiki:Informationsfreiheit|Freedom of information)** und die **[[pressefreiheit|Freiheit von Presse und Rundfunk]]**. Der kürzeste Satz dazu hat es in sich: „**Eine [Zensur](wiki:Zensur|Censorship) findet nicht statt.**“
 
-Grenzen setzen nur die „allgemeinen Gesetze“, der Jugendschutz und das Recht der persönlichen Ehre — Beleidigung, Volksverhetzung oder Verleumdung sind also nicht erlaubt.
+Grenzen setzen nur die „allgemeinen Gesetze“, der Jugendschutz und das Recht der persönlichen Ehre — Beleidigung, [Volksverhetzung](wiki:Volksverhetzung|Volksverhetzung) oder Verleumdung sind also nicht erlaubt.
 
-Warum ist das so wichtig? Demokratie braucht informierte Bürger und eine Öffentlichkeit, in der gestritten werden kann. Medien recherchieren, decken Missstände auf und kontrollieren die Mächtigen — deshalb nennt man sie die **[[vierte-gewalt|vierte Gewalt]]** neben Legislative, Exekutive und Judikative. Im NS-Staat und in der DDR waren die Medien dagegen gleichgeschaltet und dienten der Propaganda. Wie frei die Presse weltweit ist, vergleicht jedes Jahr die Rangliste von Reporter ohne Grenzen — Deutschland liegt dort im oberen Feld, während in vielen Ländern Journalisten verfolgt werden.[^rog]`,
+Warum ist das so wichtig? Demokratie braucht informierte Bürger und eine Öffentlichkeit, in der gestritten werden kann. Medien recherchieren, decken Missstände auf und kontrollieren die Mächtigen — deshalb nennt man sie die **[[vierte-gewalt|vierte Gewalt]]** neben [Legislative](wiki:Legislative|Legislature), [Exekutive](wiki:Exekutive|Executive (government)) und [Judikative](wiki:Judikative|Judiciary). Im [NS-Staat](wiki:Zeit des Nationalsozialismus) und in der [DDR](wiki:Deutsche Demokratische Republik|East Germany) waren die Medien dagegen gleichgeschaltet und dienten der [Propaganda](wiki:Propaganda|Propaganda). Wie frei die Presse weltweit ist, vergleicht jedes Jahr die Rangliste von [Reporter ohne Grenzen](wiki:Reporter ohne Grenzen|Reporters Without Borders) — Deutschland liegt dort im oberen Feld, während in vielen Ländern Journalisten verfolgt werden.[^rog]`,
     },
     {
       id: 'spiegel', type: 'text', title: 'Die Spiegel-Affäre 1962',
       md: `
-Im Oktober 1962 veröffentlichte *Der Spiegel* unter dem Titel „**Bedingt abwehrbereit**“ einen kritischen Bericht über den Zustand der Bundeswehr. Die Reaktion: Polizei durchsuchte die Redaktionsräume in Hamburg, Herausgeber **Rudolf Augstein** und mehrere Journalisten wurden wegen des Verdachts auf Landesverrat verhaftet — Augstein saß **103 Tage** in Untersuchungshaft.[^wiki-spiegel-affaere]
+Im Oktober 1962 veröffentlichte *[Der Spiegel](wiki:Der Spiegel|Der Spiegel)* unter dem Titel „**Bedingt abwehrbereit**“ einen kritischen Bericht über den Zustand der [Bundeswehr](wiki:Bundeswehr|Bundeswehr). Die Reaktion: Polizei durchsuchte die Redaktionsräume in [Hamburg](wiki:Hamburg|Hamburg), Herausgeber **[Rudolf Augstein](wiki:Rudolf Augstein|Rudolf Augstein)** und mehrere Journalisten wurden wegen des Verdachts auf [Landesverrat](wiki:Landesverrat|Treason) verhaftet — Augstein saß **103 Tage** in Untersuchungshaft.[^wiki-spiegel-affaere]
 
-Es folgten Proteste im ganzen Land. Verteidigungsminister **Franz Josef Strauß**, der das Parlament über seine Rolle getäuscht hatte, musste zurücktreten. Der Vorwurf des Landesverrats erwies sich als haltlos. Die [[spiegel-affaere|Spiegel-Affäre]] gilt als Wendepunkt: Die junge Bundesrepublik bewies, dass ihre Bürger die Pressefreiheit verteidigen.`,
+Es folgten Proteste im ganzen Land. Verteidigungsminister **[Franz Josef Strauß](wiki:Franz Josef Strauß|Franz Josef Strauss)**, der das Parlament über seine Rolle getäuscht hatte, musste zurücktreten. Der Vorwurf des Landesverrats erwies sich als haltlos. Die [[spiegel-affaere|Spiegel-Affäre]] gilt als Wendepunkt: Die junge Bundesrepublik bewies, dass ihre Bürger die Pressefreiheit verteidigen.`,
     },
     {
       id: 'rundfunk', type: 'text', title: 'Das duale Rundfunksystem',
       md: `
-Nach 1945 bauten die Alliierten den Rundfunk nach dem Vorbild der britischen BBC auf: **staatsfern** und **beitragsfinanziert**, damit nie wieder eine Regierung ihn als Propagandainstrument missbrauchen kann. Rundfunk ist Ländersache ([[kulturhoheit]]).
+Nach 1945 bauten die Alliierten den Rundfunk nach dem Vorbild der britischen [BBC](wiki:British Broadcasting Corporation|BBC) auf: **staatsfern** und **beitragsfinanziert**, damit nie wieder eine Regierung ihn als Propagandainstrument missbrauchen kann. Rundfunk ist Ländersache ([[kulturhoheit]]).
 
-- **[[oeffentlich-rechtlicher-rundfunk|Öffentlich-rechtlicher Rundfunk]]**: die **ARD** (Arbeitsgemeinschaft der Landesrundfunkanstalten, 1950 gegründet, „Das Erste“ und die Dritten Programme), das **ZDF** (Sendestart 1963) und das **Deutschlandradio**. Ihr Auftrag: Grundversorgung mit Information, Bildung, Kultur und Unterhaltung. Finanziert über den **Rundfunkbeitrag** von **18,36 € pro Monat und Wohnung** (seit 2021, Stand 2026).[^wiki-rundfunkbeitrag]
-- **Privater Rundfunk**: seit **1984** (u. a. RTL und Sat.1), finanziert vor allem durch Werbung.
+- **[[oeffentlich-rechtlicher-rundfunk|Öffentlich-rechtlicher Rundfunk]]**: die **[ARD](wiki:ARD|ARD (broadcaster))** (Arbeitsgemeinschaft der Landesrundfunkanstalten, 1950 gegründet, „Das Erste“ und die Dritten Programme), das **[ZDF](wiki:ZDF|ZDF)** (Sendestart 1963) und das **[Deutschlandradio](wiki:Deutschlandradio|Deutschlandradio)**. Ihr Auftrag: Grundversorgung mit Information, Bildung, Kultur und Unterhaltung. Finanziert über den **[Rundfunkbeitrag](wiki:Rundfunkbeitrag)** von **18,36 € pro Monat und Wohnung** (seit 2021, Stand 2026).[^wiki-rundfunkbeitrag]
+- **Privater Rundfunk**: seit **1984** (u. a. RTL und [Sat.1](wiki:Sat.1|Sat.1)), finanziert vor allem durch Werbung.
 
 Beide zusammen bilden das **duale Rundfunksystem**. Über die Höhe des Beitrags und den Umfang des öffentlich-rechtlichen Angebots wird regelmäßig heftig gestritten.`,
     },
@@ -51,7 +51,7 @@ Beide zusammen bilden das **duale Rundfunksystem**. Über die Höhe des Beitrags
       params: {
         mode: 'sort',
         events: [
-          { year: 1450, label: 'Gutenbergs Buchdruck', detail: 'Um 1450 in Mainz — Beginn der Massenkommunikation.' },
+          { year: 1450, label: 'Gutenbergs Buchdruck', detail: 'Um 1450 in [Mainz](wiki:Mainz|Mainz) — Beginn der Massenkommunikation.' },
           { year: 1923, label: 'Erste Radiosendung', detail: 'Oktober 1923 in Berlin.' },
           { year: 1950, label: 'ARD gegründet' },
           { year: 1962, label: 'Spiegel-Affäre' },
@@ -68,11 +68,11 @@ Beide zusammen bilden das **duale Rundfunksystem**. Über die Höhe des Beitrags
 Heute informieren sich viele Menschen — vor allem Jüngere — über soziale Netzwerke, Videoplattformen und Messenger. Das hat die Öffentlichkeit grundlegend verändert:
 
 - **Jeder kann senden**: Informationen verbreiten sich schneller und vielfältiger — auch ohne journalistische Prüfung.
-- **Algorithmen** entscheiden, was wir sehen. Sie belohnen Aufmerksamkeit, und Empörung erzeugt viel Aufmerksamkeit.
-- **[[filterblase|Filterblasen]] und Echokammern**: Nutzer bekommen vor allem Inhalte, die ihre Meinung bestätigen (Begriff von Eli Pariser, 2011). Wie stark der Effekt wirklich ist, ist in der Forschung umstritten.
-- **[[desinformation|Desinformation]]**: gezielt verbreitete Falschinformationen, teils von staatlichen Akteuren, verstärkt durch Bots und zunehmend durch KI-generierte Bilder und Videos („Deepfakes“).
+- **[Algorithmen](wiki:Algorithmus|Algorithm)** entscheiden, was wir sehen. Sie belohnen Aufmerksamkeit, und Empörung erzeugt viel Aufmerksamkeit.
+- **[[filterblase|Filterblasen]] und [Echokammern](wiki:Echokammer|Echo chamber (media))**: Nutzer bekommen vor allem Inhalte, die ihre Meinung bestätigen (Begriff von [Eli Pariser](wiki:Eli Pariser|Eli Pariser), 2011). Wie stark der Effekt wirklich ist, ist in der Forschung umstritten.
+- **[[desinformation|Desinformation]]**: gezielt verbreitete Falschinformationen, teils von staatlichen Akteuren, verstärkt durch Bots und zunehmend durch KI-generierte Bilder und Videos („[Deepfakes](wiki:Deepfake|Deepfake)“).
 
-Die EU reagiert mit dem **[[digital-services-act|Digital Services Act]]** (voll anwendbar seit 2024): Sehr große Plattformen müssen Risiken für Wahlen und öffentliche Debatte bewerten und gegen illegale Inhalte vorgehen; bei Verstößen drohen Strafen bis zu 6 % des weltweiten Umsatzes. In Deutschland galt zuvor das Netzwerkdurchsetzungsgesetz von 2017.`,
+Die EU reagiert mit dem **[[digital-services-act|Digital Services Act]]** (voll anwendbar seit 2024): Sehr große Plattformen müssen Risiken für Wahlen und öffentliche Debatte bewerten und gegen illegale Inhalte vorgehen; bei Verstößen drohen Strafen bis zu 6 % des weltweiten Umsatzes. In Deutschland galt zuvor das [Netzwerkdurchsetzungsgesetz](wiki:Netzwerkdurchsetzungsgesetz|Network Enforcement Act) von 2017.`,
     },
     {
       id: 'order-check', type: 'order', title: 'Einen Beitrag prüfen',
@@ -85,7 +85,7 @@ Die EU reagiert mit dem **[[digital-services-act|Digital Services Act]]** (voll 
         'Faktenchecks nachschlagen (z. B. von Nachrichtenagenturen)',
         'Erst dann entscheiden, ob man teilt',
       ],
-      explain: 'Die Reihenfolge ist nicht in Stein gemeißelt — entscheidend ist der erste Schritt: Empörung ist genau das Gefühl, auf das Desinformation abzielt.',
+      explain: 'Die Reihenfolge ist nicht in Stein gemeißelt — entscheidend ist der erste Schritt: Empörung ist genau das Gefühl, auf das [Desinformation](wiki:Desinformation|Disinformation) abzielt.',
     },
     {
       id: 'quiz-medien', type: 'quiz', title: 'Medien-Check',
@@ -99,7 +99,7 @@ Die EU reagiert mit dem **[[digital-services-act|Digital Services Act]]** (voll 
     },
     {
       id: 'fact-presserat', type: 'callout', tone: 'fact', title: 'Die Presse kontrolliert sich selbst',
-      md: `Weil der Staat die Presse nicht kontrollieren darf, gibt es seit **1956** den **Deutschen Presserat** — eine Einrichtung der Verlage und Journalistenverbände. Sein **Pressekodex** verlangt z. B. Wahrhaftigkeit, sorgfältige Recherche und den Schutz der Unschuldsvermutung. Wer eine Verletzung sieht, kann sich beschweren; schlimmstenfalls wird eine **Rüge** ausgesprochen, die das Medium abdrucken soll.[^presserat]`,
+      md: `Weil der Staat die Presse nicht kontrollieren darf, gibt es seit **1956** den **[Deutschen Presserat](wiki:Deutscher Presserat)** — eine Einrichtung der Verlage und Journalistenverbände. Sein **[Pressekodex](wiki:Pressekodex)** verlangt z. B. Wahrhaftigkeit, sorgfältige Recherche und den Schutz der Unschuldsvermutung. Wer eine Verletzung sieht, kann sich beschweren; schlimmstenfalls wird eine **Rüge** ausgesprochen, die das Medium abdrucken soll.[^presserat]`,
     },
     {
       id: 'recall-medien', type: 'recall', title: 'Erkläre es',

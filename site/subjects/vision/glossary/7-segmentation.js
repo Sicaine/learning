@@ -13,7 +13,7 @@ export default [
     related: ['mask-rcnn', 'feature-map'],
   },
   {
-    id: 'detr', term: 'DETR', de: 'DETR', cat: 'model', inline: 'DETR',
+    id: 'detr', term: 'DETR', de: 'DETR', cat: 'model', inline: 'DETR', wiki: { en: 'Detection Transformer' },
     short: 'DEtection TRansformer (2020): predicts a fixed-size set of objects with learned object queries and Hungarian matching — no anchors, no NMS.',
     long: `Casts detection as **set prediction**. A [[transformer]] decoder turns $N$ learned [[object-query|object queries]] into $N$ predictions (class or "no object", plus a box). Training uses [[hungarian-matching]] to pair each ground-truth object with exactly one prediction, which is why duplicate removal (non-maximum suppression) is unnecessary. Ancestor of MaskFormer, [[mask2former]] and the *detector* DINO.`,
     related: ['object-query', 'hungarian-matching', 'mask2former', 'grounding-dino'],

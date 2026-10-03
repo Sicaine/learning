@@ -13,33 +13,33 @@ export default {
     {
       id: 'atom', type: 'text', title: 'Das Atom: fast nur leerer Raum',
       md: `
-Alles um dich herum besteht aus [[atom|Atomen]].[^nat-wp-atom] Ein Atom hat einen winzigen **Kern** aus positiv geladenen **Protonen** und elektrisch neutralen **Neutronen**. Um ihn herum bewegen sich die negativ geladenen **Elektronen** in der Atomhülle.
+Alles um dich herum besteht aus [[atom|Atomen]].[^nat-wp-atom] Ein Atom hat einen winzigen **Kern** aus positiv geladenen **[Protonen](wiki:Proton|Proton)** und elektrisch neutralen **[Neutronen](wiki:Neutron|Neutron)**. Um ihn herum bewegen sich die negativ geladenen **[Elektronen](wiki:Elektron|Electron)** in der [Atomhülle](wiki:Atomhülle|Electron shell).
 
-- Die **Zahl der Protonen** — die **Ordnungszahl** — legt das Element fest. 1 Proton: Wasserstoff. 6: Kohlenstoff. 8: Sauerstoff. 79: Gold.
-- Atome gleichen Elements mit unterschiedlich vielen Neutronen heißen **Isotope** (z. B. Kohlenstoff-12 und das radioaktive Kohlenstoff-14, mit dem man Fossilien datiert).
+- Die **Zahl der Protonen** — die **[Ordnungszahl](wiki:Ordnungszahl|Atomic number)** — legt das Element fest. 1 Proton: [Wasserstoff](wiki:Wasserstoff|Hydrogen). 6: [Kohlenstoff](wiki:Kohlenstoff|Carbon). 8: [Sauerstoff](wiki:Sauerstoff|Oxygen). 79: [Gold](wiki:Gold|Gold).
+- Atome gleichen Elements mit unterschiedlich vielen Neutronen heißen **[Isotope](wiki:Isotop|Isotope)** (z. B. Kohlenstoff-12 und das radioaktive [Kohlenstoff-14](wiki:Kohlenstoff-14|Carbon), mit dem man Fossilien datiert).
 - Fast die ganze Masse steckt im Kern — aber der Kern ist winzig: Wäre ein Atom so groß wie ein Fußballstadion, wäre der Kern etwa so groß wie eine Erbse am Anstoßpunkt.
 
-Die Idee des „Unteilbaren“ (griechisch *átomos*) stammt von Demokrit (um 400 v. Chr.). Wissenschaftlich begründet wurde die Atomtheorie um 1808 von John Dalton; Ernest Rutherford entdeckte 1911 den Atomkern.`,
+Die Idee des „Unteilbaren“ (griechisch *átomos*) stammt von [Demokrit](wiki:Demokrit|Democritus) (um 400 v. Chr.). Wissenschaftlich begründet wurde die Atomtheorie um 1808 von [John Dalton](wiki:John Dalton|John Dalton); [Ernest Rutherford](wiki:Ernest Rutherford|Ernest Rutherford) entdeckte 1911 den [Atomkern](wiki:Atomkern|Atomic nucleus).`,
     },
     {
       id: 'calc-neutronen', type: 'numeric', title: 'Teilchen zählen',
       question: 'Ein Kohlenstoffatom hat die Ordnungszahl 6. Das Isotop **Kohlenstoff-14** hat die Massenzahl 14 (= Protonen + Neutronen). Wie viele **Neutronen** hat es?',
       answer: 8, tolerance: 0,
       hint: 'Massenzahl minus Ordnungszahl.',
-      explain: '14 − 6 = **8 Neutronen**. Normaler Kohlenstoff-12 hat 6. C-14 ist radioaktiv und zerfällt mit einer Halbwertszeit von rund 5.730 Jahren — das nutzt die Radiokarbonmethode zur Altersbestimmung.',
+      explain: '14 − 6 = **8 Neutronen**. Normaler Kohlenstoff-12 hat 6. C-14 ist radioaktiv und zerfällt mit einer [Halbwertszeit](wiki:Halbwertszeit|Half-life) von rund 5.730 Jahren — das nutzt die [Radiokarbonmethode](wiki:Radiokohlenstoffdatierung|Radiocarbon dating) zur Altersbestimmung.',
     },
     {
       id: 'pse', type: 'text', title: 'Das Periodensystem: die Landkarte der Chemie',
       md: `
-1869 ordnete der russische Chemiker **Dmitri Mendelejew** die damals bekannten Elemente in einer Tabelle — fast gleichzeitig mit dem Deutschen **Lothar Meyer**.[^nat-wp-periodensystem] Mendelejews Geniestreich: Er ließ Lücken für unentdeckte Elemente und sagte deren Eigenschaften voraus. Als Gallium (1875) und Germanium (1886) gefunden wurden, passten sie genau.
+1869 ordnete der russische Chemiker **[Dmitri Mendelejew](wiki:Dmitri Iwanowitsch Mendelejew|Dmitri Mendeleev)** die damals bekannten Elemente in einer Tabelle — fast gleichzeitig mit dem Deutschen **[Lothar Meyer](wiki:Lothar Meyer|Lothar Meyer)**.[^nat-wp-periodensystem] Mendelejews Geniestreich: Er ließ Lücken für unentdeckte Elemente und sagte deren Eigenschaften voraus. Als [Gallium](wiki:Gallium|Gallium) (1875) und [Germanium](wiki:Germanium|Germanium) (1886) gefunden wurden, passten sie genau.
 
 So liest man das [[periodensystem]] heute (118 Elemente):
 
-- **Zeilen = Perioden.** Mit jeder Periode kommt eine Elektronenschale dazu.
-- **Spalten = Gruppen.** Elemente einer Gruppe verhalten sich chemisch ähnlich, weil sie gleich viele Außenelektronen haben.
-- **Links Metalle, rechts Nichtmetalle**, dazwischen Halbmetalle.
+- **Zeilen = Perioden.** Mit jeder Periode kommt eine [Elektronenschale](wiki:Elektronenschale|Electron configuration) dazu.
+- **Spalten = Gruppen.** Elemente einer Gruppe verhalten sich chemisch ähnlich, weil sie gleich viele [Außenelektronen](wiki:Valenzelektron|Valence electron) haben.
+- **Links [Metalle](wiki:Metalle|Metal), rechts [Nichtmetalle](wiki:Nichtmetalle|Nonmetal)**, dazwischen [Halbmetalle](wiki:Halbmetalle|Metalloid).
 
-Wichtige Familien: **Alkalimetalle** (Gruppe 1: Lithium, Natrium, Kalium — reagieren heftig mit Wasser), **Halogene** (Gruppe 17: Fluor, Chlor, Brom — „Salzbildner“) und **[[edelgase|Edelgase]]** (Gruppe 18 — reaktionsträge).`,
+Wichtige Familien: **[Alkalimetalle](wiki:Alkalimetalle|Alkali metal)** (Gruppe 1: [Lithium](wiki:Lithium|Lithium), [Natrium](wiki:Natrium|Sodium), [Kalium](wiki:Kalium|Potassium) — reagieren heftig mit Wasser), **[Halogene](wiki:Halogene|Halogen)** (Gruppe 17: [Fluor](wiki:Fluor|Fluorine), [Chlor](wiki:Chlor|Chlorine), [Brom](wiki:Brom|Bromine) — „Salzbildner“) und **[[edelgase|Edelgase]]** (Gruppe 18 — reaktionsträge).`,
     },
     {
       id: 'viz-pse', type: 'viz', viz: 'natur-periodensystem', title: 'Erkunde die ersten vier Perioden',
@@ -57,12 +57,12 @@ Einzelne Atome sind selten; meist verbinden sie sich. Antrieb ist das Streben na
 
 <table>
 <tr><th>Bindung</th><th>Prinzip</th><th>Beispiel</th><th>Typische Eigenschaft</th></tr>
-<tr><td><b>Ionenbindung</b></td><td>Metall gibt Elektronen ab, Nichtmetall nimmt sie auf; entgegengesetzt geladene Ionen ziehen sich an</td><td>Kochsalz NaCl</td><td>Kristalle, hoher Schmelzpunkt, in Wasser gelöst leitfähig</td></tr>
-<tr><td><b>Atombindung</b> (kovalent)</td><td>Nichtmetalle teilen sich Elektronenpaare</td><td>Wasser H₂O, Kohlendioxid CO₂</td><td>bildet <b>Moleküle</b></td></tr>
-<tr><td><b>Metallbindung</b></td><td>Metallionen in einem „Elektronengas“</td><td>Kupfer, Eisen</td><td>leitet Strom und Wärme, verformbar</td></tr>
+<tr><td><b>[Ionenbindung](wiki:Ionenbindung|Ionic bonding)</b></td><td>Metall gibt Elektronen ab, Nichtmetall nimmt sie auf; entgegengesetzt geladene [Ionen](wiki:Ion|Ion) ziehen sich an</td><td>[Kochsalz](wiki:Natriumchlorid|Sodium chloride) NaCl</td><td>Kristalle, hoher Schmelzpunkt, in Wasser gelöst leitfähig</td></tr>
+<tr><td><b>[Atombindung](wiki:Kovalente Bindung|Covalent bond)</b> (kovalent)</td><td>Nichtmetalle teilen sich Elektronenpaare</td><td>Wasser H₂O, [Kohlendioxid](wiki:Kohlenstoffdioxid|Carbon dioxide) CO₂</td><td>bildet <b>Moleküle</b></td></tr>
+<tr><td><b>[Metallbindung](wiki:Metallbindung|Metallic bonding)</b></td><td>Metallionen in einem „Elektronengas“</td><td>[Kupfer](wiki:Kupfer|Copper), [Eisen](wiki:Eisen|Iron)</td><td>leitet Strom und Wärme, verformbar</td></tr>
 </table>
 
-Ein [[molekuel|Molekül]] ist ein fester Verbund aus Atomen. Die Formel verrät die Zusammensetzung: **H₂O** = 2 Wasserstoff + 1 Sauerstoff.`,
+Ein [[molekuel|Molekül]] ist ein fester Verbund aus Atomen. Die Formel verrät die Zusammensetzung: **H₂O** = 2 [Wasserstoff](wiki:Wasserstoff|Hydrogen) + 1 [Sauerstoff](wiki:Sauerstoff|Oxygen).`,
     },
     {
       id: 'match-formeln', type: 'match', title: 'Formeln des Alltags',
@@ -72,11 +72,11 @@ Ein [[molekuel|Molekül]] ist ein fester Verbund aus Atomen. Die Formel verrät 
     {
       id: 'reaktion', type: 'text', title: 'Reaktionen, Säuren und Basen',
       md: `
-Bei einer [[chemische-reaktion|chemischen Reaktion]] entstehen neue Stoffe mit neuen Eigenschaften: Aus dem giftigen Metall Natrium und dem giftigen Gas Chlor wird Kochsalz. Dabei werden nur Bindungen umgebaut — **kein Atom geht verloren** (Gesetz der Massenerhaltung, Antoine Lavoisier, 18. Jh.). Beispiel Verbrennung von Erdgas:
+Bei einer [[chemische-reaktion|chemischen Reaktion]] entstehen neue Stoffe mit neuen Eigenschaften: Aus dem giftigen Metall [Natrium](wiki:Natrium|Sodium) und dem giftigen Gas [Chlor](wiki:Chlor|Chlorine) wird [Kochsalz](wiki:Natriumchlorid|Sodium chloride). Dabei werden nur Bindungen umgebaut — **kein Atom geht verloren** (Gesetz der [Massenerhaltung](wiki:Massenerhaltung|Conservation of mass), [Antoine Lavoisier](wiki:Antoine Laurent de Lavoisier|Antoine Lavoisier), 18. Jh.). Beispiel Verbrennung von [Erdgas](wiki:Erdgas|Natural gas):
 
 $$\\text{CH}_4 + 2\\,\\text{O}_2 \\rightarrow \\text{CO}_2 + 2\\,\\text{H}_2\\text{O}$$
 
-Der **[[ph-wert]]** beschreibt, wie sauer oder basisch eine Lösung ist.[^nat-wp-phwert] **7 ist neutral** (reines Wasser), **kleiner ist sauer**, **größer basisch** (auch „alkalisch“). Die Skala ist logarithmisch: Jeder Schritt bedeutet Faktor 10. Säure + Base neutralisieren sich zu Salz und Wasser — deshalb hilft ein basisches Mittel gegen Sodbrennen.`,
+Der **[[ph-wert]]** beschreibt, wie sauer oder basisch eine Lösung ist.[^nat-wp-phwert] **7 ist neutral** (reines Wasser), **kleiner ist sauer**, **größer basisch** (auch „alkalisch“). Die Skala ist logarithmisch: Jeder Schritt bedeutet Faktor 10. Säure + Base neutralisieren sich zu Salz und Wasser — deshalb hilft ein basisches Mittel gegen [Sodbrennen](wiki:Sodbrennen|Heartburn).`,
     },
     {
       id: 'order-ph', type: 'order', title: 'Von sauer nach basisch',
@@ -86,11 +86,11 @@ Der **[[ph-wert]]** beschreibt, wie sauer oder basisch eine Lösung ist.[^nat-wp
     },
     {
       id: 'curie', type: 'callout', tone: 'history', title: 'Marie Curie',
-      md: `Die in Warschau geborene Physikerin und Chemikerin **Marie Curie** entdeckte mit ihrem Mann Pierre die Elemente **Polonium** und **Radium** und prägte den Begriff *Radioaktivität*.[^nat-wp-curie] Sie erhielt als erster Mensch **zwei Nobelpreise** (Physik 1903, Chemie 1911) und ist bis heute die einzige Person mit Nobelpreisen in zwei verschiedenen Naturwissenschaften. Ihre Notizbücher sind noch immer radioaktiv.`,
+      md: `Die in [Warschau](wiki:Warschau|Warsaw) geborene Physikerin und Chemikerin **[Marie Curie](wiki:Marie Curie|Marie Curie)** entdeckte mit ihrem Mann [Pierre](wiki:Pierre Curie|Pierre Curie) die Elemente **[Polonium](wiki:Polonium|Polonium)** und **[Radium](wiki:Radium|Radium)** und prägte den Begriff *[Radioaktivität](wiki:Radioaktivität|Radioactivity)*.[^nat-wp-curie] Sie erhielt als erster Mensch **zwei [Nobelpreise](wiki:Nobelpreis|Nobel Prize)** (Physik 1903, Chemie 1911) und ist bis heute die einzige Person mit Nobelpreisen in zwei verschiedenen Naturwissenschaften. Ihre Notizbücher sind noch immer radioaktiv.`,
     },
     {
       id: 'fact-luft', type: 'callout', tone: 'fact', title: 'Was du gerade einatmest',
-      md: `Luft besteht zu rund **78 % aus Stickstoff**, **21 % Sauerstoff** und knapp **1 % Argon**. Kohlendioxid macht nur etwa 0,04 % aus — und trotzdem bestimmt dieses bisschen maßgeblich das Klima der Erde.`,
+      md: `Luft besteht zu rund **78 % aus [Stickstoff](wiki:Stickstoff|Nitrogen)**, **21 % [Sauerstoff](wiki:Sauerstoff|Oxygen)** und knapp **1 % [Argon](wiki:Argon|Argon)**. [Kohlendioxid](wiki:Kohlenstoffdioxid|Carbon dioxide) macht nur etwa 0,04 % aus — und trotzdem bestimmt dieses bisschen maßgeblich das [Klima](wiki:Klima|Climate) der Erde.`,
     },
     {
       id: 'quiz-chemie', type: 'quiz', title: 'Alles klar?',
@@ -100,13 +100,13 @@ Der **[[ph-wert]]** beschreibt, wie sauer oder basisch eine Lösung ist.[^nat-wp
         { text: 'Edelgase reagieren besonders heftig mit anderen Stoffen.', correct: false, why: 'Im Gegenteil: Ihre volle Außenschale macht sie reaktionsträge.' },
         { text: 'pH 3 ist zehnmal saurer als pH 4.', correct: true, why: 'Die pH-Skala ist logarithmisch.' },
         { text: 'Bei einer chemischen Reaktion verschwinden Atome.', correct: false, why: 'Atome bleiben erhalten; nur ihre Bindungen ändern sich.' },
-        { text: 'Das Periodensystem stellte Mendelejew 1869 auf.', correct: true, why: 'Etwa gleichzeitig mit Lothar Meyer.' },
+        { text: 'Das Periodensystem stellte Mendelejew 1869 auf.', correct: true, why: 'Etwa gleichzeitig mit [Lothar Meyer](wiki:Lothar Meyer|Lothar Meyer).' },
       ],
     },
     {
       id: 'recall-pse', type: 'recall', title: 'Erkläre es in eigenen Worten',
       prompt: 'Warum verhalten sich Natrium und Kalium chemisch so ähnlich, obwohl ihre Atome verschieden groß sind?',
-      answer: `Beide stehen im Periodensystem in **derselben Gruppe** (Gruppe 1, Alkalimetalle). Elemente einer Gruppe haben **gleich viele Außenelektronen** — hier genau eines. Weil chemisches Verhalten vor allem von den Außenelektronen abhängt, geben beide ihr einzelnes Außenelektron sehr leicht ab und reagieren deshalb ähnlich heftig, z. B. mit Wasser.`,
+      answer: `Beide stehen im [Periodensystem](wiki:Periodensystem|Periodic table) in **derselben Gruppe** (Gruppe 1, [Alkalimetalle](wiki:Alkalimetalle|Alkali metal)). Elemente einer Gruppe haben **gleich viele Außenelektronen** — hier genau eines. Weil chemisches Verhalten vor allem von den Außenelektronen abhängt, geben beide ihr einzelnes Außenelektron sehr leicht ab und reagieren deshalb ähnlich heftig, z. B. mit Wasser.`,
       hints: ['Wo stehen die beiden im Periodensystem?', 'Welche Elektronen entscheiden über chemische Reaktionen?'],
       cards: ['gruppe'],
     },

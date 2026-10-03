@@ -13,38 +13,134 @@ export default {
     {
       id: 'byzanz', type: 'text', title: 'Byzanz: das Rom des Ostens',
       md: `
-Als Westrom 476 unterging, lebte das Römische Reich im Osten weiter — als **[[byzanz|Byzantinisches Reich]]** mit der Hauptstadt **Konstantinopel** (heute Istanbul). Es sprach Griechisch, war christlich-orthodox und für Jahrhunderte die reichste Stadt Europas.
+Als Westrom 476 unterging, lebte das Römische Reich im Osten weiter — als **[[byzanz|Byzantinisches Reich]]** mit der Hauptstadt **[Konstantinopel](wiki:Konstantinopel|Constantinople)** (heute [Istanbul](wiki:Istanbul|Istanbul)). Es sprach Griechisch, war christlich-orthodox und für Jahrhunderte die reichste Stadt Europas.
 
-Kaiser **Justinian** (527–565) ließ die **Hagia Sophia** (537 geweiht) bauen und das römische Recht im *Corpus iuris civilis* sammeln — bis heute Grundlage vieler europäischer Rechtsordnungen. **1054** trennten sich die Kirchen des Ostens und des Westens endgültig (*Morgenländisches Schisma*): orthodox hier, römisch-katholisch dort. **1453** eroberten die Osmanen unter Sultan Mehmed II. Konstantinopel — für viele Historiker ein Epochenjahr zwischen Mittelalter und Neuzeit.[^wp-byzanz]`,
+Kaiser **[Justinian](wiki:Justinian I.|Justinian I)** (527–565) ließ die **[Hagia Sophia](wiki:Hagia Sophia|Hagia Sophia)** (537 geweiht) bauen und das römische Recht im *[Corpus iuris civilis](wiki:Corpus iuris civilis|Corpus Juris Civilis)* sammeln — bis heute Grundlage vieler europäischer Rechtsordnungen. **1054** trennten sich die Kirchen des Ostens und des Westens endgültig (*[Morgenländisches Schisma](wiki:Morgenländisches Schisma|East–West Schism)*): orthodox hier, römisch-katholisch dort. **1453** eroberten die [Osmanen](wiki:Osmanisches Reich|Ottoman Empire) unter Sultan [Mehmed II.](wiki:Mehmed II.|Mehmed II) Konstantinopel — für viele Historiker ein Epochenjahr zwischen Mittelalter und Neuzeit.[^wp-byzanz]`,
     },
     {
       id: 'islam', type: 'text', title: 'Die Ausbreitung des Islam',
       md: `
-Um 610 begann **Mohammed** in Mekka zu predigen. Als er verfolgt wurde, zog er **622** nach Medina — diese **[[hidschra|Hidschra]]** ist das Jahr 1 der islamischen Zeitrechnung. Bei seinem Tod 632 war die Arabische Halbinsel geeint.
+Um 610 begann **[Mohammed](wiki:Mohammed|Muhammad)** in [Mekka](wiki:Mekka|Mecca) zu predigen. Als er verfolgt wurde, zog er **622** nach [Medina](wiki:Medina|Medina) — diese **[[hidschra|Hidschra]]** ist das Jahr 1 der islamischen Zeitrechnung. Bei seinem Tod 632 war die Arabische Halbinsel geeint.
 
-In nur rund hundert Jahren breitete sich das islamische Reich vom heutigen Pakistan bis nach Spanien aus: **711** setzten Truppen über die Meerenge von Gibraltar, **732** wurden sie bei **Tours und Poitiers** von Karl Martell aufgehalten. In Spanien (*al-Andalus*) bestand muslimische Herrschaft bis **1492**.[^wp-islamische-expansion]
+In nur rund hundert Jahren breitete sich das islamische Reich vom heutigen Pakistan bis nach Spanien aus: **711** setzten Truppen über die Meerenge von [Gibraltar](wiki:Gibraltar|Gibraltar), **732** wurden sie bei **[Tours und Poitiers](wiki:Schlacht von Tours und Poitiers|Battle of Tours)** von [Karl Martell](wiki:Karl Martell|Charles Martel) aufgehalten. In Spanien (*[al-Andalus](wiki:Al-Andalus|Al-Andalus)*) bestand muslimische Herrschaft bis **1492**.[^wp-islamische-expansion]
 
-Unter den Abbasiden wurde **Bagdad** zum Zentrum der Wissenschaft („Haus der Weisheit“). Gelehrte übersetzten griechische Philosophen ins Arabische und retteten so viel antikes Wissen. Wörter wie *Algebra*, *Algorithmus* (nach al-Chwarizmi), *Alkohol* und *Ziffer* erinnern daran — ebenso unsere „arabischen“ Ziffern, die ursprünglich aus Indien stammen.`,
+Unter den [Abbasiden](wiki:Abbasiden|Abbasid Caliphate) wurde **[Bagdad](wiki:Bagdad|Baghdad)** zum Zentrum der Wissenschaft („[Haus der Weisheit](wiki:Haus der Weisheit (Bagdad)|House of Wisdom)“). Gelehrte übersetzten griechische Philosophen ins Arabische und retteten so viel antikes Wissen. Wörter wie *[Algebra](wiki:Algebra|Algebra)*, *[Algorithmus](wiki:Algorithmus|Algorithm)* (nach [al-Chwarizmi](wiki:Al-Chwarizmi|Al-Khwarizmi)), *Alkohol* und *Ziffer* erinnern daran — ebenso unsere „arabischen“ Ziffern, die ursprünglich aus Indien stammen.`,
+    },
+    {
+      id: 'map-islam', type: 'map', title: 'Von Mekka bis Poitiers: die Ausbreitung des Islam',
+      view: [-12, 17, 65, 47],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Mekka', num: 1, pos: 'b', detail: `**[Mekka](wiki:Mekka|Mecca)** — um 610 begann hier Mohammeds Verkündigung; bis heute Ziel der Pilgerfahrt (Haddsch).` },
+        { name: 'Medina', num: 2, pos: 'r', detail: `**[Medina](wiki:Medina|Medina)** — 622 zog Mohammed hierher: die [Hidschra](wiki:Hidschra|Hijrah), Beginn der islamischen Zeitrechnung.` },
+        { name: 'Damaskus', num: 3, pos: 'l', detail: `**[Damaskus](wiki:Damaskus|Damascus)** — Hauptstadt der [Umayyaden](wiki:Umayyaden|Umayyad dynasty), die ab 661 das Kalifat regierten.` },
+        { name: 'Kairo', pos: 'b', detail: `**[Kairo](wiki:Kairo|Cairo)** — Ägypten wurde um 640 muslimisch; Kairo selbst wurde erst 969 gegründet.` },
+        { name: 'Konstantinopel', kind: 'capital', pos: 't', detail: `**[Konstantinopel](wiki:Konstantinopel|Constantinople)** — die Hauptstadt von Byzanz hielt den Angriffen stand, bis die Osmanen sie 1453 eroberten.` },
+        { name: 'Bagdad', num: 7, pos: 'b', detail: `**[Bagdad](wiki:Bagdad|Baghdad)** — 762 als Hauptstadt der [Abbasiden](wiki:Abbasiden|Abbasid Caliphate) gegründet; Zentrum der Wissenschaft („Haus der Weisheit“).` },
+        { name: 'Poitiers', num: 6, kind: 'battle', pos: 'r', detail: `**[Tours und Poitiers](wiki:Schlacht von Tours und Poitiers|Battle of Tours)** (732) — der Frankenführer [Karl Martell](wiki:Karl Martell|Charles Martel) stoppt den muslimischen Vormarsch.` },
+      ],
+      points: [
+        { lon: 10.101, lat: 35.677, label: 'Kairuan', num: 4, pos: 'b', detail: `**[Kairuan](wiki:Kairuan|Kairouan)** — um 670 gegründet, Ausgangspunkt der Eroberung Nordafrikas und Spaniens.` },
+        { lon: -5.353, lat: 36.138, label: 'Gibraltar', num: 5, pos: 'b', detail: `**[Gibraltar](wiki:Gibraltar|Gibraltar)** — 711 setzten Truppen unter Tariq ibn Ziyad nach Spanien über; der Name erinnert an ihn (*Dschabal Tariq*, „Berg des Tariq“).` },
+      ],
+      lines: [
+        { label: 'Eroberungen bis 732 (schematisch)', color: '#047857', arrow: true, labelAt: 0.25, coords: [[39.61, 24.469], [36.309, 33.51], [29.928, 31.214], [10.101, 35.677], [-5.353, 36.138], [0.335, 46.581]],
+          detail: `Von Medina über Damaskus und Ägypten durch Nordafrika nach Spanien und bis nach Poitiers — die Nummern zeigen die Reihenfolge.` },
+      ],
+      caption: 'Die Nummern folgen der Zeit: 1 Mekka (um 610) · 2 Medina (622) · 3 Damaskus (661) · 4 Kairuan (um 670) · 5 Gibraltar (711) · 6 Poitiers (732) · 7 Bagdad (762).',
     },
     {
       id: 'kreuzzuege', type: 'text', title: 'Kreuzzüge',
       md: `
-**1095** rief Papst **Urban II.** in Clermont zum Kampf um Jerusalem auf. Im Ersten Kreuzzug eroberten christliche Heere **1099** die Stadt und richteten ein Massaker an. Schon auf dem Weg dorthin ermordeten Kreuzfahrer Tausende Juden in den Städten am Rhein (Speyer, Worms, Mainz). **1187** eroberte Sultan **Saladin** Jerusalem zurück; mit dem Fall von **Akkon 1291** endete die Kreuzfahrerherrschaft im Heiligen Land.[^wp-kreuzzug]
+**1095** rief Papst **[Urban II.](wiki:Urban II.|Pope Urban II)** in [Clermont](wiki:Synode von Clermont|Council of Clermont) zum Kampf um [Jerusalem](wiki:Jerusalem|Jerusalem) auf. Im Ersten Kreuzzug eroberten christliche Heere **1099** die Stadt und richteten ein Massaker an. Schon auf dem Weg dorthin ermordeten Kreuzfahrer Tausende Juden in den Städten am Rhein ([Speyer](wiki:Speyer|Speyer), [Worms](wiki:Worms|Worms, Germany), [Mainz](wiki:Mainz|Mainz)). **1187** eroberte Sultan **[Saladin](wiki:Saladin|Saladin)** Jerusalem zurück; mit dem Fall von **[Akkon](wiki:Akkon|Acre, Israel) 1291** endete die Kreuzfahrerherrschaft im Heiligen Land.[^wp-kreuzzug]
 
-Neben Gewalt und bis heute belasteten Erinnerungen brachten die [[kreuzzuege|Kreuzzüge]] auch Handel und Wissensaustausch: Venedig und Genua wurden reich, Waren wie Zucker und Gewürze wurden in Europa bekannter.`,
+Neben Gewalt und bis heute belasteten Erinnerungen brachten die [[kreuzzuege|Kreuzzüge]] auch Handel und Wissensaustausch: [Venedig](wiki:Venedig|Venice) und [Genua](wiki:Genua|Genoa) wurden reich, Waren wie Zucker und Gewürze wurden in Europa bekannter.`,
+    },
+    {
+      id: 'map-kreuzzuege', type: 'map', title: 'Der Erste Kreuzzug: Wege ins Heilige Land',
+      view: [-3, 30, 42, 52],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Jerusalem', kind: 'site', pos: 'r', detail: `**[Jerusalem](wiki:Jerusalem|Jerusalem)** — Ziel des Kreuzzugs; 1099 von den Kreuzfahrern erobert, 1187 von [Saladin](wiki:Saladin|Saladin) zurückgewonnen.` },
+        { name: 'Akkon', pos: 'l', detail: `**[Akkon](wiki:Akkon|Acre, Israel)** — letzte Festung der Kreuzfahrer, fiel 1291.` },
+        { name: 'Antiochia am Orontes', pos: 't', detail: `**[Antiochia](wiki:Antiochia am Orontes|Antioch)** — 1098 nach monatelanger Belagerung erobert.` },
+        { name: 'Konstantinopel', kind: 'capital', pos: 't', detail: `**[Konstantinopel](wiki:Konstantinopel|Constantinople)** — der byzantinische Kaiser hatte um Hilfe gegen die Seldschuken gebeten; hier sammelten sich die Heere.` },
+        { name: 'Venedig', pos: 'l', detail: `**[Venedig](wiki:Venedig|Venice)** — verdiente als Transport- und Handelsmacht an den Kreuzzügen.` },
+        { name: 'Genua', pos: 'l', detail: `**[Genua](wiki:Genua|Genoa)** — ebenso wie Venedig Gewinner des Handels mit dem Orient.` },
+        { name: 'Mainz', kind: 'battle', pos: 'l', detail: `**[Mainz](wiki:Mainz|Mainz)** — 1096 wurden hier wie in [Speyer](wiki:Speyer|Speyer) und [Worms](wiki:Worms|Worms, Germany) Juden von durchziehenden Kreuzfahrern ermordet.` },
+        { name: 'Wien', pos: 't' },
+        { name: 'Belgrad', pos: 'r' },
+      ],
+      points: [
+        { lon: 3.087, lat: 45.78, label: 'Clermont', kind: 'site', pos: 'b', detail: `**[Clermont](wiki:Clermont-Ferrand|Clermont-Ferrand)** — hier rief [Papst Urban II.](wiki:Urban II.|Pope Urban II) 1095 zum Kreuzzug auf.` },
+      ],
+      lines: [
+        { label: 'Weg der Heere (schematisch)', color: '#b91c1c', arrow: true, labelAt: 0.4, coords: [[8.271, 50], [16.373, 48.208], [20.462, 44.821], [28.976, 41.009], [36.15, 36.2], [35.224, 31.779]],
+          detail: `Die Heere zogen auf mehreren Wegen; hier ist eine häufig genutzte Landroute über Ungarn und den Balkan vereinfacht eingezeichnet.` },
+      ],
+      caption: 'Die Route ist schematisch; die Kreuzfahrerheere zogen nicht gemeinsam und nicht auf einem einzigen Weg.',
     },
     {
       id: 'mongolen-china', type: 'text', title: 'Mongolen, China und Afrika',
       md: `
-**1206** wurde Temüdschin zum **Dschingis Khan** („ozeangleicher Herrscher“) ausgerufen. Seine Reiterheere schufen das **[[mongolenreich|Mongolische Reich]]**, das größte zusammenhängende Landreich der Geschichte — von Korea bis Osteuropa. Die Eroberungen waren brutal, sicherten danach aber den Handel entlang der **[[seidenstrasse|Seidenstraße]]**. Der Venezianer **Marco Polo** berichtete vom Hof Kublai Khans in China.[^wp-mongolisches-reich]
+**1206** wurde Temüdschin zum **[Dschingis Khan](wiki:Dschingis Khan|Genghis Khan)** („ozeangleicher Herrscher“) ausgerufen. Seine Reiterheere schufen das **[[mongolenreich|Mongolische Reich]]**, das größte zusammenhängende Landreich der Geschichte — von Korea bis Osteuropa. Die Eroberungen waren brutal, sicherten danach aber den Handel entlang der **[[seidenstrasse|Seidenstraße]]**. Der Venezianer **[Marco Polo](wiki:Marco Polo|Marco Polo)** berichtete vom Hof [Kublai Khans](wiki:Kublai Khan|Kublai Khan) in China.[^wp-mongolisches-reich]
 
-**China** war im Mittelalter technisch führend: Papier (schon um 105 n. Chr.), Kompass, Schießpulver und der Buchdruck mit beweglichen Lettern (um 1040) stammen von dort. Die Flotten des Admirals **Zheng He** fuhren 1405–1433 bis nach Ostafrika — Jahrzehnte vor den Portugiesen.
+**China** war im Mittelalter technisch führend: Papier (schon um 105 n. Chr.), [Kompass](wiki:Kompass|Compass), [Schießpulver](wiki:Schießpulver|Powder explosive) und der Buchdruck mit beweglichen Lettern (um 1040) stammen von dort. Die Flotten des Admirals **[Zheng He](wiki:Zheng He|Zheng He)** fuhren 1405–1433 bis nach Ostafrika — Jahrzehnte vor den Portugiesen.
 
-In Westafrika war das **Reich Mali** mit der Gelehrtenstadt **Timbuktu** berühmt; sein Herrscher **Mansa Musa** machte 1324 eine legendäre Pilgerreise nach Mekka und gilt als einer der reichsten Menschen der Geschichte. In Amerika gründeten die **Azteken** 1325 Tenochtitlan, im 15. Jahrhundert entstand das Reich der **Inka**.`,
+In Westafrika war das **[Reich Mali](wiki:Mali-Reich|Mali Empire)** mit der Gelehrtenstadt **[Timbuktu](wiki:Timbuktu|Timbuktu)** berühmt; sein Herrscher **[Mansa Musa](wiki:Mansa Musa|Mansa Musa)** machte 1324 eine legendäre Pilgerreise nach Mekka und gilt als einer der reichsten Menschen der Geschichte. In Amerika gründeten die **[Azteken](wiki:Azteken|Aztecs)** 1325 [Tenochtitlan](wiki:Tenochtitlán|Tenochtitlan), im 15. Jahrhundert entstand das Reich der **[Inka](wiki:Inka)**.`,
+    },
+    {
+      id: 'map-welt-1300', type: 'map', title: 'Die vernetzte Welt um 1300',
+      view: [-20, -6, 135, 60],
+      proj: 'lcc',
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Venedig', pos: 'l', detail: `**[Venedig](wiki:Venedig|Venice)** — Heimat des Kaufmanns [Marco Polo](wiki:Marco Polo|Marco Polo), der um 1275 am Hof des Großkhans ankam.` },
+        { name: 'Konstantinopel', kind: 'capital', pos: 't', detail: `**[Konstantinopel](wiki:Konstantinopel|Constantinople)** — Brücke zwischen Europa und Asien.` },
+        { name: 'Bagdad', pos: 'b', detail: `**[Bagdad](wiki:Bagdad|Baghdad)** — 1258 von den Mongolen erobert und zerstört.` },
+        { name: 'Samarkand', pos: 't', detail: `**[Samarkand](wiki:Samarkand|Samarkand)** — Knotenpunkt der [Seidenstraße](wiki:Seidenstraße|Silk Road).` },
+        { name: 'Peking', kind: 'capital', pos: 'r', detail: `**[Peking](wiki:Peking|Beijing)** — unter [Kublai Khan](wiki:Kublai Khan|Kublai Khan) als *Khanbaliq* Hauptstadt des mongolischen Yuan-Reichs.` },
+        { name: 'Timbuktu', pos: 'b', detail: `**[Timbuktu](wiki:Timbuktu|Timbuktu)** — Gelehrten- und Handelsstadt im Reich Mali.` },
+        { name: 'Kairo', pos: 'b', detail: `**[Kairo](wiki:Kairo|Cairo)** — Station von [Mansa Musas](wiki:Mansa Musa|Mansa Musa) Pilgerreise 1324.` },
+        { name: 'Mekka', pos: 'b', detail: `**[Mekka](wiki:Mekka|Mecca)** — Ziel der Pilgerreise Mansa Musas.` },
+      ],
+      points: [
+        { lon: 102.848, lat: 47.21, label: 'Karakorum', kind: 'site', pos: 't', detail: `**[Karakorum](wiki:Karakorum (Stadt)|Karakorum)** — Hauptstadt des Mongolischen Reichs unter [Ögedei](wiki:Ögedei|Ögedei Khan) und seinen Nachfolgern.` },
+        { lon: 108.942, lat: 34.268, label: 'Xi’an', pos: 'b', detail: `**[Xi’an](wiki:Xi’an|Xi'an)** — Ausgangspunkt der Seidenstraße im Osten.` },
+      ],
+      lines: [
+        { label: 'Seidenstraße (schematisch)', color: '#b45309', labelAt: 0.62, coords: [[12.336, 45.438], [28.976, 41.009], [44.383, 33.333], [66.96, 39.654], [108.942, 34.268], [116.383, 39.933]],
+          detail: `Das Netz der Handelswege der [Seidenstraße](wiki:Seidenstraße|Silk Road): Waren, Religionen, Techniken und Krankheiten reisten mit.` },
+        { label: 'Mansa Musa 1324', color: '#047857', arrow: true, dashed: true, labelAt: 0.3, coords: [[-3.007, 16.773], [31.239, 30.056], [39.826, 21.423]],
+          detail: `Der Herrscher von Mali reiste mit riesigem Gefolge und viel Gold über Kairo nach Mekka.` },
+      ],
+      caption: 'Zwischen Mali im Westen und China im Osten verbanden Handelswege die Reiche des Mittelalters — Linien schematisch.',
     },
     {
       id: 'pest', type: 'callout', tone: 'history', title: 'Der Schwarze Tod',
-      md: `Über die Handelswege der Seidenstraße erreichte die Pest 1347 Europa. Der **[[schwarzer-tod|Schwarze Tod]]** tötete bis 1353 schätzungsweise **ein Drittel** der europäischen Bevölkerung.[^wp-schwarzer-tod] Die Folgen: Arbeitskräfte wurden knapp und teurer, Bauern gewannen an Verhandlungsmacht — und vielerorts wurden Juden fälschlich beschuldigt, Brunnen vergiftet zu haben, und in Pogromen ermordet.`,
+      md: `Über die Handelswege der Seidenstraße erreichte die Pest 1347 Europa. Der **[[schwarzer-tod|Schwarze Tod]]** tötete bis 1353 schätzungsweise **ein Drittel** der europäischen Bevölkerung.[^wp-schwarzer-tod] Die Folgen: Arbeitskräfte wurden knapp und teurer, Bauern gewannen an Verhandlungsmacht — und vielerorts wurden Juden fälschlich beschuldigt, Brunnen vergiftet zu haben, und in [Pogromen](wiki:Pogrom|Pogrom) ermordet.`,
+    },
+    {
+      id: 'map-pest', type: 'map', title: 'Der Weg der Pest 1347–1353',
+      view: [-6, 34, 40, 58],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Konstantinopel', num: 2, pos: 'b', detail: `**[Konstantinopel](wiki:Konstantinopel|Constantinople)** — Ende 1347 erreichte die Pest die Hauptstadt von Byzanz.` },
+        { name: 'Genua', pos: 'l', detail: `**[Genua](wiki:Genua|Genoa)** — Handelsschiffe brachten die Seuche aus Kaffa in die italienischen Hafenstädte.` },
+        { name: 'Venedig', pos: 'r', detail: `**[Venedig](wiki:Venedig|Venice)** — der Hafen verlor in wenigen Monaten einen großen Teil der Bevölkerung.` },
+        { name: 'Marseille', num: 4, pos: 'l', detail: `**[Marseille](wiki:Marseille|Marseille)** — 1347/48 breitete sich die Pest von hier in Frankreich aus.` },
+        { name: 'Paris', num: 5, pos: 'l', detail: `**[Paris](wiki:Paris|Paris)** — 1348 erreichte der Schwarze Tod die Stadt.` },
+        { name: 'London', num: 6, pos: 'l', detail: `**[London](wiki:London|London)** — erreicht 1348/49.` },
+      ],
+      points: [
+        { lon: 35.379, lat: 45.049, label: 'Kaffa', num: 1, pos: 'r', detail: `**[Kaffa](wiki:Feodossija|Feodosia)** (heute Feodossija auf der Krim) — hier belagerten Mongolen die genuesische Handelsstadt; der Überlieferung nach brachte die Pest von hier aus den Seeweg nach Europa.` },
+        { lon: 15.55, lat: 38.183, label: 'Messina', num: 3, pos: 'l', detail: `**[Messina](wiki:Messina|Messina)** — im Oktober 1347 liefen hier Schiffe mit Pestkranken ein.` },
+      ],
+      lines: [
+        { label: 'Ausbreitung (schematisch)', color: '#7f1d1d', arrow: true, labelAt: 0.55, coords: [[35.379, 45.049], [28.976, 41.009], [15.55, 38.183], [5.376, 43.297], [2.352, 48.857], [-0.118, 51.509]],
+          detail: `Die Seuche folgte den Handelswegen über das Meer und breitete sich dann entlang der Flüsse und Straßen aus.` },
+      ],
+      caption: 'Die Nummern zeigen die ungefähre Reihenfolge; Kaffa als Ausgangspunkt entspricht der gängigen Überlieferung.',
     },
     {
       id: 'tl-game', type: 'game', viz: 'timeline', title: 'Ordne das Mittelalter',
@@ -68,6 +164,13 @@ In Westafrika war das **Reich Mali** mit der Gelehrtenstadt **Timbuktu** berühm
         ['Timbuktu', 'Reich Mali'],
         ['Tenochtitlan', 'Azteken'],
       ],
+    },
+    {
+      id: 'map-quiz-mittelalter', type: 'map', title: 'Wo lagen die Zentren des Mittelalters?',
+      view: [-12, 22, 65, 56],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      quiz: { rounds: 7 },
+      places: [{ name: 'Konstantinopel' }, { name: 'Mekka' }, { name: 'Jerusalem' }, { name: 'Bagdad' }, { name: 'Venedig' }, { name: 'Córdoba' }, { name: 'Poitiers' }, { name: 'Damaskus' }],
     },
     {
       id: 'num-hidschra', type: 'numeric', title: 'Jahr eins',

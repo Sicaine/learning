@@ -13,7 +13,7 @@ export default {
     {
       id: 'hierarchy', type: 'text', title: 'From edges to watches: a hierarchy of features',
       md: `
-Stack convolutions and something remarkable happens. Layer 1 learns edges and color blobs. Layer 2 combines edges into corners, arcs and textures. Deeper layers respond to parts — a lug, a crown's knurling, a row of indices — and the deepest to whole objects.
+Stack convolutions and something remarkable happens. Layer 1 learns [edges](wiki:Edge detection|Kantendetektion) and color blobs. Layer 2 combines edges into corners, arcs and textures. Deeper layers respond to parts — a lug, a crown's [knurling](wiki:Knurling|Rändeln), a row of indices — and the deepest to whole objects.
 
 Each layer only ever looks at a small window *of the previous layer*. But that previous layer already summarizes a window of the one before. So the region of the **original image** that can influence a unit — its **[[receptive-field]]** — grows with depth.`,
     },
@@ -27,7 +27,7 @@ $$r_l = r_{l-1} + (k_l - 1)\\, j_{l-1}, \\qquad j_l = j_{l-1} \\cdot s_l$$
 - A stack of $n$ plain $3 \\times 3$ layers (stride 1): $r = 2n + 1$. Painfully slow — 67 layers to cover 134 px.
 - Every stride-2 layer (or $2\\times2$ pooling) **doubles the growth rate of everything after it**.
 
-That's why every CNN [[backbone]] downsamples in stages: typical feature maps are at $\\tfrac14, \\tfrac18, \\tfrac1{16}, \\tfrac1{32}$ of the input resolution. Two $3 \\times 3$ layers also see as much as one $5 \\times 5$ (with $18C^2$ instead of $25C^2$ weights and an extra nonlinearity) — the insight behind VGG.[^vgg]`,
+That's why every CNN [[backbone]] downsamples in stages: typical feature maps are at $\\tfrac14, \\tfrac18, \\tfrac1{16}, \\tfrac1{32}$ of the input resolution. Two $3 \\times 3$ layers also see as much as one $5 \\times 5$ (with $18C^2$ instead of $25C^2$ weights and an extra nonlinearity) — the insight behind [VGG](wiki:VGGNet).[^vgg]`,
     },
     {
       id: 'viz-rf', type: 'viz', viz: 'receptive-field', title: 'Grow a receptive field',
@@ -50,13 +50,13 @@ That's why every CNN [[backbone]] downsamples in stages: typical feature maps ar
     {
       id: 'resnet', type: 'text', title: 'The depth problem and the residual fix',
       md: `
-Around 2015 people noticed something odd: a 56-layer plain CNN had *higher training error* than a 20-layer one. Not overfitting — the deeper net was simply harder to optimize. Gradients had to pass through dozens of layers, each distorting them.
+Around 2015 people noticed something odd: a 56-layer plain [CNN](wiki:Convolutional neural network|Convolutional Neural Network) had *higher training error* than a 20-layer one. Not overfitting — the deeper net was simply harder to optimize. [Gradients](wiki:Vanishing gradient problem) had to pass through dozens of layers, each distorting them.
 
 **[[resnet|ResNet]]**'s answer is almost embarrassingly simple.[^resnet] Instead of asking a block to compute a new representation $H(x)$, let it compute a *correction* and add the input back:
 
 $$y = F(x) + x$$
 
-The $+x$ is a **[[skip-connection]]**. If a block has nothing useful to add, it can learn $F(x) \\approx 0$ and pass its input through unchanged — so adding depth can no longer hurt. And the gradient has a direct highway: $\\frac{\\partial y}{\\partial x} = \\frac{\\partial F}{\\partial x} + I$.
+The $+x$ is a **[[skip-connection]]**. If a block has nothing useful to add, it can learn $F(x) \\approx 0$ and pass its input through unchanged (an [identity](wiki:Identity function|Identische Abbildung) map) — so adding depth can no longer hurt. And the gradient has a direct highway: $\\frac{\\partial y}{\\partial x} = \\frac{\\partial F}{\\partial x} + I$.
 
 ResNet-50 (≈25M parameters) became *the* default vision [[backbone]]. And the same $x + F(x)$ pattern sits inside every [[transformer]] block you will meet in the next stage.`,
     },
@@ -106,7 +106,7 @@ Diagnostic for later: if your model segments "hand" well but confuses **which** 
       options: [
         { text: 'The receptive field of $n$ stacked $3\\times3$ stride-1 convs is $2n+1$.', correct: true, why: 'Each layer adds $(3-1)\\cdot 1 = 2$.' },
         { text: 'Downsampling early makes all later layers grow the receptive field faster.', correct: true, why: 'The jump $j$ multiplies the growth of every later layer.' },
-        { text: 'Deeper plain CNNs failed mainly because of overfitting.', correct: false, why: 'They had *higher training error* — an optimization problem, which residual connections solved.' },
+        { text: 'Deeper plain CNNs failed mainly because of overfitting.', correct: false, why: 'They had *higher training error* — an [optimization problem](wiki:Optimization problem|Optimierungsproblem), which residual connections solved.' },
         { text: 'A residual block can easily represent the identity function.', correct: true, why: 'Set $F(x) = 0$ and $y = x$.' },
         { text: 'The theoretical receptive field tells you exactly which pixels matter.', correct: false, why: 'The *effective* receptive field is much smaller and concentrated in the center.' },
       ],

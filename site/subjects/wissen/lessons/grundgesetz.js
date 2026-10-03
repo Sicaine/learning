@@ -13,15 +13,26 @@ export default {
     {
       id: 'entstehung', type: 'text', title: 'Ein Provisorium, das blieb',
       md: `
-Im Sommer 1948 beauftragten die drei westlichen Besatzungsmächte die Ministerpräsidenten der Länder, eine Verfassung auszuarbeiten. Ein Expertenkonvent auf der Insel **Herrenchiemsee** legte einen Entwurf vor, ab dem 1. September 1948 beriet der [[parlamentarischer-rat]] in **Bonn** — Präsident war **Konrad Adenauer**.
+Im Sommer 1948 beauftragten die drei westlichen Besatzungsmächte die Ministerpräsidenten der Länder, eine Verfassung auszuarbeiten. Ein [Expertenkonvent](wiki:Verfassungskonvent auf Herrenchiemsee|Herrenchiemsee convention) auf der Insel **Herrenchiemsee** legte einen Entwurf vor, ab dem 1. September 1948 beriet der [[parlamentarischer-rat]] in **[Bonn](wiki:Bonn|Bonn)** — Präsident war **[Konrad Adenauer](wiki:Konrad Adenauer|Konrad Adenauer)**.
 
 Am **23. Mai 1949** wurde das [[grundgesetz]] verkündet; dieser Tag gilt als Geburtstag der Bundesrepublik. Den Namen „Verfassung“ vermied man bewusst: Man wollte die Teilung Deutschlands nicht festschreiben. Das Grundgesetz sollte nur gelten, bis das ganze deutsche Volk „in freier Selbstbestimmung“ eine Verfassung beschließt.[^wiki-grundgesetz]
 
-Es kam anders: Die Wiedervereinigung 1990 erfolgte durch den Beitritt der DDR zum Geltungsbereich des Grundgesetzes. Das Provisorium wurde zur dauerhaften, weltweit geachteten Verfassung. Eine gut lesbare, neutrale Einführung in das ganze politische System bietet die Bundeszentrale für politische Bildung.[^bpb]`,
+Es kam anders: Die [Wiedervereinigung](wiki:Deutsche Wiedervereinigung|German reunification) 1990 erfolgte durch den Beitritt der [DDR](wiki:Deutsche Demokratische Republik|East Germany) zum Geltungsbereich des Grundgesetzes. Das Provisorium wurde zur dauerhaften, weltweit geachteten Verfassung. Eine gut lesbare, neutrale Einführung in das ganze politische System bietet die [Bundeszentrale für politische Bildung](wiki:Bundeszentrale für politische Bildung|Federal Agency for Civic Education).[^bpb]`,
+    },
+    {
+      id: 'map-gg-orte', type: 'map', title: 'Orte des Grundgesetzes',
+      view: 'de',
+      points: [
+        { lon: 12.398, lat: 47.861, label: 'Herrenchiemsee', kind: 'site', pos: 'r', detail: 'Vom **10. bis 23. August 1948** tagte im Alten Schloss auf der [Herreninsel](wiki:Herreninsel|Herreninsel) der [Verfassungskonvent auf Herrenchiemsee](wiki:Verfassungskonvent auf Herrenchiemsee|Herrenchiemsee convention) — Sachverständige im Auftrag der Ministerpräsidenten. Ihr Bericht war die Arbeitsgrundlage für das Grundgesetz.' },
+        { lon: 7.113, lat: 50.722, label: 'Bonn', kind: 'site', pos: 'l', detail: 'Im Museum Koenig in [Bonn](wiki:Bonn|Bonn) fand am **1. September 1948** der Festakt zum Zusammentritt des [Parlamentarischen Rates](wiki:Parlamentarischer Rat|Parlamentarischer Rat) statt. Er beriet das Grundgesetz in Bonn, am 23. Mai 1949 wurde es verkündet. Bonn blieb bis zum Umzug von Parlament und Regierung (1999) Regierungssitz.' },
+        { lon: 8.401, lat: 49.013, label: 'Karlsruhe', kind: 'site', pos: 'l', detail: 'Seit **1951** wacht das [Bundesverfassungsgericht](wiki:Bundesverfassungsgericht|Federal Constitutional Court) in Karlsruhe über das Grundgesetz.' },
+        { lon: 13.376, lat: 52.519, label: 'Berlin', kind: 'capital', pos: 'r', detail: '[Berlin](wiki:Berlin|Berlin) wurde mit dem Einigungsvertrag am 3. Oktober 1990 Hauptstadt des vereinten Deutschlands. Seit dem Umzug 1999 tagt der [Bundestag](wiki:Deutscher Bundestag|Bundestag) im [Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building).' },
+      ],
+      caption: 'Vier Orte, vier Stationen: Entwurf auf einer Insel, Beratung in Bonn, Wächter in Karlsruhe, Parlament in Berlin. Tippe auf die Marker.',
     },
     {
       id: 'fact-muetter', type: 'callout', tone: 'fact', title: 'Die „Mütter des Grundgesetzes“',
-      md: `Unter den 65 stimmberechtigten Mitgliedern des Parlamentarischen Rates waren nur **vier Frauen**. Eine von ihnen, die Juristin **Elisabeth Selbert**, setzte gegen große Widerstände den schlichten Satz durch: „**Männer und Frauen sind gleichberechtigt.**“ (Art. 3 Abs. 2) — mit öffentlichen Protestbriefen aus der ganzen Bevölkerung im Rücken.`,
+      md: `Unter den 65 stimmberechtigten Mitgliedern des [Parlamentarischen Rates](wiki:Parlamentarischer Rat|Parlamentarischer Rat) waren nur **vier Frauen**. Eine von ihnen, die Juristin **[Elisabeth Selbert](wiki:Elisabeth Selbert|Elisabeth Selbert)**, setzte gegen große Widerstände den schlichten Satz durch: „**Männer und Frauen sind gleichberechtigt.**“ (Art. 3 Abs. 2) — mit öffentlichen Protestbriefen aus der ganzen Bevölkerung im Rücken.`,
     },
     {
       id: 'timeline-gg', type: 'game', viz: 'timeline', title: 'Vom Konvent zur gesamtdeutschen Verfassung',
@@ -30,9 +41,9 @@ Es kam anders: Die Wiedervereinigung 1990 erfolgte durch den Beitritt der DDR zu
         events: [
           { year: 1948, label: 'Konvent Herrenchiemsee', detail: 'Expertenentwurf im August 1948.' },
           { year: 1949, label: 'Grundgesetz verkündet', detail: '23. Mai 1949.' },
-          { year: 1951, label: 'BVerfG gegründet', detail: 'Das Bundesverfassungsgericht nimmt in Karlsruhe die Arbeit auf.' },
+          { year: 1951, label: 'BVerfG gegründet', detail: 'Das [Bundesverfassungsgericht](wiki:Bundesverfassungsgericht|Federal Constitutional Court) nimmt in Karlsruhe die Arbeit auf.' },
           { year: 1956, label: 'KPD-Verbot', detail: 'Zweites und bislang letztes Parteiverbot.' },
-          { year: 1968, label: 'Notstandsgesetze', detail: 'Umstrittene Ergänzung, u. a. Widerstandsrecht Art. 20 Abs. 4.' },
+          { year: 1968, label: 'Notstandsgesetze', detail: 'Umstrittene Ergänzung, u. a. [Widerstandsrecht](wiki:Widerstandsrecht|Right to resist) Art. 20 Abs. 4.' },
           { year: 1990, label: 'Wiedervereinigung', detail: 'Das Grundgesetz gilt seit dem 3. Oktober 1990 in ganz Deutschland.' },
           { year: 1994, label: 'Umweltschutz ins GG', detail: 'Art. 20a: Schutz der natürlichen Lebensgrundlagen.' },
         ],
@@ -41,7 +52,7 @@ Es kam anders: Die Wiedervereinigung 1990 erfolgte durch den Beitritt der DDR zu
     {
       id: 'aufbau', type: 'text', title: 'Der Aufbau: Die Grundrechte stehen vorn',
       md: `
-Anders als die Weimarer Verfassung beginnt das Grundgesetz nicht mit dem Staatsaufbau, sondern mit dem Menschen. Artikel 1 lautet:
+Anders als die [Weimarer Verfassung](wiki:Weimarer Verfassung|Weimar Constitution) beginnt das Grundgesetz nicht mit dem Staatsaufbau, sondern mit dem Menschen. Artikel 1 lautet:
 
 > „Die Würde des Menschen ist unantastbar. Sie zu achten und zu schützen ist Verpflichtung aller staatlichen Gewalt.“
 
@@ -55,9 +66,9 @@ Die [[menschenwuerde]] ist der Maßstab für alles Weitere. Es folgen die [[grun
 <tr><td>Art. 4</td><td>Glaubens- und Gewissensfreiheit</td></tr>
 <tr><td>Art. 5</td><td>Meinungs-, Presse-, Kunst- und Wissenschaftsfreiheit</td></tr>
 <tr><td>Art. 6</td><td>Schutz von Ehe und Familie</td></tr>
-<tr><td>Art. 8</td><td>Versammlungsfreiheit</td></tr>
+<tr><td>Art. 8</td><td>[Versammlungsfreiheit](wiki:Versammlungsfreiheit|Freedom of assembly)</td></tr>
 <tr><td>Art. 12</td><td>Berufsfreiheit</td></tr>
-<tr><td>Art. 16a</td><td>Asylrecht</td></tr>
+<tr><td>Art. 16a</td><td>[Asylrecht](wiki:Asylrecht (Deutschland)|Asylum in Germany)</td></tr>
 </table>
 
 Manche Grundrechte gelten für **jeden Menschen** („Jeder hat das Recht…“), andere nur für **Deutsche** („Alle Deutschen haben das Recht…“, z. B. Versammlungs- und Berufsfreiheit).`,
@@ -94,20 +105,20 @@ Eine Merkhilfe: „**D**ie **R**epublik **S**ichert **B**ürger-**R**echte“ �
       options: [
         { text: 'Sozialstaat', correct: true, why: 'Der „soziale Bundesstaat“ steht ausdrücklich in Art. 20 Abs. 1.' },
         { text: 'Bundesstaat', correct: true, why: 'Deutschland ist föderal aus Bund und Ländern aufgebaut.' },
-        { text: 'Marktwirtschaft', correct: false, why: 'Das Grundgesetz schreibt kein Wirtschaftssystem vor — die Soziale Marktwirtschaft ist politisch gewollt, aber nicht als Staatsprinzip verankert.' },
+        { text: 'Marktwirtschaft', correct: false, why: 'Das Grundgesetz schreibt kein Wirtschaftssystem vor — die [Soziale Marktwirtschaft](wiki:Soziale Marktwirtschaft|Social market economy) ist politisch gewollt, aber nicht als Staatsprinzip verankert.' },
         { text: 'Republik', correct: true, why: 'Schon der Name „Bundesrepublik“ zeigt es: kein erbliches Staatsoberhaupt.' },
-        { text: 'Christliche Staatsreligion', correct: false, why: 'Es gibt keine Staatskirche; der Staat ist weltanschaulich neutral (Art. 140 GG).' },
+        { text: 'Christliche Staatsreligion', correct: false, why: 'Es gibt keine [Staatskirche](wiki:Staatskirche|State church); der Staat ist weltanschaulich neutral (Art. 140 GG).' },
       ],
     },
     {
       id: 'schutz', type: 'text', title: 'Eine Verfassung, die sich selbst verteidigt',
       md: `
-Die Weimarer Republik wurde 1933 scheinbar legal abgeschafft — mit dem Ermächtigungsgesetz. Die Väter und Mütter des Grundgesetzes zogen daraus Konsequenzen:
+Die [Weimarer Republik](wiki:Weimarer Republik|Weimar Republic) wurde 1933 scheinbar legal abgeschafft — mit dem [Ermächtigungsgesetz](wiki:Ermächtigungsgesetz vom 24. März 1933|Enabling Act of 1933). Die Väter und Mütter des Grundgesetzes zogen daraus Konsequenzen:
 
-- **Ewigkeitsklausel** (Art. 79 Abs. 3): Menschenwürde, die Prinzipien aus Art. 20 und die Mitwirkung der Länder dürfen **niemals** abgeschafft werden — auch nicht mit Zweidrittelmehrheit. Alles andere darf mit Zweidrittelmehrheit in Bundestag **und** Bundesrat geändert werden; das ist seit 1949 über 60-mal geschehen.
-- **Wehrhafte Demokratie**: Das [[bundesverfassungsgericht]] kann verfassungsfeindliche Parteien verbieten — bisher geschehen bei der SRP (1952, Nachfolger der NSDAP) und der KPD (1956).
-- **Widerstandsrecht** (Art. 20 Abs. 4): Gegen jeden, der die Ordnung beseitigen will, haben alle Deutschen das Recht zum Widerstand, wenn andere Abhilfe nicht möglich ist.
-- **Verfassungsbeschwerde**: Jeder Mensch kann sich an das Bundesverfassungsgericht wenden, wenn er sich durch den Staat in seinen Grundrechten verletzt sieht.`,
+- **[Ewigkeitsklausel](wiki:Ewigkeitsklausel|Entrenched clause)** (Art. 79 Abs. 3): Menschenwürde, die Prinzipien aus Art. 20 und die Mitwirkung der Länder dürfen **niemals** abgeschafft werden — auch nicht mit Zweidrittelmehrheit. Alles andere darf mit Zweidrittelmehrheit in [Bundestag](wiki:Deutscher Bundestag|Bundestag) **und** [Bundesrat](wiki:Bundesrat (Deutschland)|German Bundesrat) geändert werden; das ist seit 1949 über 60-mal geschehen.
+- **[Wehrhafte Demokratie](wiki:Streitbare Demokratie|Defensive democracy)**: Das [[bundesverfassungsgericht]] kann verfassungsfeindliche Parteien verbieten — bisher geschehen bei der [SRP](wiki:Sozialistische Reichspartei|Socialist Reich Party) (1952, Nachfolger der [NSDAP](wiki:Nationalsozialistische Deutsche Arbeiterpartei|Nazi Party)) und der [KPD](wiki:Kommunistische Partei Deutschlands|Communist Party of Germany) (1956).
+- **[Widerstandsrecht](wiki:Widerstandsrecht|Right to resist)** (Art. 20 Abs. 4): Gegen jeden, der die Ordnung beseitigen will, haben alle Deutschen das Recht zum Widerstand, wenn andere Abhilfe nicht möglich ist.
+- **[Verfassungsbeschwerde](wiki:Verfassungsbeschwerde (Deutschland)|Constitutional complaint (Germany))**: Jeder Mensch kann sich an das [Bundesverfassungsgericht](wiki:Bundesverfassungsgericht|Federal Constitutional Court) wenden, wenn er sich durch den Staat in seinen Grundrechten verletzt sieht.`,
     },
     {
       id: 'warn-verfassung', type: 'callout', tone: 'warning', title: 'Häufiger Irrtum',

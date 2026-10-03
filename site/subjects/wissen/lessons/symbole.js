@@ -15,18 +15,18 @@ export default {
       md: `
 Die Farben **[[schwarz-rot-gold|Schwarz-Rot-Gold]]** stehen für **Einheit und Freiheit** — sie waren von Anfang an die Farben der Demokratie, nicht der Monarchie.
 
-- Sie gehen auf das **Lützowsche Freikorps** in den Befreiungskriegen gegen Napoleon (1813) zurück: schwarze Uniformen, rote Aufschläge, goldene (messingfarbene) Knöpfe.
-- Studentische Burschenschaften übernahmen sie; beim **Hambacher Fest 1832** wehten sie als Symbol für ein freies, geeintes Deutschland.
-- Die **Revolution von 1848** und die Frankfurter Nationalversammlung erklärten sie zu den Farben des Deutschen Bundes.
-- Das Kaiserreich (1871) wählte dagegen **Schwarz-Weiß-Rot**. Die **Weimarer Republik** kehrte zu Schwarz-Rot-Gold zurück, die Nationalsozialisten schafften es wieder ab.
-- **1949** legte das Grundgesetz fest: „Die Bundesflagge ist schwarz-rot-gold“ (**Art. 22 GG**). Die DDR nutzte dieselben Farben, ab 1959 mit Hammer, Zirkel und Ährenkranz.
+- Sie gehen auf das **[Lützowsche Freikorps](wiki:Lützowsches Freikorps|Lützow Free Corps)** in den [Befreiungskriegen](wiki:Befreiungskriege|German campaign of 1813) gegen [Napoleon](wiki:Napoleon Bonaparte|Napoleon) (1813) zurück: schwarze Uniformen, rote Aufschläge, goldene (messingfarbene) Knöpfe.
+- Studentische [Burschenschaften](wiki:Burschenschaft) übernahmen sie; beim **[Hambacher Fest](wiki:Hambacher Fest|Hambach Festival) 1832** wehten sie als Symbol für ein freies, geeintes Deutschland.
+- Die **[Revolution von 1848](wiki:Deutsche Revolution 1848/1849|German revolutions of 1848–1849)** und die [Frankfurter Nationalversammlung](wiki:Frankfurter Nationalversammlung|Frankfurt National Assembly) erklärten sie zu den Farben des [Deutschen Bundes](wiki:Deutscher Bund|German Confederation).
+- Das [Kaiserreich](wiki:Deutsches Kaiserreich|German Empire) (1871) wählte dagegen **[Schwarz-Weiß-Rot](wiki:Schwarz-Weiß-Rot|Flag of the German Empire)**. Die **[Weimarer Republik](wiki:Weimarer Republik|Weimar Republic)** kehrte zu Schwarz-Rot-Gold zurück, die [Nationalsozialisten](wiki:Nationalsozialismus|Nazism) schafften es wieder ab.
+- **1949** legte das Grundgesetz fest: „Die Bundesflagge ist schwarz-rot-gold“ (**Art. 22 GG**). Die [DDR](wiki:Deutsche Demokratische Republik|East Germany) nutzte dieselben Farben, ab 1959 mit Hammer, Zirkel und Ährenkranz.
 
-Das **Wappen** zeigt den **Bundesadler**: einen schwarzen Adler mit roten Krallen und Schnabel auf goldenem Grund. Im Plenarsaal des Bundestags hängt eine große, rundliche Version — im Volksmund „**fette Henne**“.`,
+Das **Wappen** zeigt den **[Bundesadler](wiki:Wappen Deutschlands|Coat of arms of Germany)**: einen schwarzen Adler mit roten Krallen und Schnabel auf goldenem Grund. Im Plenarsaal des Bundestags hängt eine große, rundliche Version — im Volksmund „**fette Henne**“.`,
     },
     {
       id: 'hymne', type: 'text', title: 'Das Deutschlandlied',
       md: `
-Den Text des **[[deutschlandlied|Lieds der Deutschen]]** schrieb **August Heinrich Hoffmann von Fallersleben** im August **1841** auf der damals britischen Insel **Helgoland**. Die Melodie ist älter: Sie stammt von **Joseph Haydn**, der sie **1797** für die österreichische Kaiserhymne „Gott erhalte Franz, den Kaiser“ komponierte.
+Den Text des **[[deutschlandlied|Lieds der Deutschen]]** schrieb **[August Heinrich Hoffmann von Fallersleben](wiki:August Heinrich Hoffmann von Fallersleben)** im August **1841** auf der damals britischen Insel **[Helgoland](wiki:Helgoland|Heligoland)**. Die Melodie ist älter: Sie stammt von **[Joseph Haydn](wiki:Joseph Haydn)**, der sie **1797** für die österreichische Kaiserhymne „[Gott erhalte Franz, den Kaiser](wiki:Gott erhalte Franz, den Kaiser|Gott erhalte Franz den Kaiser)“ komponierte.
 
 Das Lied hat drei Strophen:
 
@@ -34,7 +34,7 @@ Das Lied hat drei Strophen:
 2. „Deutsche Frauen, deutsche Treue, deutscher Wein und deutscher Sang …“
 3. „**Einigkeit und Recht und Freiheit** für das deutsche Vaterland …“
 
-Seit **1952** ist das Lied Nationalhymne der Bundesrepublik, bei offiziellen Anlässen wurde nur die dritte Strophe gesungen. **Seit 1991** ist offiziell festgelegt: **Nur die dritte Strophe ist die Nationalhymne.** Die DDR hatte eine eigene Hymne: „Auferstanden aus Ruinen“ (Text: Johannes R. Becher, Musik: Hanns Eisler), deren Text ab den 1970er-Jahren wegen der Zeile „Deutschland einig Vaterland“ nicht mehr gesungen wurde.[^wiki-deutschlandlied]`,
+Seit **1952** ist das Lied Nationalhymne der Bundesrepublik, bei offiziellen Anlässen wurde nur die dritte Strophe gesungen. **Seit 1991** ist offiziell festgelegt: **Nur die dritte Strophe ist die Nationalhymne.** Die DDR hatte eine eigene Hymne: „[Auferstanden aus Ruinen](wiki:Auferstanden aus Ruinen)“ (Text: [Johannes R. Becher](wiki:Johannes R. Becher), Musik: [Hanns Eisler](wiki:Hanns Eisler)), deren Text ab den 1970er-Jahren wegen der Zeile „Deutschland einig Vaterland“ nicht mehr gesungen wurde.[^wiki-deutschlandlied]`,
     },
     {
       id: 'order-farben', type: 'order', title: 'Die Geschichte der Farben',
@@ -45,13 +45,27 @@ Seit **1952** ist das Lied Nationalhymne der Bundesrepublik, bei offiziellen Anl
     {
       id: 'hauptstadt', type: 'text', title: 'Bonn oder Berlin?',
       md: `
-1949 wurde das beschauliche **Bonn** am Rhein „vorläufige“ Hauptstadt der Bundesrepublik — auch um zu zeigen, dass die Teilung nicht endgültig sein sollte. Frankfurt am Main war der Konkurrent; Konrad Adenauer, der aus der Nähe von Bonn stammte, setzte sich durch.
+1949 wurde das beschauliche **[Bonn](wiki:Bonn)** am Rhein „vorläufige“ Hauptstadt der Bundesrepublik — auch um zu zeigen, dass die Teilung nicht endgültig sein sollte. [Frankfurt am Main](wiki:Frankfurt am Main|Frankfurt) war der Konkurrent; [Konrad Adenauer](wiki:Konrad Adenauer), der aus der Nähe von Bonn stammte, setzte sich durch.
 
-Nach der Wiedervereinigung bestimmte der Einigungsvertrag **Berlin** zur Hauptstadt. Wo aber Parlament und Regierung sitzen sollten, war heftig umstritten. Am **20. Juni 1991** stimmte der Bundestag nach einer langen, emotionalen Debatte ab: **338 zu 320 Stimmen für Berlin** — ein knappes Ergebnis.[^wiki-hauptstadtbeschluss]
+Nach der Wiedervereinigung bestimmte der [Einigungsvertrag](wiki:Einigungsvertrag|Unification Treaty (1990)) **[Berlin](wiki:Berlin)** zur Hauptstadt. Wo aber Parlament und Regierung sitzen sollten, war heftig umstritten. Am **20. Juni 1991** stimmte der [Bundestag](wiki:Deutscher Bundestag|Bundestag) nach einer langen, emotionalen Debatte ab: **338 zu 320 Stimmen für Berlin** — ein knappes Ergebnis.[^wiki-hauptstadtbeschluss]
 
-- **1999** zog der Bundestag in das umgebaute **Reichstagsgebäude** mit der gläsernen Kuppel von **Norman Foster**.
+- **1999** zog der Bundestag in das umgebaute **[Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building)** mit der gläsernen Kuppel von **[Norman Foster](wiki:Norman Foster)**.
 - Bonn blieb „**Bundesstadt**“; mehrere Ministerien haben dort bis heute ihren ersten Dienstsitz.
 - Seit **2006** steht im Grundgesetz (Art. 22): „Die Hauptstadt der Bundesrepublik Deutschland ist Berlin.“`,
+    },
+    {
+      id: 'map-symbole-orte', type: 'map', title: 'Orte der Symbole: von Hambach bis Berlin',
+      view: 'de',
+      layers: { cities: false },
+      rivers: [{ name: 'Rhein', label: false }],
+      points: [
+        { lon: 8.118, lat: 49.325, label: 'Hambacher Schloss', num: 1, pos: 'l', detail: '**1832** — beim **[Hambacher Fest](wiki:Hambacher Fest|Hambach Festival)** wehten Tausende schwarz-rot-goldene Fahnen: Forderung nach Freiheit und nationaler Einheit. Das **[Hambacher Schloss](wiki:Hambacher Schloss|Hambach Castle)** gilt als „Wiege der deutschen Demokratie“.' },
+        { lon: 7.890, lat: 54.180, label: 'Helgoland', num: 2, pos: 'l', detail: '**1841** — auf der damals britischen Insel **[Helgoland](wiki:Helgoland)** schrieb [Hoffmann von Fallersleben](wiki:August Heinrich Hoffmann von Fallersleben|August Heinrich Hoffmann von Fallersleben) den Text des Deutschlandlieds.' },
+        { lon: 8.683, lat: 50.111, label: 'Paulskirche Frankfurt', num: 3, pos: 'l', detail: '**1848/49** — in der **[Paulskirche](wiki:Paulskirche (Frankfurt am Main)|St. Paul\'s Church, Frankfurt)** tagte die **[Frankfurter Nationalversammlung](wiki:Frankfurter Nationalversammlung|Frankfurt Parliament)**; Schwarz-Rot-Gold wurde zur Farbe des Deutschen Bundes.' },
+        { lon: 7.100, lat: 50.734, label: 'Bonn', num: 4, pos: 'l', detail: '**1949** — **[Bonn](wiki:Bonn)** wird vorläufige Hauptstadt der Bundesrepublik; das Grundgesetz legt Schwarz-Rot-Gold als Bundesflagge fest.' },
+        { lon: 13.405, lat: 52.520, label: 'Berlin', num: 5, pos: 'r', detail: '**1991/1999** — der Bundestag beschließt knapp **338 : 320** für **[Berlin](wiki:Berlin)**; 1999 zieht er in das **[Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building)** ein.' },
+      ],
+      caption: 'Die Zahlen folgen der Zeit: 1832 → 1841 → 1848 → 1949 → 1991/1999. Tippe auf die Marker für Details.',
     },
     {
       id: 'calc-stimmen', type: 'numeric', title: 'Wie knapp war es?',
@@ -65,11 +79,25 @@ Nach der Wiedervereinigung bestimmte der Einigungsvertrag **Berlin** zur Hauptst
       md: `
 Kaum ein Land setzt sich so intensiv mit den dunklen Seiten seiner Geschichte auseinander wie Deutschland — man spricht von **[[erinnerungskultur|Erinnerungskultur]]** oder „Vergangenheitsbewältigung“. Einige Beispiele:
 
-- **Denkmal für die ermordeten Juden Europas** (Holocaust-Mahnmal) in Berlin, eingeweiht **2005**, entworfen von **Peter Eisenman**: 2.711 Betonstelen nahe dem Brandenburger Tor.
-- **[[stolpersteine|Stolpersteine]]**: kleine Messingplatten im Gehweg vor den letzten frei gewählten Wohnorten von NS-Opfern. Der Künstler **Gunter Demnig** verlegt sie seit den 1990er-Jahren; inzwischen gibt es mehr als 100.000 in über 30 Ländern — das größte dezentrale Mahnmal der Welt.
-- **KZ-Gedenkstätten** wie Dachau, Buchenwald, Sachsenhausen oder Bergen-Belsen.
-- Der **27. Januar** ist seit 1996 **Tag des Gedenkens an die Opfer des Nationalsozialismus** — am 27. Januar 1945 befreite die Rote Armee das Vernichtungslager Auschwitz.
-- Auch die **DDR-Diktatur** wird aufgearbeitet: Die Stasi-Unterlagen sind seit 1992 einsehbar, die Gedenkstätte Berliner Mauer erinnert an die Teilung.`,
+- **[Denkmal für die ermordeten Juden Europas](wiki:Denkmal für die ermordeten Juden Europas|Memorial to the Murdered Jews of Europe)** (Holocaust-Mahnmal) in Berlin, eingeweiht **2005**, entworfen von **[Peter Eisenman](wiki:Peter Eisenman)**: 2.711 Betonstelen nahe dem [Brandenburger Tor](wiki:Brandenburger Tor|Brandenburg Gate).
+- **[[stolpersteine|Stolpersteine]]**: kleine Messingplatten im Gehweg vor den letzten frei gewählten Wohnorten von NS-Opfern. Der Künstler **[Gunter Demnig](wiki:Gunter Demnig)** verlegt sie seit den 1990er-Jahren; inzwischen gibt es mehr als 100.000 in über 30 Ländern — das größte dezentrale Mahnmal der Welt.
+- **KZ-Gedenkstätten** wie [Dachau](wiki:KZ Dachau|Dachau concentration camp), [Buchenwald](wiki:KZ Buchenwald|Buchenwald concentration camp), [Sachsenhausen](wiki:KZ Sachsenhausen|Sachsenhausen concentration camp) oder [Bergen-Belsen](wiki:KZ Bergen-Belsen|Bergen-Belsen concentration camp).
+- Der **27. Januar** ist seit 1996 **Tag des Gedenkens an die Opfer des Nationalsozialismus** — am 27. Januar 1945 befreite die [Rote Armee](wiki:Rote Armee|Red Army) das Vernichtungslager [Auschwitz](wiki:Konzentrationslager Auschwitz|Auschwitz concentration camp).
+- Auch die **DDR-Diktatur** wird aufgearbeitet: Die [Stasi-Unterlagen](wiki:Stasi-Unterlagen-Archiv|German Federal Archives) sind seit 1992 einsehbar, die [Gedenkstätte Berliner Mauer](wiki:Gedenkstätte Berliner Mauer) erinnert an die Teilung.`,
+    },
+    {
+      id: 'map-erinnerung', type: 'map', title: 'Orte der Erinnerung',
+      view: 'de',
+      layers: { cities: false },
+      points: [
+        { lon: 11.468, lat: 48.270, label: 'KZ Dachau', kind: 'site', pos: 'l', color: '#374151', detail: '**[KZ Dachau](wiki:KZ Dachau|Dachau concentration camp)** — im März 1933 eröffnet, das erste Konzentrationslager der Nationalsozialisten; heute Gedenkstätte.' },
+        { lon: 11.249, lat: 51.021, label: 'KZ Buchenwald', kind: 'site', pos: 'l', color: '#374151', detail: '**[KZ Buchenwald](wiki:KZ Buchenwald|Buchenwald concentration camp)** — 1937 bei Weimar errichtet; heute Gedenkstätte.' },
+        { lon: 13.264, lat: 52.766, label: 'KZ Sachsenhausen', kind: 'site', pos: 'l', color: '#374151', detail: '**[KZ Sachsenhausen](wiki:KZ Sachsenhausen|Sachsenhausen concentration camp)** — 1936 in Oranienburg nördlich von Berlin errichtet.' },
+        { lon: 9.907, lat: 52.759, label: 'KZ Bergen-Belsen', kind: 'site', pos: 'l', color: '#374151', detail: '**[KZ Bergen-Belsen](wiki:KZ Bergen-Belsen|Bergen-Belsen concentration camp)** — bei Celle; im April 1945 von britischen Truppen befreit.' },
+        { lon: 13.379, lat: 52.514, label: 'Holocaust-Mahnmal', pos: 'r', color: '#7c3aed', detail: 'Das **[Denkmal für die ermordeten Juden Europas](wiki:Denkmal für die ermordeten Juden Europas|Memorial to the Murdered Jews of Europe)** in Berlin (2005) besteht aus 2.711 Betonstelen — entworfen von [Peter Eisenman](wiki:Peter Eisenman|Peter Eisenman).' },
+        { lon: 13.390, lat: 52.535, label: 'Gedenkstätte Berliner Mauer', pos: 't', color: '#0d9488', detail: 'Die **[Gedenkstätte Berliner Mauer](wiki:Gedenkstätte Berliner Mauer|Berlin Wall Memorial)** an der Bernauer Straße erinnert an die Teilung der Stadt und die Opfer an der Grenze.' },
+      ],
+      caption: 'Dunkelgrau: KZ-Gedenkstätten · Violett: Holocaust-Mahnmal · Türkis: Erinnerung an die Teilung. Eine kleine Auswahl, keine vollständige Liste.',
     },
     {
       id: 'neunter', type: 'viz', viz: 'timeline', title: 'Der 9. November — Deutschlands Schicksalstag',
@@ -81,6 +109,17 @@ Kaum ein Land setzt sich so intensiv mit den dunklen Seiten seiner Geschichte au
         { year: 1989, label: 'Fall der Mauer', detail: 'Nach einer missverständlichen Pressekonferenz öffnen die Grenzübergänge in Berlin.' },
       ] },
       caption: 'Wegen der Pogrome von 1938 wurde nicht der 9. November, sondern der 3. Oktober zum Nationalfeiertag.',
+    },
+    {
+      id: 'map-9-november', type: 'map', title: 'Der 9. November an drei Orten',
+      view: 'central-europe',
+      layers: { cities: false },
+      points: [
+        { lon: 16.373, lat: 48.208, label: 'Wien (1848)', kind: 'capital', pos: 'r', detail: '**1848** — in Wien wird der Paulskirchen-Abgeordnete **Robert Blum** hingerichtet: ein Schlag für die Revolution.' },
+        { lon: 11.576, lat: 48.137, label: 'München (1923)', kind: 'capital', pos: 'r', detail: '**1923** — der **[Hitler-Putsch](wiki:Hitlerputsch|Beer Hall Putsch)** scheitert vor der Feldherrnhalle.' },
+        { lon: 13.405, lat: 52.520, label: 'Berlin (1918 · 1938 · 1989)', kind: 'capital', pos: 'r', detail: '**1918** — [Philipp Scheidemann](wiki:Philipp Scheidemann|Philipp Scheidemann) ruft die Republik aus. **1938** — in der Nacht zum 10. November brennen im ganzen Reich die Synagogen (**[Novemberpogrome](wiki:Novemberpogrome 1938|Kristallnacht)**). **1989** — die Mauer öffnet sich.' },
+      ],
+      caption: 'Berlin steht für drei Ereignisse an einem Datum. Die Novemberpogrome 1938 fanden in ganz Deutschland statt.',
     },
     {
       id: 'quiz-hymne', type: 'quiz', title: 'Die Hymne',
@@ -106,12 +145,12 @@ Kaum ein Land setzt sich so intensiv mit den dunklen Seiten seiner Geschichte au
     },
     {
       id: 'fact-helgoland', type: 'callout', tone: 'fact', title: 'Die Hymne entstand im Ausland',
-      md: 'Helgoland gehörte 1841 zu Großbritannien — der Text der deutschen Nationalhymne wurde also auf britischem Boden geschrieben. Erst 1890 kam die Insel im Tausch gegen Rechte in Ostafrika (Sansibar) an das Deutsche Reich.',
+      md: 'Helgoland gehörte 1841 zu Großbritannien — der Text der deutschen Nationalhymne wurde also auf britischem Boden geschrieben. Erst 1890 kam die Insel im Tausch gegen Rechte in [Ostafrika](wiki:Deutsch-Ostafrika|German East Africa) ([Sansibar](wiki:Sansibar|Zanzibar)) an das Deutsche Reich.',
     },
     {
       id: 'recall', type: 'recall', title: 'Warum der 3. Oktober?',
       prompt: 'Warum ist der **3. Oktober** Nationalfeiertag und nicht der 9. November, an dem die Mauer fiel?',
-      answer: 'Der **9. November** ist ein widersprüchlicher „Schicksalstag“: Neben dem Mauerfall 1989 und der Ausrufung der Republik 1918 steht er auch für den Hitler-Putsch 1923 und vor allem für die **Novemberpogrome 1938**, bei denen die Nationalsozialisten Synagogen anzündeten und Juden verfolgten. Ein Feiertag an diesem Datum galt daher als unangemessen. Der **3. Oktober** ist der Tag, an dem die DDR 1990 der Bundesrepublik **beitrat** und die Einheit rechtlich vollzogen wurde.',
+      answer: 'Der **9. November** ist ein widersprüchlicher „Schicksalstag“: Neben dem Mauerfall 1989 und der Ausrufung der Republik 1918 steht er auch für den [Hitler-Putsch](wiki:Hitler-Putsch|Beer Hall Putsch) 1923 und vor allem für die **Novemberpogrome 1938**, bei denen die Nationalsozialisten Synagogen anzündeten und Juden verfolgten. Ein Feiertag an diesem Datum galt daher als unangemessen. Der **3. Oktober** ist der Tag, an dem die DDR 1990 der Bundesrepublik **beitrat** und die Einheit rechtlich vollzogen wurde.',
       hints: ['Was geschah am 9. November 1938?'],
       cards: ['neunter', 'dritter'],
     },

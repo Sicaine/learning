@@ -23,7 +23,7 @@ Attention flips both properties:
     },
     {
       id: 'video', type: 'video', youtube: 'eMlx5fFNoYc', label: 'Attention in transformers, step-by-step', channel: '3Blue1Brown', minutes: 26,
-      why: 'Explained for language (tokens are words), but the mechanism is identical for image patches. Focus on the query/key dot products, the softmax, and the value vectors.[^3b1b-nn]',
+      why: 'Explained for [language](wiki:Natural language processing|Verarbeitung natürlicher Sprache) (tokens are words), but the mechanism is identical for image patches. Focus on the query/key dot products, the softmax, and the value vectors.[^3b1b-nn]',
     },
     {
       id: 'qkv', type: 'text', title: 'Queries, keys and values',
@@ -52,7 +52,7 @@ Step by step:
 1. $S = QK^\\top$ — an $N \\times N$ matrix of scores. Row $i$ holds $q_i \\cdot k_j$ for every $j$.
 2. Divide by $\\sqrt{d_k}$ (the width of queries/keys) — explained below.
 3. [[softmax]] **along each row** → weights $A_{ij} \\ge 0$ with $\\sum_j A_{ij} = 1$.
-4. Output for token $i$: $\\sum_j A_{ij}\\, v_j$ — a **weighted average of values**.
+4. Output for token $i$: $\\sum_j A_{ij}\\, v_j$ — a **[weighted average](wiki:Weighted arithmetic mean|Gewichtetes arithmetisches Mittel) of values**.
 
 So each token's new representation is a blend of information from the tokens it found relevant. When all tokens come from the same image, it is called **[[self-attention]]**; when queries come from somewhere else (e.g. a prompt or object queries), it's *cross-attention*.`,
     },
@@ -92,7 +92,7 @@ One attention pattern per token is limiting — a patch may want to know "which 
 
 $$\\mathrm{MHA}(X) = \\mathrm{Concat}(\\mathrm{head}_1, \\dots, \\mathrm{head}_h)\\, W_O$$
 
-Same total cost as one big head, but many different relations. In trained ViTs you find heads that attend locally (like a convolution), heads that attend to the same object, and heads that attend almost everywhere.`,
+Same total cost as one big head, but many different relations. In trained [ViTs](wiki:Vision transformer) you find heads that attend locally (like a convolution), heads that attend to the same object, and heads that attend almost everywhere.`,
     },
     {
       id: 'calc-head', type: 'numeric', title: 'Head width',
@@ -105,19 +105,19 @@ Same total cost as one big head, but many different relations. In trained ViTs y
       md: `
 The score matrix has $N \\times N$ entries — per head, per layer. For 196 tokens (224 px, patch 16) that's 38k entries: trivial. But tokens grow with the *square* of resolution, and attention with the square of tokens, so **attention cost grows with the 4th power of the image side length**. Doubling resolution → 4× tokens → 16× attention compute and memory.
 
-Modern kernels like FlashAttention avoid ever storing the full matrix, which fixes the memory problem but not the compute. Hierarchical designs like Swin[^swin] restrict attention to local windows to stay affordable at high resolution.`,
+Modern kernels like [FlashAttention](wiki:FlashAttention) avoid ever storing the full matrix, which fixes the memory problem but not the compute. Hierarchical designs like Swin[^swin] restrict attention to local windows to stay affordable at high resolution.`,
     },
     {
       id: 'calc-n2', type: 'numeric', title: 'How big is the attention matrix?',
       question: 'DINOv2 at 518 × 518 with patch size 14 produces 1369 patch tokens (ignore the CLS token). How many entries does one head’s attention matrix have?',
       answer: 1874161, tolerance: 0,
       hint: '$1369^2$',
-      explain: '$1369^2 = 1{,}874{,}161$ — per head, per layer. ViT-L has 16 heads × 24 layers. That is why high-resolution inference with big ViTs gets expensive fast — you’ll compute what fits on a 4090 in the last stage.',
+      explain: '$1369^2 = 1{,}874{,}161$ — per head, per layer. [ViT-L](wiki:Vision transformer) has 16 heads × 24 layers. That is why high-resolution inference with big ViTs gets expensive fast — you’ll compute what fits on a [4090](wiki:GeForce 40 series|Nvidia-GeForce-40-Serie) in the last stage.',
     },
     {
       id: 'mission', type: 'callout', tone: 'mission', title: 'Attention is why DINO features “know” the whole watch',
       md: `
-In a ViT, the patch token on the tip of the minute hand can, in one layer, attend to the dial center, the minute track and the other hand. Its output [[embedding]] therefore encodes *context*: "I'm the tip of the long hand", not just "dark thin bar". That's the property you want for part segmentation — and why DINO-family patch features are so much better for dense tasks than raw CNN features of the same size.
+In a ViT, the patch token on the tip of the minute hand can, in one layer, attend to the dial center, the minute track and the other hand. Its output [[embedding]] therefore encodes *context*: "I'm the tip of the long hand", not just "dark thin bar". That's the property you want for part segmentation — and why DINO-family patch features are so much better for dense tasks than raw [CNN](wiki:Convolutional neural network|Convolutional Neural Network) features of the same size.
 
 The flip side: context can also *mislead*. A patch in a render with a perfectly clean, reflection-free crystal "sees" a globally different image than a patch in a real photo with glare — so even locally identical regions get different features. Keep that in mind for the domain-gap lesson.`,
     },

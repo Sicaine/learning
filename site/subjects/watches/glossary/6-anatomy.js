@@ -3,7 +3,7 @@ export default [
   { id: 'case', term: 'Case', de: 'Gehäuse', cat: 'anatomy',
     short: 'The housing that protects the movement; its middle part (case middle / Mittelteil) carries lugs and crown.',
     related: ['bezel', 'lugs', 'case-back', 'crystal'] },
-  { id: 'bezel', term: 'Bezel', de: 'Lünette', cat: 'anatomy',
+  { id: 'bezel', wiki: { en: 'Bezel', de: 'Lünette (Uhr)' }, term: 'Bezel', de: 'Lünette', cat: 'anatomy',
     short: 'The ring around the crystal on top of the case — plain, fluted, or a rotating scale (diver’s, GMT, tachymeter).',
     related: ['case', 'crystal'] },
   { id: 'lugs', term: 'Lugs', de: 'Bandanstöße (Hörner)', cat: 'anatomy', aka: ['horns'],

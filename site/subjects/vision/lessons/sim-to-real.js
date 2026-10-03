@@ -15,7 +15,7 @@ export default {
       md: `
 Your 3D generator is a superpower: every render comes with a **pixel-perfect mask** for every part, you can produce rare cases on demand (skeleton dials, exotic bracelets, extreme angles), and the marginal cost of an image is a few seconds of GPU time.
 
-The catch: a network learns **whatever makes the training loss go down**. If renders have perfectly sharp edges, physically idealized reflections, no dust, no sensor noise, no JPEG artifacts and only a handful of HDRI backgrounds, the model may learn "a hand is the thin thing with the perfect specular highlight" — a rule that is true in the renderer and false on your photos.
+The catch: a network learns **whatever makes the training loss go down**. If [renders](wiki:Rendering (computer graphics)|Bildsynthese) have perfectly sharp edges, physically idealized reflections, no dust, no sensor [noise](wiki:Image noise|Bildrauschen), no [JPEG](wiki:JPEG|JPEG) artifacts and only a handful of [HDRI](wiki:High dynamic range|High Dynamic Range) backgrounds, the model may learn "a hand is the thin thing with the perfect [specular highlight](wiki:Specular highlight)" — a rule that is true in the renderer and false on your photos.
 
 That systematic difference between training distribution and deployment distribution is the **[[domain-gap]]**; making a model trained on simulation work in reality is **[[sim-to-real]]** transfer. It is the classic failure of synthetic data, and it is measurable.`,
     },
@@ -49,9 +49,9 @@ The last row is easy to overlook: even with a perfect renderer, if the *definiti
     {
       id: 'randomize', type: 'text', title: 'Two philosophies: photorealism vs randomization',
       md: `
-**Photorealism** tries to make renders indistinguishable from photos. It works, but every missing detail becomes a shortcut the model can exploit, and the effort never really ends.
+**[Photorealism](wiki:Photorealism|Fotorealismus)** tries to make renders indistinguishable from photos. It works, but every missing detail becomes a shortcut the model can exploit, and the effort never really ends.
 
-**[[domain-randomization|Domain randomization]]** takes the opposite route: vary everything that varies in the real world, *far beyond* realism — random lighting, HDRI environments, materials, textures, backgrounds, camera pose, focal length, blur, noise. If the training distribution is wide enough, the real world is just one more sample from it. It was introduced for robot vision trained purely in simulation,[^domain-randomization] and later shown to work for object detection, where synthetic pre-training followed by fine-tuning on a little real data worked best.[^dr-synthetic]
+**[[domain-randomization|Domain randomization]]** takes the opposite route: vary everything that varies in the real world, *far beyond* realism — random lighting, HDRI environments, materials, textures, backgrounds, camera pose, [focal length](wiki:Focal length|Brennweite), blur, noise. If the training distribution is wide enough, the real world is just one more sample from it. It was introduced for robot vision trained purely in simulation,[^domain-randomization] and later shown to work for object detection, where synthetic pre-training followed by fine-tuning on a little real data worked best.[^dr-synthetic]
 
 Two rules of thumb for watches:
 
@@ -68,7 +68,7 @@ Two rules of thumb for watches:
       md: `
 1. Pick ~1,000 real photos and ~1,000 renders (similar watch models if possible).
 2. Embed them with a frozen [[dinov3|DINOv3]] ViT-B or ViT-L [[backbone]] — global embedding (CLS token or mean of patch features).[^dinov3]
-3. Train a [[domain-classifier]]: logistic regression or k-NN, 5-fold cross-validated. Accuracy near 50% = overlap; near 100% = clear gap. (Naive renders are usually separated almost perfectly — that's normal, it is a very sensitive test.)
+3. Train a [[domain-classifier]]: [logistic regression](wiki:Logistic regression|Logistische Regression) or k-NN, 5-fold [cross-validated](wiki:Cross-validation (statistics)|Kreuzvalidierungsverfahren). Accuracy near 50% = overlap; near 100% = clear gap. (Naive renders are usually separated almost perfectly — that's normal, it is a very sensitive test.)
 4. Look at the *most confidently classified* renders: they show you what the renderer gets wrong.
 5. Go dense: average the patch features per class (dial, case, hands, …) using your masks, in real and synthetic images separately, and compare with [[cosine-similarity]]. If "synthetic dial" is closer to "synthetic case" than to "real dial", your model has to re-learn what a dial looks like on real data.
 6. The ultimate test: train on renders only, evaluate on real — then add real data in steps (100, 500, 2,000 images) and plot real mIoU. That curve tells you what synthetic data is worth to you.`,
@@ -78,7 +78,7 @@ Two rules of thumb for watches:
       md: `
 Common, proven recipes — you will likely combine several:
 
-- **Synthetic pre-training → real fine-tuning.** Train on renders first, then fine-tune on a smaller real set. Cheap on labels and usually the strongest simple baseline.[^dr-synthetic]
+- **[Synthetic](wiki:Synthetic data|Synthetische Daten) pre-training → real fine-tuning.** Train on renders first, then fine-tune on a smaller real set. Cheap on labels and usually the strongest simple baseline.[^dr-synthetic]
 - **Mixed batches.** Every [[batch]] contains a fixed ratio (e.g. 50/50) of real and synthetic images. The ratio is a hyperparameter worth an [[ablation]].
 - **Targeted synthesis.** Use renders mainly for what is *rare* in your real data: unusual dials, extreme angles, specific complications.
 - **[[copy-paste-augmentation|Copy-paste]]:** cut real watches out with their masks and paste them onto varied real backgrounds — real appearance, synthetic composition.[^copy-paste]

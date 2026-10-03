@@ -13,30 +13,60 @@ export default {
     {
       id: 'aufstieg', type: 'text', title: 'Vom Kurfürstentum zur Großmacht',
       md: `
-Nach dem Dreißigjährigen Krieg bauten die **Hohenzollern** in Brandenburg-Preußen einen straff organisierten Staat auf. Der „Große Kurfürst" Friedrich Wilhelm holte 1685 verfolgte französische Protestanten (**Hugenotten**) ins Land (Edikt von Potsdam). **1701** krönte sich Kurfürst Friedrich III. in Königsberg zum „König in Preußen" (Friedrich I.).
+Nach dem Dreißigjährigen Krieg bauten die **[Hohenzollern](wiki:Hohenzollern|House of Hohenzollern)** in [Brandenburg-Preußen](wiki:Brandenburg-Preußen|Brandenburg–Prussia) einen straff organisierten Staat auf. Der „Große Kurfürst" [Friedrich Wilhelm](wiki:Friedrich Wilhelm (Brandenburg)|Frederick William, the Great Elector) holte 1685 verfolgte französische Protestanten (**[Hugenotten](wiki:Hugenotten|Huguenots)**) ins Land ([Edikt von Potsdam](wiki:Edikt von Potsdam|Edict of Potsdam)). **1701** krönte sich Kurfürst Friedrich III. in [Königsberg](wiki:Königsberg (Preußen)|Königsberg) zum „König in Preußen" ([Friedrich I.](wiki:Friedrich I. (Preußen)|Frederick I of Prussia)).
 
-Sein Sohn **Friedrich Wilhelm I.**, der „**Soldatenkönig**", sparte bei Hof und baute das Heer massiv aus — Preußen wurde zum Staat mit einer Armee, über den man spottete: „ein Heer, das sich einen Staat hält". Dazu gehörten Pflichtbewusstsein, Gehorsam und Sparsamkeit — Tugenden, die bis heute als „preußisch" gelten.`,
+Sein Sohn **[Friedrich Wilhelm I.](wiki:Friedrich Wilhelm I. (Preußen)|Frederick William I of Prussia)**, der „**[Soldatenkönig](wiki:Soldatenkönig|Frederick William I of Prussia)**", sparte bei Hof und baute das Heer massiv aus — Preußen wurde zum Staat mit einer Armee, über den man spottete: „ein Heer, das sich einen Staat hält". Dazu gehörten Pflichtbewusstsein, Gehorsam und Sparsamkeit — Tugenden, die bis heute als „preußisch" gelten.`,
     },
     {
       id: 'friedrich', type: 'text', title: 'Friedrich der Große (reg. 1740–1786)',
       md: `
-**[[friedrich-der-grosse|Friedrich II.]]** hatte als junger Kronprinz mit Flöte und Philosophie wenig Soldatisches — sein Vater ließ nach einem Fluchtversuch seinen Freund Katte vor seinen Augen hinrichten. Als König aber führte er Preußen in drei Kriege um **Schlesien** gegen Österreichs **Maria Theresia** und behauptete sich im **Siebenjährigen Krieg (1756–1763)** gegen eine Übermacht. Preußen war nun eine der fünf europäischen Großmächte; der Gegensatz zu Österreich (**Dualismus**) prägte die deutsche Geschichte bis 1866.
+**[[friedrich-der-grosse|Friedrich II.]]** hatte als junger Kronprinz mit Flöte und Philosophie wenig Soldatisches — sein Vater ließ nach einem Fluchtversuch seinen Freund [Katte](wiki:Hans Hermann von Katte|Hans Hermann von Katte) vor seinen Augen hinrichten. Als König aber führte er Preußen in drei [Kriege](wiki:Schlesische Kriege|Silesian Wars) um **[Schlesien](wiki:Schlesien|Silesia)** gegen Österreichs **[Maria Theresia](wiki:Maria Theresia|Maria Theresa)** und behauptete sich im **[Siebenjährigen Krieg](wiki:Siebenjähriger Krieg|Seven Years' War) (1756–1763)** gegen eine Übermacht. Preußen war nun eine der fünf europäischen Großmächte; der Gegensatz zu Österreich (**Dualismus**) prägte die deutsche Geschichte bis 1866.
 
-Zugleich galt Friedrich als Musterbeispiel des **[[aufgeklaerter-absolutismus|aufgeklärten Absolutismus]]**: Er korrespondierte mit **Voltaire**, nannte sich „ersten Diener des Staates", schränkte die Folter ein, förderte religiöse Toleranz („jeder soll nach seiner Façon selig werden"), Landesausbau (Trockenlegung des Oderbruchs) und den Kartoffelanbau. An der Macht teilen wollte er allerdings nicht. Sein Sommerschloss: **Sanssouci** in Potsdam.[^wp-friedrich-ii]`,
+Zugleich galt Friedrich als Musterbeispiel des **[[aufgeklaerter-absolutismus|aufgeklärten Absolutismus]]**: Er korrespondierte mit **[Voltaire](wiki:Voltaire|Voltaire)**, nannte sich „ersten Diener des Staates", schränkte die Folter ein, förderte religiöse Toleranz („jeder soll nach seiner Façon selig werden"), Landesausbau (Trockenlegung des [Oderbruchs](wiki:Oderbruch|Oderbruch)) und den Kartoffelanbau. An der Macht teilen wollte er allerdings nicht. Sein Sommerschloss: **[Sanssouci](wiki:Schloss Sanssouci|Sanssouci)** in [Potsdam](wiki:Potsdam|Potsdam).[^wp-friedrich-ii]`,
+    },
+    {
+      id: 'map-preussen', type: 'map', title: 'Preußen und seine Nachbarn',
+      view: [8.5, 47.8, 24.0, 56.0],
+      rivers: [{ name: 'Elbe', labelAt: 0.55 }, { name: 'Oder', labelAt: 0.5 }, { name: 'Weichsel', labelAt: 0.5 }],
+      places: [
+        { name: 'Berlin', kind: 'capital', pos: 'r', detail: '**[Berlin](wiki:Berlin|Berlin)** — Hauptstadt Brandenburg-Preußens.' },
+        { name: 'Potsdam', pos: 'l', detail: '**[Potsdam](wiki:Potsdam|Potsdam)** — Residenz der Hohenzollern; hier steht Friedrichs [Sanssouci](wiki:Schloss Sanssouci|Sanssouci).' },
+        { name: 'Königsberg', pos: 'l', detail: '**[Königsberg](wiki:Königsberg (Preußen)|Königsberg)** — hier krönte sich Friedrich III. 1701 zum „König in Preußen"; Heimat Immanuel Kants.' },
+        { name: 'Breslau', pos: 'r', detail: '**[Breslau](wiki:Breslau|Wrocław)** — Hauptstadt Schlesiens, um das Friedrich der Große drei Kriege führte.' },
+        { name: 'Wien', pos: 'r', kind: 'capital', detail: '**[Wien](wiki:Wien|Vienna)** — Residenz der Habsburger und Maria Theresias: Gegenspielerin Preußens (Dualismus).' },
+      ],
+      caption: 'Preußen lag im Nordosten des Reiches, die Habsburger im Südosten: der „Dualismus" der beiden Großmächte prägte die deutsche Geschichte bis 1866. Die Grenzen von damals sind hier nicht eingezeichnet.',
     },
     {
       id: 'aufklaerung', type: 'callout', tone: 'history', title: '„Habe Mut, dich deines eigenen Verstandes zu bedienen!"',
-      md: `So formulierte der Königsberger Philosoph **Immanuel Kant** 1784 den Wahlspruch der Aufklärung. Aufklärung hieß: Vernunft statt Tradition und Autorität, Toleranz, Menschenrechte, Kritik an Aberglauben. In Deutschland stehen neben Kant etwa **Lessing** („Nathan der Weise") und **Moses Mendelssohn** für diese Bewegung.`,
+      md: `So formulierte der Königsberger Philosoph **[Immanuel Kant](wiki:Immanuel Kant|Immanuel Kant)** 1784 den Wahlspruch der Aufklärung. Aufklärung hieß: Vernunft statt Tradition und Autorität, Toleranz, Menschenrechte, Kritik an Aberglauben. In Deutschland stehen neben Kant etwa **[Lessing](wiki:Gotthold Ephraim Lessing|Gotthold Ephraim Lessing)** („[Nathan der Weise](wiki:Nathan der Weise|Nathan the Wise)") und **[Moses Mendelssohn](wiki:Moses Mendelssohn|Moses Mendelssohn)** für diese Bewegung.`,
     },
     {
       id: 'napoleon', type: 'text', title: 'Napoleon verändert Deutschland',
       md: `
-Nach der Französischen Revolution (1789) überrollten französische Armeen Europa. Für Deutschland hatte **Napoleon Bonaparte** enorme Folgen:
+Nach der [Französischen Revolution](wiki:Französische Revolution|French Revolution) (1789) überrollten französische Armeen Europa. Für Deutschland hatte **[Napoleon Bonaparte](wiki:Napoleon Bonaparte|Napoleon)** enorme Folgen:
 
-- **Flurbereinigung**: Geistliche Fürstentümer und fast alle Reichsstädte wurden aufgelöst und größeren Staaten zugeschlagen (Reichsdeputationshauptschluss **1803**). Aus Hunderten Herrschaften wurden einige Dutzend Staaten; Bayern, Württemberg und Baden wuchsen stark.
-- **1806** gründeten 16 Staaten unter Napoleons Schutz den **[[rheinbund]]** und traten aus dem Reich aus. Am **6. August 1806** legte Franz II. die Kaiserkrone nieder — das **[[heiliges-roemisches-reich|Heilige Römische Reich]]** endete nach über 800 Jahren.
-- Im Oktober **1806** wurde **Preußen bei Jena und Auerstedt** vernichtend geschlagen; im Frieden von Tilsit 1807 verlor es rund die Hälfte seines Gebiets.
-- In vielen Gebieten brachte Napoleon den **Code civil**: Gleichheit vor dem Gesetz, Zivilehe, Abschaffung feudaler Privilegien.`,
+- **Flurbereinigung**: Geistliche Fürstentümer und fast alle Reichsstädte wurden aufgelöst und größeren Staaten zugeschlagen ([Reichsdeputationshauptschluss](wiki:Reichsdeputationshauptschluss|Reichsdeputationshauptschluss) **1803**). Aus Hunderten Herrschaften wurden einige Dutzend Staaten; Bayern, Württemberg und Baden wuchsen stark.
+- **1806** gründeten 16 Staaten unter Napoleons Schutz den **[[rheinbund]]** und traten aus dem Reich aus. Am **6. August 1806** legte [Franz II.](wiki:Franz II. (HRR)|Francis II, Holy Roman Emperor) die Kaiserkrone nieder — das **[[heiliges-roemisches-reich|Heilige Römische Reich]]** endete nach über 800 Jahren.
+- Im Oktober **1806** wurde **Preußen bei [Jena und Auerstedt](wiki:Schlacht bei Jena und Auerstedt|Battle of Jena–Auerstedt)** vernichtend geschlagen; im [Frieden von Tilsit](wiki:Frieden von Tilsit|Treaties of Tilsit) 1807 verlor es rund die Hälfte seines Gebiets.
+- In vielen Gebieten brachte Napoleon den **[Code civil](wiki:Code civil|Napoleonic Code)**: Gleichheit vor dem Gesetz, Zivilehe, Abschaffung feudaler Privilegien.`,
+    },
+    {
+      id: 'map-napoleon', type: 'map', title: 'Napoleon in Europa: Stationen 1806–1815',
+      view: [-3.5, 44.0, 40.0, 59.0],
+      layers: { cities: false },
+      places: [
+        { name: 'Jena', label: 'Jena 1806', kind: 'battle', pos: 'b', detail: '**[Jena](wiki:Jena|Jena)** — 14. Oktober 1806: Preußen wird bei Jena und Auerstedt vernichtend geschlagen.' },
+        { name: 'Moskau', label: 'Moskau 1812', kind: 'site', pos: 'l', detail: '**[Moskau](wiki:Moskau|Moscow)** — Ziel des [Russlandfeldzugs](wiki:Russlandfeldzug 1812|French invasion of Russia) 1812; der Rückzug zerstörte die Große Armee.' },
+        { name: 'Leipzig', label: 'Leipzig 1813', kind: 'battle', pos: 'r', detail: '**[Leipzig](wiki:Leipzig|Leipzig)** — Oktober 1813: die Völkerschlacht, Napoleons entscheidende Niederlage.' },
+        { name: 'Waterloo', label: 'Waterloo 1815', kind: 'battle', pos: 'l', detail: '**[Waterloo](wiki:Waterloo (Belgien)|Waterloo, Belgium)** — 1815: Napoleons endgültige Niederlage.' },
+        { name: 'Paris', kind: 'capital', pos: 'l', detail: '**[Paris](wiki:Paris|Paris)** — Napoleons Hauptstadt.' },
+        { name: 'Wien', kind: 'capital', pos: 'b', detail: '**[Wien](wiki:Wien|Vienna)** — Tagungsort des Wiener Kongresses 1814/15.' },
+      ],
+      points: [
+        { lon: 21.89, lat: 55.08, label: 'Tilsit 1807', kind: 'site', pos: 'r', detail: '**[Tilsit](wiki:Sowetsk (Kaliningrad)|Sovetsk, Kaliningrad Oblast)** — 1807: Frieden von Tilsit; Preußen verliert etwa die Hälfte seines Gebiets.' },
+      ],
+      caption: 'Kreuz: Schlachten (Jena 1806, Leipzig 1813, Waterloo 1815); Raute: Tilsit (Frieden 1807) und Moskau (Russlandfeldzug 1812).',
     },
     {
       id: 'video-napoleon', type: 'video', youtube: 'HYM_GyrKqnw', label: 'Napoleon Bonaparte – der Jahrhundertherrscher und die Deutschen', channel: 'Terra X',
@@ -46,20 +76,20 @@ Nach der Französischen Revolution (1789) überrollten französische Armeen Euro
       md: `
 Die Niederlage zwang Preußen zur Modernisierung „von oben" — die **[[preussische-reformen|preußischen Reformen]]**:[^wp-preussische-reformen]
 
-- **Bauernbefreiung** (Oktoberedikt 1807): Ende der Erbuntertänigkeit.
-- **Städteordnung** (1808): kommunale Selbstverwaltung — Grundlage unserer heutigen Gemeindeselbstverwaltung.
-- **Gewerbefreiheit** und die **Emanzipation der Juden** (Edikt von 1812).
-- **Bildungsreform** unter **Wilhelm von Humboldt**: humanistisches Gymnasium, Gründung der Berliner Universität **1810** mit dem Ideal der Einheit von Forschung und Lehre.
-- **Heeresreform** unter Scharnhorst und Gneisenau: allgemeine Wehrpflicht, Ende der Prügelstrafe im Heer.
+- **Bauernbefreiung** ([Oktoberedikt](wiki:Oktoberedikt) 1807): Ende der Erbuntertänigkeit.
+- **[Städteordnung](wiki:Preußische Städteordnung|Prussian Reform Movement)** (1808): kommunale Selbstverwaltung — Grundlage unserer heutigen Gemeindeselbstverwaltung.
+- **[Gewerbefreiheit](wiki:Gewerbefreiheit|Economic freedom)** und die **Emanzipation der Juden** ([Edikt von 1812](wiki:Emanzipationsedikt)).
+- **Bildungsreform** unter **[Wilhelm von Humboldt](wiki:Wilhelm von Humboldt|Wilhelm von Humboldt)**: humanistisches Gymnasium, Gründung der [Berliner Universität](wiki:Humboldt-Universität zu Berlin|Humboldt University of Berlin) **1810** mit dem Ideal der Einheit von Forschung und Lehre.
+- **Heeresreform** unter [Scharnhorst](wiki:Gerhard von Scharnhorst|Gerhard von Scharnhorst) und [Gneisenau](wiki:August Neidhardt von Gneisenau|August Neidhardt von Gneisenau): allgemeine Wehrpflicht, Ende der Prügelstrafe im Heer.
 
-Die treibenden Köpfe waren **Freiherr vom Stein** und **Karl August von Hardenberg**.`,
+Die treibenden Köpfe waren **[Freiherr vom Stein](wiki:Karl vom und zum Stein|Heinrich Friedrich Karl vom und zum Stein)** und **[Karl August von Hardenberg](wiki:Karl August von Hardenberg|Karl August von Hardenberg)**.`,
     },
     {
       id: 'befreiung', type: 'text', title: 'Befreiungskriege und Wiener Kongress',
       md: `
-Nach Napoleons gescheitertem Russlandfeldzug 1812 erhoben sich Preußen, Russland und Österreich. In der **Völkerschlacht bei Leipzig** (16.–19. Oktober **1813**) wurde Napoleon geschlagen; nach seiner Rückkehr aus dem Exil verlor er endgültig **1815 bei Waterloo**.
+Nach Napoleons gescheitertem [Russlandfeldzug](wiki:Russlandfeldzug 1812|French invasion of Russia) 1812 erhoben sich Preußen, Russland und Österreich. In der **[Völkerschlacht bei Leipzig](wiki:Völkerschlacht bei Leipzig|Battle of Leipzig)** (16.–19. Oktober **1813**) wurde Napoleon geschlagen; nach seiner Rückkehr aus dem Exil verlor er endgültig **1815 bei [Waterloo](wiki:Schlacht bei Waterloo|Battle of Waterloo)**.
 
-Der **[[wiener-kongress|Wiener Kongress]] (1814/15)** unter dem österreichischen Staatskanzler **Metternich** ordnete Europa neu: Wiederherstellung der Fürstenherrschaft (**Restauration**) und Gleichgewicht der Großmächte. Einen deutschen Nationalstaat gab es nicht — stattdessen den **[[deutscher-bund|Deutschen Bund]]**, einen lockeren Bund souveräner Fürsten mit einem Gesandtenkongress in Frankfurt. Preußen gewann das Rheinland und Westfalen und rückte damit nach Westen.[^wp-wiener-kongress]`,
+Der **[[wiener-kongress|Wiener Kongress]] (1814/15)** unter dem österreichischen Staatskanzler **[Metternich](wiki:Klemens Wenzel Lothar von Metternich|Klemens von Metternich)** ordnete Europa neu: Wiederherstellung der Fürstenherrschaft (**[Restauration](wiki:Restauration (Geschichte))**) und Gleichgewicht der Großmächte. Einen deutschen Nationalstaat gab es nicht — stattdessen den **[[deutscher-bund|Deutschen Bund]]**, einen lockeren Bund souveräner Fürsten mit einem Gesandtenkongress in [Frankfurt](wiki:Frankfurt am Main|Frankfurt). Preußen gewann das [Rheinland](wiki:Rheinland|Rhineland) und [Westfalen](wiki:Westfalen|Westphalia) und rückte damit nach Westen.[^wp-wiener-kongress]`,
     },
     {
       id: 'timeline-napoleon', type: 'game', viz: 'timeline', title: 'Von Friedrich bis Waterloo',
@@ -87,6 +117,13 @@ Der **[[wiener-kongress|Wiener Kongress]] (1814/15)** unter dem österreichische
         { text: 'Völkerschlacht bei Leipzig', correct: false, why: 'Die war 1813.' },
         { text: 'Gründung des Deutschen Bundes', correct: false, why: 'Der Deutsche Bund entstand 1815 auf dem Wiener Kongress.' },
       ],
+    },
+    {
+      id: 'map-quiz-napoleon', type: 'map', title: 'Wo wurde Geschichte entschieden?',
+      view: [-3.5, 43.0, 40.0, 59.0],
+      layers: { cities: false },
+      quiz: { rounds: 6 },
+      places: [{ name: 'Leipzig' }, { name: 'Waterloo' }, { name: 'Moskau' }, { name: 'Paris' }, { name: 'Wien' }, { name: 'Berlin' }],
     },
     {
       id: 'match-reformer', type: 'match', title: 'Wer reformierte was?',

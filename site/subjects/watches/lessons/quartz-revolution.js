@@ -13,18 +13,18 @@ export default {
     {
       id: 'same-recipe', type: 'text', title: 'Same recipe, new oscillator',
       md: `
-Remember the recipe: energy – oscillator – counter. A quartz watch keeps it and swaps every ingredient:
+Remember the recipe: energy – oscillator – counter. A [quartz watch](wiki:Quartz clock|Quarzuhr) keeps it and swaps every ingredient:
 
-- **Energy:** a battery (or a solar cell charging a capacitor or accumulator) instead of a mainspring.
-- **Oscillator:** a tiny tuning fork of quartz crystal — the **[[quartz-oscillator]]** — instead of a balance wheel.
-- **Counter:** an integrated circuit and a **[[stepper-motor]]** driving a gear train (or an LCD) instead of an escapement.
+- **Energy:** a battery (or a [solar cell](wiki:Solar cell|Solarzelle) charging a [capacitor](wiki:Capacitor|Kondensator (Elektrotechnik)) or accumulator) instead of a mainspring.
+- **Oscillator:** a tiny [tuning fork](wiki:Tuning fork|Stimmgabel) of quartz crystal — the **[[quartz-oscillator]]** — instead of a balance wheel.
+- **Counter:** an [integrated circuit](wiki:Integrated circuit|Integrierter Schaltkreis) and a **[[stepper-motor]]** driving a gear train (or an [LCD](wiki:Liquid-crystal display|Flüssigkristallanzeige)) instead of an escapement.
 
-Quartz is **[[piezoelectricity|piezoelectric]]**: bend it and it produces a voltage; apply a voltage and it bends. So a circuit can make the fork vibrate *and* sense its vibration, keeping it ringing at its natural frequency — in watches, precisely **32,768 Hz**.[^wiki-quartz-clock]`,
+[Quartz](wiki:Quartz|Quarz) is **[[piezoelectricity|piezoelectric]]**: bend it and it produces a voltage; apply a voltage and it bends. So a circuit can make the fork vibrate *and* sense its vibration, keeping it ringing at its natural frequency — in watches, precisely **32,768 Hz**.[^wiki-quartz-clock]`,
     },
     {
       id: 'why-32768', type: 'text', title: 'Why 32,768?',
       md: `
-Because $32{,}768 = 2^{15}$. A **[[frequency-divider]]** is just a chain of flip-flops, each of which halves the frequency. Fifteen of them turn 32,768 Hz into exactly **1 Hz** — one pulse per second for the stepper motor, which jumps the seconds hand once.
+Because $32{,}768 = 2^{15}$. A **[[frequency-divider]]** is just a chain of [flip-flops](wiki:Flip-flop (electronics)|Flipflop), each of which halves the frequency. Fifteen of them turn 32,768 Hz into exactly **1 Hz** — one pulse per second for the stepper motor, which jumps the seconds hand once.
 
 Why not build a crystal that vibrates at 1 Hz directly? It would be far too large for a wrist. And 32,768 Hz sits just above the range of human hearing, so the watch does not whine.`,
     },
@@ -41,20 +41,62 @@ Why not build a crystal that vibrates at 1 Hz directly? It would be far too larg
     {
       id: 'astron', type: 'callout', tone: 'history', title: 'Seiko Quartz Astron, 25 December 1969',
       md: `
-Seiko launched the **Quartz Astron 35SQ**, the world's first quartz wristwatch, on Christmas Day 1969. It cost 450,000 yen — about the price of a mid-size car at the time. At a time when a few seconds to a few dozen seconds per day were normal for a precise mechanical watch, the Astron was accurate to **±5 seconds per month**.[^seiko-quartz]`,
+[Seiko](wiki:Seiko|Seiko) launched the **Quartz Astron 35SQ**, the world's first quartz [wristwatch](wiki:Wristwatch|Armbanduhr), on Christmas Day 1969. It cost 450,000 [yen](wiki:Japanese yen|Yen) — about the price of a mid-size car at the time. At a time when a few seconds to a few dozen seconds per day were normal for a precise mechanical watch, the Astron was accurate to **±5 seconds per month**.[^seiko-quartz]`,
     },
     {
       id: 'calc-astron', type: 'numeric', title: 'Compare accuracies',
       question: '±5 seconds per **month** (30 days) corresponds to how many seconds per **day**? (Two decimals.)',
       answer: 0.17, tolerance: 0.01, unit: 's/day',
-      explain: '5 / 30 ≈ 0.17 s per day — roughly 2 ppm, versus the ~116 ppm of a mechanical watch gaining 10 s/day. A COSC-certified mechanical chronometer is allowed −4 to +6 s/day.[^wiki-cosc]',
+      explain: '5 / 30 ≈ 0.17 s per day — roughly 2 ppm, versus the ~116 ppm of a mechanical watch gaining 10 s/day. A [COSC](wiki:COSC|Contrôle officiel suisse des chronomètres)-certified mechanical chronometer is allowed −4 to +6 s/day.[^wiki-cosc]',
+    },
+    {
+      id: 'map-quartz-world', type: 'map', title: 'Quartz: from Tokyo to the world — and back to Biel',
+      view: [-14, 12, 150, 62],
+      proj: 'lcc',
+      layers: { cities: false, countryLabels: false, seaLabels: false, mountains: false, rivers: false, lakes: false },
+      points: [
+        { lon: 139.774, lat: 35.684, label: 'Tokyo', num: 1, pos: 'l',
+          detail: '**[Seiko](wiki:Seiko|Seiko)** was founded in Tokyo in 1881 by Kintarō Hattori. In 1969 it introduced the world’s first commercial quartz wristwatch, the Astron.' },
+        { lon: 114.167, lat: 22.3, label: 'Hong Kong', num: 2, pos: 'b',
+          detail: '**[Hong Kong](wiki:Hong Kong|Hongkong)** — quartz watches were soon produced cheaply in large numbers, especially in Japan and later in Hong Kong.' },
+        { lon: 7.247, lat: 47.137, label: 'Biel/Bienne', num: 3, pos: 't',
+          detail: '**[Biel/Bienne](wiki:Biel/Bienne|Biel/Bienne)** — a watchmaking city since the 19th century and home to Rolex, Omega and Swatch. After the quartz shock, the Swiss answered here with the Swatch.' },
+      ],
+      lines: [
+        { label: 'quartz production moved east', arrow: true, color: '#0f766e', dashed: true, coords: [[7.247, 47.137], [139.774, 35.684]] },
+      ],
+      caption: 'The Swiss watch industry lost its lead to Japanese and Hong Kong makers during the quartz crisis. The arrow is symbolic, not a trade route.',
     },
     {
       id: 'crisis', type: 'text', title: 'The quartz crisis',
       md: `
-Quartz movements quickly became cheap to mass-produce, especially in Japan and later Hong Kong. The Swiss industry — which had dominated with around half of the world market — was built on mechanical craftsmanship and many small specialized firms. It was hit hard: employment in the Swiss watch industry fell from about **90,000 in 1970 to 28,000 in 1988**.[^wiki-quartz-crisis]
+Quartz movements quickly became cheap to mass-produce, especially in Japan and later [Hong Kong](wiki:Hong Kong|Hongkong). The Swiss industry — which had dominated with around half of the world market — was built on mechanical craftsmanship and many small specialized firms. It was hit hard: employment in the Swiss watch industry fell from about **90,000 in 1970 to 28,000 in 1988**.[^wiki-quartz-crisis]
 
-In 1983 the two largest Swiss groups, ASUAG and SSIH, merged to survive — the core of what later became the **Swatch Group**. The same year saw the launch of the *Swatch*: a cheap, colorful plastic quartz watch with a drastically reduced part count, made in Switzerland on automated lines. It sold in the millions and financed the industry's recovery. Paradoxically, the mechanical watch survived by becoming *unnecessary*: no longer a tool, it became an object of craft, heritage and luxury.`,
+In 1983 the two largest Swiss groups, [ASUAG](wiki:ASUAG|Allgemeine Schweizer Uhrenindustrie) and [SSIH](wiki:SSIH), merged to survive — the core of what later became the **[Swatch Group](wiki:Swatch Group|Swatch Group)**. The same year saw the launch of the *[Swatch](wiki:Swatch|Swatch)*: a cheap, colorful plastic quartz watch with a drastically reduced part count, made in Switzerland on automated lines. It sold in the millions and financed the industry's recovery. Paradoxically, the mechanical watch survived by becoming *unnecessary*: no longer a tool, it became an object of craft, heritage and luxury.`,
+    },
+    {
+      id: 'map-swiss-jura', type: 'map', title: 'The Swiss “Watch Valley” in the Jura',
+      view: [5.3, 45.9, 8.1, 47.8],
+      layers: { cities: false, countryLabels: false, seaLabels: false },
+      points: [
+        { lon: 6.825, lat: 47.101, label: 'La Chaux-de-Fonds', pos: 'l',
+          detail: '**[La Chaux-de-Fonds](wiki:La Chaux-de-Fonds|La Chaux-de-Fonds)**, 992 m above sea level in the Jura, grew rich on watchmaking; it is described as the most important centre of the industry in the “Watch Valley”.' },
+        { lon: 7.247, lat: 47.137, label: 'Biel/Bienne', pos: 'r',
+          detail: '**[Biel/Bienne](wiki:Biel/Bienne|Biel/Bienne)** — Rolex, Omega and Swatch are based here; the city calls itself the “world capital of watchmaking”.' },
+        { lon: 7.396, lat: 47.193, label: 'Grenchen', pos: 'r',
+          detail: '**[Grenchen](wiki:Grenchen|Grenchen)** — a town at the foot of the Jura with a watch industry that is more than 150 years old.' },
+        { lon: 6.233, lat: 46.617, label: 'Vallée de Joux', pos: 'l',
+          detail: 'The **[Vallée de Joux](wiki:Vallée de Joux|Vallée de Joux)** is a high valley of the Jura north of Geneva. Together with Neuchâtel it is regarded as a birthplace of Swiss horology; Audemars Piguet, Blancpain and Jaeger-LeCoultre have their factories there.' },
+        { lon: 6.15, lat: 46.2, label: 'Geneva', pos: 'r',
+          detail: '**[Geneva](wiki:Geneva|Genf)** — at the south-western end of the Jura arc.' },
+        { lon: 6.929, lat: 46.99, label: 'Neuchâtel', pos: 'l',
+          detail: '**[Neuchâtel](wiki:Neuchâtel|Neuenburg NE)** — on its lake below La Chaux-de-Fonds; together with the Vallée de Joux it is regarded as a birthplace of Swiss horology.' },
+      ],
+      lines: [
+        { label: 'Watch Valley (schematic axis)', dashed: true, color: '#b91c1c', coords: [[6.15, 46.2], [6.233, 46.617], [6.825, 47.101], [7.247, 47.137], [7.396, 47.193]], labelAt: 0.3,
+          detail: 'A schematic line through the main watchmaking places of the Swiss Jura, from Geneva in the south-west to Grenchen in the north-east. It is not an official boundary.' },
+      ],
+      caption: 'The line is a schematic aid, not an official border. The mountains named here are the Jura.',
     },
     {
       id: 'match-analogy', type: 'match', title: 'Mechanical ↔ quartz',

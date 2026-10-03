@@ -14,7 +14,7 @@ export default {
     {
       id: 'idea', type: 'text', title: 'Images as sequences of patches',
       md: `
-Transformers process a set of [[token|tokens]]. Text has natural tokens (word pieces). For images, the ViT[^vit] makes its own:
+Transformers process a set of [[token|tokens]]. Text has natural tokens (word pieces). For images, the [ViT](wiki:Vision transformer)[^vit] makes its own:
 
 1. **Patchify.** Cut the $H \\times W \\times 3$ image into non-overlapping $P \\times P$ patches. With $P = 16$ and a 224 px image: a $14 \\times 14$ grid, $N = 196$ patches.
 2. **[[patch-embedding|Patch embedding]].** Flatten each patch ($16 \\cdot 16 \\cdot 3 = 768$ numbers) and multiply by a learned matrix → a $D$-dimensional token. (In code this is a convolution with kernel size $P$ and stride $P$.)
@@ -109,12 +109,12 @@ That's the whole architecture. Everything else — DINO's losses, SAM's decoder,
       md: `
 [[self-attention|Self-attention]] has no idea where tokens are — shuffle the patches and the outputs just shuffle along. So the ViT adds a **[[positional-embedding]]** to every token: a learned vector for grid position $(r, c)$.
 
-Those embeddings are learned for one grid size (e.g. $16 \\times 16$). To run at 518 px ($37 \\times 37$), implementations **interpolate** the position table to the new grid. That works surprisingly well — within limits. Models are therefore often trained briefly at high resolution at the end of pretraining (DINOv2 does this) so that high-resolution features are reliable. Newer models (including DINOv3) use rotary position embeddings (RoPE), which extrapolate more gracefully to different resolutions.[^dinov3]`,
+Those embeddings are learned for one grid size (e.g. $16 \\times 16$). To run at 518 px ($37 \\times 37$), implementations **[interpolate](wiki:Interpolation|Interpolation (Mathematik))** the position table to the new grid. That works surprisingly well — within limits. Models are therefore often trained briefly at high resolution at the end of pretraining (DINOv2 does this) so that high-resolution features are reliable. Newer models (including DINOv3) use rotary position embeddings (RoPE), which extrapolate more gracefully to different resolutions.[^dinov3]`,
     },
     {
       id: 'bias', type: 'callout', tone: 'insight', title: 'Inductive bias: why ViTs needed so much data',
       md: `
-A CNN is *built* to assume locality and translation equivariance. A ViT assumes almost nothing — it must *learn* that nearby patches matter, from data. The original ViT lost to ResNets when trained on ImageNet (1.3M images) alone and only won when pretrained on 300M images.[^vit]
+A CNN has a strong [inductive bias](wiki:Inductive bias|Induktive Verzerrung) — it is *built* to assume locality and translation equivariance. A ViT assumes almost nothing — it must *learn* that nearby patches matter, from data. The original ViT lost to [ResNets](wiki:Residual neural network) when trained on [ImageNet](wiki:ImageNet|ImageNet) (1.3M images) alone and only won when pretrained on 300M images.[^vit]
 
 This is the deep reason self-supervised learning (next stage) matters so much for ViTs: it lets them learn from hundreds of millions of *unlabeled* images. It is also why you should almost never train a ViT from scratch on your 100k watch images — start from a pretrained backbone.`,
     },
@@ -136,7 +136,7 @@ At 518 px with patch 14, a watch filling the frame has a second hand of roughly 
 
 What this means in practice:
 
-1. **A linear head on patch features can only produce patch-resolution masks** (37 × 37 here). Thin parts need a decoder that upsamples and ideally sees the original pixels too (U-Net-style skips, or [[feature-upsampling|feature upsampling]] methods).
+1. **A linear head on patch features can only produce patch-resolution masks** (37 × 37 here). Thin parts need a decoder that upsamples and ideally sees the original pixels too ([U-Net](wiki:U-Net)-style skips, or [[feature-upsampling|feature upsampling]] methods).
 2. **Crop instead of shrink.** If watches occupy only part of your 100k photos, first detect/crop the watch, then run the segmenter on the crop at full backbone resolution. That's often the cheapest big win.
 3. **Resolution costs 4th power in attention.** Going from 518 to 1036 px buys 2× detail at ~16× attention cost — you'll quantify what fits on your 4090s in the last stage.`,
     },

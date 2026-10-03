@@ -13,7 +13,7 @@ export default {
     {
       id: 'before-machines', type: 'text', title: 'Time before machines',
       md: `
-The first timekeepers borrowed a motion from nature. A **[[sundial]]** reads the sun's movement from the shadow of a pointer (the *gnomon*).[^wiki-sundial] It needs no energy and never needs winding — but it fails at night, under clouds, and it shows *local* solar time: noon is when the sun stands highest *where you are*.
+The first timekeepers borrowed a motion from nature. A **[[sundial]]** reads the sun's movement from the shadow of a pointer (the *[gnomon](wiki:Gnomon)*).[^wiki-sundial] It needs no energy and never needs winding — but it fails at night, under clouds, and it shows *local* solar time: noon is when the sun stands highest *where you are*.
 
 A **[[water-clock]]** replaces the sun with a flow: water drips from one vessel into another and the level marks elapsed time. It works at night and indoors, but the flow changes with water pressure and temperature, so it drifts.
 
@@ -23,7 +23,7 @@ Both have the same weakness: they measure a *continuous* process. Nothing in the
       id: 'recipe', type: 'callout', tone: 'insight', title: 'The recipe of every clock',
       md: `
 1. **Energy source** — a falling weight, a wound spring, a battery.
-2. **Oscillator** — something that repeats at a steady rate: a pendulum, a [[balance-wheel]], a [[quartz-oscillator|quartz crystal]], an atom.
+2. **[Oscillator](wiki:Oscillation|Schwingung)** — something that repeats at a steady rate: a pendulum, a [[balance-wheel]], a [[quartz-oscillator|quartz crystal]], an [atom](wiki:Atomic clock|Atomuhr).
 3. **Counter & display** — gears (or electronics) that count the oscillations and turn them into hands or digits.
 
 Progress in timekeeping has almost always been progress in the **oscillator**. Keep this model in mind through the whole path.`,
@@ -31,34 +31,51 @@ Progress in timekeeping has almost always been progress in the **oscillator**. K
     {
       id: 'first-mechanical', type: 'text', title: 'The first mechanical clocks',
       md: `
-Around the end of the 13th century, European tower clocks appeared: a falling weight drove a train of gears, and a **[[verge-escapement]]** let the gears advance in small steps. A swinging bar with adjustable weights, the **[[foliot]]**, set the pace.
+Around the end of the 13th century, European [tower clocks](wiki:Turret clock|Turmuhr) appeared: a falling weight drove a train of gears, and a **[[verge-escapement]]** let the gears advance in small steps. A swinging bar with adjustable weights, the **[[foliot]]**, set the pace.
 
 The catch: the foliot is not a true oscillator. Nothing pulls it back to a center — it simply swings as fast as the driving force pushes it. Stronger push, faster clock. These clocks were accurate to roughly **15 minutes per day**.[^wiki-pendulum-clock]`,
     },
     {
       id: 'pendulum', type: 'text', title: '1656: the pendulum changes everything',
       md: `
-Christiaan Huygens built the first **[[pendulum]] clock** on Christmas Day 1656.[^wiki-pendulum-clock] A pendulum *is* a true oscillator: gravity always pulls it back to the center, and for small swings its period depends only on its length:
+[Christiaan Huygens](wiki:Christiaan Huygens) built the first **[[pendulum]] clock** on Christmas Day 1656.[^wiki-pendulum-clock] A pendulum *is* a true oscillator: gravity always pulls it back to the center, and for small swings its period depends only on its length:
 
 $$T \\approx 2\\pi\\sqrt{\\frac{L}{g}}$$
 
-It does not care (much) how hard it is pushed. This property — same period regardless of swing width — is called **[[isochronism]]**, and it is the single most important idea in horology. Accuracy jumped from ~15 minutes to ~15 seconds per day, and pendulum clocks remained the world's most accurate timekeepers for 270 years, until quartz clocks arrived in 1927.`,
+It does not care (much) how hard it is pushed. This property — same period regardless of swing width — is called **[[isochronism]]**, and it is the single most important idea in horology. Accuracy jumped from ~15 minutes to ~15 seconds per day, and [pendulum clocks](wiki:Pendulum clock|Pendeluhr) remained the world's most accurate timekeepers for 270 years, until [quartz clocks](wiki:Quartz clock|Quarzuhr) arrived in 1927.`,
     },
     {
       id: 'calc-seconds-pendulum', type: 'numeric', title: 'The seconds pendulum',
       question: 'A "seconds pendulum" swings from one side to the other in exactly 1 second, so its full period is $T = 2$ s. With $g = 9.81\\,\\text{m/s}^2$, how long must it be?',
       answer: 0.994, tolerance: 0.01, unit: 'm',
       hint: 'Solve $T = 2\\pi\\sqrt{L/g}$ for $L$: $L = g\\,T^2 / (4\\pi^2)$.',
-      explain: '$L = 9.81 \\cdot 4 / (4\\pi^2) = 9.81/\\pi^2 \\approx 0.994$ m — almost exactly one meter. That is why tall grandfather clocks are as tall as they are.',
+      explain: '$L = 9.81 \\cdot 4 / (4\\pi^2) = 9.81/\\pi^2 \\approx 0.994$ m — almost exactly one meter — the length of a [seconds pendulum](wiki:Seconds pendulum|Sekundenpendel). That is why tall grandfather clocks are as tall as they are.',
     },
     {
       id: 'portable', type: 'text', title: 'Putting time in a pocket',
       md: `
 A pendulum is useless in a pocket: every step you take disturbs it. Portable clocks needed a **spring** as energy source (the [[mainspring]]) and a different oscillator.
 
-In the early 16th century, makers in Germany — Peter Henlein of Nuremberg is often credited — built small spring-driven clocks that could be carried.[^wiki-watch] They still used a verge and a balance without a spring, and could lose or gain hours a day.
+In the early 16th century, makers in Germany — [Peter Henlein](wiki:Peter Henlein) of [Nuremberg](wiki:Nuremberg|Nürnberg) is often credited — built small spring-driven clocks that could be carried.[^wiki-watch] They still used a verge and a balance without a spring, and could lose or gain hours a day.
 
-The breakthrough came in the mid-1670s: a fine spiral spring, the **[[hairspring]]**, attached to the balance wheel.[^wiki-balance-spring] Now the balance, like a pendulum, is always pulled back to center — a true oscillator that works in any position. Watch accuracy improved from *hours* to about **10 minutes per day**. Robert Hooke and Christiaan Huygens fought bitterly over who invented it first.`,
+The breakthrough came in the mid-1670s: a fine spiral spring, the **[[hairspring]]**, attached to the balance wheel.[^wiki-balance-spring] Now the balance, like a pendulum, is always pulled back to center — a true oscillator that works in any position. Watch accuracy improved from *hours* to about **10 minutes per day**. [Robert Hooke](wiki:Robert Hooke) and [Christiaan Huygens](wiki:Christiaan Huygens) fought bitterly over who invented it first.`,
+    },
+    {
+      id: 'map-early-clocks', type: 'map', title: 'Where timekeeping took shape',
+      view: [-7, 23, 38, 56],
+      layers: { cities: false, countryLabels: false, seaLabels: false, mountains: false },
+      points: [
+        { lon: 32.654, lat: 25.72, label: 'Karnak', kind: 'site', pos: 'l',
+          detail: '**[Karnak](wiki:Karnak|Karnak)** in Egypt — the oldest [water clock](wiki:Water clock|Wasseruhr) of which physical evidence survives dates to about 1417–1379 BC, the reign of [Amenhotep III](wiki:Amenhotep III|Amenophis III.), and was used in the precinct of Amun-Re at Karnak.' },
+        { lon: 23.728, lat: 37.978, label: 'Athens', kind: 'site', pos: 'b',
+          detail: 'The **[Tower of the Winds](wiki:Tower of the Winds|Turm der Winde (Athen))** in the Roman Agora (completed by about 50 BC) housed a large [water clock](wiki:Water clock|Wasseruhr) and carried [sundials](wiki:Sundial|Sonnenuhr) on its walls — the only surviving horologium from classical antiquity.' },
+        { lon: 11.079, lat: 49.456, label: 'Nuremberg', pos: 'r',
+          detail: '**[Nuremberg](wiki:Nuremberg|Nürnberg)** — [Peter Henlein](wiki:Peter Henlein) is often credited with the first small, spring-driven portable clocks, built here in the early 16th century.' },
+        { lon: 4.317, lat: 52.084, label: 'The Hague', pos: 'l',
+          detail: '**[The Hague](wiki:The Hague|Den Haag)** — the home town of [Christiaan Huygens](wiki:Christiaan Huygens), who invented the [pendulum clock](wiki:Pendulum clock|Pendeluhr) in 1656.' },
+        
+      ],
+      caption: 'Places from this lesson: from the water clocks and sundials of the ancient Mediterranean to the pendulum clock of the Netherlands.',
     },
     {
       id: 'order-timeline', type: 'order', title: 'Build the timeline',

@@ -30,11 +30,11 @@ Every decision made by looking at a dataset leaks a bit of information about it.
     {
       id: 'diagnosis', type: 'text', title: 'Reading the curves',
       md: `
-- **Underfitting:** training *and* validation error high. The model is too weak or undertrained. → more capacity, train longer, better features.
+- **[Underfitting](wiki:Overfitting#Underfitting):** training *and* validation error high. The model is too weak or undertrained. → more capacity, train longer, better features.
 - **[[overfitting]]:** training error low and falling, validation error rising. The model memorizes noise and specifics. → more (varied) data, augmentation, [[regularization]], early stopping, fewer trainable parameters.
 - **Good fit:** both low, small gap.
 
-Modern deep networks are a twist on this classic picture: they are big enough to memorize *random* labels perfectly,[^rethinking-generalization] yet trained normally they generalize well. Capacity alone does not decide; the data, the architecture's built-in assumptions, the optimizer and — above all — **pretraining** matter enormously. A backbone pretrained on 142M images arrives with knowledge your 100k images alone could never teach it.`,
+Modern deep networks are a twist on this classic picture: they are big enough to memorize *random* labels perfectly,[^rethinking-generalization] yet trained normally they generalize well. Capacity alone does not decide; the data, the architecture's built-in assumptions, the optimizer and — above all — **[pretraining](wiki:Transfer learning|Transfer Learning)** matter enormously. A backbone pretrained on 142M images arrives with knowledge your 100k images alone could never teach it.`,
     },
     {
       id: 'match-diag', type: 'match', title: 'Diagnose the run',
@@ -52,10 +52,10 @@ Modern deep networks are a twist on this classic picture: they are big enough to
       md: `
 **More and more varied data** beats everything else. After that:
 
-- **[[data-augmentation]]:** random crops, flips, rotations, scale changes, color jitter, blur, noise. Each tells the model "this change doesn't matter". For segmentation, *geometric* transforms must be applied to the image and the mask identically; *photometric* ones (color, blur, noise) only to the image.
+- **[[data-augmentation]]:** random crops, flips, rotations, scale changes, color jitter, [blur](wiki:Gaussian blur), noise. Each tells the model "this change doesn't matter". For segmentation, *geometric* transforms must be applied to the image and the mask identically; *photometric* ones (color, blur, noise) only to the image.
 - **[[weight-decay]]:** keep weights small; standard in AdamW.
-- **Dropout / stochastic depth:** randomly silence units or skip whole blocks during training so no single path becomes indispensable.[^dropout] ViT and DINO use stochastic depth.
-- **Early stopping:** keep the checkpoint with the best validation score.
+- **[Dropout](wiki:Dropout (neural networks)|Dropout (künstliches neuronales Netz)) / stochastic depth:** randomly silence units or skip whole blocks during training so no single path becomes indispensable.[^dropout] ViT and DINO use stochastic depth.
+- **[Early stopping](wiki:Early stopping|Early Stopping):** keep the checkpoint with the best validation score.
 - **Fewer trainable parameters:** freeze a pretrained backbone, or train only low-rank adapters.
 
 **Normalization layers** are not regularizers primarily, but they make deep nets trainable at all:
@@ -67,7 +67,7 @@ Modern deep networks are a twist on this classic picture: they are big enough to
       id: 'quiz-aug', type: 'quiz', title: 'Augmentations for segmentation',
       question: 'You train a watch-part segmenter. For which augmentations must the **mask** be transformed too?',
       options: [
-        { text: 'Random resized crop', correct: true, why: 'Geometry changes — the mask must be cropped and resized identically (with nearest-neighbour interpolation to keep class ids).' },
+        { text: 'Random resized crop', correct: true, why: 'Geometry changes — the mask must be cropped and resized identically (with [nearest-neighbour interpolation](wiki:Nearest-neighbor interpolation) to keep class ids).' },
         { text: 'Horizontal flip', correct: true, why: 'Geometric. (Bonus thought: a flipped watch has the crown on the wrong side — fine for part segmentation, but not if you ever classify "left vs right crown".)' },
         { text: 'Color jitter (brightness, contrast, hue)', correct: false, why: 'Photometric: pixels change, but which pixel is which part does not.' },
         { text: 'Rotation by ±20°', correct: true, why: 'Geometric: rotate the mask the same way.' },
@@ -116,7 +116,7 @@ All classic guarantees assume training and test data are drawn from the same dis
     {
       id: 'recall-val', type: 'recall', title: 'Explain it to a colleague',
       prompt: 'Your model reaches excellent mIoU on held-out **renders** but is unstable on real watch photos. Explain why the render validation score is misleading, and what you would change in your evaluation setup.',
-      answer: `Held-out renders come from the same distribution as the training renders, so they measure fit to the renderer, not generalization to real photos — the deployment distribution is different (lighting, reflections, sensor noise, backgrounds, wear, compression). The score is also inflated if near-duplicate renders (same 3D model, similar poses) appear in train and validation. Fix: build a carefully labeled real-photo validation and test set, split by watch model/photo source to avoid leakage, track it for every experiment, and keep the test split for final numbers only.`,
+      answer: `Held-out renders come from the same distribution as the training renders, so they measure fit to the renderer, not generalization to real photos — the deployment distribution is different (lighting, reflections, sensor noise, backgrounds, wear, compression). The score is also inflated if near-duplicate renders (same 3D model, similar poses) appear in train and validation. Fix: build a carefully labeled real-photo validation and test set, split by watch model/photo source to avoid [leakage](wiki:Leakage (machine learning)), track it for every experiment, and keep the test split for final numbers only.`,
       hints: ['What distribution is the validation set drawn from?', 'Could the same 3D model appear in both splits?'],
       cards: ['val-real', 'leakage'],
     },

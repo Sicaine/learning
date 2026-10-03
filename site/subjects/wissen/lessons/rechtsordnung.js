@@ -15,11 +15,11 @@ export default {
       md: `
 Das deutsche Recht wird klassisch in drei Bereiche eingeteilt:
 
-- **[[zivilrecht|Zivilrecht]]** (Privatrecht): Rechtsbeziehungen zwischen **gleichgeordneten** Personen — Kaufverträge, Miete, Arbeitsverträge, Eigentum, Ehe, Erbe. Kernstück ist das **Bürgerliche Gesetzbuch (BGB)**, in Kraft seit dem **1. Januar 1900**.[^bgb-text]
-- **[[oeffentliches-recht|Öffentliches Recht]]**: das Verhältnis zwischen **Bürger und Staat**, bei dem der Staat hoheitlich handelt — Steuerbescheid, Baugenehmigung, Führerscheinentzug. Dazu gehören Verfassungs-, Verwaltungs-, Steuer- und Sozialrecht.
-- **[[strafrecht|Strafrecht]]**: legt fest, was strafbar ist und welche Strafe droht. Grundlage ist das **Strafgesetzbuch (StGB)**, im Kern von **1871**.[^stgb-text] Streng genommen ist Strafrecht ein Teil des öffentlichen Rechts, wird aber wegen seiner Bedeutung meist eigens genannt.
+- **[[zivilrecht|Zivilrecht]]** (Privatrecht): Rechtsbeziehungen zwischen **gleichgeordneten** Personen — Kaufverträge, Miete, Arbeitsverträge, Eigentum, Ehe, Erbe. Kernstück ist das **[Bürgerliche Gesetzbuch](wiki:Bürgerliches Gesetzbuch|Bürgerliches Gesetzbuch) (BGB)**, in Kraft seit dem **1. Januar 1900**.[^bgb-text]
+- **[[oeffentliches-recht|Öffentliches Recht]]**: das Verhältnis zwischen **Bürger und Staat**, bei dem der Staat hoheitlich handelt — Steuerbescheid, [Baugenehmigung](wiki:Baugenehmigung|Construction permit), Führerscheinentzug. Dazu gehören Verfassungs-, Verwaltungs-, Steuer- und Sozialrecht.
+- **[[strafrecht|Strafrecht]]**: legt fest, was strafbar ist und welche Strafe droht. Grundlage ist das **[Strafgesetzbuch](wiki:Strafgesetzbuch (Deutschland)|Strafgesetzbuch) (StGB)**, im Kern von **1871**.[^stgb-text] Streng genommen ist Strafrecht ein Teil des öffentlichen Rechts, wird aber wegen seiner Bedeutung meist eigens genannt.
 
-Ein Beispiel zeigt den Unterschied: Fährt jemand betrunken ein fremdes Auto an, geht es **strafrechtlich** um Trunkenheit im Verkehr (Staatsanwaltschaft klagt an), **zivilrechtlich** um Schadensersatz für den Autobesitzer (der selbst klagen muss) und **öffentlich-rechtlich** um den Entzug der Fahrerlaubnis durch die Behörde.`,
+Ein Beispiel zeigt den Unterschied: Fährt jemand betrunken ein fremdes Auto an, geht es **strafrechtlich** um [Trunkenheit im Verkehr](wiki:Trunkenheit im Verkehr|Driving under the influence) ([Staatsanwaltschaft](wiki:Staatsanwaltschaft|Public prosecutor's office) klagt an), **zivilrechtlich** um [Schadensersatz](wiki:Schadensersatz) für den Autobesitzer (der selbst klagen muss) und **öffentlich-rechtlich** um den Entzug der [Fahrerlaubnis](wiki:Fahrerlaubnis|Driver's license) durch die Behörde.`,
     },
     {
       id: 'match-gebiete', type: 'match', title: 'Welches Rechtsgebiet?',
@@ -37,16 +37,28 @@ Für jeden Rechtsbereich gibt es eigene Gerichte — die fünf **[[gerichtsbarke
 
 <table>
 <tr><th>Gerichtsbarkeit</th><th>zuständig für</th><th>oberstes Gericht</th><th>Sitz</th></tr>
-<tr><td>ordentliche</td><td>Zivil- und Strafsachen</td><td>Bundesgerichtshof (BGH)</td><td>Karlsruhe</td></tr>
-<tr><td>Arbeits-</td><td>Streit aus dem Arbeitsverhältnis</td><td>Bundesarbeitsgericht</td><td>Erfurt</td></tr>
-<tr><td>Verwaltungs-</td><td>Streit mit Behörden</td><td>Bundesverwaltungsgericht</td><td>Leipzig</td></tr>
-<tr><td>Sozial-</td><td>Rente, Krankenkasse, Grundsicherung</td><td>Bundessozialgericht</td><td>Kassel</td></tr>
-<tr><td>Finanz-</td><td>Steuern</td><td>Bundesfinanzhof</td><td>München</td></tr>
+<tr><td>ordentliche</td><td>Zivil- und Strafsachen</td><td>[Bundesgerichtshof](wiki:Bundesgerichtshof|Federal Court of Justice) (BGH)</td><td>[Karlsruhe](wiki:Karlsruhe|Karlsruhe)</td></tr>
+<tr><td>Arbeits-</td><td>Streit aus dem Arbeitsverhältnis</td><td>[Bundesarbeitsgericht](wiki:Bundesarbeitsgericht|Federal Labour Court)</td><td>[Erfurt](wiki:Erfurt|Erfurt)</td></tr>
+<tr><td>Verwaltungs-</td><td>Streit mit Behörden</td><td>[Bundesverwaltungsgericht](wiki:Bundesverwaltungsgericht (Deutschland)|Federal Administrative Court (Germany))</td><td>[Leipzig](wiki:Leipzig|Leipzig)</td></tr>
+<tr><td>Sozial-</td><td>Rente, Krankenkasse, Grundsicherung</td><td>[Bundessozialgericht](wiki:Bundessozialgericht|Federal Social Court)</td><td>[Kassel](wiki:Kassel|Kassel)</td></tr>
+<tr><td>Finanz-</td><td>Steuern</td><td>[Bundesfinanzhof](wiki:Bundesfinanzhof|Federal Fiscal Court)</td><td>[München](wiki:München|Munich)</td></tr>
 </table>
 
-In der **ordentlichen Gerichtsbarkeit** führt der Weg über **Amtsgericht → Landgericht → Oberlandesgericht → [[bundesgerichtshof|Bundesgerichtshof]]**. Welches Gericht in erster Instanz zuständig ist, hängt vom Streitwert bzw. der Schwere der Tat ab.
+In der **ordentlichen Gerichtsbarkeit** führt der Weg über **[Amtsgericht](wiki:Amtsgericht|Amtsgericht) → [Landgericht](wiki:Landgericht) → [Oberlandesgericht](wiki:Oberlandesgericht|Oberlandesgericht) → [[bundesgerichtshof|Bundesgerichtshof]]**. Welches Gericht in erster Instanz zuständig ist, hängt vom Streitwert bzw. der Schwere der Tat ab.
 
 Über allem — aber nicht als weitere Instanz — steht das [[bundesverfassungsgericht]]: Es prüft nur, ob Grundrechte oder das Grundgesetz verletzt wurden.`,
+    },
+    {
+      id: 'map-bundesgerichte', type: 'map', title: 'Wo sitzen die obersten Bundesgerichte?',
+      view: 'de',
+      places: [
+        { name: 'Karlsruhe', label: 'Karlsruhe: BGH und BVerfG', kind: 'site', pos: 'l', detail: '**[Karlsruhe](wiki:Karlsruhe|Karlsruhe)** — Sitz des [Bundesgerichtshofs](wiki:Bundesgerichtshof|Federal Court of Justice) (ordentliche Gerichtsbarkeit) und des [Bundesverfassungsgerichts](wiki:Bundesverfassungsgericht|Federal Constitutional Court).' },
+        { name: 'Erfurt', label: 'Erfurt: Bundesarbeitsgericht', kind: 'site', pos: 'l', detail: '**[Erfurt](wiki:Erfurt|Erfurt)** — Sitz des [Bundesarbeitsgerichts](wiki:Bundesarbeitsgericht|Federal Labour Court) (Arbeitsrecht).' },
+        { name: 'Leipzig', label: 'Leipzig: Bundesverwaltungsgericht', kind: 'site', pos: 'r', detail: '**[Leipzig](wiki:Leipzig|Leipzig)** — Sitz des [Bundesverwaltungsgerichts](wiki:Bundesverwaltungsgericht (Deutschland)|Federal Administrative Court (Germany)) (Streit mit Behörden).' },
+        { name: 'Kassel', label: 'Kassel: Bundessozialgericht', kind: 'site', pos: 'l', detail: '**[Kassel](wiki:Kassel|Kassel)** — Sitz des [Bundessozialgerichts](wiki:Bundessozialgericht|Federal Social Court) (Rente, Krankenkasse, Grundsicherung).' },
+        { name: 'München', label: 'München: Bundesfinanzhof', kind: 'site', pos: 'r', detail: '**[München](wiki:München|Munich)** — Sitz des [Bundesfinanzhofs](wiki:Bundesfinanzhof|Federal Fiscal Court) (Steuerrecht).' },
+      ],
+      caption: 'Die obersten Gerichte sind über die Republik verteilt — keines sitzt in der Hauptstadt. Tippe auf die Marker.',
     },
     {
       id: 'match-orte', type: 'match', title: 'Bundesgerichte und ihre Städte',
@@ -59,12 +71,24 @@ In der **ordentlichen Gerichtsbarkeit** führt der Weg über **Amtsgericht → L
       ],
     },
     {
+      id: 'map-quiz-bundesgerichte', type: 'map', title: 'Finde die Gerichte',
+      view: 'de',
+      quiz: { rounds: 5 },
+      points: [
+        { lon: 8.397, lat: 49.006, label: 'Bundesgerichtshof', kind: 'site' },
+        { lon: 11.029, lat: 50.978, label: 'Bundesarbeitsgericht', kind: 'site' },
+        { lon: 12.375, lat: 51.34, label: 'Bundesverwaltungsgericht', kind: 'site' },
+        { lon: 9.5, lat: 51.317, label: 'Bundessozialgericht', kind: 'site' },
+        { lon: 11.574, lat: 48.14, label: 'Bundesfinanzhof', kind: 'site' },
+      ],
+    },
+    {
       id: 'instanzen', type: 'text', title: 'Berufung und Revision',
       md: `
 Wer mit einem Urteil nicht einverstanden ist, kann es meist anfechten — so entsteht der **[[instanzenzug|Instanzenzug]]**:
 
-- **Berufung**: Die nächsthöhere Instanz verhandelt den Fall noch einmal, prüft also **Tatsachen und Recht**.
-- **Revision**: Die höchste Instanz prüft **nur noch Rechtsfehler** — sie hört keine Zeugen mehr.
+- **[Berufung](wiki:Berufung (Recht)|Appeal)**: Die nächsthöhere Instanz verhandelt den Fall noch einmal, prüft also **Tatsachen und Recht**.
+- **[Revision](wiki:Revision (Recht)|Cassation)**: Die höchste Instanz prüft **nur noch Rechtsfehler** — sie hört keine Zeugen mehr.
 
 Ist kein Rechtsmittel mehr möglich oder läuft die Frist ab, wird das Urteil **rechtskräftig**.`,
     },
@@ -78,16 +102,16 @@ Ist kein Rechtsmittel mehr möglich oder läuft die Frist ab, wird das Urteil **
         'Urteil wird rechtskräftig',
         'Verfassungsbeschwerde beim Bundesverfassungsgericht (nur bei Grundrechtsverletzung)',
       ],
-      explain: 'Die Verfassungsbeschwerde ist kein normales Rechtsmittel: Sie setzt voraus, dass der Rechtsweg erschöpft ist, und prüft nur, ob Grundrechte verletzt wurden.',
+      explain: 'Die [Verfassungsbeschwerde](wiki:Verfassungsbeschwerde (Deutschland)|Constitutional complaint (Germany)) ist kein normales Rechtsmittel: Sie setzt voraus, dass der Rechtsweg erschöpft ist, und prüft nur, ob Grundrechte verletzt wurden.',
     },
     {
       id: 'grundsaetze', type: 'text', title: 'Grundsätze des Rechtsstaats',
       md: `
 Einige Prinzipien sollte jeder kennen:
 
-- **Keine Strafe ohne Gesetz** (*nulla poena sine lege*, Art. 103 Abs. 2 GG): Bestraft werden darf nur, was **zur Tatzeit** bereits strafbar war.
-- **[[unschuldsvermutung|Unschuldsvermutung]]**: Jeder gilt als unschuldig, bis seine Schuld rechtskräftig festgestellt ist; im Zweifel für den Angeklagten (*in dubio pro reo*).
-- **Keine Todesstrafe** (Art. 102 GG, seit 1949).
+- **Keine Strafe ohne Gesetz** (*[nulla poena sine lege](wiki:Nulla poena sine lege|Nulla poena sine lege)*, Art. 103 Abs. 2 GG): Bestraft werden darf nur, was **zur Tatzeit** bereits strafbar war.
+- **[[unschuldsvermutung|Unschuldsvermutung]]**: Jeder gilt als unschuldig, bis seine Schuld rechtskräftig festgestellt ist; im Zweifel für den Angeklagten (*[in dubio pro reo](wiki:In dubio pro reo|In dubio pro reo)*).
+- **Keine [Todesstrafe](wiki:Todesstrafe|Capital punishment)** (Art. 102 GG, seit 1949).
 - **Anspruch auf rechtliches Gehör** und den gesetzlichen Richter: Niemand darf seinem zuständigen Richter entzogen werden.
 - **Unabhängigkeit der Richter**: Sie sind nur dem Gesetz unterworfen (Art. 97 GG). An Strafverfahren wirken oft auch Laienrichter mit, die **Schöffen**.`,
     },
@@ -96,15 +120,15 @@ Einige Prinzipien sollte jeder kennen:
       md: `
 Das Recht knüpft viel an das Alter:
 
-- **ab 7**: beschränkt geschäftsfähig — kleine Käufe vom Taschengeld sind wirksam („Taschengeldparagraf“), sonst braucht es die Eltern ([[geschaeftsfaehigkeit]]).
-- **ab 14**: **strafmündig**; bis 17 gilt Jugendstrafrecht, bis 20 kann es für Heranwachsende noch angewandt werden. Außerdem Religionsmündigkeit.
-- **ab 18**: volljährig und voll geschäftsfähig (seit 1975, vorher mit 21), Wahlrecht bei der Bundestagswahl.`,
+- **ab 7**: beschränkt geschäftsfähig — kleine Käufe vom Taschengeld sind wirksam („[Taschengeldparagraf](wiki:Taschengeldparagraph)“), sonst braucht es die Eltern ([[geschaeftsfaehigkeit]]).
+- **ab 14**: **[strafmündig](wiki:Strafmündigkeit|Age of criminal responsibility)**; bis 17 gilt [Jugendstrafrecht](wiki:Jugendstrafrecht (Deutschland)), bis 20 kann es für Heranwachsende noch angewandt werden. Außerdem Religionsmündigkeit.
+- **ab 18**: [volljährig](wiki:Volljährigkeit|Age of majority) und voll geschäftsfähig (seit 1975, vorher mit 21), Wahlrecht bei der [Bundestagswahl](wiki:Bundestagswahl|Federal elections in Germany).`,
     },
     {
       id: 'numeric-bgb', type: 'numeric', title: 'Ein altes Gesetzbuch',
       question: 'Das BGB trat am 1. Januar 1900 in Kraft. Wie viele Jahre galt es am 1. Januar 2026?',
       answer: 126, tolerance: 0, unit: 'Jahre',
-      explain: '2026 − 1900 = **126 Jahre**. Das BGB hat Kaiserreich, Weimar, NS-Zeit, DDR (dort 1976 durch das Zivilgesetzbuch ersetzt) und Wiedervereinigung überdauert — natürlich mit vielen Reformen.',
+      explain: '2026 − 1900 = **126 Jahre**. Das BGB hat [Kaiserreich](wiki:Deutsches Kaiserreich|German Empire), [Weimar](wiki:Weimarer Republik|Weimar Republic), [NS-Zeit](wiki:Zeit des Nationalsozialismus), [DDR](wiki:Deutsche Demokratische Republik|East Germany) (dort 1976 durch das [Zivilgesetzbuch](wiki:Zivilgesetzbuch (DDR)) ersetzt) und [Wiedervereinigung](wiki:Deutsche Wiedervereinigung|German reunification) überdauert — natürlich mit vielen Reformen.',
     },
     {
       id: 'quiz-recht', type: 'quiz', title: 'Recht im Alltag',
@@ -112,18 +136,18 @@ Das Recht knüpft viel an das Alter:
       options: [
         { text: 'Ein Zwölfjähriger kann für einen Ladendiebstahl nicht strafrechtlich verurteilt werden.', correct: true, why: 'Strafmündig ist man erst mit 14.' },
         { text: 'Der Bundesgerichtshof und das Bundesverfassungsgericht sind dasselbe Gericht.', correct: false, why: 'Beide sitzen in Karlsruhe, sind aber verschiedene Gerichte mit ganz unterschiedlichen Aufgaben.' },
-        { text: 'Bei einem Streit mit der Krankenkasse ist das Sozialgericht zuständig.', correct: true, why: 'Kranken-, Renten- und Arbeitslosenversicherung sowie Grundsicherung gehören vor die Sozialgerichte.' },
+        { text: 'Bei einem Streit mit der Krankenkasse ist das Sozialgericht zuständig.', correct: true, why: 'Kranken-, Renten- und Arbeitslosenversicherung sowie Grundsicherung gehören vor die [Sozialgerichte](wiki:Sozialgericht).' },
         { text: 'Im Zivilprozess klagt die Staatsanwaltschaft.', correct: false, why: 'Im Zivilprozess klagen die Parteien selbst; die Staatsanwaltschaft gibt es nur im Strafverfahren.' },
       ],
     },
     {
       id: 'fact-bgh-bverfg', type: 'callout', tone: 'fact', title: 'Warum sitzen beide in Karlsruhe?',
-      md: `Nach dem Krieg wollte man die obersten Gerichte bewusst **nicht** in der Hauptstadt Bonn ansiedeln — auch als Zeichen der Unabhängigkeit der Justiz und zur Stärkung des Föderalismus. Karlsruhe, bis 1945 Hauptstadt des Landes Baden, bekam 1950 den Bundesgerichtshof und 1951 das Bundesverfassungsgericht und nennt sich seither gern „Residenz des Rechts“.`,
+      md: `Nach dem Krieg wollte man die obersten Gerichte bewusst **nicht** in der Hauptstadt [Bonn](wiki:Bonn|Bonn) ansiedeln — auch als Zeichen der Unabhängigkeit der Justiz und zur Stärkung des Föderalismus. Karlsruhe, bis 1945 Hauptstadt des Landes Baden, bekam 1950 den Bundesgerichtshof und 1951 das [Bundesverfassungsgericht](wiki:Bundesverfassungsgericht|Federal Constitutional Court) und nennt sich seither gern „Residenz des Rechts“.`,
     },
     {
       id: 'recall-recht', type: 'recall', title: 'Erkläre es',
       prompt: 'Ein Autofahrer fährt betrunken in einen Gartenzaun. Welche **drei** Rechtsgebiete sind betroffen, und wer ist jeweils „Gegner“ des Fahrers?',
-      answer: `**Strafrecht**: Trunkenheit im Verkehr ist strafbar; der Staat, vertreten durch die **Staatsanwaltschaft**, klagt an, ein Strafgericht urteilt. **Zivilrecht**: Der Zaunbesitzer kann **Schadensersatz** verlangen — er muss selbst (bzw. gegenüber der Versicherung) vorgehen. **Öffentliches Recht**: Die **Fahrerlaubnisbehörde** kann den Führerschein entziehen oder eine MPU anordnen; dagegen könnte der Fahrer vor dem Verwaltungsgericht klagen.`,
+      answer: `**Strafrecht**: Trunkenheit im Verkehr ist strafbar; der Staat, vertreten durch die **Staatsanwaltschaft**, klagt an, ein Strafgericht urteilt. **Zivilrecht**: Der Zaunbesitzer kann **Schadensersatz** verlangen — er muss selbst (bzw. gegenüber der Versicherung) vorgehen. **Öffentliches Recht**: Die **Fahrerlaubnisbehörde** kann den Führerschein entziehen oder eine [MPU](wiki:Medizinisch-Psychologische Untersuchung|Medical-psychological assessment (Germany)) anordnen; dagegen könnte der Fahrer vor dem [Verwaltungsgericht](wiki:Verwaltungsgericht (Deutschland)) klagen.`,
       hints: ['Strafe, Schadensersatz, Führerschein.'],
       cards: ['drei-gebiete'],
     },

@@ -13,18 +13,18 @@ export default {
     {
       id: 'why', type: 'text', title: 'The problem with treating pixels as one long vector',
       md: `
-In the last stage a layer was a big [[matrix]]: every output connected to every input. For a 224 × 224 RGB image that is 150,528 inputs — a single fully connected layer with 1,000 outputs would already need 150 million weights. Worse, it would have to learn "edge at top-left" and "edge at bottom-right" as two completely unrelated things.
+In the last stage a layer was a big [[matrix]]: every output connected to every input. For a 224 × 224 [RGB](wiki:RGB color model) image that is 150,528 inputs — a single fully connected layer with 1,000 outputs would already need 150 million weights. Worse, it would have to learn "edge at top-left" and "edge at bottom-right" as two completely unrelated things.
 
 Images have structure we can exploit:
 
-- **Locality** — what a pixel means depends mostly on its neighbours. An edge is a *local* pattern.
+- **Locality** — what a [pixel](wiki:Pixel|Pixel) means depends mostly on its neighbours. An edge is a *local* pattern.
 - **Translation** — a crown is a crown whether it is on the left or the right of the frame.
 
 A **[[convolution]]** bakes both assumptions into the architecture: use a *small* set of weights (a **[[kernel]]**) and *reuse the same weights at every position*.`,
     },
     {
       id: 'video', type: 'video', youtube: 'KuXjwB4LzSA', label: 'But what is a convolution?', channel: '3Blue1Brown', minutes: 23,
-      why: 'Watch from about minute 8 (image processing part) for the blur and edge-detection intuition. The first part (probability, polynomials) is a lovely bonus but optional.',
+      why: 'Watch from about minute 8 ([image processing](wiki:Digital image processing) part) for the [blur](wiki:Gaussian blur) and [edge-detection](wiki:Edge detection|Kantendetektion) intuition. The first part (probability, polynomials) is a lovely bonus but optional.',
     },
     {
       id: 'definition', type: 'text', title: 'The operation',
@@ -74,7 +74,7 @@ With $k=3, p=1, s=1$ the size stays the same ("same" padding). With $s = 2$ it r
     },
     {
       id: 'calc-size', type: 'numeric', title: 'Output size',
-      question: 'The first layer of ResNet-50 is a $7 \\times 7$ convolution with stride 2 and padding 3 on a $224 \\times 224$ input. What is the output width?',
+      question: 'The first layer of [ResNet-50](wiki:Residual neural network) is a $7 \\times 7$ convolution with stride 2 and padding 3 on a $224 \\times 224$ input. What is the output width?',
       answer: 112, tolerance: 0,
       hint: '$\\lfloor (224 - 7 + 2\\cdot 3) / 2 \\rfloor + 1$',
       explain: '$\\lfloor 223 / 2 \\rfloor + 1 = 111 + 1 = 112$. One layer in, the image already has half its resolution — a 2-pixel second hand is now 1 pixel.',
@@ -145,7 +145,7 @@ In German math lectures convolution is written $(f * g)(x) = \\int f(t)\\,g(x-t)
     {
       id: 'recall', type: 'recall', title: 'Explain it',
       prompt: 'Why does a convolutional layer need **far fewer parameters** than a fully connected layer on images, and what assumption about images makes that acceptable?',
-      answer: `A conv layer uses one small kernel (e.g. $3\\times3\\times C_{in}$) per output channel and **reuses it at every position** (weight sharing), and each output connects only to a **local** window. So the parameter count depends on kernel size and channels, not on image size. This is acceptable because images are **local** (meaning depends on neighbourhoods) and **translation-invariant in their statistics** (an edge or a crown looks the same wherever it appears), so the same detector is useful everywhere.`,
+      answer: `A conv layer uses one small kernel (e.g. $3\\times3\\times C_{in}$) per output channel and **reuses it at every position** (weight sharing), and each output connects only to a **local** window. So the parameter count depends on kernel size and channels, not on image size. This is acceptable because images are **local** (meaning depends on neighbourhoods) and **[translation-invariant](wiki:Translational symmetry|Translationsinvariante Funktion) in their statistics** (an edge or a crown looks the same wherever it appears), so the same detector is useful everywhere.`,
       hints: ['What happens to the weights when the kernel moves to the next position?', 'Does an edge look different in the top-left vs. the bottom-right?'],
       cards: ['weight-sharing', 'conv-params'],
     },

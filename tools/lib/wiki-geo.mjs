@@ -1,18 +1,11 @@
 // Wikipedia geocoding helper: titles → { title, lat, lon } using the article's coordinates.
-const UA = { 'User-Agent': `learning-platform/0.1 (https://github.com/Sicaine/learning; pid ${process.pid})` };
+import { wikiQuery } from './wiki-fetch.mjs';
 
 export async function geocode(titles, lang = 'de') {
   const out = {};
   for (let i = 0; i < titles.length; i += 40) {
     const chunk = titles.slice(i, i + 40);
-    const u = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=coordinates&colimit=max&coprimary=all&titles=${encodeURIComponent(chunk.join('|'))}`;
-    let r;
-    for (let attempt = 0; attempt < 4; attempt++) {
-      const res = await fetch(u, { headers: UA });
-      if (res.ok) { r = (await res.json()).query; break; }
-      await new Promise(s => setTimeout(s, 1500 * (attempt + 1)));
-    }
-    if (!r) throw new Error('Wikipedia API unavailable (rate limited?) — wait a minute and rerun');
+    const r = (await wikiQuery(lang, `action=query&redirects=1&prop=coordinates&colimit=max&coprimary=all&titles=${encodeURIComponent(chunk.join('|'))}`)).query;
     const back = {};
     for (const x of [...(r.normalized || []), ...(r.redirects || [])]) back[x.to] = x.from;
     const origin = t => { let o = t; while (back[o]) o = back[o]; return o; };

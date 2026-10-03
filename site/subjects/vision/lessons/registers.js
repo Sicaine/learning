@@ -15,7 +15,7 @@ export default {
       md: `
 DINO v1's [[attention]] maps were famous: ask where the [[cls-token]] looks and you get a clean silhouette of the object. But when people looked at DINOv2 — a much better model by every benchmark — the maps had **bright spikes in random background spots**: a patch of sky, a piece of empty wall.
 
-Darcet et al. investigated and found the spikes are not a visualization glitch. They are real tokens with a very particular behaviour, and they appear in many large ViTs — DINOv2, OpenCLIP, and the supervised DeiT-III. Only DINO v1 was an exception.[^registers]`,
+Darcet et al. investigated and found the spikes are not a visualization glitch. They are real tokens with a very particular behaviour, and they appear in many large ViTs — DINOv2, OpenCLIP, and the [supervised](wiki:Supervised learning|Überwachtes Lernen) DeiT-III. Only DINO v1 was an exception.[^registers]`,
     },
     {
       id: 'game-find', type: 'game', viz: 'register-artifacts', title: 'Find the artifact tokens',
@@ -30,7 +30,7 @@ What the paper measured:[^registers]
 - **About 2% of tokens.** In their measurements roughly 2.4% of the sequence.
 - **Only in big, long-trained models.** They appear in models of size ViT-L and larger, around the middle of the network (layer ~15 of 40 in ViT-g), and only after about one third of training.
 - **On redundant patches.** Artifacts sit on patches that are highly similar to their neighbours — uniform background. Losing *local* information there costs almost nothing.
-- **They hold global, not local, information.** Linear probes show outlier tokens are *worse* at predicting their own position or reconstructing their pixels, but *better* at predicting the image class than normal patch tokens.
+- **They hold global, not local, information.** Linear probes show outlier tokens are *worse* at predicting their own position or reconstructing their [pixels](wiki:Pixel|Pixel), but *better* at predicting the image class than normal patch tokens.
 
 The interpretation: a big network wants extra memory for global computation. The CLS token alone isn't enough, so it **recycles** patches whose local content is redundant and uses them as scratch space.`,
     },
@@ -57,7 +57,7 @@ What happens:
 - The high-norm behaviour **moves into the registers**; patch tokens become clean.
 - Attention maps look like DINO v1's again.
 - One register already removes visible artifacts; **4 registers** were the best trade-off for dense tasks, at under 2% extra FLOPs.
-- DINOv2 with registers improved ADE20k linear segmentation from 46.6 to 47.9 mIoU and depth estimation slightly — and unsupervised object discovery (LOST) jumped from 35.3 to 55.4 CorLoc on VOC2007.
+- DINOv2 with registers improved ADE20k linear [segmentation](wiki:Image segmentation|Segmentierung (Bildverarbeitung)) from 46.6 to 47.9 mIoU and depth estimation slightly — and unsupervised object discovery (LOST) jumped from 35.3 to 55.4 CorLoc on VOC2007.
 
 DINOv3 has 4 registers built in from the start.[^dinov3]`,
     },
@@ -71,7 +71,7 @@ DINOv3 has 4 registers built in from the start.[^dinov3]`,
     {
       id: 'code', type: 'text', title: 'In code: skip the registers',
       md: `
-With Hugging Face Transformers, DINOv3 (and DINOv2 "with-registers") return CLS, registers and patches in one sequence:[^hf-dinov3]
+With [Hugging Face](wiki:Hugging Face|Hugging Face) Transformers, DINOv3 (and DINOv2 "with-registers") return CLS, registers and patches in one sequence:[^hf-dinov3]
 
 \`\`\`python
 out = model(**inputs).last_hidden_state        # [B, 1 + R + N, D]
@@ -88,7 +88,7 @@ For DINOv2 via torch.hub, pick the \`_reg\` entry points, e.g. \`dinov2_vitl14_r
       md: `
 Your watch photos often have **large uniform backgrounds** — a white product table, a gradient backdrop, a blurred desk. That is exactly where artifacts like to sit.
 
-- If you cluster or PCA-visualize patch features of a DINOv2 model *without* registers, artifacts can show up as isolated "objects" in the background — false positives that no head can fully explain away.
+- If you cluster or [PCA](wiki:Principal component analysis|Hauptkomponentenanalyse)-visualize patch features of a DINOv2 model *without* registers, artifacts can show up as isolated "objects" in the background — false positives that no head can fully explain away.
 - For dense work use **DINOv2 \`_reg\`** checkpoints or **DINOv3** (registers built in).
 - A cheap sanity check on your own data: plot the per-patch norm map for 20 images. If you see isolated bright dots on the background, you are using a model without registers.`,
     },

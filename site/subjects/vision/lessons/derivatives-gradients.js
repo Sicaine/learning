@@ -15,7 +15,7 @@ export default {
       md: `
 Training means: find weights $\\theta$ that make the [[loss-function|loss]] $\\mathcal{L}(\\theta)$ small. You can't try all combinations — with 86 million weights the space is unimaginably large. What you *can* do is ask, at the current weights: **if I nudge each weight a tiny bit, how does the loss change?** That question is answered by derivatives.
 
-The **[[derivative]]** of a function of one variable is its local slope:
+The **[[derivative]]** of a function of one variable is its local [slope](wiki:Slope|Steigung):
 
 $$f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$$
 
@@ -48,7 +48,7 @@ Two facts make it the most useful object in deep learning:
     },
     {
       id: 'video-gd', type: 'video', youtube: 'IHZwWFHWa-w', label: 'Gradient descent, how neural networks learn', channel: '3Blue1Brown', minutes: 21,
-      why: 'How "the gradient of the cost function" turns into learning. Watch at least until ~12:00.[^3b1b-nn]',
+      why: 'How "the gradient of the cost function" turns into learning. Watch at least until ~12:00 ([3Blue1Brown](wiki:3Blue1Brown|3Blue1Brown)).[^3b1b-nn]',
     },
     {
       id: 'gd', type: 'text', title: 'Gradient descent in one line',
@@ -57,7 +57,7 @@ Two facts make it the most useful object in deep learning:
 
 $$\\theta \\leftarrow \\theta - \\eta \\, \\nabla_\\theta \\mathcal{L}(\\theta)$$
 
-The **[[learning-rate]]** $\\eta$ is the step size. Too small and you crawl; too large and you overshoot the valley floor, bounce up the other side, and can even diverge. Real loss surfaces are like long narrow valleys: steep across, shallow along. The steep direction limits how large $\\eta$ can be; the shallow direction then makes progress painfully slow. This tension is why smarter optimizers ([[momentum]], [[adamw]]) exist — the next stage covers them.`,
+The **[[learning-rate]]** $\\eta$ is the step size. Too small and you crawl; too large and you overshoot the valley floor, bounce up the other side, and can even diverge. Real loss surfaces are like long narrow valleys: steep across, shallow along. The steep direction limits how large $\\eta$ can be; the shallow direction then makes progress painfully slow. This tension is why smarter [optimizers](wiki:Mathematical optimization|Mathematische Optimierung) ([[momentum]], [[adamw]]) exist — the next stage covers them.`,
     },
     {
       id: 'viz-gd', type: 'viz', viz: 'gradient-descent', title: 'Walk down the valley',
@@ -67,7 +67,7 @@ The **[[learning-rate]]** $\\eta$ is the step size. Too small and you crawl; too
     {
       id: 'chain', type: 'text', title: 'The chain rule: derivatives multiply along a chain',
       md: `
-A neural network is a long composition: pixels → layer 1 → layer 2 → … → loss. The **[[chain-rule]]** says how to differentiate compositions: if $y = g(x)$ and $z = f(y)$, then
+A [neural network](wiki:Neural network (machine learning)|Künstliches neuronales Netz) is a long [composition](wiki:Function composition|Komposition (Mathematik)): pixels → layer 1 → layer 2 → … → loss. The **[[chain-rule]]** says how to differentiate compositions: if $y = g(x)$ and $z = f(y)$, then
 
 $$\\frac{dz}{dx} = \\frac{dz}{dy} \\cdot \\frac{dy}{dx}$$
 

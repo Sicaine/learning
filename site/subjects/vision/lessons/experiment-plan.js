@@ -29,9 +29,9 @@ Your eval set is the ruler for every decision. Rules:
 
 - **Real photos only**, from the distribution you actually care about (the images your system will see).
 - **Carefully labeled**: two-pass review, following the written [[class-taxonomy]]. No [[pseudo-label|pseudo-labels]].
-- **Stratified and tagged**: cover lighting conditions, dial colors, materials, angles, brands, reflections, occlusion — and store these tags so you can compute scores *per slice*.
-- **Leak-free**: no image (and no near-duplicate — check with [[cosine-similarity]] of embeddings) appears in training. Split by *product/watch model*, not by image, if the same watch appears in many photos.
-- **Frozen**: once created, it doesn't change. Tune hyperparameters on a separate validation split ([[train-val-test]]); look at the test set rarely.
+- **[Stratified](wiki:Stratified sampling|Geschichtete Zufallsstichprobe) and tagged**: cover lighting conditions, dial colors, materials, angles, brands, reflections, occlusion — and store these tags so you can compute scores *per slice*.
+- **[Leak-free](wiki:Leakage (machine learning))**: no image (and no near-duplicate — check with [[cosine-similarity]] of embeddings) appears in training. Split by *product/watch model*, not by image, if the same watch appears in many photos.
+- **Frozen**: once created, it doesn't change. Tune [hyperparameters](wiki:Hyperparameter (machine learning)) on a separate validation split ([[train-val-test]]); look at the test set rarely.
 
 How big? Big enough that the differences you care about are larger than the noise — which you can calculate.`,
     },
@@ -52,7 +52,7 @@ How big? Big enough that the differences you care about are larger than the nois
       md: `
 Climb one rung at a time; stop climbing when the next rung doesn't pay:
 
-1. **Sanity check:** overfit 10 images to ~100% IoU. If that fails, you have a bug (labels, class mapping, augmentation), not a modeling problem.
+1. **Sanity check:** [overfit](wiki:Overfitting|Überanpassung) 10 images to ~100% IoU. If that fails, you have a bug (labels, class mapping, augmentation), not a modeling problem.
 2. **Frozen features + linear head:** [[frozen-backbone|frozen]] DINOv3 ViT-B/L, a linear classifier per patch, upsampled to pixels ([[dense-features]], [[feature-upsampling]]). Real images only. Minutes to train; tells you how much the features already know.
 3. **Frozen features + light decoder:** a small convolutional/upsampling head that recovers sharper boundaries.
 4. **+ synthetic data** (mixed batches, several ratios) — does the renderer help *on real*?
@@ -78,7 +78,7 @@ Each rung reports **per-class IoU** on the same eval set, plus training cost. Th
     {
       id: 'read-table', type: 'text', title: 'Reading a results table',
       md: `
-A hypothetical table on an eval set of **120 real images** (per-image σ of differences ≈ 10 points, so the standard error of a difference is ≈ 0.9 points):
+A hypothetical table on an eval set of **120 real images** (per-image σ of differences ≈ 10 points, so the [standard error](wiki:Standard error|Standardfehler) of a difference is ≈ 0.9 points):
 
 <table>
 <tr><th>Run</th><th>mIoU</th><th>case</th><th>dial</th><th>hands</th><th>crown</th><th>bracelet</th></tr>

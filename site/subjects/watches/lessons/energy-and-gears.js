@@ -28,16 +28,16 @@ Plus the *keyless works* behind the [[crown]] for winding and setting. This is t
     {
       id: 'mainspring', type: 'text', title: 'Energy: the mainspring',
       md: `
-The **[[mainspring]]** is a long ribbon of metal coiled inside a toothed drum, the **[[barrel]]**. Its inner end hooks onto the barrel arbor, its outer end onto the barrel wall.[^wiki-mainspring] Winding (by the [[crown]] or an automatic [[rotor]]) turns the arbor and tightens the coil; as the spring relaxes, it turns the barrel, whose teeth drive the gear train.
+The **[[mainspring]]** is a long ribbon of spring [steel](wiki:Steel|Stahl) coiled inside a toothed drum, the **[[barrel]]**. Its inner end hooks onto the barrel arbor, its outer end onto the barrel wall.[^wiki-mainspring] Winding (by the [[crown]] or an automatic [[rotor]]) turns the arbor and tightens the coil; as the spring relaxes, it turns the barrel, whose teeth drive the gear train.
 
 A fully wound watch runs for its **[[power-reserve]]**: classic movements manage about 36–40 hours — one day of wearing plus a safety margin — while many modern ones reach 70 hours or more.
 
-One problem: a spring pushes hard when fully wound and weakly when nearly empty. Early watches evened this out with a cone-shaped pulley and chain, the *fusee*. Modern watches rely on a good escapement and an [[isochronism|isochronous]] balance to make the rate insensitive to the changing force.`,
+One problem: a spring pushes hard when fully wound and weakly when nearly empty. Early watches evened this out with a cone-shaped pulley and chain, the *[fusee](wiki:Fusee (horology)|Schnecke (Uhr))*. Modern watches rely on a good escapement and an [[isochronism|isochronous]] balance to make the rate insensitive to the changing force.`,
     },
     {
       id: 'gears', type: 'text', title: 'Transmission: the gear train',
       md: `
-The barrel turns slowly — a few turns per day. The seconds hand must turn once a minute. The **[[gear-train]]** bridges that gap by pairing large **wheels** with small **pinions** (in watchmaking, pinion teeth are called *leaves*).
+The barrel turns slowly — a few turns per day. The seconds hand must turn once a minute. The **[[gear-train]]** bridges that gap by pairing large **[wheels](wiki:Gear|Zahnrad)** with small **[pinions](wiki:Pinion|Ritzel)** (in watchmaking, pinion teeth are called *leaves*).
 
 When a wheel with $z_w$ teeth drives a pinion with $z_p$ leaves, the pinion turns $z_w / z_p$ times per turn of the wheel. Chained together, the ratios **multiply**:
 
@@ -61,9 +61,9 @@ A classic layout: barrel → **center wheel** (1 turn per hour, carries the minu
     {
       id: 'jewels', type: 'text', title: 'Jewels: bearings, not bling',
       md: `
-Every wheel turns on thin steel **pivots**. Running in brass holes, they would wear out and waste energy. Instead, watchmakers use **[[jewel|jewels]]** — synthetic ruby, extremely hard and smooth — as bearings.[^wiki-jewel-bearing] The pallets of the escapement and the impulse pin on the balance are jewels too.
+Every wheel turns on thin [steel](wiki:Steel|Stahl) **pivots**. Running in [brass](wiki:Brass|Messing) holes, they would wear out and waste energy. Instead, watchmakers use **[[jewel|jewels]]** — synthetic [ruby](wiki:Corundum|Korund), extremely hard and smooth — as bearings.[^wiki-jewel-bearing] The pallets of the escapement and the impulse pin on the balance are jewels too.
 
-That's why a dial may say "17 Jewels": a simple manual-wind movement with all important pivots jewelled typically has about 17. More jewels usually mean more functions (automatic winding, chronograph), not more value in gemstones.`,
+That's why a dial may say "17 Jewels": a simple manual-wind movement with all important pivots jewelled typically has about 17. More jewels usually mean more functions ([automatic winding](wiki:Automatic watch|Automatikuhr), [chronograph](wiki:Chronograph|Chronograph (Uhr))), not more value in gemstones.`,
     },
     {
       id: 'order-flow', type: 'order', title: 'Follow the energy',
@@ -78,13 +78,13 @@ That's why a dial may say "17 Jewels": a simple manual-wind movement with all im
         { text: 'They are mostly synthetic rubies used as low-friction bearings.', correct: true, why: 'Synthetic corundum — hard, smooth and cheap to make.' },
         { text: 'A 17-jewel movement is typically a fully jewelled simple movement.', correct: true, why: 'Around 17 covers the important pivots of the train, escapement and balance.' },
         { text: 'More jewels always means a more valuable watch.', correct: false, why: 'Jewel counts rise with functions; some cheap watches even added useless jewels for marketing.' },
-        { text: 'Jewels store energy like the mainspring.', correct: false, why: 'They only reduce friction and wear.' },
+        { text: 'Jewels store energy like the mainspring.', correct: false, why: 'They only reduce [friction](wiki:Friction|Reibung) and wear.' },
       ],
     },
     {
       id: 'deep-fusee', type: 'callout', tone: 'deep', title: 'The fusee: equalizing a spring with geometry',
       md: `
-A mainspring's torque falls as it unwinds. The fusee is a cone-shaped pulley connected to the barrel by a tiny chain. When the spring is fully wound, the chain pulls on the cone's *narrow* end (small lever arm); as the spring weakens, the chain works on ever wider radii (bigger lever arm). The torque delivered to the gear train stays almost constant. Fusees dominated until the 19th century and still appear in a few high-end watches.[^wiki-mainspring]`,
+A mainspring's [torque](wiki:Torque|Drehmoment) falls as it unwinds. The [fusee](wiki:Fusee (horology)|Schnecke (Uhr)) is a cone-shaped pulley connected to the barrel by a tiny chain. When the spring is fully wound, the chain pulls on the cone's *narrow* end (small lever arm); as the spring weakens, the chain works on ever wider radii (bigger [lever arm](wiki:Lever|Hebel (Physik))). The torque delivered to the gear train stays almost constant. Fusees dominated until the 19th century and still appear in a few high-end watches.[^wiki-mainspring]`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',

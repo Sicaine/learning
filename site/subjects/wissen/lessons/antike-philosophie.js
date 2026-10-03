@@ -13,25 +13,43 @@ export default {
     {
       id: 'logos', type: 'text', title: 'Vom Mythos zum Logos',
       md: `
-Um 600 v. Chr. fragten Denker in den griechischen Städten Kleinasiens: Woraus besteht alles? Statt auf Götter verwiesen sie auf Naturprinzipien. **Thales von Milet** hielt das **Wasser** für den Urstoff; **Heraklit** betonte den ständigen Wandel („Alles fließt“, *panta rhei* — so wird er zumindest zusammengefasst); **Pythagoras** suchte die Ordnung der Welt in **Zahlen**; **Demokrit** vermutete, alles bestehe aus unteilbaren **Atomen**.
+Um 600 v. Chr. fragten Denker in den griechischen Städten Kleinasiens: Woraus besteht alles? Statt auf Götter verwiesen sie auf Naturprinzipien. **[Thales von Milet](wiki:Thales von Milet|Thales of Miletus)** hielt das **Wasser** für den Urstoff; **[Heraklit](wiki:Heraklit|Heraclitus)** betonte den ständigen Wandel („Alles fließt“, *panta rhei* — so wird er zumindest zusammengefasst); **[Pythagoras](wiki:Pythagoras|Pythagoras)** suchte die Ordnung der Welt in **Zahlen**; **[Demokrit](wiki:Demokrit|Democritus)** vermutete, alles bestehe aus unteilbaren **Atomen**.
 
-Weil sie vor Sokrates lebten, nennt man sie die **Vorsokratiker**. Ihr Schritt „vom Mythos zum Logos“ — von der Erzählung zur vernünftigen Begründung — gilt als Geburtsstunde von Philosophie und Wissenschaft.`,
+Weil sie vor [Sokrates](wiki:Sokrates|Socrates) lebten, nennt man sie die **[Vorsokratiker](wiki:Vorsokratiker|Pre-Socratic philosophy)**. Ihr Schritt „vom Mythos zum Logos“ — von der Erzählung zur vernünftigen Begründung — gilt als Geburtsstunde von Philosophie und Wissenschaft.`,
+    },
+    {
+      id: 'map-denker-antike', type: 'map', title: 'Wo die Philosophie entstand',
+      view: [17, 33, 38, 43],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Athen', pos: 'l', detail: `**[Athen](wiki:Athen|Athens)** — Wirkungsstätte von [Sokrates](wiki:Sokrates|Socrates), [Platon](wiki:Platon|Plato) (Akademie), [Aristoteles](wiki:Aristoteles|Aristotle) (Lykeion), [Epikur](wiki:Epikur|Epicurus) und [Zenon](wiki:Zenon von Kition|Zeno of Citium).` },
+        { name: 'Ephesos', pos: 'r', detail: `**[Ephesos](wiki:Ephesos|Ephesus)** — Heimat des [Heraklit](wiki:Heraklit|Heraclitus) („Alles fließt“).` },
+      ],
+      points: [
+        { lon: 27.276, lat: 37.531, label: 'Milet', pos: 'b', detail: `**[Milet](wiki:Milet|Miletus)** — Heimat des [Thales](wiki:Thales von Milet|Thales of Miletus), des „ersten Philosophen“.` },
+        { lon: 26.833, lat: 37.733, label: 'Samos', pos: 'l', detail: `**[Samos](wiki:Samos|Samos)** — die Insel, von der [Pythagoras](wiki:Pythagoras|Pythagoras) stammte.` },
+        { lon: 24.967, lat: 40.933, label: 'Abdera', pos: 'r', detail: `**[Abdera](wiki:Abdera|Abdera, Thrace)** — Heimat des [Demokrit](wiki:Demokrit|Democritus), der die Atomlehre entwickelte.` },
+        { lon: 23.794, lat: 40.591, label: 'Stageira', pos: 'r', detail: `**[Stageira](wiki:Stageira|Stagira (ancient city))** — Geburtsort des Aristoteles (384 v. Chr.).` },
+        { lon: 35.151, lat: 42.027, label: 'Sinope', pos: 'l', detail: `**[Sinope](wiki:Sinop|Sinop, Turkey)** — Heimat des [Diogenes](wiki:Diogenes von Sinope|Diogenes), des Kynikers in der Tonne.` },
+        { lon: 33.631, lat: 34.919, label: 'Kition (Larnaka)', pos: 't', detail: `**Kition** (heute [Larnaka](wiki:Larnaka|Larnaca) auf Zypern) — Heimat Zenons, des Begründers der Stoa.` },
+      ],
+      caption: 'Die ersten Philosophen lebten an der Küste Kleinasiens; ab dem 5. Jahrhundert v. Chr. wurde Athen zum Zentrum.',
     },
     {
       id: 'sokrates', type: 'text', title: 'Sokrates: Ich weiß, dass ich nichts weiß',
       md: `
-**Sokrates** (469–399 v. Chr.) schrieb kein einziges Buch. Wir kennen ihn vor allem aus den Dialogen seines Schülers Platon. Auf dem Marktplatz Athens verwickelte er Menschen in Gespräche und fragte so lange nach („Was ist Gerechtigkeit? Was ist Tapferkeit?“), bis scheinbares Wissen zusammenbrach. Sein Ziel war es, die Gesprächspartner selbst zur Einsicht zu führen — er verglich das mit der Arbeit seiner Mutter, einer Hebamme: **[[sokratische-methode|Mäeutik]]**, „Hebammenkunst“.
+**Sokrates** (469–399 v. Chr.) schrieb kein einziges Buch. Wir kennen ihn vor allem aus den Dialogen seines Schülers [Platon](wiki:Platon|Plato). Auf dem Marktplatz Athens verwickelte er Menschen in Gespräche und fragte so lange nach („Was ist Gerechtigkeit? Was ist Tapferkeit?“), bis scheinbares Wissen zusammenbrach. Sein Ziel war es, die Gesprächspartner selbst zur Einsicht zu führen — er verglich das mit der Arbeit seiner Mutter, einer Hebamme: **[[sokratische-methode|Mäeutik]]**, „Hebammenkunst“.
 
-Bekannt ist die (verkürzte) Formel „**Ich weiß, dass ich nichts weiß**“: Weise ist, wer die Grenzen des eigenen Wissens kennt. 399 v. Chr. wurde Sokrates wegen Gottlosigkeit und „Verführung der Jugend“ zum Tod verurteilt. Er lehnte die Flucht ab und trank den **Schierlingsbecher**.[^sep-socrates]`,
+Bekannt ist die (verkürzte) Formel „**Ich weiß, dass ich nichts weiß**“: Weise ist, wer die Grenzen des eigenen Wissens kennt. 399 v. Chr. wurde Sokrates wegen Gottlosigkeit und „Verführung der Jugend“ zum Tod verurteilt. Er lehnte die Flucht ab und trank den **[Schierlingsbecher](wiki:Schierlingsbecher)**.[^sep-socrates]`,
     },
     {
       id: 'platon', type: 'text', title: 'Platon: die Welt der Ideen',
       md: `
-**Platon** (428/427–348/347 v. Chr.) gründete um 387 v. Chr. in Athen die **Akademie** — daher unser Wort. Er schrieb seine Philosophie als Dialoge, meist mit Sokrates als Hauptfigur.
+**Platon** (428/427–348/347 v. Chr.) gründete um 387 v. Chr. in Athen die **[Akademie](wiki:Platonische Akademie|Platonic Academy)** — daher unser Wort. Er schrieb seine Philosophie als Dialoge, meist mit Sokrates als Hauptfigur.
 
 Seine **[[platon-ideenlehre|Ideenlehre]]**: Die Dinge, die wir sehen, sind vergänglich und unvollkommen. Wirklich und ewig sind nur die **Ideen** — etwa die Idee des Guten, des Schönen, des Kreises. Jeder gezeichnete Kreis ist nur ein unvollkommenes Abbild des perfekten Kreises, den wir mit dem Verstand erfassen.
 
-In seinem Hauptwerk, der **Politeia** („Der Staat“), entwirft er einen gerechten Staat, in dem **Philosophen herrschen** sollen — weil nur sie das Gute wirklich erkennen.[^sep-plato]`,
+In seinem Hauptwerk, der **[Politeia](wiki:Politeia|Republic (Plato))** („Der Staat“), entwirft er einen gerechten Staat, in dem **Philosophen herrschen** sollen — weil nur sie das Gute wirklich erkennen.[^sep-plato]`,
     },
     {
       id: 'hoehle', type: 'callout', tone: 'insight', title: 'Das Höhlengleichnis',
@@ -42,24 +60,32 @@ In seinem Hauptwerk, der **Politeia** („Der Staat“), entwirft er einen gerec
     {
       id: 'aristoteles', type: 'text', title: 'Aristoteles: der Universalgelehrte',
       md: `
-**Aristoteles** (384–322 v. Chr.) war zwanzig Jahre Platons Schüler — und widersprach ihm: Die Formen der Dinge existieren nicht in einer eigenen Ideenwelt, sondern **in den Dingen selbst**. Man erkennt sie durch **Beobachtung**. Aristoteles erforschte Tiere, Staaten, Sprache und Sterne; er war zudem Lehrer des jungen **Alexander des Großen** und gründete in Athen eine eigene Schule, das *Lykeion*.[^sep-aristotle]
+**[Aristoteles](wiki:Aristoteles|Aristotle)** (384–322 v. Chr.) war zwanzig Jahre Platons Schüler — und widersprach ihm: Die Formen der Dinge existieren nicht in einer eigenen Ideenwelt, sondern **in den Dingen selbst**. Man erkennt sie durch **Beobachtung**. Aristoteles erforschte Tiere, Staaten, Sprache und Sterne; er war zudem Lehrer des jungen **[Alexander des Großen](wiki:Alexander der Große|Alexander the Great)** und gründete in Athen eine eigene Schule, das *[Lykeion](wiki:Lykeion|Lyceum (classical))*.[^sep-aristotle]
 
-- **Logik:** Er entwickelte die Lehre vom gültigen Schluss (Syllogismus): „Alle Menschen sind sterblich. Sokrates ist ein Mensch. Also ist Sokrates sterblich.“
+- **Logik:** Er entwickelte die Lehre vom gültigen Schluss ([Syllogismus](wiki:Syllogismus|Syllogism)): „Alle Menschen sind sterblich. Sokrates ist ein Mensch. Also ist Sokrates sterblich.“
 - **Ethik:** Ziel des Lebens ist die **Glückseligkeit** (*eudaimonia*). Tugend ist die richtige **Mitte** zwischen zwei Extremen — Tapferkeit liegt zwischen Feigheit und Tollkühnheit.
 - **Politik:** Der Mensch ist ein *zoon politikon*, ein Gemeinschaftswesen.
 
-Im Mittelalter nannte man Aristoteles einfach „den Philosophen“; **Thomas von Aquin** verband seine Lehre mit dem christlichen Glauben.`,
+Im Mittelalter nannte man Aristoteles einfach „den Philosophen“; **[Thomas von Aquin](wiki:Thomas von Aquin|Thomas Aquinas)** verband seine Lehre mit dem christlichen Glauben.`,
     },
     {
       id: 'schulen', type: 'text', title: 'Philosophie als Lebenskunst: Stoa und Epikur',
       md: `
 Nach Alexander fragten Philosophen vor allem: **Wie lebe ich gut?**
 
-Die **[[stoa|Stoa]]**, gegründet von **Zenon von Kition** um 300 v. Chr. in einer Säulenhalle (*stoa*) Athens, lehrte: Unterscheide zwischen dem, was in deiner Macht steht, und dem, was nicht. Nimm Letzteres gelassen hin. Später prägten die Römer **Seneca**, der frühere Sklave **Epiktet** und Kaiser **Marc Aurel** die Stoa. Unser Wort „stoisch“ für unerschütterliche Ruhe stammt daher.[^sep-stoicism]
+Die **[[stoa|Stoa]]**, gegründet von **[Zenon von Kition](wiki:Zenon von Kition|Zeno of Citium)** um 300 v. Chr. in einer Säulenhalle (*stoa*) Athens, lehrte: Unterscheide zwischen dem, was in deiner Macht steht, und dem, was nicht. Nimm Letzteres gelassen hin. Später prägten die Römer **[Seneca](wiki:Seneca|Seneca the Younger)**, der frühere Sklave **[Epiktet](wiki:Epiktet|Epictetus)** und Kaiser **[Marc Aurel](wiki:Marc Aurel|Marcus Aurelius)** die [Stoa](wiki:Stoa|Stoicism). Unser Wort „stoisch“ für unerschütterliche Ruhe stammt daher.[^sep-stoicism]
 
-**Epikur** (341–270 v. Chr.) sah im Glück das höchste Ziel — aber nicht in Völlerei, sondern in **Seelenruhe** (*ataraxia*) und der Abwesenheit von Schmerz: einfache Freuden, Freundschaft, keine Angst vor Göttern oder dem Tod. Der Vorwurf, [[epikureismus|Epikureer]] seien Genießer ohne Maß, ist ein altes Missverständnis.
+**[Epikur](wiki:Epikur|Epicurus)** (341–270 v. Chr.) sah im Glück das höchste Ziel — aber nicht in Völlerei, sondern in **Seelenruhe** (*ataraxia*) und der Abwesenheit von Schmerz: einfache Freuden, Freundschaft, keine Angst vor Göttern oder dem Tod. Der Vorwurf, [[epikureismus|Epikureer]] seien Genießer ohne Maß, ist ein altes Missverständnis.
 
-Sprichwörtlich wurde auch **Diogenes** von Sinope, ein *Kyniker*, der der Legende nach in einem Fass lebte und Alexander den Großen bat, ihm „aus der Sonne zu gehen“.`,
+Sprichwörtlich wurde auch **[Diogenes](wiki:Diogenes von Sinope|Diogenes)** von Sinope, ein *[Kyniker](wiki:Kynismus|Cynicism (philosophy))*, der der Legende nach in einem Fass lebte und Alexander den Großen bat, ihm „aus der Sonne zu gehen“.`,
+    },
+    {
+      id: 'map-quiz-denker', type: 'map', title: 'Finde die Heimatorte der Denker',
+      view: [17, 33, 38, 43],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      quiz: { rounds: 7 },
+      places: [{ name: 'Athen' }, { name: 'Ephesos' }],
+      points: [{ lon: 27.276, lat: 37.531, label: 'Milet' }, { lon: 26.833, lat: 37.733, label: 'Samos' }, { lon: 24.967, lat: 40.933, label: 'Abdera' }, { lon: 23.794, lat: 40.591, label: 'Stageira' }, { lon: 35.151, lat: 42.027, label: 'Sinope' }],
     },
     {
       id: 'order-lehrer', type: 'order', title: 'Lehrer und Schüler',

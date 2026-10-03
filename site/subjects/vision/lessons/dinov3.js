@@ -13,7 +13,7 @@ export default {
     {
       id: 'overview', type: 'text', title: 'DINOv3 at a glance',
       md: `
-DINOv3 (Meta AI, August 2025) keeps the DINOv2 recipe — DINO + iBOT + [[koleo]] losses, EMA teacher, multi-crop — and pushes every dial:[^dinov3]
+DINOv3 ([Meta AI](wiki:Meta AI|Meta AI), August 2025) keeps the DINOv2 recipe — DINO + iBOT + [[koleo]] losses, EMA teacher, multi-crop — and pushes every dial:[^dinov3]
 
 <table><tr><th></th><th>DINOv2</th><th>DINOv3</th></tr>
 <tr><td>Largest model</td><td>ViT-g/14, 1.1B</td><td>ViT-7B/16, 6.7B (4096-dim, 40 blocks, 32 heads)</td></tr>
@@ -32,9 +32,9 @@ The **constant schedule** matters more than it looks: with cosine decay you must
       md: `
 LVD-1689M mixes three sources:[^dinov3]
 
-- **Clustering-based curation:** hierarchical k-means on DINOv2 embeddings of the ~17B-image pool, then balanced sampling across clusters — broad coverage of visual concepts.
+- **Clustering-based curation:** [hierarchical k-means](wiki:Hierarchical clustering|Hierarchische Clusteranalyse) on DINOv2 embeddings of the ~17B-image pool, then balanced sampling across clusters — broad coverage of visual concepts.
 - **Retrieval-based curation:** images similar to seed datasets, for concepts relevant to downstream tasks.
-- **Raw public datasets:** ImageNet-1k, ImageNet-22k, Mapillary.
+- **Raw public datasets:** [ImageNet](wiki:ImageNet|ImageNet)-1k, ImageNet-22k, [Mapillary](wiki:Mapillary|Mapillary).
 
 A detail with a lesson for you: about 10% of training batches are *homogeneous* batches of ImageNet-1k only, the rest are mixed. Data composition is a design decision, not an afterthought.`,
     },
@@ -65,7 +65,7 @@ DINOv3 keeps a **Gram teacher**: an earlier checkpoint of the EMA teacher whose 
 $$\\mathcal{L}_{\\text{Gram}} = \\left\\lVert X_S X_S^\\top - X_G X_G^\\top \\right\\rVert_F^2$$
 
 - $X_S$: student patch features, $X_G$: Gram-teacher patch features (same image, same crop), both L2-normalized per patch.
-- $\\lVert A \\rVert_F^2 = \\sum_{i,j} A_{ij}^2$ — the squared **Frobenius norm**, i.e. the sum of all squared entries of the difference.
+- $\\lVert A \\rVert_F^2 = \\sum_{i,j} A_{ij}^2$ — the squared **[Frobenius norm](wiki:Matrix norm|Matrixnorm)**, i.e. the sum of all squared entries of the difference.
 
 The clever part: the loss only fixes **which patches are similar to which**. The features themselves may rotate, sharpen and keep learning — as long as the pattern of similarities stays local and clean. It would be far too restrictive to pin the features themselves to an old checkpoint.
 
@@ -73,7 +73,7 @@ How it is used:
 
 - Applied in a **refinement phase after 1M iterations**, added to the other losses.
 - The Gram teacher is **refreshed every 10k iterations** from the EMA teacher.
-- **High-resolution Gram teacher:** feed the Gram teacher images at 2× resolution and downsample its feature map (bicubic) to the student's grid. Averaging finer features gives smoother, better targets.
+- **High-resolution Gram teacher:** feed the Gram teacher images at 2× resolution and downsample its feature map ([bicubic](wiki:Bicubic interpolation)) to the student's grid. Averaging finer features gives smoother, better targets.
 
 Result: dense quality recovers — even surpasses its early peak — within the refinement phase, while global quality is unaffected.`,
     },
@@ -100,7 +100,7 @@ Result: dense quality recovers — even surpasses its early peak — within the 
       md: `
 After the main training, DINOv3 runs a short **resolution adaptation** (about 10k iterations): global crops at a mix of 512 and 768 pixels, local crops from 112 to 336, with Gram anchoring still active.[^dinov3]
 
-With patch size 16, a 768×768 crop is 48×48 = 2,304 tokens. The payoff: the model produces stable, semantically meaningful feature maps far above its training resolution — the paper shows crisp features at resolutions **above 4k**. For you, that means you can feed DINOv3 large, detailed watch photos and still get consistent features (memory permitting).`,
+With patch size 16, a 768×768 crop is 48×48 = 2,304 tokens. The payoff: the model produces stable, semantically meaningful feature maps far above its training resolution — the paper shows crisp features at resolutions **above [4k](wiki:4K resolution|4K (Bildauflösung))**. For you, that means you can feed DINOv3 large, detailed watch photos and still get consistent features (memory permitting).`,
     },
     {
       id: 'family', type: 'text', title: 'The distilled family',
@@ -118,7 +118,7 @@ Almost nobody will run the 7B model. It exists to be distilled into models you *
 
 Frozen quality is the headline: with only a linear head, the 7B model reaches **55.9 mIoU on ADE20k**, versus about 49.5 for DINOv2 and 42.7 for SigLIP 2 in the paper's comparison. There is also a text-aligned variant (trained LiT-style with the vision backbone frozen) for open-vocabulary use.
 
-**License:** unlike DINOv2 (Apache 2.0), DINOv3 weights come under the custom **DINOv3 License**, and downloads require accepting it. Read it before building a product on top.`,
+**License:** unlike DINOv2 ([Apache 2.0](wiki:Apache License|Apache-Lizenz)), DINOv3 weights come under the custom **DINOv3 License**, and downloads require accepting it. Read it before building a product on top.`,
     },
     {
       id: 'match-family', type: 'match', title: 'Know your models',

@@ -13,11 +13,11 @@ export default {
     {
       id: 'bert', type: 'text', title: 'From BERT to images',
       md: `
-In language, **BERT** learned from raw text by hiding ~15% of the words and predicting them from context.[^bert] The vision version is **[[masked-image-modeling]]** (MIM): cut the image into patches (like a [[vit|ViT]] does anyway), hide some, and predict what's under the mask.
+In language, **[BERT](wiki:BERT (language model)|Bidirectional Encoder Representations from Transformers)** learned from raw text by hiding ~15% of the words and predicting them from context.[^bert] The vision version is **[[masked-image-modeling]]** (MIM): cut the image into patches (like a [[vit|ViT]] does anyway), hide some, and predict what's under the mask.
 
 It sounds like the jigsaw puzzles from the first lesson, but it's much harder to cheat: to fill in a hidden patch of the dial, the network must understand what a dial looks like, where the hands point, and how the bezel continues around the circle.
 
-Images differ from text in one important way: they are **highly redundant**. Neighbouring pixels are almost identical. Hide 15% of an image and a network can simply interpolate from the neighbours — no understanding needed. That observation drives MAE's most striking choice.`,
+Images differ from text in one important way: they are **highly [redundant](wiki:Redundancy (information theory)|Redundanz (Informationstheorie))**. Neighbouring [pixels](wiki:Pixel) are almost identical. Hide 15% of an image and a network can simply [interpolate](wiki:Interpolation|Interpolation (Mathematik)) from the neighbours — no understanding needed. That observation drives MAE's most striking choice.`,
     },
     {
       id: 'video-mae', type: 'video', youtube: 'Dp6iICL2dVI', label: 'Masked Autoencoders Are Scalable Vision Learners – Paper explained and animated', channel: 'AI Coffee Break with Letitia', minutes: 13,
@@ -26,13 +26,13 @@ Images differ from text in one important way: they are **highly redundant**. Nei
     {
       id: 'mae', type: 'text', title: 'MAE: masked autoencoders',
       md: `
-**[[mae|MAE]]** (He et al., 2021)[^mae] is almost aggressively simple:
+**[[mae|MAE]]** ([He](wiki:Kaiming He) et al., 2021)[^mae] is almost aggressively simple:
 
 1. **Patchify** a 224×224 image into 16×16 patches → 196 [[token|tokens]].
 2. **Mask 75% at random.** Only 49 patches remain visible.
 3. **Encode only the visible patches** with a large ViT. No mask tokens enter the encoder.
 4. A **lightweight decoder** receives the encoded visible patches plus a learned *mask token* at every hidden position (with [[positional-embedding|positional embeddings]] so it knows where each one is) and predicts the pixels of every patch.
-5. **Loss:** mean squared error on the **masked patches only**, using per-patch normalized pixels as targets:
+5. **Loss:** [mean squared error](wiki:Mean squared error|Mittlere quadratische Abweichung) on the **masked patches only**, using per-patch normalized pixels as targets:
 
 $$\\mathcal{L}_{\\text{MAE}} = \\frac{1}{|M|} \\sum_{i \\in M} \\big\\lVert \\hat{x}_i - x_i \\big\\rVert_2^2$$
 
@@ -64,7 +64,7 @@ Why **75%**? Because of redundancy: with little masking the task is solvable by 
     {
       id: 'mae-properties', type: 'text', title: 'What MAE features are good at — and what not',
       md: `
-MAE is excellent as **initialization for fine-tuning**: a ViT-Huge pretrained with MAE reached 87.8% ImageNet top-1 after fine-tuning, using only ImageNet-1K images.[^mae]
+MAE is excellent as **initialization for fine-tuning**: a ViT-Huge pretrained with MAE reached 87.8% [ImageNet](wiki:ImageNet) top-1 after fine-tuning, using only ImageNet-1K images.[^mae]
 
 But under a **[[linear-probe]]** — frozen features, linear readout — MAE is clearly weaker than contrastive or DINO-style features. Pixel reconstruction makes the encoder keep lots of low-level detail (textures, exact intensities) that a linear classifier can't easily use; the semantics are there but not linearly organized.
 

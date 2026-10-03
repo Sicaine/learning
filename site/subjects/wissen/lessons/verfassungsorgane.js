@@ -18,19 +18,19 @@ export default {
     {
       id: 'bundestag', type: 'text', title: 'Der Bundestag: das Herz der Demokratie',
       md: `
-Der [[bundestag]] ist das einzige Verfassungsorgan des Bundes, das **direkt vom Volk** gewählt wird — alle vier Jahre. Er tagt im **Reichstagsgebäude** in Berlin und hat vier Hauptaufgaben:
+Der [[bundestag]] ist das einzige Verfassungsorgan des Bundes, das **direkt vom Volk** gewählt wird — alle vier Jahre. Er tagt im **[Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building)** in [Berlin](wiki:Berlin|Berlin) und hat vier Hauptaufgaben:
 
-1. **Gesetze beschließen** und den Bundeshaushalt verabschieden,
+1. **Gesetze beschließen** und den [Bundeshaushalt](wiki:Bundeshaushalt|Budget of Germany) verabschieden,
 2. den **Bundeskanzler wählen**,
-3. die **Regierung kontrollieren** (Anfragen, Regierungsbefragung, Untersuchungsausschüsse),
+3. die **Regierung kontrollieren** (Anfragen, Regierungsbefragung, [Untersuchungsausschüsse](wiki:Untersuchungsausschuss|Parliamentary inquiry committee)),
 4. an der Wahl von Bundespräsident und Verfassungsrichtern mitwirken.
 
-Seit der Wahlrechtsreform hat der Bundestag fest **630 Sitze**; der 2025 gewählte 21. Bundestag wird von **Julia Klöckner** (CDU) geleitet (Stand 2026).[^bundestag-de] Die Bundestagspräsidentin steht in der protokollarischen Rangfolge an zweiter Stelle — direkt hinter dem Bundespräsidenten.`,
+Seit der [Wahlrechtsreform](wiki:Wahlrechtsreform 2023|Electoral system of Germany) hat der Bundestag fest **630 Sitze**; der 2025 gewählte 21. Bundestag wird von **[Julia Klöckner](wiki:Julia Klöckner|Julia Klöckner)** (CDU) geleitet (Stand 2026).[^bundestag-de] Die [Bundestagspräsidentin](wiki:Präsident des Deutschen Bundestages|President of the Bundestag) steht in der protokollarischen Rangfolge an zweiter Stelle — direkt hinter dem Bundespräsidenten.`,
     },
     {
       id: 'bundesrat', type: 'text', title: 'Der Bundesrat: die Stimme der Länder',
       md: `
-Über den [[bundesrat]] wirken die 16 Länder an der Gesetzgebung des Bundes mit. Seine Mitglieder sind **keine gewählten Abgeordneten**, sondern Mitglieder der Landesregierungen — Ministerpräsidenten und Minister.
+Über den [[bundesrat]] wirken die 16 Länder an der Gesetzgebung des Bundes mit. Seine Mitglieder sind **keine gewählten Abgeordneten**, sondern Mitglieder der Landesregierungen — [Ministerpräsidenten](wiki:Ministerpräsident|Minister-president) und Minister.
 
 Jedes Land hat je nach Einwohnerzahl **3 bis 6 Stimmen**, zusammen **69**. Ein Land muss seine Stimmen **einheitlich** abgeben. Die großen Länder Nordrhein-Westfalen, Bayern, Baden-Württemberg und Niedersachsen haben je 6, Hessen 5, sieben Länder je 4, und Bremen, Hamburg, Mecklenburg-Vorpommern sowie das Saarland je 3 Stimmen.[^bundesrat-de]
 
@@ -51,19 +51,19 @@ Weil in den Ländern oft andere Koalitionen regieren als im Bund, kann der Bunde
     {
       id: 'regierung', type: 'text', title: 'Kanzler und Regierung',
       md: `
-Der [[bundeskanzler]] wird auf Vorschlag des Bundespräsidenten vom Bundestag gewählt. Nötig ist die **Kanzlermehrheit**: die Mehrheit aller Mitglieder, beim 630er-Bundestag also **316 Stimmen**. Der Kanzler schlägt die Minister vor und bestimmt die [[richtlinienkompetenz|Richtlinien der Politik]].
+Der [[bundeskanzler]] wird auf Vorschlag des Bundespräsidenten vom Bundestag gewählt. Nötig ist die **[Kanzlermehrheit](wiki:Kanzlermehrheit)**: die Mehrheit aller Mitglieder, beim 630er-Bundestag also **316 Stimmen**. Der Kanzler schlägt die Minister vor und bestimmt die [[richtlinienkompetenz|Richtlinien der Politik]].
 
-Seit dem **6. Mai 2025** ist **Friedrich Merz** (CDU) Bundeskanzler, an der Spitze einer Koalition aus CDU/CSU und SPD; Vizekanzler ist Lars Klingbeil (SPD) (Stand 2026). Merz verfehlte im ersten Wahlgang die Kanzlermehrheit und wurde erst im zweiten Wahlgang am selben Tag gewählt — das hatte es in der Geschichte der Bundesrepublik zuvor noch nie gegeben.[^wiki-bundeskanzler]
+Seit dem **6. Mai 2025** ist **[Friedrich Merz](wiki:Friedrich Merz|Friedrich Merz)** (CDU) Bundeskanzler, an der Spitze einer Koalition aus CDU/CSU und SPD; [Vizekanzler](wiki:Vizekanzler (Deutschland)|Vice-Chancellor of Germany) ist [Lars Klingbeil](wiki:Lars Klingbeil|Lars Klingbeil) (SPD) (Stand 2026). Merz verfehlte im ersten Wahlgang die Kanzlermehrheit und wurde erst im zweiten Wahlgang am selben Tag gewählt — das hatte es in der Geschichte der Bundesrepublik zuvor noch nie gegeben.[^wiki-bundeskanzler]
 
-Die [[bundesregierung]] arbeitet nach drei Prinzipien (Art. 65 GG): **Kanzlerprinzip** (Richtlinienkompetenz), **Ressortprinzip** (jeder Minister führt sein Ministerium selbst) und **Kollegialprinzip** (bei Streit entscheidet das Kabinett).`,
+Die [[bundesregierung]] arbeitet nach drei Prinzipien (Art. 65 GG): **Kanzlerprinzip** ([Richtlinienkompetenz](wiki:Richtlinienkompetenz)), **Ressortprinzip** (jeder Minister führt sein Ministerium selbst) und **Kollegialprinzip** (bei Streit entscheidet das Kabinett).`,
     },
     {
       id: 'misstrauen', type: 'text', title: 'Wie wird man einen Kanzler los?',
       md: `
-In der Weimarer Republik stürzten wechselnde Mehrheiten Regierungen, ohne neue bilden zu können. Das Grundgesetz macht es deshalb schwer:
+In der [Weimarer Republik](wiki:Weimarer Republik|Weimar Republic) stürzten wechselnde Mehrheiten Regierungen, ohne neue bilden zu können. Das Grundgesetz macht es deshalb schwer:
 
-- **[[konstruktives-misstrauensvotum|Konstruktives Misstrauensvotum]]** (Art. 67): Der Bundestag kann den Kanzler nur abwählen, indem er **gleichzeitig einen Nachfolger** mit absoluter Mehrheit wählt. Erfolgreich war das bisher nur einmal: **1982**, als Helmut Kohl Helmut Schmidt ablöste.
-- **[[vertrauensfrage|Vertrauensfrage]]** (Art. 68): Der Kanzler selbst fragt, ob der Bundestag ihm noch vertraut. Verliert er, kann der Bundespräsident den Bundestag auflösen. Weil der Bundestag sich nicht selbst auflösen darf, ist das der Weg zu **Neuwahlen** — genutzt 1972, 1983, 2005 und zuletzt von Olaf Scholz im Dezember 2024, was zur Bundestagswahl am 23. Februar 2025 führte.`,
+- **[[konstruktives-misstrauensvotum|Konstruktives Misstrauensvotum]]** (Art. 67): Der Bundestag kann den Kanzler nur abwählen, indem er **gleichzeitig einen Nachfolger** mit absoluter Mehrheit wählt. Erfolgreich war das bisher nur einmal: **1982**, als [Helmut Kohl](wiki:Helmut Kohl|Helmut Kohl) [Helmut Schmidt](wiki:Helmut Schmidt|Helmut Schmidt) ablöste.
+- **[[vertrauensfrage|Vertrauensfrage]]** (Art. 68): Der Kanzler selbst fragt, ob der Bundestag ihm noch vertraut. Verliert er, kann der Bundespräsident den Bundestag auflösen. Weil der Bundestag sich nicht selbst auflösen darf, ist das der Weg zu **Neuwahlen** — genutzt 1972, 1983, 2005 und zuletzt von [Olaf Scholz](wiki:Olaf Scholz|Olaf Scholz) im Dezember 2024, was zur [Bundestagswahl am 23. Februar 2025](wiki:Bundestagswahl 2025|2025 German federal election) führte.`,
     },
     {
       id: 'quiz-misstrauen', type: 'quiz', title: 'Misstrauen oder Vertrauen?',
@@ -78,9 +78,19 @@ In der Weimarer Republik stürzten wechselnde Mehrheiten Regierungen, ohne neue 
     {
       id: 'praesident-gericht', type: 'text', title: 'Staatsoberhaupt und Hüter der Verfassung',
       md: `
-Der [[bundespraesident]] ist Staatsoberhaupt, politisch aber bewusst zurückhaltend angelegt — anders als der mächtige Reichspräsident der Weimarer Zeit. Er wird von der [[bundesversammlung]] für **fünf Jahre** gewählt (einmalige Wiederwahl möglich). Er vertritt Deutschland völkerrechtlich, ernennt Kanzler und Minister, unterzeichnet („fertigt aus“) die Gesetze und prüft dabei, ob sie verfassungsgemäß zustande gekommen sind. Amtsinhaber ist seit 2017 **Frank-Walter Steinmeier**; seine zweite Amtszeit endet im März 2027 (Stand 2026).[^wiki-bundespraesident]
+Der [[bundespraesident]] ist Staatsoberhaupt, politisch aber bewusst zurückhaltend angelegt — anders als der mächtige [Reichspräsident](wiki:Reichspräsident|President of Germany (1919–1945)) der Weimarer Zeit. Er wird von der [[bundesversammlung]] für **fünf Jahre** gewählt (einmalige Wiederwahl möglich). Er vertritt Deutschland völkerrechtlich, ernennt Kanzler und Minister, unterzeichnet („fertigt aus“) die Gesetze und prüft dabei, ob sie verfassungsgemäß zustande gekommen sind. Amtsinhaber ist seit 2017 **[Frank-Walter Steinmeier](wiki:Frank-Walter Steinmeier|Frank-Walter Steinmeier)**; seine zweite Amtszeit endet im März 2027 (Stand 2026).[^wiki-bundespraesident]
 
-Das [[bundesverfassungsgericht]] in **Karlsruhe** wacht über das Grundgesetz. Seine 16 Richterinnen und Richter werden je zur Hälfte von Bundestag und Bundesrat mit Zweidrittelmehrheit gewählt — für 12 Jahre, ohne Wiederwahl. Es kann Gesetze für nichtig erklären, entscheidet über [[verfassungsbeschwerde|Verfassungsbeschwerden]] und über Parteiverbote. Seine Entscheidungen binden alle anderen Staatsorgane.[^bverfg-de]`,
+Das [[bundesverfassungsgericht]] in **[Karlsruhe](wiki:Karlsruhe|Karlsruhe)** wacht über das Grundgesetz. Seine 16 Richterinnen und Richter werden je zur Hälfte von Bundestag und Bundesrat mit [Zweidrittelmehrheit](wiki:Zweidrittelmehrheit|Two-thirds rule) gewählt — für 12 Jahre, ohne Wiederwahl. Es kann Gesetze für nichtig erklären, entscheidet über [[verfassungsbeschwerde|Verfassungsbeschwerden]] und über [Parteiverbote](wiki:Parteiverbot|Restrictions on political parties). Seine Entscheidungen binden alle anderen Staatsorgane.[^bverfg-de]`,
+    },
+    {
+      id: 'map-sitze-organe', type: 'map', title: 'Wo sitzen die Verfassungsorgane?',
+      view: 'de',
+      places: [
+        { name: 'Berlin', kind: 'capital', pos: 'r', detail: '**[Berlin](wiki:Berlin|Berlin)** ist Hauptstadt und Regierungssitz: Hier tagen der [Bundestag](wiki:Deutscher Bundestag|Bundestag) im [Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building) und der [Bundesrat](wiki:Bundesrat (Deutschland)|German Bundesrat); hier arbeiten der Kanzler im [Bundeskanzleramt](wiki:Bundeskanzleramt (Deutschland)|Federal Chancellery of Germany) und der Bundespräsident im [Schloss Bellevue](wiki:Schloss Bellevue|Bellevue Palace, Germany).' },
+        { name: 'Karlsruhe', kind: 'site', pos: 'l', detail: '**[Karlsruhe](wiki:Karlsruhe|Karlsruhe)** — Sitz des [Bundesverfassungsgerichts](wiki:Bundesverfassungsgericht|Federal Constitutional Court), bewusst fern von der Hauptstadt.' },
+        { name: 'Bonn', pos: 'l', detail: '**[Bonn](wiki:Bonn|Bonn)** führt seit dem [Berlin/Bonn-Gesetz](wiki:Berlin/Bonn-Gesetz|Berlin-Bonn Act) von 1994 den Zusatz „Bundesstadt“. Auch dort haben Bundesministerien ihren Dienstsitz; der Umzug von Parlament und Regierung nach Berlin erreichte 1999 seinen Höhepunkt.' },
+      ],
+      caption: 'Fast alle Verfassungsorgane sitzen in Berlin — die Ausnahme ist das Bundesverfassungsgericht in Karlsruhe.',
     },
     {
       id: 'match-organe', type: 'match', title: 'Wer macht was?',
@@ -96,7 +106,7 @@ Das [[bundesverfassungsgericht]] in **Karlsruhe** wacht über das Grundgesetz. S
     {
       id: 'gesetz', type: 'text', title: 'Wie ein Gesetz entsteht',
       md: `
-Die meisten Gesetzentwürfe kommen von der Bundesregierung; auch der Bundestag (aus seiner Mitte) und der Bundesrat dürfen Gesetze einbringen. Dann durchläuft ein Gesetz das [[gesetzgebungsverfahren]]: Beratung in drei Lesungen im Bundestag (die eigentliche Arbeit geschieht in den **Ausschüssen**), Abstimmung, Behandlung im Bundesrat — bei Streit im **Vermittlungsausschuss** —, Gegenzeichnung durch Kanzler oder Minister, Ausfertigung durch den Bundespräsidenten und schließlich Verkündung im Bundesgesetzblatt.`,
+Die meisten Gesetzentwürfe kommen von der Bundesregierung; auch der Bundestag (aus seiner Mitte) und der Bundesrat dürfen Gesetze einbringen. Dann durchläuft ein Gesetz das [[gesetzgebungsverfahren]]: Beratung in drei Lesungen im Bundestag (die eigentliche Arbeit geschieht in den **Ausschüssen**), Abstimmung, Behandlung im Bundesrat — bei Streit im **[Vermittlungsausschuss](wiki:Vermittlungsausschuss)** —, Gegenzeichnung durch Kanzler oder Minister, Ausfertigung durch den Bundespräsidenten und schließlich Verkündung im Bundesgesetzblatt.`,
     },
     {
       id: 'order-gesetz', type: 'order', title: 'Der Weg eines Gesetzes',
@@ -119,7 +129,7 @@ Die meisten Gesetzentwürfe kommen von der Bundesregierung; auch der Bundestag (
     {
       id: 'recall-gewalten', type: 'recall', title: 'Erkläre es',
       prompt: 'Ordne die Verfassungsorgane den drei Gewalten zu. Warum sagt man trotzdem, dass in Deutschland Parlament und Regierung eng verschränkt sind?',
-      answer: `**Legislative**: Bundestag und Bundesrat. **Exekutive**: Bundesregierung (und Bundespräsident als Staatsoberhaupt). **Judikative**: Bundesverfassungsgericht und die übrigen Gerichte. Die Verschränkung: Der Kanzler wird vom Bundestag gewählt und die Regierung stützt sich auf die Parlamentsmehrheit; viele Minister sind selbst Abgeordnete. Die Kontrolle der Regierung übernimmt deshalb vor allem die **Opposition** — die klassische Frontlinie verläuft zwischen Regierungsmehrheit und Opposition, nicht zwischen Parlament und Regierung.`,
+      answer: `**[Legislative](wiki:Legislative|Legislature)**: Bundestag und Bundesrat. **[Exekutive](wiki:Exekutive|Executive (government))**: Bundesregierung (und Bundespräsident als Staatsoberhaupt). **[Judikative](wiki:Judikative|Judiciary)**: Bundesverfassungsgericht und die übrigen Gerichte. Die Verschränkung: Der Kanzler wird vom Bundestag gewählt und die Regierung stützt sich auf die Parlamentsmehrheit; viele Minister sind selbst Abgeordnete. Die Kontrolle der Regierung übernimmt deshalb vor allem die **[Opposition](wiki:Opposition (Politik)|Opposition (politics))** — die klassische Frontlinie verläuft zwischen Regierungsmehrheit und Opposition, nicht zwischen Parlament und Regierung.`,
       hints: ['Legislative, Exekutive, Judikative.', 'Woher kommt die Mehrheit, auf die sich der Kanzler stützt?'],
       cards: ['gewalten'],
     },

@@ -13,24 +13,56 @@ export default {
     {
       id: 'amerika', type: 'text', title: '1776: Die Amerikanische Revolution',
       md: `
-Die dreizehn britischen Kolonien an der Ostküste Nordamerikas sollten Steuern zahlen, ohne im Londoner Parlament vertreten zu sein. „**No taxation without representation**“ wurde zum Schlachtruf. **1773** kippten Kolonisten aus Protest Tee in den Hafen von Boston (*Boston Tea Party*).
+Die dreizehn britischen Kolonien an der Ostküste Nordamerikas sollten Steuern zahlen, ohne im Londoner Parlament vertreten zu sein. „**No taxation without representation**“ wurde zum Schlachtruf. **1773** kippten Kolonisten aus Protest Tee in den Hafen von Boston (*[Boston Tea Party](wiki:Boston Tea Party|Boston Tea Party)*).
 
-Am **4. Juli 1776** verabschiedeten die Kolonien die **Unabhängigkeitserklärung**, verfasst vor allem von **Thomas Jefferson**: Alle Menschen seien gleich geschaffen und hätten unveräußerliche Rechte auf „Leben, Freiheit und das Streben nach Glück“. Im Unabhängigkeitskrieg siegten die Amerikaner mit französischer Hilfe; 1783 erkannte Großbritannien die **USA** an.[^wp-amerikanische-revolution]
+Am **4. Juli 1776** verabschiedeten die Kolonien die **[Unabhängigkeitserklärung](wiki:Unabhängigkeitserklärung der Vereinigten Staaten|United States Declaration of Independence)**, verfasst vor allem von **[Thomas Jefferson](wiki:Thomas Jefferson|Thomas Jefferson)**: Alle Menschen seien gleich geschaffen und hätten unveräußerliche Rechte auf „Leben, Freiheit und das Streben nach Glück“. Im [Unabhängigkeitskrieg](wiki:Amerikanischer Unabhängigkeitskrieg|American Revolutionary War) siegten die Amerikaner mit französischer Hilfe; 1783 erkannte Großbritannien die **[USA](wiki:Vereinigte Staaten|United States)** an.[^wp-amerikanische-revolution]
 
-Die **Verfassung von 1787** ist die älteste noch gültige geschriebene Staatsverfassung der Welt. Sie setzt die [[gewaltenteilung|Gewaltenteilung]] um: Präsident, Kongress und Oberster Gerichtshof kontrollieren sich gegenseitig. **George Washington** wurde 1789 erster Präsident. Der Widerspruch blieb: Die Sklaverei bestand weiter — bis 1865.`,
+Die **[Verfassung von 1787](wiki:Verfassung der Vereinigten Staaten|Constitution of the United States)** ist die älteste noch gültige geschriebene Staatsverfassung der Welt. Sie setzt die [[gewaltenteilung|Gewaltenteilung]] um: Präsident, Kongress und Oberster Gerichtshof kontrollieren sich gegenseitig. **[George Washington](wiki:George Washington|George Washington)** wurde 1789 erster Präsident. Der Widerspruch blieb: Die Sklaverei bestand weiter — bis 1865.`,
+    },
+    {
+      id: 'map-amerika', type: 'map', title: 'Orte der Amerikanischen Revolution',
+      view: [-82, 33, -66, 46],
+      layers: { cities: false, countryLabels: false },
+      places: [
+        { name: 'Boston', num: 1, pos: 'r', detail: `**[Boston](wiki:Boston|Boston)** — hier warfen Kolonisten 1773 Tee ins Hafenwasser: die [Boston Tea Party](wiki:Boston Tea Party|Boston Tea Party).` },
+        { name: 'Philadelphia', num: 2, pos: 'r', detail: `**[Philadelphia](wiki:Philadelphia|Philadelphia)** — am 4. Juli 1776 wurde hier die [Unabhängigkeitserklärung](wiki:Unabhängigkeitserklärung der Vereinigten Staaten|United States Declaration of Independence) beschlossen; 1787 tagte hier der Verfassungskonvent.` },
+        { name: 'New York City', num: 4, pos: 'r', detail: `**[New York](wiki:New York City|New York City)** — 1789 trat [George Washington](wiki:George Washington|George Washington) hier sein Amt als erster Präsident an.` },
+        { name: 'Washington, D.C.', num: 5, pos: 'r', detail: `**[Washington, D.C.](wiki:Washington, D.C.|Washington, D.C.)** — seit 1800 Hauptstadt der USA, benannt nach dem ersten Präsidenten.` },
+        { name: 'Jamestown', pos: 'l', detail: `**[Jamestown](wiki:Jamestown (Virginia)|Jamestown)** — 1607 die erste dauerhafte englische Siedlung in Nordamerika.` },
+      ],
+      points: [
+        { lon: -76.51, lat: 37.234, label: 'Yorktown', num: 3, kind: 'battle', pos: 'r', detail: `**[Yorktown](wiki:Schlacht von Yorktown|Siege of Yorktown)** — 1781 kapitulierten hier die Briten; damit war der Krieg praktisch entschieden (Friede 1783).` },
+      ],
+      caption: 'Die Nummern zeigen die Reihenfolge: 1 Boston (1773) · 2 Philadelphia (1776) · 3 Yorktown (1781) · 4 New York (1789) · 5 Washington (ab 1800).',
     },
     {
       id: 'frankreich', type: 'text', title: '1789: Die Französische Revolution',
       md: `
-Frankreich war hoch verschuldet, das Volk hungerte, während Adel und Klerus kaum Steuern zahlten. König **Ludwig XVI.** berief im Mai 1789 die Generalstände ein. Die Vertreter des Dritten Standes (Bürger und Bauern) erklärten sich zur **Nationalversammlung** und schworen im **Ballhausschwur** (20. Juni 1789), nicht auseinanderzugehen, bevor Frankreich eine Verfassung habe.
+Frankreich war hoch verschuldet, das Volk hungerte, während Adel und Klerus kaum Steuern zahlten. König **[Ludwig XVI.](wiki:Ludwig XVI.|Louis XVI)** berief im Mai 1789 die [Generalstände](wiki:Generalstände|Estates General (France)) ein. Die Vertreter des Dritten Standes (Bürger und Bauern) erklärten sich zur **[Nationalversammlung](wiki:Französische Nationalversammlung|National Assembly (France))** und schworen im **[Ballhausschwur](wiki:Ballhausschwur|Tennis Court Oath)** (20. Juni 1789), nicht auseinanderzugehen, bevor Frankreich eine Verfassung habe.
 
-Am **14. Juli 1789** stürmten Pariser die **Bastille**, ein Staatsgefängnis und Symbol königlicher Willkür — bis heute der französische Nationalfeiertag. Am **26. August 1789** folgte die **Erklärung der Menschen- und Bürgerrechte**: Freiheit, Gleichheit vor dem Gesetz, Volkssouveränität. Das Motto lautete „**Liberté, Égalité, Fraternité**“.[^wp-franz-revolution]
+Am **14. Juli 1789** stürmten Pariser die **[Bastille](wiki:Sturm auf die Bastille|Storming of the Bastille)**, ein Staatsgefängnis und Symbol königlicher Willkür — bis heute der französische Nationalfeiertag. Am **26. August 1789** folgte die **[Erklärung der Menschen- und Bürgerrechte](wiki:Erklärung der Menschen- und Bürgerrechte|Declaration of the Rights of Man and of the Citizen)**: Freiheit, Gleichheit vor dem Gesetz, Volkssouveränität. Das Motto lautete „**Liberté, Égalité, Fraternité**“.[^wp-franz-revolution]
 
-Dann radikalisierte sich die Revolution: Frankreich wurde 1792 Republik, **Ludwig XVI.** wurde am **21. Januar 1793** mit der Guillotine hingerichtet. Unter **Robespierre** folgte 1793/94 die **Schreckensherrschaft** (*Terreur*) mit Tausenden Hinrichtungen. **1799** übernahm General **Napoleon Bonaparte** durch einen Staatsstreich die Macht und krönte sich **1804** zum Kaiser. Sein **Code civil** (1804) verbreitete Ideen der Revolution — Gleichheit vor dem Gesetz, Zivilehe — in ganz Europa.`,
+Dann radikalisierte sich die Revolution: Frankreich wurde 1792 Republik, **Ludwig XVI.** wurde am **21. Januar 1793** mit der Guillotine hingerichtet. Unter **[Robespierre](wiki:Maximilien de Robespierre|Maximilien Robespierre)** folgte 1793/94 die **[Schreckensherrschaft](wiki:Terrorherrschaft|Reign of Terror)** (*Terreur*) mit Tausenden Hinrichtungen. **1799** übernahm General **[Napoleon Bonaparte](wiki:Napoleon Bonaparte|Napoleon)** durch einen Staatsstreich die Macht und krönte sich **1804** zum Kaiser. Sein **[Code civil](wiki:Code civil|Napoleonic Code)** (1804) verbreitete Ideen der Revolution — Gleichheit vor dem Gesetz, Zivilehe — in ganz Europa.`,
     },
     {
       id: 'fact-haiti', type: 'callout', tone: 'fact', title: 'Die vergessene dritte Revolution',
-      md: `In der französischen Kolonie Saint-Domingue erhoben sich ab 1791 versklavte Menschen unter Führern wie **Toussaint Louverture**. **1804** wurde **Haiti** unabhängig — die erste erfolgreiche Sklavenrevolution der Geschichte und der erste Staat, der von ehemals Versklavten gegründet wurde.`,
+      md: `In der französischen Kolonie [Saint-Domingue](wiki:Saint-Domingue|Saint-Domingue) erhoben sich ab 1791 versklavte Menschen unter Führern wie **[Toussaint Louverture](wiki:Toussaint Louverture|Toussaint Louverture)**. **1804** wurde **[Haiti](wiki:Haiti|Haiti)** unabhängig — die erste erfolgreiche Sklavenrevolution der Geschichte und der erste Staat, der von ehemals Versklavten gegründet wurde.`,
+    },
+    {
+      id: 'map-atlantik-revolutionen', type: 'map', title: 'Revolutionen rund um den Atlantik',
+      view: [-85, 10, 12, 54],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      highlight: [{ label: 'Haiti (früher Saint-Domingue)', color: '#7c3aed', countries: ['Haiti'] }],
+      places: [
+        { name: 'Boston', num: 1, pos: 'r', detail: `**[Boston](wiki:Boston|Boston)** — 1773 Boston Tea Party: Der Protest gegen britische Steuern beginnt.` },
+        { name: 'Philadelphia', num: 2, pos: 'b', detail: `**[Philadelphia](wiki:Philadelphia|Philadelphia)** — 1776 Unabhängigkeitserklärung.` },
+        { name: 'Paris', num: 4, pos: 'b', detail: `**[Paris](wiki:Paris|Paris)** — 1789 Sturm auf die Bastille, Menschenrechtserklärung.` },
+      ],
+      points: [
+        { lon: -72.339, lat: 18.543, label: 'Haiti', num: 5, pos: 'r', detail: `**[Haiti](wiki:Haiti|Haiti)** — ab 1791 erhoben sich Versklavte unter [Toussaint Louverture](wiki:Toussaint Louverture|Toussaint Louverture); 1804 wurde Haiti unabhängig.` },
+        { lon: -76.51, lat: 37.234, label: 'Yorktown', num: 3, kind: 'battle', pos: 'r', detail: `**[Yorktown](wiki:Schlacht von Yorktown|Siege of Yorktown)** — 1781 entscheidender Sieg der Amerikaner mit französischer Hilfe.` },
+      ],
+      caption: 'Die Ideen von Freiheit und Gleichheit wanderten über den Atlantik: 1 Boston (1773) · 2 Philadelphia (1776) · 3 Yorktown (1781) · 4 Paris (1789) · 5 Haiti (1791–1804).',
     },
     {
       id: 'order-fr', type: 'order', title: 'Der Ablauf der Französischen Revolution',
@@ -49,11 +81,45 @@ Dann radikalisierte sich die Revolution: Frankreich wurde 1792 Republik, **Ludwi
     {
       id: 'industrie', type: 'text', title: 'Die Industrielle Revolution',
       md: `
-Ab etwa **1760** veränderte sich in **England** die Arbeit grundlegend. Maschinen wie die **Spinning Jenny** mechanisierten die Textilherstellung; **James Watt** verbesserte die **Dampfmaschine** entscheidend (Patent 1769). Kohle und Eisen wurden zur Grundlage der Wirtschaft, Fabriken entstanden.[^wp-industrielle-revolution]
+Ab etwa **1760** veränderte sich in **England** die Arbeit grundlegend. Maschinen wie die **[Spinning Jenny](wiki:Spinning Jenny|Spinning jenny)** mechanisierten die Textilherstellung; **[James Watt](wiki:James Watt|James Watt)** verbesserte die **[Dampfmaschine](wiki:Dampfmaschine|Steam engine)** entscheidend (Patent 1769). Kohle und Eisen wurden zur Grundlage der Wirtschaft, Fabriken entstanden.[^wp-industrielle-revolution]
 
-**1825** fuhr zwischen Stockton und Darlington die erste öffentliche Dampfeisenbahn. In Deutschland verkehrte die erste Eisenbahn **1835** zwischen **Nürnberg und Fürth** (Lokomotive „Adler“). Die Industrialisierung kam hier später, dann aber mit großer Wucht — vor allem im Ruhrgebiet und in Sachsen.
+**1825** fuhr zwischen [Stockton und Darlington](wiki:Stockton and Darlington Railway|Stockton and Darlington Railway) die erste öffentliche Dampfeisenbahn. In Deutschland verkehrte die erste Eisenbahn **1835** zwischen **[Nürnberg und Fürth](wiki:Ludwigseisenbahn|Bavarian Ludwig Railway)** (Lokomotive „[Adler](wiki:Adler (Lokomotive)|Adler (locomotive))“). Die Industrialisierung kam hier später, dann aber mit großer Wucht — vor allem im [Ruhrgebiet](wiki:Ruhrgebiet|Ruhr) und in Sachsen.
 
-Die Kehrseite war die **[[soziale-frage|soziale Frage]]**: Menschen zogen vom Land in die Städte, lebten in engen Mietskasernen und arbeiteten bis zu 16 Stunden am Tag, auch Kinder. Daraus entstanden die **Arbeiterbewegung**, Gewerkschaften und sozialistische Ideen — **1848** veröffentlichten **Karl Marx** und **Friedrich Engels** das *Kommunistische Manifest*.`,
+Die Kehrseite war die **[[soziale-frage|soziale Frage]]**: Menschen zogen vom Land in die Städte, lebten in engen Mietskasernen und arbeiteten bis zu 16 Stunden am Tag, auch Kinder. Daraus entstanden die **[Arbeiterbewegung](wiki:Arbeiterbewegung|Labour movement)**, [Gewerkschaften](wiki:Gewerkschaft|Trade union) und sozialistische Ideen — **1848** veröffentlichten **[Karl Marx](wiki:Karl Marx|Karl Marx)** und **[Friedrich Engels](wiki:Friedrich Engels|Friedrich Engels)** das *[Kommunistische Manifest](wiki:Manifest der Kommunistischen Partei|The Communist Manifesto)*.`,
+    },
+    {
+      id: 'map-industrie-england', type: 'map', title: 'Die Wiege der Industrialisierung: England',
+      view: [-6.2, 50.2, 2.0, 56.0],
+      layers: { cities: false, countryLabels: false },
+      places: [
+        { name: 'Manchester', pos: 'r', detail: `**[Manchester](wiki:Manchester|Manchester)** — Baumwollindustrie, Zentrum der Industrialisierung (*Cottonopolis*).` },
+        { name: 'Birmingham', pos: 'r', detail: `**[Birmingham](wiki:Birmingham|Birmingham)** — Metallverarbeitung; hier arbeitete [James Watt](wiki:James Watt|James Watt) mit [Matthew Boulton](wiki:Matthew Boulton|Matthew Boulton) an der Dampfmaschine.` },
+        { name: 'Liverpool', pos: 'l', detail: `**[Liverpool](wiki:Liverpool|Liverpool)** — Hafen, über den Baumwolle und Industriegüter ein- und ausgingen; 1830 mit Manchester durch die erste Intercity-Eisenbahn verbunden.` },
+        { name: 'London', pos: 'r', detail: `**[London](wiki:London|London)** — Hauptstadt und größte Stadt der Welt.` },
+      ],
+      points: [
+        { lon: -1.557, lat: 54.523, label: 'Darlington', pos: 'l', detail: `**[Stockton und Darlington](wiki:Stockton and Darlington Railway|Stockton and Darlington Railway)** — 1825 fuhr zwischen Stockton und Darlington die erste öffentliche Dampfeisenbahn.` },
+        { lon: -1.32, lat: 54.57, label: 'Stockton', pos: 'r', detail: `**[Stockton-on-Tees](wiki:Stockton-on-Tees|Stockton-on-Tees)** — Endpunkt der ersten öffentlichen Dampfeisenbahn (1825).` },
+      ],
+      caption: 'Kohle, Eisen und Wasserwege machten die Midlands und den Nordwesten Englands zum Zentrum der Industriellen Revolution.',
+    },
+    {
+      id: 'map-industrie-deutschland', type: 'map', title: 'Industrialisierung in Deutschland',
+      view: 'de',
+      landscapes: ['Ruhrgebiet'],
+      layers: { cities: false },
+      places: [
+        { name: 'Nürnberg', pos: 'r', detail: `**[Nürnberg](wiki:Nürnberg|Nuremberg)** — hier startete 1835 die erste deutsche Eisenbahn nach Fürth.` },
+        { name: 'Chemnitz', pos: 'r', detail: `**[Chemnitz](wiki:Chemnitz|Chemnitz)** — „sächsisches Manchester“, Zentrum von Textil- und Maschinenbau.` },
+        { name: 'Essen', pos: 'l', detail: `**[Essen](wiki:Essen|Essen)** — Sitz der Firma [Krupp](wiki:Krupp (Familie)|Krupp family) und Herz des [Ruhrgebiets](wiki:Ruhrgebiet|Ruhr).` },
+        { name: 'Dortmund', pos: 'r', detail: `**[Dortmund](wiki:Dortmund|Dortmund)** — Kohle, Eisen und Stahl.` },
+        { name: 'Zwickau', pos: 'r', detail: `**[Zwickau](wiki:Zwickau|Zwickau)** — Steinkohle im Erzgebirgsvorland, später Automobilbau.` },
+        { name: 'Berlin', pos: 'r', detail: `**[Berlin](wiki:Berlin|Berlin)** — Maschinenbau und Elektroindustrie (Borsig, Siemens).` },
+      ],
+      points: [
+        { lon: 10.988, lat: 49.477, label: 'Fürth', pos: 'b', detail: `**[Fürth](wiki:Fürth|Fürth)** — Endpunkt der [Ludwigseisenbahn](wiki:Ludwigseisenbahn|Bavarian Ludwig Railway) (1835, rund 6 km).` },
+      ],
+      caption: 'Kohle (Ruhr, Sachsen) und Eisenbahnlinien bestimmten, wo Industrie entstand.',
     },
     {
       id: 'tl-game', type: 'game', viz: 'timeline', title: 'Das Revolutionszeitalter ordnen',
@@ -77,6 +143,14 @@ Die Kehrseite war die **[[soziale-frage|soziale Frage]]**: Menschen zogen vom La
         ['Code civil', 'Napoleon'],
         ['„Proletarier aller Länder, vereinigt euch!“', 'Kommunistisches Manifest'],
       ],
+    },
+    {
+      id: 'map-quiz-revolutionen', type: 'map', title: 'Wo spielten die Revolutionen?',
+      view: [-85, 10, 12, 54],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      quiz: { rounds: 6 },
+      places: [{ name: 'Boston' }, { name: 'Philadelphia' }, { name: 'Paris' }, { name: 'Manchester' }],
+      points: [{ lon: -76.51, lat: 37.234, label: 'Yorktown', kind: 'place' }, { lon: -72.339, lat: 18.543, label: 'Port-au-Prince', kind: 'place' }],
     },
     {
       id: 'num-bastille', type: 'numeric', title: 'Nationalfeiertag',

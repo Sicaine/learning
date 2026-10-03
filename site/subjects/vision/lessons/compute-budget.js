@@ -21,7 +21,7 @@ During training, [[vram|VRAM]] holds:
 3. **Optimizer state** — [[adamw|AdamW]] keeps two running averages (momentum and variance) per trainable parameter.
 4. **Activations** — every intermediate result of the forward pass that [[backpropagation]] needs later.
 
-With standard [[mixed-precision|mixed precision]] (bf16 compute, fp32 master weights), each **trainable** parameter costs about
+With standard [[mixed-precision|mixed precision]] ([bf16](wiki:Bfloat16 floating-point format|Bfloat16) compute, fp32 master weights), each **trainable** parameter costs about
 
 $$\\underbrace{4}_{\\text{fp32 weight}} + \\underbrace{4}_{\\text{gradient}} + \\underbrace{8}_{\\text{AdamW } m, v} = 16\\ \\text{bytes}$$
 
@@ -47,7 +47,7 @@ A ViT cuts the image into patches of [[patch-size]] $p$; the number of tokens is
 
 $$N = \\left(\\frac{\\text{resolution}}{p}\\right)^2$$
 
-Double the resolution → **4× the tokens** → 4× activation memory and ≥4× compute. The attention matrix itself is $N \\times N$, so naive attention memory grows with $N^2$ — **16×** for double resolution. Memory-efficient attention kernels (PyTorch SDPA / FlashAttention) avoid storing that matrix, which is why they are non-negotiable at high resolution.
+Double the resolution → **4× the tokens** → 4× activation memory and ≥4× compute. The attention matrix itself is $N \\times N$, so naive attention memory grows with $N^2$ — **16×** for double resolution. Memory-efficient attention kernels ([PyTorch](wiki:PyTorch|PyTorch) SDPA / FlashAttention) avoid storing that matrix, which is why they are non-negotiable at high resolution.
 
 Why you care: a seconds hand that is 6 pixels wide in a 512-px image is less than half a 16-px patch wide. Higher resolution (or cropping the watch region first) is often the most effective fix for thin parts — and the most expensive one.`,
     },
@@ -63,11 +63,11 @@ Why you care: a seconds hand that is 6 pixels wide in a 512-px image is less tha
 **2× RTX 4090, 24 GB each.** Consequences:
 
 - **Memory does not pool.** Two 24 GB cards are not one 48 GB card. Every GPU must hold what its own work needs.
-- **No NVLink.** The 4090 has no NVLink connector; GPUs talk over PCIe — on many consumer boards at x8/x8 when both slots are populated, and GeForce cards generally don't support direct peer-to-peer transfers, so traffic may route through system memory.
+- **No [NVLink](wiki:NVLink|NVLink).** The [4090](wiki:GeForce RTX 40 series|Nvidia-GeForce-40-Serie) has no NVLink connector; [GPUs](wiki:Graphics processing unit|Grafikprozessor) talk over [PCIe](wiki:PCI Express|PCI Express) — on many consumer boards at x8/x8 when both slots are populated, and GeForce cards generally don't support direct peer-to-peer transfers, so traffic may route through system memory.
 - **[[ddp|DDP]] works well:** each GPU keeps a full model copy and processes half the batch; only gradients are exchanged once per step. For ViT-L that is ~0.6–1.2 GB per step — noticeable but mostly hidden behind the backward pass. Expect close to 2× throughput.
 - **[[fsdp|FSDP]] is a poor fit:** sharding weights across the two cards means gathering them over PCIe for every layer, forward and backward. It halves parameter memory at best and does nothing for activations.
-- **128 GB RAM** is plenty for data loading and caching. It also allows CPU offloading of optimizer states (DeepSpeed ZeRO-Offload style), but at a large speed cost — useful for curiosity, not for iteration.
-- **Compute:** a 4090 delivers very roughly 40 TFLOP/s *sustained* in bf16 training (peak numbers on spec sheets are 2–4× higher). Data loading — decoding and resizing JPEGs — is frequently the real bottleneck; give the dataloader enough CPU workers or pre-resize your images.`,
+- **128 GB [RAM](wiki:Random-access memory|Random-Access Memory)** is plenty for data loading and caching. It also allows CPU offloading of optimizer states ([DeepSpeed](wiki:DeepSpeed) ZeRO-Offload style), but at a large speed cost — useful for curiosity, not for iteration.
+- **Compute:** a 4090 delivers very roughly 40 [TFLOP/s](wiki:FLOPS|Floating Point Operations Per Second) *sustained* in bf16 training (peak numbers on spec sheets are 2–4× higher). Data loading — decoding and resizing [JPEGs](wiki:JPEG|JPEG) — is frequently the real bottleneck; give the dataloader enough CPU workers or pre-resize your images.`,
     },
     {
       id: 'viz-vram', type: 'viz', viz: 'vram-calculator', title: 'VRAM & time calculator',

@@ -27,8 +27,8 @@ $$p_k = \\frac{e^{z_k}}{\\sum_{j=1}^{K} e^{z_j}}$$
 Exponentiate (all positive; gaps get amplified), then divide by the total (sum to 1). Useful properties:
 
 - **Order is preserved:** the largest logit gets the largest probability.
-- **Only differences matter:** adding the same constant $c$ to every logit changes nothing, because $e^{z_k + c} = e^c e^{z_k}$ and $e^c$ cancels. (Implementations subtract $\\max_j z_j$ for numerical stability.)
-- It's a smooth "soft" version of argmax: it gives most mass to the winner but keeps the others alive, so every logit receives gradient.
+- **Only differences matter:** adding the same constant $c$ to every logit changes nothing, because $e^{z_k + c} = e^c e^{z_k}$ and $e^c$ cancels. (Implementations subtract $\\max_j z_j$ for [numerical stability](wiki:Numerical stability|Stabilität (Numerik)).)
+- It's a smooth "soft" version of [argmax](wiki:Arg max|Arg max): it gives most mass to the winner but keeps the others alive, so every logit receives gradient.
 
 Softmax appears everywhere: classification outputs, per-pixel segmentation outputs, and inside every [[attention]] layer.`,
     },
@@ -37,7 +37,7 @@ Softmax appears everywhere: classification outputs, per-pixel segmentation outpu
       question: 'Two classes with logits $(2, 0)$. What probability does softmax give the first class? (Use $e^2 \\approx 7.389$.)',
       answer: 0.881, tolerance: 0.002,
       hint: '$\\frac{e^2}{e^2 + e^0}$',
-      explain: '$\\frac{7.389}{7.389 + 1} \\approx 0.881$. With two classes, softmax is the familiar sigmoid of the difference: $\\sigma(2 - 0)$.',
+      explain: '$\\frac{7.389}{7.389 + 1} \\approx 0.881$. With two classes, softmax is the familiar [sigmoid](wiki:Sigmoid function|Sigmoidfunktion) of the difference: $\\sigma(2 - 0)$.',
     },
     {
       id: 'temperature', type: 'text', title: 'Temperature: the confidence knob',
@@ -59,7 +59,7 @@ This is not a curiosity. In DINO, both a *teacher* and a *student* network outpu
     {
       id: 'entropy', type: 'text', title: 'Surprise, entropy and cross-entropy',
       md: `
-Information theory gives us a way to score beliefs. The **surprise** of an event with probability $p$ is $-\\log p$: certain events ($p = 1$) are not surprising at all, rare events are very surprising.
+[Information theory](wiki:Information theory|Informationstheorie) gives us a way to score beliefs. The **surprise** of an event with probability $p$ is $-\\log p$: certain events ($p = 1$) are not surprising at all, rare events are very surprising.
 
 **[[entropy]]** is the average surprise of a distribution — how uncertain it is:
 
@@ -71,7 +71,7 @@ It is 0 for a one-hot distribution and maximal, $\\log K$, for a uniform one.
 
 $$H(p, q) = -\\sum_k p_k \\log q_k$$
 
-For classification the target $p$ is one-hot (the true class $y$), so everything collapses to
+For classification the target $p$ is [one-hot](wiki:One-hot|1-aus-n-Code) (the true class $y$), so everything collapses to
 
 $$\\mathcal{L} = -\\log q_y$$
 
@@ -82,14 +82,14 @@ $$\\mathcal{L} = -\\log q_y$$
       question: 'The model assigns probability 0.25 to the correct class. What is the cross-entropy loss (natural log)?',
       answer: 1.386, tolerance: 0.005,
       hint: '$-\\ln 0.25 = \\ln 4$',
-      explain: '$\\ln 4 \\approx 1.386$ nats. Coincidence worth noticing: that is exactly the loss of a model that guesses uniformly among 4 classes. A freshly initialized segmentation model with $K$ classes starts near $\\ln K$ — a handy sanity check for your first training run.',
+      explain: '$\\ln 4 \\approx 1.386$ [nats](wiki:Nat (unit)|Nit (Informationseinheit)). Coincidence worth noticing: that is exactly the loss of a model that guesses uniformly among 4 classes. A freshly initialized segmentation model with $K$ classes starts near $\\ln K$ — a handy sanity check for your first training run.',
     },
     {
       id: 'calc-entropy', type: 'numeric', title: 'Maximum entropy',
       question: 'What is the entropy (natural log) of a uniform distribution over 8 classes?',
       answer: 2.079, tolerance: 0.005,
       hint: 'Each $p_k = 1/8$. The sum of $8$ identical terms $-\\frac18 \\ln \\frac18$.',
-      explain: '$\\ln 8 \\approx 2.079$ nats (= 3 bits). No distribution over 8 outcomes can be more uncertain.',
+      explain: '$\\ln 8 \\approx 2.079$ nats (= 3 [bits](wiki:Bit|Bit)). No distribution over 8 outcomes can be more uncertain.',
     },
     {
       id: 'kl', type: 'text', title: 'KL divergence in one paragraph',
@@ -135,7 +135,7 @@ Two consequences worth remembering for your data:
     {
       id: 'deep-mle', type: 'callout', tone: 'deep', title: 'Why the logarithm? Maximum likelihood',
       md: `
-If a model assigns probability $q_{y_i}$ to the correct label of each training example, the probability of the whole dataset (assuming independence) is the product $\\prod_i q_{y_i}$. Maximizing that product = maximizing $\\sum_i \\log q_{y_i}$ = minimizing $\\sum_i -\\log q_{y_i}$, the cross-entropy. So cross-entropy training *is* maximum-likelihood estimation. The log also turns a product of tiny numbers (numerical underflow) into a friendly sum.[^goodfellow-dl]`,
+If a model assigns probability $q_{y_i}$ to the correct label of each training example, the probability of the whole dataset (assuming [independence](wiki:Independence (probability theory)|Stochastisch unabhängige Ereignisse)) is the product $\\prod_i q_{y_i}$. Maximizing that product = maximizing $\\sum_i \\log q_{y_i}$ = minimizing $\\sum_i -\\log q_{y_i}$, the cross-entropy. So cross-entropy training *is* [maximum-likelihood estimation](wiki:Maximum likelihood estimation|Maximum-Likelihood-Methode). The log also turns a product of tiny numbers ([numerical underflow](wiki:Arithmetic underflow|Arithmetischer Unterlauf)) into a friendly sum.[^goodfellow-dl]`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',

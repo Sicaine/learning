@@ -13,11 +13,35 @@ export default {
     {
       id: 'idee', type: 'text', title: 'Ein Staat aus Staaten',
       md: `
-Deutschland ist ein **Bundesstaat**: Die 16 Länder sind selbst Staaten mit eigener Verfassung, eigenem Parlament (Landtag; in Berlin Abgeordnetenhaus, in Hamburg und Bremen Bürgerschaft) und eigener Regierung unter einem Ministerpräsidenten — in den drei **Stadtstaaten** Berlin, Hamburg und Bremen heißen sie Regierender Bürgermeister bzw. Erster Bürgermeister oder Präsident des Senats.
+Deutschland ist ein **Bundesstaat**: Die 16 Länder sind selbst Staaten mit eigener Verfassung, eigenem Parlament (Landtag; in [Berlin](wiki:Berlin|Berlin) [Abgeordnetenhaus](wiki:Abgeordnetenhaus von Berlin|Berlin House of Representatives), in [Hamburg](wiki:Hamburg|Hamburg) und [Bremen](wiki:Bremen|Bremen) Bürgerschaft) und eigener Regierung unter einem [Ministerpräsidenten](wiki:Ministerpräsident|Minister-president) — in den drei **[Stadtstaaten](wiki:Stadtstaat|City-state)** Berlin, Hamburg und Bremen heißen sie [Regierender Bürgermeister](wiki:Regierender Bürgermeister von Berlin|Governing Mayor of Berlin) bzw. Erster Bürgermeister oder Präsident des Senats.
 
-Die Wurzeln reichen weit zurück: Das Heilige Römische Reich war ein Flickenteppich aus Hunderten Territorien, auch das Kaiserreich von 1871 war ein Bund von Fürstentümern. Nach 1945 bestanden die Alliierten zusätzlich auf einer dezentralen Ordnung — eine Machtkonzentration wie im NS-Staat sollte nie wieder möglich sein.[^wiki-foederalismus]
+Die Wurzeln reichen weit zurück: Das [Heilige Römische Reich](wiki:Heiliges Römisches Reich|Holy Roman Empire) war ein Flickenteppich aus Hunderten Territorien, auch das [Kaiserreich](wiki:Deutsches Kaiserreich|German Empire) von 1871 war ein Bund von Fürstentümern. Nach 1945 bestanden die Alliierten zusätzlich auf einer dezentralen Ordnung — eine Machtkonzentration wie im [NS-Staat](wiki:Zeit des Nationalsozialismus) sollte nie wieder möglich sein.[^wiki-foederalismus]
 
 Der [[foederalismus]] gehört zu den unveränderlichen [[staatsprinzipien]]: Die Gliederung in Länder ist durch die [[ewigkeitsklausel]] geschützt.`,
+    },
+    {
+      id: 'map-laender', type: 'map', title: '16 Länder, 16 Hauptstädte',
+      view: 'de',
+      layers: { cities: false },
+      places: [
+        { name: 'Berlin', kind: 'capital', pos: 'r', detail: '**[Berlin](wiki:Berlin|Berlin)** — Berlin ist Hauptstadt und zugleich eines der drei Stadtstaaten.' },
+        { name: 'Hamburg', kind: 'capital', pos: 'l', detail: '**[Hamburg](wiki:Hamburg|Hamburg)** — Landeshauptstadt der Freien und Hansestadt Hamburg — ein Stadtstaat.' },
+        { name: 'Bremen', kind: 'capital', pos: 'l', detail: '**[Bremen](wiki:Bremen|Bremen)** — Landeshauptstadt der Freien Hansestadt Bremen; zum Land gehört auch Bremerhaven.' },
+        { name: 'Hannover', label: 'Hannover (Niedersachsen)', kind: 'capital', pos: 't', detail: '**[Hannover](wiki:Hannover|Hanover)** — Landeshauptstadt von Niedersachsen.' },
+        { name: 'Kiel', label: 'Kiel (Schleswig-Holstein)', kind: 'capital', pos: 'r', detail: '**[Kiel](wiki:Kiel|Kiel)** — Landeshauptstadt von Schleswig-Holstein.' },
+        { name: 'Schwerin', label: 'Schwerin (Mecklenburg-Vorpommern)', kind: 'capital', pos: 'r', detail: '**[Schwerin](wiki:Schwerin|Schwerin)** — Landeshauptstadt von Mecklenburg-Vorpommern.' },
+        { name: 'Potsdam', label: 'Potsdam (Brandenburg)', kind: 'capital', pos: 'b', detail: '**[Potsdam](wiki:Potsdam|Potsdam)** — Landeshauptstadt von Brandenburg, direkt an Berlin angrenzend.' },
+        { name: 'Magdeburg', label: 'Magdeburg (Sachsen-Anhalt)', kind: 'capital', pos: 'b', detail: '**[Magdeburg](wiki:Magdeburg|Magdeburg)** — Landeshauptstadt von Sachsen-Anhalt.' },
+        { name: 'Dresden', label: 'Dresden (Sachsen)', kind: 'capital', pos: 'r', detail: '**[Dresden](wiki:Dresden|Dresden)** — Landeshauptstadt des Freistaates Sachsen.' },
+        { name: 'Erfurt', label: 'Erfurt (Thüringen)', kind: 'capital', pos: 'l', detail: '**[Erfurt](wiki:Erfurt|Erfurt)** — Landeshauptstadt des Freistaates Thüringen.' },
+        { name: 'Wiesbaden', label: 'Wiesbaden (Hessen)', kind: 'capital', pos: 't', detail: '**[Wiesbaden](wiki:Wiesbaden|Wiesbaden)** — Landeshauptstadt von Hessen — nicht Frankfurt, die größte Stadt des Landes.' },
+        { name: 'Düsseldorf', label: 'Düsseldorf (Nordrhein-Westfalen)', kind: 'capital', pos: 'r', detail: '**[Düsseldorf](wiki:Düsseldorf|Düsseldorf)** — Landeshauptstadt von Nordrhein-Westfalen — nicht Köln, die größte Stadt des Landes.' },
+        { name: 'Mainz', label: 'Mainz (Rheinland-Pfalz)', kind: 'capital', pos: 'b', detail: '**[Mainz](wiki:Mainz|Mainz)** — Landeshauptstadt von Rheinland-Pfalz.' },
+        { name: 'Saarbrücken', label: 'Saarbrücken (Saarland)', kind: 'capital', pos: 'l', detail: '**[Saarbrücken](wiki:Saarbrücken|Saarbrücken)** — Landeshauptstadt des Saarlandes.' },
+        { name: 'Stuttgart', label: 'Stuttgart (Baden-Württemberg)', kind: 'capital', pos: 'l', detail: '**[Stuttgart](wiki:Stuttgart|Stuttgart)** — Landeshauptstadt von Baden-Württemberg.' },
+        { name: 'München', label: 'München (Bayern)', kind: 'capital', pos: 'r', detail: '**[München](wiki:München|München)** — Landeshauptstadt des Freistaates Bayern.' },
+      ],
+      caption: 'Nicht immer ist die größte Stadt die Hauptstadt: Wiesbaden (nicht Frankfurt), Düsseldorf (nicht Köln), Mainz (nicht Ludwigshafen), München ist beides. Tippe auf die Marker.',
     },
     {
       id: 'wer-darf', type: 'text', title: 'Wer macht welche Gesetze?',
@@ -25,17 +49,17 @@ Der [[foederalismus]] gehört zu den unveränderlichen [[staatsprinzipien]]: Die
 Die Grundregel steht in **Art. 30 GG**: Staatliche Aufgaben sind **Sache der Länder**, soweit das Grundgesetz nichts anderes bestimmt. In der Praxis bestimmt es aber vieles anders:
 
 - **Ausschließliche Gesetzgebung des Bundes** (Art. 73): Außenpolitik, Verteidigung, Staatsangehörigkeit, Währung, Zoll, Luftverkehr.
-- **[[konkurrierende-gesetzgebung|Konkurrierende Gesetzgebung]]** (Art. 74): Die Länder dürfen handeln, solange der Bund es nicht tut — etwa beim Strafrecht, bürgerlichen Recht, Arbeitsrecht oder Umweltschutz. Der Bund hat hier fast überall Gesetze erlassen.
+- **[[konkurrierende-gesetzgebung|Konkurrierende Gesetzgebung]]** (Art. 74): Die Länder dürfen handeln, solange der Bund es nicht tut — etwa beim [Strafrecht](wiki:Strafrecht (Deutschland)|German criminal law), bürgerlichen Recht, Arbeitsrecht oder Umweltschutz. Der Bund hat hier fast überall Gesetze erlassen.
 - **Gesetzgebung der Länder**: alles, was übrig bleibt — vor allem **Schule und Hochschule**, **Polizei**, **Kultur**, Rundfunk, Kommunalrecht.
 
-Dafür führen die Länder auch die meisten **Bundesgesetze aus**: Finanzämter, Polizei, Bauämter und Schulen sind Landes- oder Kommunalbehörden. Der Bund hat nur wenige eigene Verwaltungen, etwa die Bundeswehr, die Bundespolizei oder den Zoll.`,
+Dafür führen die Länder auch die meisten **Bundesgesetze aus**: Finanzämter, Polizei, Bauämter und Schulen sind Landes- oder Kommunalbehörden. Der Bund hat nur wenige eigene Verwaltungen, etwa die [Bundeswehr](wiki:Bundeswehr|Bundeswehr), die [Bundespolizei](wiki:Bundespolizei (Deutschland)|Federal Police (Germany)) oder den Zoll.`,
     },
     {
       id: 'kultur', type: 'text', title: 'Kulturhoheit: 16 Schulsysteme',
       md: `
 Das bekannteste Beispiel ist die **[[kulturhoheit|Kulturhoheit der Länder]]**: Jedes Land entscheidet selbst über Schulformen, Lehrpläne, Abiturprüfungen und Ferientermine. Deshalb gibt es Gymnasien mit acht oder neun Jahren, unterschiedliche Namen für Schulformen und gestaffelte Sommerferien.
 
-Damit die Abschlüsse vergleichbar bleiben, stimmen sich die Länder in der **Kultusministerkonferenz (KMK)** ab. Kritiker beklagen den „Flickenteppich“, Befürworter loben den Wettbewerb um gute Bildungspolitik.`,
+Damit die Abschlüsse vergleichbar bleiben, stimmen sich die Länder in der **[Kultusministerkonferenz](wiki:Kultusministerkonferenz|Kultusministerkonferenz) (KMK)** ab. Kritiker beklagen den „Flickenteppich“, Befürworter loben den Wettbewerb um gute Bildungspolitik.`,
     },
     {
       id: 'match-ebenen', type: 'match', title: 'Wer ist zuständig?',
@@ -50,7 +74,7 @@ Damit die Abschlüsse vergleichbar bleiben, stimmen sich die Länder in der **Ku
     {
       id: 'kommunen', type: 'text', title: 'Die dritte Ebene: Kommunen',
       md: `
-Unterhalb der Länder gibt es rund 10.700 **Gemeinden**, zusammengefasst in rund 300 **Landkreise**; größere Städte sind oft **kreisfrei**. Art. 28 GG garantiert ihnen die **[[kommunale-selbstverwaltung|kommunale Selbstverwaltung]]**: Sie regeln die „Angelegenheiten der örtlichen Gemeinschaft“ selbst — Kindergärten, Straßen, Friedhöfe, Wasser, Abfall, Bauleitplanung, Kultur- und Sportstätten.
+Unterhalb der Länder gibt es rund 10.700 **[Gemeinden](wiki:Gemeinde (Deutschland)|Municipalities of Germany)**, zusammengefasst in rund 300 **[Landkreise](wiki:Landkreis|Districts of Germany)**; größere Städte sind oft **[kreisfrei](wiki:Kreisfreie Stadt|Independent cities of Germany)**. Art. 28 GG garantiert ihnen die **[[kommunale-selbstverwaltung|kommunale Selbstverwaltung]]**: Sie regeln die „Angelegenheiten der örtlichen Gemeinschaft“ selbst — Kindergärten, Straßen, Friedhöfe, Wasser, Abfall, Bauleitplanung, Kultur- und Sportstätten.
 
 Hier wirkt das Prinzip der [[subsidiaritaet]]: Was vor Ort gelöst werden kann, soll auch vor Ort gelöst werden. Staatsrechtlich sind die Kommunen allerdings ein Teil der Länder, nicht eine eigene staatliche Ebene.`,
     },
@@ -64,36 +88,84 @@ Hier wirkt das Prinzip der [[subsidiaritaet]]: Was vor Ort gelöst werden kann, 
       question: 'Im Bundesrat haben 4 Länder je 6 Stimmen, 1 Land hat 5, 7 Länder haben je 4 und 4 Länder je 3 Stimmen. Wie viele Stimmen sind das zusammen?',
       answer: 69, tolerance: 0, unit: 'Stimmen',
       hint: '4·6 + 1·5 + 7·4 + 4·3',
-      explain: '24 + 5 + 28 + 12 = **69**. Die Verteilung ist bewusst nicht proportional: Nordrhein-Westfalen hat rund 26-mal so viele Einwohner wie Bremen, aber nur doppelt so viele Stimmen. So haben kleine Länder mehr Gewicht.[^bundesrat-de]',
+      explain: '24 + 5 + 28 + 12 = **69**. Die Verteilung ist bewusst nicht proportional: [Nordrhein-Westfalen](wiki:Nordrhein-Westfalen|North Rhine-Westphalia) hat rund 26-mal so viele Einwohner wie Bremen, aber nur doppelt so viele Stimmen. So haben kleine Länder mehr Gewicht.[^bundesrat-de]',
     },
     {
       id: 'geld', type: 'text', title: 'Geld: Gleichwertige Lebensverhältnisse',
       md: `
 Die Länder sind sehr unterschiedlich wirtschaftsstark. Das Grundgesetz verlangt aber **gleichwertige Lebensverhältnisse** im ganzen Bundesgebiet. Deshalb werden Steuereinnahmen umverteilt — der **[[finanzausgleich|Finanzausgleich]]**:
 
-- Bis 2019 zahlten die reichen Länder direkt an die ärmeren (der „Länderfinanzausgleich“ im engeren Sinne).
-- Seit **2020** läuft der Ausgleich über die Verteilung der **Umsatzsteuer**: Finanzschwache Länder erhalten Zuschläge, finanzstarke Abschläge. Dazu kommen Bundesergänzungszuweisungen.
+- Bis 2019 zahlten die reichen Länder direkt an die ärmeren (der „[Länderfinanzausgleich](wiki:Länderfinanzausgleich|Equalization payments in Germany)“ im engeren Sinne).
+- Seit **2020** läuft der Ausgleich über die Verteilung der **[Umsatzsteuer](wiki:Umsatzsteuer (Deutschland)|Value-added tax in Germany)**: Finanzschwache Länder erhalten Zuschläge, finanzstarke Abschläge. Dazu kommen [Bundesergänzungszuweisungen](wiki:Bundesergänzungszuweisung|Equalization payments in Germany).
 
-Der größte Zahler ist seit vielen Jahren **Bayern** — das bis in die 1980er-Jahre selbst Empfängerland war.`,
+Der größte Zahler ist seit vielen Jahren **[Bayern](wiki:Bayern|Bavaria)** — das bis in die 1980er-Jahre selbst Empfängerland war.`,
+    },
+    {
+      id: 'map-quiz-laender', type: 'map', title: 'Wo liegt welches Land?',
+      view: 'de',
+      layers: { cities: false },
+      quiz: { rounds: 8 },
+      highlight: [
+        { states: ['Berlin'], label: 'Berlin', color: '#8b97ad', quiz: true },
+        { states: ['Hamburg'], label: 'Hamburg', color: '#8b97ad', quiz: true },
+        { states: ['Bremen'], label: 'Bremen', color: '#8b97ad', quiz: true },
+        { states: ['Niedersachsen'], label: 'Niedersachsen', color: '#8b97ad', quiz: true },
+        { states: ['Schleswig-Holstein'], label: 'Schleswig-Holstein', color: '#8b97ad', quiz: true },
+        { states: ['Mecklenburg-Vorpommern'], label: 'Mecklenburg-Vorpommern', color: '#8b97ad', quiz: true },
+        { states: ['Brandenburg'], label: 'Brandenburg', color: '#8b97ad', quiz: true },
+        { states: ['Sachsen-Anhalt'], label: 'Sachsen-Anhalt', color: '#8b97ad', quiz: true },
+        { states: ['Sachsen'], label: 'Sachsen', color: '#8b97ad', quiz: true },
+        { states: ['Thüringen'], label: 'Thüringen', color: '#8b97ad', quiz: true },
+        { states: ['Hessen'], label: 'Hessen', color: '#8b97ad', quiz: true },
+        { states: ['Nordrhein-Westfalen'], label: 'Nordrhein-Westfalen', color: '#8b97ad', quiz: true },
+        { states: ['Rheinland-Pfalz'], label: 'Rheinland-Pfalz', color: '#8b97ad', quiz: true },
+        { states: ['Saarland'], label: 'Saarland', color: '#8b97ad', quiz: true },
+        { states: ['Baden-Württemberg'], label: 'Baden-Württemberg', color: '#8b97ad', quiz: true },
+        { states: ['Bayern'], label: 'Bayern', color: '#8b97ad', quiz: true },
+      ],
+    },
+    {
+      id: 'map-quiz-hauptstaedte', type: 'map', title: 'Finde die Landeshauptstadt',
+      view: 'de',
+      layers: { stateLabels: true, cities: false },
+      quiz: { rounds: 8 },
+      places: [
+        { name: 'Berlin', label: 'Berlin (Berlin)', kind: 'capital' },
+        { name: 'Hamburg', label: 'Hamburg (Hamburg)', kind: 'capital' },
+        { name: 'Bremen', label: 'Bremen (Bremen)', kind: 'capital' },
+        { name: 'Hannover', label: 'Hannover (Niedersachsen)', kind: 'capital' },
+        { name: 'Kiel', label: 'Kiel (Schleswig-Holstein)', kind: 'capital' },
+        { name: 'Schwerin', label: 'Schwerin (Mecklenburg-Vorpommern)', kind: 'capital' },
+        { name: 'Potsdam', label: 'Potsdam (Brandenburg)', kind: 'capital' },
+        { name: 'Magdeburg', label: 'Magdeburg (Sachsen-Anhalt)', kind: 'capital' },
+        { name: 'Dresden', label: 'Dresden (Sachsen)', kind: 'capital' },
+        { name: 'Erfurt', label: 'Erfurt (Thüringen)', kind: 'capital' },
+        { name: 'Wiesbaden', label: 'Wiesbaden (Hessen)', kind: 'capital' },
+        { name: 'Düsseldorf', label: 'Düsseldorf (Nordrhein-Westfalen)', kind: 'capital' },
+        { name: 'Mainz', label: 'Mainz (Rheinland-Pfalz)', kind: 'capital' },
+        { name: 'Saarbrücken', label: 'Saarbrücken (Saarland)', kind: 'capital' },
+        { name: 'Stuttgart', label: 'Stuttgart (Baden-Württemberg)', kind: 'capital' },
+        { name: 'München', label: 'München (Bayern)', kind: 'capital' },
+      ],
     },
     {
       id: 'quiz-foed', type: 'quiz', title: 'Föderalismus-Check',
       question: 'Welche Aussagen stimmen?',
       options: [
-        { text: 'Die Polizei ist überwiegend Ländersache.', correct: true, why: 'Jedes Land hat seine eigene Polizei; daneben gibt es Bundespolizei und BKA.' },
-        { text: 'Der Bund bestimmt die Lehrpläne der Schulen.', correct: false, why: 'Schule ist Kern der Kulturhoheit der Länder.' },
+        { text: 'Die Polizei ist überwiegend Ländersache.', correct: true, why: 'Jedes Land hat seine eigene Polizei; daneben gibt es Bundespolizei und [BKA](wiki:Bundeskriminalamt (Deutschland)|Federal Criminal Police Office (Germany)).' },
+        { text: 'Der Bund bestimmt die Lehrpläne der Schulen.', correct: false, why: 'Schule ist Kern der [Kulturhoheit](wiki:Kulturhoheit) der Länder.' },
         { text: 'Die Länder führen die meisten Bundesgesetze aus.', correct: true, why: 'Deutschland hat eine vor allem landeseigene Verwaltung — z. B. die Finanzämter.' },
         { text: 'Die Gliederung in Länder könnte mit Zweidrittelmehrheit abgeschafft werden.', correct: false, why: 'Sie ist durch die Ewigkeitsklausel (Art. 79 Abs. 3) geschützt.' },
       ],
     },
     {
       id: 'fact-laender', type: 'callout', tone: 'fact', title: 'Das jüngste und das kleinste Land',
-      md: `**Baden-Württemberg** entstand erst 1952 durch eine Volksabstimmung aus drei Nachkriegsländern — der einzige erfolgreiche Länderzusammenschluss. Die Fusion von **Berlin und Brandenburg** scheiterte 1996 an den Brandenburgern. Das kleinste Land ist **Bremen** (mit Bremerhaven), das größte nach Fläche **Bayern**, nach Einwohnern **Nordrhein-Westfalen**.`,
+      md: `**[Baden-Württemberg](wiki:Baden-Württemberg|Baden-Württemberg)** entstand erst 1952 durch eine Volksabstimmung aus drei Nachkriegsländern — der einzige erfolgreiche Länderzusammenschluss. Die Fusion von **Berlin und [Brandenburg](wiki:Brandenburg|Brandenburg)** scheiterte 1996 an den Brandenburgern. Das kleinste Land ist **Bremen** (mit [Bremerhaven](wiki:Bremerhaven|Bremerhaven)), das größte nach Fläche **Bayern**, nach Einwohnern **Nordrhein-Westfalen**.`,
     },
     {
       id: 'recall-foed', type: 'recall', title: 'Erkläre es',
       prompt: 'Nenne je zwei **Vorteile** und **Nachteile** des Föderalismus in Deutschland.',
-      answer: `**Vorteile**: Machtverteilung und gegenseitige Kontrolle (gerade als Lehre aus der NS-Zeit); Bürgernähe und Berücksichtigung regionaler Unterschiede; Wettbewerb der Länder um gute Lösungen („Labor“ für Reformen); zusätzliche Mitsprache über den Bundesrat. **Nachteile**: unterschiedliche Regeln z. B. in der Bildung („Flickenteppich“), was Umzüge erschwert; langsame Entscheidungen und Blockaden durch den Bundesrat; unklare Verantwortlichkeiten; Kosten durch doppelte Strukturen.`,
+      answer: `**Vorteile**: Machtverteilung und gegenseitige Kontrolle (gerade als Lehre aus der NS-Zeit); Bürgernähe und Berücksichtigung regionaler Unterschiede; Wettbewerb der Länder um gute Lösungen („Labor“ für Reformen); zusätzliche Mitsprache über den [Bundesrat](wiki:Bundesrat (Deutschland)|German Bundesrat). **Nachteile**: unterschiedliche Regeln z. B. in der Bildung („Flickenteppich“), was Umzüge erschwert; langsame Entscheidungen und Blockaden durch den Bundesrat; unklare Verantwortlichkeiten; Kosten durch doppelte Strukturen.`,
       hints: ['Denk an Schule und Umzug.', 'Denk an Machtkontrolle.'],
       cards: ['vorteile'],
     },

@@ -88,7 +88,7 @@ function inline(s, ctx) {
     .replace(/`([^`]+)`/g, (_, c) => `<code>${esc(c)}</code>`)
     .replace(/\[\[([\w-]+)(?:\|([^\]]+))?\]\]/g, (_, id, shown) => termLink(id, shown, ctx))
     .replace(/\[\^([\w-]+)\]/g, (_, id) => footnote(id, ctx))
-    .replace(/\[([^\]]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g, (_, text, spec) => wikiInline(text, spec, ctx))
+    .replace(/\[([^\]\[\n]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g, (_, text, spec) => wikiInline(text, spec, ctx))
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, url) => `<a href="${url}" target="_blank" rel="noopener">${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, '$1<em>$2</em>')

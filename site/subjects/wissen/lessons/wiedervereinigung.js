@@ -15,9 +15,9 @@ export default {
       md: `
 In den 1980er-Jahren war die DDR wirtschaftlich am Ende: Mangelwirtschaft, marode Industrie, Umweltzerstörung, wachsende Auslandsschulden. Gleichzeitig veränderte sich der Ostblock:
 
-- In der **Sowjetunion** leitete **Michail Gorbatschow** ab 1985 Reformen ein — **Glasnost** (Offenheit) und **Perestroika** (Umbau). Er ließ erkennen, dass Moskau Aufstände nicht mehr mit Panzern niederschlagen würde.
-- In **Polen** erkämpfte die Gewerkschaft **Solidarność** 1989 halbfreie Wahlen, **Ungarn** öffnete sich.
-- Die SED-Führung unter **Erich Honecker** verweigerte Reformen („Den Sozialismus in seinem Lauf halten weder Ochs noch Esel auf").
+- In der **Sowjetunion** leitete **[Michail Gorbatschow](wiki:Michail Sergejewitsch Gorbatschow|Mikhail Gorbachev)** ab 1985 Reformen ein — **[Glasnost](wiki:Glasnost|Glasnost)** (Offenheit) und **[Perestroika](wiki:Perestroika|Perestroika)** (Umbau). Er ließ erkennen, dass Moskau Aufstände nicht mehr mit Panzern niederschlagen würde.
+- In **Polen** erkämpfte die Gewerkschaft **[Solidarność](wiki:Solidarność|Solidarity (Polish trade union))** 1989 halbfreie Wahlen, **Ungarn** öffnete sich.
+- Die SED-Führung unter **[Erich Honecker](wiki:Erich Honecker|Erich Honecker)** verweigerte Reformen („Den Sozialismus in seinem Lauf halten weder Ochs noch Esel auf").
 
 Die Kommunalwahlen im **Mai 1989** wurden nachweislich gefälscht — Bürgerrechtler dokumentierten es. Unter dem Dach der evangelischen Kirche wuchs eine Opposition (Friedensgebete, Umweltgruppen).`,
     },
@@ -26,16 +26,33 @@ Die Kommunalwahlen im **Mai 1989** wurden nachweislich gefälscht — Bürgerrec
       md: `
 Zwei Bewegungen brachten das Regime ins Wanken: die, die **gehen** wollten, und die, die **bleiben** und verändern wollten.
 
-- **Flucht**: Im Sommer 1989 flohen Tausende über **Ungarn**, das am 19. August beim „Paneuropäischen Picknick" kurz die Grenze öffnete und am 11. September ganz freigab. Andere besetzten die westdeutsche Botschaft in **Prag**; am 30. September verkündete Außenminister **Hans-Dietrich Genscher** vom Balkon ihre Ausreise.
-- **Protest**: In **Leipzig** entwickelten sich aus den Friedensgebeten in der **Nikolaikirche** die **Montagsdemonstrationen**. Am **9. Oktober 1989**, zwei Tage nach den pompösen 40-Jahr-Feiern der DDR, zogen rund **70.000** Menschen um den Innenstadtring — die Staatsmacht hatte sich auf Gewalt vorbereitet, griff aber nicht ein. „**Wir sind das Volk!**" wurde zum Ruf der **[[friedliche-revolution|Friedlichen Revolution]]**.
-- Am 18. Oktober trat **Honecker** zurück (Nachfolger: Egon Krenz). Am **4. November** demonstrierten auf dem Berliner **Alexanderplatz** Hunderttausende für Reformen.`,
+- **Flucht**: Im Sommer 1989 flohen Tausende über **Ungarn**, das am 19. August beim „[Paneuropäischen Picknick](wiki:Paneuropäisches Picknick|Pan-European Picnic)" kurz die Grenze öffnete und am 11. September ganz freigab. Andere besetzten die westdeutsche Botschaft in **Prag**; am 30. September verkündete Außenminister **[Hans-Dietrich Genscher](wiki:Hans-Dietrich Genscher|Hans-Dietrich Genscher)** vom Balkon ihre Ausreise.
+- **Protest**: In **[Leipzig](wiki:Leipzig|Leipzig)** entwickelten sich aus den Friedensgebeten in der **[Nikolaikirche](wiki:Nikolaikirche (Leipzig)|St. Nicholas Church, Leipzig)** die **Montagsdemonstrationen**. Am **9. Oktober 1989**, zwei Tage nach den pompösen 40-Jahr-Feiern der DDR, zogen rund **70.000** Menschen um den Innenstadtring — die Staatsmacht hatte sich auf Gewalt vorbereitet, griff aber nicht ein. „**Wir sind das Volk!**" wurde zum Ruf der **[[friedliche-revolution|Friedlichen Revolution]]**.
+- Am 18. Oktober trat **Honecker** zurück (Nachfolger: [Egon Krenz](wiki:Egon Krenz|Egon Krenz)). Am **4. November** demonstrierten auf dem Berliner **[Alexanderplatz](wiki:Alexanderplatz-Demonstration|Alexanderplatz demonstration)** Hunderttausende für Reformen.`,
+    },
+    {
+      id: 'map-wende-1989', type: 'map', title: 'Herbst 1989: Wege in die Freiheit',
+      view: [6.4, 47.2, 19.8, 54.2],
+      layers: { cities: false },
+      highlight: [{ label: 'DDR (heutige neue Länder)', color: '#ca8a04', states: ['Brandenburg', 'Mecklenburg-Vorpommern', 'Sachsen', 'Sachsen-Anhalt', 'Thüringen', 'Berlin'] }],
+      places: [
+        { name: 'Prag', num: 2, pos: 'r', detail: '**[Prag](wiki:Prag|Prague)** — DDR-Bürger besetzen die westdeutsche Botschaft; am 30. September 1989 verkündet Genscher ihre Ausreise.' },
+        { name: 'Leipzig', num: 3, pos: 'l', detail: '**[Leipzig](wiki:Leipzig|Leipzig)** — hier wachsen aus den Friedensgebeten der Nikolaikirche die Montagsdemonstrationen; am 9. Oktober 1989 gehen rund 70.000 Menschen auf die Straße.' },
+        { name: 'Berlin', num: 4, pos: 'r', detail: '**[Berlin](wiki:Berlin|Berlin)** — 4. November: Großdemonstration auf dem Alexanderplatz; 9. November: die Mauer fällt.' },
+        { name: 'Bonn', kind: 'capital', pos: 'l', detail: '**[Bonn](wiki:Bonn|Bonn)** — Hauptstadt der Bundesrepublik bis zum Umzug nach Berlin.' },
+        { name: 'Budapest', kind: 'capital', pos: 'r' },
+      ],
+      points: [
+        { lon: 16.59, lat: 47.69, label: 'Sopron', num: 1, pos: 'r', detail: '**Sopron** — beim „[Paneuropäischen Picknick](wiki:Paneuropäisches Picknick|Pan-European Picnic)" am 19. August 1989 öffnet Ungarn kurz die Grenze nach Österreich; hunderte DDR-Bürger fliehen.' },
+      ],
+      caption: 'Ziffern in zeitlicher Reihenfolge: 1 Sopron (19. August), 2 Prag (30. September), 3 Leipzig (9. Oktober), 4 Berlin (4./9. November).',
     },
     {
       id: 'mauerfall', type: 'text', title: '9. November 1989: Die Mauer fällt',
       md: `
-Am Abend des **9. November 1989** stellte SED-Politbüromitglied **Günter Schabowski** auf einer live übertragenen Pressekonferenz eine neue Reiseregelung vor. Auf die Frage, ab wann sie gelte, blätterte er in seinen Zetteln: *„Das tritt nach meiner Kenntnis … ist das sofort, unverzüglich."*
+Am Abend des **9. November 1989** stellte SED-Politbüromitglied **[Günter Schabowski](wiki:Günter Schabowski|Günter Schabowski)** auf einer live übertragenen Pressekonferenz eine neue Reiseregelung vor. Auf die Frage, ab wann sie gelte, blätterte er in seinen Zetteln: *„Das tritt nach meiner Kenntnis … ist das sofort, unverzüglich."*
 
-Tausende Ost-Berliner strömten zu den Grenzübergängen. Am Übergang **Bornholmer Straße** gab der Stasi-Oberstleutnant Harald Jäger gegen 23:30 Uhr dem Druck nach und ließ die Schlagbäume öffnen. In dieser Nacht feierten Menschen aus Ost und West auf der Mauer am Brandenburger Tor — der **[[mauerfall|Mauerfall]]**.
+Tausende Ost-Berliner strömten zu den Grenzübergängen. Am Übergang **[Bornholmer Straße](wiki:Grenzübergang Bornholmer Straße|Bornholmer Straße border crossing)** gab der Stasi-Oberstleutnant [Harald Jäger](wiki:Harald Jäger|Harald Jäger) gegen 23:30 Uhr dem Druck nach und ließ die Schlagbäume öffnen. In dieser Nacht feierten Menschen aus Ost und West auf der Mauer am [Brandenburger Tor](wiki:Brandenburger Tor|Brandenburg Gate) — der **[[mauerfall|Mauerfall]]**.
 
 Aus „Wir sind das Volk" wurde bald „**Wir sind ein Volk**" — die Forderung nach Einheit.[^chronik-mauer]`,
     },
@@ -51,21 +68,21 @@ Aus „Wir sind das Volk" wurde bald „**Wir sind ein Volk**" — die Forderung
       md: `
 Nach dem Mauerfall ging es schnell:
 
-- **Runder Tisch** (ab Dezember 1989): Regierung und Opposition verhandelten gemeinsam; die Stasi-Zentralen wurden besetzt, Akten gesichert.
-- **28. November 1989**: Bundeskanzler **Helmut Kohl** legte einen Zehn-Punkte-Plan zur Einheit vor.
-- **18. März 1990**: erste und einzige freie **Volkskammerwahl** — klarer Sieg der „Allianz für Deutschland" (CDU-Ost); **Lothar de Maizière** wurde Ministerpräsident.
-- **1. Juli 1990**: **Währungs-, Wirtschafts- und Sozialunion** — die D-Mark kam in die DDR.
-- **12. September 1990**: Der **[[zwei-plus-vier-vertrag|Zwei-plus-Vier-Vertrag]]** der beiden deutschen Staaten mit den vier Siegermächten regelte die außenpolitischen Fragen: endgültige Grenzen (Oder-Neiße-Grenze), Abzug der sowjetischen Truppen, Obergrenze der Bundeswehr, NATO-Mitgliedschaft des vereinten Deutschland.
+- **[Runder Tisch](wiki:Zentraler Runder Tisch|East German Round Table)** (ab Dezember 1989): Regierung und Opposition verhandelten gemeinsam; die Stasi-Zentralen wurden besetzt, Akten gesichert.
+- **28. November 1989**: Bundeskanzler **[Helmut Kohl](wiki:Helmut Kohl|Helmut Kohl)** legte einen [Zehn-Punkte-Plan](wiki:Zehn-Punkte-Programm) zur Einheit vor.
+- **18. März 1990**: erste und einzige freie **[Volkskammerwahl](wiki:Volkskammerwahl 1990|1990 East German general election)** — klarer Sieg der „Allianz für Deutschland" (CDU-Ost); **[Lothar de Maizière](wiki:Lothar de Maizière|Lothar de Maizière)** wurde Ministerpräsident.
+- **1. Juli 1990**: **[Währungs-, Wirtschafts- und Sozialunion](wiki:Währungs-, Wirtschafts- und Sozialunion|Treaty Establishing a Monetary, Economic and Social Union between the German Democratic Republic and the Federal Republic of Germany)** — die D-Mark kam in die DDR.
+- **12. September 1990**: Der **[[zwei-plus-vier-vertrag|Zwei-plus-Vier-Vertrag]]** der beiden deutschen Staaten mit den vier Siegermächten regelte die außenpolitischen Fragen: endgültige Grenzen ([Oder-Neiße-Grenze](wiki:Oder-Neiße-Grenze|Oder–Neisse line)), Abzug der sowjetischen Truppen, Obergrenze der Bundeswehr, NATO-Mitgliedschaft des vereinten Deutschland.
 - **3. Oktober 1990**: Die DDR trat nach **Artikel 23** des Grundgesetzes der Bundesrepublik bei — die **[[deutsche-einheit|Deutsche Einheit]]**. Aus der DDR entstanden die fünf „neuen Länder": Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen; Berlin wurde vereint.[^wp-wiedervereinigung][^wp-zwei-plus-vier]`,
     },
     {
       id: 'danach', type: 'text', title: 'Die Berliner Republik',
       md: `
-Die Einheit war ein historisches Glück — und ein harter Umbruch. Die **[[treuhandanstalt|Treuhandanstalt]]** privatisierte oder schloss die DDR-Betriebe; Millionen Ostdeutsche verloren ihre Arbeit oder mussten sich völlig neu orientieren. Mit dem **Solidaritätszuschlag** (ab 1991) finanzierte der Staat den „Aufbau Ost". Unterschiede in Löhnen, Vermögen und politischer Stimmung zwischen Ost und West sind bis heute messbar. Die Stasi-Unterlagen wurden geöffnet — ein weltweit einmaliger Schritt.
+Die Einheit war ein historisches Glück — und ein harter Umbruch. Die **[[treuhandanstalt|Treuhandanstalt]]** privatisierte oder schloss die DDR-Betriebe; Millionen Ostdeutsche verloren ihre Arbeit oder mussten sich völlig neu orientieren. Mit dem **[Solidaritätszuschlag](wiki:Solidaritätszuschlag)** (ab 1991) finanzierte der Staat den „Aufbau Ost". Unterschiede in Löhnen, Vermögen und politischer Stimmung zwischen Ost und West sind bis heute messbar. Die Stasi-Unterlagen wurden geöffnet — ein weltweit einmaliger Schritt.
 
-Am **20. Juni 1991** beschloss der Bundestag knapp (338 zu 320 Stimmen), von Bonn nach **Berlin** umzuziehen; 1999 nahm er im umgebauten **Reichstagsgebäude** die Arbeit auf. Man spricht seitdem von der „**Berliner Republik**".
+Am **20. Juni 1991** beschloss der Bundestag knapp (338 zu 320 Stimmen), von [Bonn](wiki:Bonn|Bonn) nach **[Berlin](wiki:Berlin|Berlin)** umzuziehen ([Hauptstadtbeschluss](wiki:Hauptstadtbeschluss|Decision on the Capital of Germany)); 1999 nahm er im umgebauten **[Reichstagsgebäude](wiki:Reichstagsgebäude|Reichstag building)** die Arbeit auf. Man spricht seitdem von der „**[Berliner Republik](wiki:Berliner Republik)**".
 
-Bundeskanzler seit der Einheit: **Helmut Kohl** (CDU, bis 1998), **Gerhard Schröder** (SPD, 1998–2005), **Angela Merkel** (CDU, 2005–2021), **Olaf Scholz** (SPD, 2021–2025), **Friedrich Merz** (CDU, seit Mai 2025).[^bpb-einheit]`,
+Bundeskanzler seit der Einheit: **Helmut Kohl** (CDU, bis 1998), **[Gerhard Schröder](wiki:Gerhard Schröder|Gerhard Schröder)** (SPD, 1998–2005), **[Angela Merkel](wiki:Angela Merkel|Angela Merkel)** (CDU, 2005–2021), **[Olaf Scholz](wiki:Olaf Scholz|Olaf Scholz)** (SPD, 2021–2025), **[Friedrich Merz](wiki:Friedrich Merz|Friedrich Merz)** (CDU, seit Mai 2025).[^bpb-einheit]`,
     },
     {
       id: 'timeline-einheit', type: 'game', viz: 'timeline', title: 'Von der Wende zur Berliner Republik',
@@ -82,6 +99,13 @@ Bundeskanzler seit der Einheit: **Helmut Kohl** (CDU, bis 1998), **Gerhard Schr�
           { year: 2005, label: 'Merkel wird Kanzlerin' },
         ],
       },
+    },
+    {
+      id: 'map-quiz-einheit-orte', type: 'map', title: 'Orte der Friedlichen Revolution',
+      view: [6.4, 47.2, 19.8, 54.2],
+      layers: { cities: false },
+      quiz: { rounds: 6 },
+      places: [{ name: 'Leipzig' }, { name: 'Berlin' }, { name: 'Prag' }, { name: 'Bonn' }, { name: 'Dresden' }, { name: 'Budapest' }],
     },
     {
       id: 'order-1989', type: 'order', title: 'Herbst 1989 — der genaue Ablauf',

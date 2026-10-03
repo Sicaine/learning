@@ -34,11 +34,11 @@ Jenseits davon lebten die **[Germanen](wiki:Germanen|Germanic peoples)** — kei
         { name: 'Trier', pos: 'l', detail: '**[Trier](wiki:Trier)** — *Augusta Treverorum*, im 4. Jahrhundert Kaiserresidenz; die [Porta Nigra](wiki:Porta Nigra) ist das römische Stadttor.' },
         { name: 'Augsburg', detail: '**[Augsburg](wiki:Augsburg)** — *Augusta Vindelicum*, Hauptstadt der Provinz Raetien.' },
         { name: 'Regensburg', detail: '**[Regensburg](wiki:Regensburg)** — Legionslager *Castra Regina* an der Donau.' },
-        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Kalkriese)** — wahrscheinlicher Schauplatz der Varusschlacht (9 n. Chr.).' },
+        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Museum und Park Kalkriese|Kalkriese)** — wahrscheinlicher Schauplatz der Varusschlacht (9 n. Chr.).' },
       ],
       lines: [
         { label: 'Limes (ungefährer Verlauf)', dashed: true, color: '#b91c1c', coords: [[7.331,50.496],[7.711,50.338],[8.567,50.272],[8.985,50.082],[9.264,49.704],[9.368,49.583],[9.426,49.431],[9.470,49.310],[9.579,48.980],[9.688,48.798],[10.094,48.837],[10.157,48.917],[10.754,49.115],[10.972,49.031],[11.771,48.854]],
-          detail: 'Der **Obergermanisch-Raetische [Limes](wiki:Obergermanisch-Raetischer Limes|Limes)** — von Rheinbrohl am Rhein bis Eining an der Donau, rund 550 km. Der Verlauf ist hier vereinfacht.' },
+          detail: 'Der **Obergermanisch-Raetische [Limes](wiki:Obergermanisch-Raetischer Limes|Upper Germanic-Rhaetian Limes)** — von Rheinbrohl am Rhein bis Eining an der Donau, rund 550 km. Der Verlauf ist hier vereinfacht.' },
       ],
       caption: 'Tippe auf Marker und Linien. Südlich der Donau und westlich des Rheins lagen die römischen Provinzen; dazwischen sicherte der Limes das „Dekumatland“.',
     },
@@ -57,7 +57,7 @@ Die Folgen:
 
 - Rom gab den Plan einer Provinz bis zur Elbe auf; nach Strafzügen unter [Germanicus](wiki:Germanicus) (bis 16 n. Chr.) wurde der **[Rhein](wiki:Rhein|Rhine)** zur dauerhaften Grenze.
 - Später sicherten die Römer das Gebiet zwischen Rhein und Donau mit dem **[[limes]]**.
-- Der genaue Ort war lange umstritten; seit den Funden ab 1987 gilt **[Kalkriese](wiki:Kalkriese)** bei [Osnabrück](wiki:Osnabrück|Osnabrück) als wahrscheinlicher Schauplatz.[^museum-kalkriese][^wp-varusschlacht]`,
+- Der genaue Ort war lange umstritten; seit den Funden ab 1987 gilt **[Kalkriese](wiki:Museum und Park Kalkriese|Kalkriese)** bei [Osnabrück](wiki:Osnabrück|Osnabrück) als wahrscheinlicher Schauplatz.[^museum-kalkriese][^wp-varusschlacht]`,
     },
     {
       id: 'map-varus', type: 'map', title: 'Wo geschah die Varusschlacht?',
@@ -66,7 +66,7 @@ Die Folgen:
       landscapes: ['Teutoburger Wald'],
       places: [
         { name: 'Xanten', pos: 'l', detail: '**[Xanten](wiki:Xanten)** — römisches Legionslager *Vetera* am Rhein, Ausgangspunkt der Feldzüge in die Germania.' },
-        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Kalkriese)** — die Funde seit 1987 sprechen dafür, dass hier der Hinterhalt von 9 n. Chr. stattfand; ganz sicher ist das nicht.' },
+        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Museum und Park Kalkriese|Kalkriese)** — die Funde seit 1987 sprechen dafür, dass hier der Hinterhalt von 9 n. Chr. stattfand; ganz sicher ist das nicht.' },
       ],
       points: [
         { lon: 7.187, lat: 51.744, label: 'Haltern am See', pos: 'l', detail: '**[Haltern am See](wiki:Haltern am See|Haltern am See)** — römisches Militärlager an der Lippe.' },

@@ -13,7 +13,7 @@ export default {
     {
       id: 'invariance', type: 'text', title: 'Views, invariances and the key idea',
       md: `
-Take one watch photo and create two random **views**: a random crop, a horizontal flip, some color jitter, a little blur. A human says immediately: *same watch*. So should the network.
+Take one watch photo and create two random **views**: a random [crop](wiki:Cropping (image)|Cropping), a horizontal flip, some color jitter, a little [blur](wiki:Gaussian blur|Weichzeichnen (Foto)). A human says immediately: *same watch*. So should the network.
 
 Contrastive learning turns that into a training signal: encode both views, and make their [[embedding|embeddings]] similar — a **positive pair**. The choice of [[data-augmentation|augmentations]] is not a detail; it is the *definition* of what the model will learn to ignore:
 
@@ -75,7 +75,7 @@ The **[[temperature]]** $\\tau$ (small, e.g. 0.1–0.5) sharpens the softmax: wi
     {
       id: 'moco-byol', type: 'text', title: 'MoCo and BYOL: two ways around big batches',
       md: `
-**MoCo** (Momentum Contrast)[^moco] keeps a **queue** of embeddings from recent batches as negatives (65,536 in the paper), so the number of negatives no longer depends on batch size. The queue's keys come from a **momentum encoder** — an **[[ema]]** of the main encoder with $m = 0.999$ — so that old and new keys stay consistent.
+**MoCo** (Momentum Contrast)[^moco] keeps a **[queue](wiki:Queue (abstract data type)|Warteschlange (Datenstruktur))** of embeddings from recent batches as negatives (65,536 in the paper), so the number of negatives no longer depends on batch size. The queue's keys come from a **momentum encoder** — an **[[ema]]** of the main encoder with $m = 0.999$ — so that old and new keys stay consistent.
 
 **BYOL** (Bootstrap Your Own Latent)[^byol] made a surprising claim: **no negatives at all.** An online network with an extra *predictor* head must predict the output of a *target* network, which is an EMA of the online network, with a stop-gradient. The asymmetry (predictor on one side, slowly moving EMA target on the other) is enough to avoid collapse in practice.
 
@@ -95,18 +95,18 @@ BYOL's recipe — student, EMA teacher, stop-gradient, no negatives — is the d
     {
       id: 'mission-aug', type: 'callout', tone: 'mission', title: 'Augmentations encode your assumptions',
       md: `
-For your watches, think hard before copying the standard augmentation recipe:
+For your watches, think hard before copying the standard [data augmentation](wiki:Data augmentation) recipe:
 
 - **Color jitter** teaches the model that color is irrelevant. For *part segmentation* (dial vs. bezel) that's mostly fine — a blue and a black dial are both dials. For *model identification* it would destroy a crucial cue.
 - **Aggressive crops** teach "a zoomed bezel still belongs to this watch" — good for learning parts.
 - **Your renderer is an augmentation engine.** Changing lighting, materials, backgrounds and camera angle in the renders is the same idea as augmentation, taken further — this is called **[[domain-randomization]]**, and it's a core tool in the mission stage.
 
-One more limitation: SimCLR-style losses act on **one global vector per image**. Segmentation needs good **per-patch** features. That's a reason the field moved on to DINO and masked modeling, which produce much better dense features.`,
+One more limitation: SimCLR-style losses act on **one global vector per image**. [Segmentation](wiki:Image segmentation|Segmentierung (Bildverarbeitung)) needs good **per-patch** features. That's a reason the field moved on to DINO and masked modeling, which produce much better dense features.`,
     },
     {
       id: 'deep-mi', type: 'callout', tone: 'deep', title: 'Why the name “Info”NCE?',
       md: `
-NCE = *Noise-Contrastive Estimation*. van den Oord et al. showed that minimizing InfoNCE maximizes a lower bound on the **mutual information** between the two views:[^cpc]
+NCE = *Noise-Contrastive Estimation*. van den Oord et al. showed that minimizing InfoNCE maximizes a lower bound on the **[mutual information](wiki:Mutual information|Transinformation)** between the two views:[^cpc]
 
 $$I(v_1; v_2) \;\\geq\; \\log N - \\mathcal{L}_{\\text{InfoNCE}}$$
 

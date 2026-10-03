@@ -14,7 +14,7 @@ export default {
     {
       id: 'budget', type: 'text', title: 'The arithmetic of labeling',
       md: `
-Drawing accurate polygon masks for ~10 watch parts per image takes an experienced annotator several minutes — say **5–15 minutes per image** (an estimate; thin hands and bracelets are slow). For 100,000 images at 10 minutes:
+Drawing accurate polygon masks for ~10 watch parts per image takes an experienced [annotator](wiki:Annotation|Annotation) several minutes — say **5–15 minutes per image** (an estimate; thin hands and bracelets are slow). For 100,000 images at 10 minutes:
 
 $$100{,}000 \\times 10\\,\\text{min} \\approx 16{,}700\\ \\text{hours} \\approx 8\\ \\text{person-years}$$
 
@@ -22,7 +22,7 @@ So the question is never "how do we label everything?" but **"which few thousand
 
 1. **Make labels cheaper:** correct machine proposals instead of drawing from scratch.
 2. **Choose better images:** diverse and informative ones, not random ones.
-3. **Use unlabeled images anyway:** [[pseudo-label|pseudo-labels]], self-training, and self-supervised features (DINOv3 learned from unlabeled images — you benefit from that for free).`,
+3. **Use unlabeled images anyway:** [[pseudo-label|pseudo-labels]], [self-training](wiki:Semi-supervised learning), and self-supervised features (DINOv3 learned from unlabeled images — you benefit from that for free).`,
     },
     {
       id: 'taxonomy', type: 'text', title: 'Class taxonomy: the most underrated decision',
@@ -90,8 +90,8 @@ Random sampling wastes labels on the typical case — a frontal, well-lit steel 
 
 Your embeddings make this practical: compute a global DINOv3 [[embedding]] for all 100k images (about an hour on your GPUs — see the compute lesson), then
 
-1. **Deduplicate:** pairs with [[cosine-similarity]] above ~0.95 are near-duplicates (same product shot, crops, resized copies). Keep one — and make sure no duplicate spans train and eval.
-2. **Cluster** (k-means with e.g. 200 clusters) and sample from every cluster → coverage of brands, styles, angles.
+1. **[Deduplicate](wiki:Data deduplication|Deduplikation):** pairs with [[cosine-similarity]] above ~0.95 are near-duplicates (same product shot, crops, resized copies). Keep one — and make sure no duplicate spans train and eval.
+2. **Cluster** ([k-means](wiki:K-means clustering|K-Means-Algorithmus) with e.g. 200 clusters) and sample from every cluster → coverage of brands, styles, angles.
 3. **Rank by uncertainty within clusters** for later labeling rounds.`,
     },
     {
@@ -103,7 +103,7 @@ Your embeddings make this practical: compute a global DINOv3 [[embedding]] for a
       md: `
 Treat annotations as a noisy process and measure them:
 
-- **Inter-annotator agreement:** have two people label the same ~100 images; compute IoU between them per class. That is roughly the **ceiling** for your model — if humans agree only at 80% IoU on bracelet boundaries, 95% model IoU would be suspicious.
+- **[Inter-annotator agreement](wiki:Inter-rater reliability|Interrater-Reliabilität):** have two people label the same ~100 images; compute IoU between them per class. That is roughly the **ceiling** for your model — if humans agree only at 80% IoU on bracelet boundaries, 95% model IoU would be suspicious.
 - **Model-assisted review:** images where a good model and the label disagree most are often label errors. Even famous benchmark test sets contain enough label errors to change model rankings.[^label-errors]
 - **Gold questions:** mix already-verified images into annotation batches to monitor annotators.
 - **Version your labels** (rulebook version, annotator, date). When the rules change, you'll know which masks follow which rules.`,

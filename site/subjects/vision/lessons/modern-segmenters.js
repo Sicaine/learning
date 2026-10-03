@@ -15,7 +15,7 @@ export default {
       md: `
 Look at a watch photo and ask:
 
-1. **Which pixels are "hand"?** — [[semantic-segmentation]]: one class per pixel, no notion of *which* hand.
+1. **Which [pixels](wiki:Pixel|Pixel) are "hand"?** — [[semantic-segmentation]]: one class per pixel, no notion of *which* hand.
 2. **Which pixels belong to *each* hand, separately?** — [[instance-segmentation]]: every object gets its own mask and label.
 3. **Both at once, for everything** — [[panoptic-segmentation]]: countable *things* (hands, indices, crown) get instances, uncountable *stuff* (dial surface, background) gets semantic labels.
 
@@ -24,7 +24,7 @@ A per-pixel classifier like a [[u-net]] answers question 1 well but struggles wi
     {
       id: 'maskrcnn', type: 'text', title: 'Detect first, then segment: Mask R-CNN',
       md: `
-[[mask-rcnn]] (2017) extends the Faster R-CNN detector[^faster-rcnn] with a small mask branch.[^mask-rcnn] The pipeline:
+[[mask-rcnn]] (2017) extends the [Faster R-CNN](wiki:Region Based Convolutional Neural Networks) [detector](wiki:Object detection)[^faster-rcnn] with a small mask branch.[^mask-rcnn] The pipeline:
 
 1. A [[backbone]] (e.g. a [[resnet]] with a [[feature-pyramid]]) computes feature maps.
 2. A *region proposal network* slides over the features and proposes ~1000 candidate boxes ("something might be here").
@@ -32,7 +32,7 @@ A per-pixel classifier like a [[u-net]] answers question 1 well but struggles wi
 4. Heads predict the **class**, a **refined box**, and a **28×28 binary mask** for each class.
 5. Non-maximum suppression (NMS) removes duplicate detections of the same object.
 
-Two design choices made it work. First, the mask is predicted *per class* with a per-pixel sigmoid, so classes don't compete inside the mask — the classifier alone decides *what* it is. Second, RoIAlign: the older RoIPool **rounded** box coordinates to the feature grid; at a stride of 16 px that's up to 16 px of misalignment, fatal for crisp masks. RoIAlign samples at the exact (fractional) positions with bilinear interpolation.`,
+Two design choices made it work. First, the mask is predicted *per class* with a per-pixel [sigmoid](wiki:Sigmoid function|Sigmoidfunktion), so classes don't compete inside the mask — the classifier alone decides *what* it is. Second, RoIAlign: the older RoIPool **rounded** box coordinates to the feature grid; at a stride of 16 px that's up to 16 px of misalignment, fatal for crisp masks. RoIAlign samples at the exact (fractional) positions with [bilinear interpolation](wiki:Bilinear interpolation).`,
     },
     {
       id: 'fig-maskrcnn', type: 'figure', title: 'Mask R-CNN at a glance',

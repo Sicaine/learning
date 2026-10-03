@@ -13,7 +13,7 @@ export default {
     {
       id: 'wetter-klima', type: 'text', title: 'Wetter oder Klima?',
       md: `
-**Wetter** ist der Zustand der Atmosphäre an einem Ort zu einem Zeitpunkt: Heute regnet es in Hamburg, 14 °C.
+**Wetter** ist der Zustand der Atmosphäre an einem Ort zu einem Zeitpunkt: Heute regnet es in [Hamburg](wiki:Hamburg|Hamburg), 14 °C.
 
 **[[klima|Klima]]** ist die Statistik des Wetters über lange Zeit — üblich sind **30-jährige Mittelwerte** von Temperatur, Niederschlag, Wind und Sonnenschein. Ein einzelner kalter Winter sagt deshalb nichts über den Klimawandel aus; entscheidend sind Trends über Jahrzehnte.
 
@@ -32,15 +32,62 @@ export default {
     {
       id: 'zonen', type: 'text', title: 'Die Klimazonen der Erde',
       md: `
-Weil die Sonne am Äquator steil und an den Polen flach einstrahlt, ordnet sich das Klima grob in Gürteln an — den **[[klimazone|Klimazonen]]**. Die bekannteste Einteilung stammt vom Klimaforscher Wladimir Köppen:
+Weil die Sonne am Äquator steil und an den Polen flach einstrahlt, ordnet sich das Klima grob in Gürteln an — den **[[klimazone|Klimazonen]]**. Die bekannteste Einteilung stammt vom Klimaforscher [Wladimir Köppen](wiki:Wladimir Köppen|Wladimir Köppen):
 
-- **Tropisch** — heiß und feucht, kaum Jahreszeiten: Regenwälder am Amazonas, im Kongobecken, in Indonesien.
-- **Trocken** — Wüsten und Steppen: Sahara, Arabien, Innerasien, Australiens Outback.
-- **Warmgemäßigt** — dazu gehört das **Mittelmeerklima** mit trockenen Sommern und das ozeanische Klima Westeuropas.
-- **Kaltgemäßigt (boreal)** — lange, kalte Winter, riesige Nadelwälder (Taiga) in Sibirien, Skandinavien, Kanada.
-- **Polar** — Eis und Tundra: Arktis, Grönland, Antarktis.
+- **Tropisch** — heiß und feucht, kaum Jahreszeiten: Regenwälder am [Amazonas](wiki:Amazonas-Regenwald|Amazon rainforest), im [Kongobecken](wiki:Kongobecken|Congo Basin), in Indonesien.
+- **Trocken** — Wüsten und Steppen: [Sahara](wiki:Sahara|Sahara), Arabien, Innerasien, Australiens [Outback](wiki:Outback).
+- **Warmgemäßigt** — dazu gehört das **[Mittelmeerklima](wiki:Mittelmeerklima|Mediterranean climate)** mit trockenen Sommern und das ozeanische Klima Westeuropas.
+- **Kaltgemäßigt (boreal)** — lange, kalte Winter, riesige Nadelwälder ([Taiga](wiki:Borealer Nadelwald|Taiga)) in Sibirien, [Skandinavien](wiki:Skandinavien|Scandinavia), [Kanada](wiki:Kanada|Canada).
+- **Polar** — Eis und Tundra: [Arktis](wiki:Arktis|Arctic), [Grönland](wiki:Grönland|Greenland), [Antarktis](wiki:Antarktis|Antarctic).
 
-**Deutschland** liegt in der **gemäßigten Zone**: im Westen eher ozeanisch (milde Winter, kühle Sommer), nach Osten kontinentaler (kältere Winter, wärmere Sommer). Dass es hier viel milder ist als etwa in Kanada auf gleicher Breite, verdanken wir auch dem **[[golfstrom|Golfstrom]]** und seinem Ausläufer, dem Nordatlantikstrom.`,
+**Deutschland** liegt in der **gemäßigten Zone**: im Westen eher ozeanisch (milde Winter, kühle Sommer), nach Osten kontinentaler (kältere Winter, wärmere Sommer). Dass es hier viel milder ist als etwa in Kanada auf gleicher Breite, verdanken wir auch dem **[[golfstrom|Golfstrom]]** und seinem Ausläufer, dem [Nordatlantikstrom](wiki:Nordatlantikstrom|North Atlantic Current).`,
+    },
+    {
+      id: 'map-klimazonen', type: 'map', title: 'Die Klimagürtel der Erde',
+      view: [-180, -84, 180, 84],
+      layers: { cities: false, rivers: false },
+      areas: [
+        { label: 'Tropen (zwischen den Wendekreisen)', color: '#dc2626', coords: [[-180, 23.44], [-150, 23.44], [-120, 23.44], [-90, 23.44], [-60, 23.44], [-30, 23.44], [0, 23.44], [30, 23.44], [60, 23.44], [90, 23.44], [120, 23.44], [150, 23.44], [180, 23.44], [180, 13], [180, 3], [180, -7], [180, -17], [180, -23.44], [150, -23.44], [120, -23.44], [90, -23.44], [60, -23.44], [30, -23.44], [0, -23.44], [-30, -23.44], [-60, -23.44], [-90, -23.44], [-120, -23.44], [-150, -23.44], [-180, -23.44], [-180, -13], [-180, -3], [-180, 7], [-180, 17]] },
+        { label: 'Gemäßigte Zone Nord', color: '#16a34a', coords: [[-180, 66.56], [-150, 66.56], [-120, 66.56], [-90, 66.56], [-60, 66.56], [-30, 66.56], [0, 66.56], [30, 66.56], [60, 66.56], [90, 66.56], [120, 66.56], [150, 66.56], [180, 66.56], [180, 56], [180, 46], [180, 36], [180, 26], [180, 23.44], [150, 23.44], [120, 23.44], [90, 23.44], [60, 23.44], [30, 23.44], [0, 23.44], [-30, 23.44], [-60, 23.44], [-90, 23.44], [-120, 23.44], [-150, 23.44], [-180, 23.44], [-180, 33], [-180, 43], [-180, 53], [-180, 63]] },
+        { label: 'Gemäßigte Zone Süd', color: '#16a34a', coords: [[-180, -23.44], [-150, -23.44], [-120, -23.44], [-90, -23.44], [-60, -23.44], [-30, -23.44], [0, -23.44], [30, -23.44], [60, -23.44], [90, -23.44], [120, -23.44], [150, -23.44], [180, -23.44], [180, -33], [180, -43], [180, -53], [180, -63], [180, -66.56], [150, -66.56], [120, -66.56], [90, -66.56], [60, -66.56], [30, -66.56], [0, -66.56], [-30, -66.56], [-60, -66.56], [-90, -66.56], [-120, -66.56], [-150, -66.56], [-180, -66.56], [-180, -56], [-180, -46], [-180, -36], [-180, -26]] },
+        { label: 'Polare Zone Nord', color: '#2563eb', coords: [[-180, 90], [-150, 90], [-120, 90], [-90, 90], [-60, 90], [-30, 90], [0, 90], [30, 90], [60, 90], [90, 90], [120, 90], [150, 90], [180, 90], [180, 80], [180, 70], [180, 66.56], [150, 66.56], [120, 66.56], [90, 66.56], [60, 66.56], [30, 66.56], [0, 66.56], [-30, 66.56], [-60, 66.56], [-90, 66.56], [-120, 66.56], [-150, 66.56], [-180, 66.56], [-180, 76], [-180, 86]] },
+        { label: 'Polare Zone Süd', color: '#2563eb', coords: [[-180, -66.56], [-150, -66.56], [-120, -66.56], [-90, -66.56], [-60, -66.56], [-30, -66.56], [0, -66.56], [30, -66.56], [60, -66.56], [90, -66.56], [120, -66.56], [150, -66.56], [180, -66.56], [180, -76], [180, -86], [180, -90], [150, -90], [120, -90], [90, -90], [60, -90], [30, -90], [0, -90], [-30, -90], [-60, -90], [-90, -90], [-120, -90], [-150, -90], [-180, -90], [-180, -80], [-180, -70]] },
+      ],
+      lines: [
+        { label: 'Äquator', color: '#1e293b', width: 1.4, dashed: true, labelAt: 0.2, coords: [[-180, 0], [-160, 0], [-140, 0], [-120, 0], [-100, 0], [-80, 0], [-60, 0], [-40, 0], [-20, 0], [0, 0], [20, 0], [40, 0], [60, 0], [80, 0], [100, 0], [120, 0], [140, 0], [160, 0], [180, 0]] },
+        { label: 'Wendekreis des Krebses 23,4° N', color: '#1e293b', width: 1.2, dashed: true, labelAt: 0.2, coords: [[-180, 23.44], [-160, 23.44], [-140, 23.44], [-120, 23.44], [-100, 23.44], [-80, 23.44], [-60, 23.44], [-40, 23.44], [-20, 23.44], [0, 23.44], [20, 23.44], [40, 23.44], [60, 23.44], [80, 23.44], [100, 23.44], [120, 23.44], [140, 23.44], [160, 23.44], [180, 23.44]] },
+        { label: 'Wendekreis des Steinbocks 23,4° S', color: '#1e293b', width: 1.2, dashed: true, labelAt: 0.2, coords: [[-180, -23.44], [-160, -23.44], [-140, -23.44], [-120, -23.44], [-100, -23.44], [-80, -23.44], [-60, -23.44], [-40, -23.44], [-20, -23.44], [0, -23.44], [20, -23.44], [40, -23.44], [60, -23.44], [80, -23.44], [100, -23.44], [120, -23.44], [140, -23.44], [160, -23.44], [180, -23.44]] },
+        { label: 'Nördlicher Polarkreis 66,6° N', color: '#1e293b', width: 1.2, dashed: true, labelAt: 0.2, coords: [[-180, 66.56], [-160, 66.56], [-140, 66.56], [-120, 66.56], [-100, 66.56], [-80, 66.56], [-60, 66.56], [-40, 66.56], [-20, 66.56], [0, 66.56], [20, 66.56], [40, 66.56], [60, 66.56], [80, 66.56], [100, 66.56], [120, 66.56], [140, 66.56], [160, 66.56], [180, 66.56]] },
+        { label: 'Südlicher Polarkreis 66,6° S', color: '#1e293b', width: 1.2, dashed: true, labelAt: 0.2, coords: [[-180, -66.56], [-160, -66.56], [-140, -66.56], [-120, -66.56], [-100, -66.56], [-80, -66.56], [-60, -66.56], [-40, -66.56], [-20, -66.56], [0, -66.56], [20, -66.56], [40, -66.56], [60, -66.56], [80, -66.56], [100, -66.56], [120, -66.56], [140, -66.56], [160, -66.56], [180, -66.56]] },
+      ],
+      places: [
+        { name: 'Rom', label: 'Mittelmeerraum', detail: 'Im **[Mittelmeerraum](wiki:Mittelmeerraum|Mediterranean basin)** gilt das [Mittelmeerklima](wiki:Mittelmeerklima|Mediterranean climate): trockene, heiße Sommer, milde Winter.' },
+      ],
+      points: [
+        { lon: -60.017, lat: -3.100, label: 'Amazonas-Regenwald', kind: 'site', pos: 'l', detail: '**[Amazonas-Regenwald](wiki:Amazonas-Regenwald|Amazon rainforest)** — tropisch: heiß, feucht, kaum Jahreszeiten (hier bei Manaus).' },
+        { lon: 25.200, lat: 0.517, label: 'Kongobecken', kind: 'site', pos: 'r', detail: 'Das **[Kongobecken](wiki:Kongobecken|Congo Basin)** — tropischer Regenwald am Äquator (hier bei Kisangani).' },
+        { lon: 133.800, lat: -23.700, label: 'Outback', kind: 'site', detail: 'Das australische **[Outback](wiki:Outback)** — trockenes Klima, Wüsten und Steppen (hier bei Alice Springs).' },
+        { lon: 129.733, lat: 62.033, label: 'Sibirische Taiga', kind: 'site', pos: 'l', detail: 'Die **[Taiga](wiki:Borealer Nadelwald|Taiga)** in Sibirien — kaltgemäßigt, mit extrem kalten Wintern (hier bei Jakutsk).' },
+        { lon: 13.0, lat: 23.0, label: 'Sahara', kind: 'site', detail: 'Die **[Sahara](wiki:Sahara|Sahara)** — das Klima ist trocken: die größte Hitzewüste der Erde.' },
+        { lon: -40.0, lat: 72.0, label: 'Grönländisches Inlandeis', kind: 'site', pos: 'r', detail: '**[Grönland](wiki:Grönland|Greenland)** — polares Klima, das Inland ist von einem Eisschild bedeckt.' },
+      ],
+      caption: 'Die Farbbänder zeigen die astronomischen Beleuchtungszonen (Wende- und Polarkreise). Die Köppen-Klimazonen hängen zusätzlich von Meeresströmungen, Höhe und Land-Meer-Verteilung ab — deshalb sind Wüsten und Regenwälder keine glatten Gürtel.',
+    },
+    {
+      id: 'map-golfstrom', type: 'map', title: 'Der Golfstrom: Warum Westeuropa so mild ist',
+      view: [-85, 18, 25, 68],
+      layers: { cities: false },
+      places: [{ name: 'Hamburg', pos: 'r', detail: '**[Hamburg](wiki:Hamburg)** liegt auf 53,6° N — im Winter deutlich milder als Orte in Kanada auf gleicher Breite.' }],
+      points: [
+        { lon: -80.224, lat: 25.788, label: 'Florida', pos: 'r', detail: 'Vor Florida beginnt der [Golfstrom](wiki:Golfstrom|Gulf Stream) seinen Weg Richtung Nordosten.' },
+        { lon: -60.362, lat: 53.294, label: 'Goose Bay (Labrador)', pos: 'l', detail: '**[Happy Valley-Goose Bay](wiki:Happy Valley-Goose Bay|Happy Valley-Goose Bay)** in Kanada liegt auf fast derselben Breite wie Hamburg — mit viel kälteren Wintern.' },
+        { lon: 5.340, lat: 60.380, label: 'Bergen', pos: 'r', detail: '**[Bergen](wiki:Bergen (Norwegen)|Bergen)** in Norwegen — dank des [Nordatlantikstroms](wiki:Nordatlantikstrom|North Atlantic Current) weit im Norden mit mildem Klima.' },
+      ],
+      lines: [
+        { label: 'Golfstrom → Nordatlantikstrom (schematisch)', color: '#dc2626', arrow: true, labelAt: 0.45, coords: [[-80.224, 25.788], [-75.529, 35.251], [-52.705, 47.566], [5.340, 60.380]], detail: 'Der **[Golfstrom](wiki:Golfstrom|Gulf Stream)** bringt warmes Wasser aus den Tropen nach Norden; sein Ausläufer, der **[Nordatlantikstrom](wiki:Nordatlantikstrom|North Atlantic Current)**, wärmt die Küsten Westeuropas. Der Verlauf ist hier stark vereinfacht.' },
+        { label: 'Breite von Hamburg (53,6° N)', color: '#64748b', dashed: true, width: 1.4, labelAt: 0.55, coords: [[-85, 53.55], [-80, 53.55], [-75, 53.55], [-70, 53.55], [-65, 53.55], [-60, 53.55], [-55, 53.55], [-50, 53.55], [-45, 53.55], [-40, 53.55], [-35, 53.55], [-30, 53.55], [-25, 53.55], [-20, 53.55], [-15, 53.55], [-10, 53.55], [-5, 53.55], [0, 53.55], [5, 53.55], [10, 53.55], [15, 53.55]] },
+      ],
+      caption: 'Schematisch: Die rote Linie deutet den Weg des warmen Wassers an. Auf der Breite von Hamburg (grau gestrichelt) liegt in Kanada Labrador — dort ist es im Winter viel kälter.',
     },
     {
       id: 'match-zonen', type: 'match', title: 'Zonen und Landschaften',
@@ -49,10 +96,10 @@ Weil die Sonne am Äquator steil und an den Polen flach einstrahlt, ordnet sich 
     {
       id: 'treibhaus', type: 'text', title: 'Der Treibhauseffekt',
       md: `
-Sonnenlicht durchdringt die Atmosphäre und erwärmt den Boden. Der Boden gibt die Energie als **Wärmestrahlung** (Infrarot) wieder ab. **[[treibhausgas|Treibhausgase]]** — Wasserdampf, Kohlendioxid (CO₂), Methan, Lachgas — lassen das Sonnenlicht durch, halten aber einen Teil der Wärmestrahlung zurück, wie die Scheiben eines Gewächshauses.
+Sonnenlicht durchdringt die Atmosphäre und erwärmt den Boden. Der Boden gibt die Energie als **Wärmestrahlung** (Infrarot) wieder ab. **[[treibhausgas|Treibhausgase]]** — [Wasserdampf](wiki:Wasserdampf|Water vapor), [Kohlendioxid](wiki:Kohlendioxid|Carbon dioxide) (CO₂), [Methan](wiki:Methan|Methane), [Lachgas](wiki:Lachgas|Nitrous oxide) — lassen das Sonnenlicht durch, halten aber einen Teil der Wärmestrahlung zurück, wie die Scheiben eines [Gewächshauses](wiki:Gewächshaus|Greenhouse).
 
 - Der **natürliche** Treibhauseffekt ist lebenswichtig: Ohne ihn läge die mittlere Temperatur der Erde bei etwa **−18 °C** statt bei rund **+15 °C**.
-- Der **menschengemachte** Treibhauseffekt entsteht, weil wir durch das Verbrennen von Kohle, Öl und Gas, durch Entwaldung und Landwirtschaft zusätzliche Treibhausgase ausstoßen. Die CO₂-Konzentration stieg von rund **280 ppm** vor der Industrialisierung auf etwa **422 ppm** im Jahr 2024 — den höchsten Wert seit mindestens zwei Millionen Jahren.[^copernicus-2024]`,
+- Der **menschengemachte** Treibhauseffekt entsteht, weil wir durch das Verbrennen von Kohle, Öl und Gas, durch Entwaldung und Landwirtschaft zusätzliche Treibhausgase ausstoßen. Die CO₂-Konzentration stieg von rund **280 ppm** vor der [Industrialisierung](wiki:Industrielle Revolution|Industrial Revolution) auf etwa **422 ppm** im Jahr 2024 — den höchsten Wert seit mindestens zwei Millionen Jahren.[^copernicus-2024]`,
     },
     {
       id: 'co2-regler', type: 'viz', viz: 'geo-klima-co2', title: 'Wie viel Erwärmung bringt mehr CO₂?',
@@ -71,17 +118,28 @@ Sonnenlicht durchdringt die Atmosphäre und erwärmt den Boden. Der Boden gibt d
 Der [[weltklimarat|Weltklimarat]] IPCC hält fest, dass der Mensch die Erwärmung „eindeutig“ verursacht hat.[^ipcc-ar6]
 
 - **Global:** Die letzten zehn Jahre waren im Mittel gut **1,2 °C** wärmer als vorindustriell. **2024** war das wärmste Jahr seit Beginn der Messungen und das erste Kalenderjahr über **1,5 °C** (1,60 °C laut Copernicus).[^copernicus-2024]
-- **Deutschland:** Hier ist es seit 1881 laut Deutschem Wetterdienst sogar um rund **2,5 °C** wärmer geworden — Landflächen erwärmen sich schneller als Ozeane.[^dwd-klimawandel]
-- **Folgen:** Der Meeresspiegel ist seit 1900 um rund 20 cm gestiegen; Gletscher schrumpfen (auch in den bayerischen Alpen); Hitzewellen, Dürren und Starkregen werden häufiger und heftiger — etwa die Flutkatastrophe im **Ahrtal** im Juli 2021 mit über 130 Todesopfern allein dort.`,
+- **Deutschland:** Hier ist es seit 1881 laut [Deutschem Wetterdienst](wiki:Deutscher Wetterdienst|Deutscher Wetterdienst) sogar um rund **2,5 °C** wärmer geworden — Landflächen erwärmen sich schneller als Ozeane.[^dwd-klimawandel]
+- **Folgen:** Der [Meeresspiegel](wiki:Meeresspiegel|Sea level) ist seit 1900 um rund 20 cm gestiegen; [Gletscher](wiki:Gletscher|Glacier) schrumpfen (auch in den bayerischen Alpen); [Hitzewellen](wiki:Hitzewelle|Heat wave), Dürren und Starkregen werden häufiger und heftiger — etwa die Flutkatastrophe im **[Ahrtal](wiki:Ahrtal|Ahr Valley)** im Juli 2021 mit über 130 Todesopfern allein dort.`,
     },
     {
       id: 'politik', type: 'text', title: 'Klimapolitik in Meilensteinen',
       md: `
-- **1988** — Gründung des **Weltklimarats** (IPCC).
-- **1992** — **Klimarahmenkonvention** der UN auf dem Erdgipfel in Rio de Janeiro; seitdem jährliche Weltklimakonferenzen (COP).
-- **1997** — **Kyoto-Protokoll**: erstmals verbindliche Reduktionsziele, aber nur für Industriestaaten.
+- **1988** — Gründung des **[Weltklimarats](wiki:Weltklimarat|Intergovernmental Panel on Climate Change)** (IPCC).
+- **1992** — **Klimarahmenkonvention** der UN auf dem [Erdgipfel](wiki:Erdgipfel|Earth Summit) in [Rio de Janeiro](wiki:Rio de Janeiro|Rio de Janeiro); seitdem jährliche Weltklimakonferenzen (COP).
+- **1997** — **[Kyoto-Protokoll](wiki:Kyoto-Protokoll|Kyoto Protocol)**: erstmals verbindliche Reduktionsziele, aber nur für Industriestaaten.
 - **2015** — **[[pariser-klimaabkommen|Pariser Klimaabkommen]]**: Erwärmung deutlich unter 2 °C halten, möglichst 1,5 °C; alle Staaten legen eigene Ziele vor.[^unfccc-paris]
-- **2021** — Nach einem Urteil des Bundesverfassungsgerichts verschärft Deutschland sein Klimaschutzgesetz: **[[klimaneutralitaet|Klimaneutralität]] bis 2045**, minus 65 % Treibhausgase bis 2030 (gegenüber 1990).`,
+- **2021** — Nach einem Urteil des [Bundesverfassungsgerichts](wiki:Bundesverfassungsgericht|Federal Constitutional Court) verschärft Deutschland sein [Klimaschutzgesetz](wiki:Bundes-Klimaschutzgesetz): **[[klimaneutralitaet|Klimaneutralität]] bis 2045**, minus 65 % Treibhausgase bis 2030 (gegenüber 1990).`,
+    },
+    {
+      id: 'map-klimapolitik', type: 'map', title: 'Orte der Klimapolitik',
+      view: [-120, -40, 160, 70],
+      layers: { cities: false, rivers: false },
+      places: [
+        { name: 'Rio de Janeiro', num: 1, pos: 'r', detail: '**[Rio de Janeiro](wiki:Rio de Janeiro)** — 1992 fand hier der [Erdgipfel](wiki:Erdgipfel|Earth Summit) statt; dort wurde die Klimarahmenkonvention der UN beschlossen.' },
+        { name: 'Kyōto', num: 2, pos: 'r', detail: '**[Kyōto](wiki:Kyōto|Kyoto)** — 1997 wurde hier das [Kyoto-Protokoll](wiki:Kyoto-Protokoll|Kyoto Protocol) verabschiedet.' },
+        { name: 'Paris', num: 3, pos: 'l', detail: '**[Paris](wiki:Paris)** — 2015 beschlossen die Staaten hier das [Pariser Klimaabkommen](wiki:Übereinkommen von Paris|Paris Agreement).' },
+      ],
+      caption: 'Drei Orte, drei Meilensteine: 1 Rio de Janeiro (1992), 2 Kyoto (1997), 3 Paris (2015).',
     },
     {
       id: 'zeitleiste', type: 'game', viz: 'timeline', title: 'Klimapolitik ordnen',
@@ -98,7 +156,7 @@ Der [[weltklimarat|Weltklimarat]] IPCC hält fest, dass der Mensch die Erwärmun
     },
     {
       id: 'fact-koeppen', type: 'callout', tone: 'fact', title: 'Ein Klimaforscher mit deutscher Familie',
-      md: `Die Klimazonen-Einteilung, die bis heute weltweit genutzt wird, stammt von **Wladimir Köppen** (1846–1940), der in Hamburg an der Deutschen Seewarte arbeitete. Sein Schwiegersohn war — **Alfred Wegener**, der Vater der Kontinentaldrift.`,
+      md: `Die Klimazonen-Einteilung, die bis heute weltweit genutzt wird, stammt von **[Wladimir Köppen](wiki:Wladimir Köppen|Wladimir Köppen)** (1846–1940), der in [Hamburg](wiki:Hamburg|Hamburg) an der [Deutschen Seewarte](wiki:Deutsche Seewarte|German Maritime Observatory) arbeitete. Sein Schwiegersohn war — **[Alfred Wegener](wiki:Alfred Wegener|Alfred Wegener)**, der Vater der Kontinentaldrift.`,
     },
     {
       id: 'recall-treibhaus', type: 'recall', title: 'Erkläre den Treibhauseffekt',

@@ -70,7 +70,7 @@ and the same for the teacher with $\\tau_t$ — **after subtracting a center** $
 
 $$P_t(x) = \\operatorname{softmax}\\!\\left(\\frac{g_{\\theta_t}(x) - c}{\\tau_t}\\right)$$
 
-Think of the $K$ dimensions as learned, unnamed "prototypes" or pseudo-classes. Nobody defines them; the model invents a clustering of the visual world on its own.`,
+Think of the $K$ dimensions as learned, unnamed "prototypes" or pseudo-classes. Nobody defines them; the model invents a [clustering](wiki:Cluster analysis|Clusteranalyse) of the visual world on its own.`,
     },
     {
       id: 'multicrop', type: 'text', title: 'Multi-crop: local views must explain the global picture',
@@ -109,14 +109,14 @@ The teacher is never trained by backpropagation. After every step, its weights m
 
 $$\\theta_t \\leftarrow \\lambda\\, \\theta_t + (1 - \\lambda)\\, \\theta_s$$
 
-with $\\lambda$ following a **cosine schedule from 0.996 to 1** during training.[^dino] At $\\lambda = 0.996$ the teacher averages roughly the last $1/(1-\\lambda) = 250$ student versions. Averaging weights over time acts like an ensemble ("Polyak–Ruppert averaging"), and the paper observes that **the teacher outperforms the student throughout training** — so it provides targets that are genuinely better than what the student currently knows. As $\\lambda \\to 1$ the teacher freezes and training settles.`,
+with $\\lambda$ following a **cosine schedule from 0.996 to 1** during training.[^dino] At $\\lambda = 0.996$ the teacher averages roughly the last $1/(1-\\lambda) = 250$ student versions. Averaging weights over time acts like an [ensemble](wiki:Ensemble learning) ("Polyak–Ruppert averaging"), and the paper observes that **the teacher outperforms the student throughout training** — so it provides targets that are genuinely better than what the student currently knows. As $\\lambda \\to 1$ the teacher freezes and training settles.`,
     },
     {
       id: 'center-sharpen', type: 'text', title: 'Centering and sharpening: two opposing forces',
       md: `
 Without negatives, two kinds of collapse threaten:
 
-- **Dimension collapse:** one of the $K$ dimensions wins for *every* image → all targets are the same one-hot vector.
+- **Dimension collapse:** one of the $K$ dimensions wins for *every* image → all targets are the same [one-hot](wiki:One-hot|1-aus-n-Code) vector.
 - **Uniform collapse:** the teacher's output becomes flat, $P_t = \\frac{1}{K}$ everywhere → every target says nothing.
 
 DINO applies two simple operations to the **teacher** only:
@@ -160,9 +160,9 @@ Balanced, the two cancel each other's failure mode. In the language of [[entropy
     {
       id: 'emergent', type: 'text', title: 'The surprise: segmentation for free',
       md: `
-Take a DINO-trained ViT and look at the **[[self-attention]]** of the [[cls-token|CLS token]] in the last layer: which patches does the image summary attend to? The maps outline the main objects — birds, cars, people — with sharp boundaries, although DINO never saw a mask or a label.[^dino] Supervised ViTs trained on ImageNet labels show much noisier maps.
+Take a DINO-trained ViT and look at the **[[self-attention]]** of the [[cls-token|CLS token]] in the last layer: which patches does the image summary attend to? The maps outline the main objects — birds, cars, people — with sharp boundaries, although DINO never saw a mask or a label.[^dino] Supervised ViTs trained on [ImageNet](wiki:ImageNet|ImageNet) labels show much noisier maps.
 
-Why? To match a teacher that saw the whole scene from tiny local crops, the network must figure out *which patches belong to the same object*. Grouping patches into objects is exactly what segmentation needs.
+Why? To match a teacher that saw the whole scene from tiny local crops, the network must figure out *which patches belong to the same object*. Grouping patches into objects is exactly what [segmentation](wiki:Image segmentation|Segmentierung (Bildverarbeitung)) needs.
 
 Features were also strong by standard measures: DINO ViT-S/16 reached about 77% ImageNet linear-probe accuracy and ViT-B/8 about 80%, with k-NN close behind — without labels.[^dino]`,
     },

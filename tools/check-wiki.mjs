@@ -9,18 +9,12 @@ import { existsSync } from 'node:fs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'site');
 const { subjects } = await import(join(root, 'subjects/index.js'));
-const UA = { 'User-Agent': `learning-platform/0.1 (https://github.com/Sicaine/learning; pid ${process.pid})` };
+import { wikiQuery } from './lib/wiki-fetch.mjs';
 const [onlySubject, ...onlyLessons] = process.argv.slice(2);
-const WIKI_RE = /\[([^\]]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
+const WIKI_RE = /\[([^\]\[\n]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
 
 async function api(lang, titles) {
-  const u = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageprops&ppprop=disambiguation&titles=${encodeURIComponent(titles.join('|'))}`;
-  for (let attempt = 0; attempt < 5; attempt++) {
-    const res = await fetch(u, { headers: UA });
-    if (res.ok) return (await res.json()).query;
-    await new Promise(s => setTimeout(s, 1500 * (attempt + 1)));
-  }
-  throw new Error(`Wikipedia API unavailable (${lang})`);
+  return (await wikiQuery(lang, `action=query&redirects=1&prop=pageprops&ppprop=disambiguation&titles=${encodeURIComponent(titles.join('|'))}`)).query;
 }
 
 let bad = 0;
@@ -50,8 +44,8 @@ for (const meta of subjects) {
 
   for (const l of ['en', 'de']) {
     const list = [...want[l].keys()];
-    for (let i = 0; i < list.length; i += 40) {
-      const chunk = list.slice(i, i + 40);
+    for (let i = 0; i < list.length; i += 50) {
+      const chunk = list.slice(i, i + 50);
       const r = await api(l, chunk);
       const norm = Object.fromEntries([...(r.normalized || []), ...(r.redirects || [])].map(x => [x.from, x.to]));
       const pages = Object.values(r.pages);

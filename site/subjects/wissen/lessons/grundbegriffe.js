@@ -13,12 +13,12 @@ export default {
     {
       id: 'markt', type: 'text', title: 'Wie ein Preis entsteht',
       md: `
-Ein **Markt** ist jeder Ort, an dem Anbieter und Nachfrager zusammenkommen — der Wochenmarkt ebenso wie eine Online-Börse. Dort gilt das Gesetz von **[[angebot-nachfrage|Angebot und Nachfrage]]**:
+Ein **Markt** ist jeder Ort, an dem Anbieter und Nachfrager zusammenkommen — der [Wochenmarkt](wiki:Wochenmarkt) ebenso wie eine Online-Börse. Dort gilt das Gesetz von **[[angebot-nachfrage|Angebot und Nachfrage]]**:
 
 - Je **teurer** ein Gut, desto **weniger** wollen Käufer davon (die Nachfragekurve fällt).
 - Je **teurer** ein Gut, desto **mehr** wollen Verkäufer anbieten (die Angebotskurve steigt).
 
-Wo sich beide Kurven schneiden, liegt der **Gleichgewichtspreis**: Genau so viel wird angeboten, wie nachgefragt wird — der Markt ist „geräumt“. Liegt der Preis darüber, bleiben Waren liegen (**Angebotsüberhang**) und der Preis sinkt. Liegt er darunter, entsteht Knappheit (**Nachfrageüberhang**) und der Preis steigt.
+Wo sich beide Kurven schneiden, liegt der **[Gleichgewichtspreis](wiki:Marktgleichgewicht|Economic equilibrium)**: Genau so viel wird angeboten, wie nachgefragt wird — der Markt ist „geräumt“. Liegt der Preis darüber, bleiben Waren liegen (**Angebotsüberhang**) und der Preis sinkt. Liegt er darunter, entsteht Knappheit (**Nachfrageüberhang**) und der Preis steigt.
 
 Ändert sich etwas an den Bedingungen — ein Hitzesommer, eine Missernte, eine neue Technik — **verschiebt sich eine Kurve**, und es entsteht ein neuer Gleichgewichtspreis.`,
     },
@@ -34,9 +34,9 @@ Das **[[bruttoinlandsprodukt|Bruttoinlandsprodukt (BIP)]]** ist der Wert aller W
 
 - **Nominal** misst in laufenden Preisen. **Real** (preisbereinigt) rechnet die Inflation heraus — nur so sieht man, ob wirklich *mehr* produziert wurde oder nur alles teurer wurde.
 - Deutschlands BIP lag **2025 bei rund 4,47 Billionen Euro** (nominal). Real wuchs es um nur **0,2 %** — nach zwei Jahren mit leichtem Rückgang.[^destatis-bip-2025]
-- Deutschland ist damit die **drittgrößte Volkswirtschaft der Welt** nach den USA und China.
+- Deutschland ist damit die **drittgrößte [Volkswirtschaft](wiki:Volkswirtschaft) der Welt** nach den [USA](wiki:Vereinigte Staaten|United States) und [China](wiki:Volksrepublik China|China).
 
-Das BIP misst allerdings nur, was einen Marktpreis hat. Hausarbeit, Ehrenamt oder Umweltzerstörung tauchen nicht auf — deshalb gibt es alternative Wohlstandsmaße wie den Human Development Index.`,
+Das BIP misst allerdings nur, was einen Marktpreis hat. Hausarbeit, Ehrenamt oder Umweltzerstörung tauchen nicht auf — deshalb gibt es alternative Wohlstandsmaße wie den [Human Development Index](wiki:Index der menschlichen Entwicklung|Human Development Index).`,
     },
     {
       id: 'calc-bip', type: 'numeric', title: 'Wachstumsrate berechnen',
@@ -55,23 +55,23 @@ Die Wirtschaft wächst nicht gleichmäßig, sondern in Wellen — die **[[konjun
 3. **Abschwung**: Nachfrage und Investitionen gehen zurück.
 4. **Tiefphase** (Depression): Produktion und Beschäftigung sind niedrig — bis der nächste Aufschwung beginnt.
 
-Schrumpft das reale BIP zwei Quartale in Folge, spricht man meist von einer **[[rezession|Rezession]]**. Die tiefste Nachkriegsrezession erlebte Deutschland 2009 (Finanzkrise, etwa −5,7 %), einen weiteren Einbruch 2020 durch die Corona-Pandemie.`,
+Schrumpft das reale BIP zwei Quartale in Folge, spricht man meist von einer **[[rezession|Rezession]]**. Die tiefste Nachkriegsrezession erlebte Deutschland 2009 ([Finanzkrise](wiki:Finanzkrise ab 2007|2008 financial crisis), etwa −5,7 %), einen weiteren Einbruch 2020 durch die [Corona-Pandemie](wiki:COVID-19-Pandemie|COVID-19 pandemic).`,
     },
     {
       id: 'order-konjunktur', type: 'order', title: 'Der Konjunkturzyklus',
       prompt: 'Bring die Phasen in die richtige Reihenfolge — beginnend mit dem Aufschwung.',
       items: ['Aufschwung: Aufträge und Investitionen steigen', 'Hochkonjunktur: Kapazitäten ausgelastet, Preise steigen', 'Abschwung: Nachfrage lässt nach', 'Tiefphase: niedrige Produktion und hohe Arbeitslosigkeit'],
-      explain: 'Danach beginnt der Zyklus von vorn. Die Politik versucht, die Ausschläge zu dämpfen — etwa mit Konjunkturprogrammen im Abschwung.',
+      explain: 'Danach beginnt der Zyklus von vorn. Die Politik versucht, die Ausschläge zu dämpfen — etwa mit [Konjunkturprogrammen](wiki:Konjunkturprogramm|Economic stimulus) im Abschwung.',
     },
     {
       id: 'inflation', type: 'text', title: 'Inflation: wenn Geld an Wert verliert',
       md: `
-**[[inflation|Inflation]]** bedeutet: Das **allgemeine Preisniveau steigt** — für denselben Euro bekommt man weniger. Gemessen wird sie in Deutschland vom Statistischen Bundesamt mit dem **Verbraucherpreisindex (VPI)**: Ein „Warenkorb“ aus rund 650 typischen Gütern wird jeden Monat neu bepreist.
+**[[inflation|Inflation]]** bedeutet: Das **allgemeine Preisniveau steigt** — für denselben Euro bekommt man weniger. Gemessen wird sie in Deutschland vom [Statistischen Bundesamt](wiki:Statistisches Bundesamt|Federal Statistical Office of Germany) mit dem **[Verbraucherpreisindex](wiki:Verbraucherpreisindex|Consumer price index) (VPI)**: Ein „Warenkorb“ aus rund 650 typischen Gütern wird jeden Monat neu bepreist.
 
-- Die **Europäische Zentralbank** strebt mittelfristig **2 %** an — etwas Inflation gilt als gesund.
-- Nach dem russischen Angriff auf die Ukraine schoss die Inflation hoch: **6,9 % (2022)** und **5,9 % (2023)**. 2024 und **2025 lag sie jeweils bei 2,2 %**.[^destatis-vpi-2025]
-- Das Gegenteil, **Deflation** (sinkende Preise), klingt gut, ist aber gefährlich: Menschen verschieben Käufe, Unternehmen investieren nicht, die Wirtschaft kann in eine Abwärtsspirale geraten.
-- Extremfall **Hyperinflation**: 1923 kostete in Deutschland ein Brot zeitweise Milliarden Mark.`,
+- Die **[Europäische Zentralbank](wiki:Europäische Zentralbank|European Central Bank)** strebt mittelfristig **2 %** an — etwas Inflation gilt als gesund.
+- Nach dem [russischen Angriff auf die Ukraine](wiki:Russischer Überfall auf die Ukraine seit 2022|Russo-Ukrainian war (2022–present)) schoss die Inflation hoch: **6,9 % (2022)** und **5,9 % (2023)**. 2024 und **2025 lag sie jeweils bei 2,2 %**.[^destatis-vpi-2025]
+- Das Gegenteil, **[Deflation](wiki:Deflation)** (sinkende Preise), klingt gut, ist aber gefährlich: Menschen verschieben Käufe, Unternehmen investieren nicht, die Wirtschaft kann in eine Abwärtsspirale geraten.
+- Extremfall **[Hyperinflation](wiki:Hyperinflation)**: 1923 kostete in Deutschland ein Brot zeitweise Milliarden Mark.`,
     },
     {
       id: 'calc-inflation', type: 'numeric', title: 'Kaufkraftverlust',
@@ -83,7 +83,7 @@ Schrumpft das reale BIP zwei Quartale in Folge, spricht man meist von einer **[[
     {
       id: 'arbeit', type: 'text', title: 'Arbeitslosigkeit',
       md: `
-Als **arbeitslos** gilt in der deutschen Statistik, wer bei der **Bundesagentur für Arbeit** (Sitz: Nürnberg) gemeldet ist, keine oder nur eine Beschäftigung unter 15 Wochenstunden hat und Arbeit sucht. Die **[[arbeitslosenquote|Arbeitslosenquote]]** setzt diese Zahl ins Verhältnis zu allen zivilen Erwerbspersonen.
+Als **arbeitslos** gilt in der deutschen Statistik, wer bei der **[Bundesagentur für Arbeit](wiki:Bundesagentur für Arbeit)** (Sitz: [Nürnberg](wiki:Nürnberg|Nuremberg)) gemeldet ist, keine oder nur eine Beschäftigung unter 15 Wochenstunden hat und Arbeit sucht. Die **[[arbeitslosenquote|Arbeitslosenquote]]** setzt diese Zahl ins Verhältnis zu allen zivilen Erwerbspersonen.
 
 - **2025**: im Jahresdurchschnitt rund **2,98 Millionen** Arbeitslose, Quote **6,3 %**.[^ba-2025]
 - Zum Vergleich: Um 2005 waren es fast 5 Millionen; bis 2019 sank die Zahl auf rund 2,3 Millionen.
@@ -114,7 +114,7 @@ Als **arbeitslos** gilt in der deutschen Statistik, wer bei der **Bundesagentur 
     },
     {
       id: 'fact-warenkorb', type: 'callout', tone: 'fact', title: 'Der Warenkorb verrät die Zeit',
-      md: 'Der Warenkorb des Verbraucherpreisindex wird regelmäßig angepasst. Im Lauf der Jahrzehnte flogen Dinge wie Schreibmaschinen, Farbfilme und Videorekorder hinaus, dafür kamen Smartphones, Streamingdienste und E-Bikes hinein. Wer die Liste liest, sieht, wie sich der Alltag verändert hat.',
+      md: 'Der Warenkorb des Verbraucherpreisindex wird regelmäßig angepasst. Im Lauf der Jahrzehnte flogen Dinge wie [Schreibmaschinen](wiki:Schreibmaschine|Typewriter), Farbfilme und [Videorekorder](wiki:Videorekorder|Videocassette recorder) hinaus, dafür kamen [Smartphones](wiki:Smartphone), Streamingdienste und E-Bikes hinein. Wer die Liste liest, sieht, wie sich der Alltag verändert hat.',
     },
     {
       id: 'recall-inflation', type: 'recall', title: 'Erklär es einem Freund',

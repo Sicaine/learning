@@ -40,7 +40,7 @@ DINOv2 and DINOv3 report almost everything on rungs 1–3 on purpose: the featur
     {
       id: 'extract', type: 'text', title: 'Extracting features without bugs',
       md: `
-With Hugging Face Transformers (DINOv3 checkpoints require accepting the license on the Hub first):[^hf-dinov3]
+With [Hugging Face](wiki:Hugging Face|Hugging Face) Transformers (DINOv3 checkpoints require accepting the license on the Hub first):[^hf-dinov3]
 
 \`\`\`python
 import torch
@@ -68,7 +68,7 @@ Three classic mistakes: forgetting the register tokens (off by 4), resizing to a
 Patch features have 384–4096 dimensions — you cannot look at them directly. The standard trick from the DINO papers:[^dinov2]
 
 1. Collect the patch features of one image (or several) as rows of a matrix: $N$ patches × $d$ dims.
-2. Run **PCA** and keep the top 3 principal components.
+2. Run **[PCA](wiki:Principal component analysis|Hauptkomponentenanalyse)** and keep the top 3 principal components.
 3. Map component 1, 2, 3 to red, green, blue and paint each patch.
 
 Because PCA finds the directions of largest variance, patches with similar features get similar colours. With a strong backbone you see the object separate from the background (often already in component 1) and **object parts get consistent colours across different images** — e.g. every dial the same hue. A common recipe: threshold component 1 to get a foreground mask, then run PCA again on the foreground patches only to reveal parts.
@@ -87,7 +87,7 @@ The simplest dense head applies the *same* linear map to every patch feature $\\
 
 $$\\mathbf{z}_{ij} = W \\mathbf{f}_{ij} + \\mathbf{b}, \\qquad W \\in \\mathbb{R}^{C \\times d}$$
 
-giving $C$ class [[logits]] per patch. Upsample the logit map bilinearly to image resolution, apply [[softmax]] per pixel and train with [[cross-entropy]] against the mask. Evaluate with [[miou|mIoU]].
+giving $C$ class [[logits]] per patch. Upsample the logit map [bilinearly](wiki:Bilinear interpolation) to image resolution, apply [[softmax]] per pixel and train with [[cross-entropy]] against the mask. Evaluate with [[miou|mIoU]].
 
 That this works at all is remarkable: it means the classes are *linearly separable* in feature space — the backbone has already done the hard work. DINOv3-7B reaches 55.9 mIoU on ADE20k (150 classes) this way.[^dinov3] It is also your best **measurement instrument**: if a linear head can't separate "bezel" from "dial" on real photos, a fancier decoder may hide the problem but not solve it.`,
     },
@@ -121,7 +121,7 @@ The only honest fixes cost compute: tokens grow with resolution², attention wit
     {
       id: 'fixes', type: 'text', title: 'Ways out for thin structures',
       md: `
-- **Higher input resolution.** DINOv3 was adapted to 512–768 px and stays stable far beyond.[^dinov3] ViT-L at 1024 px = 4,096 tokens: fine for inference on a 4090, expensive for training.
+- **Higher [input resolution](wiki:Image resolution|Bildauflösung).** DINOv3 was adapted to 512–768 px and stays stable far beyond.[^dinov3] ViT-L at 1024 px = 4,096 tokens: fine for inference on a [4090](wiki:GeForce RTX 40 series|Nvidia-GeForce-40-Serie), expensive for training.
 - **Crop around the watch first.** Detect the watch, crop tightly, then run the segmenter at high resolution on the crop. Most of a product photo is background — don't spend tokens on it.
 - **Tiling / sliding windows** over a high-resolution image, stitching the feature maps.
 - **[[feature-upsampling|Feature upsampling]]:** learned, model-agnostic upsamplers like FeatUp turn coarse feature maps into high-resolution ones guided by the image.[^featup]
@@ -142,7 +142,7 @@ The only honest fixes cost compute: tokens grow with resolution², attention wit
       id: 'mission-plan', type: 'callout', tone: 'mission', title: 'A first week with your data',
       md: `
 1. **PCA check (hour 1):** DINOv3 ViT-L/16 at 768 px on 20 real photos and 20 renders. Do parts get consistent colours across images? Across photos *and* renders?
-2. **Domain-gap check:** for patches you label roughly (dial, bezel, hands), compute nearest neighbours across the render/photo divide. Low cross-domain agreement = generator problem, not model problem.
+2. **Domain-gap check:** for patches you label roughly (dial, bezel, hands), compute [nearest neighbours](wiki:Nearest neighbor search) across the render/photo divide. Low cross-domain agreement = generator problem, not model problem.
 3. **Linear probe:** label ~200 real photos (or use renders + a small real set), train a linear head on frozen features, report per-class IoU. This is your baseline number.
 4. **Crop-then-segment** and compare resolutions 512/768/1024 on the *hands* IoU specifically.
 5. Only then decide on a decoder, LoRA, or distillation from the 7B model.

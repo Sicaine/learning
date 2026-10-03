@@ -47,7 +47,7 @@ A classifier outputs $C$ [[logits]] per image. A semantic segmenter outputs $C$ 
 
 $$\\mathcal{L} = -\\frac{1}{HW} \\sum_{\\text{pixels } p} \\log \\hat{y}_{p,\\, c^*_p}$$
 
-where $c^*_p$ is the true class of pixel $p$. The first successful deep version simply took a classification CNN, replaced its final fully connected layers by convolutions and upsampled the coarse output — the **Fully Convolutional Network** (FCN).[^fcn] The output was blurry: at 1/32 resolution, a whole second hand fits inside one cell.`,
+where $c^*_p$ is the true class of pixel $p$. The first successful deep version simply took a classification [CNN](wiki:Convolutional neural network|Convolutional Neural Network), replaced its final fully connected layers by convolutions and upsampled the coarse output — the **Fully Convolutional Network** (FCN).[^fcn] The output was blurry: at 1/32 resolution, a whole second hand fits inside one cell.`,
     },
     {
       id: 'unet', type: 'text', title: 'U-Net: go down for meaning, come back up for detail',
@@ -58,7 +58,7 @@ The **[[u-net|U-Net]]**[^unet] turns the [[encoder-decoder]] idea into a clean, 
 2. **Decoder (expanding path):** upsample step by step back to full resolution.
 3. **Skip connections at every scale:** concatenate the encoder's feature map of the same resolution onto the decoder's. The encoder features know *exactly where* the edges are; the decoder features know *what* things are. Together: sharp, semantically correct masks.
 
-Draw it and it looks like a U — hence the name. U-Net was designed to work with very few labeled images, is easy to train, and remains the strongest *simple* baseline. With a pretrained [[backbone]] (ResNet, ConvNeXt, or a DINO ViT) as the encoder it gets much stronger.`,
+Draw it and it looks like a U — hence the name. U-Net was designed to work with very few labeled images, is easy to train, and remains the strongest *simple* baseline. With a pretrained [[backbone]] ([ResNet](wiki:Residual neural network), ConvNeXt, or a DINO [ViT](wiki:Vision transformer)) as the encoder it gets much stronger.`,
     },
     {
       id: 'order-unet', type: 'order', title: 'Trace a pixel through a U-Net',
@@ -82,7 +82,7 @@ For a predicted mask $A$ and ground-truth mask $B$:
 
 $$\\mathrm{IoU} = \\frac{|A \\cap B|}{|A \\cup B|}, \\qquad \\mathrm{Dice} = \\frac{2|A \\cap B|}{|A| + |B|} = \\frac{2\\,\\mathrm{IoU}}{1 + \\mathrm{IoU}}$$
 
-**[[iou|IoU]]** (Jaccard index) is 1 for a perfect match and 0 for no overlap. **[[dice|Dice]]** is its more generous sibling (it's the F1 score over pixels).
+**[[iou|IoU]]** (Jaccard index) is 1 for a perfect match and 0 for no overlap. **[[dice|Dice]]** is its more generous sibling (it's the [F1 score](wiki:F-score) over pixels).
 
 The standard benchmark number is **[[miou|mIoU]]**: compute the IoU *per class* (accumulating over the whole dataset), then average over classes. Every class counts equally, no matter how few pixels it has.
 
@@ -105,8 +105,8 @@ The standard benchmark number is **[[miou|mIoU]]**: compute the IoU *per class* 
 A 4-pixel-wide hand predicted just 3 pixels to the side has IoU ≈ 0.14 — a human would call it "basically right". Meanwhile a dial mask that is off by 3 px has IoU ≈ 0.98. Consequences for your project:
 
 - **Report per-class IoU**, never only mIoU or pixel accuracy. "Hands 0.45, dial 0.97" tells a story; "mIoU 0.78" hides it.
-- **Label noise dominates thin classes.** If your annotators' hand masks vary by ±2 px, even a perfect model can't exceed IoU ≈ 0.5 on second hands. Measure annotator agreement on 50 images before blaming the model.
-- **Consider boundary or skeleton metrics** for thin parts (e.g. is the predicted hand's *centerline* within 2 px of the true one? is its *angle* within 1°?). If the goal is reading the time, angle error is what matters.
+- **Label noise dominates thin classes.** If your annotators' hand masks vary by ±2 px, even a perfect model can't exceed IoU ≈ 0.5 on second hands. Measure [annotator agreement](wiki:Inter-rater reliability|Interrater-Reliabilität) on 50 images before blaming the model.
+- **Consider boundary or [skeleton](wiki:Topological skeleton|Skelettierung (Bildverarbeitung)) metrics** for thin parts (e.g. is the predicted hand's *centerline* within 2 px of the true one? is its *angle* within 1°?). If the goal is reading the time, angle error is what matters.
 - **Synthetic renders give pixel-perfect labels** — a real advantage — but also a mismatch: real annotations are always a bit fatter or thinner than rendered ones.`,
     },
     {

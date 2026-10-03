@@ -160,7 +160,7 @@ function rivers(tol, clip, maxImportance) {
   const out = new Map();
   const add = (props, geom, src) => {
     const name = riverName(props);
-    if (!name || props.featurecla === 'Lake Centerline') return;
+    if (!name) return;
     const en = props.name_en || props.name; if (en && en !== name) EN.river[name] ??= en;
     const imp = importance(props.scalerank);
     if (imp > maxImportance) return;

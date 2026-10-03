@@ -30,13 +30,13 @@ So each row is a *pattern detector*: "how much does this input look like my patt
     {
       id: 'columns', type: 'text', title: 'Columns tell you everything',
       md: `
-A **[[linear-map]]** keeps grid lines parallel and evenly spaced and keeps the origin in place. It can rotate, stretch, shear, mirror or flatten — but never bend.
+A **[[linear-map]]** keeps grid lines parallel and evenly spaced and keeps the origin in place. It can [rotate](wiki:Rotation matrix|Drehmatrix), stretch, [shear](wiki:Shear mapping|Scherung (Geometrie)), mirror or flatten — but never bend.
 
-Because of that, you only need to know where the two basis vectors $\\hat{\\imath} = (1,0)$ and $\\hat{\\jmath} = (0,1)$ go. Write those landing spots as columns and you have the matrix:
+Because of that, you only need to know where the two [basis vectors](wiki:Basis (linear algebra)|Basis (Vektorraum)) $\\hat{\\imath} = (1,0)$ and $\\hat{\\jmath} = (0,1)$ go. Write those landing spots as columns and you have the matrix:
 
 $$\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = x \\begin{pmatrix} a \\\\ c \\end{pmatrix} + y \\begin{pmatrix} b \\\\ d \\end{pmatrix}$$
 
-"Take $x$ steps along the new $\\hat{\\imath}$ and $y$ steps along the new $\\hat{\\jmath}$." The **determinant** $ad - bc$ tells you how areas scale; if it is 0, the map squashes the plane onto a line and information is irreversibly lost.[^mml-book]`,
+"Take $x$ steps along the new $\\hat{\\imath}$ and $y$ steps along the new $\\hat{\\jmath}$." The **[determinant](wiki:Determinant|Determinante)** $ad - bc$ tells you how areas scale; if it is 0, the map squashes the plane onto a line and information is irreversibly lost.[^mml-book]`,
     },
     {
       id: 'viz-matrix', type: 'viz', viz: 'matrix-transform', title: 'Bend space (without bending it)',
@@ -55,7 +55,7 @@ $$\\underbrace{(m \\times k)}_{A} \\cdot \\underbrace{(k \\times n)}_{B} = \\und
 
 Inner dimensions must match and disappear. Order matters: $AB \\neq BA$ in general (rotate-then-shear is not shear-then-rotate).
 
-In practice we process many vectors at once. Stack $N$ token vectors as rows of $X \\in \\mathbb{R}^{N\\times D}$; a linear layer is then $XW^\\top$ with $W \\in \\mathbb{R}^{D_{out}\\times D}$ — one big matmul, which is exactly what GPUs are built for. The **[[transpose]]** $W^\\top$ just flips rows and columns.`,
+In practice we process many vectors at once. Stack $N$ token vectors as rows of $X \\in \\mathbb{R}^{N\\times D}$; a linear layer is then $XW^\\top$ with $W \\in \\mathbb{R}^{D_{out}\\times D}$ — one big matmul, which is exactly what [GPUs](wiki:Graphics processing unit|Grafikprozessor) are built for. The **[[transpose]]** $W^\\top$ just flips rows and columns.`,
     },
     {
       id: 'match-shapes', type: 'match', title: 'Shape detective',
@@ -93,7 +93,7 @@ A linear layer applied to $(B, N, D)$ acts on the last axis only: the same $W$ i
       question: 'Multiplying an $(m\\times k)$ matrix by a $(k\\times n)$ matrix costs about $2mkn$ floating-point operations (one multiply + one add per term). How many FLOPs for $(1369\\times768)\\cdot(768\\times768)$ — one linear projection of a 518×518 image in ViT-B? Answer in scientific notation, e.g. `1.2e9`.',
       answer: 1.615e9, tolerance: 0.02e9, unit: 'FLOPs',
       hint: '$2 \\cdot 1369 \\cdot 768 \\cdot 768$',
-      explain: '$2 \\cdot 1369 \\cdot 768^2 \\approx 1.6 \\times 10^9$. A ViT-B block has several such products; the model has 12 blocks, and training costs ~3× the forward pass. An RTX 4090 manages very roughly $1.6\\times 10^{14}$ dense FP16 FLOP/s in practice-friendly conditions, so a single projection is trivial — but the count grows **linearly with tokens** for linear layers and **quadratically** for attention.',
+      explain: '$2 \\cdot 1369 \\cdot 768^2 \\approx 1.6 \\times 10^9$. A ViT-B block has several such products; the model has 12 blocks, and training costs ~3× the forward pass. An [RTX 4090](wiki:GeForce 40 series|Nvidia-GeForce-40-Serie) manages very roughly $1.6\\times 10^{14}$ dense [FP16](wiki:Half-precision floating-point format) [FLOP/s](wiki:FLOPS|Floating Point Operations Per Second) in practice-friendly conditions, so a single projection is trivial — but the count grows **linearly with tokens** for linear layers and **quadratically** for attention.',
     },
     {
       id: 'quiz-linear', type: 'quiz', title: 'Linear or not?',
@@ -116,7 +116,7 @@ Keep this shape arithmetic in mind: it is the main reason why "just use higher r
     {
       id: 'deep-rank', type: 'callout', tone: 'deep', title: 'Rank, and why LoRA works',
       md: `
-The **rank** of a matrix is the dimension of the space its outputs can reach. A $768\\times768$ matrix of rank 8 can be written as a product $BA$ with $B \\in \\mathbb{R}^{768\\times 8}$, $A \\in \\mathbb{R}^{8 \\times 768}$ — only $2 \\cdot 768 \\cdot 8 = 12{,}288$ numbers instead of 589,824.
+The **[rank](wiki:Rank (linear algebra)|Rang (Lineare Algebra))** of a matrix is the dimension of the space its outputs can reach. A $768\\times768$ matrix of rank 8 can be written as a product $BA$ with $B \\in \\mathbb{R}^{768\\times 8}$, $A \\in \\mathbb{R}^{8 \\times 768}$ — only $2 \\cdot 768 \\cdot 8 = 12{,}288$ numbers instead of 589,824.
 
 [[lora|LoRA]] fine-tunes a big pretrained model by *adding* such a low-rank product to frozen weights: $W' = W + BA$. The bet: the change needed for a new task is low-rank. It is one of your options for adapting DINOv3 on two consumer GPUs.[^lora]`,
     },

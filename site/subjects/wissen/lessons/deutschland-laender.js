@@ -13,13 +13,13 @@ export default {
     {
       id: 'bundesstaat', type: 'text', title: '16 Länder, ein Bund',
       md: `
-Die Bundesrepublik ist ein **Bundesstaat**: Der Bund regelt, was alle gemeinsam betrifft (Außenpolitik, Verteidigung, Währung), die 16 **Länder** sind für vieles andere zuständig — allen voran Schule und Hochschule, Polizei und Kultur. Das Grundgesetz spricht übrigens nur von „Ländern“; *Bundesland* ist die Alltagssprache.[^bpb-bundeslaender]
+Die Bundesrepublik ist ein **Bundesstaat**: Der Bund regelt, was alle gemeinsam betrifft (Außenpolitik, Verteidigung, Währung), die 16 **Länder** sind für vieles andere zuständig — allen voran Schule und Hochschule, Polizei und Kultur. Das [Grundgesetz](wiki:Grundgesetz für die Bundesrepublik Deutschland|Basic Law for the Federal Republic of Germany) spricht übrigens nur von „Ländern“; *Bundesland* ist die Alltagssprache.[^bpb-bundeslaender]
 
 Drei Arten von Ländern solltest du unterscheiden können:
 
-- **[[stadtstaat|Stadtstaaten]]:** Berlin, Hamburg und Bremen — Stadt und Land zugleich.
+- **[[stadtstaat|Stadtstaaten]]:** [Berlin](wiki:Berlin|Berlin), [Hamburg](wiki:Hamburg|Hamburg) und [Bremen](wiki:Bremen|Bremen) — Stadt und Land zugleich.
 - **[[flaechenland|Flächenländer]]:** die übrigen 13, gegliedert in Kreise und Gemeinden.
-- **[[freistaat|Freistaaten]]:** Bayern, Sachsen und Thüringen tragen diesen Titel. Er ist das alte deutsche Wort für *Republik* — Sonderrechte hat damit niemand.`,
+- **[[freistaat|Freistaaten]]:** [Bayern](wiki:Bayern|Bavaria), [Sachsen](wiki:Sachsen|Saxony) und [Thüringen](wiki:Thüringen|Thuringia) tragen diesen Titel. Er ist das alte deutsche Wort für *Republik* — Sonderrechte hat damit niemand.`,
     },
     {
       id: 'karte-entdecken', type: 'viz', viz: 'geo-bundeslaender', title: 'Die Karte erkunden',
@@ -32,22 +32,22 @@ Drei Arten von Ländern solltest du unterscheiden können:
       md: `
 <table>
 <tr><th>Land</th><th>Hauptstadt</th><th>Einwohner (rund)</th><th>Fläche</th></tr>
-<tr><td>Baden-Württemberg</td><td>Stuttgart</td><td>11,3 Mio.</td><td>35.748 km²</td></tr>
-<tr><td>Bayern</td><td>München</td><td>13,4 Mio.</td><td>70.542 km²</td></tr>
-<tr><td>Berlin</td><td>Berlin</td><td>3,8 Mio.</td><td>891 km²</td></tr>
-<tr><td>Brandenburg</td><td>Potsdam</td><td>2,6 Mio.</td><td>29.654 km²</td></tr>
-<tr><td>Bremen</td><td>Bremen</td><td>0,7 Mio.</td><td>420 km²</td></tr>
-<tr><td>Hamburg</td><td>Hamburg</td><td>1,9 Mio.</td><td>755 km²</td></tr>
-<tr><td>Hessen</td><td>Wiesbaden</td><td>6,4 Mio.</td><td>21.116 km²</td></tr>
-<tr><td>Mecklenburg-Vorpommern</td><td>Schwerin</td><td>1,6 Mio.</td><td>23.295 km²</td></tr>
-<tr><td>Niedersachsen</td><td>Hannover</td><td>8,1 Mio.</td><td>47.710 km²</td></tr>
-<tr><td>Nordrhein-Westfalen</td><td>Düsseldorf</td><td>18,1 Mio.</td><td>34.113 km²</td></tr>
-<tr><td>Rheinland-Pfalz</td><td>Mainz</td><td>4,2 Mio.</td><td>19.858 km²</td></tr>
-<tr><td>Saarland</td><td>Saarbrücken</td><td>1,0 Mio.</td><td>2.572 km²</td></tr>
-<tr><td>Sachsen</td><td>Dresden</td><td>4,1 Mio.</td><td>18.450 km²</td></tr>
-<tr><td>Sachsen-Anhalt</td><td>Magdeburg</td><td>2,2 Mio.</td><td>20.467 km²</td></tr>
-<tr><td>Schleswig-Holstein</td><td>Kiel</td><td>3,0 Mio.</td><td>15.804 km²</td></tr>
-<tr><td>Thüringen</td><td>Erfurt</td><td>2,1 Mio.</td><td>16.202 km²</td></tr>
+<tr><td>[Baden-Württemberg](wiki:Baden-Württemberg|Baden-Württemberg)</td><td>Stuttgart</td><td>11,3 Mio.</td><td>35.748 km²</td></tr>
+<tr><td>[Bayern](wiki:Bayern|Bavaria)</td><td>München</td><td>13,4 Mio.</td><td>70.542 km²</td></tr>
+<tr><td>[Berlin](wiki:Berlin|Berlin)</td><td>Berlin</td><td>3,8 Mio.</td><td>891 km²</td></tr>
+<tr><td>[Brandenburg](wiki:Brandenburg|Brandenburg)</td><td>Potsdam</td><td>2,6 Mio.</td><td>29.654 km²</td></tr>
+<tr><td>[Bremen](wiki:Bremen|Bremen)</td><td>Bremen</td><td>0,7 Mio.</td><td>420 km²</td></tr>
+<tr><td>[Hamburg](wiki:Hamburg|Hamburg)</td><td>Hamburg</td><td>1,9 Mio.</td><td>755 km²</td></tr>
+<tr><td>[Hessen](wiki:Hessen|Hesse)</td><td>Wiesbaden</td><td>6,4 Mio.</td><td>21.116 km²</td></tr>
+<tr><td>[Mecklenburg-Vorpommern](wiki:Mecklenburg-Vorpommern|Mecklenburg-Vorpommern)</td><td>Schwerin</td><td>1,6 Mio.</td><td>23.295 km²</td></tr>
+<tr><td>[Niedersachsen](wiki:Niedersachsen|Lower Saxony)</td><td>Hannover</td><td>8,1 Mio.</td><td>47.710 km²</td></tr>
+<tr><td>[Nordrhein-Westfalen](wiki:Nordrhein-Westfalen|North Rhine-Westphalia)</td><td>Düsseldorf</td><td>18,1 Mio.</td><td>34.113 km²</td></tr>
+<tr><td>[Rheinland-Pfalz](wiki:Rheinland-Pfalz|Rhineland-Palatinate)</td><td>Mainz</td><td>4,2 Mio.</td><td>19.858 km²</td></tr>
+<tr><td>[Saarland](wiki:Saarland|Saarland)</td><td>Saarbrücken</td><td>1,0 Mio.</td><td>2.572 km²</td></tr>
+<tr><td>[Sachsen](wiki:Sachsen|Saxony)</td><td>Dresden</td><td>4,1 Mio.</td><td>18.450 km²</td></tr>
+<tr><td>[Sachsen-Anhalt](wiki:Sachsen-Anhalt|Saxony-Anhalt)</td><td>Magdeburg</td><td>2,2 Mio.</td><td>20.467 km²</td></tr>
+<tr><td>[Schleswig-Holstein](wiki:Schleswig-Holstein|Schleswig-Holstein)</td><td>Kiel</td><td>3,0 Mio.</td><td>15.804 km²</td></tr>
+<tr><td>[Thüringen](wiki:Thüringen|Thuringia)</td><td>Erfurt</td><td>2,1 Mio.</td><td>16.202 km²</td></tr>
 </table>
 
 Zusammen: rund **84 Mio. Menschen** auf **357.600 km²**.[^wp-land-deutschland] [^destatis-laender]
@@ -64,12 +64,32 @@ Die Rekorde, die man sich merken sollte:
       md: `
 In vier Flächenländern ist die [[landeshauptstadt]] kleiner als eine andere Stadt im selben Land — ein Klassiker in jedem Quiz:
 
-- **Düsseldorf** — größer ist Köln
-- **Wiesbaden** — größer ist Frankfurt am Main
-- **Dresden** — größer ist Leipzig
-- **Schwerin** — größer ist Rostock
+- **[Düsseldorf](wiki:Düsseldorf|Düsseldorf)** — größer ist [Köln](wiki:Köln|Cologne)
+- **[Wiesbaden](wiki:Wiesbaden|Wiesbaden)** — größer ist [Frankfurt am Main](wiki:Frankfurt am Main|Frankfurt)
+- **[Dresden](wiki:Dresden|Dresden)** — größer ist [Leipzig](wiki:Leipzig|Leipzig)
+- **[Schwerin](wiki:Schwerin|Schwerin)** — größer ist [Rostock](wiki:Rostock|Rostock)
 
-Oft steckt Geschichte dahinter: Wiesbaden war Hauptstadt des Herzogtums Nassau, Frankfurt dagegen lange freie Reichsstadt. Und in Nordrhein-Westfalen entschied die britische Besatzungsmacht 1946 für Düsseldorf.`,
+Oft steckt Geschichte dahinter: Wiesbaden war Hauptstadt des [Herzogtums Nassau](wiki:Herzogtum Nassau|Duchy of Nassau), Frankfurt dagegen lange [freie Reichsstadt](wiki:Freie Reichsstadt|Free imperial city). Und in Nordrhein-Westfalen entschied die britische Besatzungsmacht 1946 für Düsseldorf.`,
+    },
+    {
+      id: 'map-groesser', type: 'map', title: 'Hauptstadt oder größere Stadt?',
+      view: 'de',
+      layers: { cities: false },
+      places: [
+        { name: 'Stuttgart', kind: 'capital' }, { name: 'München', kind: 'capital' }, { name: 'Berlin', kind: 'capital', pos: 'r' }, { name: 'Potsdam', kind: 'capital', pos: 'b' },
+        { name: 'Bremen', kind: 'capital', pos: 'l' }, { name: 'Hamburg', kind: 'capital', pos: 'l' }, { name: 'Hannover', kind: 'capital' },
+        { name: 'Wiesbaden', kind: 'capital', pos: 't', detail: '**[Wiesbaden](wiki:Wiesbaden)** — Hauptstadt von Hessen, aber kleiner als [Frankfurt am Main](wiki:Frankfurt am Main|Frankfurt).' },
+        { name: 'Düsseldorf', kind: 'capital', pos: 'l', detail: '**[Düsseldorf](wiki:Düsseldorf)** — Hauptstadt von Nordrhein-Westfalen, aber kleiner als [Köln](wiki:Köln|Cologne).' },
+        { name: 'Mainz', kind: 'capital', pos: 'b' }, { name: 'Saarbrücken', kind: 'capital', pos: 'l' },
+        { name: 'Dresden', kind: 'capital', detail: '**[Dresden](wiki:Dresden)** — Hauptstadt von Sachsen, aber kleiner als [Leipzig](wiki:Leipzig).' },
+        { name: 'Magdeburg', kind: 'capital', pos: 'l' }, { name: 'Kiel', kind: 'capital' }, { name: 'Erfurt', kind: 'capital' },
+        { name: 'Schwerin', kind: 'capital', pos: 'r', detail: '**[Schwerin](wiki:Schwerin)** — Hauptstadt von Mecklenburg-Vorpommern, aber kleiner als [Rostock](wiki:Rostock).' },
+        { name: 'Köln', color: '#2563eb', pos: 'l', detail: '**Köln** hat über eine Million Einwohner — mehr als die Landeshauptstadt Düsseldorf.' },
+        { name: 'Frankfurt am Main', color: '#2563eb', pos: 'r', detail: '**Frankfurt am Main** — Finanzzentrum, mehr als doppelt so groß wie Wiesbaden.' },
+        { name: 'Leipzig', color: '#2563eb', pos: 'r', detail: '**Leipzig** hat Dresden inzwischen überholt.' },
+        { name: 'Rostock', color: '#2563eb', pos: 'r', detail: '**Rostock** ist etwa doppelt so groß wie Schwerin.' },
+      ],
+      caption: 'Rot: die 16 Landeshauptstädte. Blau: die jeweils größere Stadt im selben Land — in Nordrhein-Westfalen, Hessen, Sachsen und Mecklenburg-Vorpommern.',
     },
     {
       id: 'quiz-hauptstaedte', type: 'quiz', title: 'Größer als die Hauptstadt?',
@@ -101,15 +121,39 @@ Oft steckt Geschichte dahinter: Wiesbaden war Hauptstadt des Herzogtums Nassau, 
       params: { mode: 'capital', lockMode: true, goal: 'capital' },
     },
     {
+      id: 'map-quiz-staedte', type: 'map', title: 'Finde die großen Städte',
+      view: 'de',
+      layers: { cities: false },
+      quiz: { rounds: 8 },
+      places: [
+        { name: 'Hamburg' }, { name: 'München' }, { name: 'Köln' }, { name: 'Frankfurt am Main' }, { name: 'Stuttgart' },
+        { name: 'Leipzig' }, { name: 'Dresden' }, { name: 'Hannover' }, { name: 'Rostock' },
+      ],
+    },
+    {
       id: 'geschichte', type: 'text', title: 'Warum genau diese 16?',
       md: `
-Die meisten Länder sind jünger als die Bundesrepublik selbst — sie wurden nach 1945 von den **Besatzungsmächten** gegründet, oft quer zu alten Grenzen. Nordrhein-Westfalen etwa entstand 1946 in der britischen Zone aus Teilen der preußischen Rheinprovinz und Westfalens. Der größte deutsche Staat, **Preußen**, wurde 1947 von den Alliierten förmlich aufgelöst.
+Die meisten Länder sind jünger als die Bundesrepublik selbst — sie wurden nach 1945 von den **[Besatzungsmächten](wiki:Besatzungszone)** gegründet, oft quer zu alten Grenzen. [Nordrhein-Westfalen](wiki:Nordrhein-Westfalen|North Rhine-Westphalia) etwa entstand 1946 in der britischen Zone aus Teilen der preußischen [Rheinprovinz](wiki:Rheinprovinz|Rhine Province) und [Westfalens](wiki:Westfalen|Westphalia). Der größte deutsche Staat, **[Preußen](wiki:Preußen|Prussia)**, wurde 1947 von den Alliierten förmlich aufgelöst.
 
-- **1949:** Die Bundesrepublik wird mit elf Ländern gegründet (im Südwesten zunächst drei: Württemberg-Baden, Baden und Württemberg-Hohenzollern).
-- **1952:** Nach einer Volksabstimmung verschmelzen die drei zu **Baden-Württemberg** — die einzige erfolgreiche Länderfusion. Im selben Jahr schafft die **DDR** ihre fünf Länder ab und ersetzt sie durch Bezirke.
-- **1957:** Das **Saarland**, nach dem Krieg unter französischer Verwaltung, tritt nach einer Volksabstimmung der Bundesrepublik bei.
-- **1990:** Mit der Wiedervereinigung entstehen Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt und Thüringen neu — die „neuen Länder“. Berlin wird ein Land.
+- **1949:** Die Bundesrepublik wird mit elf Ländern gegründet (im Südwesten zunächst drei: [Württemberg-Baden](wiki:Württemberg-Baden|Württemberg-Baden), [Baden](wiki:Baden (Land)|Baden) und [Württemberg-Hohenzollern](wiki:Württemberg-Hohenzollern|Württemberg-Hohenzollern)).
+- **1952:** Nach einer Volksabstimmung verschmelzen die drei zu **[Baden-Württemberg](wiki:Baden-Württemberg|Baden-Württemberg)** — die einzige erfolgreiche Länderfusion. Im selben Jahr schafft die **[DDR](wiki:Deutsche Demokratische Republik|East Germany)** ihre fünf Länder ab und ersetzt sie durch Bezirke.
+- **1957:** Das **[Saarland](wiki:Saarland|Saarland)**, nach dem Krieg unter französischer Verwaltung, tritt nach einer Volksabstimmung der Bundesrepublik bei.
+- **1990:** Mit der [Wiedervereinigung](wiki:Deutsche Wiedervereinigung|German reunification) entstehen Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt und Thüringen neu — die „neuen Länder“. Berlin wird ein Land.
 - **1996:** Eine Fusion von Berlin und Brandenburg scheitert in der Volksabstimmung an den Brandenburgern.`,
+    },
+    {
+      id: 'map-zonen', type: 'map', title: 'Deutschland 1945–1949: die Besatzungszonen',
+      view: 'de',
+      layers: { cities: false, stateLabels: true },
+      highlight: [
+        { states: ['Schleswig-Holstein', 'Hamburg', 'Niedersachsen', 'Nordrhein-Westfalen'], label: 'Britische Zone', color: '#dc2626' },
+        { states: ['Bayern', 'Hessen', 'Bremen'], label: 'Amerikanische Zone (mit Bremen als Exklave)', color: '#2563eb' },
+        { states: ['Rheinland-Pfalz', 'Saarland'], label: 'Französische Zone', color: '#059669' },
+        { states: ['Baden-Württemberg'], label: 'Baden-Württemberg: Norden amerikanisch, Süden französisch', color: '#7c3aed' },
+        { states: ['Brandenburg', 'Mecklenburg-Vorpommern', 'Sachsen', 'Sachsen-Anhalt', 'Thüringen'], label: 'Sowjetische Zone', color: '#ca8a04' },
+        { states: ['Berlin'], label: 'Berlin: von allen vier Mächten verwaltet', color: '#64748b' },
+      ],
+      caption: 'Näherung mit den heutigen Ländergrenzen: Die Zonengrenzen verliefen teils anders — Baden-Württemberg war geteilt, und der bayerische Kreis Lindau gehörte zur französischen Zone. Tippe auf einen Legendeneintrag, um hineinzuzoomen.',
     },
     {
       id: 'zeitleiste', type: 'game', viz: 'timeline', title: 'Wie die Länder entstanden',
@@ -134,7 +178,26 @@ Die meisten Länder sind jünger als die Bundesrepublik selbst — sie wurden na
     },
     {
       id: 'fact-bremen', type: 'callout', tone: 'fact', title: 'Ein Land, zwei Städte',
-      md: `Das Land Bremen besteht aus **zwei** Städten, die gar nicht aneinandergrenzen: Bremen und das rund 60 km flussabwärts gelegene **Bremerhaven** — dazwischen liegt Niedersachsen. Und Hamburg besitzt mitten im Wattenmeer die Insel **Neuwerk**, gut 100 km vom Rathaus entfernt.`,
+      md: `Das Land Bremen besteht aus **zwei** Städten, die gar nicht aneinandergrenzen: Bremen und das rund 60 km flussabwärts gelegene **[Bremerhaven](wiki:Bremerhaven|Bremerhaven)** — dazwischen liegt [Niedersachsen](wiki:Niedersachsen|Lower Saxony). Und [Hamburg](wiki:Hamburg|Hamburg) besitzt mitten im Wattenmeer die Insel **[Neuwerk](wiki:Neuwerk|Neuwerk)**, gut 100 km vom Rathaus entfernt.`,
+    },
+    {
+      id: 'map-bremen', type: 'map', title: 'Ein Land, zwei Städte — und eine Insel im Wattenmeer',
+      view: [7.6, 52.9, 10.3, 54.2],
+      layers: { cities: false },
+      highlight: [
+        { states: ['Bremen'], label: 'Land Bremen', color: '#dc2626' },
+        { states: ['Hamburg'], label: 'Land Hamburg', color: '#2563eb' },
+      ],
+      rivers: [{ name: 'Weser', labelAt: 0.5 }, { name: 'Elbe', labelAt: 0.5 }],
+      places: [
+        { name: 'Bremen', pos: 'l', detail: '**[Bremen](wiki:Bremen)** — Stadt an der Weser, Hauptstadt des Landes.' },
+        { name: 'Bremerhaven', pos: 'l', detail: '**[Bremerhaven](wiki:Bremerhaven)** — rund 60 km flussabwärts an der Wesermündung; gehört zum Land Bremen, dazwischen liegt Niedersachsen.' },
+        { name: 'Hamburg', pos: 'b' }, { name: 'Cuxhaven', pos: 'l' },
+      ],
+      points: [
+        { lon: 8.500, lat: 53.920, label: 'Neuwerk (gehört zu Hamburg)', kind: 'site', color: '#2563eb', pos: 'r', detail: '**[Neuwerk](wiki:Neuwerk)** — eine Insel im Wattenmeer vor Cuxhaven, die zu Hamburg gehört.' },
+      ],
+      caption: 'Rot: das Land Bremen aus zwei getrennten Städten — dazwischen liegt Niedersachsen. Blau: Hamburg; die Insel Neuwerk (blaue Raute) gehört dazu, liegt aber gut 100 km entfernt im Wattenmeer.',
     },
     {
       id: 'recall-foederal', type: 'recall', title: 'Erkläre es jemandem aus dem Ausland',

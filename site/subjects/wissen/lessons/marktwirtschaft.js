@@ -15,22 +15,22 @@ export default {
       md: `
 Jede Gesellschaft muss entscheiden: **Wer bestimmt, was produziert wird, wie viel und zu welchem Preis?**
 
-- In der **freien Marktwirtschaft** entscheiden Angebot und Nachfrage. Preise entstehen auf Märkten, Unternehmen konkurrieren, der Staat hält sich weitgehend heraus. Das Leitbild geht auf Adam Smith zurück („unsichtbare Hand“, 1776).
-- In der **Planwirtschaft** (Zentralverwaltungswirtschaft) legt eine staatliche Behörde Produktionsmengen und Preise fest — so in der Sowjetunion und in der DDR mit ihren Fünfjahrplänen.
+- In der **freien Marktwirtschaft** entscheiden Angebot und Nachfrage. Preise entstehen auf Märkten, Unternehmen konkurrieren, der Staat hält sich weitgehend heraus. Das Leitbild geht auf [Adam Smith](wiki:Adam Smith) zurück („unsichtbare Hand“, 1776).
+- In der **Planwirtschaft** ([Zentralverwaltungswirtschaft](wiki:Zentralverwaltungswirtschaft|Centrally planned economy)) legt eine staatliche Behörde Produktionsmengen und Preise fest — so in der [Sowjetunion](wiki:Sowjetunion|Soviet Union) und in der [DDR](wiki:Deutsche Demokratische Republik|East Germany) mit ihren [Fünfjahrplänen](wiki:Fünfjahresplan|Five-year plan).
 - Die **[[soziale-marktwirtschaft|Soziale Marktwirtschaft]]** ist ein dritter Weg: Der Markt steuert die Wirtschaft, aber der Staat setzt Regeln, schützt den Wettbewerb und gleicht soziale Härten aus.[^bpb-sozmarkt]
 
-Das Grundgesetz schreibt übrigens keine bestimmte Wirtschaftsordnung vor. Die Soziale Marktwirtschaft ist politisch gewollt, nicht verfassungsrechtlich festgelegt — erst der Staatsvertrag zur Währungsunion mit der DDR von 1990 nennt sie ausdrücklich als gemeinsame Wirtschaftsordnung.`,
+Das [Grundgesetz](wiki:Grundgesetz für die Bundesrepublik Deutschland|Basic Law for the Federal Republic of Germany) schreibt übrigens keine bestimmte Wirtschaftsordnung vor. Die Soziale Marktwirtschaft ist politisch gewollt, nicht verfassungsrechtlich festgelegt — erst der [Staatsvertrag zur Währungsunion](wiki:Vertrag über die Schaffung einer Währungs-, Wirtschafts- und Sozialunion|Treaty Establishing a Monetary, Economic and Social Union between the German Democratic Republic and the Federal Republic of Germany) mit der DDR von 1990 nennt sie ausdrücklich als gemeinsame Wirtschaftsordnung.`,
     },
     {
       id: 'erfinder', type: 'text', title: 'Die Väter: Eucken, Müller-Armack, Erhard',
       md: `
-Nach 1945 lag Deutschland in Trümmern, Waren gab es nur auf Bezugsschein, auf dem Schwarzmarkt zahlte man mit Zigaretten. Drei Namen prägten den Neuanfang:
+Nach 1945 lag Deutschland in Trümmern, Waren gab es nur auf [Bezugsschein](wiki:Lebensmittelkarte|Ration stamp), auf dem [Schwarzmarkt](wiki:Schwarzmarkt|Black market) zahlte man mit Zigaretten. Drei Namen prägten den Neuanfang:
 
-- **Walter Eucken** und die **Freiburger Schule** lieferten mit dem **[[ordoliberalismus|Ordoliberalismus]]** das theoretische Fundament: Der Staat soll nicht in Preise eingreifen, aber eine *Ordnung* schaffen, in der echter Wettbewerb herrscht — also Monopole und Kartelle verhindern.
-- **Alfred Müller-Armack** prägte 1946/47 den Begriff „Soziale Marktwirtschaft“: Die Freiheit des Marktes solle mit sozialem Ausgleich verbunden werden.
-- **Ludwig Erhard** setzte es politisch um — zuerst als Direktor der Wirtschaftsverwaltung der Westzonen, dann von 1949 bis 1963 als erster Bundeswirtschaftsminister unter Konrad Adenauer, schließlich 1963–1966 als Bundeskanzler. Sein Buch und Slogan: **„Wohlstand für alle“** (1957).[^wiki-erhard]
+- **[Walter Eucken](wiki:Walter Eucken)** und die **Freiburger Schule** lieferten mit dem **[[ordoliberalismus|Ordoliberalismus]]** das theoretische Fundament: Der Staat soll nicht in Preise eingreifen, aber eine *Ordnung* schaffen, in der echter Wettbewerb herrscht — also [Monopole](wiki:Monopol|Monopoly) und [Kartelle](wiki:Kartell|Cartel) verhindern.
+- **[Alfred Müller-Armack](wiki:Alfred Müller-Armack)** prägte 1946/47 den Begriff „Soziale Marktwirtschaft“: Die Freiheit des Marktes solle mit sozialem Ausgleich verbunden werden.
+- **[Ludwig Erhard](wiki:Ludwig Erhard)** setzte es politisch um — zuerst als Direktor der Wirtschaftsverwaltung der Westzonen, dann von 1949 bis 1963 als erster [Bundeswirtschaftsminister](wiki:Bundesministerium für Wirtschaft und Energie|Federal Ministry for Economic Affairs and Energy) unter [Konrad Adenauer](wiki:Konrad Adenauer), schließlich 1963–1966 als Bundeskanzler. Sein Buch und Slogan: **„Wohlstand für alle“** (1957).[^wiki-erhard]
 
-Die Initialzündung war die **[[waehrungsreform-1948|Währungsreform]] vom 20./21. Juni 1948**: In den Westzonen ersetzte die **D-Mark** die wertlose Reichsmark. Jeder bekam ein „Kopfgeld“ von zunächst 40 D-Mark. Fast zeitgleich hob Erhard — gegen den Rat vieler — zahlreiche Preisvorschriften auf. Über Nacht füllten sich die Schaufenster, weil Händler gehortete Waren wieder verkauften.`,
+Die Initialzündung war die **[[waehrungsreform-1948|Währungsreform]] vom 20./21. Juni 1948**: In den Westzonen ersetzte die **[D-Mark](wiki:D-Mark|Deutsche Mark)** die wertlose [Reichsmark](wiki:Reichsmark). Jeder bekam ein „Kopfgeld“ von zunächst 40 D-Mark. Fast zeitgleich hob Erhard — gegen den Rat vieler — zahlreiche Preisvorschriften auf. Über Nacht füllten sich die Schaufenster, weil Händler gehortete Waren wieder verkauften.`,
     },
     {
       id: 'timeline', type: 'viz', viz: 'timeline', title: 'Von der Trümmerzeit zum Wirtschaftswunder',
@@ -50,11 +50,11 @@ Die Initialzündung war die **[[waehrungsreform-1948|Währungsreform]] vom 20./2
       md: `
 Die Grundidee: **Der Markt ist effizient, aber blind** — für Machtballung, für Menschen, die nicht mithalten können, und für Schäden an Umwelt und Gesellschaft. Deshalb übernimmt der Staat drei Rollen:
 
-1. **Wettbewerb schützen.** Das **Gesetz gegen Wettbewerbsbeschränkungen** (GWB, 1957) verbietet Kartelle und kontrolliert Fusionen; das **[[bundeskartellamt|Bundeskartellamt]]** setzt es durch. Wettbewerb soll dafür sorgen, dass Preise sinken und Qualität steigt.
-2. **Sozial ausgleichen.** Sozialversicherungen (Rente, Kranken-, Arbeitslosen-, Pflege-, Unfallversicherung), progressive Steuern, Kindergeld, Bürgergeld. Mehr dazu in der Lektion zum Sozialstaat.
+1. **Wettbewerb schützen.** Das **[Gesetz gegen Wettbewerbsbeschränkungen](wiki:Gesetz gegen Wettbewerbsbeschränkungen)** (GWB, 1957) verbietet Kartelle und kontrolliert Fusionen; das **[[bundeskartellamt|Bundeskartellamt]]** setzt es durch. Wettbewerb soll dafür sorgen, dass Preise sinken und Qualität steigt.
+2. **Sozial ausgleichen.** [Sozialversicherungen](wiki:Sozialversicherung (Deutschland)|Social security in Germany) (Rente, Kranken-, Arbeitslosen-, Pflege-, Unfallversicherung), progressive Steuern, [Kindergeld](wiki:Kindergeld|Child benefit), [Bürgergeld](wiki:Bürgergeld). Mehr dazu in der Lektion zum Sozialstaat.
 3. **Den Rahmen setzen.** Eigentumsrechte, Verträge, Verbraucher- und Umweltschutz, Arbeitsrecht.
 
-Dazu kommt eine deutsche Besonderheit: die **[[tarifautonomie|Tarifautonomie]]** (Art. 9 Abs. 3 GG). Gewerkschaften und Arbeitgeberverbände handeln Löhne selbst aus — ohne den Staat. Der gesetzliche **Mindestlohn** (seit 2015) ist eine Untergrenze darunter; er liegt seit 1. Januar 2026 bei **13,90 € pro Stunde** und soll 2027 auf 14,60 € steigen (Stand: September 2026). Hinzu kommt die **Mitbestimmung**: In großen Unternehmen sitzen Arbeitnehmervertreter im Aufsichtsrat.`,
+Dazu kommt eine deutsche Besonderheit: die **[[tarifautonomie|Tarifautonomie]]** (Art. 9 Abs. 3 GG). [Gewerkschaften](wiki:Gewerkschaft|Trade union) und [Arbeitgeberverbände](wiki:Arbeitgeberverband) handeln Löhne selbst aus — ohne den Staat. Der gesetzliche **[Mindestlohn](wiki:Mindestlohn|Minimum wage)** (seit 2015) ist eine Untergrenze darunter; er liegt seit 1. Januar 2026 bei **13,90 € pro Stunde** und soll 2027 auf 14,60 € steigen (Stand: September 2026). Hinzu kommt die **[Mitbestimmung](wiki:Mitbestimmung|Worker representation on corporate boards of directors)**: In großen Unternehmen sitzen Arbeitnehmervertreter im [Aufsichtsrat](wiki:Aufsichtsrat|Supervisory board).`,
     },
     {
       id: 'quiz-ordnung', type: 'quiz', title: 'Welche Wirtschaftsordnung?',
@@ -69,7 +69,7 @@ Dazu kommt eine deutsche Besonderheit: die **[[tarifautonomie|Tarifautonomie]]**
     {
       id: 'viereck', type: 'text', title: 'Das magische Viereck',
       md: `
-Das **Stabilitäts- und Wachstumsgesetz** von 1967 verpflichtet Bund und Länder auf vier Ziele — das **[[magisches-viereck|magische Viereck]]**:
+Das **[Stabilitäts- und Wachstumsgesetz](wiki:Stabilitäts- und Wachstumsgesetz)** von 1967 verpflichtet Bund und Länder auf vier Ziele — das **[[magisches-viereck|magische Viereck]]**:
 
 1. **Stabiles Preisniveau** (geringe [[inflation|Inflation]])
 2. **Hoher Beschäftigungsstand** (niedrige Arbeitslosigkeit)
@@ -102,7 +102,7 @@ Das **Stabilitäts- und Wachstumsgesetz** von 1967 verpflichtet Bund und Länder
     {
       id: 'kritik', type: 'callout', tone: 'deep', title: 'Ist die Soziale Marktwirtschaft heute noch „sozial“ — oder noch „Markt“?',
       md: `
-Die Debatte ist so alt wie das Modell. Kritik von **links**: Der Staat gleiche zu wenig aus, Vermögen seien sehr ungleich verteilt, Niedriglohn und Leiharbeit hätten zugenommen. Kritik von **liberaler** Seite: Der Staat greife zu viel ein, Abgaben und Bürokratie seien zu hoch, die Sozialausgaben (größter Posten im Bundeshaushalt) wüchsen zu schnell.
+Die Debatte ist so alt wie das Modell. Kritik von **links**: Der Staat gleiche zu wenig aus, Vermögen seien sehr ungleich verteilt, Niedriglohn und [Leiharbeit](wiki:Arbeitnehmerüberlassung) hätten zugenommen. Kritik von **liberaler** Seite: Der Staat greife zu viel ein, Abgaben und Bürokratie seien zu hoch, die Sozialausgaben (größter Posten im Bundeshaushalt) wüchsen zu schnell.
 
 Dazu kommen neue Fragen: Wie passt der Klimaschutz hinein („ökosoziale Marktwirtschaft“)? Wie geht man mit globalen Plattformkonzernen um, deren Marktmacht über Ländergrenzen reicht? Die Grundformel „so viel Markt wie möglich, so viel Staat wie nötig“ beantwortet nicht, *wie viel* jeweils nötig ist — genau darüber streitet die Politik.`,
     },

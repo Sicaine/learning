@@ -15,29 +15,29 @@ export default {
       md: `
 Der Staat finanziert sich über drei Arten von Abgaben:
 
-- **Steuern** sind Zahlungen **ohne direkte Gegenleistung** — man zahlt Einkommensteuer nicht für eine bestimmte Straße oder Schule. So definiert es die Abgabenordnung.
+- **Steuern** sind Zahlungen **ohne direkte Gegenleistung** — man zahlt [Einkommensteuer](wiki:Einkommensteuer (Deutschland)|Income tax in Germany) nicht für eine bestimmte Straße oder Schule. So definiert es die [Abgabenordnung](wiki:Abgabenordnung).
 - **Gebühren** zahlt man für eine konkrete Leistung (Personalausweis, Müllabfuhr).
-- **Beiträge** zahlt man für eine mögliche Leistung, etwa an die Sozialversicherungen.
+- **Beiträge** zahlt man für eine mögliche Leistung, etwa an die [Sozialversicherungen](wiki:Sozialversicherung (Deutschland)|Social security in Germany).
 
 **2025** nahmen Bund, Länder und Gemeinden zusammen rund **990 Milliarden Euro** an Steuern ein.[^destatis-steuern-2025] Die beiden mit Abstand ergiebigsten Steuern:
 
 1. **[[umsatzsteuer|Umsatzsteuer]]** („Mehrwertsteuer“): 310 Mrd. €
-2. **Lohnsteuer** (die Einkommensteuer der Arbeitnehmer, direkt vom Gehalt abgezogen): 263 Mrd. €`,
+2. **[Lohnsteuer](wiki:Lohnsteuer (Deutschland))** (die Einkommensteuer der Arbeitnehmer, direkt vom Gehalt abgezogen): 263 Mrd. €`,
     },
     {
       id: 'tabelle', type: 'text', title: 'Die wichtigsten Steuern im Überblick',
       md: `
 <table>
 <tr><th>Steuer</th><th>Wer zahlt / worauf?</th><th>Satz (Stand 2026)</th></tr>
-<tr><td>Einkommensteuer / Lohnsteuer</td><td>Einkommen von Personen</td><td>0 % bis zum Grundfreibetrag (12.348 €), dann 14 % bis 42 %; 45 % „Reichensteuer“ ab rund 278.000 €</td></tr>
+<tr><td>Einkommensteuer / Lohnsteuer</td><td>Einkommen von Personen</td><td>0 % bis zum [Grundfreibetrag](wiki:Grundfreibetrag (Deutschland)|Personal exemption) (12.348 €), dann 14 % bis 42 %; 45 % „[Reichensteuer](wiki:Reichensteuer)“ ab rund 278.000 €</td></tr>
 <tr><td>Umsatzsteuer</td><td>Verbraucher beim Kauf (über die Unternehmen)</td><td>19 %; ermäßigt 7 % (Lebensmittel, Bücher, ÖPNV, seit 2026 auch Speisen im Restaurant)</td></tr>
-<tr><td>Körperschaftsteuer</td><td>Gewinne von Kapitalgesellschaften (GmbH, AG)</td><td>15 % (soll ab 2028 schrittweise auf 10 % sinken)</td></tr>
-<tr><td>Gewerbesteuer</td><td>Gewinne von Gewerbebetrieben</td><td>je nach Gemeinde („Hebesatz“)</td></tr>
-<tr><td>Solidaritätszuschlag</td><td>Aufschlag auf Einkommen- und Körperschaftsteuer</td><td>5,5 % — seit 2021 nur noch für hohe Einkommen und Unternehmen</td></tr>
-<tr><td>Energiesteuer, Tabaksteuer, Kfz-Steuer …</td><td>Verbrauch bestimmter Güter</td><td>jeweils eigene Sätze</td></tr>
+<tr><td>[Körperschaftsteuer](wiki:Körperschaftsteuer (Deutschland))</td><td>Gewinne von Kapitalgesellschaften (GmbH, AG)</td><td>15 % (soll ab 2028 schrittweise auf 10 % sinken)</td></tr>
+<tr><td>[Gewerbesteuer](wiki:Gewerbesteuer (Deutschland)|Municipal trade tax in Germany)</td><td>Gewinne von Gewerbebetrieben</td><td>je nach Gemeinde („Hebesatz“)</td></tr>
+<tr><td>[Solidaritätszuschlag](wiki:Solidaritätszuschlag)</td><td>Aufschlag auf Einkommen- und Körperschaftsteuer</td><td>5,5 % — seit 2021 nur noch für hohe Einkommen und Unternehmen</td></tr>
+<tr><td>[Energiesteuer](wiki:Energiesteuer), [Tabaksteuer](wiki:Tabaksteuer (Deutschland)), [Kfz-Steuer](wiki:Kraftfahrzeugsteuer (Deutschland)) …</td><td>Verbrauch bestimmter Güter</td><td>jeweils eigene Sätze</td></tr>
 </table>
 
-Die Einkommensteuer ist **progressiv**: Wer mehr verdient, zahlt nicht nur absolut mehr, sondern einen höheren *Anteil*. Wichtig: Der höhere Satz gilt nur für den Teil des Einkommens, der über der jeweiligen Grenze liegt (**Grenzsteuersatz**) — deshalb kann eine Gehaltserhöhung nie zu weniger Netto führen.`,
+Die Einkommensteuer ist **[progressiv](wiki:Steuerprogression|Progressive tax)**: Wer mehr verdient, zahlt nicht nur absolut mehr, sondern einen höheren *Anteil*. Wichtig: Der höhere Satz gilt nur für den Teil des Einkommens, der über der jeweiligen Grenze liegt (**[Grenzsteuersatz](wiki:Grenzsteuersatz)**) — deshalb kann eine Gehaltserhöhung nie zu weniger Netto führen.`,
     },
     {
       id: 'calc-ust', type: 'numeric', title: 'Mehrwertsteuer im Preis',
@@ -53,10 +53,10 @@ Deutschland ist ein Bundesstaat — also müssen die Einnahmen verteilt werden. 
 
 - **Gemeinschaftsteuern** — die großen Brocken Einkommen-, Körperschaft- und Umsatzsteuer — werden **zwischen Bund, Ländern und Gemeinden geteilt**. Sie machen rund drei Viertel aller Steuereinnahmen aus.
 - **Bundessteuern:** z. B. Energie-, Tabak-, Kfz- und Stromsteuer, Solidaritätszuschlag.
-- **Landessteuern:** z. B. Grunderwerb-, Erbschaft- und Biersteuer.
-- **Gemeindesteuern:** vor allem **Gewerbesteuer** und **Grundsteuer**.
+- **Landessteuern:** z. B. Grunderwerb-, [Erbschaft](wiki:Erbschaftsteuer|Inheritance tax)- und [Biersteuer](wiki:Biersteuer).
+- **Gemeindesteuern:** vor allem **Gewerbesteuer** und **[Grundsteuer](wiki:Grundsteuer (Deutschland))**.
 
-2025 blieben nach der Verteilung rund **389 Mrd. € beim Bund**, **415 Mrd. € bei den Ländern** und **151 Mrd. € bei den Gemeinden**; ein Teil fließt als Eigenmittel an die EU. Zusätzlich gleicht der **Finanzausgleich** Unterschiede zwischen reichen und armen Ländern teilweise aus.`,
+2025 blieben nach der Verteilung rund **389 Mrd. € beim Bund**, **415 Mrd. € bei den Ländern** und **151 Mrd. € bei den Gemeinden**; ein Teil fließt als Eigenmittel an die [EU](wiki:Europäische Union|European Union). Zusätzlich gleicht der **[Finanzausgleich](wiki:Länderfinanzausgleich|Equalization payments in Germany)** Unterschiede zwischen reichen und armen Ländern teilweise aus.`,
     },
     {
       id: 'match-steuer', type: 'match', title: 'Welche Steuer geht an wen?',
@@ -72,15 +72,15 @@ Deutschland ist ein Bundesstaat — also müssen die Einnahmen verteilt werden. 
     {
       id: 'haushalt', type: 'text', title: 'Der Bundeshaushalt 2026',
       md: `
-Der **[[bundeshaushalt|Bundeshaushalt]]** ist ein Gesetz: Die Regierung legt einen Entwurf vor, der **Bundestag** beschließt ihn — das **Budgetrecht** gilt als „Königsrecht“ des Parlaments. Für **2026** beschloss der Bundestag am 28. November 2025 Ausgaben von **524,54 Milliarden Euro**.[^bundestag-haushalt-2026]
+Der **[[bundeshaushalt|Bundeshaushalt]]** ist ein Gesetz: Die Regierung legt einen Entwurf vor, der **[Bundestag](wiki:Deutscher Bundestag|Bundestag)** beschließt ihn — das **[Budgetrecht](wiki:Budgetrecht)** gilt als „Königsrecht“ des Parlaments. Für **2026** beschloss der Bundestag am 28. November 2025 Ausgaben von **524,54 Milliarden Euro**.[^bundestag-haushalt-2026]
 
 Die größten Posten (Einzelpläne):
 
-1. **Arbeit und Soziales: 197,3 Mrd. €** — mehr als ein Drittel, vor allem Zuschüsse an die Rentenversicherung und das Bürgergeld
+1. **Arbeit und Soziales: 197,3 Mrd. €** — mehr als ein Drittel, vor allem Zuschüsse an die [Rentenversicherung](wiki:Gesetzliche Rentenversicherung) und das [Bürgergeld](wiki:Bürgergeld)
 2. **Verteidigung: 82,7 Mrd. €**
 3. **Verkehr: 27,9 Mrd. €**
 
-Hinzu kommen **Sondervermögen** außerhalb des Kernhaushalts, etwa für die Bundeswehr und für Infrastruktur. Die **Nettokreditaufnahme** — also neue Schulden — liegt 2026 bei rund **98 Mrd. €**, davon ein großer Teil für Verteidigung.`,
+Hinzu kommen **Sondervermögen** außerhalb des Kernhaushalts, etwa für die [Bundeswehr](wiki:Bundeswehr) und für Infrastruktur. Die **[Nettokreditaufnahme](wiki:Nettokreditaufnahme)** — also neue Schulden — liegt 2026 bei rund **98 Mrd. €**, davon ein großer Teil für Verteidigung.`,
     },
     {
       id: 'calc-anteil', type: 'numeric', title: 'Anteil der Sozialausgaben',
@@ -92,7 +92,7 @@ Hinzu kommen **Sondervermögen** außerhalb des Kernhaushalts, etwa für die Bun
     {
       id: 'schuldenbremse', type: 'text', title: 'Die Schuldenbremse',
       md: `
-Nach der Finanzkrise schrieb der Bundestag **2009** die **[[schuldenbremse|Schuldenbremse]]** ins Grundgesetz (Art. 109 und 115): Der Bund darf sich strukturell — also unabhängig von der Konjunktur — nur noch mit **0,35 % des BIP** pro Jahr neu verschulden; die Länder zunächst gar nicht. In Notlagen (z. B. Corona 2020–2022) kann der Bundestag Ausnahmen beschließen.
+Nach der [Finanzkrise](wiki:Finanzkrise ab 2007|2008 financial crisis) schrieb der Bundestag **2009** die **[[schuldenbremse|Schuldenbremse]]** ins Grundgesetz (Art. 109 und 115): Der Bund darf sich strukturell — also unabhängig von der Konjunktur — nur noch mit **0,35 % des BIP** pro Jahr neu verschulden; die Länder zunächst gar nicht. In Notlagen (z. B. [Corona](wiki:COVID-19-Pandemie in Deutschland|COVID-19 pandemic in Germany) 2020–2022) kann der Bundestag Ausnahmen beschließen.
 
 **Reform 2025:** Im März 2025 änderte der alte Bundestag noch vor der Konstituierung des neuen das Grundgesetz mit Zweidrittelmehrheit:
 
@@ -100,7 +100,7 @@ Nach der Finanzkrise schrieb der Bundestag **2009** die **[[schuldenbremse|Schul
 - Ein **[[sondervermoegen|Sondervermögen]] für Infrastruktur und Klimaneutralität** von **500 Mrd. €** über zwölf Jahre wird geschaffen, davon 100 Mrd. € für die Länder.
 - Die **Länder** dürfen sich künftig ebenfalls mit 0,35 % des BIP verschulden.
 
-**Die Debatte:** Befürworter der strengen Schuldenbremse sehen **Generationengerechtigkeit** — Schulden von heute sind Steuern von morgen, und steigende Zinsen engen den Spielraum ein. Kritiker halten sie für eine **Investitionsbremse**: Marode Brücken, langsames Internet und die Bundeswehr zeigten, dass zu wenig investiert wurde. Zum Vergleich: Die EU (**Maastricht-Kriterien**) erlaubt ein Defizit von bis zu 3 % des BIP und einen Schuldenstand von 60 %. Deutschlands gesamtstaatliches Defizit lag 2025 bei **2,4 %**.`,
+**Die Debatte:** Befürworter der strengen Schuldenbremse sehen **[Generationengerechtigkeit](wiki:Generationengerechtigkeit|Intergenerational equity)** — Schulden von heute sind Steuern von morgen, und steigende Zinsen engen den Spielraum ein. Kritiker halten sie für eine **Investitionsbremse**: Marode Brücken, langsames Internet und die Bundeswehr zeigten, dass zu wenig investiert wurde. Zum Vergleich: Die EU (**[Maastricht-Kriterien](wiki:Maastricht-Kriterien|Euro convergence criteria)**) erlaubt ein Defizit von bis zu 3 % des BIP und einen Schuldenstand von 60 %. Deutschlands gesamtstaatliches Defizit lag 2025 bei **2,4 %**.`,
     },
     {
       id: 'timeline', type: 'game', viz: 'timeline', title: 'Staatsfinanzen: Chronologie',
@@ -124,7 +124,7 @@ Nach der Finanzkrise schrieb der Bundestag **2009** die **[[schuldenbremse|Schul
     },
     {
       id: 'fact-steuerzahlergedenktag', type: 'callout', tone: 'fact', title: 'Wie viel Steuern zahlt man im Leben?',
-      md: 'Rechnet man Umsatzsteuer, Energiesteuer und Sozialabgaben mit, geht bei durchschnittlichen Arbeitnehmerhaushalten in Deutschland rund die Hälfte des Einkommens an Staat und Sozialversicherungen. Der Bund der Steuerzahler veranschaulicht das mit dem jährlichen „Steuerzahlergedenktag“ im Juli — erst ab diesem Tag arbeite man rechnerisch „für die eigene Tasche“.',
+      md: 'Rechnet man Umsatzsteuer, Energiesteuer und Sozialabgaben mit, geht bei durchschnittlichen Arbeitnehmerhaushalten in Deutschland rund die Hälfte des Einkommens an Staat und Sozialversicherungen. Der [Bund der Steuerzahler](wiki:Bund der Steuerzahler Deutschland|German Taxpayers Federation) veranschaulicht das mit dem jährlichen „[Steuerzahlergedenktag](wiki:Steuerzahlergedenktag|Tax Freedom Day)“ im Juli — erst ab diesem Tag arbeite man rechnerisch „für die eigene Tasche“.',
     },
     {
       id: 'recall', type: 'recall', title: 'Die große Debatte',

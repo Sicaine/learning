@@ -3,19 +3,17 @@
 //   node tools/wiki-lang.mjs --en "Cherusci" "Cologne"              English titles → prints  Cherusci|Cherusker
 // Output is the exact spec for [text](wiki:SPEC). "(no article)" means the title does not exist; "(no counterpart)" = only one language.
 
-const UA = { 'User-Agent': `learning-platform/0.1 (https://github.com/Sicaine/learning; pid ${process.pid})` };
+import { wikiQuery } from './lib/wiki-fetch.mjs';
 const args = process.argv.slice(2);
 const from = args.includes('--en') ? 'en' : 'de', to = from === 'de' ? 'en' : 'de';
 const titles = args.filter(a => !a.startsWith('--'));
 
 async function query(lang, list) {
-  const u = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=langlinks|pageprops&ppprop=disambiguation&lllang=${to}&lllimit=max&titles=${encodeURIComponent(list.join('|'))}`;
-  for (let i = 0; i < 5; i++) { const r = await fetch(u, { headers: UA }); if (r.ok) return (await r.json()).query; await new Promise(s => setTimeout(s, 1500 * (i + 1))); }
-  throw new Error('Wikipedia API unavailable');
+  return (await wikiQuery(lang, `action=query&redirects=1&prop=langlinks|pageprops&ppprop=disambiguation&lllang=${to}&lllimit=max&titles=${encodeURIComponent(list.join('|'))}`)).query;
 }
 
-for (let i = 0; i < titles.length; i += 40) {
-  const chunk = titles.slice(i, i + 40);
+for (let i = 0; i < titles.length; i += 50) {
+  const chunk = titles.slice(i, i + 50);
   const r = await query(from, chunk);
   const norm = Object.fromEntries([...(r.normalized || []), ...(r.redirects || [])].map(x => [x.from, x.to]));
   const pages = Object.values(r.pages);

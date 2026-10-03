@@ -13,7 +13,7 @@ export default {
     {
       id: 'neuron', type: 'text', title: 'One neuron',
       md: `
-A **[[neuron]]** takes a vector $\\mathbf{x}$, computes a weighted sum, adds a bias and applies a nonlinearity $\\sigma$:
+A **[[neuron]]** takes a vector $\\mathbf{x}$, computes a weighted sum, adds a bias and applies a [nonlinearity](wiki:Nonlinear system|Nichtlineares System) $\\sigma$:
 
 $$y = \\sigma(\\mathbf{w} \\cdot \\mathbf{x} + b)$$
 
@@ -21,7 +21,7 @@ Read it with what you know: $\\mathbf{w}\\cdot\\mathbf{x}$ measures how well the
     },
     {
       id: 'video-nn', type: 'video', youtube: 'aircAruvnKk', label: 'But what is a neural network?', channel: '3Blue1Brown', minutes: 18,
-      why: 'The classic visual introduction: layers, weights, biases, activations — on handwritten digits.[^3b1b-nn]',
+      why: 'The classic visual introduction: layers, weights, biases, activations — on [handwritten digits](wiki:MNIST database|MNIST-Datenbank).[^3b1b-nn]',
     },
     {
       id: 'calc-neuron', type: 'numeric', title: 'Fire a neuron',
@@ -62,13 +62,13 @@ Stack layers with activations in between and you have a **multi-layer perceptron
 
 $$\\mathbf{h} = \\sigma(W_1\\mathbf{x} + \\mathbf{b}_1), \\qquad \\mathbf{y} = W_2\\mathbf{h} + \\mathbf{b}_2$$
 
-The middle vector $\\mathbf{h}$ is the **hidden layer**. With enough hidden units, even one hidden layer can approximate any continuous function — but deep, narrow stacks usually learn far more efficiently than one enormous layer.
+The middle vector $\\mathbf{h}$ is the **hidden layer**. With enough hidden units, even one hidden layer can [approximate any continuous function](wiki:Universal approximation theorem) — but deep, narrow stacks usually learn far more efficiently than one enormous layer.
 
 **MLPs are alive and well.** Every Transformer block is "attention + MLP". In ViT-B the MLP expands each 768-dim token to 3072 dims, applies GELU, and projects back to 768.[^vit] Attention mixes information *between* tokens; the MLP processes each token *individually*.`,
     },
     {
       id: 'calc-mlp', type: 'numeric', title: 'Parameters of a classic MLP',
-      question: 'An MLP classifies 28×28 grayscale digits: 784 inputs → 128 hidden (ReLU) → 10 outputs, with biases. How many parameters?',
+      question: 'An MLP classifies 28×28 grayscale [digits](wiki:MNIST database|MNIST-Datenbank): 784 inputs → 128 hidden (ReLU) → 10 outputs, with biases. How many parameters?',
       answer: 101770, tolerance: 0,
       hint: '$784\\cdot128 + 128$ for the first layer, $128\\cdot10 + 10$ for the second.',
       explain: '$100{,}352 + 128 + 1{,}280 + 10 = 101{,}770$. Now compare with the next question.',
@@ -105,7 +105,7 @@ The middle vector $\\mathbf{h}$ is the **hidden layer**. With enough hidden unit
       md: `
 Here is a surprisingly strong baseline for your watch segmentation, which you'll understand fully by the DINO stage: take a **frozen** DINOv2/v3 backbone, get its 768-dim feature for every 14×14 patch, and train only a tiny head — a single linear layer or a 2-layer MLP — mapping each patch vector to your $C$ part classes. Upsample the patch predictions to pixel resolution.
 
-That head has only $768 \\cdot C + C$ parameters for the linear version (≈ 6k for 8 classes). It trains in minutes on one 4090 and tells you how much "watch-part knowledge" is already inside the features. If this baseline is bad on real photos, a bigger decoder will not magically fix it; if it is decent, you have a solid foundation to build on.`,
+That head has only $768 \\cdot C + C$ parameters for the linear version (≈ 6k for 8 classes). It trains in minutes on one [4090](wiki:GeForce 40 series|Nvidia-GeForce-40-Serie) and tells you how much "watch-part knowledge" is already inside the features. If this baseline is bad on real photos, a bigger decoder will not magically fix it; if it is decent, you have a solid foundation to build on.`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',
@@ -124,7 +124,7 @@ That head has only $768 \\cdot C + C$ parameters for the linear version (≈ 6k 
     {
       id: 'recall-nonlin', type: 'recall', title: 'Explain it to a colleague',
       prompt: 'Why can\'t a deep network work without activation functions? And why did ReLU/GELU replace sigmoid in deep networks?',
-      answer: `Without activations every layer is affine, and a composition of affine maps is a single affine map: $W_2(W_1\\mathbf{x}+\\mathbf{b}_1)+\\mathbf{b}_2 = W\\mathbf{x}+\\mathbf{b}$. Depth would add nothing; decision boundaries stay flat. Activations fold space so the network can represent curved boundaries and complex functions. Sigmoid saturates (slope ≈ 0 for large |x|, max 0.25), so gradients shrink multiplicatively through many layers (vanishing gradients). ReLU has slope exactly 1 where active, so gradients survive deep stacks; GELU is a smooth variant that works well in Transformers.`,
+      answer: `Without activations every layer is [affine](wiki:Affine transformation|Affinität (Mathematik)), and a composition of affine maps is a single affine map: $W_2(W_1\\mathbf{x}+\\mathbf{b}_1)+\\mathbf{b}_2 = W\\mathbf{x}+\\mathbf{b}$. Depth would add nothing; [decision boundaries](wiki:Decision boundary) stay flat. Activations fold space so the network can represent curved boundaries and complex functions. [Sigmoid](wiki:Sigmoid function|Sigmoidfunktion) saturates (slope ≈ 0 for large |x|, max 0.25), so gradients shrink multiplicatively through many layers ([vanishing gradients](wiki:Vanishing gradient problem)). ReLU has slope exactly 1 where active, so gradients survive deep stacks; GELU is a smooth variant that works well in Transformers.`,
       hints: ['Multiply out two affine layers.', 'What does the chain rule do with many factors < 1?'],
       cards: ['no-act', 'vanish'],
     },

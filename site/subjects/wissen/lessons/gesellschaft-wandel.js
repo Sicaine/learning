@@ -15,11 +15,11 @@ export default {
       md: `
 In Deutschland leben rund **83,6 Millionen** Menschen (2024) — so viele wie in keinem anderen EU-Land.[^wiki-demografie] Doch diese Zahl verdeckt tiefgreifende Veränderungen:
 
-- **Geburtenrate**: Im Schnitt bekommt eine Frau rund **1,35 Kinder** (2023). Für eine stabile Bevölkerung ohne Zuwanderung wären etwa **2,1** nötig. Seit Anfang der 1970er-Jahre sterben in Deutschland jedes Jahr mehr Menschen, als geboren werden.
-- **Lebenserwartung**: Neugeborene Mädchen werden im Schnitt rund 83 Jahre alt, Jungen gut 78 Jahre — über 30 Jahre mehr als um 1900.
+- **[Geburtenrate](wiki:Geburtenrate|Birth rate)**: Im Schnitt bekommt eine Frau rund **1,35 Kinder** (2023). Für eine stabile Bevölkerung ohne Zuwanderung wären etwa **2,1** nötig. Seit Anfang der 1970er-Jahre sterben in Deutschland jedes Jahr mehr Menschen, als geboren werden.
+- **[Lebenserwartung](wiki:Lebenserwartung|Life expectancy)**: Neugeborene Mädchen werden im Schnitt rund 83 Jahre alt, Jungen gut 78 Jahre — über 30 Jahre mehr als um 1900.
 - **Zuwanderung**: Dass die Bevölkerung trotzdem nicht schrumpft, liegt an der Einwanderung.
 
-Das Ergebnis ist eine alternde Gesellschaft: Die klassische **Alterspyramide** (viele Junge, wenige Alte) hat sich zu einer Form entwickelt, die eher einer **Urne** gleicht.[^destatis-bevoelkerung]`,
+Das Ergebnis ist eine alternde Gesellschaft: Die klassische **[Alterspyramide](wiki:Bevölkerungspyramide|Population pyramid)** (viele Junge, wenige Alte) hat sich zu einer Form entwickelt, die eher einer **Urne** gleicht.[^destatis-bevoelkerung]`,
     },
     {
       id: 'quiz-demografie', type: 'quiz', title: 'Demografie-Check',
@@ -37,7 +37,7 @@ Das Ergebnis ist eine alternde Gesellschaft: Die klassische **Alterspyramide** (
 Der [[demografischer-wandel|demografische Wandel]] ist kein fernes Zukunftsthema, sondern läuft jetzt:
 
 - **Rente und Pflege**: Weniger Beitragszahler finanzieren mehr Rentner ([[generationenvertrag]]), und die Zahl der Pflegebedürftigen steigt.
-- **Arbeitsmarkt**: In vielen Berufen — Pflege, Handwerk, IT, Schulen — fehlen **Fachkräfte**. Deshalb wirbt Deutschland gezielt um Zuwanderung (Fachkräfteeinwanderungsgesetz).
+- **Arbeitsmarkt**: In vielen Berufen — Pflege, Handwerk, IT, Schulen — fehlen **[Fachkräfte](wiki:Fachkräftemangel|Labor shortage)**. Deshalb wirbt Deutschland gezielt um Zuwanderung ([Fachkräfteeinwanderungsgesetz](wiki:Fachkräfteeinwanderungsgesetz)).
 - **Regionen**: Junge Menschen ziehen in Städte, viele ländliche Regionen — besonders im Osten — altern und schrumpfen. Schulen, Arztpraxen und Busverbindungen verschwinden.`,
     },
     {
@@ -45,14 +45,46 @@ Der [[demografischer-wandel|demografische Wandel]] ist kein fernes Zukunftsthema
       md: `
 Lange wollte die Politik es nicht wahrhaben — heute ist unbestritten: Deutschland ist ein **Einwanderungsland**. Gut ein Viertel der Bevölkerung hat einen **[[migrationshintergrund|Migrationshintergrund]]**, ist also selbst eingewandert oder Kind von Eingewanderten.[^wiki-demografie] Die großen Phasen:
 
-1. **Nach 1945**: rund 12 Millionen Flüchtlinge und Vertriebene aus den ehemaligen deutschen Ostgebieten.
-2. **Ab 1955**: „Gastarbeiter“ über [[gastarbeiter-anwerbung|Anwerbeabkommen]] — zuerst mit **Italien (1955)**, dann u. a. Spanien, Griechenland, der **Türkei (1961)** und Jugoslawien. 1973 folgte der Anwerbestopp; viele blieben und holten ihre Familien nach. Die DDR hatte eigene Vertragsarbeiter, vor allem aus Vietnam und Mosambik.
-3. **Um 1990**: Spätaussiedler aus der ehemaligen Sowjetunion und Osteuropa, Flüchtlinge aus dem zerfallenden Jugoslawien.
-4. **Seit 2004/2011**: EU-Freizügigkeit, besonders aus Polen, Rumänien und Bulgarien.
-5. **2015/16**: über eine Million Schutzsuchende, vor allem aus Syrien, Afghanistan und dem Irak.
-6. **Ab 2022**: über eine Million Geflüchtete aus der Ukraine nach dem russischen Angriff.
+1. **Nach 1945**: rund 12 Millionen Flüchtlinge und [Vertriebene](wiki:Vertriebene|Forced displacement) aus den ehemaligen deutschen [Ostgebieten](wiki:Ostgebiete des Deutschen Reiches|Former eastern territories of Germany).
+2. **Ab 1955**: „[Gastarbeiter](wiki:Gastarbeiter|Gastarbeiter)“ über [[gastarbeiter-anwerbung|Anwerbeabkommen]] — zuerst mit **Italien (1955)**, dann u. a. Spanien, Griechenland, der **[Türkei](wiki:Türkei|Turkey) (1961)** und [Jugoslawien](wiki:Jugoslawien|Yugoslavia). 1973 folgte der [Anwerbestopp](wiki:Anwerbestopp); viele blieben und holten ihre Familien nach. Die DDR hatte eigene [Vertragsarbeiter](wiki:Vertragsarbeiter|Vertragsarbeiter), vor allem aus [Vietnam](wiki:Vietnam|Vietnam) und [Mosambik](wiki:Mosambik|Mozambique).
+3. **Um 1990**: [Spätaussiedler](wiki:Spätaussiedler|Aussiedler and Spätaussiedler) aus der ehemaligen Sowjetunion und Osteuropa, Flüchtlinge aus dem zerfallenden Jugoslawien.
+4. **Seit 2004/2011**: [EU-Freizügigkeit](wiki:Arbeitnehmerfreizügigkeit|Freedom of movement for workers in the European Union), besonders aus Polen, Rumänien und Bulgarien.
+5. **2015/16**: über eine Million Schutzsuchende, vor allem aus [Syrien](wiki:Syrien|Syria), Afghanistan und dem Irak.
+6. **Ab 2022**: über eine Million Geflüchtete aus der [Ukraine](wiki:Ukraine|Ukraine) nach dem russischen Angriff.
 
-Seit 2024 erlaubt das Staatsangehörigkeitsrecht grundsätzlich die **doppelte Staatsbürgerschaft**; eingebürgert werden kann man in der Regel nach fünf Jahren.`,
+Seit 2024 erlaubt das Staatsangehörigkeitsrecht grundsätzlich die **[doppelte Staatsbürgerschaft](wiki:Doppelte Staatsangehörigkeit|Citizenship)**; [eingebürgert](wiki:Einbürgerung|Naturalization) werden kann man in der Regel nach fünf Jahren.`,
+    },
+    {
+      id: 'map-vertreibung', type: 'map', title: 'Nach 1945: Flucht und Vertreibung aus dem Osten',
+      view: [8.0, 49.0, 22.8, 56.5],
+      places: [
+        { name: 'Königsberg', label: 'Königsberg (heute Kaliningrad)', pos: 'l', detail: '**[Königsberg](wiki:Kaliningrad|Kaliningrad)** war die Hauptstadt Ostpreußens und gehört heute als Kaliningrad zu Russland.' },
+        { name: 'Danzig', label: 'Danzig (heute Gdańsk)', pos: 'l', detail: '**[Danzig](wiki:Danzig|Gdańsk)** liegt heute in Polen (Gdańsk).' },
+        { name: 'Stettin', label: 'Stettin (heute Szczecin)', pos: 'l', detail: '**[Stettin](wiki:Stettin|Szczecin)** war die Hauptstadt Pommerns und liegt heute in Polen (Szczecin).' },
+        { name: 'Breslau', label: 'Breslau (heute Wrocław)', pos: 'r', detail: '**[Breslau](wiki:Breslau|Wrocław)** war die Hauptstadt Schlesiens und liegt heute in Polen (Wrocław).' },
+        { name: 'Berlin', pos: 'l', kind: 'capital', detail: 'Rund 12 Millionen Flüchtlinge und Vertriebene aus den [ehemaligen deutschen Ostgebieten](wiki:Ostgebiete des Deutschen Reiches|Former eastern territories of Germany) kamen nach 1945 in die vier Besatzungszonen.' },
+      ],
+      caption: 'Aus den ehemaligen deutschen Ostgebieten — heute Polen und Russland — mussten nach 1945 rund 12 Millionen Menschen fliehen oder wurden vertrieben. Die Grenzen auf der Karte sind die heutigen.',
+    },
+    {
+      id: 'map-gastarbeiter', type: 'map', title: 'Wohin die Anwerbeabkommen führten',
+      view: [-11, 31.5, 38, 53.5],
+      layers: { cities: false, mountains: false },
+      highlight: [{ countries: ['Deutschland'], label: 'Bundesrepublik Deutschland', color: '#b45309' }],
+      points: [
+        { lon: 10.45, lat: 51.16, label: 'Deutschland', pos: 'r', detail: 'Die Bundesrepublik schloss von 1955 bis 1968 [Anwerbeabkommen](wiki:Anwerbepolitik der Bundesrepublik Deutschland) mit den hier gezeigten Ländern, später auch mit Südkorea. Zwischen 1955 und 1973 kamen rund 14 Millionen Menschen, 11 bis 12 Millionen kehrten zurück; 1973 folgte der Anwerbestopp.' },
+      ],
+      lines: [
+        { label: 'Italien 1955', color: '#b45309', arrow: true, labelAt: 0.54, coords: [[12.48, 41.9], [11.02, 48.79]] },
+        { label: 'Spanien 1960', color: '#b45309', arrow: true, labelAt: 0.29, coords: [[-3.69, 40.4], [7.88, 49.39]] },
+        { label: 'Griechenland 1960', color: '#b45309', arrow: true, labelAt: 0.65, coords: [[23.73, 37.99], [12.64, 49.19]] },
+        { label: 'Türkei 1961', color: '#b45309', arrow: true, labelAt: 0.79, coords: [[32.86, 39.93], [13.54, 49.76]] },
+        { label: 'Marokko 1963', color: '#b45309', arrow: true, labelAt: 0.21, coords: [[-6.84, 34.03], [8.26, 49.19]] },
+        { label: 'Portugal 1964', color: '#b45309', arrow: true, labelAt: 0.25, coords: [[-9.15, 38.72], [7.63, 49.54]] },
+        { label: 'Tunesien 1965', color: '#b45309', arrow: true, labelAt: 0.31, coords: [[10.18, 36.8], [10.40, 48.76]] },
+        { label: 'Jugoslawien 1968', color: '#b45309', arrow: true, labelAt: 0.38, coords: [[20.47, 44.82], [13.27, 49.54]] },
+      ],
+      caption: 'Anwerbeabkommen der Bundesrepublik mit Jahreszahl. Die Pfeile verbinden die Hauptstädte der Herkunftsländer schematisch mit Deutschland — es sind keine Reisewege.',
     },
     {
       id: 'timeline-migration', type: 'game', viz: 'timeline', title: 'Einwanderung chronologisch',
@@ -79,11 +111,11 @@ Seit 2024 erlaubt das Staatsangehörigkeitsrecht grundsätzlich die **doppelte S
     {
       id: 'stadt-land', type: 'text', title: 'Stadt, Land — und das Netz',
       md: `
-**[[urbanisierung|Urbanisierung]]**: Rund drei Viertel der Menschen in Deutschland leben in Städten und Ballungsräumen. Metropolen wie Berlin, München, Hamburg oder Leipzig wachsen — mit knappem Wohnraum und steigenden Mieten. Gleichzeitig gibt es Regionen mit Leerstand. Das Grundgesetz fordert „gleichwertige Lebensverhältnisse“, was angesichts dieser Unterschiede eine Daueraufgabe ist.
+**[[urbanisierung|Urbanisierung]]**: Rund drei Viertel der Menschen in Deutschland leben in Städten und Ballungsräumen. Metropolen wie [Berlin](wiki:Berlin|Berlin), [München](wiki:München|Munich), [Hamburg](wiki:Hamburg|Hamburg) oder [Leipzig](wiki:Leipzig|Leipzig) wachsen — mit knappem Wohnraum und steigenden Mieten. Gleichzeitig gibt es Regionen mit Leerstand. Das Grundgesetz fordert „gleichwertige Lebensverhältnisse“, was angesichts dieser Unterschiede eine Daueraufgabe ist.
 
-**Digitalisierung**: Smartphone, Onlinehandel, Homeoffice und künstliche Intelligenz verändern Arbeit, Kommunikation und Verwaltung. Deutschland gilt dabei im europäischen Vergleich oft als Nachzügler — etwa bei digitalen Behördendiensten oder beim Glasfaserausbau.
+**[Digitalisierung](wiki:Digitalisierung|Digitization)**: Smartphone, Onlinehandel, Homeoffice und künstliche Intelligenz verändern Arbeit, Kommunikation und Verwaltung. Deutschland gilt dabei im europäischen Vergleich oft als Nachzügler — etwa bei digitalen Behördendiensten oder beim Glasfaserausbau.
 
-**Individualisierung und Pluralisierung**: Familienformen werden vielfältiger (Alleinerziehende, Patchwork-Familien, gleichgeschlechtliche Ehe seit 2017), die Bindung an Kirchen, Parteien und Gewerkschaften nimmt ab. Seit Anfang der 2020er-Jahre gehört weniger als die Hälfte der Bevölkerung einer der beiden großen christlichen Kirchen an.`,
+**Individualisierung und Pluralisierung**: Familienformen werden vielfältiger (Alleinerziehende, Patchwork-Familien, [gleichgeschlechtliche Ehe](wiki:Ehe für alle|Same-sex marriage) seit 2017), die Bindung an Kirchen, Parteien und Gewerkschaften nimmt ab. Seit Anfang der 2020er-Jahre gehört weniger als die Hälfte der Bevölkerung einer der beiden großen christlichen Kirchen an.`,
     },
     {
       id: 'match-begriffe', type: 'match', title: 'Begriffe zuordnen',
@@ -97,7 +129,7 @@ Seit 2024 erlaubt das Staatsangehörigkeitsrecht grundsätzlich die **doppelte S
     },
     {
       id: 'fact-urne', type: 'callout', tone: 'fact', title: 'Der Pillenknick',
-      md: `Der stärkste Geburtenjahrgang der Bundesrepublik war **1964** mit rund 1,36 Millionen Babys (in West und Ost zusammen). Danach fielen die Geburtenzahlen innerhalb weniger Jahre drastisch — der sogenannte **„Pillenknick“**, benannt nach der 1961 eingeführten Antibabypille, auch wenn Ökonomen und Soziologen weitere Gründe wie die Bildungsexpansion und die Berufstätigkeit von Frauen betonen.`,
+      md: `Der stärkste Geburtenjahrgang der Bundesrepublik war **1964** mit rund 1,36 Millionen Babys (in West und Ost zusammen). Danach fielen die Geburtenzahlen innerhalb weniger Jahre drastisch — der sogenannte **„[Pillenknick](wiki:Pillenknick)“**, benannt nach der 1961 eingeführten [Antibabypille](wiki:Antibabypille|Combined oral contraceptive pill), auch wenn Ökonomen und Soziologen weitere Gründe wie die [Bildungsexpansion](wiki:Bildungsexpansion) und die Berufstätigkeit von Frauen betonen.`,
     },
     {
       id: 'recall-wandel', type: 'recall', title: 'Erkläre es',

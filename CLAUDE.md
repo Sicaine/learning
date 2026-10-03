@@ -111,10 +111,11 @@ places** — where the Rhine runs, where a battle was, how far a route went, whi
   lines:  [{ label, coords: [[lon, lat], …], dashed?, color?, arrow?, labelAt?, detail?, quiz? }],   // routes, frontiers, migrations
   areas:  [{ label, coords: [[lon, lat], …], color?, detail?, quiz? }],                              // hand-drawn rough regions
   highlight: [{ countries: ['Frankreich'], states: ['Bayern'], label, color?, quiz? }],              // modern countries/Länder as stand-ins (say "heutige Staaten" in the caption)
-  layers: { states, stateLabels, rivers, riverLabels, lakes, mountains, peaks, cities: false|'capitals'|'major'|'all', countryLabels, seaLabels },
+  layers: { states, stateLabels, rivers, riverLabels, lakes, mountains, mountainLabels: false|['Alpen', …], peaks: true|['Zugspitze', …], cities: false|'capitals'|'major'|'all', countryLabels: true|false|'highlight', seaLabels },
   landscapes: ['Schwarzwald', 'Eifel'] | true,   // italic landscape labels from the gazetteer (kind 'land')
   quiz: true | { rounds: 8 } }                   // targets = places/points + rivers/lines/areas/highlights with quiz:true; needs ≥ 3
 ```
+Every target (place/point/river/line/area/highlight) may carry `ask: 'Hauptstadt von Sachsen'` — the quiz prompt text — while `label` stays the name shown after the hit; `detail` shows on tap for points, lines, areas and highlights.
 `kind`: `place` (dot, default), `capital`, `site` (diamond), `battle` (✕), `peak` (triangle), `land` (label only); `num: 1` draws numbered stations (voyages, campaigns).
 Country/state/river names are German. Prefer `places` (verified coordinates). Historical borders do not exist in the data:
 draw `lines`/`areas` roughly and say so in the caption, or use `highlight` with modern countries.

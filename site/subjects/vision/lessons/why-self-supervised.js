@@ -13,7 +13,7 @@ export default {
     {
       id: 'bottleneck', type: 'text', title: 'The label bottleneck',
       md: `
-Supervised learning needs a human answer for every training example. For classification that's one word per image. For **segmentation** it's a precise outline for every object part — minutes of careful clicking per image.
+[Supervised learning](wiki:Supervised learning|Überwachtes Lernen) needs a human answer for every training example. For classification that's one word per image. For **[segmentation](wiki:Image segmentation|Segmentierung (Bildverarbeitung))** it's a precise outline for every object part — minutes of careful clicking per image.
 
 Meanwhile *unlabeled* images are nearly free. You already have ~100k of them, plus a renderer that produces more. The question behind this whole stage:
 
@@ -33,13 +33,13 @@ If yes, the expensive labels are only needed for the last, small step: mapping a
       md: `
 The first idea (2015–2018): invent a task whose labels are generated automatically, and hope that solving it requires understanding images. Classic **[[pretext-task|pretext tasks]]**:
 
-- **Colorization:** predict the colors of a grayscale photo.[^colorization] To color a strap brown and a dial blue you must recognize them.
-- **Jigsaw:** cut an image into 3×3 tiles, shuffle them, predict the permutation.[^jigsaw] Requires knowing which parts belong where.
+- **[Colorization](wiki:Image colorization):** predict the colors of a grayscale photo.[^colorization] To color a strap brown and a dial blue you must recognize them.
+- **[Jigsaw](wiki:Jigsaw puzzle|Puzzle):** cut an image into 3×3 tiles, shuffle them, predict the permutation.[^jigsaw] Requires knowing which parts belong where.
 - **Rotation:** rotate the image by 0°, 90°, 180° or 270° and predict which.[^rotnet] You can't tell "upright" without knowing what objects look like.
 
 The answers themselves are worthless. What we keep is the network's internal **[[representation]]** — the features it built along the way.
 
-The weakness: networks are lazy. They find **shortcuts** — chromatic aberration at image borders, JPEG artifacts, lighting direction — that solve the puzzle without semantic understanding. Modern SSL replaced hand-made puzzles with more general objectives that are much harder to cheat.`,
+The weakness: networks are lazy. They find **shortcuts** — [chromatic aberration](wiki:Chromatic aberration|Chromatische Aberration) at image borders, [JPEG](wiki:JPEG) artifacts, lighting direction — that solve the puzzle without semantic understanding. Modern SSL replaced hand-made puzzles with more general objectives that are much harder to cheat.`,
     },
     {
       id: 'match-pretext', type: 'match', title: 'Match each method to what it predicts',
@@ -92,7 +92,7 @@ A self-supervised network never saw a label, so how do we know its features are 
 
 $$\\hat{y} = \\operatorname{softmax}\\big(W f(x) + b\\big)$$
 
-If a *linear* classifier suffices, the classes are already separated in feature space.
+If a *[linear classifier](wiki:Linear classifier)* suffices, the classes are already separated in feature space.
 
 **[[knn-eval|k-NN]]:** no training at all. L2-normalize all training [[embedding|embeddings]]; for a test image, find the $k$ most similar ones by [[cosine-similarity]] and let them vote. DINO reports both, using a similarity-weighted vote with $k = 20$.[^dino]
 

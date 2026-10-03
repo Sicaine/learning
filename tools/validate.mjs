@@ -16,7 +16,7 @@ const cityRows = [];
 for (const lod of ['central', 'europe', 'world']) for (const c of (await import(join(geoDir, `${lod}.js`))).default.cities || []) cityRows.push(c);
 globalThis.localStorage ??= { getItem: () => null, setItem() {} };
 const VIEWS = (await import(join(root, 'assets/js/blocks/map.js')).catch(() => null))?.VIEWS || {};
-const WIKI_RE = /\[([^\]]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
+const WIKI_RE = /\[([^\]\[\n]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
 const km = (a, b) => { const r = Math.PI / 180, dx = (a[0] - b[0]) * r * Math.cos((a[1] + b[1]) / 2 * r), dy = (a[1] - b[1]) * r; return 6371 * Math.hypot(dx, dy); };
 let errors = 0, warnings = 0;
 const err = (m) => { errors++; console.log(`  ✗ ${m}`); };
@@ -87,7 +87,8 @@ for (const meta of subjects) {
     if (!l.ready) { if (existsSync(file)) warn(`lesson ${l.id}: file exists but ready:false`); continue; }
     if (!existsSync(file)) { err(`lesson ${l.id}: ready but ${file} missing`); continue; }
     ready++;
-    const lesson = (await import(file)).default;
+    let lesson;
+    try { lesson = (await import(file)).default; } catch (e) { err(`lesson ${l.id}: cannot load (${String(e.message).split('\n')[0]})`); continue; }
     if (lesson.id !== l.id) err(`lesson ${l.id}: id mismatch (${lesson.id})`);
     const ids = new Set();
     for (const b of lesson.blocks) {

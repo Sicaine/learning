@@ -13,7 +13,7 @@ export default {
     {
       id: 'ueberblick', type: 'text', title: 'Die Welt der Religionen in Zahlen',
       md: `
-Nach Berechnungen des Pew Research Center gehörten 2020 weltweit an:[^pew-religion-2020]
+Nach Berechnungen des [Pew Research Center](wiki:Pew Research Center|Pew Research Center) gehörten 2020 weltweit an:[^pew-religion-2020]
 
 <table><tr><th>Religion</th><th>Anhänger (2020)</th><th>Anteil</th></tr>
 <tr><td>Christentum</td><td>rund 2,3 Mrd.</td><td>28,8 %</td></tr>
@@ -23,47 +23,83 @@ Nach Berechnungen des Pew Research Center gehörten 2020 weltweit an:[^pew-relig
 <tr><td>Buddhismus</td><td>rund 324 Mio.</td><td>4,1 %</td></tr>
 <tr><td>Judentum</td><td>rund 15 Mio.</td><td>0,2 %</td></tr></table>
 
-Das Judentum ist also zahlenmäßig klein, aber historisch grundlegend:[^wp-weltreligion] Christentum und Islam bauen auf ihm auf. Zusammen heißen die drei die **[[abrahamitische-religionen|abrahamitischen Religionen]]**, weil sie sich auf Abraham berufen. Alle drei sind **[[monotheismus|monotheistisch]]** — sie glauben an einen einzigen Gott.`,
+Das Judentum ist also zahlenmäßig klein, aber historisch grundlegend:[^wp-weltreligion] Christentum und Islam bauen auf ihm auf. Zusammen heißen die drei die **[[abrahamitische-religionen|abrahamitischen Religionen]]**, weil sie sich auf [Abraham](wiki:Abraham|Abraham) berufen. Alle drei sind **[[monotheismus|monotheistisch]]** — sie glauben an einen einzigen Gott.`,
+    },
+    {
+      id: 'map-heilige-staetten', type: 'map', title: 'Wo die Weltreligionen entstanden',
+      view: [27, 8, 90, 36],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      places: [
+        { name: 'Jerusalem', kind: 'site', color: '#0f172a', pos: 'l', detail: `**[Jerusalem](wiki:Jerusalem|Jerusalem)** (nahe dem Geburtsort Jesu, [Bethlehem](wiki:Bethlehem)) — für **Juden** (Tempelberg, Klagemauer), **Christen** (Kreuzigung und Auferstehung Jesu, Grabeskirche) und **Muslime** (Felsendom, Al-Aqsa-Moschee) heilig.` },
+        { name: 'Nazaret', kind: 'site', color: '#dc2626', pos: 't', detail: `**[Nazaret](wiki:Nazaret|Nazareth)** — der Heimatort Jesu in Galiläa.` },
+        { name: 'Sinai (Berg)', label: 'Berg Sinai', kind: 'site', color: '#2563eb', pos: 'l', detail: `**[Berg Sinai](wiki:Sinai (Berg)|Mount Sinai)** — nach der Tora der Ort, an dem Mose die Gebote empfing; die genaue Lage ist unsicher, Jabal Musa gilt als traditioneller Kandidat.` },
+        { name: 'Mekka', kind: 'site', color: '#059669', pos: 'r', detail: `**[Mekka](wiki:Mekka|Mecca)** — Geburtsort Mohammeds; hier steht die Kaaba. Ziel der Pilgerfahrt (Haddsch).` },
+        { name: 'Medina', kind: 'site', color: '#059669', pos: 'r', detail: `**[Medina](wiki:Medina|Medina)** — zweite heilige Stadt des Islam; hier liegt das Grab Mohammeds.` },
+        { name: 'Varanasi', kind: 'site', color: '#ea580c', pos: 'l', detail: `**[Varanasi](wiki:Varanasi|Varanasi)** — am Ganges, für Hindus eine der heiligsten Städte.` },
+        { name: 'Bodh Gaya', kind: 'site', color: '#7c3aed', pos: 'r', detail: `**[Bodh Gaya](wiki:Bodhgaya|Bodh Gaya)** — hier soll Siddhartha Gautama unter dem Bodhi-Baum erleuchtet worden sein.` },
+        { name: 'Lumbini', kind: 'site', color: '#7c3aed', pos: 't', detail: `**[Lumbini](wiki:Lumbini|Lumbini)** — der traditionelle Geburtsort des Buddha, im heutigen Nepal.` },
+      ],
+      caption: 'Farben: <b style="color:#2563eb">Judentum</b> · <b style="color:#dc2626">Christentum</b> · <b style="color:#059669">Islam</b> · <b style="color:#ea580c">Hinduismus</b> · <b style="color:#7c3aed">Buddhismus</b> · <b>Jerusalem</b> ist für drei Religionen heilig.',
     },
     {
       id: 'judentum', type: 'text', title: 'Judentum',
       md: `
-Das **[[judentum|Judentum]]** führt sich auf den Bund Gottes mit Abraham und die Gesetzesgabe an **Mose** am Berg Sinai zurück. Die wichtigste Schrift ist die **[[tora|Tora]]**, die fünf Bücher Mose, Teil der hebräischen Bibel (*Tanach*). Der **Talmud** sammelt Auslegungen und Diskussionen der Rabbiner.
+Das **[[judentum|Judentum]]** führt sich auf den Bund Gottes mit Abraham und die Gesetzesgabe an **[Mose](wiki:Mose|Moses)** am [Berg Sinai](wiki:Sinai (Berg)|Mount Sinai) zurück. Die wichtigste Schrift ist die **[[tora|Tora]]**, die fünf Bücher Mose, Teil der hebräischen [Bibel](wiki:Bibel|Bible) (*[Tanach](wiki:Tanach|Tanakh)*). Der **[Talmud](wiki:Talmud|Talmud)** sammelt Auslegungen und Diskussionen der Rabbiner.
 
-Gottesdienst wird in der **Synagoge** gefeiert, der wöchentliche Ruhetag ist der **Sabbat** (Freitagabend bis Samstagabend). Wichtige Feste sind **Pessach** (Erinnerung an den Auszug aus Ägypten), **Jom Kippur** (Versöhnungstag) und **Chanukka** (Lichterfest). Jüdisches Leben in Deutschland ist seit mindestens 321 belegt — ein Edikt Kaiser Konstantins erwähnt eine jüdische Gemeinde in Köln.`,
+Gottesdienst wird in der **[Synagoge](wiki:Synagoge|Synagogue)** gefeiert, der wöchentliche Ruhetag ist der **[Sabbat](wiki:Sabbat|Shabbat)** (Freitagabend bis Samstagabend). Wichtige Feste sind **[Pessach](wiki:Pessach|Passover)** (Erinnerung an den Auszug aus Ägypten), **[Jom Kippur](wiki:Jom Kippur|Yom Kippur)** (Versöhnungstag) und **[Chanukka](wiki:Chanukka|Hanukkah)** (Lichterfest). Jüdisches Leben in Deutschland ist seit mindestens 321 belegt — ein Edikt Kaiser Konstantins erwähnt eine jüdische Gemeinde in [Köln](wiki:Köln|Cologne).`,
+    },
+    {
+      id: 'map-schum', type: 'map', title: 'Jüdisches Leben am Rhein',
+      view: [5.5, 49.0, 9.2, 51.3],
+      layers: { cities: false },
+      rivers: [{ name: 'Rhein', labelAt: 0.3 }],
+      places: [
+        { name: 'Köln', pos: 'l', detail: `**[Köln](wiki:Köln|Cologne)** — ein Edikt Kaiser Konstantins von **321** erwähnt hier eine jüdische Gemeinde: der älteste Beleg jüdischen Lebens nördlich der Alpen.` },
+        { name: 'Mainz', pos: 'l', detail: `**[Mainz](wiki:Mainz|Mainz)** — eine der drei [SchUM-Städte](wiki:SchUM-Städte|ShUM-cities); im Mittelalter ein Zentrum jüdischer Gelehrsamkeit.` },
+        { name: 'Worms', pos: 'l', detail: `**[Worms](wiki:Worms|Worms, Germany)** — SchUM-Stadt mit der ältesten erhaltenen Synagoge Deutschlands (Ursprung 1034).` },
+        { name: 'Speyer', pos: 'r', detail: `**[Speyer](wiki:Speyer|Speyer)** — SchUM-Stadt mit der Ruine der [Synagoge](wiki:Synagoge|Synagogue) und dem Judenhof samt Mikwe.` },
+      ],
+      caption: 'Die Anfangsbuchstaben der Städte **S**peyer, **W**orms (hebräisch *Warmaisa*) und **M**ainz ergeben den Namen „SchUM“; die Stätten sind seit 2021 UNESCO-Welterbe.',
     },
     {
       id: 'christentum', type: 'text', title: 'Christentum',
       md: `
-Das **[[christentum|Christentum]]** geht auf **Jesus von Nazareth** zurück, der um das Jahr 30 in Jerusalem gekreuzigt wurde. Christen glauben, dass er Gottes Sohn ist und von den Toten auferstand — das feiern sie an **Ostern**, dem wichtigsten Fest. **Weihnachten** feiert seine Geburt, **Pfingsten** die Sendung des Heiligen Geistes. Die **Bibel** besteht aus dem Alten Testament (weitgehend die hebräische Bibel) und dem Neuen Testament mit den vier Evangelien.
+Das **[[christentum|Christentum]]** geht auf **[Jesus von Nazareth](wiki:Jesus von Nazareth|Historical Jesus)** zurück, der um das Jahr 30 in [Jerusalem](wiki:Jerusalem|Jerusalem) gekreuzigt wurde. Christen glauben, dass er Gottes Sohn ist und von den Toten auferstand — das feiern sie an **[Ostern](wiki:Ostern|Easter)**, dem wichtigsten Fest. **[Weihnachten](wiki:Weihnachten|Christmas)** feiert seine Geburt, **[Pfingsten](wiki:Pfingsten|Pentecost)** die Sendung des Heiligen Geistes. Die **Bibel** besteht aus dem [Alten Testament](wiki:Altes Testament|Old Testament) (weitgehend die hebräische Bibel) und dem [Neuen Testament](wiki:Neues Testament|New Testament) mit den vier [Evangelien](wiki:Evangelium (Literaturgattung)|Gospel).
 
-Die großen Konfessionen: **römisch-katholisch** (mit dem Papst in Rom), **orthodox** (Trennung 1054) und **evangelisch/protestantisch** (seit der Reformation Martin Luthers 1517).`,
+Die großen Konfessionen: **[römisch-katholisch](wiki:Römisch-katholische Kirche|Catholic Church)** (mit dem [Papst](wiki:Papst|Pope) in Rom), **[orthodox](wiki:Orthodoxe Kirche|Eastern Orthodox Church)** (Trennung 1054) und **evangelisch/protestantisch** (seit der [Reformation](wiki:Reformation|Reformation) [Martin Luthers](wiki:Martin Luther|Martin Luther) 1517).`,
     },
     {
       id: 'islam', type: 'text', title: 'Islam',
       md: `
-Der **[[islam|Islam]]** geht auf den Propheten **Mohammed** zurück (um 570–632), dem nach muslimischem Glauben der **Koran** als Wort Gottes offenbart wurde. „Islam“ bedeutet „Hingabe“ an Gott (arabisch *Allah* — dasselbe Wort verwenden auch arabischsprachige Christen). Muslime verehren auch Abraham, Mose und Jesus als Propheten.
+Der **[[islam|Islam]]** geht auf den Propheten **[Mohammed](wiki:Mohammed|Muhammad)** zurück (um 570–632), dem nach muslimischem Glauben der **[Koran](wiki:Koran|Quran)** als Wort Gottes offenbart wurde. „Islam“ bedeutet „Hingabe“ an Gott (arabisch *[Allah](wiki:Allah|Allah)* — dasselbe Wort verwenden auch arabischsprachige Christen). Muslime verehren auch Abraham, Mose und Jesus als Propheten.
 
 Die religiöse Praxis ruht auf den **[[fuenf-saeulen|fünf Säulen]]**:
 
-1. **Schahada** — das Glaubensbekenntnis
-2. **Salat** — das Gebet, fünfmal am Tag, Richtung Mekka
-3. **Zakat** — die Pflichtabgabe für Bedürftige
-4. **Saum** — das Fasten im Monat **Ramadan**
-5. **Haddsch** — die Pilgerfahrt nach **Mekka**, einmal im Leben, wenn möglich
+1. **[Schahada](wiki:Schahada|Shahada)** — das Glaubensbekenntnis
+2. **[Salat](wiki:Salāt|Salah)** — das Gebet, fünfmal am Tag, Richtung [Mekka](wiki:Mekka|Mecca)
+3. **[Zakat](wiki:Zakāt|Zakat)** — die Pflichtabgabe für Bedürftige
+4. **[Saum](wiki:Saum (Islam)|Fasting in Islam)** — das Fasten im Monat **[Ramadan](wiki:Ramadan|Ramadan)**
+5. **[Haddsch](wiki:Haddsch|Hajj)** — die Pilgerfahrt nach **Mekka**, einmal im Leben, wenn möglich
 
-Die größten Richtungen sind **Sunniten** (rund 85–90 %) und **Schiiten**; ihre Spaltung geht auf den Streit um Mohammeds Nachfolge zurück.`,
+Die größten Richtungen sind **[Sunniten](wiki:Sunniten|Sunni Islam)** (rund 85–90 %) und **[Schiiten](wiki:Schiiten|Shia Islam)**; ihre Spaltung geht auf den Streit um Mohammeds Nachfolge zurück.`,
     },
     {
       id: 'asien', type: 'text', title: 'Hinduismus und Buddhismus',
       md: `
-Der **[[hinduismus|Hinduismus]]** hat keinen Gründer; er wuchs über Jahrtausende in Indien. Seine ältesten Schriften sind die **Veden**. Es gibt viele Gottheiten, oft als Ausdruck eines göttlichen Prinzips verstanden; bekannt sind **Brahma** (Schöpfer), **Vishnu** (Erhalter) und **Shiva** (Zerstörer und Erneuerer). Zentral ist der Kreislauf der Wiedergeburten (*Samsara*), gelenkt vom **[[karma|Karma]]** — den Folgen der eigenen Taten. Ziel ist die Erlösung daraus (*Moksha*).[^wp-hinduismus]
+Der **[[hinduismus|Hinduismus]]** hat keinen Gründer; er wuchs über Jahrtausende in Indien. Seine ältesten Schriften sind die **[Veden](wiki:Veden|Vedas)**. Es gibt viele Gottheiten, oft als Ausdruck eines göttlichen Prinzips verstanden; bekannt sind **[Brahma](wiki:Brahma|Brahma)** (Schöpfer), **[Vishnu](wiki:Vishnu|Vishnu)** (Erhalter) und **[Shiva](wiki:Shiva|Shiva)** (Zerstörer und Erneuerer). Zentral ist der Kreislauf der Wiedergeburten (*[Samsara](wiki:Samsara|Saṃsāra)*), gelenkt vom **[[karma|Karma]]** — den Folgen der eigenen Taten. Ziel ist die Erlösung daraus (*[Moksha](wiki:Moksha|Moksha)*).[^wp-hinduismus]
 
-Der **[[buddhismus|Buddhismus]]** entstand um das 5. Jahrhundert v. Chr. in Nordindien. **Siddhartha Gautama**, ein Fürstensohn, suchte einen Weg aus dem Leiden und wurde zum **Buddha** („Erwachter“). Seine Lehre fasst er in den **Vier Edlen Wahrheiten** zusammen: Das Leben ist von Leiden geprägt; die Ursache ist das Begehren; das Leiden kann enden; der Weg dahin ist der **Achtfache Pfad**. Ziel ist das **[[nirwana|Nirwana]]**. Einen Schöpfergott kennt der Buddhismus nicht.[^wp-buddhismus]`,
+Der **[[buddhismus|Buddhismus]]** entstand um das 5. Jahrhundert v. Chr. in Nordindien. **[Siddhartha Gautama](wiki:Siddhartha Gautama|The Buddha)**, ein Fürstensohn, suchte einen Weg aus dem Leiden und wurde zum **Buddha** („Erwachter“). Seine Lehre fasst er in den **[Vier Edlen Wahrheiten](wiki:Vier Edle Wahrheiten|Four Noble Truths)** zusammen: Das Leben ist von Leiden geprägt; die Ursache ist das Begehren; das Leiden kann enden; der Weg dahin ist der **[Achtfache Pfad](wiki:Edler Achtfacher Pfad|Noble Eightfold Path)**. Ziel ist das **[[nirwana|Nirwana]]**. Einen Schöpfergott kennt der Buddhismus nicht.[^wp-buddhismus]`,
+    },
+    {
+      id: 'map-quiz-religionen', type: 'map', title: 'Finde die heiligen Orte',
+      view: [27, 8, 90, 36],
+      layers: { cities: false, countryLabels: false, mountains: false },
+      quiz: { rounds: 7 },
+      places: [{ name: 'Jerusalem', kind: 'site' }, { name: 'Mekka', kind: 'site' }, { name: 'Medina', kind: 'site' }, { name: 'Varanasi', kind: 'site' }, { name: 'Bodh Gaya', kind: 'site' }, { name: 'Lumbini', kind: 'site' }, { name: 'Nazaret', kind: 'site' }],
     },
     {
       id: 'deutschland', type: 'callout', tone: 'fact', title: 'Und in Deutschland?',
-      md: `Seit 2022 gehört weniger als die Hälfte der Menschen in Deutschland einer der beiden großen christlichen Kirchen an — ein historischer Einschnitt. Die Katholische Kirche und die Evangelische Kirche in Deutschland (EKD) haben jeweils knapp 20 Millionen Mitglieder. Die größte nichtchristliche Religionsgemeinschaft bilden die rund 5,5 Millionen Musliminnen und Muslime.`,
+      md: `Seit 2022 gehört weniger als die Hälfte der Menschen in Deutschland einer der beiden großen christlichen Kirchen an — ein historischer Einschnitt. Die [Katholische Kirche](wiki:Katholische Kirche in Deutschland|Catholic Church in Germany) und die [Evangelische Kirche in Deutschland](wiki:Evangelische Kirche in Deutschland|Evangelical Church in Germany) (EKD) haben jeweils knapp 20 Millionen Mitglieder. Die größte nichtchristliche Religionsgemeinschaft bilden die rund 5,5 Millionen Musliminnen und Muslime.`,
     },
     {
       id: 'match-schriften', type: 'match', title: 'Heilige Schriften und Orte',

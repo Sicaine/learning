@@ -13,20 +13,20 @@ export default {
     {
       id: 'problem', type: 'text', title: 'Where am I? — ask a clock',
       md: `
-Latitude (north–south) is easy at sea: measure the height of the sun at noon or of the Pole Star. **[[longitude|Longitude]]** (east–west) is hard, because the Earth rotates underneath you.
+[Latitude](wiki:Latitude|Geographische Breite) (north–south) is easy at sea: measure the height of the sun at noon or of the [Pole Star](wiki:Polaris|Polarstern). **[[longitude|Longitude]]** (east–west) is hard, because the Earth rotates underneath you.
 
-But rotation is also the key: Earth turns $360°$ in 24 hours, i.e. **15° per hour**. If you carry a clock set to the time of a reference place (Greenwich) and observe *local* noon — the sun at its highest — the difference between the two times *is* your longitude:
+But rotation is also the key: Earth turns $360°$ in 24 hours, i.e. **15° per hour**. If you carry a clock set to the time of a reference place ([Greenwich](wiki:Prime meridian|Nullmeridian), [Greenwich Mean Time](wiki:Greenwich Mean Time|Greenwich Mean Time)) and observe *local* noon — the sun at its highest — the difference between the two times *is* your longitude:
 
 $$\\text{longitude} = 15° \\times (\\text{Greenwich time} - \\text{local time in hours})$$
 
-The problem in the 18th century: no clock could keep accurate time for weeks on a pitching, damp ship with changing temperatures. After many ships were lost, the British Parliament offered a large prize in the Longitude Act of 1714.[^rmg-longitude]`,
+The problem in the 18th century: no clock could keep accurate time for weeks on a pitching, damp ship with changing temperatures. After many ships were lost, the British Parliament offered a large prize in the [Longitude Act](wiki:Longitude Act) of 1714.[^rmg-longitude]`,
     },
     {
       id: 'calc-longitude', type: 'numeric', title: 'Find your position',
       question: 'At local noon, your chronometer (set to Greenwich time) shows **16:00**. How many degrees west of Greenwich are you?',
       answer: 60, tolerance: 0, unit: '° W',
       hint: 'Local noon is 4 hours *later* than noon in Greenwich. Each hour is 15°.',
-      explain: '4 h × 15°/h = 60° west — roughly the longitude of Nova Scotia or eastern Venezuela.',
+      explain: '4 h × 15°/h = 60° west — roughly the longitude of [Nova Scotia](wiki:Nova Scotia|Nova Scotia) or eastern [Venezuela](wiki:Venezuela|Venezuela).',
     },
     {
       id: 'calc-error', type: 'numeric', title: 'What does a small error cost?',
@@ -38,23 +38,47 @@ The problem in the 18th century: no clock could keep accurate time for weeks on 
     {
       id: 'harrison', type: 'callout', tone: 'history', title: 'John Harrison, the carpenter who built H4',
       md: `
-John Harrison, a self-taught carpenter and clockmaker from Yorkshire, spent decades on the problem. His first three sea clocks (H1–H3) were large machines. His fourth, **H4**, completed in **1759**, looked like an oversized pocket watch — and it worked.[^rmg-h4]
+[John Harrison](wiki:John Harrison|John Harrison (Uhrmacher)), a self-taught carpenter and clockmaker from [Yorkshire](wiki:Yorkshire|Yorkshire), spent decades on the problem. His first three sea clocks (H1–H3) were large machines. His fourth, **H4**, completed in **1759**, looked like an oversized pocket watch — and it worked.[^rmg-h4]
 
-H4 compensated for temperature changes and used anti-friction design so thoroughly that it ran without lubrication.[^rmg-longitude] It became the ancestor of the **[[chronometer|marine chronometer]]**, which guided ships until radio and satellite navigation took over.`,
+H4 compensated for temperature changes and used anti-friction design so thoroughly that it ran without lubrication.[^rmg-longitude] It became the ancestor of the **[[chronometer|marine chronometer]]** ([more](wiki:Marine chronometer|Längenuhr)), which guided ships until radio and satellite navigation took over.`,
+    },
+    {
+      id: 'map-harrison', type: 'map', title: 'Harrison’s sea trials',
+      view: [-83, 9, 7, 56],
+      layers: { cities: false, countryLabels: false, seaLabels: false, mountains: false, rivers: false, lakes: false },
+      points: [
+        { lon: -1.089, lat: 50.795, label: 'Portsmouth', num: 1, pos: 'l',
+          detail: '**[Portsmouth](wiki:Portsmouth|Portsmouth)** — on **18 November 1761** HMS Deptford sailed from here with Harrison’s watch on board, bound for Jamaica.' },
+        { lon: -76.793, lat: 17.971, label: 'Kingston', num: 2, pos: 't',
+          detail: '**[Kingston](wiki:Kingston, Jamaica|Kingston (Jamaika))**, Jamaica — after **81 days and 5 hours** at sea the watch was only **5 seconds** slow: an error of about one nautical mile in longitude.' },
+        { lon: -59.608, lat: 13.096, label: 'Bridgetown', num: 3, pos: 'b',
+          detail: '**[Bridgetown](wiki:Bridgetown|Bridgetown)**, Barbados — the Harrisons were eventually made to prove the result again on a second trial voyage to Barbados. The watch kept time to within 39 seconds — an error of less than 16 km (10 miles) in longitude.' },
+        { lon: -40, lat: 36, label: 'Atlantic Ocean', kind: 'land' },
+        { lon: -77, lat: 12.5, label: 'Caribbean Sea', kind: 'land' },
+        { lon: -9.167, lat: 38.717, label: 'Lisbon', pos: 'r',
+          detail: '**[Lisbon](wiki:Lisbon|Lissabon)** — in 1736 Harrison sailed here on HMS Centurion to test his first sea clock, H1.' },
+      ],
+      lines: [
+        { label: 'to Jamaica, 1761–62 (schematic)', arrow: true, color: '#b45309', coords: [[-1.089, 50.795], [-73.0, 19.61]],
+          detail: 'The first official trial of Harrison’s watch: Portsmouth to Kingston. The route is drawn as a straight line for orientation; the real course followed winds and currents.' },
+        { label: 'to Barbados (schematic)', arrow: true, color: '#0f766e', dashed: true, coords: [[-1.089, 50.795], [-56.68, 14.98]],
+          detail: 'The second trial voyage, to Bridgetown on Barbados. Drawn schematically.' },
+      ],
+      caption: 'Schematic routes. The crossing to Jamaica took 81 days — a long time for any clock to stay right. The watch kept Greenwich time, the reference for every longitude calculation.',
     },
     {
       id: 'lever', type: 'text', title: '1754: the lever escapement',
       md: `
-Around the same time, the English watchmaker **Thomas Mudge** invented the **[[lever-escapement]]** (1754).[^wiki-watch] Its genius is *detachment*: the [[balance-wheel]] swings freely for most of its arc and touches the lever only briefly near the center, to unlock the gear train and receive a tiny push.
+Around the same time, the English watchmaker **[Thomas Mudge](wiki:Thomas Mudge (horologist)|Thomas Mudge)** invented the **[[lever-escapement]]** (1754).[^wiki-watch] Its genius is *detachment*: the [[balance-wheel]] swings freely for most of its arc and touches the lever only briefly near the center, to unlock the gear train and receive a tiny push.
 
 A free oscillator is an accurate oscillator — the less the rest of the machine disturbs it, the closer it stays to its natural period. The lever escapement came into use only gradually from around 1800,[^wiki-lever-escapement] but it is in almost every mechanical watch made today. You will see it move in the next stage.`,
     },
     {
       id: 'wrist', type: 'text', title: 'From waistcoat to wrist',
       md: `
-For three centuries a watch lived in a pocket. Early wristwatches were jewelry, mostly for women: Abraham-Louis Breguet made one for the Queen of Naples in 1810, and Patek Philippe made what is called the first Swiss wristwatch for Countess Koscowicz of Hungary in 1868.[^wiki-watch]
+For three centuries a [watch](wiki:Pocket watch|Taschenuhr) lived in a pocket. Early wristwatches were jewelry, mostly for women: [Abraham-Louis Breguet](wiki:Abraham-Louis Breguet|Abraham Louis Breguet) made one for the Queen of Naples ([Caroline Bonaparte](wiki:Caroline Bonaparte|Caroline Bonaparte)) in 1810, and [Patek Philippe](wiki:Patek Philippe|Patek Philippe) made what is called the first Swiss [wristwatch](wiki:Wristwatch|Armbanduhr) for Countess Koscowicz of Hungary in 1868.[^wiki-watch]
 
-In 1904 Louis Cartier made a wristwatch for his friend, the Brazilian aviator **Alberto Santos-Dumont**, who couldn't take his hands off the controls to reach a pocket watch. Real change came with **World War I**: soldiers needed their hands free and had to synchronize attacks, and from 1917 the British War Office issued wristwatches to combatants.[^wiki-watch] After the war, the wristwatch was a man's object too.`,
+In 1904 [Louis Cartier](wiki:Louis Cartier) made a wristwatch for his friend, the Brazilian aviator **[Alberto Santos-Dumont](wiki:Alberto Santos-Dumont|Alberto Santos Dumont)**, who couldn't take his hands off the controls to reach a pocket watch. Real change came with **[World War I](wiki:World War I|Erster Weltkrieg)**: soldiers needed their hands free and had to synchronize attacks, and from 1917 the British War Office issued wristwatches to combatants.[^wiki-watch] After the war, the wristwatch was a man's object too.`,
     },
     {
       id: 'match-people', type: 'match', title: 'Who did what?',

@@ -20,7 +20,7 @@ Training is the same four steps, repeated hundreds of thousands of times:
 3. **Backward:** compute the gradient of the loss w.r.t. every weight with [[backpropagation]].
 4. **Step:** let the optimizer update the weights using those gradients.
 
-In PyTorch it literally looks like this:
+In [PyTorch](wiki:PyTorch|PyTorch) it literally looks like this:
 
 \`\`\`python
 for images, masks in loader:              # one batch
@@ -36,7 +36,7 @@ One pass over all data is an **[[epoch]]**. Everything else in a training recipe
     },
     {
       id: 'video-bp', type: 'video', youtube: 'Ilg3gGewQ5U', label: 'Backpropagation, intuitively', channel: '3Blue1Brown', minutes: 13,
-      why: 'What backpropagation is doing, without the calculus. The follow-up "Backpropagation calculus" (chapter 4) adds the chain-rule details.[^3b1b-nn] For a hands-on version, Andrej Karpathy builds backprop from scratch in Python.[^karpathy-micrograd]',
+      why: 'What backpropagation is doing, without the calculus ([3Blue1Brown](wiki:3Blue1Brown|3Blue1Brown)). The follow-up "Backpropagation calculus" (chapter 4) adds the chain-rule details.[^3b1b-nn] For a hands-on version, [Andrej Karpathy](wiki:Andrej Karpathy|Andrej Karpathy) builds backprop from scratch in Python.[^karpathy-micrograd]',
     },
     {
       id: 'order-step', type: 'order', title: 'One training iteration',
@@ -57,7 +57,7 @@ One pass over all data is an **[[epoch]]**. Everything else in a training recipe
 Backprop applies the [[chain-rule]] from the loss backwards. Two practical facts follow:
 
 - **Compute:** the backward pass costs about **2×** the forward pass, so one training step ≈ **3×** a forward pass.
-- **Memory:** the backward pass needs the intermediate activations of the forward pass. They must be kept in GPU memory until used. For a ViT at high resolution, these activations — not the weights — are usually what fills a 24 GB card.
+- **Memory:** the backward pass needs the intermediate activations of the forward pass. They must be kept in [GPU](wiki:Graphics processing unit|Grafikprozessor) memory until used. For a ViT at high resolution, these activations — not the weights — are usually what fills a 24 GB card.
 
 Memory for training = weights + gradients + optimizer state + activations. Inference needs only weights + a small working buffer.`,
     },
@@ -76,7 +76,7 @@ Zig-zags across a narrow valley cancel; consistent directions accumulate speed. 
 
 $$\\theta \\leftarrow \\theta - \\eta \\left( \\frac{\\hat{\\mathbf{m}}}{\\sqrt{\\hat{\\mathbf{v}}} + \\epsilon} + \\lambda\\theta \\right)$$
 
-Parameters with consistently large gradients get smaller steps, rarely-updated ones get larger steps — every weight gets its own effective learning rate. The "W" means [[weight-decay]] $\\lambda\\theta$ is applied directly to the weights ("decoupled") instead of being mixed into the gradient, which works better with Adam.[^adamw] **AdamW is the default for Vision Transformers**: ViT, DINO, DINOv2/v3 and SAM are all trained with it.`,
+Parameters with consistently large gradients get smaller steps, rarely-updated ones get larger steps — every weight gets its own effective learning rate. The "W" means [[weight-decay]] $\\lambda\\theta$ is applied directly to the weights ("decoupled") instead of being mixed into the gradient, which works better with Adam.[^adamw] **AdamW is the default for Vision Transformers**: [ViT](wiki:Vision transformer), DINO, DINOv2/v3 and [SAM](wiki:Segment Anything) are all trained with it.`,
     },
     {
       id: 'schedule', type: 'text', title: 'Warmup + cosine: the modern schedule',
@@ -97,14 +97,14 @@ DINO, for example, warms the learning rate up linearly over the first 10 epochs,
       question: 'You train on your 100,000 watch images with batch size 64. How many optimizer steps are in one epoch (round up)?',
       answer: 1563, tolerance: 0,
       hint: '$100{,}000 / 64 = 1562.5$',
-      explain: '1,563 steps. With 2 GPUs doing data-parallel training at 64 images *each*, the effective batch is 128 and an epoch is 782 steps. When the batch size changes, papers usually scale the learning rate proportionally (the "linear scaling rule").',
+      explain: '1,563 steps. With 2 GPUs doing [data-parallel](wiki:Data parallelism) training at 64 images *each*, the effective batch is 128 and an epoch is 782 steps. When the batch size changes, papers usually scale the learning rate proportionally (the "linear scaling rule").',
     },
     {
       id: 'calc-mem', type: 'numeric', title: 'The memory bill for AdamW',
-      question: 'In plain FP32, each parameter needs 4 bytes for the weight, 4 for its gradient, and 8 for AdamW\'s two running averages. How many GB (10⁹ bytes) does that take for a 300M-parameter model (≈ ViT-L), **before** any activations?',
+      question: 'In plain [FP32](wiki:Single-precision floating-point format|Einfache Genauigkeit), each parameter needs 4 bytes for the weight, 4 for its gradient, and 8 for AdamW\'s two running averages. How many GB (10⁹ bytes) does that take for a 300M-parameter model (≈ ViT-L), **before** any activations?',
       answer: 4.8, tolerance: 0.1, unit: 'GB',
       hint: '$300 \\times 10^6 \\times 16$ bytes.',
-      explain: '$4.8$ GB. Fine on a 24 GB RTX 4090 — but activations for a batch of high-resolution images come on top and often dominate. For the 7B-parameter DINOv3 teacher the same arithmetic gives 112 GB: impossible to train on your hardware, which is exactly why Meta distills it into smaller models you *can* use.',
+      explain: '$4.8$ GB. Fine on a 24 GB [RTX 4090](wiki:GeForce 40 series|Nvidia-GeForce-40-Serie) — but activations for a batch of high-resolution images come on top and often dominate. For the 7B-parameter DINOv3 teacher the same arithmetic gives 112 GB: impossible to train on your hardware, which is exactly why [Meta](wiki:Meta AI|Meta AI) distills it into smaller models you *can* use.',
     },
     {
       id: 'quiz-opt', type: 'quiz', title: 'Optimizer check',
