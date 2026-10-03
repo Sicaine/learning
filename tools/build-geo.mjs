@@ -114,6 +114,8 @@ const write = (name, data) => {
 const RIVER_DE = { Danube: 'Donau', Rhine: 'Rhein', Rhin: 'Rhein', Vistula: 'Weichsel', Tevere: 'Tiber', Tejo: 'Tajo', Volga: 'Wolga', Dnipro: 'Dnepr', Dnepre: 'Dnepr', Neman: 'Memel', Daugava: 'Düna', Dniester: 'Dnister', Sava: 'Save', Tisa: 'Theiß', Pripyat: 'Pripjat', Thames: 'Themse', Warta: 'Warthe', Vltava: 'Moldau', Nile: 'Nil', Firat: 'Euphrat', 'Al Furat': 'Euphrat', Tigris: 'Tigris', Dicle: 'Tigris', Gange: 'Ganges', Chang: 'Jangtse', 'Chang Jiang': 'Jangtse', Yangtze: 'Jangtse', 'Huang He': 'Gelber Fluss', Zambezi: 'Sambesi', Congo: 'Kongo', Amazonas: 'Amazonas', Mississippi: 'Mississippi', Ob: 'Ob', Yenisey: 'Jenissei', Lena: 'Lena', Amur: 'Amur', Mekong: 'Mekong', Niger: 'Niger', Indus: 'Indus', Brahmaputra: 'Brahmaputra', 'Syr Darya': 'Syrdarja', 'Amu Darya': 'Amudarja', Jordan: 'Jordan', Orinoco: 'Orinoco', Paraná: 'Paraná', 'Rio de la Plata': 'Río de la Plata', 'St. Lawrence': 'Sankt-Lorenz-Strom', Colorado: 'Colorado', Missouri: 'Missouri', Ohio: 'Ohio', Mackenzie: 'Mackenzie', Yukon: 'Yukon', Murray: 'Murray', Limpopo: 'Limpopo', Orange: 'Oranje', Senegal: 'Senegal', Volta: 'Volta', Irrawaddy: 'Irawadi', Salween: 'Saluen', Hwang: 'Gelber Fluss', Xi: 'Perlfluss', Kolyma: 'Kolyma', Shannon: 'Shannon', Severn: 'Severn' };
 const riverName = p => RIVER_DE[p.name] || RIVER_DE[p.name_en] || p.name_de || p.name_en || p.name;
 
+// German → English names for English-language subjects (written to names-en.js).
+const EN = { country: {}, range: {}, river: {}, lake: {}, city: {} };
 const importance = sr => (sr <= 4 ? 1 : sr <= 8 ? 2 : 3);
 
 // ---------- load ----------
@@ -124,7 +126,7 @@ const [ctr10, ctr50, states, rEu, rGl, lakesEu, lakesGl, places, regions, peaks]
 ]);
 
 const cname = p => p.NAME_DE || p.NAME_EN || p.NAME;
-const countries = (src, tol, clip, minArea) => src.features.map(f => ({ n: cname(f.properties), c: f.properties.ADM0_A3, p: buildPolys(f.geometry, tol, clip, minArea) })).filter(c => c.p.length);
+const countries = (src, tol, clip, minArea) => src.features.map(f => ({ n: (EN.country[cname(f.properties)] = f.properties.NAME_EN || f.properties.NAME, cname(f.properties)), c: f.properties.ADM0_A3, p: buildPolys(f.geometry, tol, clip, minArea) })).filter(c => c.p.length);
 
 // ---------- cities ----------
 const cityRows = places.features.map(f => {
@@ -134,13 +136,14 @@ const cityRows = places.features.map(f => {
 });
 const inBox = (c, b) => c.lon >= b[0] && c.lon <= b[2] && c.lat >= b[1] && c.lat <= b[3];
 const city = c => [c.n, r2(c.lon), r2(c.lat), Math.round(c.pop / 1000), c.cap];
+places.features.forEach(f => { const p = f.properties; if (p.NAME_EN && (p.NAME_DE || p.NAME_EN) !== p.NAME_EN) EN.city[p.NAME_DE || p.NAME_EN || p.NAME] = p.NAME_EN; });
 const citiesCentral = cityRows.filter(c => inBox(c, CENTRAL) && (c.pop >= 90000 || c.cap >= 1 && c.c === 'DEU' || c.cap === 2)).map(city);
 const citiesEurope = cityRows.filter(c => inBox(c, EUROPE) && !inBox(c, CENTRAL) && (c.pop >= 400000 || c.cap === 2)).map(city);
 const citiesWorld = cityRows.filter(c => c.cap === 2 || c.pop >= 3000000).map(city);
 
 // ---------- lakes ----------
 // The global set has the famous ones (Bodensee, Genfer See, Müritz); the Europe set adds many small ones.
-const lakeName = f => f.properties.name_de || f.properties.name_en || f.properties.name || '';
+const lakeName = f => { const n = f.properties.name_de || f.properties.name_en || f.properties.name || ''; if (n && f.properties.name_en && f.properties.name_en !== n) EN.lake[n] = f.properties.name_en; return n; };
 const lakeOf = (f, tol, clip) => ({ n: lakeName(f), p: buildPolys(f.geometry, tol, clip, 0.0002) });
 function lakes(tol, clip, glMaxRank) {
   const gl = lakesGl.features.filter(f => f.properties.scalerank <= glMaxRank);
@@ -158,6 +161,7 @@ function rivers(tol, clip, maxImportance) {
   const add = (props, geom, src) => {
     const name = riverName(props);
     if (!name || props.featurecla === 'Lake Centerline') return;
+    const en = props.name_en || props.name; if (en && en !== name) EN.river[name] ??= en;
     const imp = importance(props.scalerank);
     if (imp > maxImportance) return;
     const lines = geom.type === 'LineString' ? [geom.coordinates] : geom.coordinates;
@@ -215,5 +219,8 @@ const catalog = {
   lakes: [...new Set([...lakesCentral, ...lakesEuropeLod, ...lakesWorld].map(l => l.n).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de')),
 };
 write('catalog.js', catalog);
+for (const f of regions.features) if (f.properties.FEATURECLA === 'Range/mtn' && f.properties.NAME_DE && f.properties.NAME_EN && f.properties.NAME_DE !== f.properties.NAME_EN) EN.range[f.properties.NAME_DE] = f.properties.NAME_EN;
+for (const k of Object.keys(EN)) for (const [de, en] of Object.entries(EN[k])) if (de === en) delete EN[k][de];
+write('names-en.js', EN);
 writeFileSync(join(OUT, 'CATALOG.txt'), Object.entries(catalog).map(([k, v]) => `## ${k} (${v.length})\n${v.join(', ')}\n`).join('\n'));
 console.log('rivers central/europe/world:', riversCentral.length, riversEurope.length, riversWorld.length);

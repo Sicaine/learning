@@ -65,6 +65,7 @@ function makeView(bbox, kind) {
   if (H < minH) H = minH;
   const ox = (W - rawW * s) / 2 - minX * s, oy = (H - rawH * s) / 2 - minY * s;
   const to = (lon, lat) => { const [px, py] = project(lon, lat); return [px * s + ox, py * s + oy]; };
+  to.wrap = world;
   return { to, H, scale: s, project, world, bbox };
 }
 
@@ -84,21 +85,30 @@ export async function lookupPlace(name) {
 }
 
 const within = (bb, [x0, y0, x1, y1], m = 0) => bb[0] >= x0 - m && bb[1] >= y0 - m && bb[2] <= x1 + m && bb[3] <= y1 + m;
-const SEAS = [['Nordsee', 3.2, 55.8], ['Ostsee', 19.5, 57.6], ['Atlantik', -15, 46], ['Mittelmeer', 17, 35.2], ['Schwarzes Meer', 34.5, 43.2], ['Adria', 15.4, 43.1], ['Ägäis', 25, 38.7], ['Tyrrhenisches Meer', 12, 39.7], ['Ionisches Meer', 18.6, 37.4], ['Kaspisches Meer', 51, 41.5], ['Rotes Meer', 38.5, 20.5], ['Persischer Golf', 51.5, 27], ['Golf von Biskaya', -4.5, 45.3], ['Ärmelkanal', -1.5, 50.1], ['Nordmeer', 2, 68], ['Barentssee', 40, 73], ['Weißes Meer', 38, 65.5], ['Bottnischer Meerbusen', 20, 62.5], ['Atlantischer Ozean', -35, 20], ['Atlantischer Ozean ', -22, -20], ['Pazifischer Ozean', -150, 5], ['Pazifischer Ozean ', 165, 15], ['Indischer Ozean', 80, -15], ['Arktischer Ozean', 0, 83], ['Karibisches Meer', -75, 15], ['Golf von Mexiko', -90, 25], ['Arabisches Meer', 65, 15]];
+// [name, lon, lat, max lon-span of the view in which the label is shown]
+const STATES_EN = { Bayern: 'Bavaria', 'Baden-Württemberg': 'Baden-Württemberg', Hessen: 'Hesse', Niedersachsen: 'Lower Saxony', 'Nordrhein-Westfalen': 'North Rhine-Westphalia', 'Rheinland-Pfalz': 'Rhineland-Palatinate', Sachsen: 'Saxony', 'Sachsen-Anhalt': 'Saxony-Anhalt', Thüringen: 'Thuringia', 'Mecklenburg-Vorpommern': 'Mecklenburg-Vorpommern', 'Freie Hansestadt Bremen': 'Bremen' };
+const SEAS_EN = { Nordsee: 'North Sea', Ostsee: 'Baltic Sea', Atlantik: 'Atlantic Ocean', Mittelmeer: 'Mediterranean Sea', 'Schwarzes Meer': 'Black Sea', Adria: 'Adriatic Sea', Ägäis: 'Aegean Sea', 'Tyrrhenisches Meer': 'Tyrrhenian Sea', 'Ionisches Meer': 'Ionian Sea', 'Kaspisches Meer': 'Caspian Sea', 'Rotes Meer': 'Red Sea', 'Persischer Golf': 'Persian Gulf', 'Golf von Biskaya': 'Bay of Biscay', Ärmelkanal: 'English Channel', Nordmeer: 'Norwegian Sea', Barentssee: 'Barents Sea', 'Weißes Meer': 'White Sea', 'Bottnischer Meerbusen': 'Gulf of Bothnia', 'Atlantischer Ozean': 'Atlantic Ocean', 'Pazifischer Ozean': 'Pacific Ocean', 'Indischer Ozean': 'Indian Ocean', 'Arktischer Ozean': 'Arctic Ocean', 'Karibisches Meer': 'Caribbean Sea', 'Golf von Mexiko': 'Gulf of Mexico', 'Arabisches Meer': 'Arabian Sea' };
+const SEAS = [['Nordsee', 3.2, 55.8, 60], ['Ostsee', 19.5, 57.6, 60], ['Atlantik', -15, 46, 120], ['Mittelmeer', 17, 35.2], ['Schwarzes Meer', 34.5, 43.2, 100], ['Adria', 15.4, 43.1, 40], ['Ägäis', 25, 38.7, 40], ['Tyrrhenisches Meer', 12, 39.7, 40], ['Ionisches Meer', 18.6, 37.4, 40], ['Kaspisches Meer', 51, 41.5, 120], ['Rotes Meer', 38.5, 20.5, 120], ['Persischer Golf', 51.5, 27, 80], ['Golf von Biskaya', -4.5, 45.3, 60], ['Ärmelkanal', -1.5, 50.1, 40], ['Nordmeer', 2, 68, 80], ['Barentssee', 40, 73, 80], ['Weißes Meer', 38, 65.5, 60], ['Bottnischer Meerbusen', 20, 62.5, 40], ['Atlantischer Ozean', -35, 20], ['Atlantischer Ozean ', -22, -20], ['Pazifischer Ozean', -150, 5], ['Pazifischer Ozean ', 165, 15], ['Indischer Ozean', 80, -15], ['Arktischer Ozean', 0, 83], ['Karibisches Meer', -75, 15, 120], ['Golf von Mexiko', -90, 25, 120], ['Arabisches Meer', 65, 15, 130]];
 
 // ---------- helpers ----------
 const num = n => Math.round(n * 10) / 10;
-function ringPath(flat, to) {
-  let d = '';
-  for (let i = 0; i < flat.length; i += 2) { const [x, y] = to(flat[i], flat[i + 1]); d += (i ? 'L' : 'M') + num(x) + ' ' + num(y); }
-  return d + 'Z';
-}
-function linePath(flat, to) {
-  let d = '';
-  for (let i = 0; i < flat.length; i += 2) { const [x, y] = to(flat[i], flat[i + 1]); d += (i ? 'L' : 'M') + num(x) + ' ' + num(y); }
+// Features that straddle the seam of a world projection would be drawn as a line across the whole map:
+// start a new sub-path whenever consecutive points jump by more than half the map width.
+function subpaths(flat, to) {
+  let d = '', px = null;
+  for (let i = 0; i < flat.length; i += 2) {
+    const [x, y] = to(flat[i], flat[i + 1]);
+    d += (px === null || Math.abs(x - px) > W * 0.5 ? 'M' : 'L') + num(x) + ' ' + num(y);
+    px = x;
+  }
   return d;
 }
-const polysPath = (polys, to) => polys.map(rings => rings.map(r => ringPath(r, to)).join('')).join('');
+const ringPath = (flat, to) => subpaths(flat, to) + 'Z';
+const linePath = (flat, to) => subpaths(flat, to);
+// Polygons entirely outside the (padded) view are skipped — this also keeps Antarctica from flooding world maps.
+function ringBounds(flat) { let a = 1e9, b = 1e9, c = -1e9, d = -1e9; for (let i = 0; i < flat.length; i += 2) { a = Math.min(a, flat[i]); c = Math.max(c, flat[i]); b = Math.min(b, flat[i + 1]); d = Math.max(d, flat[i + 1]); } return [a, b, c, d]; }
+const touches = (flat, v) => { const [a, b, c, d] = ringBounds(flat); return !(c < v[0] || a > v[2] || d < v[1] || b > v[3]); };
+const polysPath = (polys, to, vis) => polys.filter(rings => !vis || touches(rings[0], vis)).map(rings => rings.map(r => ringPath(r, to)).join('')).join('');
 function polysBox(polys, to) {
   let big = null, area = -1;
   for (const rings of polys) {
@@ -141,6 +151,11 @@ export async function renderMap(b, ctx) {
     } else bbox = VIEWS.de;
   }
   const view = makeView(bbox, b.proj);
+  const padLon = Math.max((bbox[2] - bbox[0]) * 0.35, 4), padLat = Math.max((bbox[3] - bbox[1]) * 0.35, 3);
+  const vis = [bbox[0] - padLon, bbox[1] - padLat, bbox[2] + padLon, bbox[3] + padLat];
+  const lang = ctx.subject?.lang || 'en';
+  const names = lang === 'en' ? await load('names-en') : null;
+  const nm = (k, n) => names?.[k]?.[n] ?? n;
 
   // Level of detail.
   const central = await load('central');
@@ -188,7 +203,7 @@ export async function renderMap(b, ctx) {
 
   // Land & borders
   parts.push('<g class="mp-land">');
-  for (const c of geo.countries) parts.push(`<path class="mp-country" data-name="${esc(c.n)}" d="${polysPath(c.p, to)}"/>`);
+  for (const c of geo.countries) parts.push(`<path class="mp-country" data-name="${esc(nm('country', c.n))}" d="${polysPath(c.p, to, vis)}"/>`);
   parts.push('</g>');
 
   // Highlights (countries / states)
@@ -196,15 +211,15 @@ export async function renderMap(b, ctx) {
   highlight.forEach((h, hi) => {
     const col = colorOf(h.color, ['#c2410c', '#2563eb', '#059669', '#9333ea', '#ca8a04'][hi % 5]);
     const ds = [];
-    for (const n of h.countries || []) { const c = geo.countries.find(x => x.n === n) || (lodName !== 'central' ? null : null); if (c) ds.push(polysPath(c.p, to)); else console.warn(`[map ${b.id}] unknown country "${n}" in this detail level`); }
-    for (const n of h.states || []) { const s = states?.find(x => x.n === n || x.n.replace('Freie Hansestadt ', '') === n); if (s) ds.push(polysPath(s.p, to)); else console.warn(`[map ${b.id}] unknown state "${n}"`); }
+    for (const n of h.countries || []) { const c = geo.countries.find(x => x.n === n) || (lodName !== 'central' ? null : null); if (c) ds.push(polysPath(c.p, to, vis)); else console.warn(`[map ${b.id}] unknown country "${n}" in this detail level`); }
+    for (const n of h.states || []) { const s = states?.find(x => x.n === n || x.n.replace('Freie Hansestadt ', '') === n); if (s) ds.push(polysPath(s.p, to, vis)); else console.warn(`[map ${b.id}] unknown state "${n}"`); }
     if (ds.length) hlPaths.push(`<path class="mp-hl" data-q="hl${hi}" data-name="${esc(h.label || '')}" style="--c:${col}" d="${ds.join('')}"/>`);
     if (h.quiz && h.label) hit.push({ id: `hl${hi}`, name: h.label, kind: 'area' });
   });
-  if (layers.states && states) parts.push(`<g class="mp-states">${states.map(s => `<path data-name="${esc(s.n)}" d="${polysPath(s.p, to)}"/>`).join('')}</g>`);
+  if (layers.states && states) parts.push(`<g class="mp-states">${states.map(s => `<path data-name="${esc(lang === 'en' ? (STATES_EN[s.n] || s.n) : s.n)}" d="${polysPath(s.p, to, vis)}"/>`).join('')}</g>`);
   parts.push(`<g class="mp-hls">${hlPaths.join('')}</g>`);
-  if (layers.mountains && geo.mountains) parts.push(`<g class="mp-mount">${geo.mountains.map(m => `<path d="${polysPath(m.p, to)}"/>`).join('')}</g>`);
-  if (layers.lakes && geo.lakes) parts.push(`<g class="mp-lakes">${geo.lakes.map(l => `<path ${l.n ? `data-name="${esc(l.n)}"` : ''} d="${polysPath(l.p, to)}"/>`).join('')}</g>`);
+  if (layers.mountains && geo.mountains) parts.push(`<g class="mp-mount">${geo.mountains.map(m => `<path d="${polysPath(m.p, to, vis)}"/>`).join('')}</g>`);
+  if (layers.lakes && geo.lakes) parts.push(`<g class="mp-lakes">${geo.lakes.map(l => `<path ${l.n ? `data-name="${esc(nm('lake', l.n))}"` : ''} d="${polysPath(l.p, to, vis)}"/>`).join('')}</g>`);
 
   // Rivers
   const wanted = new Map(riverReqs.map(r => [r.name, r]));
@@ -214,7 +229,7 @@ export async function renderMap(b, ctx) {
     for (const r of geo.rivers) {
       if (wanted.has(r.n)) continue;
       const cls = `i${r.i}`;
-      rv.push(`<path class="mp-river ${cls}" data-name="${esc(r.n)}" d="${r.l.map(l => linePath(l, to)).join('')}"/>`);
+      rv.push(`<path class="mp-river ${cls}" data-name="${esc(nm('river', r.n))}" d="${r.l.map(l => linePath(l, to)).join('')}"/>`);
     }
     parts.push(`<g class="mp-rivers">${rv.join('')}</g>`);
   }
@@ -226,8 +241,8 @@ export async function renderMap(b, ctx) {
     const pts = []; for (let i = 0; i < longest.length; i += 2) pts.push(to(longest[i], longest[i + 1]));
     if (pts[0][0] > pts[pts.length - 1][0]) pts.reverse();
     const d = pts.map(([x, y], i) => (i ? 'L' : 'M') + num(x) + ' ' + num(y)).join('');
-    emphasised.push({ id, name: r.n, rq, d, all: r.l.map(l => linePath(l, to)).join(''), col: rq.color });
-    if (rq.quiz) hit.push({ id, name: r.n, kind: 'line' });
+    emphasised.push({ id, name: nm('river', r.n), rq, d, all: r.l.map(l => linePath(l, to)).join(''), col: rq.color });
+    if (rq.quiz) hit.push({ id, name: nm('river', r.n), kind: 'line' });
   });
   parts.push(`<g class="mp-rivers-hi">${emphasised.map(e => `<path class="mp-river hi" data-q="${e.id}" data-name="${esc(e.name)}" style="${e.col ? `--c:${e.col}` : ''}" d="${e.all}"/><path class="mp-hitline" data-q="${e.id}" data-name="${esc(e.name)}" d="${e.all}"/><path id="${e.id}" d="${e.d}" fill="none" stroke="none"/>`).join('')}</g>`);
 
@@ -265,17 +280,29 @@ export async function renderMap(b, ctx) {
     g.innerHTML = `<text class="mp-t ${cls}" x="${dx}" y="${dy}" text-anchor="${anchor}">${esc(text)}</text>`;
     L.append(g); return g;
   };
-  if (layers.seaLabels) for (const [n, lon, lat] of SEAS) if (lon > bbox[0] && lon < bbox[2] && lat > bbox[1] && lat < bbox[3]) { const [x, y] = to(lon, lat); addLabel(x, y, n.trim(), 'sea'); }
-  if (showCountryLabels) for (const c of geo.countries) {
-    if (!c.p.length || (b.layers?.countryLabels === undefined && lodName === 'world' && lonSpan > 100)) continue;
-    const bb = polysBox(c.p, to); if (!bb) continue;
-    const cx = (bb[0] + bb[2]) / 2, cy = (bb[1] + bb[3]) / 2;
-    if (cx < 0 || cx > W || cy < 0 || cy > view.H) continue;
-    if ((bb[2] - bb[0]) < 28) continue;
-    addLabel(cx, cy, c.n.toUpperCase(), 'country');
+  if (layers.seaLabels) for (const [n, lon, lat, maxSpan = 999] of SEAS) if (lonSpan <= maxSpan && lon > bbox[0] && lon < bbox[2] && lat > bbox[1] && lat < bbox[3]) { const [x, y] = to(lon, lat); if (x > 55 && x < W - 55 && y > 16 && y < view.H - 16) addLabel(x, y, lang === 'en' ? (SEAS_EN[n.trim()] || n.trim()) : n.trim(), 'sea'); }
+  if (showCountryLabels) {
+    // Greedy culling: biggest countries first; a label must fit inside its country and not overlap another label.
+    const uEst = 0.7, placed = [], cand = [];
+    for (const c of geo.countries) {
+      if (!c.p.length || (b.layers?.countryLabels === undefined && lodName === 'world' && lonSpan > 100)) continue;
+      const bb = polysBox(c.p, to); if (!bb) continue;
+      const cx = (bb[0] + bb[2]) / 2, cy = (bb[1] + bb[3]) / 2;
+      if (cx < 0 || cx > W || cy < 0 || cy > view.H) continue;
+      cand.push({ c, cx, cy, wpx: (bb[2] - bb[0]) * uEst });
+    }
+    cand.sort((a, d) => d.wpx - a.wpx);
+    for (const { c, cx, cy, wpx } of cand) {
+      const w = c.n.length * 7.6 + 8, x = cx * uEst, y = cy * uEst;
+      if (wpx < w * 0.75 || x - w / 2 < 6 || x + w / 2 > W * uEst - 6) continue;
+      const box = [x - w / 2, y - 8, x + w / 2, y + 8];
+      if (placed.some(o => !(box[2] < o[0] || box[0] > o[2] || box[3] < o[1] || box[1] > o[3]))) continue;
+      placed.push(box);
+      addLabel(cx, cy, nm('country', c.n).toUpperCase(), 'country');
+    }
   }
-  if (layers.states && layers.stateLabels && states) for (const s of states) { const bb = polysBox(s.p, to); if (bb) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, s.n.replace('Freie Hansestadt ', ''), 'state'); }
-  if (layers.mountains && geo.mountains && b.layers?.mountainLabels !== false) for (const m of geo.mountains) { const bb = polysBox(m.p, to); if (bb && (bb[2] - bb[0]) > 24 && bb[2] > 0 && bb[0] < W) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, m.n, 'range'); }
+  if (layers.states && layers.stateLabels && states) for (const s of states) { const bb = polysBox(s.p, to); if (bb) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, (lang === 'en' ? (STATES_EN[s.n] || s.n) : s.n).replace('Freie Hansestadt ', ''), 'state'); }
+  if (layers.mountains && geo.mountains && b.layers?.mountainLabels !== false) for (const m of geo.mountains) { const bb = polysBox(m.p, to); if (bb && (bb[2] - bb[0]) > 24 && bb[2] > 0 && bb[0] < W) addLabel((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2, nm('range', m.n), 'range'); }
   if (b.landscapes) {
     const places = await load('places');
     const want = b.landscapes === true ? null : new Set(b.landscapes);
@@ -296,13 +323,13 @@ export async function renderMap(b, ctx) {
     if (pts[0][0] > pts[pts.length - 1][0]) pts.reverse();
     const id = `rl-${b.id}-${r.n.replace(/\W/g, '')}`;
     const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); p.setAttribute('id', id); p.setAttribute('fill', 'none'); p.setAttribute('d', pts.map(([x, y], i) => (i ? 'L' : 'M') + num(x) + ' ' + num(y)).join('')); tp.append(p);
-    pathText(id, r.n, 'river faint');
+    pathText(id, nm('river', r.n), 'river faint');
   }
 
   // Cities (zoom-dependent, collision-culled)
   const cg = document.createElementNS('http://www.w3.org/2000/svg', 'g'); cg.setAttribute('class', 'mp-cities'); vg.append(cg);
   const cityList = (geo.cities || []).filter(c => layers.cities === 'all' || (layers.cities === 'capitals' ? c[4] >= 1 && (c[4] === 2 || lodName === 'central') : layers.cities === 'major' ? c[3] >= 250 || c[4] >= 1 : false))
-    .map(c => ({ n: c[0], pop: c[3], cap: c[4], xy: to(c[1], c[2]) })).filter(c => c.xy[0] > -5 && c.xy[0] < W + 5 && c.xy[1] > -5 && c.xy[1] < view.H + 5)
+    .map(c => ({ n: nm('city', c[0]), pop: c[3], cap: c[4], xy: to(c[1], c[2]) })).filter(c => c.xy[0] > -5 && c.xy[0] < W + 5 && c.xy[1] > -5 && c.xy[1] < view.H + 5)
     .sort((a, b) => (b.cap === 2) - (a.cap === 2) || b.pop - a.pop);
 
   // Markers
@@ -427,7 +454,10 @@ export async function renderMap(b, ctx) {
   function showDetail(p) {
     if (!p.detail && !p.label) { detail.hidden = true; return; }
     detail.hidden = false;
-    detail.innerHTML = `<b>${esc(p.label || '')}</b>${p.detail ? `<div class="prose small">${md(p.detail, ctx)}</div>` : ''}`;
+    const body = p.detail ? md(p.detail, ctx) : '';
+    const probe = document.createElement('div'); probe.innerHTML = body;
+    const dup = p.label && probe.textContent.trim().toLowerCase().startsWith(p.label.toLowerCase());   // detail already starts with the name
+    detail.innerHTML = `${dup ? '' : `<b>${esc(p.label || '')}</b>`}${body ? `<div class="prose small">${body}</div>` : ''}`;
   }
 
   // ----- legend -----

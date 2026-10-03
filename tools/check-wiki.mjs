@@ -9,7 +9,7 @@ import { existsSync } from 'node:fs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'site');
 const { subjects } = await import(join(root, 'subjects/index.js'));
-const UA = { 'User-Agent': 'learning-platform-dev/0.1 (personal project)' };
+const UA = { 'User-Agent': `learning-platform/0.1 (https://github.com/Sicaine/learning; pid ${process.pid})` };
 const [onlySubject, ...onlyLessons] = process.argv.slice(2);
 const WIKI_RE = /\[([^\]]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
 

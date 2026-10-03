@@ -1,5 +1,5 @@
 // Wikipedia geocoding helper: titles → { title, lat, lon } using the article's coordinates.
-const UA = { 'User-Agent': 'learning-platform-dev/0.1 (personal project)' };
+const UA = { 'User-Agent': `learning-platform/0.1 (https://github.com/Sicaine/learning; pid ${process.pid})` };
 
 export async function geocode(titles, lang = 'de') {
   const out = {};
@@ -12,7 +12,7 @@ export async function geocode(titles, lang = 'de') {
       if (res.ok) { r = (await res.json()).query; break; }
       await new Promise(s => setTimeout(s, 1500 * (attempt + 1)));
     }
-    if (!r) continue;
+    if (!r) throw new Error('Wikipedia API unavailable (rate limited?) — wait a minute and rerun');
     const back = {};
     for (const x of [...(r.normalized || []), ...(r.redirects || [])]) back[x.to] = x.from;
     const origin = t => { let o = t; while (back[o]) o = back[o]; return o; };
