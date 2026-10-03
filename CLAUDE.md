@@ -6,7 +6,7 @@ vanilla ES modules, KaTeX from CDN, all learner state in `localStorage`, JSON ex
 ## Run & check locally
 
 ```sh
-npm run dev      # node --watch tools/dev-server.mjs → http://0.0.0.0:12121, no-cache + live reload
+npm run dev      # node --watch tools/dev-server.mjs → http://0.0.0.0:12121, no-cache + live reload (tabs poll /__v; no long-lived connections)
 npm run check    # node tools/validate.mjs — validates all content cross-references
 node tools/check-wiki.mjs [subject [lessonId …]]  # verifies Wikipedia titles (needs network)
 node tools/geocode.mjs "Kalkriese" "Xanten"          # lon/lat for map points, straight from Wikipedia

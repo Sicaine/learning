@@ -1,5 +1,5 @@
 // Local dev server: serves site/ without caching and live-reloads open tabs
-// whenever a file under site/ changes. No dependencies.
+// whenever a file under site/ changes (tabs poll /__v). No dependencies.
 //   node --watch tools/dev-server.mjs [port] [host]
 // (--watch restarts the server itself when this file changes.)
 
@@ -20,20 +20,16 @@ const TYPES = {
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.md': 'text/markdown; charset=utf-8',
 };
 
-// Injected into HTML pages: reconnecting EventSource that reloads on change.
-const CLIENT = `<script>(()=>{let s;const c=()=>{s=new EventSource('/__reload');s.onmessage=e=>{if(e.data==='reload')location.reload()};s.onerror=()=>{s.close();setTimeout(c,1000)}};c()})();</script>`;
+// Injected into HTML pages: polls a version counter once a second and reloads when it changes.
+// (No long-lived connection on purpose: browsers allow only ~6 per host, so several open tabs
+// with an EventSource would starve every other request and freeze the site.)
+const CLIENT = `<script>(()=>{let v=null;const t=async()=>{try{const r=await fetch('/__v',{cache:'no-store'});const n=await r.text();if(v===null)v=n;else if(n!==v)location.reload()}catch{}};setInterval(t,1000);t()})();</script>`;
 
-const clients = new Set();
+let version = Date.now();
 
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
-  if (url.pathname === '/__reload') {
-    res.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive' });
-    res.write('retry: 1000\n\n');
-    clients.add(res);
-    req.on('close', () => clients.delete(res));
-    return;
-  }
+  if (url.pathname === '/__v') { res.writeHead(200, { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' }); res.end(String(version)); return; }
   let path = normalize(join(root, decodeURIComponent(url.pathname)));
   if (!path.startsWith(root)) { res.writeHead(403).end(); return; }
   try {
@@ -52,8 +48,8 @@ let timer;
 watch(root, { recursive: true }, (_, file) => {
   clearTimeout(timer);
   timer = setTimeout(() => {
-    console.log(`changed: ${file} → reloading ${clients.size} tab(s)`);
-    for (const c of clients) c.write('data: reload\n\n');
+    version = Date.now();
+    console.log(`changed: ${file} → open tabs reload within a second`);
   }, 150);
 });
 
