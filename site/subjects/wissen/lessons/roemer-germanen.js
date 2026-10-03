@@ -13,13 +13,34 @@ export default {
     {
       id: 'intro', type: 'text', title: 'Rom am Rhein',
       md: `
-Um die Zeitenwende reichte das Römische Reich bis an **Rhein und Donau**. Links des Rheins und südlich der Donau entstanden römische Provinzen mit Straßen, Legionslagern, Thermen und Städten. Viele deutsche Städte sind römische Gründungen:
+Um die Zeitenwende reichte das Römische Reich bis an **[Rhein](wiki:Rhein|Rhine) und [Donau](wiki:Donau|Danube)**. Links des Rheins und südlich der Donau entstanden römische Provinzen mit Straßen, Legionslagern, Thermen und Städten. Viele deutsche Städte sind römische Gründungen:
 
-- **Köln** — *Colonia Claudia Ara Agrippinensium*, Stadtrecht 50 n. Chr.
-- **Trier** — *Augusta Treverorum*, später sogar Kaiserresidenz (Porta Nigra)
-- **Mainz**, **Bonn**, **Koblenz**, **Augsburg**, **Regensburg** — aus Legionslagern oder Siedlungen hervorgegangen
+- **[Köln](wiki:Köln|Cologne)** — *Colonia Claudia Ara Agrippinensium*, Stadtrecht 50 n. Chr.
+- **[Trier](wiki:Trier)** — *Augusta Treverorum*, später sogar Kaiserresidenz ([Porta Nigra](wiki:Porta Nigra))
+- **[Mainz](wiki:Mainz)**, **[Bonn](wiki:Bonn)**, **[Koblenz](wiki:Koblenz)**, **[Augsburg](wiki:Augsburg)**, **[Regensburg](wiki:Regensburg)** — aus Legionslagern oder Siedlungen hervorgegangen
 
-Jenseits davon lebten die **Germanen** — kein einheitliches Volk, sondern viele Stämme (Cherusker, Chatten, Sueben …), deren Sammelname von den Römern stammt. Sie hinterließen keine eigenen Geschichtsbücher; was wir über sie wissen, stammt großteils von römischen Autoren wie **Tacitus** (*Germania*, um 98 n. Chr.) und aus der Archäologie.`,
+Jenseits davon lebten die **[Germanen](wiki:Germanen|Germanic peoples)** — kein einheitliches Volk, sondern viele Stämme ([Cherusker](wiki:Cherusker|Cherusci), [Chatten](wiki:Chatten|Chatti), [Sueben](wiki:Sueben|Suebi) …), deren Sammelname von den Römern stammt. Sie hinterließen keine eigenen Geschichtsbücher; was wir über sie wissen, stammt großteils von römischen Autoren wie **Tacitus** (*Germania*, um 98 n. Chr.) und aus der Archäologie.`,
+    },
+    {
+      id: 'map-rom-germanien', type: 'map', title: 'Rom am Rhein: Städte, Flüsse und der Limes',
+      view: [3.9, 47.2, 14.0, 52.9],
+      rivers: [{ name: 'Rhein', labelAt: 0.18 }, { name: 'Donau', labelAt: 0.8 }],
+      places: [
+        { name: 'Köln', pos: 'l', detail: '**[Köln](wiki:Köln|Cologne)** — *Colonia Claudia Ara Agrippinensium*, Stadtrecht 50 n. Chr.; Hauptstadt der Provinz Niedergermanien.' },
+        { name: 'Xanten', pos: 'l', detail: '**[Xanten](wiki:Xanten)** — am Niederrhein lag das Legionslager *Vetera*, später die *Colonia Ulpia Traiana*.' },
+        { name: 'Bonn', pos: 'l', detail: '**[Bonn](wiki:Bonn)** — Legionslager *Bonna*.' },
+        { name: 'Koblenz', pos: 'l', detail: '**[Koblenz](wiki:Koblenz)** — *Confluentes* (Zusammenfluss von Rhein und Mosel).' },
+        { name: 'Mainz', pos: 'l', detail: '**[Mainz](wiki:Mainz)** — *Mogontiacum*, Legionslager und Hauptstadt der Provinz Obergermanien.' },
+        { name: 'Trier', pos: 'l', detail: '**[Trier](wiki:Trier)** — *Augusta Treverorum*, im 4. Jahrhundert Kaiserresidenz; die [Porta Nigra](wiki:Porta Nigra) ist das römische Stadttor.' },
+        { name: 'Augsburg', detail: '**[Augsburg](wiki:Augsburg)** — *Augusta Vindelicum*, Hauptstadt der Provinz Raetien.' },
+        { name: 'Regensburg', detail: '**[Regensburg](wiki:Regensburg)** — Legionslager *Castra Regina* an der Donau.' },
+        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Kalkriese)** — wahrscheinlicher Schauplatz der Varusschlacht (9 n. Chr.).' },
+      ],
+      lines: [
+        { label: 'Limes (ungefährer Verlauf)', dashed: true, color: '#b91c1c', coords: [[7.331,50.496],[7.711,50.338],[8.567,50.272],[8.985,50.082],[9.264,49.704],[9.368,49.583],[9.426,49.431],[9.470,49.310],[9.579,48.980],[9.688,48.798],[10.094,48.837],[10.157,48.917],[10.754,49.115],[10.972,49.031],[11.771,48.854]],
+          detail: 'Der **Obergermanisch-Raetische [Limes](wiki:Obergermanisch-Raetischer Limes|Limes)** — von Rheinbrohl am Rhein bis Eining an der Donau, rund 550 km. Der Verlauf ist hier vereinfacht.' },
+      ],
+      caption: 'Tippe auf Marker und Linien. Südlich der Donau und westlich des Rheins lagen die römischen Provinzen; dazwischen sicherte der Limes das „Dekumatland“.',
     },
     {
       id: 'video-varus', type: 'video', youtube: 'scPZum-mi4A', label: '1. Jahrhundert – Germanen gegen Rom – Varusschlacht', channel: 'MrWissen2go | Terra X',
@@ -28,26 +49,41 @@ Jenseits davon lebten die **Germanen** — kein einheitliches Volk, sondern viel
     {
       id: 'varus', type: 'text', title: 'Das Jahr 9 n. Chr.: die Varusschlacht',
       md: `
-Kaiser Augustus wollte Germanien bis zur **Elbe** zur Provinz machen. Statthalter war **Publius Quinctilius Varus**. Einer seiner Vertrauten war der Cherusker **Arminius** — ein germanischer Adliger, der im römischen Heer gedient und das römische Bürgerrecht erhalten hatte.
+Kaiser [Augustus](wiki:Augustus) wollte Germanien bis zur **[Elbe](wiki:Elbe)** zur Provinz machen. Statthalter war **[Publius Quinctilius Varus](wiki:Publius Quinctilius Varus)**. Einer seiner Vertrauten war der [Cherusker](wiki:Cherusker|Cherusci) **[Arminius](wiki:Arminius)** — ein germanischer Adliger, der im römischen Heer gedient und das römische Bürgerrecht erhalten hatte.
 
 Im Herbst 9 n. Chr. lockte Arminius Varus mit der Meldung eines Aufstands in unwegsames Gelände. Auf dem Marsch wurden drei Legionen samt Hilfstruppen in einem tagelangen Hinterhalt vernichtet — die **[[varusschlacht]]**. Varus nahm sich das Leben. Überliefert ist Augustus' Ausruf: *„Varus, gib mir meine Legionen wieder!"*
 
 Die Folgen:
 
-- Rom gab den Plan einer Provinz bis zur Elbe auf; nach Strafzügen unter Germanicus (bis 16 n. Chr.) wurde der **Rhein** zur dauerhaften Grenze.
+- Rom gab den Plan einer Provinz bis zur Elbe auf; nach Strafzügen unter [Germanicus](wiki:Germanicus) (bis 16 n. Chr.) wurde der **[Rhein](wiki:Rhein|Rhine)** zur dauerhaften Grenze.
 - Später sicherten die Römer das Gebiet zwischen Rhein und Donau mit dem **[[limes]]**.
-- Der genaue Ort war lange umstritten; seit den Funden ab 1987 gilt **Kalkriese** bei Osnabrück als wahrscheinlicher Schauplatz.[^museum-kalkriese][^wp-varusschlacht]`,
+- Der genaue Ort war lange umstritten; seit den Funden ab 1987 gilt **[Kalkriese](wiki:Kalkriese)** bei [Osnabrück](wiki:Osnabrück|Osnabrück) als wahrscheinlicher Schauplatz.[^museum-kalkriese][^wp-varusschlacht]`,
+    },
+    {
+      id: 'map-varus', type: 'map', title: 'Wo geschah die Varusschlacht?',
+      view: [5.6, 50.7, 10.2, 53.0],
+      rivers: [{ name: 'Rhein' }, { name: 'Lippe' }, { name: 'Ems' }, { name: 'Weser' }],
+      landscapes: ['Teutoburger Wald'],
+      places: [
+        { name: 'Xanten', pos: 'l', detail: '**[Xanten](wiki:Xanten)** — römisches Legionslager *Vetera* am Rhein, Ausgangspunkt der Feldzüge in die Germania.' },
+        { name: 'Kalkriese', kind: 'battle', pos: 'r', detail: '**[Kalkriese](wiki:Kalkriese)** — die Funde seit 1987 sprechen dafür, dass hier der Hinterhalt von 9 n. Chr. stattfand; ganz sicher ist das nicht.' },
+      ],
+      points: [
+        { lon: 7.187, lat: 51.744, label: 'Haltern am See', pos: 'l', detail: '**[Haltern am See](wiki:Haltern am See|Haltern am See)** — römisches Militärlager an der Lippe.' },
+        { lon: 8.839, lat: 51.912, label: 'Hermannsdenkmal', kind: 'site', pos: 'r', detail: '**[Hermannsdenkmal](wiki:Hermannsdenkmal|Hermannsdenkmal)** bei [Detmold](wiki:Detmold), 1875 eingeweiht — ein Denkmal des 19. Jahrhunderts, kein Fundort.' },
+      ],
+      caption: 'Römische Armeen stießen vom Rhein aus an der Lippe entlang nach Osten vor. Der genaue Schlachtort bleibt in der Forschung umstritten.',
     },
     {
       id: 'fact-hermann', type: 'callout', tone: 'fact', title: 'Aus Arminius wurde „Hermann"',
-      md: `Im 19. Jahrhundert machten Nationalisten aus Arminius den „Hermann, Befreier Germaniens". Das **Hermannsdenkmal** bei Detmold (eingeweiht 1875, kurz nach der Reichsgründung) ist mit Figur rund 53 m hoch. Mit den historischen Germanen, die sich nicht als „Deutsche" verstanden, hat dieser Mythos wenig zu tun.`,
+      md: `Im 19. Jahrhundert machten Nationalisten aus Arminius den „Hermann, Befreier Germaniens". Das **[Hermannsdenkmal](wiki:Hermannsdenkmal|Hermannsdenkmal)** bei [Detmold](wiki:Detmold) (eingeweiht 1875, kurz nach der Reichsgründung) ist mit Figur rund 53 m hoch. Mit den historischen Germanen, die sich nicht als „Deutsche" verstanden, hat dieser Mythos wenig zu tun.`,
     },
     {
       id: 'limes-text', type: 'text', title: 'Der Limes: eine Grenze zum Handeln',
       md: `
-Der **Obergermanisch-Raetische [[limes]]** verlief rund 550 km von **Rheinbrohl** (Rhein) bis **Eining** (Donau). Er bestand aus Palisade bzw. Wall und Graben (in Raetien einer Mauer), rund 900 Wachtürmen und etwa 120 größeren und kleineren Kastellen. Er war weniger eine Festung als eine kontrollierte Grenze: An Durchgängen wurden Waren verzollt, Germanen und Römer trieben Handel.
+Der **Obergermanisch-Raetische [[limes]]** verlief rund 550 km von **[Rheinbrohl](wiki:Rheinbrohl)** (Rhein) bis **[Eining](wiki:Eining)** (Donau). Er bestand aus Palisade bzw. Wall und Graben (in Raetien einer Mauer), rund 900 Wachtürmen und etwa 120 größeren und kleineren Kastellen. Er war weniger eine Festung als eine kontrollierte Grenze: An Durchgängen wurden Waren verzollt, Germanen und Römer trieben Handel.
 
-Um 260 n. Chr. gaben die Römer das Gebiet hinter dem Limes auf und zogen sich wieder an Rhein und Donau zurück. Seit **2005** ist der Limes **UNESCO-Welterbe**; die rekonstruierte **Saalburg** im Taunus zeigt, wie ein Kastell aussah.[^limeskommission]`,
+Um 260 n. Chr. gaben die Römer das Gebiet hinter dem Limes auf und zogen sich wieder an Rhein und Donau zurück. Seit **2005** ist der Limes **[UNESCO-Welterbe](wiki:UNESCO-Welterbe|World Heritage Site)**; die rekonstruierte **[Saalburg](wiki:Kastell Saalburg|Saalburg)** im [Taunus](wiki:Taunus) zeigt, wie ein Kastell aussah.[^limeskommission]`,
     },
     {
       id: 'quiz-roman', type: 'quiz', title: 'Römisch oder nicht?',
@@ -61,11 +97,19 @@ Um 260 n. Chr. gaben die Römer das Gebiet hinter dem Limes auf und zogen sich w
       ],
     },
     {
+      id: 'map-quiz-rom', type: 'map', title: 'Wo liegen die römischen Städte?',
+      view: [3.9, 47.2, 14.0, 52.9],
+      layers: { cities: false },
+      quiz: { rounds: 7 },
+      rivers: [{ name: 'Rhein', quiz: true }, { name: 'Donau', quiz: true }],
+      places: [{ name: 'Köln' }, { name: 'Trier' }, { name: 'Mainz' }, { name: 'Augsburg' }, { name: 'Xanten' }, { name: 'Kalkriese', kind: 'battle' }],
+    },
+    {
       id: 'voelkerwanderung', type: 'text', title: 'Vom Ende Roms zu den Franken',
       md: `
-Ab dem 3. Jahrhundert geriet das Römische Reich unter Druck. Der Einfall der **Hunnen 375** gilt als Beginn der **[[voelkerwanderung|Völkerwanderung]]**: Goten, Vandalen, Burgunder, Langobarden und andere zogen durch Europa und gründeten Reiche auf römischem Boden. **476** setzte der germanische Heerführer Odoaker den letzten weströmischen Kaiser ab — das **Weströmische Reich** endete. Das Oströmische (Byzantinische) Reich bestand bis 1453 weiter.
+Ab dem 3. Jahrhundert geriet das Römische Reich unter Druck. Der Einfall der **[Hunnen](wiki:Hunnen|Huns) 375** gilt als Beginn der **[[voelkerwanderung|Völkerwanderung]]**: [Goten](wiki:Goten|Goths), [Vandalen](wiki:Vandalen|Vandals), [Burgunder](wiki:Burgunden|Burgundians), [Langobarden](wiki:Langobarden|Lombards) und andere zogen durch Europa und gründeten Reiche auf römischem Boden. **476** setzte der germanische Heerführer [Odoaker](wiki:Odoaker|Odoacer) den letzten weströmischen Kaiser ab — das **[Weströmische Reich](wiki:Weströmisches Reich|Western Roman Empire)** endete. Das Oströmische ([Byzantinische](wiki:Byzantinisches Reich|Byzantine Empire)) Reich bestand bis 1453 weiter.
 
-Das dauerhafteste der neuen Reiche war das der **Franken**. Der Merowinger **Chlodwig I.** einte um 500 die fränkischen Stämme und trat zum katholischen Christentum über — ein Bündnis mit der Kirche und der romanischen Bevölkerung, das das [[frankenreich|Frankenreich]] stark machte. Aus ihm gingen später Frankreich und Deutschland hervor.`,
+Das dauerhafteste der neuen Reiche war das der **[Franken](wiki:Franken (Volk)|Franks)**. Der [Merowinger](wiki:Merowinger|Merovingian dynasty) **[Chlodwig I.](wiki:Chlodwig I.|Clovis I)** einte um 500 die fränkischen Stämme und trat zum katholischen Christentum über — ein Bündnis mit der Kirche und der romanischen Bevölkerung, das das [[frankenreich|Frankenreich]] stark machte. Aus ihm gingen später Frankreich und Deutschland hervor.`,
     },
     {
       id: 'timeline-antike', type: 'game', viz: 'timeline', title: 'Bring die Ereignisse in die richtige Reihenfolge',

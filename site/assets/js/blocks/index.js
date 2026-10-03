@@ -8,7 +8,7 @@ import * as store from '../store.js';
 import { addCards } from '../progress.js';
 import { t } from '../i18n.js';
 
-const LABELLED = new Set(['video', 'quiz', 'recall', 'numeric', 'order', 'match', 'viz', 'game']);
+const LABELLED = new Set(['video', 'quiz', 'recall', 'numeric', 'order', 'match', 'viz', 'game', 'map']);
 export function blockLabel(b) { return b.title || t(LABELLED.has(b.type) ? `label.${b.type}` : 'label.read'); }
 
 export async function renderBlock(b, ctx) {
@@ -252,6 +252,7 @@ const renderers = {
     return root;
   },
 
+  async map(b, ctx) { return (await import('./map.js')).renderMap(b, ctx); },
   async viz(b, ctx) { return mountModule(b, ctx, t('kind.viz')); },
   async game(b, ctx) { return mountModule(b, ctx, t('kind.game')); },
 };

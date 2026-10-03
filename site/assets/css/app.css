@@ -525,3 +525,72 @@ figcaption, .viz-caption { font-size: .88rem; color: var(--muted); margin: 12px 
 .wiki-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-size: .9rem; }
 .callout.fact { background: linear-gradient(135deg, color-mix(in oklab, var(--accent-2) 10%, white), white 75%); border-color: color-mix(in oklab, var(--accent-2) 35%, white); }
 .callout.fact .callout-tag { color: color-mix(in oklab, var(--accent-2) 70%, black); }
+
+/* ---------- Maps ---------- */
+.mp-block:not(.task) { padding: 20px 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.mp-wrap { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #dfe9f3; margin-top: 8px; }
+.mp-svg { display: block; width: 100%; height: auto; --k: 1; --u: .7; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.mp-svg.zoomed { touch-action: none; cursor: grab; }
+.mp-sea { fill: #dfe9f3; }
+.mp-country { fill: #f6f3ea; stroke: #bcc1cc; stroke-width: .7px; vector-effect: non-scaling-stroke; }
+.mp-states path { fill: transparent; stroke: #c3c7d1; stroke-width: .6px; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+.mp-hl { fill: color-mix(in oklab, var(--c) 30%, transparent); stroke: var(--c); stroke-width: 1.6px; vector-effect: non-scaling-stroke; cursor: pointer; }
+.mp-mount, .mp-lakes, .mp-rivers, .mp-labels, .mp-pathlabels, .mp-cities, .mp-arrow { pointer-events: none; }
+.mp-mount path { fill: #b9a47c; opacity: .3; }
+.mp-lakes path { fill: #dfe9f3; stroke: #8db3dd; stroke-width: .6px; vector-effect: non-scaling-stroke; }
+.mp-river { fill: none; stroke: #8db3dd; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.mp-river.i1 { stroke-width: 2px; } .mp-river.i2 { stroke-width: 1.3px; } .mp-river.i3 { stroke-width: .8px; }
+.mp-river.hi { stroke: var(--c, #2f6fb6); stroke-width: 3px; }
+.mp-area { fill: color-mix(in oklab, var(--c) 22%, transparent); stroke: var(--c); stroke-width: 1.8px; vector-effect: non-scaling-stroke; cursor: pointer; }
+.mp-line { fill: none; stroke: var(--c); stroke-width: var(--w, 3px); stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.mp-line.dashed { stroke-dasharray: 9 6; }
+.mp-hitline { fill: none; stroke: transparent; stroke-width: 18px; vector-effect: non-scaling-stroke; pointer-events: stroke; cursor: pointer; }
+.mp-arrow path { fill: var(--c); stroke: #fff; stroke-width: 1.2px; }
+.mp-t { font-family: var(--sans); font-size: 11.5px; font-weight: 500; fill: var(--ink); paint-order: stroke; stroke: rgba(255, 255, 255, .92); stroke-width: 3.2px; stroke-linejoin: round; pointer-events: none; }
+.mp-t.sea { font-style: italic; fill: #5f84ad; letter-spacing: .08em; stroke: #dfe9f3; }
+.mp-t.country { font-size: 10.5px; fill: #8b90a1; letter-spacing: .14em; font-weight: 600; stroke: rgba(246, 243, 234, .9); }
+.mp-t.range { font-style: italic; fill: #8a6f48; font-size: 11px; stroke: rgba(246, 243, 234, .9); }
+.mp-t.state { fill: #9ba1b1; font-size: 10px; font-weight: 600; stroke: rgba(246, 243, 234, .9); }
+.mp-t.city { font-size: 11px; fill: #2a2d3e; }
+.mp-t.pt { font-weight: 650; font-size: 12px; stroke-width: 3.6px; }
+.city { fill: #4a4f66; stroke: #fff; stroke-width: 1px; } .city.cap { fill: var(--ink); }
+.mp-pt { font-family: var(--sans); font-style: italic; font-weight: 600; font-size: calc(11.5px / var(--u) / var(--k)); fill: var(--c, #2f6fb6); paint-order: stroke; stroke: rgba(255, 255, 255, .92); stroke-width: calc(3.2px / var(--u) / var(--k)); stroke-linejoin: round; pointer-events: none; }
+.mp-pt.route { font-style: normal; font-weight: 700; }
+.mp-pt.faint { opacity: .8; font-weight: 500; }
+.mp-pt-g { cursor: pointer; }
+.mp-pt-g .hit { fill: transparent; }
+.mp-pt-g .mk { fill: var(--c); stroke: #fff; stroke-width: 2px; }
+.mp-pt-g .mk-x path { stroke: var(--c); stroke-width: 3.4px; stroke-linecap: round; fill: none; }
+.mp-pt-g .mk-n { fill: #fff; font: 700 11px var(--sans); }
+.mp-lg-hidden { display: none; }
+.mp-ctl { position: absolute; right: 10px; top: 10px; display: grid; gap: 4px; }
+.mp-ctl button { width: 32px; height: 32px; border-radius: 9px; border: 1px solid var(--line); background: rgba(255, 255, 255, .92); font-size: 1.05rem; line-height: 1; box-shadow: var(--shadow-s); }
+.mp-ctl button:hover { color: var(--accent); }
+.mp-scale { position: absolute; left: 10px; bottom: 8px; font-size: .72rem; color: #4a4f66; font-weight: 600; display: flex; flex-direction: column; gap: 2px; text-shadow: 0 0 3px #fff, 0 0 3px #fff; pointer-events: none; }
+.mp-scale span { display: block; height: 5px; border: 2px solid #4a4f66; border-top: 0; }
+.mp-hint { position: absolute; right: 10px; bottom: 8px; font-size: .7rem; color: #6b7088; text-shadow: 0 0 3px #fff, 0 0 3px #fff; pointer-events: none; }
+.mp-tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: .8rem; padding: 3px 9px; border-radius: 7px; white-space: nowrap; transform: translate(-50%, -140%); z-index: 3; }
+.mp-detail { margin-top: 10px; padding: 12px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); }
+.mp-detail .prose { margin-top: 4px; }
+.mp-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.mp-legend:empty { display: none; }
+.mp-lg-item { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--surface-2); border-radius: 99px; padding: 3px 11px 3px 8px; font-size: .84rem; }
+.mp-lg-item:hover { border-color: var(--accent-line); }
+.mp-lg-item .sw { width: 16px; height: 6px; border-radius: 3px; background: var(--c); }
+.mp-lg-item .sw.area { height: 12px; width: 12px; border-radius: 3px; background: color-mix(in oklab, var(--c) 35%, transparent); border: 2px solid var(--c); }
+.mp-credit { margin-top: 8px; font-size: .72rem; color: var(--muted); }
+.mp-prompt { margin: 6px 0 4px; font-size: 1rem; min-height: 1.6em; }
+.mp-prompt .good { color: var(--good); } .mp-prompt .bad { color: var(--bad); font-weight: 600; margin-left: 6px; font-size: .9rem; }
+.mp-q-n { display: inline-block; font-size: .72rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 99px; padding: 1px 8px; margin-right: 6px; }
+.mp-pt-g.found .mk, .mp-arrow.found path { fill: var(--good); }
+.mp-line.found, .mp-river.hi.found { stroke: var(--good); }
+.mp-hl.found, .mp-area.found { fill: color-mix(in oklab, var(--good) 35%, transparent); stroke: var(--good); }
+.mp-pt-g.pulse, .mp-line.pulse, .mp-river.pulse, .mp-hl.pulse, .mp-area.pulse { animation: mp-pulse .7s ease-in-out infinite; }
+@keyframes mp-pulse { 50% { opacity: .25; } }
+@media (max-width: 720px) { .mp-hint { display: none; } .mp-block:not(.task) { padding: 14px; } }
+
+/* Inline Wikipedia links */
+a.wlink { color: inherit; border-bottom: 1px solid color-mix(in oklab, var(--ink) 28%, transparent); text-decoration: none; }
+a.wlink::after { content: 'W'; font: 700 .62em/1 'Linux Libertine', Georgia, serif; vertical-align: super; margin-left: 2px; color: var(--muted); }
+a.wlink:hover { text-decoration: none; border-bottom-color: var(--accent); color: var(--accent); }
+.pop-wiki-row { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }

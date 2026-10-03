@@ -71,7 +71,7 @@ export async function loadAllLessons(subject) {
 // Blocks that count as a task (they have a "done" state).
 const TASK_TYPES = new Set(['video', 'quiz', 'recall', 'numeric', 'order', 'match', 'viz', 'game']);
 export function tasksOf(lesson) {
-  return lesson.blocks.filter(b => TASK_TYPES.has(b.type) && !(b.type === 'viz' && !b.task));
+  return lesson.blocks.filter(b => (TASK_TYPES.has(b.type) && !(b.type === 'viz' && !b.task)) || (b.type === 'map' && b.quiz));
 }
 
 export function cardKey(lid, cid) { return `${lid}:${cid}`; }

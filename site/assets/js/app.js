@@ -11,7 +11,7 @@ import * as store from './store.js';
 import { subjects, subjectMeta, loadSubject } from './content.js';
 import { deckStats } from './progress.js';
 import { el, $, $$, icon } from './ui.js';
-import { md, mdInline, sourceLine, wikiLinks, altName, altLabel, esc } from './markup.js';
+import { md, mdInline, sourceLine, wikiLinks, parseWikiSpec, altName, altLabel, esc } from './markup.js';
 import { t as tr, setLang } from './i18n.js';
 import home from './views/home.js';
 import overview from './views/subject.js';
@@ -149,7 +149,13 @@ document.addEventListener('mouseover', e => {
   if (!subj) return;
   const term = e.target.closest?.('.term');
   const fn = e.target.closest?.('.fn');
+  const wl = e.target.closest?.('.wlink');
   if (e.target.closest?.('.popover')) { clearTimeout(popTimer); return; }
+  if (wl) {
+    const wiki = parseWikiSpec(wl.dataset.w, subj.lang || 'en');
+    showPop(wl, `<div class="pop-head"><b>Wikipedia</b></div><div class="pop-wiki-row">${wikiLinks({ wiki }, { titles: true })}</div>`);
+    return;
+  }
   if (term) {
     const t = subj.glossary[term.dataset.term];
     if (!t) return;

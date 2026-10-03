@@ -43,7 +43,7 @@ function blocks(s, ctx) {
   s = s.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
     `\u0001${fences.push(`<pre class="code"><code>${esc(code.replace(/\n$/, ''))}</code></pre>`) - 1}\u0001`);
 
-  for (const chunk of s.split(/\n\s*\n/)) {
+  for (const chunk of s.split(/\n\s*\n/).flatMap(splitBlocks)) {
     const c = chunk.trim();
     if (!c) continue;
     let m;
@@ -57,6 +57,20 @@ function blocks(s, ctx) {
     else out.push(`<p>${inline(c, ctx)}</p>`);
   }
   return out.join('\n');
+}
+
+// A list (or heading / code fence) may directly follow a text line without a blank line in between.
+function splitBlocks(chunk) {
+  const kind = l => /^[-*]\s/.test(l) ? 'ul' : /^\d+\.\s/.test(l) ? 'ol' : /^#{2,4}\s/.test(l) ? 'h' : /^\u0001\d+\u0001$/.test(l) ? 'f' : null;
+  const out = []; let cur = null;
+  for (const l of chunk.split('\n')) {
+    const k = kind(l);
+    if (k === 'h' || k === 'f') { cur = null; out.push(l); continue; }
+    if (k && cur?.type !== k) { cur = { type: k, lines: [] }; out.push(cur); }
+    else if (!k && !cur) { cur = { type: 'p', lines: [] }; out.push(cur); }
+    cur.lines.push(l);
+  }
+  return out.map(o => (typeof o === 'string' ? o : o.lines.join('\n')));
 }
 
 function list(c, tag, re, ctx) {
@@ -74,6 +88,7 @@ function inline(s, ctx) {
     .replace(/`([^`]+)`/g, (_, c) => `<code>${esc(c)}</code>`)
     .replace(/\[\[([\w-]+)(?:\|([^\]]+))?\]\]/g, (_, id, shown) => termLink(id, shown, ctx))
     .replace(/\[\^([\w-]+)\]/g, (_, id) => footnote(id, ctx))
+    .replace(/\[([^\]]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g, (_, text, spec) => wikiInline(text, spec, ctx))
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, url) => `<a href="${url}" target="_blank" rel="noopener">${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, '$1<em>$2</em>')
@@ -84,6 +99,21 @@ function inline(s, ctx) {
 export function altName(term, subject) { return subject?.lang === 'de' ? term.en : term.de; }
 export function altLabel(subject) { return subject?.lang === 'de' ? 'EN' : 'DE'; }
 
+// Inline Wikipedia link: [text](wiki:Title) or [text](wiki:Title|Other-language title).
+// Title is in the subject's language; the optional second one in the other (de ↔ en).
+export function parseWikiSpec(spec, lang) {
+  const [a, b] = spec.split('|').map(s => s.trim());
+  const other = lang === 'de' ? 'en' : 'de';
+  return { [lang]: a, ...(b ? { [other]: b } : {}) };
+}
+function wikiInline(text, spec, ctx) {
+  const lang = ctx.subject?.lang || 'en';
+  const wiki = parseWikiSpec(spec, lang);
+  const key = wiki[lang];
+  if (ctx.wikis && !ctx.wikis.has(key)) ctx.wikis.set(key, { label: text.replace(/<[^>]+>/g, ''), wiki });
+  return `<a class="wlink" href="${wikiUrl(lang, key)}" target="_blank" rel="noopener" data-w="${esc(spec)}">${text}</a>`;
+}
+
 export function termLink(id, shown, ctx) {
   const subj = ctx.subject;
   const t = subj?.glossary?.[id];
@@ -91,6 +121,7 @@ export function termLink(id, shown, ctx) {
     console.warn(`[markup] unknown term "${id}"`);
     return `<span class="term-missing">${shown || id}</span>`;
   }
+  if (ctx.wikis && t.wiki) { const key = t.wiki[subj.lang || 'en'] || t.wiki.en || t.wiki.de; if (!ctx.wikis.has(key)) ctx.wikis.set(key, { label: t.term.replace(/\s*\(.*\)$/, ''), wiki: t.wiki, termId: id }); }
   const alt = altName(t, subj);
   const de = alt ? `<span class="de">${esc(alt)}</span>` : '';
   return `<a class="term" data-term="${id}" href="#/s/${subj.id}/glossary/${id}">${shown || inlineName(t, subj)}${de}</a>`;

@@ -8,7 +8,8 @@ vanilla ES modules, KaTeX from CDN, all learner state in `localStorage`, JSON ex
 ```sh
 npm run dev      # node --watch tools/dev-server.mjs → http://0.0.0.0:12121, no-cache + live reload
 npm run check    # node tools/validate.mjs — validates all content cross-references
-node tools/check-wiki.mjs  # verifies all Wikipedia titles exist (needs network)
+node tools/check-wiki.mjs [subject [lessonId …]]  # verifies Wikipedia titles (needs network)
+node tools/geocode.mjs "Kalkriese" "Xanten"          # lon/lat for map points, straight from Wikipedia
 ```
 
 Always run `npm run check` after touching content; it must report 0 errors.
@@ -93,8 +94,43 @@ Block types (all text fields use the markup dialect):
 - `numeric` `{ question, answer: number, tolerance?, unit?, hint?, explain? }`
 - `order` `{ prompt, items: [in correct order], explain? }`
 - `match` `{ prompt?, pairs: [[left, right], ...] }`
+- `map` — see "Map block" below. A task only if `quiz` is set.
 - `viz` `{ viz: <name>, title?, intro?, params?, caption?, task? }` — a task only if `task` is set.
 - `game` `{ viz: <name>, title?, params? }` — always a task.
+
+### Map block (`type: 'map'`)
+Real geodata (Natural Earth, public domain) with rivers, borders, mountains, Länder and cities; pan/zoom,
+tap markers for details, optional "find it on the map" quiz. **Use a map whenever a lesson talks about
+places** — where the Rhine runs, where a battle was, how far a route went, which countries are meant.
+```js
+{ id: 'map-limes', type: 'map', title?, intro?, caption?,
+  view: 'de' | 'rhein' | 'europe' | 'mediterranean' | 'near-east' | 'asia' | 'world' | … | [lonMin, latMin, lonMax, latMax],   // omit → fitted to your points/lines
+  rivers: ['Rhein', { name: 'Donau', color?, label?: false, labelAt?: 0..1, quiz?: true }],   // emphasised + labelled; names: site/assets/data/geo/CATALOG.txt
+  places: ['Köln', { name: 'Trier', label?, detail?, pos?: 'l'|'r'|'t'|'b', kind?, num?, color?, quiz?: false }],   // names from the gazetteer (assets/data/geo/places.js) or big cities
+  points: [{ lon, lat, label, detail?, kind?, num?, color?, pos? }],   // anything else — LON FIRST; get coordinates with `node tools/geocode.mjs "Kalkriese"`
+  lines:  [{ label, coords: [[lon, lat], …], dashed?, color?, arrow?, labelAt?, detail?, quiz? }],   // routes, frontiers, migrations
+  areas:  [{ label, coords: [[lon, lat], …], color?, detail?, quiz? }],                              // hand-drawn rough regions
+  highlight: [{ countries: ['Frankreich'], states: ['Bayern'], label, color?, quiz? }],              // modern countries/Länder as stand-ins (say "heutige Staaten" in the caption)
+  layers: { states, stateLabels, rivers, riverLabels, lakes, mountains, peaks, cities: false|'capitals'|'major'|'all', countryLabels, seaLabels },
+  landscapes: ['Schwarzwald', 'Eifel'] | true,   // italic landscape labels from the gazetteer (kind 'land')
+  quiz: true | { rounds: 8 } }                   // targets = places/points + rivers/lines/areas/highlights with quiz:true; needs ≥ 3
+```
+`kind`: `place` (dot, default), `capital`, `site` (diamond), `battle` (✕), `peak` (triangle), `land` (label only); `num: 1` draws numbered stations (voyages, campaigns).
+Country/state/river names are German. Prefer `places` (verified coordinates). Historical borders do not exist in the data:
+draw `lines`/`areas` roughly and say so in the caption, or use `highlight` with modern countries.
+Rules of thumb: 1–2 maps per place-heavy lesson; a short `detail` (with wiki links) on every marker; zoom the `view` to
+the story (a river map should show the whole river); finish with a `quiz` map in geography-heavy lessons.
+Data is rebuilt by `tools/build-geo.mjs` / `tools/build-places.mjs`; the validator checks names and coordinates.
+
+### Wikipedia links in running text
+`[Cherusker](wiki:Cherusker|Cherusci)` links the words to Wikipedia: the first title is in the **subject's language**
+(German subject → de.wikipedia), the optional second one is the other language (en ↔ de). Hover shows both; every
+lesson ends with a "Mehr auf Wikipedia" list built from all such links and from glossary terms with `wiki`.
+Link people, peoples, places, events, works, institutions and concepts **at first mention in each text block** — any
+text field (text, callout, quiz explanations, recall answers, map `detail`), but not inside `match` pairs or option labels.
+Titles may contain spaces and parentheses (`[Bonn](wiki:Bonn (Bundeshauptstadt))`). Choose real article titles;
+`node tools/check-wiki.mjs <subject> [lessonId …]` verifies them (network) — run it, titles are easy to get wrong.
+The validator warns when a lesson has too few distinct inline links (8 for Allgemeinwissen/Horology, 4 for Seeing Machines).
 
 ### Viz module (`viz/<name>.js`)
 ```js

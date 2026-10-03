@@ -17,13 +17,10 @@ export default async function lessonView(main, { subject, arg: lid }) {
   const next = subject.lessons[subject.order[idx + 1]];
   const taskIds = new Set(tasksOf(lesson).map(t => t.id));
   // Terms this lesson links to that have Wikipedia articles, one entry per article.
-  const seenWiki = new Set();
-  const wikiTerms = [...new Set([...JSON.stringify(lesson).matchAll(/\[\[([\w-]+)/g)].map(m => m[1]))]
-    .map(id => subject.glossary[id])
-    .filter(t => t?.wiki && !seenWiki.has(t.wiki.en || t.wiki.de) && seenWiki.add(t.wiki.en || t.wiki.de));
+  const wikis = new Map();   // filled while text renders (glossary terms with articles + inline [..](wiki:..) links)
 
   const ctx = {
-    subject, lesson, notes, sid,
+    subject, lesson, notes, wikis, sid,
     task: tid => store.lesson(sid, lid).tasks[tid] || {},
     done: (tid, data) => { markTask(sid, lid, tid, data); refresh(); },
     save: (tid, data) => saveTaskData(sid, lid, tid, data),
@@ -78,10 +75,10 @@ export default async function lessonView(main, { subject, arg: lid }) {
           <span class="eyebrow">${t('lesson.sources')}</span>
           <ol>${notes.order.map(id => `<li id="fn-${id}">${sourceLine(subject.sources[id], ctx)}</li>`).join('')}</ol>
         </div>` : ''}
-      ${wikiTerms.length ? `
+      ${wikis.size ? `
         <div class="wiki-list">
           <span class="eyebrow">${t('lesson.wiki')}</span>
-          <ul>${wikiTerms.map(t => `<li><a class="term" data-term="${t.id}" href="#/s/${sid}/glossary/${t.id}">${esc(t.term)}</a><span class="wiki-pills">${wikiLinks(t)}</span></li>`).join('')}</ul>
+          <ul>${[...wikis.values()].map(w => `<li>${w.termId ? `<a class="term" data-term="${w.termId}" href="#/s/${sid}/glossary/${w.termId}">${esc(w.label)}</a>` : `<span>${esc(w.label)}</span>`}<span class="wiki-pills">${wikiLinks({ wiki: w.wiki })}</span></li>`).join('')}</ul>
         </div>` : ''}
       <nav class="pager">
         ${prev ? `<a href="#/s/${sid}/l/${prev.id}" class="prev">${icon.back}<span><small>${t('lesson.prev')}</small>${esc(prev.title)}</span></a>` : '<span></span>'}
