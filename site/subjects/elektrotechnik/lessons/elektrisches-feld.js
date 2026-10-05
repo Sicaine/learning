@@ -44,13 +44,13 @@ Das ist die Grundlage des Kondensators in der nächsten Lektion.[^bnetza-pruefun
     {
       id: 'durchschlag', type: 'text', title: 'Wenn das Feld zu stark wird',
       md: `
-Jeder Isolierstoff hält nur eine bestimmte Feldstärke aus. Wird sie überschritten, reißen Elektronen aus den Atomen, es entsteht ein leitender Kanal: der **Durchschlag** (Funke, Lichtbogen). Die Grenze heißt [Durchschlagfestigkeit](wiki:Durchschlagfestigkeit|Dielectric strength) $E_d$. Richtwerte: Luft rund $3\\,\\mathrm{kV/mm}$ (Näherung, hängt von Feuchte, Druck und Elektrodenform ab), PTFE etwa $400\\,\\mathrm{kV/cm}$ ($= 40\\,\\mathrm{kV/mm}$, Wert aus dem Prüfungskatalog).
+Jeder Isolierstoff hält nur eine bestimmte Feldstärke aus. Wird sie überschritten, reißen Elektronen aus den Atomen, es entsteht ein leitender Kanal: der **Durchschlag** (Funke, Lichtbogen). Die Grenze heißt [[durchschlagfestigkeit|Durchschlagfestigkeit]] ([Wikipedia](wiki:Durchschlagfestigkeit|Dielectric strength)) $E_d$. Richtwerte: Luft rund $3\\,\\mathrm{kV/mm}$ (Näherung, hängt von Feuchte, Druck und Elektrodenform ab), PTFE etwa $400\\,\\mathrm{kV/cm}$ ($= 40\\,\\mathrm{kV/mm}$, Wert aus dem Prüfungskatalog).
 
-Die höchste zulässige Spannung folgt direkt aus $U_\\max = E_d\\cdot d$: Eine PTFE-Folie von $0{,}15\\,\\mathrm{mm} = 0{,}015\\,\\mathrm{cm}$ hält $400\\,\\mathrm{kV/cm}\\cdot 0{,}015\\,\\mathrm{cm} = 6\\,\\mathrm{kV}$ aus. Deshalb nutzt man in Hochspannungs- und Sendekondensatoren Isolierfolien mit hoher Durchschlagfestigkeit statt Luft.
+Die höchste zulässige Spannung folgt direkt aus $U_{\\max} = E_d\\cdot d$: Eine PTFE-Folie von $0{,}15\\,\\mathrm{mm} = 0{,}015\\,\\mathrm{cm}$ hält $400\\,\\mathrm{kV/cm}\\cdot 0{,}015\\,\\mathrm{cm} = 6\\,\\mathrm{kV}$ aus. Deshalb nutzt man in Hochspannungs- und Sendekondensatoren Isolierfolien mit hoher Durchschlagfestigkeit statt Luft.
 
-**Spitzen sprühen:** An einer Spitze drängen sich die Feldlinien dicht zusammen, dort ist $E$ bei gleicher Spannung viel größer als an glatten Flächen. Es kommt zur [Koronaentladung](wiki:Koronaentladung|Corona discharge) und im Extremfall zum Funken. Das ist der Grund, warum Hochspannungsteile abgerundet sind und warum ein [Blitzableiter](wiki:Blitzableiter|Lightning rod) mit Spitze eine Entladung gezielt einfängt. Für Funkamateure heißt das: Wo hohe Spannungen auftreten (Endstufe, Antennenspitzen bei hoher Sendeleistung), vermeidet man Spitzen und scharfe Kanten, sonst gibt es Sprühverluste und Störungen.
+**Spitzen sprühen ([[spitzenwirkung|Spitzenwirkung]]):** An einer Spitze drängen sich die Feldlinien dicht zusammen, dort ist $E$ bei gleicher Spannung viel größer als an glatten Flächen. Es kommt zur [Koronaentladung](wiki:Koronaentladung|Corona discharge) und im Extremfall zum Funken. Das ist der Grund, warum Hochspannungsteile abgerundet sind und warum ein [Blitzableiter](wiki:Blitzableiter|Lightning rod) mit Spitze eine Entladung gezielt einfängt. Für Funkamateure heißt das: Wo hohe Spannungen auftreten (Endstufe, Antennenspitzen bei hoher Sendeleistung), vermeidet man Spitzen und scharfe Kanten, sonst gibt es Sprühverluste und Störungen.
 
-**Faradayscher Käfig:** Im Inneren eines geschlossenen Metallgehäuses ist das äußere Feld null, weil sich die Ladungen im Metall (durch [Influenz](wiki:Influenz|Electrostatic induction)) so verschieben, dass sie das Feld im Inneren auslöschen. Deshalb schützt das Blechgehäuse eines Autos bei Gewitter, und deshalb bekommt ein Funkgerät in einer Metallkiste keinen Empfang. Der [Faradaysche Käfig](wiki:Faradayscher Käfig|Faraday cage) wird in der Etappe zur elektromagnetischen Verträglichkeit wiederkehren.`,
+**[[faradayscher-kaefig|Faradayscher Käfig]]:** Im Inneren eines geschlossenen Metallgehäuses ist das äußere Feld null, weil sich die Ladungen im Metall (durch [Influenz](wiki:Influenz|Electrostatic induction)) so verschieben, dass sie das Feld im Inneren auslöschen. Deshalb schützt das Blechgehäuse eines Autos bei Gewitter, und deshalb bekommt ein Funkgerät in einer Metallkiste keinen Empfang. Der [Faradaysche Käfig](wiki:Faradayscher Käfig|Faraday cage) wird in der Etappe zur elektromagnetischen Verträglichkeit wiederkehren.`,
     },
     {
       id: 'viz-plates', type: 'viz', viz: 'field-plates', title: 'Plattenfeld',
@@ -73,7 +73,7 @@ Die höchste zulässige Spannung folgt direkt aus $U_\\max = E_d\\cdot d$: Eine 
       id: 'num-ptfe', type: 'numeric', title: 'Höchste Spannung für PTFE',
       question: 'Ein Kondensator hat eine $0{,}15\\,\\mathrm{mm}$ starke PTFE-Folie als Dielektrikum. Die Durchschlagfestigkeit von PTFE beträgt etwa $400\\,\\mathrm{kV/cm}$. Welche Spannung darf höchstens anliegen?',
       answer: 6, tolerance: 0.06, unit: 'kV',
-      explain: '$U_\\max = E_d\\cdot d = 400\\,\\mathrm{kV/cm}\\cdot 0{,}015\\,\\mathrm{cm} = 6\\,\\mathrm{kV}$ (EB104).',
+      explain: '$U_{\\max} = E_d\\cdot d = 400\\,\\mathrm{kV/cm}\\cdot 0{,}015\\,\\mathrm{cm} = 6\\,\\mathrm{kV}$ (EB104).',
     },
     {
       id: 'num-kraft', type: 'numeric', title: 'Kraft auf eine Ladung',
@@ -150,7 +150,7 @@ Das E-Feld begegnet dir im Funkbetrieb direkt: Eine elektromagnetische Welle bes
     { id: 'homogenes-feld', front: 'Welches Feld liegt zwischen zwei parallelen Platten?', back: 'Näherungsweise ein homogenes elektrisches Feld (parallele Feldlinien, überall gleiches $E$) — Katalog EB101.' },
     { id: 'kraft-feld', front: 'Kraft auf eine Ladung im Feld', back: '$F = Q\\cdot E$; Richtung wie das Feld (für positive Ladung).' },
     { id: 'coulomb-gesetz', front: 'Coulombsches Gesetz', back: '$F = k\\,Q_1 Q_2/r^2$ mit $k \\approx 8{,}99\\cdot10^9\\,\\mathrm{N\\,m^2/C^2}$; doppelter Abstand → ein Viertel der Kraft.' },
-    { id: 'durchschlag-luft', front: 'Durchschlagfestigkeit von Luft', back: 'Rund $3\\,\\mathrm{kV/mm}$ (Näherung); PTFE etwa $400\\,\\mathrm{kV/cm}$. $U_\\max = E_d\\cdot d$.' },
+    { id: 'durchschlag-luft', front: 'Durchschlagfestigkeit von Luft', back: 'Rund $3\\,\\mathrm{kV/mm}$ (Näherung); PTFE etwa $400\\,\\mathrm{kV/cm}$. $U_{\\max} = E_d\\cdot d$.' },
     { id: 'spitzenwirkung', front: 'Spitzenwirkung', back: 'An Spitzen sind die Feldlinien dicht, $E$ ist hoch → Sprühentladung. Hochspannungsteile werden abgerundet.' },
     { id: 'faraday-kaefig', front: 'Faradayscher Käfig', back: 'Ein geschlossenes Metallgehäuse hält äußere statische Felder vom Inneren fern (Influenz); schützt z. B. im Auto bei Gewitter.' },
     { id: 'einheit-e', front: 'Einheit der elektrischen Feldstärke', back: 'Volt pro Meter (V/m) $= \\mathrm{N/C}$ (Katalog EA103).' },

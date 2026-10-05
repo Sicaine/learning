@@ -16,7 +16,7 @@ export default {
       md: `
 Wer schon einmal die Scheinwerfer eines Autos beim Anlassen hat dunkler werden sehen, kennt das Phänomen: Die [Spannung](wiki:Elektrische Spannung|Voltage) einer Quelle ist nicht konstant, sondern hängt davon ab, wie viel Strom man ihr entnimmt. Eine echte Quelle verhält sich so, als sei in ihr ein Widerstand eingebaut — der **[Innenwiderstand](wiki:Innenwiderstand|Output impedance)** $R_i$ in Reihe mit einer idealen Quelle der Spannung $U_0$.
 
-Diese Ersatzschaltung ist, wie ein [Spannungsteiler](wiki:Spannungsteiler|Voltage divider), nur Reihenschaltung und Maschenregel: Am Innenwiderstand fällt bei Strom $I$ die Spannung $I\\cdot R_i$ ab, und nur der Rest steht an den Klemmen zur Verfügung:
+Diese [[ersatzschaltbild|Ersatzschaltung]] ist, wie ein [Spannungsteiler](wiki:Spannungsteiler|Voltage divider), nur Reihenschaltung und Maschenregel: Am Innenwiderstand fällt bei Strom $I$ die Spannung $I\\cdot R_i$ ab, und nur der Rest steht an den Klemmen zur Verfügung:
 
 $$U_K = U_0 - I\\cdot R_i$$
 

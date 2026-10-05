@@ -1,6 +1,6 @@
 const th = c => `<th style="text-align:left;padding:5px 8px;border-bottom:2px solid var(--line)">${c}</th>`;
 const td = c => `<td style="padding:4px 8px;border-bottom:1px solid var(--line);vertical-align:top">${c}</td>`;
-const LIM = `<table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${['Band', 'Klasse E', 'Klasse A', 'Klasse N'].map(th).join('')}</tr></thead><tbody>${[
+const LIM = `<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${['Band', 'Klasse E', 'Klasse A', 'Klasse N'].map(th).join('')}</tr></thead><tbody>${[
   ['160 m (1810–1850 kHz)', '<b>100 W PEP</b>', '750 W PEP', '–'],
   ['160 m (1850–1890 / 1890–2000 kHz)', '75 W / 10 W PEP (am Wochenende 100 W)', '75 W / 10 W PEP (am Wochenende 750 W)', '–'],
   ['80 m (3,5–3,8 MHz)', '<b>100 W PEP</b>', '750 W PEP', '–'],
@@ -12,7 +12,7 @@ const LIM = `<table style="border-collapse:collapse;width:100%;font-size:.88rem"
   ['70 cm (430–440 MHz)', '<b>75 W PEP</b>', '750 W PEP', '10 W EIRP (6,1 W ERP)'],
   ['23 cm (1240–1300 MHz)', '<b>75 W PEP</b> (1247–1263 MHz: nur 3,05 W ERP)', '750 W PEP (ebenso 3,05 W ERP)', '–'],
   ['ab 13 cm (2320 MHz … 250 GHz)', '<b>5 W PEP</b>', '75 W PEP', '–'],
-].map(r => `<tr>${r.map(td).join('')}</tr>`).join('')}</tbody></table>`;
+].map(r => `<tr>${r.map(td).join('')}</tr>`).join('')}</tbody></table></div>`;
 const figSend = `<svg viewBox="0 0 560 190" role="img" aria-label="Schematisches Display im Sendebetrieb: 1 Frequenz, 2 Power-Meter, 3 SWR-Meter">
 <style>.n{font:700 13px system-ui,sans-serif;fill:#fff}.s{font:11px ui-monospace,monospace;fill:#9fb2c8}</style>
 <rect x="8" y="8" width="544" height="174" rx="14" fill="#1d2430" stroke="var(--line-2)"/>

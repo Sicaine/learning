@@ -10,7 +10,7 @@ export default function mount(stage, { params = {}, complete }) {
   const svg = s('svg', { class: 'vz-svg', viewBox: '0 0 460 190', role: 'img', 'aria-label': 'Frequenzspektrum am Mischerausgang' }); root.append(svg);
   const ui = controls(root, [
     { id: 'fe', label: 'Eingangsfrequenz f_e', unit: 'MHz', min: 1, max: 150, step: 0.1, value: params.fe ?? 28, digits: 4 },
-    { id: 'fo', label: 'Oszillatorfrequenz f_o', unit: 'MHz', min: 1, max: 150, step: 0.1, value: params.fo ?? 38.7, digits: 4 },
+    { id: 'fo', label: 'Oszillatorfrequenz f_o', unit: 'MHz', min: 1, max: 150, step: 0.1, value: params.fo ?? 20, digits: 4 },
   ], run);
   const out = readout(root, [{ id: 'diff', label: 'Differenz |f_e − f_o|', hl: true }, { id: 'sum', label: 'Summe f_e + f_o', hl: true }]);
   const g = goals(root, [
@@ -19,7 +19,7 @@ export default function mount(stage, { params = {}, complete }) {
     { id: 'kl', label: 'Summe 66,7 MHz und Differenz 10,7 MHz erzeugen' },
   ], () => complete?.());
   root.append(h('p', { class: 'vz-note', html: 'Ein Mischer erzeugt am Ausgang vor allem die <b>Summe</b> und die <b>Differenz</b> der beiden Eingangsfrequenzen; die Eingangsfrequenzen selbst sind unerwünscht (kommen durch Unvollkommenheiten ebenfalls etwas durch). Ein Filter wählt hinterher das gewünschte Produkt.' }));
-  const near = (a, b) => Math.abs(a - b) < 0.051;
+  const near = (a, b) => Math.abs(a - b) < 0.11;
   function run() {
     const { fe, fo } = ui.values, sum = fe + fo, diff = Math.abs(fe - fo), max = Math.max(sum * 1.12, 20);
     const X = f => 25 + (f / max) * 410, els = [s('rect', { x: 0, y: 0, width: 460, height: 190, fill: '#fff', rx: 10 }), s('line', { x1: 25, y1: 150, x2: 440, y2: 150, stroke: 'var(--ink)', 'stroke-width': 1.5 })];

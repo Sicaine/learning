@@ -28,7 +28,7 @@ export default function mount(stage, { params = {}, complete, md }) {
   function draw() {
     const f = ui.values.f, lam = C / f;
     svg.replaceChildren();
-    for (const [n, a, b, col] of RANGES) { const xa = px(Math.max(a, F0)), xb = px(Math.min(b, F1)); svg.append(s('rect', { x: xa, y: 30, width: xb - xa, height: 34, fill: col, stroke: '#fff' }), s('text', { x: (xa + xb) / 2, y: 50, 'text-anchor': 'middle', 'font-size': 8.5, fill: 'var(--ink)' }, n.split(' (')[0].replace('HF / ', ''))); }
+    for (const [n, a, b, col] of RANGES) { const xa = px(Math.max(a, F0)), xb = px(Math.min(b, F1)); svg.append(s('rect', { x: xa, y: 30, width: xb - xa, height: 34, fill: col, stroke: '#fff' }), s('text', { x: (xa + xb) / 2, y: 50, 'text-anchor': 'middle', 'font-size': 8.5, fill: 'var(--ink)' }, ({ MF: 'MF', HF: 'Kurzwelle', VHF: 'UKW', UHF: 'Dezimeter', SHF: 'SHF' })[n.split(/[ (/]/)[0]])); }
     for (const e of [6, 7, 8, 9, 10]) { const x = px(10 ** e), lab = { 6: '1 MHz', 7: '10 MHz', 8: '100 MHz', 9: '1 GHz', 10: '10 GHz' }[e]; svg.append(s('line', { x1: x, x2: x, y1: 64, y2: 70, stroke: 'var(--ink-2)' }), s('text', { x, y: 82, 'text-anchor': x > 330 ? 'end' : x < 30 ? 'start' : 'middle', 'font-size': 9, fill: 'var(--muted)' }, lab)); }
     BANDS.forEach(([n, bf], i) => { const x = px(bf); svg.append(s('line', { x1: x, x2: x, y1: 24, y2: 30, stroke: 'var(--accent)', 'stroke-width': 2 }), s('text', { x, y: i % 2 ? 12 : 21, 'text-anchor': 'middle', 'font-size': 8, fill: 'var(--accent)' }, n)); });
     const cx = px(f);

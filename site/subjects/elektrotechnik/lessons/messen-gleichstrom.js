@@ -50,7 +50,7 @@ Beispiel: Ein Messwerk mit $I_a = 50\\,\\mathrm{\\mu A}$ und $R_i = 2\\,\\mathrm
 
 Für Spannungsbereiche schaltet man einen **Vorwiderstand** in Reihe zum Messwerk (Spannungsteiler): $R_V = U/I_a - R_i$.
 
-Ein Wort zur **Genauigkeit**: Analoge Instrumente tragen eine Genauigkeitsklasse $G$, z. B. $1{,}5$. Der maximale Fehler bezieht sich auf den *Endwert* $W_E$ des Messbereichs, nicht auf den Messwert — bei kleinen Ausschlägen ist der relative Fehler deshalb groß:
+Ein Wort zur **Genauigkeit**: Analoge Instrumente tragen eine [[genauigkeitsklasse|Genauigkeitsklasse]] $G$, z. B. $1{,}5$. Der maximale Fehler bezieht sich auf den *Endwert* $W_E$ des Messbereichs, nicht auf den Messwert — bei kleinen Ausschlägen ist der relative Fehler deshalb groß:
 
 $$F_W = \\pm\\frac{G}{100}\\cdot\\frac{W_E}{W_M}$$
 

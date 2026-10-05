@@ -5,7 +5,7 @@ const BANDS = [
   ['20 m', '14000–14350 kHz', 'P', false], ['17 m', '18068–18168 kHz', 'P', false], ['15 m', '21000–21450 kHz', 'P', true], ['12 m', '24890–24990 kHz', 'P', false],
   ['10 m', '28–29,7 MHz', 'P', true], ['6 m', '50–52 MHz', 'S', false], ['2 m', '144–146 MHz', 'P', true], ['70 cm', '430–440 MHz', 'P', true], ['23 cm', '1240–1300 MHz', 'S', true], ['13 cm', '2320–2450 MHz', 'S', true],
 ];
-const bandTbl = `<table style="border-collapse:collapse;width:100%;font-size:.9rem"><thead><tr>${['Band', 'Frequenzbereich (Anlage 1)', 'Status', 'Klasse E'].map(th).join('')}</tr></thead><tbody>${BANDS.map(([b, r, s, e]) => `<tr>${td('<b>' + b + '</b>')}${td(r)}${td(s === 'P' ? '<b style="color:var(--good)">primär</b>' : s === 'S' ? 'sekundär' : 'ab 1850 kHz sekundär, 1810–1850 kHz primär')}${td(e ? '<b style="color:var(--good)">ja</b>' : '<span style="color:var(--muted)">nein</span>')}</tr>`).join('')}</tbody></table>`;
+const bandTbl = `<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.9rem"><thead><tr>${['Band', 'Frequenzbereich (Anlage 1)', 'Status', 'Klasse E'].map(th).join('')}</tr></thead><tbody>${BANDS.map(([b, r, s, e]) => `<tr>${td('<b>' + b + '</b>')}${td(r)}${td(s === 'P' ? '<b style="color:var(--good)">primär</b>' : s === 'S' ? 'sekundär' : 'ab 1850 kHz sekundär, 1810–1850 kHz primär')}${td(e ? '<b style="color:var(--good)">ja</b>' : '<span style="color:var(--muted)">nein</span>')}</tr>`).join('')}</tbody></table></div>`;
 export default {
   id: 'frequenzzuteilung-und-baender',
   title: 'Amateurfunkbänder, primäre/sekundäre Funkdienste, ITU-Regionen',
@@ -34,10 +34,10 @@ Für dich als Funkamateur heißt das: Mit der [[zulassung]] und einem Rufzeichen
       md: `
 Die **[Internationale Fernmeldeunion](wiki:Internationale Fernmeldeunion|International Telecommunication Union)** (ITU) legt in den **[Radio Regulations](wiki:Vollzugsordnung für den Funkdienst|ITU Radio Regulations)** (RR, Artikel 5) fest, welcher [Funkdienst](wiki:Funkdienst|Radio communication service) welche Frequenzbereiche nutzen darf. Die Erde ist dafür in **drei Regionen** eingeteilt, damit in den Regionen **unterschiedliche Zuweisungen** möglich sind — es geht also nicht um Zeitzonen, Gastlizenzen oder darum, dass Amateurfunkverkehr nur innerhalb einer Region erlaubt wäre.[^itu-rr]
 
-<table style="border-collapse:collapse;width:100%;font-size:.92rem"><thead><tr>${th('ITU-Region')}${th('Kontinente und Länder')}${th('Beispiele')}</tr></thead><tbody>
+<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.92rem"><thead><tr>${th('ITU-Region')}${th('Kontinente und Länder')}${th('Beispiele')}</tr></thead><tbody>
 <tr>${td('<b>1</b>')}${td('Afrika, Europa, Russland, Mongolei, Naher Osten')}${td('<b>Deutschland</b>, Ägypten, Türkei')}</tr>
 <tr>${td('<b>2</b>')}${td('Nord- und Südamerika, Grönland')}${td('<b>Kanada</b>, USA, Brasilien')}</tr>
-<tr>${td('<b>3</b>')}${td('Süd- und Ostasien, Australien, Ozeanien')}${td('<b>Australien</b>, Japan, Indien')}</tr></tbody></table>
+<tr>${td('<b>3</b>')}${td('Süd- und Ostasien, Australien, Ozeanien')}${td('<b>Australien</b>, Japan, Indien')}</tr></tbody></table></div>
 
 Die RR gelten nicht unmittelbar für dich: Es dürfen nur die Frequenzen genutzt werden, die **durch nationale Regelungen umgesetzt** wurden. In Deutschland sind das die Frequenzbereiche und ausführlichen Nutzungsbedingungen in der **Anlage 1 der Amateurfunkverordnung** (AFuV) und, soweit nötig, in **weiteren Mitteilungen der Bundesnetzagentur** im Amtsblatt. Dort — und nicht in den RR, im AFuG oder in der Frequenzverordnung/dem Frequenzplan — schlägst du nach, was du darfst.[^afuv] Die Anlage 1 liegt in der Prüfung aus; du musst die Bänder nicht auswendig kennen, solltest sie aber gut lesen können.
 `,

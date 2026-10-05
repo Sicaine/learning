@@ -31,7 +31,7 @@ $$U_2 = U\\cdot\\frac{R_2\\parallel R_L}{R_1 + R_2\\parallel R_L} \\qquad\\text{
 
 Beispiel: $U = 10\\,\\mathrm{V}$, $R_1 = R_2 = 10\\,\\mathrm{k\\Omega}$. Unbelastet liegen $5\\,\\mathrm{V}$ am Ausgang. Mit $R_L = 10\\,\\mathrm{k\\Omega}$ wird $R_2 \\parallel R_L = 5\\,\\mathrm{k\\Omega}$, und $U_2 = 10\\,\\mathrm{V}\\cdot 5/15 \\approx 3{,}33\\,\\mathrm{V}$. Eine Last von der Größe von $R_2$ lässt die Spannung um ein Drittel einbrechen.
 
-**Faustregel:** Der Querstrom $I_q$ durch den Teiler sollte mindestens **zehnmal so groß** sein wie der Laststrom. Dann beeinflusst die Last die Spannung nur um wenige Prozent — dafür fließt dauernd Strom durch den Teiler und erzeugt [Verlustwärme](wiki:Joulesche Wärme|Joule heating). Ein Spannungsteiler eignet sich deshalb für *Signale* und Referenzspannungen mit winzigem Laststrom (z. B. am Eingang eines [Mikrocontrollers](wiki:Mikrocontroller|Microcontroller)), aber nicht als Netzteil.[^kuphaldt-vol1-ch6]
+**Faustregel:** Der [[querstrom|Querstrom]] $I_q$ durch den Teiler sollte mindestens **zehnmal so groß** sein wie der Laststrom. Dann beeinflusst die Last die Spannung nur um wenige Prozent — dafür fließt dauernd Strom durch den Teiler und erzeugt [Verlustwärme](wiki:Joulesche Wärme|Joule heating). Ein Spannungsteiler eignet sich deshalb für *Signale* und Referenzspannungen mit winzigem Laststrom (z. B. am Eingang eines [Mikrocontrollers](wiki:Mikrocontroller|Microcontroller)), aber nicht als Netzteil.[^kuphaldt-vol1-ch6]
 
 Wer eine Spannung bei nennenswertem Strom braucht, nimmt einen [Spannungsregler](wiki:Spannungsregler|Voltage regulator) (kommt in Etappe 6) oder eine [Z-Diode](wiki:Z-Diode|Zener diode).`,
     },

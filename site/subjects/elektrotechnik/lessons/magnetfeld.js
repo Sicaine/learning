@@ -44,8 +44,8 @@ Steckt man einen **[ferromagnetischen](wiki:Ferromagnetismus|Ferromagnetism)** K
 
 Das hat drei wichtige Folgen:
 
-- **Sättigung:** Wenn alle Bezirke ausgerichtet sind, steigt $B$ bei weiterem Strom kaum noch (nur noch wie in Luft). Der Kern ist gesättigt, die Spule verliert dann stark an Wirkung — der Knick im $B(H)$-Diagramm der Demo unten.
-- **[Hysterese](wiki:Hysterese|Hysteresis):** Fährt man $H$ hoch und wieder zurück, geht $B$ nicht denselben Weg. Es bleibt eine [Remanenz](wiki:Remanenz|Remanence) (Restmagnetismus) zurück. Pro Ummagnetisierung geht Energie als Wärme verloren; harte Magnete (Dauermagnete) haben viel, weiche Kerne wenig Remanenz.
+- **[[magnetische-saettigung|Sättigung]]:** Wenn alle Bezirke ausgerichtet sind, steigt $B$ bei weiterem Strom kaum noch (nur noch wie in Luft). Der Kern ist gesättigt, die Spule verliert dann stark an Wirkung — der Knick im $B(H)$-Diagramm der Demo unten.
+- **[Hysterese](wiki:Hysterese|Hysteresis):** Fährt man $H$ hoch und wieder zurück, geht $B$ nicht denselben Weg. Es bleibt eine [[remanenz|Remanenz]] ([Remanence](wiki:Remanenz|Remanence), Restmagnetismus) zurück. Pro Ummagnetisierung geht Energie als Wärme verloren; harte Magnete (Dauermagnete) haben viel, weiche Kerne wenig Remanenz.
 - **[Wirbelströme](wiki:Wirbelstrom|Eddy current):** Ein massiver Metallkern in einem Wechselfeld ist selbst eine kurzgeschlossene Windung — es fließen Ströme, die ihn aufheizen. Gegenmittel: Blechpakete aus gegeneinander isolierten Blechen für 50 Hz, bei hohen Frequenzen **[Ferrit](wiki:Ferrite)** (ein keramischer Werkstoff, der den Strom kaum leitet).
 
 Warum bringt ein **Kupfer- oder Aluminiumkern** in einer Spule bei hoher Frequenz *weniger* statt mehr Induktivität? Beide sind nicht magnetisch, aber leitfähig: Das schnell wechselnde Feld induziert im Kern Wirbelströme, die das Feld aus dem Kern *verdrängen* (Katalog EB205) — das Feld hat dann weniger Querschnitt, und $L$ sinkt. Ferritkerne dagegen nutzt man gerade im Funkbereich: für Antennenstäbe, Drosseln und Übertrager.[^wp-ferromagnetismus]`,

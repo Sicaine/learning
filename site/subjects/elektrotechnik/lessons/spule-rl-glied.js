@@ -41,7 +41,7 @@ Die Induktivität wächst mit dem **Quadrat der Windungszahl** (mehr Windungen e
 
 Daraus folgen die Katalogregeln: **Windungszahl verdoppeln** (gleiche Länge) → **vierfache** Induktivität ($12\\,\\mathrm{\\mu H} \\to 48\\,\\mathrm{\\mu H}$, EC307). **Länge verdoppeln** (gleiche Windungszahl) → **halbe** Induktivität ($12\\,\\mathrm{\\mu H} \\to 6\\,\\mathrm{\\mu H}$, EC306), und deshalb vergrößert man $L$ durch **Zusammenschieben** der Spule in Längsrichtung (EC305). Selbst ein gerader Draht hat eine (kleine) Induktivität (EC304) — bei UKW und höheren Frequenzen wird das wichtig.
 
-Bei Ringkernen gibt der Hersteller den **$A_L$-Wert** an (Induktivität pro Windung²): $L = N^2\\cdot A_L$. Ein Kern mit $A_L = 250\\,\\mathrm{nH}$ und $N = 10$ Windungen hat $L = 100\\cdot 250\\,\\mathrm{nH} = 25\\,\\mathrm{\\mu H}$.
+Bei Ringkernen gibt der Hersteller den **[[al-wert|$A_L$-Wert]]** an (Induktivität pro Windung²): $L = N^2\\cdot A_L$. Ein Kern mit $A_L = 250\\,\\mathrm{nH}$ und $N = 10$ Windungen hat $L = 100\\cdot 250\\,\\mathrm{nH} = 25\\,\\mathrm{\\mu H}$.
 
 **Reihen- und Parallelschaltung** (ohne magnetische Kopplung zwischen den Spulen) verhalten sich wie bei Widerständen: $L_\\text{ges} = L_1 + L_2$ in Reihe und $1/L_\\text{ges} = 1/L_1 + 1/L_2$ parallel. $10\\,\\mathrm{\\mu H} + 22\\,\\mathrm{\\mu H} = 32\\,\\mathrm{\\mu H}$; $10\\,\\mathrm{\\mu H}\\parallel 10\\,\\mathrm{\\mu H} = 5\\,\\mathrm{\\mu H}$.`,
     },
@@ -59,12 +59,12 @@ Der Katalog stellt das als Diagramm (EC301: Spannung an der Spule nach Anlegen v
     {
       id: 'viz-rl', type: 'viz', viz: 'rc-lab', title: 'RL-Schaltvorgang',
       params: { mode: 'rl' },
-      task: 'Stelle $R$ und $L$ so ein, dass $\\tau = 5\\,\\mathrm{ms}$ (±5 %) ist, lass den Strom aus dem Nullzustand auf den Endwert $U/R$ ansteigen (rund $5\\tau$ abwarten) und lege dann den Schalter auf Masse, bis der Strom auf höchstens 1 % abgeklungen ist. Beobachte dabei $u_L$: Beim Einschalten springt sie auf $U$, beim Ausschalten kehrt sie das Vorzeichen um.',
+      task: 'Stelle $R$ und $L$ so ein, dass $\\tau = 5\\,\\mathrm{ms}$ (±5 %) ist (z. B. $330\\,\\mathrm{mH}$ und $68\\,\\Omega$), lass den Strom aus dem Nullzustand auf den Endwert $U/R$ ansteigen (rund $5\\tau$ abwarten) und lege dann den Schalter auf Masse, bis der Strom auf höchstens 1 % abgeklungen ist. Beobachte dabei $u_L$: Beim Einschalten springt sie auf $U$, beim Ausschalten kehrt sie das Vorzeichen um.',
     },
     {
       id: 'abschalten', type: 'text', title: 'Abschalten: Funken und Freilaufdiode',
       md: `
-Und beim **Ausschalten**? Der Schalter öffnet, der Strom müsste *sofort* null werden — doch die Spule verlangt stetigen Strom. Sie erzeugt deshalb eine Spannung, die so hoch wird, wie es nötig ist, um den Strom irgendwie weiterzutreiben: Die Spannung an der Schaltstrecke steigt, bis die Luft durchschlägt — es *funkt*, und die Energie $\\tfrac12 LI^2$ verbrennt im Lichtbogen. Dasselbe Prinzip erzeugt in der [Zündspule](wiki:Zündspule|Ignition coil) eines Verbrennungsmotors die Hochspannung für die [Zündkerze](wiki:Zündkerze|Spark plug).
+Und beim **Ausschalten** (die [[abschaltspitze|Abschaltspitze]])? Der Schalter öffnet, der Strom müsste *sofort* null werden — doch die Spule verlangt stetigen Strom. Sie erzeugt deshalb eine Spannung, die so hoch wird, wie es nötig ist, um den Strom irgendwie weiterzutreiben: Die Spannung an der Schaltstrecke steigt, bis die Luft durchschlägt — es *funkt*, und die Energie $\\tfrac12 LI^2$ verbrennt im Lichtbogen. Dasselbe Prinzip erzeugt in der [Zündspule](wiki:Zündspule|Ignition coil) eines Verbrennungsmotors die Hochspannung für die [Zündkerze](wiki:Zündkerze|Spark plug).
 
 Bei Relais, Motoren und Magnetventilen ist das unerwünscht: Die Spannungsspitze kann Schalttransistoren zerstören und strahlt Störungen ab ([EMV](wiki:Elektromagnetische Verträglichkeit|Electromagnetic compatibility)). Abhilfe:
 

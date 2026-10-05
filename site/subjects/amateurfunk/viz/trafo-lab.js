@@ -11,7 +11,7 @@ export default function mount(stage, { params = {}, complete }) {
   const ui = controls(root, [
     { id: 'Up', type: 'seg', label: 'Primärspannung U_P (eff)', options: [[12, '12 V'], [45, '45 V'], [230, '230 V']], value: params.Up ?? 230 },
     { id: 'Np', label: 'Primärwindungen N_P', min: 10, max: 1000, step: 10, value: params.Np ?? 600, digits: 4 },
-    { id: 'Ns', label: 'Sekundärwindungen N_S', min: 5, max: 1000, step: 5, value: 30, digits: 4 },
+    { id: 'Ns', label: 'Sekundärwindungen N_S', min: 5, max: 1000, step: 5, value: 100, digits: 4 },
     { id: 'RL', label: 'Lastwiderstand R_L', unit: 'Ω', min: 1, max: 1000, value: 100, scale: 'log', snap: 'E12' },
   ], run);
   const out = readout(root, [

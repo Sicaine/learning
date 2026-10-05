@@ -21,7 +21,7 @@ export default function mount(stage, { params = {}, complete }) {
   const need = params.goals ?? 5;
   const root = h('div', { class: 'vz vk' }); stage.append(root);
   const wrap = h('div', { style: 'position:relative;background:#06142a;border-radius:10px;padding:8px 8px 22px 22px;margin-bottom:6px' });
-  const cv = h('canvas', { width: NB, height: 280, style: 'width:100%;height:auto;display:block;cursor:crosshair;image-rendering:pixelated;touch-action:manipulation', 'aria-label': 'Spektrum und Wasserfall' });
+  const cv = h('canvas', { width: NB, height: 280, style: 'width:100%;height:auto;display:block;cursor:crosshair;image-rendering:pixelated;touch-action:manipulation;border:0;background:transparent;border-radius:0;box-shadow:none', 'aria-label': 'Spektrum und Wasserfall' });
   const axis = h('div', { style: 'position:absolute;left:22px;right:8px;bottom:4px;display:flex;justify-content:space-between;font:11px var(--mono);color:#9fb2c8' }, ...['−20', '−10', '0', '+10', '+20 kHz'].map(t => h('span', { text: t })));
   const vlab = h('div', { text: 'Zeit →  (älter)', style: 'position:absolute;left:2px;top:112px;font:11px var(--mono);color:#9fb2c8;writing-mode:vertical-rl;transform:rotate(180deg)' });
   const hlab1 = h('div', { text: 'Amplitudenspektrum', style: 'position:absolute;left:30px;top:10px;font:11px var(--mono);color:#ffd36a;pointer-events:none' });

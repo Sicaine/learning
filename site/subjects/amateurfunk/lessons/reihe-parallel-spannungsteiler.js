@@ -24,7 +24,7 @@ $$\\frac{U_1}{U_2} = \\frac{R_1}{R_2} \\qquad U_2 = U\\cdot\\frac{R_2}{R_1+R_2}$
 
 Der größere Widerstand bekommt die größere Spannung. Ist $R_1 = 5\\cdot R_2$, dann ist $U_1 = 5\\cdot U_2$ — **nicht** $6\\cdot U_2$ (die 6 gehört zum Gesamtwiderstand $R_1+R_2 = 6R_2$) (ED101). Ist umgekehrt $R_1 = R_2/6$, ist $U_1 = U_2/6$ (ED102). Beispiel ED103: $U = 9\\,\\text{V}$, $R_1 = 10\\,\\text{k}\\Omega$, $R_2 = 20\\,\\text{k}\\Omega$: $U_2 = 9\\,\\text{V}\\cdot\\frac{20}{30} = 6\\,\\text{V}$ (und $U_1 = 3\\,\\text{V}$). Die Summe der Teilspannungen ergibt immer wieder $U$.
 
-> Dieser Teiler gilt **unbelastet**. Hängt am Ausgang ein Verbraucher, liegt er parallel zu $R_2$ und senkt die Spannung — so rechnet man in Klasse E aber nicht.`,
+> Dieser Teiler gilt **unbelastet**. Hängt am Ausgang ein Verbraucher, liegt er parallel zu R₂ und senkt die Spannung — so rechnet man in Klasse E aber nicht.`,
     },
     {
       id: 'parallel', type: 'text', title: 'Parallelschaltung',

@@ -40,11 +40,11 @@ $$\\tau = R\\cdot C \\qquad\\text{(Einheit: }\\Omega\\cdot\\mathrm{F} = \\mathrm
 
 Beispiele: $10\\,\\mathrm{k\\Omega}\\cdot 100\\,\\mathrm{\\mu F} = 1\\,\\mathrm{s}$. $47\\,\\mathrm{k\\Omega}\\cdot 22\\,\\mathrm{\\mu F} \\approx 1{,}03\\,\\mathrm{s}$. Mehr Widerstand heißt weniger Ladestrom, mehr Kapazität heißt mehr Ladung nötig — beides macht langsamer. Verdoppelst du $R$ *und* $C$, wird $\\tau$ viermal so groß.
 
-Die [Zeitkonstante](wiki:Zeitkonstante|Time constant) lohnt sich als Maßstab, weil das Verhältnis $t/\\tau$ alles bestimmt:
+Die [Zeitkonstante](wiki:Zeitkonstante|Time constant) lohnt sich als Maßstab, weil das Verhältnis $t/\\tau$ alles bestimmt. Die Tabelle zeigt die Kondensatorspannung in Prozent der Endspannung $U$ (Laden) bzw. der Anfangsspannung (Entladen):
 
 <table><tr><th>Zeit</th><th>1 τ</th><th>2 τ</th><th>3 τ</th><th>4 τ</th><th>5 τ</th></tr>
-<tr><td>Laden: Spannung in % von U</td><td>63,2 %</td><td>86,5 %</td><td>95,0 %</td><td>98,2 %</td><td>99,3 %</td></tr>
-<tr><td>Entladen: Spannung in % von U</td><td>36,8 %</td><td>13,5 %</td><td>5,0 %</td><td>1,8 %</td><td>0,7 %</td></tr></table>
+<tr><td>Laden</td><td>63,2&nbsp;%</td><td>86,5&nbsp;%</td><td>95,0&nbsp;%</td><td>98,2&nbsp;%</td><td>99,3&nbsp;%</td></tr>
+<tr><td>Entladen</td><td>36,8&nbsp;%</td><td>13,5&nbsp;%</td><td>5,0&nbsp;%</td><td>1,8&nbsp;%</td><td>0,7&nbsp;%</td></tr></table>
 
 Merkhilfe: **63 – 86 – 95 – 98 – 99 %**. Nach $\\tau$ ist der Kondensator also erst zu 63 % geladen (nicht voll!); „praktisch voll" ist er nach etwa $5\\tau$. Die Zeit bis zu einem bestimmten Anteil löst man mit dem [natürlichen Logarithmus](wiki:Natürlicher Logarithmus|Logarithm) auf: Entladung von $10\\,\\mathrm{V}$ auf $1\\,\\mathrm{V}$ dauert $t = \\tau\\cdot\\ln 10 \\approx 2{,}30\\,\\tau$.`,
     },

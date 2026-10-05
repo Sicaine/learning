@@ -16,6 +16,6 @@ export default {
     { id: "reihe-parallel-spannungsteiler", title: "Reihen-/Parallelschaltung und Spannungsteiler", summary: "Gesamtwiderstand und Gesamtkapazität, Spannungsteiler, einfache Netzwerke.", minutes: 25, ready: true },
     { id: "schwingkreis-und-filter", title: "Schwingkreise und Filter", summary: "Resonanz, Güte, Bandbreite; Tief-/Hoch-/Bandpass und Sperrfilter.", minutes: 20, ready: true },
     { id: "stromversorgung", title: "Stromversorgung: Netzteil, Akku, Sicherungen", summary: "Gleichrichter, Siebung, Linear- und Schaltnetzteil; Batterien/Akkus (Kapazität, Innenwiderstand), Sicherungen.", minutes: 20, ready: true },
-    { id: "oszillator-mischer-vervielfacher", title: "Oszillator, Mischer, Vervielfacher, Transverter", summary: "Schwingungserzeugung (LC, Quarz, PLL), Mischung zweier Frequenzen, Frequenzvervielfachung, Konverter und Transverter.", minutes: 25, ready: false },
+    { id: "oszillator-mischer-vervielfacher", title: "Oszillator, Mischer, Vervielfacher, Transverter", summary: "Schwingungserzeugung (LC, Quarz, PLL), Mischung zweier Frequenzen, Frequenzvervielfachung, Konverter und Transverter.", minutes: 25, ready: true },
   ],
 };

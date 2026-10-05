@@ -1,6 +1,6 @@
 const th = c => `<th style="text-align:left;padding:5px 8px;border-bottom:2px solid var(--line)">${c}</th>`;
 const td = c => `<td style="padding:4px 8px;border-bottom:1px solid var(--line);vertical-align:top">${c}</td>`;
-const tbl = (head, rows) => `<table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${head.map(th).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(td).join('')}</tr>`).join('')}</tbody></table>`;
+const tbl = (head, rows) => `<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${head.map(th).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(td).join('')}</tr>`).join('')}</tbody></table></div>`;
 const T2 = tbl(['MHz', 'Nutzung', 'Besonderheit'], [
   ['144,025–144,150', 'Telegrafie (CW), schmalbandige Digitalverfahren', '144,050 CW-Anruf'],
   ['144,150–144,400', '<b>SSB</b>, Telegrafie, MGM', '<b>144,300 SSB-Aktivitätszentrum</b>'],
@@ -102,7 +102,7 @@ Im 70-cm-Band liegen die Anker bei **433,500** (FM-Anruf), **433,450** (Digital-
       md: `
 Die Prüfungsfragen stellen immer wieder dieselbe Frage in Varianten: *„Warum solltest du auf Frequenz X keine FM-Direktverbindung zum Nachbarort führen?“* Die Antwort liefert der Bandplan — das Segment ist für etwas anderes reserviert:
 
-<table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${th('Frequenz')}${th('Segment')}${th('Wofür reserviert')}</tr></thead><tbody>
+<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:.88rem"><thead><tr>${th('Frequenz')}${th('Segment')}${th('Wofür reserviert')}</tr></thead><tbody>
 <tr>${td('144,075 MHz')}${td('2 m')}${td('Morsetelegrafie (RTTY, PSK31, FT8 gehören hier <b>nicht</b> hin)')}</tr>
 <tr>${td('144,125 MHz')}${td('2 m')}${td('Morsetelegrafie und schmalbandige digitale Übertragungsverfahren')}</tr>
 <tr>${td('144,450 MHz')}${td('2 m')}${td('<b>Baken</b> (exklusiv)')}</tr>
@@ -111,7 +111,7 @@ Die Prüfungsfragen stellen immer wieder dieselbe Frage in Varianten: *„Warum 
 <tr>${td('432,040 MHz')}${td('70 cm')}${td('Morsetelegrafie und schmalbandige digitale Verfahren')}</tr>
 <tr>${td('432,450 MHz')}${td('70 cm')}${td('<b>Baken</b> (exklusiv)')}</tr>
 <tr>${td('435,500 MHz')}${td('70 cm')}${td('<b>Satellitenfunk</b>')}</tr>
-<tr>${td('439,200 MHz')}${td('70 cm')}${td('<b>Relais</b> (Ausgabe)')}</tr></tbody></table>
+<tr>${td('439,200 MHz')}${td('70 cm')}${td('<b>Relais</b> (Ausgabe)')}</tr></tbody></table></div>
 
 Geeignet für FM-Telefonie mit dem Nachbarort ist dagegen das **FM/Digital-Voice-Segment** (2 m: 145,206–145,5625 MHz, zum Beispiel **145,450 MHz**; 70 cm: 433,400–433,600 MHz). Für SSB-Telefonie nimmst du das SSB-Segment (2 m: 144,150–144,400 MHz, zum Beispiel **144,310 MHz**). Ungeeignet wären 145,450 MHz (FM-Segment), 144,800 MHz (APRS und Digitalverfahren) und 144,450 MHz (Baken).
 

@@ -31,7 +31,7 @@ export default function mount(stage, { params = {}, complete }) {
     }
     svg.append(s('path', { d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 1 }), s('path', { d: up, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 2 }), s('path', { d: lo, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 2 }));
     svg.append(s('line', { x1: x0, x2: x1, y1: yc - A, y2: yc - A, stroke: 'var(--accent-2)', 'stroke-dasharray': '4 3' }), s('text', { x: x1, y: yc - A - 4, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--accent-2)', 'font-weight': 700 }, `höchste Spitze der Hüllkurve: û = ${fw(u)} V`));
-    svg.append(s('text', { x: x0 + 2, y: 182, 'font-size': 11, fill: 'var(--muted)' }, mode === 'two' ? 'rot: Hüllkurve (Schwebung der beiden Töne) · blau: HF-Schwingung' : 'rot: Hüllkurve (konstant) · blau: HF-Schwingung'));
+    svg.append(s('text', { x: x0 + 2, y: 182, 'font-size': 11, fill: 'var(--muted)' }, mode === 'two' ? 'rot: Hüllkurve (Schwebung) · grün: HF' : 'rot: Hüllkurve (konstant) · grün: HF'));
     out.set({ pep: fw(pep) + ' W', avg: fw(avg) + ' W', ratio: mode === 'two' ? '2 : 1' : '1 : 1' });
     if (Math.abs(pep - 75) < 1) g.reach('pep75');
     seen.add(mode); if (seen.size === 2) g.reach('half');

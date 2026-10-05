@@ -44,7 +44,7 @@ $$Z_P = \\frac{U_P}{I_P} = \\frac{\\ddot u\\,U_S}{I_S/\\ddot u} = \\ddot u^2\\cd
 
 Das Windungsverhältnis geht **quadratisch** ein. Beispiel: $Z_S = 8\\,\\Omega$ (Lautsprecher) und $\\ddot u = 4$ ergeben $Z_P = 16\\cdot 8 = 128\\,\\Omega$; das Verfahren nutzten Röhrenverstärker mit [Ausgangsübertrager](wiki:Ausgangsübertrager|Valve amplifier), um hochohmige Röhren an niederohmige Lautsprecher anzupassen.
 
-Genau dieses Prinzip braucht der Funkamateur für die **Anpassung**: Soll eine Last von $450\\,\\Omega$ für eine Quelle wie $50\\,\\Omega$ aussehen, brauchst du ein Impedanzverhältnis von $450/50 = 9$, also ein Windungsverhältnis von $\\sqrt 9 = 3$. Das kommt in der Antennenpraxis ständig vor: Übertrager mit festen Impedanzverhältnissen (z. B. 4:1, 9:1, 49:1) passen Drahtantennen an das $50\\,\\Omega$-Kabel an; ein [Balun](wiki:Balun|Balun) (balanced–unbalanced) trennt symmetrische von unsymmetrischen Leitungen. Das ist die Brücke zur Leistungsanpassung aus der Lektion über reale Quellen.`,
+Genau dieses Prinzip braucht der Funkamateur für die **Anpassung**: Soll eine Last von $450\\,\\Omega$ für eine Quelle wie $50\\,\\Omega$ aussehen, brauchst du ein Impedanzverhältnis von $450/50 = 9$, also ein Windungsverhältnis von $\\sqrt 9 = 3$. Das kommt in der Antennenpraxis ständig vor: Übertrager mit festen Impedanzverhältnissen (z. B. 4:1, 9:1, 49:1) passen Drahtantennen an das $50\\,\\Omega$-Kabel an; ein [[balun|Balun]] ([Wikipedia](wiki:Balun|Balun); balanced–unbalanced) trennt symmetrische von unsymmetrischen Leitungen. Das ist die Brücke zur Leistungsanpassung aus der Lektion über reale Quellen.`,
     },
     {
       id: 'verluste', type: 'text', title: 'Reale Trafos: Verluste, Kopplung, Sparschaltung',
@@ -53,7 +53,7 @@ Ein realer Transformator verliert Energie und ist nie ganz ideal:
 
 - **Kupferverluste:** Die Wicklungen haben einen Widerstand; $I^2 R$ erwärmt sie. Sie wachsen mit der Last.
 - **Eisenverluste:** Hysterese (Ummagnetisierung) und [Wirbelströme](wiki:Wirbelstrom|Eddy current) im Kern. Gegenmittel: dünne isolierte Bleche ([Elektroblech](wiki:Elektroblech|Electrical steel)) oder bei hohen Frequenzen Ferrit. Sie fallen schon im Leerlauf an.
-- **Streuung:** Nicht der ganze Fluss durchsetzt beide Wicklungen; der Kopplungsfaktor $k$ ist kleiner als 1. Der Streufluss wirkt wie eine zusätzliche Reiheninduktivität (**Streuinduktivität**) und lässt die Sekundärspannung unter Last einbrechen. In der Demo siehst du das mit dem $k$-Regler.
+- **Streuung:** Nicht der ganze Fluss durchsetzt beide Wicklungen; der Kopplungsfaktor $k$ ist kleiner als 1. Der Streufluss wirkt wie eine zusätzliche Reiheninduktivität (**[[streuinduktivitaet|Streuinduktivität]]**) und lässt die Sekundärspannung unter Last einbrechen. In der Demo siehst du das mit dem $k$-Regler.
 - **Wirkungsgrad:** Große Netztrafos erreichen weit über 90 %, kleine nur 70 bis 85 %.
 
 Ein **[Spartransformator](wiki:Spartransformator|Autotransformer)** hat nur *eine* Wicklung mit Anzapfung: Primär- und Sekundärseite teilen sich einen Teil der Windungen. Das spart Material, ist aber **nicht galvanisch getrennt** — eine Berührung der Sekundärseite kann gefährlich sein, wenn die Primärseite am Netz liegt. Ein **[Trenntransformator](wiki:Trenntransformator|Isolation transformer)** (z. B. 230 V zu 230 V) dagegen trennt galvanisch und erhöht die Sicherheit am Netz.`,
