@@ -158,7 +158,7 @@ for (const meta of subjects) {
               if (a.img && !existsSync(join(root, a.img))) err(`${w}: answer image ${a.img} missing`);
               if (!a.alt) warn(`${w}: image/svg answer without alt`);
             }
-            const k = JSON.stringify(a).trim().toLowerCase();
+            const k = JSON.stringify(a).trim();
             if (keys.has(k)) err(`${w}: duplicate answer`);
             keys.add(k);
           }
