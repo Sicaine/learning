@@ -89,7 +89,7 @@ function inline(s, ctx) {
     .replace(/\[\[([\w-]+)(?:\|([^\]]+))?\]\]/g, (_, id, shown) => termLink(id, shown, ctx))
     .replace(/\[\^([\w-]+)\]/g, (_, id) => footnote(id, ctx))
     .replace(/\[([^\]\[\n]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g, (_, text, spec) => wikiInline(text, spec, ctx))
-    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, url) => `<a href="${url}" target="_blank" rel="noopener">${t}</a>`)
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, url) => (/^https?:/.test(url) ? `<a href="${url}" target="_blank" rel="noopener">${t}</a>` : `<a href="${url}">${t}</a>`))
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, '$1<em>$2</em>')
     .replace(/\n/g, ' ');

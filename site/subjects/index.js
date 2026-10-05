@@ -52,4 +52,38 @@ export const subjects = [
       <rect x="28" y="150" width="240" height="4" rx="2" opacity=".85"/></g>
       <g transform="translate(318 82)" fill="none" stroke="#fff"><circle r="50" stroke-width="2" opacity=".85"/><ellipse rx="22" ry="50" opacity=".6"/><ellipse rx="50" ry="18" opacity=".6"/><line x1="-50" x2="50" opacity=".6"/><line y1="-50" y2="50" opacity=".6"/></g></svg>`,
   },
+  {
+    id: 'elektrotechnik',
+    lang: 'de',
+    title: 'Elektrotechnik',
+    tagline: 'Strom, Felder, Schwingkreise, Halbleiter — verstehen statt auswendig lernen, mit Schaltungen zum Ausprobieren.',
+    accent: '#0369a1',
+    accent2: '#14b8a6',
+    load: () => import('./elektrotechnik/subject.js'),
+    art: `<svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 120H70M70 120V86M70 86H108M148 86H210M210 86V120M210 120H250M250 120V70M250 70H300" stroke-width="2.4" opacity=".9"/>
+      <rect x="108" y="74" width="40" height="24" rx="2" stroke-width="2.4"/>
+      <path d="M300 56V84M312 46V94" stroke-width="3.2"/><path d="M312 70H372" stroke-width="2.4"/><path d="M300 70H292" stroke-width="2.4"/>
+      <path d="M20 40c14 0 14 30 28 30s14-60 28-60 14 60 28 60 14-30 28-30" stroke-width="2.2" opacity=".55"/>
+      <path d="M150 140c10 0 12-26 24-26s14 26 24 26" stroke-width="2" opacity=".4"/>
+      <circle cx="70" cy="120" r="3.5" fill="#fff"/><circle cx="210" cy="120" r="3.5" fill="#fff"/><circle cx="250" cy="70" r="3.5" fill="#fff"/>
+      </g><g fill="#fff"><path d="M338 112l-7 16h6l-4 14 12-19h-7l5-11z" opacity=".85"/></g></svg>`,
+  },
+  {
+    id: 'amateurfunk',
+    lang: 'de',
+    title: 'Amateurfunk',
+    tagline: 'Auf dem Weg zum Rufzeichen: Technik, Betrieb und Vorschriften der Klasse E.',
+    accent: '#047857',
+    accent2: '#0ea5e9',
+    load: () => import('./amateurfunk/subject.js'),
+    art: `<svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M120 160L140 40L160 160M126 126H154M131 96H149M136 66H144M127 140L153 112M153 140L127 112M132 108L148 80M148 108L132 80" stroke-width="2.2" opacity=".9"/>
+      <path d="M140 40V22M126 28H154" stroke-width="3"/><circle cx="140" cy="18" r="3.2" fill="#fff"/>
+      <path d="M176 36q16 -8 0 -24M188 40q26 -14 0 -40M200 44q36 -20 0 -56" stroke-width="2.2" opacity=".75" transform="translate(0 16)"/>
+      <path d="M104 36q-16 -8 0 -24M92 40q-26 -14 0 -40M80 44q-36 -20 0 -56" stroke-width="2.2" opacity=".75" transform="translate(0 16)"/>
+      <path d="M230 120c18 0 18-30 36-30s18 60 36 60 18-60 36-60 18 30 36 30" stroke-width="2.4" opacity=".6"/>
+      <path d="M250 60h12m6 0h26m6 0h12M262 44h26m6 0h12m6 0h12" stroke-width="3.4" opacity=".85"/>
+      </g></svg>`,
+  },
 ];

@@ -4,6 +4,8 @@ import { lessonProgress, completeLesson, reopenLesson, touch, markTask, saveTask
 import { renderBlock, blockLabel } from '../blocks/index.js';
 import { el, $, $$, ring, icon, toast } from '../ui.js';
 import { t } from '../i18n.js';
+import { loadSubject } from '../content.js';
+import { lessonStatus } from '../progress.js';
 import { md, mdInline, createNotes, sourceLine, wikiLinks, esc } from '../markup.js';
 
 export default async function lessonView(main, { subject, arg: lid }) {
@@ -16,6 +18,13 @@ export default async function lessonView(main, { subject, arg: lid }) {
   const prev = subject.lessons[subject.order[idx - 1]];
   const next = subject.lessons[subject.order[idx + 1]];
   const taskIds = new Set(tasksOf(lesson).map(t => t.id));
+  // Prerequisites: lesson.needs = ['subject/lesson-id', ...] — may point into another subject.
+  const needChips = [];
+  for (const n of lesson.needs || []) {
+    const [nsid, nlid] = n.includes('/') ? n.split('/') : [sid, n];
+    try { const ns = nsid === sid ? subject : await loadSubject(nsid); const nl = ns.lessons[nlid]; if (nl) needChips.push({ href: `#/s/${nsid}/l/${nlid}`, title: nl.title, subject: nsid === sid ? '' : ns.title, done: lessonStatus(nsid, nlid) === 'complete', ready: nl.ready }); }
+    catch (e) { console.warn(`[lesson ${lid}] unknown prerequisite ${n}`); }
+  }
   // Terms this lesson links to that have Wikipedia articles, one entry per article.
   const wikis = new Map();   // filled while text renders (glossary terms with articles + inline [..](wiki:..) links)
 
@@ -38,6 +47,7 @@ export default async function lessonView(main, { subject, arg: lid }) {
           <span class="eyebrow">${t('lesson.stage', { n: meta.stage.index + 1 })} · ${esc(meta.stage.title)}</span>
           <h1 class="display">${esc(lesson.title)}</h1>
           ${lesson.summary ? `<div class="lede">${md(lesson.summary, ctx)}</div>` : ''}
+          ${needChips.length ? `<div class="needs"><span class="eyebrow">${t('lesson.needs')}</span>${needChips.map(c => `<a class="need ${c.done ? 'done' : ''} ${c.ready ? '' : 'planned'}" href="${c.href}">${c.done ? icon.check : ''}${esc(c.title)}${c.subject ? `<small>${esc(c.subject)}</small>` : ''}</a>`).join('')}</div>` : ''}
           ${lesson.goals?.length ? `<div class="goals"><span class="eyebrow">${t('lesson.goals')}</span><ul>${lesson.goals.map(g => `<li>${mdInline(g, ctx)}</li>`).join('')}</ul></div>` : ''}
         </header>
         <div class="blocks"></div>

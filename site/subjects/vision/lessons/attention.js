@@ -2,6 +2,7 @@ export default {
   id: 'attention',
   title: 'Attention: queries, keys & values',
   summary: 'A convolution uses the same fixed weights everywhere and only looks nearby. **[[attention|Attention]]** lets every patch decide, *based on content*, which other patches to listen to — anywhere in the image, in a single layer. It is a [[softmax]] over [[dot-product|dot products]], and it powers DINO, SAM and every modern foundation model.',
+  needs: ['vectors-dot-product', 'probability-softmax'],
   minutes: 35,
   goals: [
     'Write down scaled dot-product attention and explain every symbol',
