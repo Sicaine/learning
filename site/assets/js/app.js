@@ -5,6 +5,8 @@
 //   #/s/:sid/review            card review session
 //   #/s/:sid/glossary[/:term]  glossary
 //   #/s/:sid/sources           library of sources
+//   #/s/:sid/practice[/:topic|weak|new|due|all]  question practice (subjects with a question catalogue)
+//   #/s/:sid/exam              exam simulation
 //   #/backup                   export / import / settings
 
 import * as store from './store.js';
@@ -17,6 +19,8 @@ import home from './views/home.js';
 import overview from './views/subject.js';
 import lessonView from './views/lesson.js';
 import review from './views/review.js';
+import practice from './views/practice.js';
+import examView from './views/exam.js';
 import glossary from './views/glossary.js';
 import library from './views/sources.js';
 import backup from './views/backup.js';
@@ -48,6 +52,7 @@ async function route() {
   setLang(subject?.lang || 'en');
   applyTheme(subject);
   renderHeader();
+  $(app, 'footer').innerHTML = `${tr('foot.saved')} · <a href="#/backup">${tr('foot.backup')}</a>`;
 
   const main = $(app, 'main');
   main.innerHTML = '';
@@ -56,7 +61,7 @@ async function route() {
   main.classList.add('enter');
 
   const view = {
-    home, backup, overview, review, glossary, sources: library,
+    home, backup, overview, review, practice, exam: examView, glossary, sources: library,
     l: lessonView,
   }[r.section] || home;
   try {
@@ -88,6 +93,8 @@ function renderHeader() {
     <nav class="subnav">
       <a href="#/s/${subject.id}" class="${r.section === 'overview' ? 'on' : ''}">${icon.map}<span>${tr('nav.path')}</span></a>
       <a href="#/s/${subject.id}/review" class="${r.section === 'review' ? 'on' : ''}">${icon.cards}<span>${tr('nav.review')}</span>${due ? `<b class="badge">${due}</b>` : ''}</a>
+      ${subject.hasQuestions ? `<a href="#/s/${subject.id}/practice" class="${r.section === 'practice' ? 'on' : ''}">${icon.check}<span>${tr('nav.practice')}</span></a>` : ''}
+      ${subject.exam ? `<a href="#/s/${subject.id}/exam" class="${r.section === 'exam' ? 'on' : ''}">${icon.spark}<span>${tr('nav.exam')}</span></a>` : ''}
       <a href="#/s/${subject.id}/glossary" class="${r.section === 'glossary' ? 'on' : ''}">${icon.book}<span>${tr('nav.glossary')}</span></a>
       <a href="#/s/${subject.id}/sources" class="${r.section === 'sources' ? 'on' : ''}">${icon.quote}<span>${tr('nav.sources')}</span></a>
     </nav>` : '';
@@ -193,7 +200,7 @@ app.innerHTML = `
     <stop offset="0" stop-color="#5b5bd6"/><stop offset="1" stop-color="#b14fd8"/></linearGradient></defs></svg>
   <header class="topbar"></header>
   <main></main>
-  <footer class="foot">Progress is saved in this browser · <a href="#/backup">Back up as JSON</a></footer>`;
+  <footer class="foot"></footer>`;
 
 applyGerman();
 window.addEventListener('hashchange', route);

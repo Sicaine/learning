@@ -2,7 +2,7 @@
 // Checks every subject for broken glossary refs, unknown sources, missing
 // lesson/viz files, duplicate ids and unknown block types.
 
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -18,6 +18,8 @@ globalThis.localStorage ??= { getItem: () => null, setItem() {} };
 const VIEWS = (await import(join(root, 'assets/js/blocks/map.js')).catch(() => null))?.VIEWS || {};
 const WIKI_RE = /\[([^\]\[\n]+)\]\(wiki:((?:[^()]|\([^()]*\))+)\)/g;
 const km = (a, b) => { const r = Math.PI / 180, dx = (a[0] - b[0]) * r * Math.cos((a[1] + b[1]) / 2 * r), dy = (a[1] - b[1]) * r; return 6371 * Math.hypot(dx, dy); };
+const lessonIndex = {};   // subject id → Set of lesson ids (for cross-subject prerequisites)
+for (const m of subjects) lessonIndex[m.id] = new Set((await m.load()).default.stages.flatMap(st => st.lessons.map(l => l.id)));
 let errors = 0, warnings = 0;
 const err = (m) => { errors++; console.log(`  ✗ ${m}`); };
 const warn = (m) => { warnings++; console.log(`  ! ${m}`); };
@@ -107,10 +109,88 @@ for (const meta of subjects) {
     const cids = new Set();
     for (const c of lesson.cards || []) { if (cids.has(c.id)) err(`${l.id}: duplicate card ${c.id}`); cids.add(c.id); cards++; }
     scan(l.id, JSON.stringify(lesson));
+    for (const n of lesson.needs || []) { const [ns, nl] = n.includes('/') ? n.split('/') : [meta.id, n]; if (!lessonIndex[ns]?.has(nl)) err(`lesson ${l.id}: unknown prerequisite "${n}" (use 'subject/lesson-id')`); }
     const wikis = [...JSON.stringify(lesson).matchAll(WIKI_RE)];
     for (const m of wikis) if (!m[2].split('|')[0].trim()) err(`${l.id}: empty wiki title in link "${m[1]}"`);
     const mapCount = lesson.blocks.filter(b => b.type === 'map').length;
     wikiStats.push({ id: l.id, wikis: new Set(wikis.map(m => m[2].split('|')[0].trim())).size, maps: mapCount });
+  }
+  // --- question catalogue + exam format --------------------------------------
+  {
+    const qs = (raw.questions || []).flat();
+    const ex = raw.exam;
+    if (qs.length || ex) {
+      const topics = new Map((ex?.topics || []).map(t => [t.id, t])), parts = new Map((ex?.parts || []).map(p => [p.id, p]));
+      if (ex) {
+        if (!ex.parts?.length) err('exam: needs parts[]');
+        if (!(ex.minutes > 0)) err('exam: minutes must be > 0');
+        for (const p of ex.parts || []) { if (!p.id || !p.title || !(p.count > 0) || !(p.passPercent > 0 && p.passPercent <= 100)) err(`exam part ${p.id}: needs id, title, count > 0, passPercent 1..100`); }
+        for (const t of ex.topics || []) { if (!t.id || !t.title) err(`exam topic ${t.id}: needs id + title`); if (!parts.has(t.part)) err(`exam topic ${t.id}: unknown part "${t.part}"`); }
+        if (!qs.length) err('exam defined but no questions');
+      }
+      const seen = new Set(), perTopic = {};
+      const isSvg = v => typeof v === 'string' && v.trim().startsWith('<svg') && v.includes('</svg>');
+      for (const q of qs) {
+        const w = `question ${q.id}`;
+        if (!q.id) { err('question without id'); continue; }
+        if (seen.has(q.id)) err(`${w}: duplicate id`);
+        seen.add(q.id);
+        if (typeof q.q !== 'string' || !q.q.trim()) err(`${w}: empty question text`);
+        if (ex && !topics.has(q.topic)) err(`${w}: unknown topic "${q.topic}"`);
+        (perTopic[q.topic] ??= []).push(q);
+        if (!Array.isArray(q.answers) || q.answers.length !== 4) err(`${w}: needs exactly 4 answers (first = correct)`);
+        else {
+          const keys = new Set();
+          for (const a of q.answers) {
+            const txt = a && typeof a === 'object' ? (a.img || a.svg || '') : a;
+            if (typeof txt !== 'string' || !txt.trim()) { err(`${w}: empty answer`); continue; }
+            if (a && typeof a === 'object') {
+              if (a.svg && !isSvg(a.svg)) err(`${w}: answer svg looks broken`);
+              if (a.img && !existsSync(join(root, a.img))) err(`${w}: answer image ${a.img} missing`);
+              if (!a.alt) warn(`${w}: image/svg answer without alt`);
+            }
+            const k = JSON.stringify(a).trim().toLowerCase();
+            if (keys.has(k)) err(`${w}: duplicate answer`);
+            keys.add(k);
+          }
+        }
+        if (q.lesson && !lessons.has(q.lesson)) err(`${w}: unknown lesson "${q.lesson}"`);
+        if (q.figure !== undefined) {
+          if (typeof q.figure !== 'string' || !q.figure.trim()) err(`${w}: empty figure`);
+          else if (q.figure.trim().startsWith('<')) { if (!isSvg(q.figure)) err(`${w}: figure svg looks broken (needs <svg …></svg>)`); else if (!q.figure.includes('viewBox')) warn(`${w}: figure svg without viewBox (not responsive)`); }
+          else if (!existsSync(join(root, q.figure))) err(`${w}: figure file ${q.figure} missing`);
+          else if (!q.figureAlt) warn(`${w}: figure image without figureAlt`);
+        }
+        // KaTeX traps: in normal ('…') strings "\;" "\," "\!" "\t" "\f" "\b" etc. lose their backslash or become control chars
+        const texts = [q.q, q.explain, ...(q.answers || []).map(a => typeof a === 'string' ? a : '')].filter(x => typeof x === 'string');
+        for (const x of texts) {
+          if (/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(x) || /\t(?:imes|ext|o|heta|au|an)\b/.test(x) || /\u000c|\u0008/.test(x)) { err(`${w}: control character in text (a single backslash like \\times/\\frac/\\beta/\\text lost its escape — write \\\\)`); break; }
+          if (/\$[^$]*[A-Za-z)}]\s(?:cdot|frac|mathrm|Omega|Delta|pi|sqrt|text|approx|cdot|mu|lambda)\b/.test(x)) { warn(`${w}: math looks like a LaTeX command without backslash — "\\" eaten? (use \\\\ in '…' strings)`); break; }
+        }
+      }
+      {   // source scan: "\;" "\," "\!" "\{" … with ONE backslash lose it in JS strings (use \\; or String.raw)
+        const qdir = join(root, 'subjects', meta.id, 'questions');
+        for (const f of existsSync(qdir) ? readdirSync(qdir).filter(f => f.endsWith('.js')) : []) {
+          const src = readFileSync(join(qdir, f), 'utf8');
+          if (src.includes('String.raw')) continue;
+          src.split('\n').forEach((line, i) => {
+            for (const m of line.matchAll(/(\\+)([;,!:{}%# ])/g)) if (m[1].length % 2 === 1) { err(`questions/${f}:${i + 1}: single backslash before "${m[2]}" is dropped by JS — write \\\\${m[2]} in the source (KaTeX spacing)`); break; }
+          });
+        }
+      }
+      if (ex) {
+        let total = 0;
+        for (const p of ex.parts || []) {
+          const pool = (ex.topics || []).filter(t => t.part === p.id).reduce((a, t) => a + (perTopic[t.id]?.length || 0), 0);
+          total += Math.min(pool, p.count);
+          if (p.count > pool) warn(`exam part ${p.id}: count ${p.count} > question pool ${pool}`);
+          console.log(`  exam part ${p.id}: ${pool} questions, ${p.count} per exam, pass ${p.passPercent} %`);
+        }
+        for (const t of ex.topics || []) { const n = perTopic[t.id]?.length || 0; if (!n) warn(`exam topic ${t.id}: no questions`); }
+        console.log(`  exam: ${ex.minutes} min, ${total} questions per simulation`);
+      }
+      console.log(`  questions: ${qs.length} (${Object.entries(perTopic).map(([k, v]) => `${k}:${v.length}`).join(' ')}) · ${qs.filter(q => q.figure).length} with figure · ${qs.filter(q => q.explain).length} explained`);
+    }
   }
   for (const s of sources.keys()) if (!usedSources.has(s)) warn(`source ${s} is never cited`);
   const MIN_WIKI = meta.id === 'vision' ? 4 : 8;

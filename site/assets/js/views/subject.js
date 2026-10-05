@@ -2,6 +2,9 @@ import { subjectProgress, stageProgress, lessonStatus, deckStats, nextLesson } f
 import { el, ring, bar, icon } from '../ui.js';
 import { esc, md } from '../markup.js';
 import { t } from '../i18n.js';
+import { topicStats } from '../examkit.js';
+import { statBar } from './qparts.js';
+import { topicRows, examHistory } from './practice.js';
 
 export default async function overview(main, { subject }) {
   const p = subjectProgress(subject);
@@ -27,6 +30,7 @@ export default async function overview(main, { subject }) {
           <div class="stat mini"><b>${d.learned}</b><span>${t('path.mastered')}</span></div>
         </div>
       </div>
+      ${subject.hasQuestions ? practiceCard(subject) : ''}
       ${subject.mission ? `<div class="mission">${md(subject.mission, { subject })}</div>` : ''}
       <ol class="stages">
         ${subject.stages.map((stage, i) => {
@@ -57,4 +61,23 @@ export default async function overview(main, { subject }) {
         }).join('')}
       </ol>
     </section>`));
+}
+
+function practiceCard(subject) {
+  const sid = subject.id, st = topicStats(subject), a = st.all;
+  return `<div class="practice-card panel">
+    <div class="pc-head">
+      <div><span class="eyebrow">${t('pr.hubEyebrow')}</span><h2>${t('pr.title')}</h2></div>
+      <div class="pc-big"><b>${a.total ? Math.round(a.mastered / a.total * 100) : 0} %</b><span>${t('pr.mastered')} · ${a.mastered}/${a.total}</span></div>
+    </div>
+    ${statBar(a)}
+    <div class="hero-actions">
+      <a class="btn primary" href="#/s/${sid}/practice/${a.due ? 'due' : 'all'}">${t('pr.start')}${a.due ? ` (${a.due} ${t('pr.due')})` : ''}</a>
+      <a class="btn ${a.weak ? '' : 'disabled'}" href="#/s/${sid}/practice/weak" ${a.weak ? '' : 'aria-disabled="true" tabindex="-1"'}>${t('pr.weakBtn')}</a>
+      ${subject.exam ? `<a class="btn" href="#/s/${sid}/exam">${t('pr.examBtn')}</a>` : ''}
+      <a class="btn ghost" href="#/s/${sid}/practice">${t('pr.moreStats')}</a>
+    </div>
+    <details class="pc-topics"><summary>${t('pr.byTopic')}</summary>${topicRows(subject, st)}</details>
+    ${subject.exam ? `<h3 class="q-group">${t('pr.lastExams')}</h3>${examHistory(subject, 3)}` : ''}
+  </div>`;
 }

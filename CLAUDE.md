@@ -60,7 +60,8 @@ site/
     <sid>/subject.js         imports stages/glossary/sources and exports { intro, mission, stages, glossary, sources }
 ```
 
-Routes: `#/`, `#/s/<sid>`, `#/s/<sid>/l/<lid>`, `#/s/<sid>/review`, `#/s/<sid>/glossary/<term>`, `#/s/<sid>/sources`, `#/backup`.
+Routes: `#/`, `#/s/<sid>`, `#/s/<sid>/l/<lid>`, `#/s/<sid>/review`, `#/s/<sid>/glossary/<term>`, `#/s/<sid>/sources`, `#/backup`,
+and for subjects with a question catalogue `#/s/<sid>/practice[/<topicId|weak|new|due|all>]` and `#/s/<sid>/exam` (see "Exam & practice").
 
 State shape (`localStorage['learning:v1']`):
 `{ version, settings: { german }, lastSubject, subjects: { <sid>: { lessons: { <lid>: { tasks: { <blockId>: {done, …} }, complete, visited } }, cards: { '<lid>:<cardId>': {due, interval, ease, reps, lapses} }, last: { lessonId, blockId, at } } } }`.
@@ -68,6 +69,32 @@ Block ids and card ids are stored in learner state — **never rename them once 
 
 Framework features are generic. A new subject must never need framework changes; if it does,
 generalize the framework feature instead of special-casing a subject.
+
+## Exam & practice
+
+Generic exam-preparation feature for subjects with a question catalogue (first: `amateurfunk`). A subject without `questions`
+gets no extra menu entries. Code: `examkit.js` (Leitner logic, exam composition/scoring), `views/practice.js` (hub + sessions),
+`views/exam.js` (simulation), `views/qparts.js` (shared rendering); normalization in `content.js` (`normalizeQuestions`).
+
+`subjects/<sid>/subject.js` additionally exports `questions: [qA, qB, …]` (arrays from `questions/*.js`, merged flat like glossary/sources)
+and `exam`:
+```js
+// questions/technik-ea.js → export default [ { … }, … ]
+{ id: 'EA101',            // official catalogue id if there is one, else own; unique per subject — stored in learner state, never rename
+  topic: 'ea-1',          // → exam.topics[].id
+  q: 'Markdown + KaTeX…', // use String.raw`…` or double backslashes: '\\;' (a lone "\;" is silently dropped; the validator flags it)
+  answers: ['right', 'wrong 1', 'wrong 2', 'wrong 3'],   // exactly 4; the FIRST is always the correct one — shuffled at runtime. An answer may be text, { img: 'url', alt }, or { svg: '<svg viewBox…>', alt }
+  figure: '<svg viewBox="…">…</svg>' | 'assets/….png', figureAlt?: '…',   // optional picture for the question
+  explain?: 'Markdown…', lesson?: 'lesson-id' /* → "Dazu die Lektion" link */, source?: 'BNetzA Fragenkatalog …' }
+// subject.js
+exam: { title, minutes: 90,
+  parts:  [{ id: 'technik', title, count: 34, passPercent: 75 }, …],      // count = questions per part in a simulation
+  topics: [{ id: 'ea-1', title, part: 'technik' }, …] }
+```
+- **Practice**: Leitner boxes 1–5 with intervals 0/1/3/7/21 days (wrong → box 1, right → box+1, "mastered" = box ≥ 4). Modes: a topic id, `due`, `new`, `weak` (last answer wrong or box ≤ 2), `all` (due first, then new, then the rest). Sessions of 15 questions; keys 1–4 answer, Enter continues. The hub shows statistics per topic and exam history; the path page shows a summary card.
+- **Exam**: per part `count` random questions, round-robin over the part's topics; timer = `exam.minutes` of wall-clock time (warning at 5 min, auto-submit at 0); no feedback until submit; flags, overview grid, keys 1–4 / ←→ / M. Result per part vs `passPercent`, passed only if every part passes; all mistakes are listed with correct answer, explanation and lesson link. Every answer also feeds the practice boxes.
+- **State** (`state.subjects[sid]`): `practice: { [qid]: { n, ok, last, box, due, res } }`, `exams: [{ at, parts: { id: { ok, total } }, passed, seconds }]` (last 20), `examRun` (running or just-finished exam: `{ startedAt, minutes, cur, done, items: [{ qid, part, order, pick, flag }] }`, survives reload, replaced by the next exam). Import merge: more repetitions (then higher box) wins per question, exams are unioned by `at`.
+- Validator checks ids, 4 distinct non-empty answers, topic/part/lesson existence, figures, pool size vs `count`, and backslash traps.
 
 ## Content model
 

@@ -42,9 +42,41 @@ export async function loadSubject(id) {
     for (const r of t.related || []) if (!glossary[r]) console.warn(`[content:${id}] term "${t.id}" relates to unknown "${r}"`);
   }
 
-  const subject = { ...meta, ...raw, glossary, sources, lessons, order };
+  const qa = normalizeQuestions(id, raw, lessons);
+
+  const subject = { ...meta, ...raw, glossary, sources, lessons, order, ...qa };
   cache.set(id, subject);
   return subject;
+}
+
+// Question catalogue + exam format (see CLAUDE.md "Exam & practice"). A subject without
+// `questions` gets hasQuestions=false and no extra menu entries.
+function normalizeQuestions(id, raw, lessons) {
+  const questions = (raw.questions || []).flat();
+  const qById = {};
+  const warn = m => console.warn(`[content:${id}] ${m}`);
+  const ex = raw.exam && Array.isArray(raw.exam.parts) ? raw.exam : null;
+  const parts = ex ? ex.parts.map(p => ({ passPercent: 50, ...p })) : [];
+  const partById = Object.fromEntries(parts.map(p => [p.id, p]));
+  let topics = (ex?.topics || []).map(tp => ({ ...tp }));
+  const topicById = Object.fromEntries(topics.map(tp => [tp.id, tp]));
+  for (const q of questions) {
+    if (!q.id) { warn('question without id'); continue; }
+    if (qById[q.id]) warn(`duplicate question "${q.id}"`);
+    qById[q.id] = q;
+    if (!Array.isArray(q.answers) || q.answers.length !== 4) warn(`question "${q.id}" needs exactly 4 answers`);
+    if (q.lesson && !lessons[q.lesson]) warn(`question "${q.id}" links unknown lesson "${q.lesson}"`);
+    if (!topicById[q.topic]) {
+      if (ex) warn(`question "${q.id}" has unknown topic "${q.topic}"`);
+      const tp = { id: q.topic ?? '-', title: q.topic ?? '-' }; topics.push(tp); topicById[tp.id] = tp;   // no exam topics → derive
+    }
+  }
+  for (const tp of topics) { tp.questions = questions.filter(q => q.topic === tp.id); tp.partObj = partById[tp.part]; }
+  for (const p of parts) p.topics = topics.filter(tp => tp.part === p.id);
+  const hasQuestions = questions.length > 0;
+  topics = topics.filter(tp => tp.questions.length || ex);
+  const exam = ex && hasQuestions ? { ...ex, parts, topics, minutes: ex.minutes || 90 } : null;
+  return { questions, qById, qTopics: topics, qTopicById: topicById, hasQuestions, exam };
 }
 
 export async function loadLesson(subject, lid) {
