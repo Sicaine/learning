@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light only">
+  <title>Vizkit – Galerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <style>
+    body { background: var(--bg, #fafafc); }
+    .vkg { max-width: 980px; margin: 0 auto; padding: 28px 16px 80px; }
+    .vkg h1 { font-size: 1.8rem; margin: 0 0 4px; letter-spacing: -.02em; }
+    .vkg > p.lede { margin: 0 0 22px; }
+    .vkg nav { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 26px; font-size: .9rem; }
+    .vkg section { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 22px 22px 20px; margin-bottom: 26px; }
+    .vkg section > h2 { margin: 0 0 4px; font-size: 1.2rem; }
+    .vkg section > p { margin: 0 0 16px; color: var(--ink-2); font-size: .94rem; max-width: 70ch; }
+    .vkg details { margin-top: 14px; }
+    .vkg summary { cursor: pointer; font-size: .86rem; color: var(--accent); font-weight: 500; }
+    .vkg pre { overflow: auto; max-height: 420px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font: 12px/1.5 var(--mono); }
+    .vkg .cat { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .vkg .cat figure { margin: 0; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+    .vkg .cat figcaption { font: 500 .72rem var(--mono); color: var(--muted); text-align: center; }
+    .vkg .lay { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+    .vkg .lay h3 { margin: 0 0 6px; font-size: .9rem; font-family: var(--mono); color: var(--ink-2); }
+    @media (max-width: 480px) { .vkg section { padding: 16px 12px; border-radius: 16px; } }
+  </style>
+</head>
+<body>
+<div class="vkg">
+  <h1>Vizkit</h1>
+  <p class="lede">Interaktiv-Werkzeugkasten für Elektrotechnik und Amateurfunk: Schaltungssimulation, Schaltplan, Oszilloskop, Bode, Zeigerdiagramm. Jede Demo ist ein eigenständiges Viz-Modul (<code>assets/js/vizkit/examples/*.js</code>) – Code ausklappen und übernehmen.</p>
+  <nav id="nav"></nav>
+  <div id="demos"></div>
+  <section id="catalog"><h2>Bauteilkatalog</h2><p>Alle Symbole der Schaltplan-Bibliothek (IEC/DIN: Widerstand = Rechteck).</p><div class="cat" id="cat"></div></section>
+  <section id="layouts"><h2>Fertige Layouts</h2><p><code>layouts.divider / rc / tank / halfWave / bridge / bjt / opamp</code> – jeweils mit passender Netzliste; hier mit Arbeitspunkt bzw. Momentaufnahme der Simulation.</p><div class="lay" id="lay"></div></section>
+</div>
+<script type="module">
+  import { drawSchematic, components } from '../assets/js/vizkit/schematic.js';
+  import { layouts } from '../assets/js/vizkit/schematic-layouts.js';
+  import { transient } from '../assets/js/vizkit/circuit.js';
+  import { dcSolve } from '../assets/js/vizkit/circuit.js';
+
+  const demos = [
+    ['rc-scope', 'RC-Glied am Oszilloskop', 'Schaltplan, Oszilloskop mit Trigger und Cursor, Regler mit E12-Rastung. Die Zeitkonstante τ lässt sich im Plan ziehen oder per Regler einstellen.'],
+    ['divider-schematic', 'Spannungsteiler mit Stromfluss', 'Bauteile im Plan ziehen (Maus/Touch/Pfeiltasten). Wandernde Punkte zeigen den Strom, die Leitungsfarbe das Potenzial.'],
+    ['rlc-bode', 'RLC-Resonanz mit Bode-Diagramm', 'Betrag und Phase über f, Hover-Cursor, −3-dB-Linie, f₀ aus der Simulation (AC-Analyse).'],
+    ['rectifier', 'Gleichrichter mit Siebung', 'Einweg/Brücke, Transientenanalyse mit Dioden-Newton, Schaltplan läuft in Zeitlupe nach, Welligkeit gegen I/(f·C).'],
+    ['opamp', 'Operationsverstärker', 'Invertierender Verstärker, Sättigung an den Betriebsspannungsgrenzen, Oszilloskop mit zwei Kanälen.'],
+    ['phasor-rlc', 'Zeigerdiagramm R–L–C', 'Rotierende Zeiger, Addition Spitze an Fuß, Zeitverlauf-Projektion, Impedanzdreieck.'],
+    ['modulation', 'AM / FM: Zeitsignal und Spektrum', 'Hüllkurve, Seitenbänder (Balkendiagramm), Bessel-Linien bei FM.'],
+  ];
+  const nav = document.getElementById('nav'), box = document.getElementById('demos');
+  for (const [id, title, text] of demos) {
+    nav.insertAdjacentHTML('beforeend', `<a href="#${id}">${title}</a>`);
+    const sec = document.createElement('section'); sec.id = id;
+    sec.innerHTML = `<h2>${title}</h2><p>${text}</p><div class="vkstage"></div><details><summary>Quellcode (examples/${id}.js)</summary><pre>lädt …</pre></details>`;
+    box.append(sec);
+    const stage = sec.querySelector('.vkstage');
+    import(`../assets/js/vizkit/examples/${id}.js`).then(m => m.default(stage, { params: {}, ctx: {}, complete: () => sec.querySelector('h2').insertAdjacentHTML('beforeend', ' <span style="color:var(--good)">✓ erledigt</span>'), md: s => s }))
+      .catch(e => { stage.innerHTML = `<pre style="color:var(--bad)">${e.stack || e}</pre>`; });
+    sec.querySelector('details').addEventListener('toggle', async e => { if (e.target.open) { const pre = sec.querySelector('pre'); if (pre.dataset.l) return; pre.dataset.l = 1; pre.textContent = await (await fetch(`../assets/js/vizkit/examples/${id}.js`)).text(); } });
+  }
+  nav.insertAdjacentHTML('beforeend', '<a href="#catalog">Bauteilkatalog</a><a href="#layouts">Layouts</a>');
+
+  // Katalog
+  const cat = document.getElementById('cat');
+  const extra = { Q: [{ pol: 'npn' }, { pol: 'pnp' }], FET: [{ pol: 'n' }, { pol: 'p' }], SW: [{ closed: false }, { closed: true }], VM: [{ letter: 'V' }], AM: [{}], LED: [{ lit: 0.8 }], LAMP: [{ lit: 0.7 }] };
+  const sample = { R: 1e3, POT: 10e3, C: 100e-9, CPOL: 100e-6, L: 10e-3, V: 5, VAC: 230, VBAT: 9, I: 1e-3, FUSE: 0.5 };
+  for (const [name, def] of Object.entries(components)) {
+    if (name === 'TEXT') continue;
+    for (const [k, e] of (extra[name] || [{}]).entries()) {
+      const fig = document.createElement('figure');
+      const parts = [{ id: name, type: name, at: [0, 0], value: sample[name], label: name, ...e }];
+      cat.append(fig);
+      drawSchematic(fig, { grid: 14, parts, wires: [], pad: 1.4, animate: false });
+      fig.insertAdjacentHTML('beforeend', `<figcaption>${name}${e.pol ? ' · ' + e.pol : e.closed != null ? (e.closed ? ' · zu' : ' · offen') : ''}</figcaption>`);
+    }
+  }
+  // Layouts
+  const lay = document.getElementById('lay');
+  for (const [name, fn] of Object.entries(layouts)) {
+    const wrap = document.createElement('div'); wrap.innerHTML = `<h3>layouts.${name}()</h3>`; lay.append(wrap);
+    const { spec, net } = fn({ adjust: false });
+    const sch = drawSchematic(wrap, { ...spec, animate: true });
+    let st;
+    if (['halfWave', 'bridge', 'bjt', 'rc', 'tank', 'opamp'].includes(name)) { const T = { halfWave: 0.0123, bridge: 0.0123, bjt: 0.0003, rc: 0.0003, tank: 0.0002, opamp: 0.00025 }[name]; const tr = transient(net, { tstop: T, dt: T / 400 }); const k = tr.n - 1; st = { v: Object.fromEntries(Object.entries(tr.v).map(([n, a]) => [n, a[k]])), i: Object.fromEntries(Object.entries(tr.i).map(([n, a]) => [n, a[k]])) }; }
+    else { const r = dcSolve(net); st = { v: r.v, i: r.i }; }
+    sch.setState(st);
+  }
+</script>
+</body>
+</html>

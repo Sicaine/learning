@@ -1,0 +1,86 @@
+/* vizkit.css — Ergänzungen zum vz-Vokabular aus app.css. Nur helles Theme; Farben ausschließlich über Variablen. */
+
+.vk { display: grid; gap: 12px; }
+.vk-row { align-items: end; }
+.vk-control { min-width: 150px; }
+.vk-control.vk-wide { min-width: 260px; flex: 2; }
+.vk-control label { align-items: baseline; gap: 8px; }
+.vk-hint { color: var(--muted); font-size: .76rem; line-height: 1.3; }
+.vk-val { cursor: text; border-radius: 6px; padding: 0 5px; margin: 0 -5px; font-variant-numeric: tabular-nums; }
+.vk-val:hover, .vk-val:focus-visible { background: var(--accent-soft); outline: none; }
+.vk-edit { width: 7.5em; font: 500 .85rem var(--mono); color: var(--accent); text-align: right; border: 1px solid var(--accent-line); border-radius: 6px; padding: 0 5px; background: var(--surface); }
+.vk-edit:focus { outline: 2px solid var(--accent-line); }
+
+/* Regler */
+.vk input[type=range], .vz-control input[type=range] { -webkit-appearance: none; appearance: none; height: 28px; margin: 0; background: transparent; cursor: pointer; touch-action: pan-y; }
+.vk input[type=range]::-webkit-slider-runnable-track { height: 5px; border-radius: 99px; background: linear-gradient(to right, var(--accent) var(--vk-fill, 0%), var(--line-2) var(--vk-fill, 0%)); }
+.vk input[type=range]::-moz-range-track { height: 5px; border-radius: 99px; background: var(--line-2); }
+.vk input[type=range]::-moz-range-progress { height: 5px; border-radius: 99px; background: var(--accent); }
+.vk input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; margin-top: -7.5px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); box-shadow: 0 1px 4px rgba(22, 22, 42, .22); transition: transform .12s, box-shadow .12s; }
+.vk input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); box-shadow: 0 1px 4px rgba(22, 22, 42, .22); }
+.vk input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.1); }
+.vk input[type=range]:active::-webkit-slider-thumb { transform: scale(1.18); box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 16%, transparent), 0 1px 4px rgba(22, 22, 42, .22); }
+.vk input[type=range]:focus-visible { outline: none; }
+.vk input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 30%, transparent); }
+
+/* Segment + Presets */
+.vk-segbox, .vk-presetrow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.vk-seglabel, .vk-togglelabel { font-size: .85rem; color: var(--ink-2); font-weight: 500; }
+.vk-seg button, .vk-presets button { min-height: 30px; }
+.vk-reset { margin-left: auto; }
+
+/* Schalter */
+.vk-togglebox { display: flex; align-items: center; gap: 9px; cursor: pointer; min-width: 0; padding: 4px 0; }
+.vk-toggle { width: 40px; height: 24px; border-radius: 99px; border: 0; padding: 0; background: var(--line-2); position: relative; transition: background .18s; flex: none; cursor: pointer; }
+.vk-toggle .vk-knob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(22, 22, 42, .3); transition: transform .18s; }
+.vk-toggle.on { background: var(--accent); }
+.vk-toggle.on .vk-knob { transform: translateX(16px); }
+.vk-toggle:focus-visible { outline: 3px solid color-mix(in oklab, var(--accent) 35%, transparent); outline-offset: 1px; }
+
+/* Anim */
+.vk-anim { display: inline-flex; align-items: center; gap: 8px; }
+.vk-btn { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink-2); box-shadow: var(--shadow-s); cursor: pointer; }
+.vk-btn:hover { color: var(--accent); border-color: var(--accent-line); }
+
+/* Diagramme */
+.vk-plot { position: relative; }
+.vk-plot > svg, .vk-sch > svg, .vk-phasor > svg { width: 100%; height: auto; display: block; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.vk-plot svg text, .vk-sch svg text, .vk-phasor svg text, .vk-scope svg text { font-family: var(--sans); fill: var(--muted); }
+.vk-plot .vk-ticklabel { font-size: 11px; font-family: var(--mono); }
+.vk-plot .vk-axlabel { font-size: 12px; fill: var(--ink-2); font-weight: 600; }
+.vk-tip { position: absolute; pointer-events: none; z-index: 3; padding: 6px 9px; border-radius: 9px; background: color-mix(in oklab, var(--surface) 94%, transparent); border: 1px solid var(--line-2); box-shadow: var(--shadow); font: 500 .74rem/1.45 var(--mono); color: var(--ink); white-space: nowrap; opacity: 0; transition: opacity .12s; backdrop-filter: blur(4px); }
+.vk-tip.on { opacity: 1; }
+.vk-tip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: baseline; }
+.vk-tip small { display: block; color: var(--muted); font-size: .7rem; }
+.vk-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .8rem; color: var(--ink-2); padding: 2px 4px 0; }
+.vk-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.vk-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.vk-bode { display: grid; gap: 8px; }
+
+/* Oszilloskop */
+.vk-scope { display: grid; gap: 10px; }
+.vk-scope-screen { position: relative; }
+.vk-scope-screen > svg { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--line-2); background: linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: inset 0 1px 0 #fff, var(--shadow-s); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.vk-scope .vk-chtag { font: 600 .74rem var(--mono); padding: 2px 8px; border-radius: 99px; border: 1px solid currentColor; background: var(--surface); }
+.vk-scope-info { display: flex; flex-wrap: wrap; gap: 6px 10px; font: 500 .75rem var(--mono); color: var(--ink-2); }
+.vk-scope-info span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Schaltplan */
+.vk-sch .part { cursor: default; }
+.vk-sch .part.adj { cursor: ns-resize; }
+.vk-sch .part.adj:hover .body, .vk-sch .part.sel .body { stroke: var(--accent); }
+.vk-sch .part:focus-visible { outline: none; }
+.vk-sch .part:focus-visible .hit { stroke: var(--accent); stroke-dasharray: 3 3; }
+.vk-sch .hit { fill: transparent; stroke: transparent; stroke-width: 1.5; }
+.vk-sch .part.sel .hit { fill: color-mix(in oklab, var(--accent) 9%, transparent); stroke: var(--accent-line); }
+.vk-sch .part.hot .hit { fill: color-mix(in oklab, var(--warn) 14%, transparent); }
+.vk-sch text.val { fill: var(--ink-2); font-family: var(--mono); }
+.vk-sch text.lab { fill: var(--ink); font-weight: 600; }
+
+.vk-phasor text { font-size: 12px; }
+@media (max-width: 480px) { .vk-control, .vk-control.vk-wide { min-width: 100%; } .vk-reset { margin-left: 0; } }
+
+/* Spaltenbreite: ohne das schrumpfen SVGs im .vz-Grid auf ihre Mindestbreite */
+.vk, .vz.vk { grid-template-columns: minmax(0, 1fr); }
+.vk > *, .vz > .vk-sch, .vz > .vk-plot { min-width: 0; }
+.vk-sch, .vk-plot, .vk-phasor, .vk-scope, .vk-bode { width: 100%; }
