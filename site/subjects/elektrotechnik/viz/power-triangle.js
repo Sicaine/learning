@@ -90,7 +90,7 @@ export default function mount(stage, { params = {}, complete }) {
       const S1 = Math.hypot(P, Q1), S2 = Math.hypot(P, Q2), c2 = P / S2, I1 = S1 / Ufix, I2 = S2 / Ufix;
       draw(P, Q1, Q2);
       out.set({ c2: comma(c2) + (Q2 < -1 ? ' (kapazitiv)' : Q2 > 1 ? ' (induktiv)' : ''), i1: fmt(I1, 'A'), i2: fmt(I2, 'A'), q1: fmt(Q1, 'var'), qc: fmt(QC, 'var'), q2: fmt(Q2, 'var'), s2: fmt(S2, 'VA') });
-      if (c2 >= 0.95 && Q2 >= 0) g.reach('target');
+      if (c2 >= 0.949 && Q2 >= 0) g.reach('target');
       if (I2 < 5 && P >= 800) g.reach('current');
       if (Q2 < -50) g.reach('over');
     }

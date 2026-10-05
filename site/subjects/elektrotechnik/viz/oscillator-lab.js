@@ -12,6 +12,7 @@ const TC_LC = -100e-6, TC_XTAL = 0.3e-6;   // Modellwerte je Kelvin (nur zur Ver
 const N_CYC = 500, PPC = 8;
 
 export default function mount(stage, { params = {}, complete, md }) {
+  md = (m0 => s => m0(String(s).replace(/\u00a0/g, ' ')))(md);   // fmt() liefert geschützte Leerzeichen; KaTeX-strict warnt in Formeln
   const targetF = params.targetF ?? 7.1e6, tol = params.tol ?? 0.015, dTgoal = params.dT ?? 30;
   const root = h('div', { class: 'vz vk' }); stage.append(root);
 

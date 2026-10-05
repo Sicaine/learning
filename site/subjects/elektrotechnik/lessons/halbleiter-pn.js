@@ -99,7 +99,7 @@ $I_S$ ist der Sperrsättigungsstrom (bei Silizium extrem klein, in der Größeno
     },
     {
       id: 'numeric-temp', type: 'numeric', title: 'Flussspannung und Temperatur',
-      question: 'Eine Siliziumdiode hat bei $20\\,^\\circ\\mathrm{C}$ und konstantem Strom die Flussspannung $0{,}65\\,\\mathrm{V}$. Die Flussspannung sinkt um etwa $2\\,\\mathrm{mV}$ pro Kelvin. Wie groß ist sie bei $70\\,^\\circ\\mathrm{C}$?',
+      question: 'Eine Siliziumdiode hat bei $20\\,{}^{\\circ}\\mathrm{C}$ und konstantem Strom die Flussspannung $0{,}65\\,\\mathrm{V}$. Die Flussspannung sinkt um etwa $2\\,\\mathrm{mV}$ pro Kelvin. Wie groß ist sie bei $70\\,{}^{\\circ}\\mathrm{C}$?',
       answer: 0.55, tolerance: 0.005, unit: 'V',
       hint: 'Temperaturunterschied: 50 K.',
       explain: '$\\Delta U = -2\\,\\mathrm{mV/K}\\cdot 50\\,\\mathrm{K} = -100\\,\\mathrm{mV}$, also $0{,}65\\,\\mathrm{V} - 0{,}10\\,\\mathrm{V} = 0{,}55\\,\\mathrm{V}$. Der Wert −2 mV/K ist eine Faustregel für Silizium; die Demo rechnet mit etwa −1,6 mV/K bei 10 mA.',
@@ -113,7 +113,7 @@ $I_S$ ist der Sperrsättigungsstrom (bei Silizium extrem klein, in der Größeno
     },
     {
       id: 'mission-pruefung', type: 'callout', tone: 'mission', title: 'Prüfung und Funkpraxis',
-      md: `Der Fragenkatalog der Klasse E verlangt hier **keine** Halbleiterphysik, aber die Ergebnisse davon: In **EC503** geht es um die typischen Schwellspannungen von Germanium und Silizium, in **EC501** darum, dass eine in Sperrrichtung betriebene Diode einen *hohen Widerstand* zeigt, und in **EC513** darum, bei welchen Spannungen an Anode und Kathode eine Siliziumdiode leitet — etwa $0{,}7\\,\\mathrm{V}$ an der Anode mehr als an der Kathode.[^bnetza-katalog] Praktisch begegnet dir der pn-Übergang im Amateurfunk als Demodulator ([Detektorempfänger](wiki:Detektorempfänger|Crystal radio): erste Empfänger mit Kristalldiode), als Schutzdiode im Empfängereingang, als Ringmischer aus Schottky-Dioden und überall dort, wo Gleichrichter und Spannungsregler arbeiten. Das Bauteil dahinter ist immer derselbe Übergang.`,
+      md: `Der Fragenkatalog der Klasse E verlangt hier **keine** Halbleiterphysik, aber die Ergebnisse davon: In **EC503** geht es um die typischen Schwellspannungen von Germanium und Silizium, in **EC501** darum, dass eine in Sperrrichtung betriebene Diode einen *hohen Widerstand* zeigt, und in **EC513** darum, bei welchen Spannungen an Anode und Kathode eine Siliziumdiode leitet — etwa $0{,}7\\,\\mathrm{V}$ an der Anode mehr als an der Kathode.[^bnetza-pruefungsfragen-2024] Praktisch begegnet dir der pn-Übergang im Amateurfunk als Demodulator ([Detektorempfänger](wiki:Detektorempfänger|Crystal radio): erste Empfänger mit Kristalldiode), als Schutzdiode im Empfängereingang, als Ringmischer aus Schottky-Dioden und überall dort, wo Gleichrichter und Spannungsregler arbeiten. Das Bauteil dahinter ist immer derselbe Übergang.`,
     },
     {
       id: 'german', type: 'callout', tone: 'german', title: 'Vokabeln',

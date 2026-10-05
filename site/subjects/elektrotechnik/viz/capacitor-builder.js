@@ -25,7 +25,7 @@ function plates(root, params, complete) {
   root.append(h('div', {}, svg));
   const ui = controls(root, [
     { id: 'A', label: 'Plattenfläche A', unit: 'm²', min: 1e-4, max: 1e-2, value: 1e-3, scale: 'log', format: v => fmt(v * 1e4, 'cm²') },
-    { id: 'd', label: 'Plattenabstand d', unit: 'm', min: 1e-4, max: 5e-3, value: 1e-3, scale: 'log', format: v => fmt(v * 1e3, 'mm') },
+    { id: 'd', label: 'Plattenabstand d', unit: 'm', min: 1e-4, max: 5e-3, value: 1e-3, scale: 'log', format: v => fmt(v, 'm', { prefix: 'm' }) },
     { id: 'er', type: 'seg', label: 'Dielektrikum ε_r', options: DIEL, value: 1.0 },
     { id: 'U', label: 'Spannung U', unit: 'V', min: 1, max: 50, value: params.U ?? 12, snap: 1 },
   ], draw);

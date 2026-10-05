@@ -10,7 +10,7 @@ const optional = (what) => ({
   explain: `Nur **/T bzw. /Trainee** ist Pflicht. ${what} ist eine freiwillige Zusatzinformation; man darf ihn auch weglassen.`,
 });
 
-const ITEMS = [
+export const ITEMS = [
   { q: 'Du wanderst mit einem Handfunkgerät auf einen Gipfel und rufst von dort CQ.', correct: OPT.indexOf(P), explain: '**/p** (portabel): zu Fuß unterwegs oder vorübergehend ortsfest an einem anderen Standort als dem Heimatstandort.', then: optional('/p') },
   { q: 'Du fährst im Auto auf der Autobahn und funkst mit deinem Mobilgerät.', correct: OPT.indexOf(M), explain: '**/m** (mobil): bewegliche Station in einem Landfahrzeug (Auto, Zug) oder auf einem Schiff auf Binnengewässern.', then: optional('/m') },
   { q: 'Du sitzt als Passagier auf der Fähre über den Bodensee, der Kapitän hat zugestimmt.', correct: OPT.indexOf(M), explain: 'Ein Binnengewässer ist **kein „auf See“**: dafür gilt **/m**. (Zustimmung des Schiffsführers brauchst du trotzdem.)' },
@@ -22,7 +22,7 @@ const ITEMS = [
   { q: 'Dein Ortsverband baut eine Station auf dem Feldtag in einer Wiese auf (vorübergehend ortsfest).', correct: OPT.indexOf(P), explain: '**/p** gilt auch für vorübergehend ortsfeste Stationen — nicht nur für Handfunkgeräte.', then: optional('/p') },
   { q: 'Du sendest im Zug während der Fahrt mit einem Handfunkgerät aus dem Fenster. Der Zusatz für eine bewegliche Station in einem Landfahrzeug heißt ...', correct: OPT.indexOf(M), explain: 'Zug = Landfahrzeug → **/m**. (Wer zu Fuß mit dem Handfunkgerät unterwegs ist, nimmt /p.)' },
   { q: 'An der Klubstation DL0MOL wird Ausbildungsfunk in **Telegrafie** gemacht. Wie nennt sich der Auszubildende?', options: ['DL0MOL/T', 'DL0MOL/Trainee', 'T/DL0MOL', 'DL0MOL/A'], correct: 0, explain: 'Bei Telegrafie und digitalen Betriebsarten gilt **/T**, im Sprechfunk **/Trainee**. Der Zusatz steht **hinter** dem Rufzeichen. (Klubstationen dürfen für Ausbildung genutzt werden.)', shuffle: true },
-  { q: 'Du bist Ausbilder und möchtest selbst einmal in Ruhe funken, während dein Schüler zuhört. Welches Rufzeichen verwendest du?', options: ['Mein normales Rufzeichen, ohne Zusatz', 'Mein Rufzeichen mit /Trainee', 'Das Ausbildungsrufzeichen DN1AA', 'Mein Rufzeichen mit /A'], correct: 0, explain: 'Der Zusatz /T bzw. /Trainee macht aus deinem Rufzeichen ein **Ausbildungsrufzeichen**; es darf **nicht vom Ausbilder selbst** für eigene Aussendungen benutzt werden.', shuffle: true },
+  { q: 'Du bist Ausbilder und möchtest selbst einmal in Ruhe funken, während dein Schüler zuhört. Welches Rufzeichen verwendest du?', options: ['Mein normales Rufzeichen, ohne Zusatz', 'Mein Rufzeichen mit /Trainee', 'Mein Rufzeichen mit dem Zusatz /Ausbildung', 'Mein Rufzeichen mit /A'], correct: 0, explain: 'Der Zusatz /T bzw. /Trainee macht aus deinem Rufzeichen ein **Ausbildungsrufzeichen**; es darf **nicht vom Ausbilder selbst** für eigene Aussendungen benutzt werden.', shuffle: true },
 ];
 
 export default function mount(stage, { params = {}, complete, md }) {

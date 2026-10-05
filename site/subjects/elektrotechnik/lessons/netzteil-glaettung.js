@@ -14,7 +14,7 @@ export default {
     {
       id: 'tank', type: 'text', title: 'Der Kondensator als Wasserturm',
       md: `
-Die Gleichrichtung aus der letzten Lektion liefert Spannungskuppen mit Lücken dazwischen. Ein Verbraucher will aber **ständig** Strom. Die Lösung ist ein Zwischenspeicher: ein **[[ladekondensator|Lade- oder Glättungskondensator]]** (auch *Siebkondensator*, [Glättungskondensator](wiki:Glättungskondensator|Smoothing capacitor)) parallel zur Last.
+Die [Gleichrichtung](wiki:Gleichrichter|Rectifier) aus der letzten Lektion liefert Spannungskuppen mit Lücken dazwischen. Ein Verbraucher will aber **ständig** Strom. Die Lösung ist ein Zwischenspeicher: ein **[[ladekondensator|Lade- oder Glättungskondensator]]** (auch *Siebkondensator*, [Glättungskondensator](wiki:Glättungskondensator|Smoothing capacitor)) parallel zur Last.
 
 Denk an einen Wasserturm: Die Pumpe (Gleichrichter) füllt ihn in kurzen Schüben, während die Haushalte (Last) gleichmäßig zapfen. In den Lücken zwischen den Kuppen zehrt die Last vom Speicher, und die Spannung sinkt langsam — bis die nächste Kuppe den Kondensator wieder nachlädt. Das Ergebnis ist ein **Sägezahn** auf einer hohen Gleichspannung: die [[restwelligkeit]] oder Brummspannung.[^kuphaldt-semi-3]
 
@@ -29,7 +29,7 @@ $$\\Delta U \\approx \\frac{I}{f_\\text{Welligkeit}\\cdot C}$$
 
 Die Welligkeitsfrequenz ist 100 Hz bei der Brücke und 50 Hz beim Einweggleichrichter — der **Einweggleichrichter** hat bei gleichem $C$ und $I$ also die **doppelte** Welligkeit. Das ist eine Obergrenze (die Nachladezeit verkürzt die Entladezeit etwas), aber für die Auslegung genau richtig.
 
-**Drei Hebel** gegen Brumm: mehr Kapazität, weniger Laststrom, höhere Welligkeitsfrequenz (Brücke statt Einweg). Der [Elektrolytkondensator](wiki:Elektrolytkondensator|Electrolytic capacitor) ist die übliche Wahl, denn nur er bietet Millifarad bei Netzteil-Spannungen — er ist **gepolt**, und seine Nennspannung muss über der Spitzenspannung liegen.`,
+**Drei Hebel** gegen Brumm: mehr Kapazität, weniger Laststrom, höhere Welligkeitsfrequenz ([Brückengleichrichter](wiki:Brückengleichrichter|Rectifier) statt Einweg; Welligkeit bei zweimal der [Netzfrequenz](wiki:Netzfrequenz|Utility frequency)). Am Ende der Kette steht oft ein [Spannungsregler](wiki:Spannungsregler|Voltage regulator). Der [Elektrolytkondensator](wiki:Elektrolytkondensator|Electrolytic capacitor) ist die übliche Wahl, denn nur er bietet Millifarad bei Netzteil-Spannungen — er ist **gepolt**, und seine Nennspannung muss über der Spitzenspannung liegen.`,
     },
     {
       id: 'pulse', type: 'text', title: 'Der Preis: kurze, kräftige Stromstöße',
@@ -146,7 +146,7 @@ Brumm im Empfänger (100-Hz-Ton) ist der typische Hinweis auf einen zu kleinen S
     {
       id: 'deep-siebglied', type: 'callout', tone: 'deep', title: 'Siebglied: Brumm noch weiter senken',
       md: `
-Reicht ein Kondensator nicht, schaltet man ein **Siebglied** nach: einen Längswiderstand (oder eine Drossel) mit einem zweiten Kondensator nach Masse. Das ist ein [[tiefpass|Tiefpass]], der 100 Hz stärker dämpft als die Gleichspannung; teurer, aber weniger Verlust ist meist ein Spannungsregler, der Restwelligkeit und Laständerungen gleich mit ausregelt (nächste Lektion).`,
+Reicht ein Kondensator nicht, schaltet man ein **Siebglied** nach (ein [Tiefpass](wiki:Tiefpass|Low-pass filter) für die Welligkeit): einen Längswiderstand (oder eine Drossel) mit einem zweiten Kondensator nach Masse. Das ist ein [[tiefpass|Tiefpass]], der 100 Hz stärker dämpft als die Gleichspannung; teurer, aber weniger Verlust ist meist ein Spannungsregler, der Restwelligkeit und Laständerungen gleich mit ausregelt (nächste Lektion).`,
     },
   ],
   cards: [

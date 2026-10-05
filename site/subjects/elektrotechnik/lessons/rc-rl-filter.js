@@ -16,12 +16,12 @@ export default {
       md: String.raw`
 Im [[spannungsteiler|Spannungsteiler]] teilen zwei Widerstände die Spannung im festen Verhältnis. Ersetzt man einen davon durch einen **Blindwiderstand**, hängt das Teilerverhältnis von der Frequenz ab — denn $X_C = 1/(2\pi f C)$ **fällt** mit der Frequenz, $X_L = 2\pi f L$ **steigt**.
 
-Beim **RC-Tiefpass** liegt $R$ in Reihe und $C$ quer zum Ausgang:
+Beim **RC-Tiefpass** ([Tiefpass](wiki:Tiefpass|Low-pass filter)) liegt $R$ in Reihe und $C$ quer zum Ausgang:
 
 - **tiefe Frequenzen**: $X_C$ ist riesig, praktisch kein Strom fließt, am Ausgang liegt fast die volle Eingangsspannung — das Signal geht durch.
 - **hohe Frequenzen**: $X_C$ ist winzig, der Kondensator schließt den Ausgang fast kurz — das Signal verschwindet.
 
-Vertauscht man $R$ und $C$ (Kondensator in Reihe, Widerstand quer), entsteht der **Hochpass**: Der Kondensator lässt Hohes passieren und blockt Tiefes — Gleichspannung blockt er ganz. Genau deshalb nennt man ihn auch *Koppelkondensator*, wenn man damit zwei Verstärkerstufen gleichspannungsfrei verbindet. Beim **RL-Glied** gilt dasselbe mit umgekehrter Rolle der Spule: $L$ in Reihe = Tiefpass, $L$ quer = Hochpass.
+Vertauscht man $R$ und $C$ (Kondensator in Reihe, Widerstand quer), entsteht der **Hochpass** ([Hochpass](wiki:Hochpass|High-pass filter)): Der Kondensator lässt Hohes passieren und blockt Tiefes — [Gleichspannung](wiki:Gleichstrom|Direct current) blockt er ganz. Genau deshalb nennt man ihn auch *Koppelkondensator*, wenn man damit zwei Verstärkerstufen gleichspannungsfrei verbindet. Beim **RL-Glied** (RL-Glied) gilt dasselbe mit umgekehrter Rolle der Spule: $L$ in Reihe = Tiefpass, $L$ quer = Hochpass.
 
 > Merkhilfe: **Hochpass: C in Reihe — lässt das Hohe durch das C.**
 

@@ -35,7 +35,7 @@ const SUB = '₀₁₂₃₄₅₆₇₈₉';
 const sub = n => String(n).split('').map(d => SUB[+d]).join('');
 const ROW = 4.8;
 
-const part = v => ({ t: 'p', v });
+const part = v => ({ t: 'x', v });
 const grp = (t, k) => ({ t, k });
 function build(spec) {
   if (typeof spec === 'number') return part(spec);
@@ -43,8 +43,8 @@ function build(spec) {
   if (spec.par) return grp('p', spec.par.map(build));
   throw new Error('series-parallel-builder: ungültiges start');
 }
-const countParts = n => n.t === 'p' ? 1 : n.k.reduce((a, c) => a + countParts(c), 0);
-const has = (n, t) => n.t !== 'p' && (n.t === t || n.k.some(c => has(c, t)));
+const countParts = n => n.t === 'x' ? 1 : n.k.reduce((a, c) => a + countParts(c), 0);
+const has = (n, t) => n.t !== 'x' && (n.t === t || n.k.some(c => has(c, t)));
 
 export default function mount(stage, { params = {}, md, complete }) {
   const M = MODES[params.mode || 'R'] || MODES.R;
@@ -55,8 +55,8 @@ export default function mount(stage, { params = {}, md, complete }) {
   const showFlow = params.flow !== false && params.source !== false;
   let U = params.source === false ? 0 : (params.source ?? M.U);
   let root = build(params.start ?? M.start);
-  let sel = root.t === 'p' ? root : null;
-  let lastVal = root.t === 'p' ? root.v : M.start;
+  let sel = root.t === 'x' ? root : null;
+  let lastVal = root.t === 'x' ? root.v : M.start;
 
   const goalDefs = (params.goals || (M === MODES.R && !params.start ? [
     { id: 'g75', label: '75 Ω (±1 %)', target: 75, tol: 0.01, minParts: 2 },
@@ -83,7 +83,7 @@ export default function mount(stage, { params = {}, md, complete }) {
     ...(editable ? [{ id: 'val', label: `Wert des gewählten Teils (${series})`, unit: M.unit, min: vmin, max: vmax, scale: 'log', snap: series, value: lastVal, wide: true }] : []),
     ...(params.source === false ? [] : [{ id: 'U', label: 'Quellenspannung', unit: 'V', min: 1, max: 24, step: 0.5, value: U }]),
   ], (v, id) => {
-    if (id === 'val') { lastVal = v.val; if (sel && sel.t === 'p') sel.v = v.val; }
+    if (id === 'val') { lastVal = v.val; if (sel && sel.t === 'x') sel.v = v.val; }
     if (id === 'U') U = v.U;
     render();
   });
@@ -92,10 +92,10 @@ export default function mount(stage, { params = {}, md, complete }) {
   const gu = goalDefs.length ? goalsUi(wrap, goalDefs.map(g => ({ id: g.id, label: g.label })), () => complete?.()) : null;
 
   // ── Baum-Operationen ──
-  const parentOf = (n, r = root) => { if (r.t === 'p') return null; for (let i = 0; i < r.k.length; i++) { if (r.k[i] === n) return { p: r, i }; const f = parentOf(n, r.k[i]); if (f) return f; } return null; };
+  const parentOf = (n, r = root) => { if (r.t === 'x') return null; for (let i = 0; i < r.k.length; i++) { if (r.k[i] === n) return { p: r, i }; const f = parentOf(n, r.k[i]); if (f) return f; } return null; };
   function add(kind) {
     if (!sel || countParts(root) >= maxParts) return;
-    const np = part(sel.t === 'p' ? sel.v : lastVal);
+    const np = part(sel.t === 'x' ? sel.v : lastVal);
     if (sel.t === kind) sel.k.push(np);
     else { const pr = parentOf(sel); if (!pr) root = grp(kind, [sel, np]); else if (pr.p.t === kind) pr.p.k.splice(pr.i + 1, 0, np); else pr.p.k[pr.i] = grp(kind, [sel, np]); }
     select(np);
@@ -109,25 +109,25 @@ export default function mount(stage, { params = {}, md, complete }) {
     if (pr.p.k.length === 1) { const only = pr.p.k[0], gp = parentOf(pr.p); if (!gp) root = only; else gp.p.k[gp.i] = only; keep = only; }
     select(keep);
   }
-  function reset() { root = build(params.start ?? M.start); select(root.t === 'p' ? root : null); }
+  function reset() { root = build(params.start ?? M.start); select(root.t === 'x' ? root : null); }
   function select(n) {
     sel = n;
-    if (n && n.t === 'p') { lastVal = n.v; ui.set({ val: n.v }, { silent: true }); }
+    if (n && n.t === 'x') { lastVal = n.v; ui.set({ val: n.v }, { silent: true }); }
     render();
   }
 
   // ── Rechnung ──
-  const G = n => n.t === 'p' ? M.g(n.v) : n.t === 's' ? 1 / n.k.reduce((a, c) => a + 1 / G(c), 0) : n.k.reduce((a, c) => a + G(c), 0);
+  const G = n => n.t === 'x' ? M.g(n.v) : n.t === 's' ? 1 / n.k.reduce((a, c) => a + 1 / G(c), 0) : n.k.reduce((a, c) => a + G(c), 0);
   function distribute(n, u, f, acc) {      // u: Spannung, f: „Fluss" (I, Q, di/dt)
     acc.set(n, { u, f });
     if (n.t === 's') for (const c of n.k) distribute(c, f / G(c), f, acc);
     else if (n.t === 'p') for (const c of n.k) distribute(c, u, u * G(c), acc);
   }
-  const exprOf = (n, parent) => n.t === 'p' ? fmt(n.v, M.unit) : (() => { const s = n.k.map(c => exprOf(c, n.t)).join(n.t === 's' ? ' + ' : ' ‖ '); return parent && parent !== n.t ? `(${s})` : s; })();
+  const exprOf = (n, parent) => n.t === 'x' ? fmt(n.v, M.unit) : (() => { const s = n.k.map(c => exprOf(c, n.t)).join(n.t === 's' ? ' + ' : ' ‖ '); return parent && parent !== n.t ? `(${s})` : s; })();
 
   // ── Layout ──
   const measure = n => {
-    if (n.t === 'p') return (n.m = { w: 4, h: 0 });
+    if (n.t === 'x') return (n.m = { w: 4, h: 0 });
     n.k.forEach(measure);
     if (n.t === 's') return (n.m = { w: n.k.reduce((a, c) => a + c.m.w, 0) + 2 * (n.k.length - 1), h: Math.max(...n.k.map(c => c.m.h)) });
     const w = Math.max(...n.k.map(c => c.m.w)) + 4;
@@ -146,7 +146,7 @@ export default function mount(stage, { params = {}, md, complete }) {
     const flowOf = n => (acc.get(n)?.f) ?? 0;
     function place(n, x, y) {
       boxes.push({ n, x, y, w: n.m.w, hh: n.m.h });
-      if (n.t === 'p') {
+      if (n.t === 'x') {
         const id = M.sym + (++pid), a = acc.get(n);
         parts.push({ id, type: M.sym, at: [x, y], value: n.v, label: M.sym + sub(pid), labelPos: 't' });
         if (showFlow && a) texts.push({ at: [x + 2, y + 1.9], text: `${fmt(a.u, 'V')} · ${fmt(a.f, M.flowUnit)}`, anchor: 'middle', size: 0.62, color: 'var(--ink-2)' });
@@ -204,8 +204,8 @@ export default function mount(stage, { params = {}, md, complete }) {
     out.set({ tot: fmt(tot, M.unit), n: String(np), ...(showFlow ? { f: fmt(U * gt, M.flowUnit) } : {}), ...(showFlow && M === MODES.R ? { p: fmt(U * U * gt, 'W') } : {}) });
     expr.textContent = `${M.total} = ${exprOf(root)} = ${fmt(tot, M.unit)}`;
     if (editable) {
-      selInfo.textContent = !sel ? 'Tippe ein Bauteil an.' : sel.t === 'p' ? `Gewählt: ${M.name} mit ${fmt(sel.v, M.unit)}.` : `Gewählt: ${sel.t === 's' ? 'Reihenschaltung' : 'Parallelschaltung'} aus ${countParts(sel)} Bauteilen = ${fmt(M.fromG(G(sel)), M.unit)}.`;
-      bSer.disabled = bPar.disabled = !sel || np >= maxParts; bUp.disabled = !sel || !parentOf(sel); bDel.disabled = !sel || (sel === root && root.t === 'p');
+      selInfo.textContent = !sel ? 'Tippe ein Bauteil an.' : sel.t === 'x' ? `Gewählt: ${M.name} mit ${fmt(sel.v, M.unit)}.` : `Gewählt: ${sel.t === 's' ? 'Reihenschaltung' : 'Parallelschaltung'} aus ${countParts(sel)} Bauteilen = ${fmt(M.fromG(G(sel)), M.unit)}.`;
+      bSer.disabled = bPar.disabled = !sel || np >= maxParts; bUp.disabled = !sel || !parentOf(sel); bDel.disabled = !sel || (sel === root && root.t === 'x');
     }
     // Ziele
     for (const g of goalDefs) {

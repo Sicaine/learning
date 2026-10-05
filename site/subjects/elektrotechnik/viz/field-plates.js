@@ -52,7 +52,7 @@ export default function mount(stage, { params = {}, complete }) {
 
   const ui = controls(root, [
     { id: 'U', label: 'Spannung U', unit: 'V', min: 0, max: 1000, value: 100, snap: 10, digits: 4 },
-    { id: 'd', label: 'Plattenabstand d', unit: 'm', min: 2e-5, max: 2e-2, value: 5e-3, scale: 'log', snap: 'E12', format: v => fmt(v * 1e3, 'mm') },
+    { id: 'd', label: 'Plattenabstand d', unit: 'm', min: 2e-5, max: 2e-2, value: 5e-3, scale: 'log', snap: 'E12', format: v => fmt(v, 'm', { prefix: 'm' }) },
     { id: 'mat', type: 'seg', label: 'Zwischenraum', options: Object.entries(MAT).map(([k, m]) => [k, m.label]), value: 'air' },
     { id: 'q', type: 'seg', label: 'Probeladung', options: [[1e-9, '+1 nC'], [1e-6, '+1 µC']], value: 1e-6 },
   ], draw);

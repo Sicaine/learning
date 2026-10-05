@@ -21,7 +21,8 @@ export default function mount(stage, { complete }) {
     { id: 'ks-e', label: 'Klubstation der Klasse E im Remote-Betrieb: Verstoß finden' },
   ], () => complete?.());
 
-  function run() {
+  function run(_, id) {
+    const act = !!id;
     const v = ui.values;
     const club = v.kind !== 'pz';
     const checks = [];
@@ -37,6 +38,7 @@ export default function mount(stage, { complete }) {
       h('b', { text: ok ? '✓' : '✗', style: `color:var(--${ok ? 'good' : 'bad'})` }), h('div', {}, h('div', { text: txt, style: 'font-weight:600' }), ok ? null : h('div', { text: why, style: 'color:var(--ink-2);margin-top:2px' })))));
     const all = checks.every(c => c[0]);
     verdict.innerHTML = all ? '<b style="color:var(--good)">Zulässig.</b> Alle Voraussetzungen sind erfüllt.' : `<b style="color:var(--bad)">Nicht zulässig</b> — ${checks.filter(c => !c[0]).length} Bedingung(en) verletzt.`;
+    if (!act) return;
     if (all) g.reach('ok');
     if (!club && v.cls === 'E' && !checks[0][0]) g.reach('e');
     if (club && v.who === 'all') g.reach('club');

@@ -195,7 +195,7 @@ Only cite what you have verified (arXiv ids via `https://export.arxiv.org/api/qu
 ### Markup dialect (`markup.js`)
 `**bold**`, `*italic*`, `` `code` ``, `[text](url)`, `$inline$` / `$$display$$` KaTeX,
 `[[term-id]]` / `[[term-id|shown text]]`, `[^source-id]`, `## headings`, `- lists`, `1. lists`,
-`> quotes`, fenced code, raw HTML (tables). Inside JS template literals escape backslashes: `\\cdot`.
+`> quotes`, fenced code, **pipe tables** (`| A | B |` header, `|---|--:|` separator with optional alignment, then rows), raw HTML. Inside JS template literals escape backslashes: `\\cdot`.
 
 ## Content principles
 

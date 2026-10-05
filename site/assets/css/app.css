@@ -743,3 +743,13 @@ a.wlink:hover { text-decoration: none; border-bottom-color: var(--accent); color
   .subnav::-webkit-scrollbar { display: none; }
 }
 @media (max-width: 560px) { .q-answers.fig { grid-template-columns: 1fr; } }
+
+/* Practice card at the end of a lesson */
+.end-practice { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 16px 20px; border-radius: var(--radius); background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 7%, white), white 80%); border: 1px solid var(--accent-line); box-shadow: var(--shadow-s); }
+.end-practice > div { display: flex; gap: 12px; align-items: center; color: var(--accent); }
+.end-practice b { display: block; color: var(--ink); }
+.end-practice span { color: var(--muted); font-size: .9rem; }
+
+/* Pipe tables in prose: scroll sideways on small screens instead of overflowing */
+.prose .tbl { overflow-x: auto; margin: 1em 0; }
+.prose .tbl table { margin: 0; min-width: 100%; }

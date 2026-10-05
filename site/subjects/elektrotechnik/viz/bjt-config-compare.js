@@ -31,7 +31,7 @@ const QUESTIONS = [
   { id: 'phase', text: 'Welche Schaltung dreht die Phase des Signals um 180°?', pick: r => argmin(r, k => r[k].re), ok: 'Richtig: Die Emitterschaltung invertiert — mehr Basisstrom bedeutet mehr Kollektorstrom, also weniger Kollektorspannung.' },
   { id: 'rin', text: 'Welche Schaltung hat den kleinsten Eingangswiderstand?', pick: r => argmin(r, k => r[k].rin), ok: 'Richtig: In der Basisschaltung speist man in den Emitter ein — dort sieht man nur r_e ≈ U_T/I_C, einige 10 Ω.' },
 ];
-function argmin(r, f) { let b = 'E'; for (const k of ['E', 'C', 'B']) if (f(r[k]) < f(r[b])) b = k; return b; }
+function argmin(r, f) { let b = 'E'; for (const k of ['E', 'C', 'B']) if (f(k) < f(b)) b = k; return b; }
 
 export default function mount(stage, { complete }) {
   const root = h('div', { class: 'vz vk' }); stage.append(root);

@@ -38,7 +38,7 @@ export function analyse(raw) {
   if (suf.length === 1) {
     const r = T2.find(x => inRange(p, x[0], x[1]));
     if (!r) return { ok: false, msg: `Die Reihe ${p} hat keine Rufzeichen mit einbuchstabigem Suffix.` };
-    return { ...res, kind: 'KS', purpose: 'Klubstation', cls: r[2], note: [r[3], 'unbefristet bzw. bis zu 5 Jahre (Notfunk-/BOS-Klubstationen)'].filter(Boolean).join('; '), code: 'KS' };
+    return { ...res, kind: 'KS', purpose: 'Klubstation', cls: r[2], note: [r[3], 'Zuteilung bis zu 5 Jahre (Rufzeichenplan Nr. 8)'].filter(Boolean).join('; '), code: 'KS' };
   }
   if (suf.length >= 4) {
     const r = T1.find(x => inRange(p, x[0], x[1]));

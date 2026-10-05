@@ -60,7 +60,7 @@ Typische Werte liegen bei Kleinsignaltransistoren zwischen etwa 100 und 500, bei
 
 $$\\beta = \\frac{\\Delta I_C}{\\Delta I_B}$$
 
-Und schließlich die Eingangsseite: Zwischen Basis und Emitter sitzt eine [[diode|Diode]]. Sie leitet erst ab der **[[basis-emitter-spannung|Basis-Emitter-Spannung]]** $U_{BE} \\approx 0{,}6\\ldots0{,}7\\,\\mathrm{V}$ (Silizium) — und dann ändert sich $U_{BE}$ kaum noch, auch wenn der Strom stark steigt.[^et5-katalog]
+Und schließlich die Eingangsseite: Zwischen Basis und Emitter sitzt eine [[diode|Diode]]. Sie leitet erst ab der **[[basis-emitter-spannung|Basis-Emitter-Spannung]]** $U_{BE} \\approx 0{,}6\\ldots0{,}7\\,\\mathrm{V}$ (Silizium) — und dann ändert sich $U_{BE}$ kaum noch, auch wenn der Strom stark steigt.[^bnetza-pruefungsfragen-2024]
 
 **Beispiel:** $I_C = 100\\,\\mathrm{mA}$ bei $B = 100$ → $I_B = 1\\,\\mathrm{mA}$ und $I_E = 101\\,\\mathrm{mA}$. Mit einem Tausendstel des Stroms steuerst du die Last.`,
     },
@@ -115,7 +115,7 @@ Im Schaltbetrieb nutzt man nur die beiden Endzustände *Sperren* und *Sättigung
     {
       id: 'mission', type: 'callout', tone: 'mission', title: 'Prüfung und Funkpraxis',
       md: `
-**Klasse E (Kapitel „Transistor“):** Verlangt werden die Anschlüsse *Emitter, Basis, Kollektor* (EC608, EC609), die Schaltzeichen von npn und pnp (EC605–EC607), die **Stromverstärkung** — ein kleiner Basisstrom steuert einen großen Kollektorstrom (EC603) —, der Wert von $U_{BE}$ im leitenden Zustand von etwa **0,6 V** (EC610), und dass im leitenden Zustand der **Emitter** den größten Strom führt (EC611). Dazu kommen Aufgaben mit gemessenen Anschlussspannungen, bei denen du den Transistor finden sollst, durch den Kollektorstrom fließt (EC612–EC615): Suche die Variante mit $U_{BE}$ von 0,6 bis 0,7 V und $U_C > U_E$.[^et5-katalog]
+**Klasse E (Kapitel „Transistor“):** Verlangt werden die Anschlüsse *Emitter, Basis, Kollektor* (EC608, EC609), die Schaltzeichen von npn und pnp (EC605–EC607), die **Stromverstärkung** — ein kleiner Basisstrom steuert einen großen Kollektorstrom (EC603) —, der Wert von $U_{BE}$ im leitenden Zustand von etwa **0,6 V** (EC610), und dass im leitenden Zustand der **Emitter** den größten Strom führt (EC611). Dazu kommen Aufgaben mit gemessenen Anschlussspannungen, bei denen du den Transistor finden sollst, durch den Kollektorstrom fließt (EC612–EC615): Suche die Variante mit $U_{BE}$ von 0,6 bis 0,7 V und $U_C > U_E$.[^bnetza-pruefungsfragen-2024]
 
 **Funkpraxis:** Das Tasten des Senders („PTT“) schaltet in jedem Funkgerät ein Relais oder einen Transistor — genau diese Schaltung. Und die Endstufe, die später deine Antenne speist, ist im Prinzip auch ein Transistor, dem man eine hohe Spannung und einen hohen Strom zumutet (Leistungsverstärkung, ED401).`,
     },

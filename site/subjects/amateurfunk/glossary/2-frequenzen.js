@@ -1,4 +1,8 @@
-// Etappe 2-frequenzen: generiert aus Arbeitsdateien.
+// Begriffe der Etappe 2-frequenzen. Format: siehe CLAUDE.md (Feld `en` = englischer Name für die Sprachhilfe). Keine doppelten ids!
 export default [
-
+  { id: 'amplitude', term: 'Amplitude', en: 'amplitude', cat: 'Technik', short: 'Größter Abstand einer Schwingung von der Nulllinie (zum höchsten oder tiefsten Punkt); beschreibt, wie stark die Schwingung ist. Bei einer Funkwelle: die Höhe des Wellenbergs (Feldstärke).', related: [], wiki: { de: 'Amplitude', en: 'Amplitude' } },
+  { id: 'pep', term: 'Spitzenleistung (PEP)', de: 'Hüllkurvenspitzenleistung', en: 'peak envelope power', inline: 'PEP', cat: 'Technik', short: 'Leistung, die ein Sender während einer HF-Periode bei der höchsten Spitze der Modulationshüllkurve im Mittel an einen reellen Abschlusswiderstand abgeben kann; maßgebliche Grenze der Klassen A und E (§ 2 Nr. 7 AFuV).', related: ['erp'], wiki: { de: 'Peak Envelope Power', en: 'Peak envelope power' } },
+  { id: 'erp', term: 'Effektive Strahlungsleistung (ERP)', en: 'effective radiated power', inline: 'ERP', cat: 'Technik', short: 'Produkt aus der der Antenne zugeführten Leistung und ihrem Gewinn in einer Richtung, bezogen auf den Halbwellendipol (§ 2 Nr. 8 AFuV). Bezogen auf den Kugelstrahler heißt sie EIRP; EIRP = 1,64 · ERP.', related: ['pep'], wiki: { de: 'Effektive Strahlungsleistung', en: 'Effective radiated power' } },
+  { id: 'primaerer-funkdienst', term: 'Primärer Funkdienst', en: 'primary service', inline: 'primärer Funkdienst', cat: 'Recht', short: 'Funkdienst, dessen Funkstellen Schutz gegen Störungen durch Funkstellen sekundärer Funkdienste verlangen können (AFuV Anlage 1). In der Anlage mit P gekennzeichnet.', related: ['sekundaerer-funkdienst'] },
+  { id: 'sekundaerer-funkdienst', term: 'Sekundärer Funkdienst', en: 'secondary service', inline: 'sekundärer Funkdienst', cat: 'Recht', short: 'Funkdienst, dessen Funkstellen weder Störungen bei primären Funkdiensten verursachen dürfen noch Schutz vor deren Störungen verlangen können — unabhängig vom Zeitpunkt der Zuteilung. In der Anlage mit S gekennzeichnet.', related: ['primaerer-funkdienst'] },
 ];

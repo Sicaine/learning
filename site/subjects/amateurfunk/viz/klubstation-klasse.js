@@ -33,7 +33,8 @@ export default function mount(stage, { complete }) {
     { id: 'n', label: 'Klasse N an einer A-Klubstation' },
     { id: '40', label: 'die einzige Kombination mit 40 m' },
   ], () => complete?.());
-  function run() {
+  function run(_, id) {
+    const act = !!id;
     const { p, s } = ui.values; seen.add(p + s);
     const eff = RANK[p] <= RANK[s] ? p : s;
     head.innerHTML = `<b>${p}</b> an Klubstation <b>${s}</b> → es gelten die Rechte der <b style="color:var(--accent)">Klasse ${eff}</b> (die niedrigere der beiden).`;
@@ -42,6 +43,7 @@ export default function mount(stage, { complete }) {
       const v = b[col];
       return `<tr style="${b[0] === '40 m' ? 'background:var(--accent-soft)' : ''}"><td style="padding:4px 8px;border-bottom:1px solid var(--line);font-weight:600">${b[0]}</td><td style="padding:4px 8px;border-bottom:1px solid var(--line);color:var(--ink-2)">${b[1]}</td><td style="padding:4px 8px;border-bottom:1px solid var(--line);color:${v ? 'var(--good)' : 'var(--bad)'}">${v || 'nicht erlaubt'}</td></tr>`;
     }).join('')}</tbody>` }));
+    if (!act) return;
     if (p === 'A' && s === 'E') g.reach('ae');
     if (p === 'E' && s === 'A') g.reach('ea');
     if (p === 'N' && s === 'A') g.reach('n');

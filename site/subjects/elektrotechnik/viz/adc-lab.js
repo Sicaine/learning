@@ -11,6 +11,7 @@ const FS_LIST = [1000, 2000, 4000, 5000, 6000, 8000, 10000, 11025, 12000, 16000,
 const sinc = x => Math.abs(x) < 1e-9 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
 
 export default function mount(stage, { params = {}, complete, md }) {
+  md = (m0 => s => m0(String(s).replace(/\u00a0/g, ' ')))(md);   // fmt() liefert geschützte Leerzeichen; KaTeX-strict warnt in Formeln
   const fT = params.fTarget ?? 5000, lsbGoal = params.lsbGoal ?? 0.005;
   const root = h('div', { class: 'vz vk' }); stage.append(root);
   const pBox = h('div'); root.append(pBox);

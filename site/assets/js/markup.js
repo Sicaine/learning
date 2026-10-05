@@ -53,10 +53,25 @@ function blocks(s, ctx) {
     else if (/^\d+\.\s/.test(c)) out.push(list(c, 'ol', /^\d+\.\s+/, ctx));
     else if (/^>\s?/.test(c)) out.push(`<blockquote>${md(c.replace(/^>\s?/gm, ''), ctx)}</blockquote>`);
     else if (/^\u0000\d+\u0000$/.test(c)) out.push(`<div class="math-block">${c}</div>`);
+    else if (isTable(c)) out.push(table(c, ctx));
     else if (/^<(div|table|figure|svg|details)/.test(c)) out.push(inline(c, ctx));
     else out.push(`<p>${inline(c, ctx)}</p>`);
   }
   return out.join('\n');
+}
+
+// Pipe tables:  | A | B |  (header)  then  |---|:-:|  (separator, optional alignment)  then rows.
+const isRow = l => /^\s*\|.*\|\s*$/.test(l);
+const isSep = l => /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(l);
+function isTable(c) { const L = c.split('\n'); return L.length >= 2 && L.every(isRow) && L.some((l, i) => i > 0 && isSep(l)); }
+const cells = l => l.trim().replace(/^\||\|$/g, '').split('|').map(s => s.trim());
+function table(c, ctx) {
+  const L = c.split('\n'); const sep = L.findIndex((l, i) => i > 0 && isSep(l));
+  const al = cells(L[sep]).map(s => (s.startsWith(':') && s.endsWith(':') ? 'center' : s.endsWith(':') ? 'right' : ''));
+  const td = (tag, s, i) => `<${tag}${al[i] ? ` style="text-align:${al[i]}"` : ''}>${inline(s, ctx)}</${tag}>`;
+  const head = L.slice(0, sep).map(l => `<tr>${cells(l).map((s, i) => td('th', s, i)).join('')}</tr>`).join('');
+  const body = L.slice(sep + 1).map(l => `<tr>${cells(l).map((s, i) => td('td', s, i)).join('')}</tr>`).join('');
+  return `<div class="tbl"><table><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
 
 // A list (or heading / code fence) may directly follow a text line without a blank line in between.
