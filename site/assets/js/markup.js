@@ -51,7 +51,7 @@ function blocks(s, ctx) {
     else if ((m = c.match(/^(#{2,4})\s+(.*)$/))) out.push(`<h${m[1].length + 1}>${inline(m[2], ctx)}</h${m[1].length + 1}>`);
     else if (/^[-*]\s/.test(c)) out.push(list(c, 'ul', /^[-*]\s+/, ctx));
     else if (/^\d+\.\s/.test(c)) out.push(list(c, 'ol', /^\d+\.\s+/, ctx));
-    else if (/^>\s?/.test(c)) out.push(`<blockquote>${md(c.replace(/^>\s?/gm, ''), ctx)}</blockquote>`);
+    else if (/^>\s?/.test(c)) out.push(`<blockquote>${blocks(c.replace(/^>\s?/gm, ''), ctx)}</blockquote>`);
     else if (/^\u0000\d+\u0000$/.test(c)) out.push(`<div class="math-block">${c}</div>`);
     else if (isTable(c)) out.push(table(c, ctx));
     else if (/^<(div|table|figure|svg|details)/.test(c)) out.push(inline(c, ctx));
