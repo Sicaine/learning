@@ -87,13 +87,17 @@ and `exam`:
   figure: '<svg viewBox="…">…</svg>' | 'assets/….png', figureAlt?: '…',   // optional picture for the question
   explain?: 'Markdown…', lesson?: 'lesson-id' /* → "Dazu die Lektion" link */, source?: 'BNetzA Fragenkatalog …' }
 // subject.js
-exam: { title, minutes: 90,
-  parts:  [{ id: 'technik', title, count: 34, passPercent: 75 }, …],      // count = questions per part in a simulation
-  topics: [{ id: 'ea-1', title, part: 'technik' }, …] }
+exam: { title, rules?: 'Markdown (structure, aids, pass rule)', questionsNote?: 'Markdown source/licence note — shown small under practice hub, exam page and result',
+  minutes?: 90,                                                  // global timer; optional when every part has its own `minutes`
+  parts:  [{ id: 'v', title, count: 25, minutes?: 45, passCount?: 19, oralFrom?: 17, passPercent?: 76 }, …],   // count = questions per part in a simulation
+  topics: [{ id: 'ea-1', title, part: 'v' }, …] }
 ```
+Pass rule per part: `passCount` points (else `passPercent`). If exactly one part is missed with ≥ `oralFrom` points the result is "oral re-examination possible"; otherwise "not passed".
 - **Practice**: Leitner boxes 1–5 with intervals 0/1/3/7/21 days (wrong → box 1, right → box+1, "mastered" = box ≥ 4). Modes: a topic id, `due`, `new`, `weak` (last answer wrong or box ≤ 2), `all` (due first, then new, then the rest). Sessions of 15 questions; keys 1–4 answer, Enter continues. The hub shows statistics per topic and exam history; the path page shows a summary card.
-- **Exam**: per part `count` random questions, round-robin over the part's topics; timer = `exam.minutes` of wall-clock time (warning at 5 min, auto-submit at 0); no feedback until submit; flags, overview grid, keys 1–4 / ←→ / M. Result per part vs `passPercent`, passed only if every part passes; all mistakes are listed with correct answer, explanation and lesson link. Every answer also feeds the practice boxes.
-- **State** (`state.subjects[sid]`): `practice: { [qid]: { n, ok, last, box, due, res } }`, `exams: [{ at, parts: { id: { ok, total } }, passed, seconds }]` (last 20), `examRun` (running or just-finished exam: `{ startedAt, minutes, cur, done, items: [{ qid, part, order, pick, flag }] }`, survives reload, replaced by the next exam). Import merge: more repetitions (then higher box) wins per question, exams are unioned by `at`.
+- **Exam** (`#/s/<sid>/exam`, `…/exam/new`, `…/exam/result`): start page shows `exam.rules`, a card "complete exam" and one card per part ("only this part under exam conditions"). If every part has `minutes`, the complete exam runs the parts one after another, each with its own timer; at the end of a part (hand-in or timeout) a waiting page "Part X finished — continue with Y" appears, no way back. Otherwise (only global `exam.minutes`) the complete exam is one timed block. Per part `count` random questions, round-robin over the part's topics; warning at 5 min; no feedback until the end; flags, overview grid, keys 1–4 / ←→ / M. Result per part in points vs pass mark, overall passed / oral re-examination possible / not passed, all mistakes with correct answer, explanation and lesson link. Every answer also feeds the practice boxes.
+- **Practice modes** also: `part:<partId>` (one exam part) and `last` (mistakes of the last finished exam). The hub shows mastered/total per exam part, per topic, and the exam history.
+- Figures: `figure: 'assets/…svg|png'` renders as `<img>` (lazy, max-width, white background); answers `{ img, alt }` / `{ svg, alt }` are laid out as a 2×2 grid (one column on phones).
+- **State** (`state.subjects[sid]`): `practice: { [qid]: { n, ok, last, box, due, res } }`, `exams: [{ at, mode: 'full'|partId, parts: { id: { ok, total } }, passed, status: 'passed'|'oral'|'failed', seconds }]` (last 20; older entries without `mode`/`status` still read), `examRun` (running or just-finished exam: `{ startedAt, mode, segs: [{ parts, minutes, startedAt?, seconds? }], seg, cur, done, items: [{ qid, part, order, pick, flag }] }` — current part, remaining time and finished parts survive reload; replaced by the next exam). Import merge: more repetitions (then higher box) wins per question, exams are unioned by `at`.
 - Validator checks ids, 4 distinct non-empty answers, topic/part/lesson existence, figures, pool size vs `count`, and backslash traps.
 
 ## Content model
@@ -201,6 +205,73 @@ Only cite what you have verified (arXiv ids via `https://export.arxiv.org/api/qu
   synthetic 3D render generator, unstable segmentation quality, hardware 2× RTX 4090 (24 GB) + 128 GB RAM.
 - The user learned math in German; always provide `de` for math terms.
 - Design: modern, sleek, elegant, light only.
+
+## Vizkit (interactive toolbox for Elektrotechnik / Amateurfunk)
+
+`site/assets/js/vizkit/` — dependency-free ES modules (browser + Node where sensible) for fast, consistent interactive demos.
+Gallery + reference demos: `site/dev/vizkit.html` (dev server → `/dev/vizkit.html`). Tests: `node tools/test-circuit.mjs` (must end green;
+checks the circuit engine against analytic solutions: divider, RC/RL, RLC resonance, −3 dB, diode Newton reference, rectifier ripple, transformer, op-amp, BJT/MOSFET, error messages, speed).
+
+| Module | Purpose |
+|---|---|
+| `si.js` | `fmt(4700,'Ω')`→"4,7 kΩ" (Dezimalkomma; `config({comma:false})`), `parse('4k7')`, E-series (`eNearest(v,'E12')`, `eSeries`, `eStep`), resistor `colorCode`/`fromColorCode`, `dbV/dbP/fromDbV/dbmToWatt`, `sliderToValue/valueToSlider`, `logspace/linspace/seq125` |
+| `controls.js` | `controls(root, defs, onChange)` → `{values,set,on,reset}`; slider (`scale:'log'`, `snap:'E12'`/number, `values:[…]`, `unit`), `type:'seg'|'toggle'|'presets'|'button'`; click a value to type it. `readout(root, items)` (`.vz-stat`), `goals(root, defs, onAll)` (✓/○ chips) |
+| `circuit.js` | MNA simulator: `new Netlist()…`, `dcSolve`, `transient`, `createSim` (step-wise, live parameter changes), `acSweep`, `impedance`, `resonanceFreq`, `qFactor`, `cutoff3dB`, `waves.*` |
+| `plot.js` | `plot` (lin/log axes, several curves, `hline/vline/marker/band`, hover cursor, `bars`), `bode`, `timePlot`, `characteristic`, `spectrum` |
+| `scope.js` | `scope(stage,{channels,timeDiv,trigger})` — trigger, Zeit/Div, Volt/Div, cursors, Uss/Ueff/f; signals = `t=>V`, `{t,v}` or `{dt,t0,data}` |
+| `schematic.js` | `drawSchematic(stage, spec)` IEC/DIN symbols (resistor = rectangle), draggable parts, live current dots + potential colours; `components` library; ready layouts in `schematic-layouts.js` (`layouts.divider/rc/tank/halfWave/bridge/bjt/opamp` → `{spec, net}`) |
+| `phasor.js` | `phasor` (rotating, head-to-tail addition, time-domain projection), `impedanceTriangle` |
+| `anim.js` | `animate(el, (dt,t)=>…)` rAF loop; stops when `el` leaves the DOM, pauses off-screen / hidden tab; `loop.controls(root)` play/pause + slow motion |
+
+CSS lives in `vizkit/vizkit.css` (`.vk-*` classes on top of `.vz*`), loaded automatically on first use. Light theme only.
+
+### Minimal demo (≈25 lines)
+```js
+import { Netlist, acSweep, logspace, cutoff3dB } from '../../../assets/js/vizkit/circuit.js';
+import { bode } from '../../../assets/js/vizkit/plot.js';
+import { controls, readout, goals } from '../../../assets/js/vizkit/controls.js';
+import { fmt } from '../../../assets/js/vizkit/si.js';
+
+export default function mount(stage, { params, complete }) {
+  const root = Object.assign(document.createElement('div'), { className: 'vz vk' }); stage.append(root);
+  const b = bode(root, { fmin: 10, fmax: 1e5, phaseMin: -90, phaseMax: 0 });
+  const net = new Netlist().V('V1', 'in', '0', { ac: 1 }).R('R1', 'in', 'out', 1e3).C('C1', 'out', '0', 1e-7);
+  const f = logspace(10, 1e5, 200);
+  const ui = controls(root, [
+    { id: 'R', label: 'R', unit: 'Ω', min: 100, max: 1e5, value: 1e3, scale: 'log', snap: 'E12' },
+    { id: 'C', label: 'C', unit: 'F', min: 1e-9, max: 1e-5, value: 1e-7, scale: 'log', snap: 'E12' },
+  ], run);
+  const out = readout(root, [{ id: 'fc', label: 'Grenzfrequenz', hl: true }]);
+  const g = goals(root, [{ id: 'g', label: 'fc ≈ 1 kHz (±5 %)' }], () => complete());
+  function run() {
+    net.set('R1', ui.values.R); net.set('C1', ui.values.C);
+    const ac = acSweep(net, f), fc = cutoff3dB(f, ac.mag('out'));
+    b.set('h', f, ac.db('out'), ac.phase('out')); b.mark(fc, { label: 'f_c' }); b.minus3dB(0);
+    out.set({ fc: fmt(fc, 'Hz') }); if (Math.abs(fc / (params.target ?? 1e3) - 1) < 0.05) g.reach('g');
+  }
+  run();
+}
+```
+Lessons load demos from `subjects/<id>/viz/<name>.js`; reuse the reference demos by re-exporting:
+`export { default } from '../../../assets/js/vizkit/examples/rc-scope.js';` (relative to `subjects/<sid>/viz/`; params such as `target` come from the lesson's `viz` block).
+Reference demos: `rc-scope` (target τ), `divider-schematic` (target U₂), `rlc-bode` (targetF, targetQ), `rectifier` (maxRipple), `opamp`, `phasor-rlc`, `modulation` (mode) — each in `vizkit/examples/`.
+
+### Conventions
+- Units are SI base units in code (Ω, F, H, V, A, s, Hz); display only via `si.fmt`. Never hard-code px widths: plots/scopes/schematics use responsive `viewBox`es (the logical width follows the container at creation, 300–760).
+- Colours only from CSS variables (`var(--accent)`, `--accent-2`, `--good`, `--warn`, `--bad`, `--ink`, `--muted`, `--line`); never add a dark theme.
+- Render labels as SVG/HTML text, not canvas. Wrap the demo in `<div class="vz vk">` (the `vk` class fixes grid column sizing).
+- Call `complete()` when the goal is reached (use `goals()` for the visible ✓ chips); goals must be achievable with the offered slider ranges.
+- Live demos: use `animate()` (auto-cleanup) or `createSim`; precompute with `transient`/`acSweep` for plots (a 2000-step linear run takes ≈ 4 ms warm, with diodes ≈ 25 ms).
+
+### Netlist format (circuit.js)
+Array (or `Netlist`) of `{ type, name, n: [nodes…], value, … }`; nodes are strings, ground is `'0'`/`'gnd'`; names must be unique.
+`R C L` (`value`; `ic` for C/L with `uic:true`), `V`/`I` (`dc`, `wave`: `waves.sine(amp,f,offset,phase°)|square|tri|saw|pulse|step|pwl` or `t=>x`, `ac` magnitude for `acSweep`; I flows from `n[0]` through the source to `n[1]`),
+`SW` (`closed` | `ctl:t=>bool` | `schedule:[[t,state]…]`; `ron`,`roff`), `D` (`model:'si'|'schottky'|'ge'`), `LED` (`color`/`vf`), `ZD` (`vz`), `Q` (`n:[C,B,E]`, `pol:'npn'|'pnp'`, `bf`, `va`), `M` (`n:[D,G,S]`, `pol:'n'|'p'`, `vto` magnitude, `kp`, `lambda`),
+`OA` (`n:[+,−,out]`, `gain`, `rails:[min,max]|null`, `gbw` for AC), `E`/`G` (controlled sources), `T` (`n:[p1,p2,s1,s2]`, `lp`, `ratio` = Np/Ns, `k`) or `L`+`K` (`l1`,`l2`,`k`).
+Branch currents (`res.i.R1`, `sim.i('R1')`) always flow through the element from `n[0]` to `n[1]`; a source that delivers power therefore has a *negative* current (SPICE). BJT: `Q1`, `Q1.b`, `Q1.e`; OA: current its output delivers.
+`transient(net,{tstop,dt,uic,method:'trap'|'be',every})` → `{t, v:{node:Float64Array}, i:{elem:…}}` (trapezoid, Backward-Euler restart at switch/diode events, step halving when Newton fails); start without `uic` = DC operating point (sources at their `dc`/offset/low value, inductors shorted).
+Errors are `CircuitError` with German messages and `.code` (`singular`, `ground`, `noconv`, `dup`, …) — catch them when learners can build circuits.
+Schematic wires carry `net` (node name → potential colour) and the current of the part at their pin (or `i:'R1'` / `'-R1'`); give schematic parts the same `id` as the netlist element.
 
 ## Authoring gotchas (learned while writing the first lessons)
 

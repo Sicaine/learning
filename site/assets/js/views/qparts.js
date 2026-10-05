@@ -41,3 +41,9 @@ export function statBar(s) {
 }
 
 export const dateFmt = (ms, lang) => new Date(ms).toLocaleDateString(lang === 'de' ? 'de-DE' : 'en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }) + ' ' + new Date(ms).toLocaleTimeString(lang === 'de' ? 'de-DE' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
+
+// Image/SVG answers are laid out as a 2x2 grid (one column on phones).
+export const answersClass = q => 'q-answers' + (q.answers.some(a => a && typeof a === 'object') ? ' fig' : '');
+
+// Mandatory source note of the question catalogue (exam.questionsNote, Markdown).
+export const noteHTML = subject => subject.exam?.questionsNote ? `<aside class="q-note prose">${md(subject.exam.questionsNote, { subject })}</aside>` : '';

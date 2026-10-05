@@ -56,27 +56,34 @@ function normalizeQuestions(id, raw, lessons) {
   const qById = {};
   const warn = m => console.warn(`[content:${id}] ${m}`);
   const ex = raw.exam && Array.isArray(raw.exam.parts) ? raw.exam : null;
-  const parts = ex ? ex.parts.map(p => ({ passPercent: 50, ...p })) : [];
+  const sequential = !!ex && ex.parts.length > 0 && ex.parts.every(p => p.minutes > 0);   // every part has its own timer
+  const totalCount = ex ? ex.parts.reduce((a, p) => a + (p.count || 0), 0) || 1 : 1;
+  const parts = ex ? ex.parts.map(p => ({
+    ...p,
+    minutes: p.minutes || Math.round((ex.minutes || 90) * (p.count || 1) / totalCount) || 1,
+    passPercent: p.passPercent ?? (p.passCount != null && p.count ? p.passCount / p.count * 100 : 50),
+  })) : [];
   const partById = Object.fromEntries(parts.map(p => [p.id, p]));
-  let topics = (ex?.topics || []).map(tp => ({ ...tp }));
+  const topics = (ex?.topics || []).map(tp => ({ ...tp, questions: [] }));
   const topicById = Object.fromEntries(topics.map(tp => [tp.id, tp]));
-  for (const q of questions) {
+  for (const q of questions) {   // one pass, no per-topic filtering
     if (!q.id) { warn('question without id'); continue; }
     if (qById[q.id]) warn(`duplicate question "${q.id}"`);
     qById[q.id] = q;
     if (!Array.isArray(q.answers) || q.answers.length !== 4) warn(`question "${q.id}" needs exactly 4 answers`);
     if (q.lesson && !lessons[q.lesson]) warn(`question "${q.id}" links unknown lesson "${q.lesson}"`);
-    if (!topicById[q.topic]) {
+    let tp = topicById[q.topic];
+    if (!tp) {
       if (ex) warn(`question "${q.id}" has unknown topic "${q.topic}"`);
-      const tp = { id: q.topic ?? '-', title: q.topic ?? '-' }; topics.push(tp); topicById[tp.id] = tp;   // no exam topics → derive
+      tp = { id: q.topic ?? '-', title: q.topic ?? '-', questions: [] }; topics.push(tp); topicById[tp.id] = tp;   // no exam topics → derive
     }
+    tp.questions.push(q);
   }
-  for (const tp of topics) { tp.questions = questions.filter(q => q.topic === tp.id); tp.partObj = partById[tp.part]; }
-  for (const p of parts) p.topics = topics.filter(tp => tp.part === p.id);
+  for (const tp of topics) tp.partObj = partById[tp.part];
+  for (const p of parts) { p.topics = topics.filter(tp => tp.part === p.id); p.questions = p.topics.flatMap(tp => tp.questions); }
   const hasQuestions = questions.length > 0;
-  topics = topics.filter(tp => tp.questions.length || ex);
-  const exam = ex && hasQuestions ? { ...ex, parts, topics, minutes: ex.minutes || 90 } : null;
-  return { questions, qById, qTopics: topics, qTopicById: topicById, hasQuestions, exam };
+  const exam = ex && hasQuestions ? { ...ex, parts, topics, sequential, minutes: ex.minutes || parts.reduce((a, p) => a + p.minutes, 0) } : null;
+  return { questions, qById, qTopics: topics.filter(tp => tp.questions.length || ex), qTopicById: topicById, hasQuestions, exam };
 }
 
 export async function loadLesson(subject, lid) {

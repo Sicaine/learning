@@ -3,15 +3,16 @@ import * as store from '../store.js';
 import { el, $, $$, icon } from '../ui.js';
 import { esc, mdInline } from '../markup.js';
 import { t, getLang } from '../i18n.js';
-import { topicStats, buildQueue, recordMany, prepare, isCorrect, SESSION_SIZE } from '../examkit.js';
-import { questionHTML, answersHTML, explainHTML, statBar, dateFmt } from './qparts.js';
+import { topicStats, buildQueue, recordMany, prepare, isCorrect, lastMistakes, entryStatus } from '../examkit.js';
+import { questionHTML, answersHTML, answersClass, explainHTML, statBar, dateFmt, noteHTML } from './qparts.js';
 
-const MODES = ['due', 'new', 'weak', 'all'];
+const MODES = ['due', 'new', 'weak', 'all', 'last'];
 
 export default async function practice(main, { subject, arg }) {
   if (!subject?.hasQuestions) { location.hash = subject ? `#/s/${subject.id}` : '#/'; return; }
   if (!arg) return hub(main, subject);
-  if (!MODES.includes(arg) && !subject.qTopicById[arg]) { location.hash = `#/s/${subject.id}/practice`; return; }
+  const isPart = arg.startsWith('part:') && subject.exam?.parts.some(p => p.id === arg.slice(5));
+  if (!MODES.includes(arg) && !subject.qTopicById[arg] && !isPart) { location.hash = `#/s/${subject.id}/practice`; return; }
   session(main, subject, arg);
 }
 
@@ -22,9 +23,12 @@ export function legend() {
 export function examHistory(subject, limit = 5) {
   const ex = [...(store.get().subjects[subject.id]?.exams || [])].reverse().slice(0, limit);
   if (!ex.length) return `<p class="muted">${t('pr.noExams')}</p>`;
-  return `<ul class="exam-hist">${ex.map(e => `<li class="${e.passed ? 'pass' : 'fail'}"><span class="eh-date">${dateFmt(e.at, getLang())}</span>
-    <span class="eh-parts">${Object.entries(e.parts).map(([id, p]) => `<span title="${esc(subject.exam?.parts.find(x => x.id === id)?.title || id)}">${p.total ? Math.round(p.ok / p.total * 100) : 0} %</span>`).join('')}</span>
-    <b class="eh-badge">${e.passed ? t('ex.passed') : t('ex.failed')}</b></li>`).join('')}</ul>`;
+  return `<ul class="exam-hist">${ex.map(e => {
+    const st = entryStatus(e);
+    return `<li class="${st}"><span class="eh-date">${dateFmt(e.at, getLang())}${e.mode && e.mode !== 'full' ? ` · ${esc(subject.exam?.parts.find(x => x.id === e.mode)?.title || e.mode)}` : ''}</span>
+    <span class="eh-parts">${Object.entries(e.parts).map(([id, p]) => `<span title="${esc(subject.exam?.parts.find(x => x.id === id)?.title || id)}">${Object.keys(e.parts).length > 1 ? esc(String(id).toUpperCase()) + ' ' : ''}${p.ok}/${p.total}</span>`).join('')}</span>
+    <b class="eh-badge">${t('ex.st.' + st)}</b></li>`;
+  }).join('')}</ul>`;
 }
 
 export function topicRows(subject, stats) {
@@ -43,7 +47,7 @@ export function topicRows(subject, stats) {
 function hub(main, subject) {
   const sid = subject.id;
   const st = topicStats(subject), a = st.all;
-  const cnt = { due: a.due, new: a.fresh, weak: a.weak + 0, all: a.total };
+  const cnt = { due: a.due, new: a.fresh, weak: a.weak, all: a.total, last: lastMistakes(subject).length };
   const acc = a.n ? Math.round(a.ok / a.n * 100) : 0;
   const root = el(`
     <section class="practice-hub">
@@ -60,14 +64,21 @@ function hub(main, subject) {
         ${MODES.map(m => {
           const n = cnt[m];
           const label = m === 'all' ? t('pr.modeAll') : t('pr.mode' + m[0].toUpperCase() + m.slice(1), { n });
+          if (m === 'last' && !n) return '';
           return `<a class="btn ${m === 'due' && n ? 'primary' : ''} ${m !== 'all' && !n ? 'disabled' : ''}" ${m !== 'all' && !n ? 'aria-disabled="true" tabindex="-1"' : ''} href="#/s/${sid}/practice/${m}">${label}</a>`;
         }).join('')}
         ${subject.exam ? `<a class="btn" href="#/s/${sid}/exam">${t('pr.examBtn')}</a>` : ''}
       </div>
+      ${subject.exam ? `<h2 class="q-h2">${t('pr.partProgress')}</h2>${legend()}<ul class="q-topics q-parts">${subject.exam.parts.map(p => {
+        const s = st.byPart[p.id];
+        return `<li><a class="q-topic" href="#/s/${sid}/practice/part:${encodeURIComponent(p.id)}"><span class="qt-title">${esc(p.title)}</span>
+          <span class="qt-meta">${s.mastered}/${s.total} ${t('pr.mastered')} · ${t('pr.partBtn')}</span>${statBar(s)}</a></li>`;
+      }).join('')}</ul>` : ''}
       <h2 class="q-h2">${t('pr.byTopic')}</h2>
-      ${legend()}
+      ${subject.exam ? '' : legend()}
       ${topicRows(subject, st)}
       ${subject.exam ? `<h2 class="q-h2">${t('pr.lastExams')}</h2>${examHistory(subject, 10)}` : ''}
+      ${noteHTML(subject)}
     </section>`);
   main.append(root);
   $$(root, 'a.disabled').forEach(x => x.addEventListener('click', e => e.preventDefault()));
@@ -79,7 +90,7 @@ function session(main, subject, mode) {
   const queue = buildQueue(subject, mode);
   const root = el(`<section class="qpractice qs"></section>`);
   main.append(root);
-  const title = subject.qTopicById[mode]?.title || t('pr.title.' + mode);
+  const title = subject.qTopicById[mode]?.title || (mode.startsWith('part:') ? subject.exam.parts.find(p => p.id === mode.slice(5)).title : t('pr.title.' + mode));
   const stats = { n: 0, ok: 0, wrong: [] };
   let queueRef = queue, idx = 0, item = null, answered = false;
 
@@ -114,7 +125,7 @@ function session(main, subject, mode) {
       <div class="q-card">
         <div class="q-id">${esc(q.id)}</div>
         ${questionHTML(q, ctx)}
-        <div class="q-answers" role="radiogroup" aria-label="${t('pr.answers')}">${answersHTML(q, item, ctx)}</div>
+        <div class="${answersClass(q)}" role="radiogroup" aria-label="${t('pr.answers')}">${answersHTML(q, item, ctx)}</div>
         <div class="q-feedback" aria-live="polite"></div>
         <div class="q-explain" hidden></div>
         <div class="q-actions"><span class="q-keys">${t('pr.keys')}</span><button class="btn primary next" hidden>${idx + 1 >= queueRef.length ? t('pr.finish') : t('pr.next')} ${icon.arrow}</button></div>

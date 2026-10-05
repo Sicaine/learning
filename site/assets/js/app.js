@@ -118,6 +118,9 @@ function renderHeader() {
       </div>
     </div>`;
 
+  const on = $(header, '.subnav a.on'), sn = $(header, '.subnav');
+  if (on && sn) sn.scrollLeft = on.offsetLeft - (sn.clientWidth - on.offsetWidth) / 2;
+
   const btn = $(header, '.switch-btn');
   const menu = $(header, '.switch-menu');
   btn.onclick = e => { e.stopPropagation(); menu.hidden = !menu.hidden; };

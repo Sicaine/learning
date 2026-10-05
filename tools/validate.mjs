@@ -123,8 +123,17 @@ for (const meta of subjects) {
       const topics = new Map((ex?.topics || []).map(t => [t.id, t])), parts = new Map((ex?.parts || []).map(p => [p.id, p]));
       if (ex) {
         if (!ex.parts?.length) err('exam: needs parts[]');
-        if (!(ex.minutes > 0)) err('exam: minutes must be > 0');
-        for (const p of ex.parts || []) { if (!p.id || !p.title || !(p.count > 0) || !(p.passPercent > 0 && p.passPercent <= 100)) err(`exam part ${p.id}: needs id, title, count > 0, passPercent 1..100`); }
+        if (!(ex.minutes > 0) && !(ex.parts || []).every(p => p.minutes > 0)) err('exam: needs minutes (global) or minutes on every part');
+        for (const p of ex.parts || []) {
+          if (!p.id || !p.title || !(p.count > 0)) err(`exam part ${p.id}: needs id, title, count > 0`);
+          const hasPct = p.passPercent > 0 && p.passPercent <= 100, hasCnt = p.passCount > 0 && p.passCount <= p.count;
+          if (!hasPct && !hasCnt) err(`exam part ${p.id}: needs passCount (≤ count) or passPercent 1..100`);
+          if (p.minutes != null && !(p.minutes > 0)) err(`exam part ${p.id}: minutes must be > 0`);
+          if (p.oralFrom != null && !(p.oralFrom > 0 && p.oralFrom < (hasCnt ? p.passCount : p.count))) err(`exam part ${p.id}: oralFrom must be below passCount`);
+        }
+        if (ex.rules != null && typeof ex.rules !== 'string') err('exam.rules must be a Markdown string');
+        if (ex.questionsNote != null && typeof ex.questionsNote !== 'string') err('exam.questionsNote must be a Markdown string');
+        if (qs.length && !ex.questionsNote) warn('exam: no questionsNote (source/licence note of the question catalogue is shown under practice, exam and result)');
         for (const t of ex.topics || []) { if (!t.id || !t.title) err(`exam topic ${t.id}: needs id + title`); if (!parts.has(t.part)) err(`exam topic ${t.id}: unknown part "${t.part}"`); }
         if (!qs.length) err('exam defined but no questions');
       }
@@ -184,10 +193,10 @@ for (const meta of subjects) {
           const pool = (ex.topics || []).filter(t => t.part === p.id).reduce((a, t) => a + (perTopic[t.id]?.length || 0), 0);
           total += Math.min(pool, p.count);
           if (p.count > pool) warn(`exam part ${p.id}: count ${p.count} > question pool ${pool}`);
-          console.log(`  exam part ${p.id}: ${pool} questions, ${p.count} per exam, pass ${p.passPercent} %`);
+          console.log(`  exam part ${p.id}: ${pool} questions, ${p.count} per exam${p.minutes ? `, ${p.minutes} min` : ''}, pass ${p.passCount ?? p.passPercent + ' %'}${p.oralFrom ? `, oral from ${p.oralFrom}` : ''}`);
         }
         for (const t of ex.topics || []) { const n = perTopic[t.id]?.length || 0; if (!n) warn(`exam topic ${t.id}: no questions`); }
-        console.log(`  exam: ${ex.minutes} min, ${total} questions per simulation`);
+        console.log(`  exam: ${ex.minutes ?? ex.parts.reduce((a, p) => a + (p.minutes || 0), 0)} min, ${total} questions per simulation`);
       }
       console.log(`  questions: ${qs.length} (${Object.entries(perTopic).map(([k, v]) => `${k}:${v.length}`).join(' ')}) · ${qs.filter(q => q.figure).length} with figure · ${qs.filter(q => q.explain).length} explained`);
     }
