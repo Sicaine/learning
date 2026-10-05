@@ -121,7 +121,8 @@ export function plot(container, o = {}) {
         if (side === 'l') lines.push(`<line x1="${m.l}" x2="${m.l + IW}" y1="${y}" y2="${y}" class="${v === 0 && ax.y.scale !== 'log' ? 'z' : 'mj'}"/>`);
         texts.push(`<text x="${side === 'l' ? m.l - 8 : m.l + IW + 8}" y="${y + 4}" text-anchor="${side === 'l' ? 'end' : 'start'}" class="vk-ticklabel">${esc(a.fmt(v))}</text>`);
       }
-      if (a.label) texts.push(`<text x="${side === 'l' ? m.l - 8 : m.l + IW + 8}" y="${m.t - 4}" text-anchor="${side === 'l' ? 'end' : 'start'}" class="vk-axlabel">${esc(a.label)}</text>`);
+      // anchored at the outer edge so long labels never get cut off at the frame
+      if (a.label) texts.push(`<text x="${side === 'l' ? 4 : W - 4}" y="${m.t - 8}" text-anchor="${side === 'l' ? 'start' : 'end'}" class="vk-axlabel">${esc(a.label)}</text>`);
     };
     drawX(); drawY(ax.y, 'l'); if (ax.y2) drawY(ax.y2, 'r');
     gGrid.innerHTML = `<style>.mj{stroke:var(--line-2);stroke-width:1}.mn{stroke:var(--line);stroke-width:1;opacity:.7}.z{stroke:var(--ink-2);stroke-width:1;opacity:.55}</style>${o.grid === false ? '' : lines.join('')}`;
