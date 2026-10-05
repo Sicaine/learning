@@ -1,0 +1,3 @@
+// Begriffe der Etappe 9-signale-hf — zusätzlich zu glossary/seed.js (keine doppelten ids!). Format: siehe CLAUDE.md.
+export default [
+];
