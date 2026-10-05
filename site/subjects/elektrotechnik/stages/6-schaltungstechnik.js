@@ -4,7 +4,7 @@ export default {
   title: "Schaltungstechnik",
   summary: "Aus Bauteilen werden vollständige Schaltungen: Netzteile, Regler, Oszillatoren, Schalten von Lasten. Alles prüfungsnah und praktisch (Funkgeräte-Stromversorgung!).",
   lessons: [
-    { id: "gleichrichter", title: "Einweg-, Zweiweg- und Brückengleichrichtung", summary: "Einweg-, Zweiweg- und Brückengleichrichtung", minutes: 30, ready: false },
+    { id: "gleichrichter", title: "Einweg-, Zweiweg- und Brückengleichrichtung", summary: "Aus dem Wechselstrom der Steckdose wird mit Dioden pulsierende Gleichspannung: Strompfade von Einweg-, Mittelpunkt- und Brückenschaltung, Diodenverluste, Mittelwert und Welligkeitsfrequenz.", minutes: 30, ready: true },
     { id: "netzteil-glaettung", title: "Glättung, Restwelligkeit, Netzteil-Aufbau", summary: "Glättung, Restwelligkeit, Netzteil-Aufbau", minutes: 35, ready: false },
     { id: "linearregler", title: "Linearer Spannungsregler", summary: "Linearer Spannungsregler", minutes: 30, ready: false },
     { id: "schaltregler", title: "Schaltnetzteil, Tief- und Hochsetzsteller", summary: "Schaltnetzteil, Tief- und Hochsetzsteller", minutes: 30, ready: false },

@@ -26,6 +26,8 @@ export default async function lessonView(main, { subject, arg: lid }) {
     catch (e) { console.warn(`[lesson ${lid}] unknown prerequisite ${n}`); }
   }
   // Terms this lesson links to that have Wikipedia articles, one entry per article.
+  const lessonQs = subject.hasQuestions ? subject.questions.filter(q => q.lesson === lid) : [];
+  const practiceState = store.get().subjects[sid]?.practice || {};
   const wikis = new Map();   // filled while text renders (glossary terms with articles + inline [..](wiki:..) links)
 
   const ctx = {
@@ -84,6 +86,11 @@ export default async function lessonView(main, { subject, arg: lid }) {
         <div class="footnotes">
           <span class="eyebrow">${t('lesson.sources')}</span>
           <ol>${notes.order.map(id => `<li id="fn-${id}">${sourceLine(subject.sources[id], ctx)}</li>`).join('')}</ol>
+        </div>` : ''}
+      ${lessonQs.length ? `
+        <div class="end-practice">
+          <div>${icon.cards}<div><b>${t('lesson.practice', { n: lessonQs.length })}</b><span>${t('lesson.practiceMastered', { m: lessonQs.filter(q => (practiceState[q.id]?.box || 0) >= 4).length, n: lessonQs.length })}</span></div></div>
+          <a class="btn primary" href="#/s/${sid}/practice/lesson:${lid}">${t('lesson.practiceBtn')} ${icon.arrow}</a>
         </div>` : ''}
       ${wikis.size ? `
         <div class="wiki-list">

@@ -4,7 +4,7 @@ export default {
   title: "Elektrotechnik für die Prüfung",
   summary: "Strom, Widerstand, Leistung, Bauteile und Schaltungen – kompakt und auf die Prüfungsfragen zugeschnitten. Vertiefung im Fach Elektrotechnik.",
   lessons: [
-    { id: "formelsammlung-und-taschenrechner", title: "Formelsammlung und Taschenrechner in der Prüfung", summary: "Die amtliche Formelsammlung (liegt in Teil N/E aus) lesen, Größengleichungen und Taschenrechner-Tasten sicher bedienen.", minutes: 15, ready: false },
+    { id: "formelsammlung-und-taschenrechner", title: "Formelsammlung und Taschenrechner in der Prüfung", summary: "Die amtliche Formelsammlung (liegt in Teil N/E aus) lesen, Größengleichungen und Taschenrechner-Tasten sicher bedienen.", minutes: 15, ready: true },
     { id: "strom-spannung-stromkreis", title: "Spannung, Strom, Stromkreis und Gefahren", summary: "Grundgrößen, Leiter/Isolator, Stromkreis; Gefahren des elektrischen Stroms.", minutes: 20, ready: false },
     { id: "messen-und-oszilloskop", title: "Messen: Strom, Spannung, Effektiv-/Spitzenwert, Oszilloskop", summary: "Messgeräte richtig anschließen und ablesen, Spitzen-/Effektivwert, einfache Oszilloskop-Bilder auswerten.", minutes: 25, ready: false },
     { id: "ohm-widerstand-farbcode", title: "Ohmsches Gesetz, Widerstände und Farbcode", summary: "U = R·I rechnen; Farbcode, SMD-Codes, Materialien, Toleranz, NTC/PTC.", minutes: 30, ready: false },

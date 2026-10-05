@@ -12,7 +12,8 @@ export default async function practice(main, { subject, arg }) {
   if (!subject?.hasQuestions) { location.hash = subject ? `#/s/${subject.id}` : '#/'; return; }
   if (!arg) return hub(main, subject);
   const isPart = arg.startsWith('part:') && subject.exam?.parts.some(p => p.id === arg.slice(5));
-  if (!MODES.includes(arg) && !subject.qTopicById[arg] && !isPart) { location.hash = `#/s/${subject.id}/practice`; return; }
+  const isLesson = arg.startsWith('lesson:') && subject.questions.some(q => q.lesson === arg.slice(7));
+  if (!MODES.includes(arg) && !subject.qTopicById[arg] && !isPart && !isLesson) { location.hash = `#/s/${subject.id}/practice`; return; }
   session(main, subject, arg);
 }
 
@@ -90,7 +91,7 @@ function session(main, subject, mode) {
   const queue = buildQueue(subject, mode);
   const root = el(`<section class="qpractice qs"></section>`);
   main.append(root);
-  const title = subject.qTopicById[mode]?.title || (mode.startsWith('part:') ? subject.exam.parts.find(p => p.id === mode.slice(5)).title : t('pr.title.' + mode));
+  const title = subject.qTopicById[mode]?.title || (mode.startsWith('part:') ? subject.exam.parts.find(p => p.id === mode.slice(5)).title : mode.startsWith('lesson:') ? (subject.lessons[mode.slice(7)]?.title || mode) : t('pr.title.' + mode));
   const stats = { n: 0, ok: 0, wrong: [] };
   let queueRef = queue, idx = 0, item = null, answered = false;
 

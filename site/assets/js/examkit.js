@@ -53,6 +53,7 @@ export function buildQueue(subject, mode, now = Date.now(), size = SESSION_SIZE)
   let pool;
   if (subject.qTopicById[mode]) pool = subject.qTopicById[mode].questions;
   else if (mode.startsWith('part:')) pool = subject.exam?.parts.find(x => x.id === mode.slice(5))?.questions || [];
+  else if (mode.startsWith('lesson:')) { pool = subject.questions.filter(q => q.lesson === mode.slice(7)); size = Math.max(size, 30); }
   else pool = subject.questions;
   const withR = pool.map(q => ({ q, r: p[q.id] }));
   const due = withR.filter(x => isDue(x.r, now)).sort((a, b) => a.r.box - b.r.box || a.r.due - b.r.due);

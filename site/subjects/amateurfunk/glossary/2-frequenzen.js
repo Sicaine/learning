@@ -1,3 +1,4 @@
-// Begriffe der Etappe 2-frequenzen. Format: siehe CLAUDE.md (Feld `en` = englischer Name für die Sprachhilfe). Keine doppelten ids!
+// Etappe 2-frequenzen: generiert aus Arbeitsdateien.
 export default [
+
 ];
