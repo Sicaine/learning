@@ -2,12 +2,14 @@ export default {
   id: 'ionosphaere-und-kurzwelle',
   title: 'Ionosphäre und Kurzwellenausbreitung',
   summary: 'D-, E- und F-Region, Raumwelle und Bodenwelle, Sprungdistanz und tote Zone, MUF und LUF, Sonnenzyklus, Fading, Greyline, Mögel-Dellinger-Effekt und der lange Weg.',
-  minutes: 25,
+  minutes: 34,
   goals: [
     'Erklären, wie die [[ionosphaere]] Kurzwellen durch Refraktion zur Erde zurücklenkt und welche Rolle D-, E- und F-Region tagsüber und nachts spielen',
     '[[raumwelle]], [[bodenwelle]], Sprungdistanz und [[tote-zone]] unterscheiden und erklären, warum eine Frequenz „frei“ erscheinen kann, obwohl sie besetzt ist',
     '[[muf]] und [[luf]] erklären und Sonnenzyklus, Ionisation und nutzbare Bänder zusammenbringen (10 m im Fleckenmaximum, 80/160 m am Tag nur Bodenwelle)',
     '[[fading]], [[greyline]], [[moegel-dellinger-effekt]] und den langen Weg ([[long-path]]) in einem Satz erklären',
+    'Erklären, warum die tote Zone mit Frequenz und Region wächst, und Fading als Interferenz mehrerer Wellen rechnen und beobachten',
+    'Begründen, warum die Greyline besondere DX-Chancen bietet (D-Region schwach, E/F wirken) und warum der Mögel-Dellinger-Effekt tiefe Frequenzen am stärksten trifft',
   ],
   needs: ['amateurfunk/ausbreitung-ueber-30-mhz'],
   blocks: [
@@ -38,6 +40,21 @@ Daraus folgen die Tag-Nacht-Regeln:
 `,
     },
     {
+      id: 'schichten-tabelle', type: 'text', title: 'Tag und Nacht im Überblick',
+      md: `
+Wer zwischen D, E und F nicht durcheinanderkommen will, hält sich an **zwei Fragen**: *Dämpft* die Region oder *bricht* sie? Und: *Gibt es sie nachts noch?*
+
+| Region | Tag | Nacht | bricht / dämpft | typischer Beitrag |
+|---|---|---|---|---|
+| **D** (50–90 km) | ja | löst sich praktisch auf | **dämpft** tiefe Frequenzen (bis etwa 10 MHz relevant) | 160 m und 80 m tagsüber leer |
+| **E** (90–130 km) | ja | löst sich binnen Minuten auf | bricht schräge Wellen bis etwa 10 MHz | Sprünge bis etwas über 2000 km; im Sommer **Sporadic-E** |
+| **F1** | ja | verschmilzt mit F2 | bricht (Zwischenstufe) | ohne eigene Rolle in den Prüfungsfragen |
+| **F2** (bis etwa 450 km) | ja | **bleibt** (dünne Luft: langsame Rekombination) | bricht | DX mit Sprüngen bis etwa 4000 km, auch nachts |
+
+Grund für das Verhalten ist die **Rekombination**: Sobald nach Sonnenuntergang die Strahlung fehlt, finden die freien Elektronen ihre Ionen wieder. In der dichten Luft der D-Region geschieht das sofort, in der dünnen Luft der F2-Region dauert es sehr lange. Aber auch dort sinkt die Zahl der Elektronen und damit die gerade noch gebrochene Frequenz: **die oberen Bänder schließen zuerst.**[^darc-50ohm]
+`,
+    },
+    {
       id: 'demo-ion', type: 'viz', viz: 'ionosphaere-sprung', title: 'Ionosphäre: Sprung, tote Zone, MUF',
       params: { tod: 'day', f: 14.2, al: 20 },
       intro: 'Stelle **Tageszeit**, **Sonnenfleckenzyklus**, **Frequenz** und **Abstrahlwinkel** ein. Der Strahl wird an der E- oder F2-Region gebrochen (oder durchdringt sie). Rote Zone am Boden: **tote Zone**, grün: Bodenwelle. Schalte den Strahlenfächer ein, um zu sehen, wie sich der Abstrahlwinkel auf die Sprungdistanz auswirkt.',
@@ -55,6 +72,21 @@ Die Ausbreitungswege auf Kurzwelle im Überblick:
 **Sprungdistanz:** Sie lässt sich **rein geometrisch** bestimmen und hängt von der **Höhe der brechenden Region** und vom **Abstrahlwinkel der Antenne** ab (gegen den Horizont gemessen). Je **flacher** der Winkel und je **höher** die Region, desto größer die Sprungdistanz. Dagegen spielen **Polarisation, Sendeleistung und Antennengewinn** für die Sprungdistanz keine Rolle.
 
 **[[tote-zone|Tote Zone]]:** Der Bereich, den die **Bodenwelle nicht mehr** und die **Raumwelle noch nicht** erreicht (genau genommen ein Ring um den Sender). In der toten Zone kannst du eine Station weder hören noch wird sie dich hören. Das erklärt ein typisches Betriebserlebnis: Eine Frequenz **erscheint frei**, wird aber gleich darauf von einer Station belegt: Die Station liegt **in deiner toten Zone**, du konntest sie nicht hören. Es liegt nicht an einem Seitenbandfehler, schlechten Ausbreitungsbedingungen oder dem Mögel-Dellinger-Effekt. Hör deshalb vor dem Senden, frag „Is the frequency in use?“ und warte kurz.
+`,
+    },
+    {
+      id: 'skip-frequenz', type: 'text', title: 'Wie groß ist die tote Zone? Frequenz, Winkel und Region',
+      md: `
+Die tote Zone ist **kein fester Wert**. Sie reicht von dem Punkt, an dem die Bodenwelle ausläuft, bis zum Aufsetzpunkt der Raumwelle; das ist die Entfernung des ersten Sprungs (mit dem flachsten nutzbaren Strahl). Vier Stellschrauben bestimmen sie:
+
+1. **Brechende Region:** Höher liegende Region (F2 statt E), größerer Sprung, **größere tote Zone**. Bei Sporadic-E ist sie deshalb klein: „Short Skip“.
+2. **Abstrahlwinkel:** Flacher Strahl, weiterer Sprung. Ein **steiler** Strahl kommt dichter am Sender zurück, sofern die Frequenz ihn noch bricht.
+3. **Frequenz:** Je höher die Frequenz (unterhalb der MUF), desto weniger wird ein steiler Strahl noch gebrochen: Er durchdringt die Region, nur flache Strahlen werden zurückgelenkt. Die **tote Zone wächst** also mit der Frequenz. Tiefe Bänder (80 m nachts) haben eine kleine tote Zone, hohe (10 m) eine große.
+4. **Tageszeit und Sonnenzyklus:** Sie bestimmen die Ionisation, damit die MUF und so, welche Strahlen noch ankommen.
+
+**Mehrere Sprünge:** Die Erde reflektiert die ankommende Welle wieder nach oben; dann folgt ein zweiter Sprung. Mit **zwei F2-Sprüngen** sind es bis etwa 8000 km, mit mehreren rund um die Welt. Jeder Sprung kostet Dämpfung (auf der Erde und in der D-Region beim Durchgang), deshalb ist die **Zahl der Sprünge** bei der Wahl von Band und Zeit wichtig.
+
+Zum Weiterlesen: [Tote Zone](wiki:Tote Zone|Skip zone) und [Appleton-Schicht (F-Region)](wiki:Appleton-Schicht|F region).
 `,
     },
     {
@@ -91,12 +123,44 @@ Treffen zwei oder mehr Signale gleicher Frequenz im Empfänger ein, **addieren s
 `,
     },
     {
+      id: 'fading-labor', type: 'text', title: 'Fading nachgerechnet: zwei Wellen, eine Summe',
+      md: `
+Warum schwankt die Feldstärke? Stell dir zwei Wellen gleicher Frequenz mit den Amplituden $a$ und $b$ vor, die mit dem Phasenunterschied $\\Delta\\varphi$ im Empfänger ankommen. Die Summenamplitude ist
+
+$$A=\\sqrt{a^2+b^2+2ab\\cos\\Delta\\varphi}$$
+
+- **In Phase** ($\\Delta\\varphi=0°$): $A=a+b$, maximale Verstärkung.
+- **Gegenphase** ($\\Delta\\varphi=180°$): $A=|a-b|$; bei $a=b$ ist die Summe **null**, das Signal verschwindet völlig.
+- Dazwischen: je nach Phasenlage.
+
+Der Phasenunterschied hängt von der **Wegdifferenz**: Eine Weglänge von einer halben Wellenlänge mehr entspricht 180°. Auf 20 m ($\\lambda\\approx21$ m) genügt also schon eine Verschiebung des Weges um gut 10 m, um aus Verstärkung Auslöschung zu machen. Weil die **Ionosphäre in Bewegung** ist, ändern sich die Weglängen laufend; die Phasenlage driftet, und die Feldstärke schwankt: **QSB**. Treffen **Bodenwelle und Raumwelle** zusammen (typisch im Nahbereich, z. B. auf 80 m abends), schwankt die Feldstärke ebenfalls. Fading ist **kein Fehler deines Empfängers** und lässt sich nicht „wegdrehen“; gegen den schlimmsten Schwund hilft Geduld, ein Nachfassen oder ein anderes Band.
+`,
+    },
+    {
+      id: 'demo-fading', type: 'viz', viz: 'fading-interferenz', title: 'Fading-Labor: Interferenz zweier Wellen',
+      intro: 'Stelle **Amplitude** und **Phasenlage** der zweiten Welle ein. Unten siehst du die Summe, wie der Empfänger sie erhält. Schalte **„Ionosphäre bewegt sich“** ein, damit die Phase driftet.',
+      task: 'Erzeuge Verstärkung (Summe über 1,5) und Auslöschung (gleiche Amplituden, 180°), und erlebe dann QSB mit driftender Phase.',
+    },
+    {
       id: 'grey', type: 'text', title: 'Greyline und der lange Weg',
       md: `
 Die **[[greyline|Greyline]]** (Dämmerungszone, Tag-Nacht-Grenze, [Terminator](wiki:Tag-Nacht-Grenze|Terminator (solar))) ist der Ring um die Erde, in dem gerade Sonnenaufgang oder Sonnenuntergang herrscht. Hier ist die **dämpfende D-Region** noch nicht oder nicht mehr vorhanden, während die brechenden E- und F-Regionen noch bzw. schon wirken. Das ergibt besonders gute DX-Bedingungen, vor allem auf den unteren Bändern (160 m, 80 m) und rund um die Tag- und Nachtgleichen, etwa von Europa nach Australien, Neuseeland und in den Pazifik.
 
 Zwischen zwei Orten gibt es immer **zwei Wege** entlang eines Großkreises: den **kurzen** und den **langen Weg** (die Gegenrichtung, [Großkreis](wiki:Großkreis|Great circle)). Normalerweise läuft die Verbindung über den kurzen Weg (weniger Strecke, weniger Dämpfung). Je nach Tageszeit, Jahreszeit und Frequenz kann aber der **lange Weg** besser tragen: Die Antenne wird dann nicht auf die Gegenstation, sondern in die **entgegengesetzte Richtung** gedreht. „Mit VK auf dem langen Weg gearbeitet“ heißt: die Verbindung mit Australien kam **über den indirekten, längeren Weg** zustande (von Deutschland aus etwa über Südamerika). Es heißt nicht „viele Sprünge“, kein Echo und keine sehr langen Einzelsprünge.
 
+`,
+    },
+    {
+      id: 'grey-warum', type: 'text', title: 'Warum die Greyline so gut funktioniert',
+      md: `
+Denk an die beiden Regionen und ihr Verhalten bei Sonnenuntergang: Die **D-Region** (Dämpfer) löst sich praktisch sofort auf, die **F2-Region** (Brecher) bleibt. Direkt an der **Tag-Nacht-Grenze** hast du also die ideale Kombination: brechende Regionen sind da, die dämpfende fehlt oder ist noch nicht aufgebaut. Das Signal verliert weniger Energie als am Tag, und die F2-Region ist nicht schon so dünn wie mitten in der Nacht.
+
+Daher **zwei einfache Regeln**:
+
+- Beim **Sonnenaufgang** an deiner Station baut sich die D-Region erst auf; beim **Sonnenuntergang** verschwindet sie. Beide Zeiten sind Chancen für die **unteren Bänder** (vor allem 160 m und 80 m).
+- Ideal ist, wenn **beide Stationen** nahe an der Greyline liegen oder die Verbindung **entlang** der Linie verläuft: Dann ist die D-Region auf dem **ganzen Weg** schwach.
+
+Besonders gut sind die Wochen **um die Tag- und Nachtgleichen**: Dann verläuft die Tag-Nacht-Grenze ungefähr von Nord nach Süd (entlang eines Längenkreises), und Strecken wie Europa nach Australien, Neuseeland oder in den Pazifik laufen parallel zu ihr, sodass der ganze Weg in der Dämmerung liegt.[^darc-50ohm]
 `,
     },
     {
@@ -123,6 +187,10 @@ Auf einer aktiven Sonne ereignen sich **Flares** ([Sonneneruptionen](wiki:Sonnen
 
 Folge: **zeitlich begrenzter Ausfall der Raumwellenausbreitung** auf Kurzwelle, nicht Schwund durch Mehrwegeausbreitung (das ist Fading), nicht Verzerrung der Modulation und kein Übersprechen eines starken Senders (Kreuzmodulation). Ein Beispiel war der X9,0-Flare am 3. Oktober 2024 um 12:19 UTC, der den Funkverkehr vieler Stationen am Türöffnertag der „Sendung mit der Maus“ für mehrere Minuten unterbrach.
 `,
+    },
+    {
+      id: 'mdl-freq', type: 'callout', tone: 'fact', title: 'Mögel-Dellinger: was trifft es am stärksten?',
+      md: `Die zusätzliche Ionisation der D-Region dämpft **tiefe Frequenzen am stärksten**; mit steigender Frequenz nimmt die Wirkung ab. Beim Ausfall am 3. Oktober 2024 war das in den NOAA-Karten zu sehen: die Dämpfung der Amateurfunkbänder nahm zu höheren Frequenzen hin ab. Betroffen ist die **Tagseite** der Erde (der Strahlungsausbruch trifft die sonnenbeschienene Seite). Und: Nach dem Ausfall erholen sich **zuerst die hohen Frequenzen**; die tiefen kommen als Letzte zurück.`,
     },
     {
       id: 'video', type: 'video', youtube: 'ixCKYZ9B5ms', label: 'Amateurfunkvorlesung Klasse E – Lektion 3: Wellenausbreitung', channel: 'Computer Engineering @ JMU Würzburg',
@@ -214,6 +282,59 @@ Folge: **zeitlich begrenzter Ausfall der Raumwellenausbreitung** auf Kurzwelle, 
       ],
     },
     {
+      id: 'num-fade', type: 'numeric', title: 'Fading rechnen',
+      question: 'Zwei Signale gleicher Frequenz treffen im Empfänger ein: Welle 1 mit Amplitude 1,0 und Welle 2 mit Amplitude 0,6, beide **in Phase**. Wie groß ist die Summenamplitude? (Bei 180° wären es 0,4.)',
+      answer: 1.6, tolerance: 0.03,
+      explain: 'In Phase addieren sich die Amplituden: $1{,}0+0{,}6=1{,}6$. In Gegenphase wäre es $|1{,}0-0{,}6|=0{,}4$; bei gleich großen Wellen würde die Summe ganz verschwinden.',
+    },
+    {
+      id: 'num-skip-weg', type: 'numeric', title: 'Mehrere F2-Sprünge',
+      question: 'Ein F2-Sprung überbrückt bis zu etwa 4000 km. Wie weit kommt man höchstens mit zwei solchen Sprüngen (ohne Rundum-Dämpfung)?',
+      answer: 8000, tolerance: 0.03, unit: 'km',
+      explain: 'Zwei Sprünge à 4000 km: bis etwa 8000 km. Der Weg um die Erde (ca. 40 000 km) bräuchte entsprechend viele Sprünge; jeder kostet Dämpfung.',
+    },
+    {
+      id: 'q-grey-warum', type: 'quiz', title: 'Greyline: warum gut?',
+      question: 'Warum sind die Stunden um Sonnenauf- und -untergang für DX auf den unteren Bändern oft besonders gut?',
+      options: [
+        { text: 'Die dämpfende D-Region ist noch nicht (oder nicht mehr) da, während E- und F-Regionen noch bzw. schon brechen.', correct: true, why: 'Genau diese Kombination macht die Greyline aus.' },
+        { text: 'Die D-Region ist besonders stark ionisiert und reflektiert die Welle.', why: 'Die D-Region dämpft; sie reflektiert nicht.' },
+        { text: 'Die MUF ist zu dieser Zeit am niedrigsten, deshalb kommen tiefe Bänder durch.', why: 'Es geht nicht um eine niedrige MUF, sondern um fehlende D-Dämpfung.' },
+        { text: 'Die Sonneneruption erzeugt dort ein Funkfenster.', why: 'Flares führen zum Mögel-Dellinger-Effekt, also zu Ausfällen auf der Tagseite.' },
+      ],
+    },
+    {
+      id: 'q-mdl-freq', type: 'quiz', title: 'Welche Bänder trifft es?',
+      question: 'Beim Mögel-Dellinger-Effekt: Welches stimmt?',
+      options: [
+        { text: 'Tiefe Frequenzen werden am stärksten gedämpft; die Wirkung nimmt zu höheren Frequenzen hin ab; betroffen ist die Tagseite.', correct: true, why: 'Die Dämpfung der D-Region ist bei tiefen Frequenzen am größten.' },
+        { text: 'Hohe Frequenzen werden am stärksten gedämpft, tiefe kaum.', why: 'Umgekehrt: Die D-Dämpfung wird mit steigender Frequenz kleiner.' },
+        { text: 'Er trifft nur die Nachtseite, weil dort die D-Region fehlt.', why: 'Die Strahlung trifft die sonnenbeschienene Seite.' },
+        { text: 'Er verbessert die Ausbreitung auf 10 m.', why: 'Er sorgt für zeitweisen Ausfall der Raumwelle.' },
+      ],
+    },
+    {
+      id: 'q-fading-multi', type: 'quiz', title: 'Fading: Ursachen',
+      question: 'Welche Situationen können zu Fading führen? (mehrere möglich)',
+      options: [
+        { text: 'Boden- und Raumwelle des gleichen Senders überlagern sich.', correct: true, why: 'Die Phasenlage zweier Wellen bestimmt die Summe.' },
+        { text: 'Die Raumwelle kommt auf mehreren Wegen an (Mehrwegeausbreitung).', correct: true, why: 'Teilwellen mit unterschiedlichem Weg addieren sich phasenabhängig.' },
+        { text: 'Die bewegte Ionosphäre ändert die Weglängen ständig.', correct: true, why: 'Dadurch driftet die Phase, die Feldstärke schwankt (QSB).' },
+        { text: 'Der Empfängereingang ist zu empfindlich eingestellt.', why: 'Das erzeugt Rauschen oder Übersteuerung, kein Fading.' },
+      ],
+    },
+    {
+      id: 'match-weg-art', type: 'match', title: 'Ausbreitungsweg und Eigenschaft',
+      prompt: 'Ordne zu.',
+      pairs: [
+        ['Direkte Welle', 'geradlinig bei Sichtverbindung'],
+        ['Bodenwelle', 'folgt der Erdkrümmung, tiefe Frequenzen weiter'],
+        ['Raumwelle', 'Brechung an der Ionosphäre'],
+        ['Tote Zone', 'Bodenwelle zu schwach, Raumwelle noch nicht da'],
+        ['Mögel-Dellinger', 'zeitweiser Ausfall der Raumwelle auf der Tagseite'],
+      ],
+    },
+    {
       id: 'recall-ion', type: 'recall', title: 'In eigenen Worten',
       prompt: 'Dein Bekannter will tagsüber mit 5 W auf dem 80-m-Band nach Australien funken und nachts auf 10 m. Warum klappt beides nicht, und was empfiehlst du stattdessen (im Fleckenminimum)?',
       answer: 'Am Tag dämpft die D-Region das 80-m-Band stark (nur Bodenwelle), nachts ist sie weg, und 80 m öffnet über die F2-Region. Das 10-m-Band braucht hohe Ionisation (hohe MUF): nachts sinkt die MUF stark, im Fleckenminimum liegt sie auch tagsüber oft darunter, die Welle geht dann durch die Ionosphäre hindurch. Besser: tagsüber 20 m (oder 15 m), nachts 40 m oder 80 m, jeweils zu den Zeiten der Greyline für Australien.',
@@ -239,5 +360,11 @@ Folge: **zeitlich begrenzter Ausfall der Raumwellenausbreitung** auf Kurzwelle, 
     { id: 'io-grey', front: 'Greyline', back: 'Zone der Dämmerung um Sonnenauf- und -untergang: D-Region schwach, E/F wirken: gute DX-Bedingungen auf den unteren Bändern.' },
     { id: 'io-mdl', front: 'Mögel-Dellinger-Effekt', back: 'Flare → UV/Röntgen ionisiert D-Region stark → zeitweiser Ausfall der Raumwelle auf der Tagseite.' },
     { id: 'io-long', front: 'Langer Weg (long path)', back: 'Verbindung in der entgegengesetzten Richtung entlang des Großkreises, z. B. nach VK über Südamerika.' },
+    { id: 'io-skip-frequenz', front: 'Wovon hängt die Größe der toten Zone ab?', back: 'Von der Höhe der brechenden Region (höher: größer), vom Abstrahlwinkel (flacher: weiter) und von der Frequenz (höher: größer).' },
+    { id: 'io-hops', front: 'Mehrere Sprünge?', back: 'Die Erde reflektiert nach oben, dann folgt der nächste Sprung. Zwei F2-Sprünge: bis etwa 8000 km; jeder Sprung kostet Dämpfung.' },
+    { id: 'io-fading-formel', front: 'Zwei Wellen überlagern: Summe?', back: 'In Phase: a + b. Gegenphase (180°): |a − b|, bei gleicher Amplitude null. Dazwischen: √(a² + b² + 2ab·cos Δφ).' },
+    { id: 'io-fading-vhf', front: 'Fading auf VHF und höher?', back: 'Häufig durch Reflexion an beweglichen Objekten (Mehrwege); auf KW durch die bewegte Ionosphäre.' },
+    { id: 'io-mdl-freq', front: 'Mögel-Dellinger: welche Frequenzen am stärksten?', back: 'Die tiefen: Dämpfung der D-Region nimmt mit steigender Frequenz ab. Nach dem Ausfall erholen sich zuerst die hohen.' },
+    { id: 'io-grey-warum', front: 'Greyline: warum gute DX-Bedingungen?', back: 'D-Region (Dämpfer) noch/nicht mehr da, E/F (Brecher) wirken. Besonders um die Tag- und Nachtgleichen; vor allem untere Bänder.' },
   ],
 };

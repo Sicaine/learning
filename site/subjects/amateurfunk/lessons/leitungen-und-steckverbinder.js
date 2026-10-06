@@ -6,7 +6,7 @@ export default {
   id: 'leitungen-und-steckverbinder',
   title: 'Koaxkabel, Leitungen, Dämpfung und Steckverbinder',
   summary: 'Wellenwiderstand (50, 60, 75 Ω), Koax und Paralleldrahtleitung, Kabeldämpfung in dB je 100 m ablesen und rechnen, Steckverbinder PL, N, BNC und SMA erkennen.',
-  minutes: 25,
+  minutes: 30,
   goals: [
     'Den [[wellenwiderstand]] einer Leitung erklären: typische Werte (50, 60, 75 Ω), unabhängig von Länge und Abschluss, Reflexionen bei Fehlanpassung',
     'Koaxialkabel und Paralleldrahtleitung vergleichen, symmetrisch und unsymmetrisch unterscheiden',
@@ -109,6 +109,67 @@ ${grid([['NG202_q', 'PL: Schraubverbindung mit Rändelmutter'], ['NG203_q', 'BNC
 `,
     },
     {
+      id: 'stecker-details', type: 'text', title: 'Die vier Steckverbinder im Einzelnen',
+      md: String.raw`
+**Aufbau und Montage.** Ein Koaxialsteckverbinder ([Koaxialstecker](wiki:Koaxialstecker|RF connector)) wiederholt den Kabelaufbau im Kleinen: Der **Innenleiter** des Kabels wird mit dem Kontakt in der Mitte verbunden, der **Außenleiter** (Schirmgeflecht oder Folie) mit dem Metallgehäuse. Beide Verbindungen müssen gut leiten; üblich sind [Löten](wiki:Löten|Soldering) oder [Crimpen](wiki:Crimpen|Crimp (joining)), also Verpressen mit einer Zange.[^darc-50ohm] Weil Koaxkabel unterschiedlich dick sind, brauchst du einen Steckverbinder, der zum **Kabeldurchmesser** passt; manche Typen gibt es in mehreren Ausführungen für dünne und dicke Kabel. Und der Steckverbinder soll denselben **Wellenwiderstand** haben wie das Kabel, sonst reflektiert er.
+
+**Namen.** Der **Stecker** hat den Stift nach außen, die **Kupplung** die Öffnung. In ein Gerät eingebaut heißt die Kupplung **Buchse** und ein eingebauter Stecker **Einbaustecker**.
+
+| Typ | Verschluss | Typischer Einsatz | Hinweis |
+|---|---|---|---|
+| **PL** | Schraubverbindung | Kurzwelle bis zum 2-m-Band (VHF) | heißt auch „UHF-Stecker“, ist für UHF aber ungeeignet |
+| **N** | Schraubverbindung, Federkontakte um den Mittelstift | hohe Frequenzen bis in den GHz-Bereich, höhere Leistungen | hochwertiger als PL |
+| **BNC** | Bajonett, etwa 90° drehen | kleine Leistungen bis zum 70-cm-Band, Messgeräte | schnell lösbar, Feder gegen ungewolltes Lösen |
+| **SMA** | kleine Schraubverbindung | sehr hohe Frequenzen, HF-Messgeräte | immer häufiger, BNC wird seltener |
+
+**PL ([UHF-Steckverbinder](wiki:UHF-Steckverbinder|UHF connector)).** Der Klassiker für Kurzwellen-Stationen. Wegen des Namens „UHF“ wird er gern für 70 cm gekauft; dafür ist er aber nicht gedacht. Sein Platz ist KW bis 2 m.
+
+**N.** Die Federkontakte rund um den Mittelstift sorgen für eine besonders gute Verbindung des Außenleiters. N-Steckverbinder nimmst du, wenn die Frequenz über VHF liegt oder die Leistung hoch ist.
+
+**[BNC](wiki:BNC-Steckverbinder|BNC connector).** Der [Bajonettverschluss](wiki:Bajonettverschluss|Bayonet mount) ist in einer Vierteldrehung offen oder zu. Praktisch am Oszilloskop und am Handfunkgerät, aber nicht für hohe Leistung gedacht.
+
+**SMA.** Klein und für sehr hohe Frequenzen tauglich. Es gibt die Variante **Reverse-SMA**: Der Mittelkontakt ist „umgedreht“. Wo der normale SMA-Stecker einen Stift hat, hat der Reverse-Stecker eine Öffnung, und die Kupplung trägt den Stift. Außerdem weicht hier die Benennung ab: Der **Reverse-SMA-Stecker** ist der ohne Mittelstift, also optisch eine Kupplung.
+`,
+    },
+    {
+      id: 'warn-stecker', type: 'callout', tone: 'warning', title: 'Verwechslungsgefahr: PL/N und SMA/Reverse-SMA',
+      md: `Ein **PL-Stecker** passt mechanisch in eine **N-Buchse**, **zerstört sie aber** möglicherweise. Kontrolliere vor dem Einschrauben immer, was auf dem Gerät und was am Kabel sitzt. Bei SMA und Reverse-SMA sehen beide Varianten fast gleich aus und werden im Amateurfunk beide verwendet; ein Stift auf Stift passt nicht. Auch der Name „UHF“ für PL ist eine Falle. Schraube Steckverbinder immer sorgfältig und fest an, sie sind empfindlich und dürfen nicht beschädigt sein. Prüfungsbezug: NG202–NG206.`,
+    },
+    {
+      id: 'mission-stecker', type: 'callout', tone: 'mission', title: 'Funkpraxis: Kabelkiste und Adapter',
+      md: `Im Shack landet bald eine Kiste mit Adaptern. Ein typisches Bild: Der KW-Transceiver hat eine PL-Buchse, das Handfunkgerät eine SMA-Buchse, das Oszilloskop BNC, die 70-cm-Antenne am Mast N. Weil jeder Adapter eine zusätzliche Übergangsstelle ist, sollte das Kabel möglichst direkt den passenden Steckverbinder tragen. Und vor jedem Anschluss gilt: erst Typ prüfen, dann schrauben.`,
+    },
+    {
+      id: 'match-einsatz', type: 'match', title: 'Welchen Steckverbinder nimmst du?',
+      prompt: 'Ordne den Einsatzfall dem passenden Steckverbinder zu.',
+      pairs: [
+        ['KW-Transceiver bis zur 2-m-Antenne, Schraubverbindung', 'PL'],
+        ['Antenne im GHz-Bereich oder höhere Leistung, mit Federkontakten', 'N'],
+        ['Messgerät oder kleine Leistung bis 70 cm, schnell steckbar', 'BNC'],
+        ['sehr klein, sehr hohe Frequenzen, Mittelstift evtl. „reverse“', 'SMA'],
+      ],
+    },
+    {
+      id: 'q-stecker-pl', type: 'quiz', title: 'Der „UHF“-Stecker',
+      question: 'Du suchst einen Steckverbinder für eine 70-cm-Antenne mit mehr als 50 W und siehst „UHF-Stecker“ im Katalog. Was ist richtig?',
+      options: [
+        { text: 'Der Name täuscht: „UHF“ ist die PL-Schraubverbindung für Kurzwelle bis 2 m. Für 70 cm und Leistung passt ein N-Steckverbinder.', correct: true, why: 'PL ist bis zum 2-m-Band üblich; für höhere Frequenzen und hohe Leistung nimmt man N.' },
+        { text: 'Er passt perfekt, weil UHF für 70 cm steht.', why: 'Gerade das ist die Verwechslung: Der PL wird zwar UHF-Steckverbinder genannt, ist für UHF aber ungeeignet.' },
+        { text: 'BNC, weil er Bajonettverschluss hat und für hohe Leistung gedacht ist.', why: 'BNC ist für kleine Leistungen gedacht.' },
+        { text: 'Jeder Steckverbinder ist gleich gut geeignet, wenn er nur festgeschraubt ist.', why: 'Frequenzbereich, Leistung und Wellenwiderstand entscheiden über die Wahl.' },
+      ],
+    },
+    {
+      id: 'q-reverse-sma', type: 'quiz', title: 'Reverse-SMA',
+      question: 'Was ist beim Reverse-SMA-Steckverbinder anders als beim normalen SMA?',
+      options: [
+        { text: 'Der Mittelkontakt ist vertauscht: Der Reverse-Stecker hat eine Öffnung, die Kupplung den Stift.', correct: true, why: 'Deshalb passen SMA und Reverse-SMA nicht zusammen; die Bezeichnung „Stecker“ trifft hier auf eine Kupplung.' },
+        { text: 'Er hat einen Bajonettverschluss statt der Schraubmutter.', why: 'Der Bajonettverschluss gehört zum BNC.' },
+        { text: 'Er ist für niedrigere Frequenzen gedacht und deshalb größer.', why: 'Reverse ändert nur den Mittelkontakt, nicht den Frequenzbereich.' },
+        { text: 'Er hat einen Wellenwiderstand von 75 Ω statt 50 Ω.', why: 'Der Wellenwiderstand ist unverändert; verändert ist nur die Anordnung von Stift und Öffnung.' },
+      ],
+    },
+    {
       id: 'demo-stecker', type: 'viz', viz: 'steckverbinder', title: 'Steckverbinder-Trainer',
       intro: 'Sieh dir die Steckbriefe an und übe dann das Erkennen am Bild und das Zuordnen nach Einsatz.',
       task: 'Alle vier Steckbriefe ansehen, vier Bilder in Folge erkennen und drei Einsätze zuordnen.',
@@ -186,5 +247,9 @@ ${grid([['NG202_q', 'PL: Schraubverbindung mit Rändelmutter'], ['NG203_q', 'BNC
     { id: 'lk-pl', front: 'PL-Steckverbinder', back: 'Schraubverbindung; KW bis etwa 2 m; auch „UHF-Stecker“ genannt, aber nicht für UHF geeignet; nie in N-Buchse.' },
     { id: 'lk-bnc', front: 'BNC-Steckverbinder', back: 'Bajonettverschluss; kleine Leistung bis etwa 70 cm; Handfunke, Messgeräte.' },
     { id: 'lk-sma', front: 'SMA-Steckverbinder', back: 'Sehr klein, für sehr hohe Frequenzen; Reverse-SMA hat vertauschten Mittelkontakt.' },
+    { id: 'lk-stecker-namen', front: 'Stecker, Kupplung, Buchse, Einbaustecker?', back: 'Stecker = Stift außen. Kupplung = Öffnung. Eingebaute Kupplung = Buchse, eingebauter Stecker = Einbaustecker.' },
+    { id: 'lk-pl-n', front: 'PL-Stecker in eine N-Buchse?', back: 'Nie: Die Buchse kann zerstört werden. PL und N nicht verwechseln.' },
+    { id: 'lk-reverse-sma', front: 'Reverse-SMA?', back: 'Mittelkontakt vertauscht: Der Reverse-Stecker hat eine Öffnung, die Kupplung den Stift; mit normalem SMA nicht kompatibel.' },
+    { id: 'lk-montage', front: 'Wie wird ein Steckverbinder am Koaxkabel befestigt?', back: 'Innenleiter an Mittelkontakt, Schirm an Gehäuse; gut leitend gelötet oder gecrimpt. Gleicher Wellenwiderstand, passend zum Kabeldurchmesser.' },
   ],
 };

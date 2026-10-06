@@ -6,12 +6,13 @@ export default {
   id: 'digitale-betriebsarten',
   title: 'Digitale Betriebsarten in der Praxis',
   summary: 'RTTY, PSK31, FT8, Packet, Digital Voice, Digimodes per SSB, 9600-Baud-Port, Übersteuerung, automatische Empfangsberichte.',
-  minutes: 25,
+  minutes: 33,
   goals: [
     'Telegrafie-Betrieb abwickeln: Betriebsabkürzungen (CQ, DE, K, BK, R), Anruf und Tempo',
     'Erklären, warum Digimodes per SSB gesendet werden und wie viele schmale Signale in einen 2,4-kHz-Kanal passen',
     'Den NF-Pegel am Transceiver so einstellen, dass die ALC nicht eingreift, und begründen, warum',
     'Digitale Sprache (DMR, D-STAR, C4FM, M17, FreeDV), Zeitschlitze, automatische Empfangsberichte und Paketnetze (HAMNET, IP) einordnen',
+    'Das Morse-Zeitraster und die Paris-Regel anwenden (WPM in Punktlänge umrechnen) und erklären, wie Pakete mit Adresse, Prüfsumme und Quittung zuverlässig ankommen',
   ],
   needs: ['am-ssb-cw', 'fm-und-sprachbetrieb'],
   blocks: [
@@ -82,6 +83,50 @@ Und: Eine **Morseprüfung ist nicht Pflicht**. Die Radio Regulations legen **nic
       id: 'demo-morse', type: 'viz', viz: 'morse-hoerer', title: 'Morse-Hörer',
       intro: 'Starte eine Aufgabe, höre Ton und Lampe und tippe, was du verstanden hast. Mit „Farnsworth“ (Gesamttempo unter der Zeichengeschwindigkeit) werden die Pausen länger, die Zeichen bleiben im vollen Tempo; so lernt man den Klang statt des Zählens von Punkten.',
       task: 'Löse vier Aufgaben in Folge richtig und stelle einmal das Tempo auf 20 WPM (= 100 Zeichen pro Minute), um eine Aufgabe zu hören.',
+    },
+    {
+      id: 'morse-takt-text', type: 'text', title: 'Morsecode im Detail: Zeichen, Tastung und Takt',
+      md: `
+So alt wie der Funk selbst: Die ersten Funksender konnten nichts anderes, als **den Sender mit einer Taste ein- und auszuschalten**. Der Vergleich mit [Rauchzeichen](wiki:Rauchzeichen|Smoke signal) trifft es genau: Das Feuer ist der **Träger**, das kurze Anheben der Decke ist die **Modulation**, und was die Abfolge der Rauchwolken bedeutet, muss vorher verabredet sein. Im Funk ist der Träger eine hochfrequente Schwingung (zum Beispiel 144,1 MHz), die Taste lässt sie nur im Rhythmus der Zeichen zur Antenne. Man sagt: Morsezeichen werden **gegeben**, der Empfänger macht sie als Ton hörbar. Dieses Prinzip heißt [Telegrafie](wiki:Telegrafie|Telegraphy), die Betriebsart **[[cw-tastung|CW]]** (*continuous wave*). Mitte des 19. Jahrhunderts einigte man sich auf den bis heute üblichen [Morsecode](wiki:Morsecode|Morse code).[^darc-50ohm]
+
+## Zeichen und Zeitraster
+
+Jedes Zeichen ist eine feste Folge aus **kurzen Tönen (Punkt)** und **langen Tönen (Strich)**: *lang-kurz-lang-kurz* ist das C, *lang-lang-kurz-lang* das Q, zusammen also das „CQ“ des allgemeinen Anrufs. Entscheidend ist das **Zeitraster**, das alle Stationen gleich verstehen:
+
+| Element | Dauer |
+|---|---|
+| Punkt (Ton) | 1 Einheit |
+| Strich (Ton) | 3 Einheiten |
+| Pause innerhalb eines Zeichens | 1 Einheit |
+| Pause zwischen zwei Zeichen | 3 Einheiten |
+| Pause zwischen zwei Wörtern | 7 Einheiten |
+
+Beim Empfang übersetzen Ohr und Gehirn die Töne in Zeichen, heute auch ein Computer. Häufige Buchstaben haben kurze Zeichen (E ist ein einzelner Punkt, T ein einzelner Strich), seltene längere: ein einfacher Trick, damit Texte im Schnitt kurz bleiben.
+
+## Tempo: WPM und die Paris-Regel
+
+Das Tempo wird in **WPM** (*words per minute*, Wörter pro Minute) angegeben. Als Normwort dient „PARIS“ samt Wortpause, und es besteht aus genau **50 Einheiten**: Die Buchstaben P, A, R, I, S ergeben zusammen 31 Einheiten, dazu kommen vier Zeichenpausen zu je 3 Einheiten (12) und die Wortpause (7). Daraus folgt alles Weitere:
+
+- Ein Wort hat 5 Zeichen, also sind **WPM × 5 Zeichen pro Minute** zu hören (20 WPM = 100 Zeichen pro Minute).
+- Ein Wort dauert $60\\,\\text{s}/\\text{WPM}$, und eine Einheit (die **Punktlänge**) dauert deshalb $\\dfrac{60\\,\\text{s}}{50\\cdot\\text{WPM}} = \\dfrac{1{,}2\\,\\text{s}}{\\text{WPM}}$. Bei 20 WPM ist ein Punkt 60 ms lang, ein Strich 180 ms.
+
+Das Tempo ist eine Absprache zwischen den Stationen, und wie in der Lektion beschrieben gilt: nicht schneller geben, als die Gegenstelle (und du selbst) aufnehmen kann. Eine **Morsetaste** (Handtaste, Paddle mit elektronischem Geber oder Computer) bestimmt nur, wer die Einheiten wie sauber setzt; das Raster bleibt gleich.
+
+## Wie breit ist ein getastetes Signal?
+
+Je schneller die Ein-Aus-Wechsel, desto breiter wird das Signal: Die Bandbreite wächst mit dem Tempo. Sehr harte, rechteckige Flanken (Tastklicks) verbreitern es zusätzlich, weshalb Sender die Flanken leicht abrunden. Trotzdem bleibt CW von allen Verfahren das schmalste (siehe die Lektion über AM, SSB und CW).[^darc-50ohm]
+`,
+    },
+    {
+      id: 'demo-morse-tempo', type: 'viz', viz: 'morse-tempo', title: 'Morse-Tempo-Rechner',
+      intro: 'Tippe einen Text (Buchstaben, Ziffern, / ? = . ,), stelle das Tempo ein und sieh den Zeitverlauf der Tastung. Der Ton startet erst, wenn du auf „Abspielen“ klickst.',
+      task: 'Lade den Text „PARIS“ (50 Einheiten), stelle das Tempo so ein, dass ein Punkt 100 ms dauert, und spiele einmal ab.',
+    },
+    {
+      id: 'mission-cw-lernen', type: 'callout', tone: 'mission', title: 'Funkpraxis: Morsen lernen, ohne Punkte zu zählen',
+      md: `
+Wer Morsen übt, hört bald keine Punkte und Striche mehr, sondern den **Klang** des ganzen Zeichens („di-dah“ statt „kurz-lang“). Das klappt am besten, wenn die Zeichen schnell gegeben, aber die Pausen lang sind (der Morse-Hörer oben nennt das Farnsworth). Hör zuerst auf Bandbaken und CW-Runden zu, bevor du selbst rufst, und halte dich an die Regel aus der Lektion: Antworte höchstens im Tempo des Anrufs.
+`,
     },
     {
       id: 'ssb-text', type: 'text', title: 'Digimodes per SSB: warum und wie breit',
@@ -186,8 +231,62 @@ Aus der eingestellten IP-Adresse und Subnetzmaske ergibt sich damit der **direkt
       task: 'Löse die drei Ziele: zwei Geräte im selben /24-Netz, das /25-Netz trennt 141.17.5.18 und 141.17.5.200, und ein kürzeres Präfix verbindet 192.168.1.20 mit 192.168.2.5.',
     },
     {
+      id: 'packet-text', type: 'text', title: 'Packet Radio und APRS: Pakete mit Adresse und Quittung',
+      md: `
+Wie lässt sich ein Datenstrom zuverlässig über einen störanfälligen Funkkanal schicken? Das [Packet Radio](wiki:Packet Radio|Packet radio) der 1980er-Jahre löste das mit denselben Ideen, die heute jedes Netz nutzt:
+
+1. **Zerlegen:** Die Nachricht wird in kurze, **nummerierte Pakete** geteilt.
+2. **Adressieren:** Jedes Paket trägt einen Kopf mit **Absender und Empfänger**. Im Packet Radio ist das schlicht das **Rufzeichen** (Protokoll [AX.25](wiki:AX.25|AX.25)); im IP-Netz ist es die IP-Adresse.
+3. **Absichern:** Am Ende steht eine **[Prüfsumme](wiki:Prüfsumme|Checksum)**, aus der der Empfänger erkennt, ob unterwegs Bits kippten.
+4. **Quittieren:** Ist das Paket in Ordnung, meldet der Empfänger das mit einer kurzen **Quittung** (*ACK*). Bleibt sie aus, sendet der Absender **nach einer Wartezeit dasselbe Paket noch einmal**. Doppelt angekommene Pakete erkennt der Empfänger an der Nummer.
+5. **Weiterleiten:** Erreichen sich zwei Stationen nicht direkt, nehmen Zwischenstationen ([[digipeater|Digipeater]]) die Pakete an und geben sie weiter. Das ist die **Paketweiterleitung**, die du im Abschnitt über IP-Netze kennengelernt hast.[^darc-50ohm]
+
+Die Daten gingen als [[afsk|AFSK]]-Töne über normale FM-Funkgeräte, meist mit 1200 Bit/s, später mit 9600 Bit/s über den DATA-/9600-Port. Weil alle Stationen **dieselbe Frequenz** teilen, kann es **Kollisionen** geben (zwei senden gleichzeitig), und genau dafür sind Quittung und Wiederholung da.
+
+## APRS: Senden ohne Quittung
+
+Das [Automatic Packet Reporting System](wiki:Automatic Packet Reporting System|Automatic Packet Reporting System) (**APRS**) ist eine Anwendung auf Packet-Basis: Stationen senden kleine Pakete mit **Position, Wetterdaten oder Kurznachrichten**, die jeder in Reichweite mithört, und Digipeater tragen sie weiter. Die Pakete gehen an alle und werden **nicht einzeln quittiert**. Das spart Funkzeit; ein verlorenes Positionspaket ist verschmerzbar, denn das nächste kommt bald. Kartendienste im Internet sammeln die empfangenen Pakete und zeigen sie an (in Europa nutzt man 144,800 MHz, siehe die Lektion über Bandpläne).[^aprs-fi]
+`,
+    },
+    {
+      id: 'warn-wiederholung', type: 'callout', tone: 'warning', title: 'Weiterleiten ist nicht Wiederholen',
+      md: `
+Zwei Mechanismen werden gern verwechselt. **Weiterleiten** (Paketweiterleitung über Zwischenstationen) löst das Problem, dass sich zwei Stationen **nicht direkt erreichen** (Prüfungsbezug: EE412). **Wiederholen nach fehlender Quittung** löst das Problem, dass ein einzelnes Paket **unterwegs verloren ging oder beschädigt wurde**. Beides kann in einem Netz gleichzeitig vorkommen.
+`,
+    },
+    {
+      id: 'demo-paket', type: 'viz', viz: 'paket-quittung', title: 'Paket-Quittungs-Simulator',
+      intro: 'Acht Pakete laufen über einen Funkkanal mit Verlusten. Probiere beide Verfahren und verschiedene Verlustraten; jede Quittung ist selbst eine Aussendung und kann verloren gehen.',
+      task: 'Sende mit Quittung bei mindestens 40 % Verlust alle 8 Pakete erfolgreich, und zeige ohne Quittung bei mindestens 30 % Verlust, dass Pakete verloren gehen.',
+    },
+    {
       id: 'video-digital', type: 'video', youtube: 'QRq0uPzdPZY', label: 'Videolehrgang Klasse N, Lektion 06: Digitale Übertragungsverfahren', channel: 'DL2YMR',
       why: 'Der Videolehrgang von DL2YMR zum Thema der Lektion, zum Anschauen und Nachhören.',
+    },
+    {
+      id: 'calc-punktlaenge', type: 'numeric', title: 'Punktlänge bei 15 WPM',
+      question: 'Wie lang ist ein Punkt in Millisekunden bei einem Tempo von 15 WPM?',
+      answer: 80, tolerance: 1, unit: 'ms',
+      hint: 'Punktlänge = 1,2 s geteilt durch WPM.',
+      explain: '$1{,}2\\,\\text{s}/15 = 0{,}08\\,\\text{s} = 80\\,\\text{ms}$. Ein Strich dauert dann 240 ms.',
+    },
+    {
+      id: 'calc-paris-zeit', type: 'numeric', title: 'Wie lange dauert „PARIS“?',
+      question: 'Ein Funkamateur gibt mit 10 WPM. Wie viele Sekunden braucht er für das Normwort „PARIS“ samt Wortpause?',
+      answer: 6, tolerance: 0.05, unit: 's',
+      hint: 'Bei 10 WPM werden 10 Wörter in 60 Sekunden gegeben.',
+      explain: '$60\\,\\text{s}/10 = 6\\,\\text{s}$. Kontrolle über die Einheiten: $50 \\cdot 120\\,\\text{ms} = 6\\,\\text{s}$.',
+    },
+    {
+      id: 'match-morse-zeit', type: 'match', title: 'Zeitraster der Telegrafie',
+      prompt: 'Ordne jedem Element seine Dauer zu.',
+      pairs: [
+        ['Punkt', '1 Einheit Ton'],
+        ['Strich', '3 Einheiten Ton'],
+        ['Pause innerhalb eines Zeichens', '1 Einheit Stille'],
+        ['Pause zwischen zwei Zeichen', '3 Einheiten Stille'],
+        ['Pause zwischen zwei Wörtern', '7 Einheiten Stille'],
+      ],
     },
     {
       id: 'match-modes', type: 'match', title: 'Betriebsart und Merkmal',
@@ -250,6 +349,30 @@ Aus der eingestellten IP-Adresse und Subnetzmaske ergibt sich damit der **direkt
       ],
     },
     {
+      id: 'quiz-paket', type: 'quiz', title: 'Quittung und Wiederholung',
+      question: 'Ein Absender schickt Paket 5 mit Quittungsverfahren, bekommt aber keine Quittung. Was ist richtig? (Mehrfachauswahl)',
+      options: [
+        { text: 'Er kann nicht wissen, ob das Paket angekommen ist; er wartet eine Zeit lang und sendet es dann noch einmal.', correct: true, why: 'Das ist der Sinn der Wiederholung.' },
+        { text: 'Möglicherweise kam das Paket an und nur die Quittung ging verloren.', correct: true, why: 'Dann entsteht ein Doppel, das der Empfänger an der Paketnummer erkennt und verwirft.' },
+        { text: 'Das Paket ist sicher verloren.', correct: false, why: 'Auch die Quittung kann verloren gehen.' },
+        { text: 'Der Absender erhöht die Sendeleistung auf das Zehnfache.', correct: false, why: 'Das Verfahren regelt man nicht über die Leistung; die Wiederholung löst das Problem.' },
+        { text: 'Der Empfänger setzt die Pakete in der Reihenfolge ihres Eintreffens zusammen, auch bei Doppeln.', correct: false, why: 'Gerade die laufende Nummer sorgt für die richtige Reihenfolge und das Aussortieren von Doppeln.' },
+      ],
+    },
+    {
+      id: 'order-paket', type: 'order', title: 'Ein Paket mit Quittung auf die Reise schicken',
+      prompt: 'Bringe die Schritte eines gequittierten Paketaustauschs in die richtige Reihenfolge.',
+      items: [
+        'Die Nachricht wird in nummerierte Pakete zerlegt.',
+        'Jedes Paket erhält Adressen und eine Prüfsumme.',
+        'Das Paket wird gesendet.',
+        'Der Empfänger prüft die Prüfsumme.',
+        'Der Empfänger sendet eine Quittung.',
+        'Der Absender sendet das nächste Paket (bei fehlender Quittung dasselbe noch einmal).',
+      ],
+      explain: 'Erst zerlegen und adressieren, dann senden; der Empfänger prüft und quittiert; erst die Quittung gibt dem Absender das Recht, weiterzumachen.',
+    },
+    {
       id: 'recall-digi', type: 'recall', title: 'In eigenen Worten',
       prompt: 'Erkläre, warum man schmale Digimodes wie FT8 oder PSK31 mit einem SSB-Transceiver sendet, wie viele Signale in einen SSB-Kanal passen und warum du dabei den NF-Pegel klein halten musst.',
       answer: 'Der Computer erzeugt ein NF-Signal mit sehr kleiner Bandbreite (PSK31 ≈ 31 Hz, FT8 ≈ 50 Hz). Der SSB-Transceiver setzt dieses NF-Signal in die Funkfrequenz um, und weil die HF-Bandbreite bei SSB der NF-Bandbreite entspricht, bleibt das Signal schmal. In einen 2,4-kHz-Kanal passen deshalb viele Signale (rechnerisch 48 FT8 oder 76 PSK31), die die Software parallel dekodieren kann. Der NF-Pegel muss so klein sein, dass die ALC nicht eingreift: Übersteuerung erzeugt Oberschwingungen und Nebenaussendungen, und bei veränderlicher Amplitude (PSK31) moduliert die ALC das Signal zusätzlich in der Amplitude; beides stört Nachbarfrequenzen.',
@@ -272,5 +395,11 @@ Aus der eingestellten IP-Adresse und Subnetzmaske ergibt sich damit der **direkt
     { id: 'tdma-dmr', front: 'Mehrere Gespräche auf derselben Frequenz (DMR)?', back: 'Ja: Die Sprachdaten werden abwechselnd in periodischen kurzen Zeitschlitzen übertragen (TDMA).' },
     { id: 'empfangsberichte', front: 'Automatische Empfangsberichte erhalten?', back: 'Nachricht mit geeignetem Verfahren (CW, WSPR, FT8 …) senden und auf den Internetplattformen (WSPRnet, Reverse Beacon Network, PSK Reporter) nach dem eigenen Rufzeichen suchen.' },
     { id: 'hamnet-ip', front: 'IP im Amateurfunk, Paketweiterleitung, Subnetzmaske?', back: 'IP ist nicht auf das Internet beschränkt (HAMNET). Pakete laufen über Zwischenstationen. IP-Adresse + Subnetzmaske ergeben den direkt (ohne Router) erreichbaren Adressbereich.' },
+    { id: 'morse-zeitraster', front: 'Zeitraster im Morsecode (in Einheiten)?', back: 'Punkt 1, Strich 3; Pause im Zeichen 1, zwischen Zeichen 3, zwischen Wörtern 7.' },
+    { id: 'paris-50', front: 'Wie viele Einheiten hat das Normwort „PARIS“ (mit Wortpause)?', back: '50 Einheiten. Daraus folgt: Punktlänge = 1,2 s / WPM; WPM × 5 = Zeichen pro Minute.' },
+    { id: 'punktlaenge-wpm', front: 'Punktlänge bei 20 WPM?', back: '1,2 s / 20 = 60 ms (Strich 180 ms).' },
+    { id: 'paket-aufbau-quittung', front: 'Wie sichert ein Paketverfahren (z. B. Packet Radio) die Übertragung ab?', back: 'Nummerierte Pakete mit Adresse und Prüfsumme; der Empfänger quittiert, ohne Quittung sendet der Absender nach einer Wartezeit erneut; Doppel erkennt man an der Nummer.' },
+    { id: 'aprs-ungequittet', front: 'APRS: Quittung oder nicht?', back: 'Meist ohne Quittung: Positions-, Wetter- und Kurzmeldungspakete gehen an alle; das spart Funkzeit, ein verlorenes Paket wird vom nächsten ersetzt.' },
+    { id: 'weiterleiten-wiederholen', front: 'Paketweiterleitung oder Wiederholung: Was löst welches Problem?', back: 'Weiterleiten über Zwischenstationen: Stationen erreichen sich nicht direkt. Wiederholen nach fehlender Quittung: ein einzelnes Paket ging verloren.' },
   ],
 };

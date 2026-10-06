@@ -2,7 +2,7 @@ export default {
   id: 'ohm-widerstand-farbcode',
   title: 'Ohmsches Gesetz, Widerstände und Farbcode',
   summary: 'U = R·I nach jeder Größe umstellen, Widerstandswerte aus Farbringen und SMD-Codes lesen, Toleranzbereiche berechnen und die Widerstandsarten (Draht, Schicht, NTC/PTC) für HF und Messtechnik unterscheiden.',
-  minutes: 30,
+  minutes: 35,
   goals: [
     'Das [[ohmsches-gesetz|Ohmsche Gesetz]] $U = R\\cdot I$ nach $I$ und $R$ umstellen und mit mA, kΩ, V rechnen',
     'Den Wert eines vierringigen Widerstands aus dem [[farbcode]] und eines SMD-Widerstands aus dem Zifferncode lesen',
@@ -140,6 +140,67 @@ Nicht jeder Widerstand ist für jede Frequenz geeignet — denn jedes Bauteil ha
 **Dummy Load (künstliche Antenne):** Der Abschlusswiderstand von 50 Ω darf keine Wendel enthalten, weil sich sonst bei VHF/UHF ein Blindanteil dazuschleicht und der Widerstand frequenzabhängig wird. Gute Dummy Loads bestehen deshalb aus **ungewendelten** Schicht- oder Metalloxidwiderständen mit **geringer Eigeninduktivität und Eigenkapazität** (EC104–EC107). Ein Trick: Zehn Kohleschichtwiderstände mit je 500 Ω **parallel** ergeben 50 Ω ($500\\,\\Omega/10$) und verteilen zugleich die Leistung — wie das genau geht, siehst du in der Lektion über Reihen-/Parallelschaltung.`,
     },
     {
+      id: 'bauformen', type: 'text', title: 'Bauformen im Detail: Draht, Kohle, Metall, Oxid',
+      md: String.raw`
+Die Tabelle oben fasst zusammen, hier die Hintergründe:[^darc-50ohm]
+
+- **Drahtwiderstände (Wickelwiderstände)** gehören zu den ältesten Bauformen. Lackisolierter Widerstandsdraht, zum Beispiel aus [Manganin](wiki:Manganin|Manganin) oder [Konstantan](wiki:Konstantan|Constantan), wird auf einen Keramikkörper gewickelt. Vorteile: hohe Überlastbarkeit und kleiner Temperaturkoeffizient. Nachteil: Ein einfach gewickelter Draht ist auch eine **Spule**, hat also eine hohe Induktivität, und der Widerstand wird frequenzabhängig. Deshalb sind sie Hochlastwiderstände für Gleichstrom und niedrige Frequenzen, nicht für die Funktechnik.
+- **[Kohleschichtwiderstände](wiki:Kohleschichtwiderstand):** Eine dünne Kohleschicht wird auf einen Träger aufgedampft. Billig, aber mit großer Fertigungstoleranz; vergleichsweise induktionsarm, daher für HF eingeschränkt geeignet.
+- **Metalloxidschicht:** dünne Schicht auf einem Träger, weitgehend induktionsarm und temperaturstabil, daher besonders für Frequenzen über 30 MHz.
+- **Metallschicht:** mit hoher Genauigkeit, also kleiner Fertigungstoleranz, herstellbar: Präzisionswiderstände. Sie sind weitgehend temperaturunabhängig, aber weniger induktionsarm als die Oxidschicht.
+
+Für die **Dummy Load** bei hohen Frequenzen (VHF) nimmst du bevorzugt ungewendelte Metalloxidschichtwiderstände. Bei niedrigeren Frequenzen wie 50 MHz oder 28 MHz tun es auch Kohleschichtwiderstände. Entscheidend: keine Windungen, möglichst kleine Eigenkapazität und genug Temperaturfestigkeit, denn der Widerstand setzt die Leistung in Wärme um.
+`,
+    },
+    {
+      id: 'warn-bauform', type: 'callout', tone: 'warning', title: 'Merke: nicht „Draht ist immer besser“',
+      md: `Der Drahtwiderstand verträgt viel Leistung, aber die Wendel macht ihn zur Spule. Für eine 50-Ω-Dummy-Load bei VHF/UHF wäre er die falsche Wahl, genau weil sich sein Wert mit der Frequenz verändert. Prüfungsbezug: EC101–EC107.`,
+    },
+    {
+      id: 'toleranz-vertiefung', type: 'text', title: 'Toleranz im Alltag und SMD-Bauteile',
+      md: String.raw`
+Gebräuchlich sind Toleranzen von **±1 %, ±2 %, ±5 % und ±10 %**. Je kleiner die Toleranz, desto genauer, aber oft auch teurer; ±1 % und weniger wählt man für Messgeräte oder empfindliche Sensoren. ([Toleranz](wiki:Toleranz (Technik)|Engineering tolerance)) Rechne immer **mit dem Nennwert**: Ein 1-kΩ-Widerstand mit ±5 % hat 5 % von 1000 Ω, das sind 50 Ω, also liegt der echte Wert zwischen **950 Ω und 1050 Ω**. Ein 47-kΩ-Widerstand mit silbernem Ring (±10 %) darf um 4,7 kΩ abweichen, also zwischen 42,3 und 51,7 kΩ liegen.
+
+**SMD** steht für *Surface-Mounted Device*, das oberflächenmontierte Bauelement. Es hat keine Drahtanschlüsse, sondern wird direkt auf die Leiterplatte aufgelötet, ohne Durchkontaktierung. Auf dem Widerstand steht der Wert als Zahl: Alle Ziffern bis auf die **letzte** sind der reine Zahlenwert, die **letzte** Ziffer ist die **Zehnerpotenz**. Beispiel **113**: $11\cdot10^3\,\Omega=11\,\text{k}\Omega$. Beispiel **334**: $33\cdot10^4=330\,\text{k}\Omega$. Die Zehnerpotenz ist also die Anzahl der Nullen, nicht Teil der Zahl.
+
+**Mehr als vier Ringe:** Es gibt Widerstände mit mehr Farbringen. Für die Prüfung sind sie nicht relevant; auch andere Bauteile tragen oft Farbringe.
+`,
+    },
+    {
+      id: 'calc-tol-abw', type: 'numeric', title: 'Toleranzbereich berechnen',
+      question: 'Ein Widerstand trägt die Ringe Gelb–Violett–Orange–Silber. Um wie viel Ohm darf der echte Wert **höchstens** vom Nennwert abweichen?',
+      answer: 4700, tolerance: 20, unit: 'Ω',
+      hint: 'Erst den Nennwert (47 kΩ), dann Silber = ±10 %.',
+      explain: 'Nennwert $47\\,\\text{k}\\Omega$; $10\\,\\%$ davon sind $4{,}7\\,\\text{k}\\Omega$. Der echte Wert liegt zwischen $42{,}3$ und $51{,}7\\,\\text{k}\\Omega$.',
+    },
+    {
+      id: 'calc-smd334', type: 'numeric', title: 'SMD-Code lesen',
+      question: 'Auf einem SMD-Widerstand steht **334**. Welchen Wert hat er in kΩ?',
+      answer: 330, tolerance: 1, unit: 'kΩ',
+      hint: 'Die letzte Ziffer ist die Zehnerpotenz: $33\\cdot10^4$.',
+      explain: '$33\\cdot10^4\\,\\Omega=330\\,000\\,\\Omega=330\\,\\text{k}\\Omega$. Wer die 4 als Teil der Zahl liest, landet bei falschen 334 Ω oder 33,4 kΩ.',
+    },
+    {
+      id: 'match-smd', type: 'match', title: 'SMD-Aufdruck → Wert',
+      prompt: 'Ordne den Aufdruck dem Widerstandswert zu.',
+      pairs: [
+        ['113', '11 kΩ'],
+        ['471', '470 Ω'],
+        ['104', '100 kΩ'],
+        ['222', '2,2 kΩ'],
+      ],
+    },
+    {
+      id: 'q-ntc-einsatz', type: 'quiz', title: 'Heiß- und Kaltleiter',
+      question: 'Ein Widerstand leitet bei hoher Temperatur besser als bei niedriger. Wie heißt er, und wofür wird er unter anderem genutzt?',
+      options: [
+        { text: 'Heißleiter (NTC); zum Beispiel zur Temperaturmessung oder Einschaltstrombegrenzung.', correct: true, why: 'Bei steigender Temperatur sinkt der Widerstand, die Leitfähigkeit steigt. Schaltzeichen ϑ↑↓.' },
+        { text: 'Kaltleiter (PTC); sein Widerstand sinkt mit der Temperatur.', why: 'Beim Kaltleiter steigt der Widerstand mit der Temperatur.' },
+        { text: 'Drahtwiderstand; als Präzisionswiderstand.', why: 'Das ist keine temperaturabhängige Widerstandsart im Sinne der Frage; Präzision liefert die Metallschicht.' },
+        { text: 'Metalloxidwiderstand; für Frequenzen über 30 MHz.', why: 'Das beschreibt die Bauform, nicht das Temperaturverhalten.' },
+      ],
+    },
+    {
       id: 'match-arten', type: 'match', title: 'Widerstandsart → Eigenschaft',
       prompt: 'Welche Widerstandsart passt zur Aufgabe?',
       pairs: [
@@ -179,5 +240,10 @@ Nicht jeder Widerstand ist für jede Frequenz geeignet — denn jedes Bauteil ha
     { id: 'ohm-oxid', front: 'Welcher Widerstand für HF über 30 MHz?', back: 'Metalloxidschichtwiderstand (induktionsarm). Präzision: Metallschicht.' },
     { id: 'ohm-ntc', front: 'NTC vs. PTC?', back: 'NTC (Heißleiter): R sinkt mit ϑ, Symbol ϑ↑↓, Temperaturmessung. PTC (Kaltleiter): R steigt, ϑ↑↑.' },
     { id: 'ohm-dummy', front: 'Dummy Load: Anforderung an die Widerstände?', back: 'Geringe Eigeninduktivität und -kapazität, ungewendelt; z. B. 10 × 500 Ω parallel = 50 Ω.' },
+    { id: 'ohm-kohle', front: 'Kohleschichtwiderstand: Eigenschaften?', back: 'Kohleschicht aufgedampft; billig, große Fertigungstoleranz, vergleichsweise induktionsarm (HF eingeschränkt).' },
+    { id: 'ohm-metallschicht', front: 'Metallschichtwiderstand: Eigenschaften?', back: 'Kleine Fertigungstoleranz, kaum temperaturabhängig: Präzisionswiderstand; weniger induktionsarm als Oxidschicht.' },
+    { id: 'ohm-smd-def', front: 'SMD-Widerstand: Aufdruck lesen?', back: 'Alle Ziffern außer der letzten = Zahl, letzte Ziffer = Zehnerpotenz. 113 = 11·10³ = 11 kΩ; 334 = 330 kΩ.' },
+    { id: 'ohm-tol-47', front: '47 kΩ mit Silber (±10 %): Bereich?', back: '±4,7 kΩ, also 42,3 bis 51,7 kΩ. Toleranz immer vom Nennwert rechnen.' },
+    { id: 'ohm-einsatz-ntc', front: 'Wofür NTC und PTC?', back: 'Temperaturmessung und Einschaltstrombegrenzung; NTC = Heißleiter (R sinkt), PTC = Kaltleiter (R steigt).' },
   ],
 };

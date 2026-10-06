@@ -2,7 +2,7 @@ export default {
   id: 'blitzschutz-erdung-sicherheit',
   title: 'Blitzschutz, Erdung und Antennensicherheit',
   summary: 'Antennen und Station sicher aufbauen: Potentialausgleich und Erdung, Blitzschutz nach VDE, statische Aufladung, Gefahren an Antenne und Netzteil, Baurecht und Haftung.',
-  minutes: 20,
+  minutes: 25,
   goals: [
     '[[potentialausgleich|Potentialausgleich]] und [[erdung|Erdung]] der Station beschreiben (Haupterdungsschiene, Koaxschirme, kurze Verbindungen) und die zuständigen VDE-Normen zuordnen',
     'Material und Mindestquerschnitt einer Erdungsleitung nennen und wissen, wer am Blitzschutzsystem arbeiten darf',
@@ -71,6 +71,26 @@ Eine Antenne **erhöht in der Regel nicht die Wahrscheinlichkeit** eines Blitzei
 </table>`,
     },
     {
+      id: 'nahschlag', type: 'text', title: 'Auch der Einschlag nebenan richtet Schaden an',
+      md: String.raw`
+Ein direkter Treffer ist selten, aber ein Blitz **in der Nähe** genügt, um große Schäden anzurichten. Die Überspannung kommt dann nicht nur über die Antenne, sondern oft über das **Stromnetz** in die Station: Ein typisches Schadensbild ist ein völlig zerstörter Kondensator im Netzteil. Zwei Wege, Geräte zu schützen, kennst du schon (Zwischenstecker mit Gasentladungsröhre; Antennenzuleitung nach dem Funken direkt erden). Beide setzen eine **Erdungsleitung** voraus, die den VDE-Vorgaben entspricht: massiver Draht, keine Litze.[^darc-50ohm]
+
+**Wer macht was?** Ein Blitzschutzsystem schützt das Gebäude, und nur damit der Schutz erhalten bleibt, darf daran nur ändern, wer weiß, was er tut. Eine Verbindung zu einer vorhandenen Anlage muss im **Blitzschutzkonzept** stehen, das eine **Blitzschutz-Fachkraft** erstellt hat. Der Anschluss von Potentialausgleich und Erdung sollte nur erfolgen, wenn du genau weißt, was du tust; im Zweifel helfen ein erfahrener Funkamateur oder eine [Elektrofachkraft](wiki:Elektrofachkraft).
+
+**VDE-Normen sind teuer.** Die Beschaffung der Normen kostet Geld; erläuternde Quellen können eine Alternative sein. Der VDE hat zum Thema auch einen Leitfaden zum Schutz von Funkanlagen auf Gebäuden bei Blitzschlag veröffentlicht. Prüfungsbezug: VE603, VE604, EK208–EK211.
+`,
+    },
+    {
+      id: 'q-nahschlag', type: 'quiz', title: 'Blitz in der Nachbarschaft',
+      question: 'Ein Blitz schlägt zwei Straßen weiter ein, deine Antenne wird nicht getroffen. Trotzdem ist ein Netzteil kaputt. Was ist die plausibelste Erklärung?',
+      options: [
+        { text: 'Überspannung kam über das Stromnetz (oder die Antennenleitung) in die Station; Schutz bieten Überspannungsableiter bzw. Erdung der Antennenzuleitung.', correct: true, why: 'Auch ein Einschlag in der Nähe kann große Schäden anrichten; die Überspannung läuft über das Netz.' },
+        { text: 'Die Antenne hat den Blitz „angezogen“, deshalb war es ein direkter Einschlag.', why: 'Antennen erhöhen in der Regel nicht die Einschlagwahrscheinlichkeit.' },
+        { text: 'Der Blitz hat die Kondensatoren im Netzteil durch Hochfrequenz überlastet, weil die Antenne nicht abgestimmt war.', why: 'Mit der Antennenabstimmung hat das nichts zu tun; entscheidend ist die Überspannung.' },
+        { text: 'Das geht nicht: Ohne direkten Einschlag passiert nichts.', why: 'Das Gegenteil zeigt der Schadensfall: Auch nahe Einschläge richten Schaden an.' },
+      ],
+    },
+    {
       id: 'calc-draht', type: 'numeric', title: 'Wie dick ist der Draht?',
       question: String.raw`Ein Einzelmassivdraht aus Kupfer hat den Mindestquerschnitt $A = 16\,\text{mm}^2$ (Erdungsleitung nach VDE 0855-300). Welchen Durchmesser $d$ hat der kreisrunde Draht? (Es gilt $A=\pi d^2/4$.)`,
       answer: 4.5, tolerance: 0.1, unit: 'mm',
@@ -116,6 +136,27 @@ Die Ursache liegt nicht in Sonnenstürmen, nicht in zu dünner Isolierung durch 
 **Gerät öffnen.** Auch ein vom Netz getrenntes Gerät kann gefährlich sein: **Aufgeladene [Kondensatoren](wiki:Kondensator (Elektrotechnik)|Capacitor) im Netzteil** speichern auch nach dem Trennen noch Energie, bei **Schaltnetzteilen** teils mit sehr hoher Spannung. Das gilt auch noch einige Zeit nach dem Ziehen des Steckers. Die gefährliche Ladung steckt in den **Kondensatoren**, nicht „im Netztransformator“.`,
     },
     {
+      id: 'gefahren-vertiefung', type: 'text', title: 'Strahlengang, Freileitung und Netzteil genauer',
+      md: String.raw`
+**Warum im Strahl nichts zu suchen ist.** Hochfrequente Felder werden vom Körper aufgenommen; wie stark, hängt von Feldstärke und Frequenz ab. Nachgewiesen sind Kraftwirkungen und eine **Wärmewirkung**, und die ist ausschlaggebend für mögliche gesundheitliche Wirkungen.[^darc-50ohm] Besonders empfindlich sind Körperbereiche mit eingeschränkter Wärmeabfuhr, etwa **Augen, Gehirn** und Hoden. Deshalb sind Schutzmaßnahmen für **alle** Menschen nötig, und der Aufenthalt im direkten Strahlengang ist **zu vermeiden**. Beim Hamnet-Link im Bereich 5650–5850 MHz ($\lambda\approx5{,}2\,\text{cm}$) erreicht schon ein Spiegel von 0,80 m Durchmesser rund 33 dB Gewinn; die gleiche Gewinnleistung bräuchte im 70-cm-Band etwa 10 m Spiegeldurchmesser. Auf Mikrowellen ist die Gefahr gerade deshalb leicht zu unterschätzen: kleine Antenne, großer Gewinn. Der Gewinn des Spiegels wächst mit kleinerer Wellenlänge.
+
+**Freileitungen.** In Städten liegt die Hausversorgung meist im Boden, auf dem Land gibt es noch **Freileitungen** bis zum Hausgiebel oder zum **[Dachständer](wiki:Dachständer)** auf dem Dach; in Hausnähe können auch Hochspannungsleitungen verlaufen. Eine Antenne darf solche Leitungen **nie berühren**, sonst gelangen gefährlich hohe Spannungen in die Funkanlage; es besteht akute Lebensgefahr durch Stromschlag. Das gilt nicht nur beim Aufbau, sondern auch bei **Sturm**: Gelöste Drähte oder Teile dürfen weder in Kontakt mit Leitungen kommen noch auf Personen fallen.
+
+**Gerät öffnen.** Funkamateure dürfen Geräte öffnen und verändern, aber zuerst trennt man vom Netz. Das reicht nicht: Die **Kondensatoren im Netzteil** speichern Ladung weiter, wie lange, hängt von Bauteilqualität und Beschaltung ab. Bei **[Schaltnetzteilen](wiki:Schaltnetzteil|Switched-mode power supply)** liegt an einem Teil der Kondensatoren eine sehr hohe Spannung; bei Berührung besteht Lebensgefahr, auch einige Zeit nach dem Ziehen des Steckers. Arbeiten an der 230-V-Netzseite sind grundsätzlich der **Elektrofachkraft** vorbehalten.
+`,
+    },
+    {
+      id: 'match-gefahr', type: 'match', title: 'Situation → richtige Reaktion',
+      prompt: 'Ordne zu.',
+      pairs: [
+        ['Antenne mit Mikrowellenspiegel sendet', 'Nicht im direkten Strahlengang aufhalten'],
+        ['Mastteile könnten bei Sturm herabfallen', 'Dürfen keine Energieversorgungsleitung berühren'],
+        ['Gerät ist ausgesteckt, Netzteil offen', 'Kondensatoren können noch Ladung halten'],
+        ['Netzseite (230 V) eines Geräts', 'Nur Elektrofachkraft'],
+        ['Sendeantenne im Betrieb', 'Nicht berühren: Verbrennungen durch HF-Spannung'],
+      ],
+    },
+    {
       id: 'warn-gefahren', type: 'callout', tone: 'warning', title: 'Falsche Sicherheitsgefühle',
       md: String.raw`- „Das Gerät ist ja vom Netz getrennt, da kann nichts passieren.“ **Falsch**: Kondensatoren im Netzteil.
 - „Die Antenne ist geerdet, also kann man sie im Sendebetrieb anfassen.“ **Falsch**: HF-Spannungen und -Ströme am Antennenfuß sind gefährlich; Erdung schützt vor Blitz, nicht vor der eigenen Sendeleistung.
@@ -135,6 +176,13 @@ Die Ursache liegt nicht in Sonnenstürmen, nicht in zu dünner Isolierung durch 
 Das **Bauordnungsrecht ist Ländersache**: Für **Außenantennenanlagen** gelten die **baurechtlichen Bestimmungen des jeweiligen Bundeslandes** ([Landesbauordnung](wiki:Landesbauordnung)). Dort kann zum Beispiel stehen, ab welcher Windlast oder Höhe eines Mastes eine [Baugenehmigung](wiki:Baugenehmigung|Construction permit) nötig ist und welche Abstände zu Nachbargrundstücken einzuhalten sind. Auskunft gibt das örtliche Bauamt. Das Amateurfunkgesetz, Empfehlungen von Verbänden oder „keine besonderen Vorschriften“ sind die falschen Antworten.[^darc-50ohm]
 
 **Haftung:** Der **Betreiber** (bzw. Eigentümer) der Antennenanlage ist für sie selbst voll verantwortlich und **haftet für Schäden gegenüber Dritten**. Nicht die Amateurfunkvereinigung (auch nicht bei Mitgliedschaft), nicht die Bundesnetzagentur (in deren Gebühren steckt keine Gruppenversicherung) und nicht automatisch der Grundstückseigentümer, wenn er nicht zugleich Betreiber ist. Eine [Haftpflichtversicherung](wiki:Haftpflichtversicherung|Liability insurance) ist daher ratsam; manche Verbände bieten sie ihren Mitgliedern an, aber die Verantwortung bleibt bei dir.`,
+    },
+    {
+      id: 'calc-parabol', type: 'numeric', title: 'Spiegelgewinn aus der Formelsammlung',
+      question: String.raw`Ein Parabolspiegel mit $d=0{,}8\,\text{m}$ Durchmesser arbeitet bei $\lambda=5{,}2\,\text{cm}$ (Hamnet 5,7 GHz), Wirkungsgrad $\eta=1$. Berechne den Gewinn $g_\mathrm{i}=10\cdot\log_{10}\!\left[\left(\tfrac{\pi\,d}{\lambda}\right)^{2}\eta\right]$ in dB.`,
+      answer: 33.7, tolerance: 0.7, unit: 'dB',
+      hint: String.raw`Erst $\pi d/\lambda\approx48{,}3$, quadrieren, dann $10\cdot\log_{10}$.`,
+      explain: String.raw`$\left(\tfrac{\pi\cdot0{,}8}{0{,}052}\right)^2\approx2336$, $10\cdot\log_{10}2336\approx33{,}7\,\text{dB}$ („rund 33 dB“). Bei $P=1\,\text{W}$ wären das etwa 2300 W Strahlungsleistung: darum nie im Strahlengang aufhalten.`,
     },
     {
       id: 'quiz-beruehren', type: 'quiz', title: 'Gefahr an der Sendeantenne',
@@ -182,5 +230,9 @@ Das **Bauordnungsrecht ist Ländersache**: Für **Außenantennenanlagen** gelten
     { id: 'bl-freileitung', front: 'Wichtig bei Außenantennen zur Energieversorgung?', back: 'Umstürzende/herabfallende Teile und Leitungen dürfen **keine Energieversorgungsleitungen berühren**.' },
     { id: 'bl-bau', front: 'Welche Bauvorschriften gelten für Außenantennen?', back: 'Die **baurechtlichen Bestimmungen des jeweiligen Bundeslandes** (Auskunft: Bauamt).' },
     { id: 'bl-haftung', front: 'Wer haftet für Schäden Dritter durch die Antennenanlage?', back: 'Der **Eigentümer bzw. Betreiber** der Antennenanlage.' },
+    { id: 'bl-nahschlag', front: 'Schaden bei Blitz nur in der Nähe?', back: 'Möglich: Überspannung über Stromnetz oder Antennenleitung. Schutz: Gasentladungs-Zwischenstecker oder Zuleitung nach dem Funkbetrieb erden.' },
+    { id: 'bl-augen', front: 'Warum sind Augen im Strahlengang besonders gefährdet?', back: 'HF wirkt überwiegend thermisch; Körperbereiche mit eingeschränkter Wärmeabfuhr (Augen, Gehirn) sind empfindlich.' },
+    { id: 'bl-gewinn-lambda', front: 'Warum sind Mikrowellenspiegel besonders tückisch?', back: 'Kleine Wellenlänge: schon ein kleiner Spiegel hat hohen Gewinn (0,8 m bei 5,7 GHz ≈ 33 dB), aus wenigen Watt werden hunderte W Strahlungsleistung.' },
+    { id: 'bl-schaltnetzteil', front: 'Schaltnetzteil geöffnet, Stecker gezogen: Gefahr?', back: 'Ein Teil der Kondensatoren führt weiter sehr hohe Spannung: Lebensgefahr. 230-V-Seite nur Elektrofachkraft.' },
   ],
 };

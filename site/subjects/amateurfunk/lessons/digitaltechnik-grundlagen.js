@@ -5,12 +5,13 @@ export default {
   id: 'digitaltechnik-grundlagen',
   title: 'Binärsystem, Datenrate und digitale Signalverarbeitung',
   summary: 'Dual- und Zweierpotenzen, Datenübertragungsrate, ASK/FSK/AFSK, Vielfachzugriff, Abtastung und DSP-Prinzip.',
-  minutes: 25,
+  minutes: 32,
   goals: [
     'Dualzahlen in Dezimalzahlen umrechnen und mit $2^n$ die Zahl der Zustände von $n$ Bit bestimmen',
     'Bandbreite (Hz), Datenübertragungsrate (Bit/s) und Symbolrate (Baud) unterscheiden',
     'ASK, FSK, PSK und AFSK an Bild und Beschreibung erkennen und FDMA, TDMA, CDMA einordnen',
     'CAT-Schnittstelle, Audioverbindung und DATA-Port unterscheiden und das Prinzip von A/D-Umsetzer, DSP, D/A-Umsetzer und SDR erklären',
+    'Begründen, warum digitale Signale störfester sind, und den Aufbau eines Datenpakets (Adresse, Nummer, Nutzdaten, Prüfsumme) beschreiben',
   ],
   needs: ['elektrotechnik/zahlensysteme', 'elektrotechnik/ad-da-wandlung'],
   blocks: [
@@ -48,6 +49,21 @@ Als Prüfungsrechnung genügt dir ein sicheres Gefühl für die Zweierpotenzen b
       task: 'Stelle sechs Zufallszahlen richtig ein.',
     },
     {
+      id: 'robust-text', type: 'text', title: 'Warum digital robuster ist: Rauschen und Regeneration',
+      md: `
+Jede Übertragung fängt Störungen ein: [Rauschen](wiki:Rauschen (Physik)|Noise (electronics)) auf dem Funkweg, im Verstärker, im Kabel. Beim **analogen** Signal verändert jede kleine Abweichung direkt den Wert: Der Empfänger kann nicht wissen, was „Original“ und was „Rauschen“ war, und jede weitere Stufe (Verstärker, Relais, Überspielung) **addiert** ihr Rauschen und verstärkt das schon vorhandene mit.
+
+Beim **digitalen** Signal gibt es nur feste Stufen. Liegt der empfangene Wert in der Nähe von „0“, wird er als 0 erkannt, in der Nähe von „1“ als 1: Die **Entscheidungsschwelle** liegt in der Mitte. Kleine Störungen verschwinden dadurch völlig, und eine Zwischenstation kann das Signal **neu erzeugen** (regenerieren), statt das Rauschen weiterzugeben.[^darc-50ohm] Erst wenn die Störung so groß wird, dass sie einen Wert über die Schwelle schiebt, kippt ein Bit. Bei kleinem Signal-Rausch-Verhältnis geht es also nicht langsam schlechter, sondern es gibt eine **Klippe**: erst ganz fehlerfrei, dann plötzlich viele Fehler.
+
+Dazu kommt: Weil nur Bits übertragen werden, kann man **Prüfsummen und fehlerkorrigierende Codes** anhängen, mit denen der Empfänger Fehler erkennt oder sogar korrigiert (so funktionieren auch die schmalen Digimodes, die du noch kennenlernst). Der Preis: Analoge Größen wie Sprache müssen erst **abgetastet** und in Zahlen umgesetzt werden (A/D-Umsetzung, siehe unten), und viele digitale Verfahren brauchen **mehr Bandbreite** als ein analoges Signal desselben Inhalts.
+`,
+    },
+    {
+      id: 'demo-rauschen', type: 'viz', viz: 'analog-digital-rauschen', title: 'Rauschen über mehrere Stufen',
+      intro: 'Oben läuft ein analoges Signal durch mehrere Stufen, unten dasselbe als Bitfolge mit Entscheidung nach jeder Stufe. Erhöhe Stufen und Rauschen und beobachte, wann es kippt.',
+      task: 'Stelle mindestens 5 Stufen und 20 % Rauschen ein: Das analoge Signal ist sichtlich verrauscht, die Bits bleiben fehlerfrei. Dann finde die Grenze, an der auch digital Fehler auftreten.',
+    },
+    {
       id: 'rate-text', type: 'text', title: 'Bandbreite, Datenrate, Symbolrate',
       md: `
 Drei Größen, die im Alltag („mein DSL hat 100 MBit/s Bandbreite“) vermischt werden, in der Prüfung aber **streng getrennt** sind:
@@ -81,6 +97,14 @@ Beim Erkennen im Bild (EE406, EE407) achtest du auf das, was sich im Takt der Bi
       id: 'demo-tasten', type: 'viz', viz: 'ask-fsk-psk', title: 'ASK, FSK, PSK und AFSK',
       intro: 'Klicke die Bits um und wähle das Verfahren. Das Zeitbild ist herabskaliert (wenige Trägerschwingungen je Bit).',
       task: 'Sieh dir alle fünf Verfahren an und stelle das Bitmuster 01001110 ein (= 78).',
+    },
+    {
+      id: 'morse-digital-text', type: 'text', title: 'Morsecode: der einfachste Digitalcode',
+      md: `
+Bei CW gibt es nur **zwei Zustände**: Träger an, Träger aus (100 % und 0 % der Amplitude, im Fachwort *On-Off Keying*, OOK). Das Signal ist deshalb digital, obwohl es aus der Zeit vor allen Computern stammt. Der [Morsecode](wiki:Morsecode|Morse code) ordnet jedem Buchstaben eine Folge kurzer und langer Töne zu; was zwischen den Tönen an Pausen liegt, gehört zum Code (Pause im Zeichen, zwischen Zeichen und zwischen Wörtern haben unterschiedliche Länge, Details in der Lektion über digitale Betriebsarten).
+
+Interessant ist der Unterschied zu Computercodes: Morse hat **variable Länge** (E ist ein Punkt, Q vier Elemente), die meisten Computercodes haben **feste Länge**. Ein historischer Fernschreibcode wie der [Baudot-Code](wiki:Baudot-Code|Baudot code) nutzte 5 Bit je Zeichen, das reicht für $2^5 = 32$ Zeichen; moderne Textcodes brauchen mehr Bit je Zeichen, um Groß- und Kleinschreibung, Ziffern und Sonderzeichen unterzubringen. Jedes zusätzliche Bit verdoppelt die Zahl der darstellbaren Zeichen, genau wie beim Dualsystem oben.[^darc-50ohm]
+`,
     },
     {
       id: 'zugriff-text', type: 'text', title: 'Viele Teilnehmer, ein Band: FDMA, TDMA, CDMA',
@@ -118,6 +142,33 @@ Für [[digimode|Digimodes]] (z. B. [[ft8|FT8]], [[wspr|WSPR]]) braucht der Compu
       id: 'warn-rig', type: 'callout', tone: 'warning', title: 'Anschlüsse nicht vermischen',
       md: `
 Die falschen Antworten in NF114 bis NF116 sind **vertauschte Beschreibungen**: Was bei CAT steht, wird beim DATA-Port behauptet und umgekehrt. Merke: **CAT = Steuerung** (Befehle, Frequenz, PTT), **DATA/9600 = analoges NF-Signal ohne Filter**, **Audio/USB = NF zwischen Computer und Funkgerät**.
+`,
+    },
+    {
+      id: 'cat-detail-text', type: 'text', title: 'Computersteuerung genauer: CAT, Audio und PTT',
+      md: `
+Wer FT8 oder Packet nutzt, verbindet Computer und Funkgerät gleich zweimal: für das **Hörbare** (NF) und für die **Befehle** (Steuerung). Beide Verbindungen sind unabhängig voneinander.
+
+**Steuerung (CAT).** Die Befehle laufen über eine [serielle Schnittstelle](wiki:Serielle Schnittstelle|Serial port) oder per [USB](wiki:Universal Serial Bus|USB), das im Computer wie eine serielle Schnittstelle erscheint. Jeder Hersteller hat seinen **eigenen Befehlssatz** (bei Icom heißt der Bus zum Beispiel CI-V). Damit Programm und Gerät sich verstehen, müssen beide dieselben **Verbindungsparameter** (Anschluss, Geschwindigkeit in Baud, bei Bussen auch die Geräteadresse) eingestellt haben; Bibliotheken wie Hamlib kennen die Befehlssätze vieler Geräte. Über CAT liest das Programm **Frequenz, Betriebsart, Sendeleistung und PTT-Zustand** aus und stellt sie ein: Es muss dann nicht erst Frequenz und Betriebsart per Hand angeglichen werden.
+
+**Audio.** Das NF-Signal läuft über Audiokabel zu den Ein- und Ausgängen der [Soundkarte](wiki:Soundkarte|Sound card) oder, bei vielen modernen Geräten, über USB, wo sich das Funkgerät als Soundkarte meldet. Die Soundkarte ist hier der **A/D- und D/A-Umsetzer** aus dem Abschnitt unten: Sie tastet das Empfangssignal ab und erzeugt aus Zahlen wieder das Sendesignal. Digimode-Interfaces trennen Computer und Funkgerät galvanisch und verringern so Störungen und Rückwirkungen.
+
+**Senden.** Die Sendetaste (PTT) wird über CAT, über eine zusätzliche Steuerleitung oder per Sprachsteuerung (VOX) ausgelöst. Wichtig ist der Sicherheitsaspekt aus dem Abschnitt oben: Systemklänge, Benachrichtigungen und Programmfehler gehören nicht in den Audioweg zum Sender, und niemand soll an der Antenne arbeiten, solange der Computer das Funkgerät steuert.[^darc-50ohm]
+`,
+    },
+    {
+      id: 'paket-aufbau-text', type: 'text', title: 'Aufbau eines Pakets',
+      md: `
+Digitale Daten werden in **Pakete** geteilt. Jedes Paket hat denselben Aufbau, damit jede Station es lesen kann:
+
+| Teil | Aufgabe |
+|---|---|
+| Kopf: Adressen | Absender und Empfänger (im Packet Radio Rufzeichen, im IP-Netz IP-Adressen) |
+| Kopf: laufende Nummer | Reihenfolge herstellen, Doppel erkennen |
+| Nutzdaten | die eigentliche Information (ein Teil der Nachricht) |
+| Prüfsumme | der Empfänger erkennt, ob Bits unterwegs kippten |
+
+Ob ein Paket quittiert wird, wie oft man es wiederholt und wie Zwischenstationen weiterleiten, behandelt die Lektion über digitale Betriebsarten (Packet Radio, APRS, HAMNET).[^darc-50ohm]
 `,
     },
     {
@@ -164,6 +215,46 @@ Damit ein Signal der höchsten Frequenz $f_\\text{max}$ aus den Samples wieder f
       answer: 2400, tolerance: 0, unit: 'Bit/s',
       hint: 'Datenrate = Symbolrate mal Bit je Symbol.',
       explain: '$1200\\,\\text{Bd} \\cdot 2\\,\\text{Bit/Symbol} = 2400\\,\\text{Bit/s}$. Die Bandbreite in Hz ist eine ganz andere Größe und folgt aus dem Verfahren.',
+    },
+    {
+      id: 'calc-bit5', type: 'numeric', title: 'Zeichen mit 5 Bit',
+      question: 'Ein Fernschreibcode verwendet 5 Bit je Zeichen. Wie viele verschiedene Zeichen lassen sich damit höchstens darstellen?',
+      answer: 32, tolerance: 0,
+      hint: 'Jedes Bit verdoppelt die Zahl der Möglichkeiten.',
+      explain: '$2^5 = 32$. Für Buchstaben, Ziffern und Sonderzeichen reicht das nicht ohne Umschalten; daher brauchen moderne Codes mehr Bit je Zeichen.',
+    },
+    {
+      id: 'quiz-regeneration', type: 'quiz', title: 'Warum digital robuster ist',
+      question: 'Ein Signal läuft durch mehrere Zwischenstationen. Welche Aussagen sind richtig? (Mehrfachauswahl)',
+      options: [
+        { text: 'Digital kann jede Zwischenstation das Signal neu erzeugen und das Rauschen so loswerden.', correct: true, why: 'Die Entscheidung „0 oder 1“ beseitigt kleine Abweichungen.' },
+        { text: 'Beim analogen Signal addiert sich das Rauschen jeder Stufe.', correct: true, why: 'Der Empfänger kann Rauschen nicht vom Signal trennen.' },
+        { text: 'Auch digital ist ab einem bestimmten Rauschpegel mit Bitfehlern zu rechnen.', correct: true, why: 'Wenn eine Störung den Wert über die Schwelle schiebt, kippt das Bit.' },
+        { text: 'Digitale Verfahren brauchen immer weniger Bandbreite als analoge.', correct: false, why: 'Oft ist das Gegenteil der Fall.' },
+        { text: 'Digitale Signale sind immun gegen jede Störung.', correct: false, why: 'Es gibt eine Grenze, ab der Fehler auftreten.' },
+      ],
+    },
+    {
+      id: 'quiz-cat-audio', type: 'quiz', title: 'CAT, Audio, PTT: wer macht was?',
+      question: 'Du betreibst FT8 mit USB-Kabel zum Transceiver. Was ist richtig? (Mehrfachauswahl)',
+      options: [
+        { text: 'Das Programm kann über CAT die Frequenz einstellen und den PTT-Zustand auslesen.', correct: true, why: 'CAT ist die Steuerung.' },
+        { text: 'Das NF-Signal läuft über die Soundkarte, bei USB-Geräten oft als eingebaute USB-Soundkarte.', correct: true, why: 'Die Soundkarte übernimmt A/D- und D/A-Umsetzung.' },
+        { text: 'Beim Senden dürfen Benachrichtigungstöne anderer Programme über denselben Audioweg zum Sender laufen.', correct: false, why: 'Sie würden mit ausgesendet.' },
+        { text: 'Über die CAT-Schnittstelle fließt das Audiosignal zum Computer.', correct: false, why: 'CAT trägt Steuerbefehle, kein NF-Signal.' },
+        { text: 'Programm und Transceiver müssen dieselbe Baudrate und denselben Anschluss eingestellt haben.', correct: true, why: 'Sonst verstehen sie sich nicht.' },
+      ],
+    },
+    {
+      id: 'match-paket-teile', type: 'match', title: 'Teile eines Pakets',
+      prompt: 'Ordne jedem Teil seine Aufgabe zu.',
+      pairs: [
+        ['Adresse', 'sagt, von wem und an wen das Paket geht'],
+        ['laufende Nummer', 'stellt die Reihenfolge her und entlarvt Doppel'],
+        ['Nutzdaten', 'enthalten den eigentlichen Inhalt'],
+        ['Prüfsumme', 'zeigt dem Empfänger Übertragungsfehler'],
+        ['Quittung', 'meldet dem Absender den korrekten Empfang'],
+      ],
     },
     {
       id: 'match-tasten', type: 'match', title: 'Verfahren und Merkmal',
@@ -225,5 +316,10 @@ Damit ein Signal der höchsten Frequenz $f_\\text{max}$ aus den Samples wieder f
     { id: 'pc-sendet', front: 'Gefahr bei computergesteuertem Funkgerät?', back: 'Das Gerät könnte unerwartet auf Sendung schalten: unerwünschte Aussendungen, Gefahr für Personen an der Antennenanlage.' },
     { id: 'dsp-kette', front: 'Prinzip der digitalen Signalverarbeitung?', back: 'A/D-Umsetzer (digitalisieren) → digitale Signalverarbeitung → D/A-Umsetzer. Voraussetzung zum Filtern: zuerst digitalisieren.' },
     { id: 'sdr', front: 'Was bedeutet SDR?', back: 'Software Defined Radio: zumindest ein Teil der Signalaufbereitung ist in Software realisiert.' },
+    { id: 'digital-robust', front: 'Warum sind digitale Signale störfester als analoge?', back: 'Entscheidung 0/1 an einer Schwelle beseitigt kleine Störungen; Zwischenstationen können das Signal neu erzeugen. Analog addiert sich das Rauschen jeder Stufe. Bei zu viel Rauschen kippen auch digitale Bits.' },
+    { id: 'morse-ook', front: 'Morsecode: analog oder digital, und wie lang sind die Zeichen?', back: 'Digital (Träger an/aus, OOK). Variable Länge: häufige Buchstaben kurz (E = Punkt), im Gegensatz zu Codes fester Länge. n Bit ergeben 2ⁿ Zeichen.' },
+    { id: 'cat-parameter', front: 'Was muss bei CAT zwischen Programm und Transceiver übereinstimmen?', back: 'Anschluss, Übertragungsgeschwindigkeit (Baud), Befehlssatz des Geräts, bei Bussen auch die Geräteadresse. Über CAT: Frequenz, Betriebsart, Sendeleistung und PTT.' },
+    { id: 'soundkarte-adda', front: 'Welche Rolle spielt die Soundkarte beim Digimode?', back: 'Sie ist der A/D- und D/A-Umsetzer: tastet das NF-Empfangssignal ab und erzeugt aus Zahlen das NF-Sendesignal (oft als USB-Soundkarte im Transceiver).' },
+    { id: 'paket-teile', front: 'Aus welchen Teilen besteht ein Datenpaket?', back: 'Kopf mit Absender- und Empfängeradresse und laufender Nummer, Nutzdaten, Prüfsumme.' },
   ],
 };

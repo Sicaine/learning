@@ -56,12 +56,13 @@ export default {
   id: 'am-ssb-cw',
   title: 'Morsen, AM, SSB und Bandbreite',
   summary: 'Unmodulierter Träger, Tastung (CW), Amplitudenmodulation, Einseitenband (USB/LSB), belegte Bandbreite.',
-  minutes: 25,
+  minutes: 32,
   goals: [
     'Erklären, was [[modulation]] ist, und [[unmodulierter-traeger]], CW, AM und SSB im Zeit- und im Frequenzbild unterscheiden',
     'Aus Trägerfrequenz und NF-Frequenz die Sendefrequenz in USB und LSB berechnen und die Bandbreite von CW, SSB und AM vergleichen',
     'Die zulässige [[belegte-bandbreite]] eines Bandes aus der AFuV-Anlage 1 ablesen und den Mindestabstand zur Bandgrenze bestimmen',
     'Mikrofonverstärkung am SSB-Transceiver richtig einstellen: zu leise gibt wenig Leistung, zu laut gibt Splatter',
+    'Begründen, warum man einen Träger moduliert, und erklären, warum für Sprache rund 2,4 kHz Bandbreite genügen',
   ],
   needs: ['elektrotechnik/sinus-wechselspannung'],
   blocks: [
@@ -89,6 +90,27 @@ Im Katalog taucht die Frage „Durch Modulation …“ auf, und die falschen Ant
 `,
     },
     {
+      id: 'warum-modulieren-text', type: 'text', title: 'Warum moduliert man überhaupt?',
+      md: `
+Warum sendet man Sprache nicht einfach als Wechselstrom in die Antenne? Zwei praktische Gründe:
+
+1. **Die Antenne wäre riesig.** Eine Funkwelle hat die Wellenlänge $\\lambda = c/f$ (Lichtgeschwindigkeit durch Frequenz). Für einen Ton von 1 kHz wären das $300\\,000\\,\\text{km/s}/1\\,\\text{kHz} = 300\\,\\text{km}$. Eine wirksame Antenne hat die Größenordnung der Wellenlänge oder einen Bruchteil davon, bei 300 km also völlig unpraktisch. Auf Kurzwelle und darüber sind es Meter.
+2. **Alle würden einander stören.** Sprache hat bei jedem Sprecher denselben Frequenzbereich. Mit einem **Träger** verschiebt jeder seine Information auf eine **eigene Frequenz**: Der Empfänger stimmt auf einen Träger ab und hört nur ihn.[^darc-50ohm]
+
+Die Information (das **Modulationssignal**: Sprache, Tastung, Daten) wird also dem hochfrequenten [Träger](wiki:Träger (Nachrichtentechnik)|Carrier wave) „aufgeprägt“. Welche Eigenschaft des Trägers man dabei verändert, entscheidet über das Verfahren:
+
+| Verfahren | Was ändert sich? | Typisch im Amateurfunk |
+|---|---|---|
+| **CW** | Träger wird ein- und ausgeschaltet | Morsetelegrafie |
+| **AM** | Amplitude folgt dem Modulationssignal | Sprache (heute selten) |
+| **SSB** | Amplitudenmodulation, aber nur ein Seitenband, ohne Träger | Sprechfunk auf Kurzwelle |
+| **FM** | Frequenz folgt dem Modulationssignal | Sprechfunk auf UKW, Relais |
+| **Digimodes** | Frequenz- oder Phasenumtastung durch den Computer | FT8, PSK31, RTTY, Packet |
+
+Auf den nächsten Seiten sehen wir uns CW, AM und SSB im Einzelnen an; FM kommt in der nächsten Lektion.
+`,
+    },
+    {
       id: 'fig-waves', type: 'figure', title: 'Träger, AM und FM im Zeitbereich',
       html: waves(),
       caption: 'Erkennen im Oszilloskop-Bild: Bei AM schwankt die Höhe der Schwingung (gestrichelt: Hüllkurve), bei FM bleibt die Höhe gleich, aber der Abstand der Nulldurchgänge wechselt.',
@@ -104,6 +126,29 @@ Warum bleibt CW trotz Sprache, Bildern und Computer beliebt? Weil nur **eine ein
 
 Eine Morseprüfung brauchst du übrigens nicht: Die internationalen Radio Regulations überlassen es jedem Land, ob es eine verlangt. In Deutschland ist sie freiwillig (AFuV § 4 Abs. 7: freiwillige Zusatzprüfung).[^afuv] Mehr zum Morsen in der Lektion über digitale Betriebsarten.
 `,
+    },
+    {
+      id: 'sprache-text', type: 'text', title: 'Sprachsignale: was wir eigentlich übertragen',
+      md: `
+Bevor wir Sprache modulieren, schauen wir uns an, was sie ist. Beim Sprechen entstehen **Schallwellen** mit vielen tiefen und hohen, leisen und lauten Tönen. Das Mikrofon wandelt sie in eine **elektrische Schwingung** um: Aus tiefen und hohen Tönen werden langsame und schnelle Schwingungen, aus leisen und lauten Tönen kleine und große Amplituden. Dieses **Sprachsignal** (NF) ist das Modulationssignal.[^darc-50ohm]
+
+Im **Amplitudenspektrum** trägt man die Frequenz waagerecht und die Amplitude senkrecht auf. Sprache enthält keine beliebig hohen Frequenzen. Bei einem typischen Sprachsignal liegt der für die Übertragung genutzte Bereich bei etwa **300 bis 2700 Hz**, die Bandbreite beträgt also $2700\\,\\text{Hz} - 300\\,\\text{Hz} = 2400\\,\\text{Hz}$; für Sprechfunk reichen 300 Hz bis 3 kHz völlig.
+
+## Warum reichen 2,4 kHz?
+
+- Ein Vokal wie a, i oder u hat **Frequenzbereiche mit besonders viel Energie**, die [Formanten](wiki:Formant|Formant). Sie entstehen im Mund- und Rachenraum, und aus der Lage der ersten beiden erkennt das Gehirn den Vokal. Beide liegen unter 3 kHz (als grobe Näherung bei einer Männerstimme: a bei etwa 730 und 1100 Hz, i bei 300 und 2300 Hz, u bei 300 und 900 Hz).
+- **Konsonanten** wie s, f und t enthalten Anteile weiter oben. Sie tragen viel zur [Sprachverständlichkeit](wiki:Sprachverständlichkeit|Intelligibility (communication)) bei; fehlen sie, klingt die Stimme dumpf und wird schwerer zu verstehen. Ein paar kHz Bandbreite reichen aber, wie man vom Telefon kennt.
+- **Mehr Bandbreite** klingt natürlicher, kostet aber Platz im Band und lässt mehr Rauschen in den Empfänger. Bei SSB entspricht die HF-Bandbreite der NF-Bandbreite, und mit rund 2,4 kHz ist der Sprechfunk verständlich, ohne dass sich die Stationen unnötig stören.
+
+## Mikrofonabstand und Pegel
+
+Das Mikrofon nimmt nicht nur dich auf, sondern auch Raumhall und Nebengeräusche. Ein Mikrofon nah am Mund (eine Handbreit als Faustregel) liefert mehr Nutzsignal im Verhältnis zum Störschall. Sehr kurze Abstände betonen die tiefen Frequenzen und lassen Zisch- und Poppgeräusche anschwellen; zu große Abstände machen das Signal leise und hallig. Der **Pegel** (Mikrofonverstärkung) muss so eingestellt sein, wie im Abschnitt über Mikrofonverstärkung beschrieben: nicht zu leise, nicht übersteuert.
+`,
+    },
+    {
+      id: 'demo-sprachband', type: 'viz', viz: 'sprach-bandbreite', title: 'Sprachband-Labor',
+      intro: 'Das Spektrum zeigt, wo ein Laut seine Energie hat. Verschiebe die Grenzen des Durchlassbereichs und höre, wie sich der Klang ändert. Die Formantlagen sind grobe Näherungen und dienen nur der Anschauung.',
+      task: 'Finde einen Durchlassbereich von höchstens 2,4 kHz, bei dem für a, i und u beide Formanten erhalten bleiben; schneide dann beim „i“ den zweiten Formanten ab, und spiele einmal ab.',
     },
     {
       id: 'am', type: 'text', title: 'AM: Die Amplitude folgt der Sprache',
@@ -271,6 +316,31 @@ Störungen auf einem *anderen Band*, in der Stromversorgung oder bei anderen ele
       ],
     },
     {
+      id: 'calc-sprachband', type: 'numeric', title: 'Bandbreite eines Sprachsignals',
+      question: 'Das Spektrum eines Sprachsignals reicht von 250 Hz bis 2850 Hz. Wie groß ist die Bandbreite in Hz?',
+      answer: 2600, tolerance: 0, unit: 'Hz',
+      hint: 'Obere minus untere Grenzfrequenz.',
+      explain: '$2850\\,\\text{Hz} - 250\\,\\text{Hz} = 2600\\,\\text{Hz}$. Bei SSB belegt das Signal auf der Funkfrequenz dieselbe Breite.',
+    },
+    {
+      id: 'calc-wellenlaenge-ton', type: 'numeric', title: 'Ein Ton als Funkwelle',
+      question: 'Wie lang wäre die Funkwelle bei einem Ton von 3 kHz (c = 300 000 km/s)? Antwort in Kilometern.',
+      answer: 100, tolerance: 1, unit: 'km',
+      hint: 'λ = c / f.',
+      explain: '$300\\,000\\,\\text{km/s}/3\\,000\\,\\text{Hz} = 100\\,\\text{km}$. Mit einem Träger auf Kurzwelle (z. B. 7 MHz ≈ 43 m) bleiben die Antennen handlich.',
+    },
+    {
+      id: 'quiz-sprache', type: 'quiz', title: 'Sprache und Bandbreite',
+      question: 'Welche Aussagen zu Sprachsignalen im Funk sind richtig? (Mehrfachauswahl)',
+      options: [
+        { text: 'Für verständlichen Sprechfunk genügen etwa 300 Hz bis 3 kHz.', correct: true, why: 'Die Formanten der Vokale und wichtige Konsonantenanteile liegen darin.' },
+        { text: 'Eine größere NF-Bandbreite macht das SSB-Signal auf der Funkfrequenz breiter.', correct: true, why: 'Bei SSB ist die HF-Bandbreite gleich der NF-Bandbreite.' },
+        { text: 'Fehlen die hohen Anteile (Zischlaute), klingt die Stimme dumpf und wird schwerer verständlich.', correct: true, why: 'Konsonanten tragen viel zur Verständlichkeit bei.' },
+        { text: 'Sprache enthält alle Frequenzen bis weit über 20 kHz in gleicher Stärke.', correct: false, why: 'Das Spektrum fällt zu hohen Frequenzen ab.' },
+        { text: 'Das Mikrofon wandelt die Sprachfrequenz direkt in die Sendefrequenz um.', correct: false, why: 'Es wandelt Schall in eine NF-Schwingung; erst der Sender setzt sie auf den Träger.' },
+      ],
+    },
+    {
       id: 'calc-usb', type: 'numeric', title: 'USB: welche Frequenz wird gesendet?',
       question: 'Ein SSB-Sender ist auf eine Trägerfrequenz von 7,100 MHz eingestellt (USB, ideal moduliert). Er wird mit einem Ton von 1,5 kHz moduliert. Auf welcher Frequenz strahlt er ab? Antwort in kHz.',
       answer: 7101.5, tolerance: 0, unit: 'kHz',
@@ -333,5 +403,9 @@ Störungen auf einem *anderen Band*, in der Stromversorgung oder bei anderen ele
     { id: 'belegte-bw-def', front: 'Definition belegte Bandbreite (AFuV § 2 Nr. 10)?', back: 'Die Bandbreite, bei der unterhalb der unteren und oberhalb der oberen Grenze jeweils 0,5 % der gesamten mittleren Leistung liegen.' },
     { id: 'bandgrenze-abstand', front: 'Mindestabstand zur Bandgrenze bei AM/FM, und bei SSB?', back: 'AM/FM: mindestens die halbe belegte Bandbreite (FM 15 kHz → 7,5 kHz). SSB: Das Signal liegt einseitig: LSB darf an der oberen, USB an der unteren Bandgrenze eingestellt werden.' },
     { id: 'mikro-ssb', front: 'Mikrofonverstärkung bei SSB: zu gering, zu hoch?', back: 'Zu gering: geringe Ausgangsleistung. Zu hoch: Übersteuerung, breiteres Signal, Splatter auf dicht benachbarten Frequenzen. Leistung verringern: NF-Amplitude verringern.' },
+    { id: 'warum-traeger', front: 'Warum moduliert man einen Träger, statt das NF-Signal direkt zu senden?', back: 'Eine Antenne für NF-Wellen (z. B. 1 kHz ≈ 300 km) wäre unpraktisch, und alle Sprecher lägen auf denselben Frequenzen. Der Träger legt die Information auf eine eigene, hohe Frequenz.' },
+    { id: 'sprachband', front: 'Welchen Frequenzbereich braucht Sprechfunk?', back: 'Etwa 300 Hz bis 3 kHz (Beispiel: 300–2700 Hz, Bandbreite 2,4 kHz). Das reicht für Verständlichkeit; mehr Bandbreite kostet Platz im Band.' },
+    { id: 'formanten', front: 'Was sind Formanten?', back: 'Frequenzbereiche eines Vokals mit besonders viel Energie; aus der Lage der ersten beiden erkennt das Gehirn den Vokal. Sie liegen unter 3 kHz.' },
+    { id: 'mikro-abstand', front: 'Mikrofonabstand und Pegel beim Sprechen?', back: 'Mikrofon nah am Mund (Faustregel Handbreit): mehr Nutzsignal gegenüber Raumgeräuschen. Zu nah: Tiefen und Zischlaute zu stark; zu weit: leise und hallig. Pegel so, dass nicht übersteuert wird.' },
   ],
 };
