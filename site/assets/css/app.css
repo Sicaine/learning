@@ -759,6 +759,6 @@ a.wlink:hover { text-decoration: none; border-bottom-color: var(--accent); color
 .learn-more .src-list li { grid-template-columns: 1fr; }
 
 .lesson-tile { position: relative; }
-.lt-video { position: absolute; top: 12px; right: 12px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); }
+.lt-video { position: absolute; top: 12px; right: 12px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: #e0261c; background: #fdecea; border: 1px solid #f6c5c0; }
 .lt-video.own { color: #fff; background: var(--accent); border-color: var(--accent); }
 .lesson-tile.started .lt-video { right: 34px; }
