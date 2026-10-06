@@ -181,6 +181,10 @@ Bei den Bildfragen (NE205 bis NE208) musst du zuerst den **Träger** finden (Sen
 `,
     },
     {
+      id: 'erklaervideo-ssb', type: 'video', src: 'assets/video/ssb-seitenband.mp4', poster: 'assets/video/ssb-seitenband.jpg', label: 'Erklärvideo: Vom Sprachsignal zum SSB-Signal', channel: 'Learning (animiert)', minutes: 3,
+      why: 'Das Sprachspektrum wird auf den Träger geschoben: bei AM entstehen zwei Seitenbänder, bei SSB bleibt eines übrig. Dazu die Rechnung für USB und LSB und der Bandbreitenvergleich CW, SSB und AM. Untertitel sind eingebrannt.',
+    },
+    {
       id: 'ssb', type: 'text', title: 'SSB: Nur ein Seitenband, kein Träger',
       md: `
 Beide Seitenbänder enthalten dieselbe Information, und der Träger enthält keine. Dann kann man alles Überflüssige weglassen: Bei der **Einseitenbandmodulation** (SSB, *single sideband*) werden der Träger **unterdrückt** und nur **ein** Seitenband gesendet. Es geht also keine Sendeleistung für den Träger und das zweite Seitenband verloren, und das Signal braucht deutlich weniger Platz.[^darc-50ohm]

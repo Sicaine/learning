@@ -22,6 +22,10 @@ Wie stark gebrochen wird, hängt von der **Elektronendichte** ab: Je höher die 
 `,
     },
     {
+      id: 'erklaervideo-ionosphaere', type: 'video', src: 'assets/video/ionosphaere-sprung.mp4', poster: 'assets/video/ionosphaere-sprung.jpg', label: 'Erklärvideo: Ionosphäre, Sprungdistanz und MUF', channel: 'Learning (animiert)', minutes: 2.7,
+      why: 'Die Schichten D, E und F, warum steile Strahlen durchgehen und flache zurückkehren, wie Sprungdistanz und tote Zone von der Frequenz abhängen und wie sich die MUF zwischen Tag und Nacht ändert. Die Zahlen sind Beispielwerte in vereinfachter Geometrie. Untertitel sind eingebrannt.',
+    },
+    {
       id: 'regionen', type: 'text', title: 'D-, E- und F-Region',
       md: `
 Weil die Ionisation tagsüber ständig entsteht und die Elektronen sich sofort wieder mit Ionen verbinden wollen (**Rekombination**), stellt sich in bestimmten Höhen ein Gleichgewicht ein. Die so entstehenden Gebiete heißen **Regionen** (auch „Schichten“). Für Kurzwelle zählen drei:

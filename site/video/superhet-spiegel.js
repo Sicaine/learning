@@ -98,14 +98,14 @@ export default defineVideo({
         const sD = S(0.455, 110, C.good, 'Differenz 0,455'), sS = S(28.855, 110, C.warn, 'Summe 28,855');
         const zf = mk(ctx.svg, 'rect', { x: X(0.455) - 38, y: Y - 160, width: 76, height: 170, rx: 10, fill: 'rgba(14,165,233,0.14)', stroke: C.accent2, 'stroke-width': 3 });
         const zfl = text(ctx.svg, X(0.455) + 60, Y - 175, 'ZF-Filter', { 'font-weight': 700, 'font-size': 20, fill: C.accent2 });
-        const mixer = ctx.h('<div class="eq" style="font-size:36px"></div>', 'left:250px;top:170px;'); mixer.innerHTML = ctx.tex('\\cos(\\omega_e t)\\cdot\\cos(\\omega_o t)=\\tfrac12\\left[\\cos((\\omega_o-\\omega_e)t)+\\cos((\\omega_o+\\omega_e)t)\\right]', true);
+        const mixer = ctx.h('<div class="eq"></div>', 'left:140px;top:170px;font-size:27px'); mixer.innerHTML = ctx.tex('\\cos(\\omega_e t)\\cdot\\cos(\\omega_o t)=\\tfrac12\\left[\\cos((\\omega_o-\\omega_e)t)+\\cos((\\omega_o+\\omega_e)t)\\right]', true);
         const arrow = mk(ctx.svg, 'path', { fill: 'none', stroke: C.muted, 'stroke-width': 3, 'stroke-dasharray': '8 7' });
         return { X, Y, sFe, sFo, sD, sS, zf, zfl, mixer, arrow };
       },
       update(ctx, { t, at, state: s }) {
         opacity(s.mixer, seg(t, at(0) + 0.8, at(0) + 1.6));
         opacity(s.sFe, seg(t, at(1) - 0.2, at(1) + 0.5)); opacity(s.sFo, seg(t, at(1) + 0.5, at(1) + 1.2));
-        s.mixer.style.top = '140px'; s.mixer.style.left = '250px';
+        s.mixer.style.top = '130px'; s.mixer.style.left = '140px';
         const o = seg(t, at(2) + 1.0, at(2) + 1.8); opacity(s.sD, o); opacity(s.sS, o);
         const z = seg(t, at(3), at(3) + 0.7); opacity(s.zf, z); opacity(s.zfl, z);
         const dim = seg(t, at(3) + 1.0, at(3) + 1.8); s.sS.style.opacity = o * (1 - 0.65 * dim);
@@ -139,7 +139,7 @@ export default defineVideo({
         let best = null;
         s.stations.forEach(st => { const hit = Math.abs(fo - st.f - ZF) < 0.012; st.set(st.h, shown, hit ? C.accent : '#7a859e'); if (hit) best = st; });
         const b = seg(t, at(1) + 0.2, at(1) + 0.9);
-        if (best) { const a = xf(best.f), bb = xf(fo), y = YB - 215; s.brl.setAttribute('d', `M${a} ${y - 10} V${y} H${bb} V${y - 10}`); setA(s.brt, { x: (a + bb) / 2, y: y - 18 }); opacity(s.br, b); opacity(s.out, b); s.out.textContent = `${fmt(best.f)} MHz → ZF ✓`; }
+        if (best) { const a = xf(best.f), bb = xf(fo), y = YB - 215; s.brl.setAttribute('d', `M${a} ${y - 10} V${y} H${bb} V${y - 10}`); setA(s.brt, { x: (a + bb) / 2, y: y - 18 }); opacity(s.br, b); opacity(s.out, b); s.out.firstChild.textContent = `${fmt(best.f)} MHz → ZF ✓`; }
         else { opacity(s.br, 0); opacity(s.out, 0); }
         s.out.style.left = '100px'; s.out.style.top = '150px';
       },
