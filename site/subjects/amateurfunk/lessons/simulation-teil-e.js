@@ -14,7 +14,7 @@ export default {
     {
       id: 'ablauf', type: 'text', title: 'So läuft Teil E',
       md: String.raw`
-Teil E („Technische Kenntnisse Klasse E“) ist der größte Teil des Katalogs: **463** Fragen, 25 davon in der Prüfung. Form wie bei den anderen Teilen: **45 Minuten**, **19 Punkte** zum Bestehen, ab **17** Punkten bei genau einem verfehlten Teil mündliche Nachprüfung möglich. Wie in Teil N liegen **Formelsammlung** und **Entwurfspapier** aus, dazu der **Taschenrechner** (wissenschaftlich, nicht programmierbar, ohne Textspeicher). Wer bereits die Klasse N besitzt, macht nur diesen Teil.[^bnetza-pruefungsordnung][^bnetza-fragenkatalog]
+Teil E („Technische Kenntnisse Klasse E“) ist der größte Teil des Katalogs (viel [Spule](wiki:Spule (Elektrotechnik)|Electromagnetic coil), [Kondensator](wiki:Kondensator (Elektrotechnik)|Capacitor), [Schwingkreis](wiki:Schwingkreis|LC circuit) und [Transformator](wiki:Transformator|Transformer)): **463** Fragen, 25 davon in der Prüfung. Form wie bei den anderen Teilen: **45 Minuten**, **19 Punkte** zum Bestehen, ab **17** Punkten bei genau einem verfehlten Teil mündliche Nachprüfung möglich. Wie in Teil N liegen **Formelsammlung** und **Entwurfspapier** aus, dazu der **Taschenrechner** (wissenschaftlich, nicht programmierbar, ohne Textspeicher). Wer bereits die Klasse N besitzt, macht nur diesen Teil.[^bnetza-pruefungsordnung][^bnetza-fragenkatalog]
 
 **Jetzt starten:** [Prüfungssimulation](#/s/amateurfunk/exam), bei Teil E **„nur diesen Teil unter Prüfungsbedingungen“**. Dazu der [Übungsmodus für den ganzen Teil E](#/s/amateurfunk/practice/part:e) und die [Fehler der letzten Prüfung](#/s/amateurfunk/practice/last).
 
@@ -40,11 +40,11 @@ Die Themen mit den meisten Fragen sind **Bauteile** und **Antennen/Leitungen**, 
       md: String.raw`
 Teil E verlangt weniger Auswendiglernen als Teil N, dafür mehr **Verstehen**:
 
-1. **Die Formelsammlung ist dein Werkzeug.** Du musst Formeln nicht im Kopf haben, sondern ihre **Fundstelle** (Abschnitt: Induktivität/Spule, Kapazität/Kondensator, Filter, Schwingkreis, ZF und Spiegelfrequenzen, Pegel, Strahlungsleistung, Wellenlänge, Reflexion, Rauschen, Modulation) und ihre **Notation** ($X_\mathrm{L}$, $f_\mathrm{ZF}$, $s$, $|r|$, $g_\mathrm{d}$ …).[^bnetza-formelsammlung] Wer in unter 20 Sekunden den richtigen Abschnitt aufschlägt, spart pro Rechenaufgabe eine halbe Minute.
+1. **Die Formelsammlung ist dein Werkzeug.** Du musst Formeln nicht im Kopf haben, sondern ihre **Fundstelle** (Abschnitt: Induktivität/Spule, Kapazität/Kondensator, Filter ([Tiefpass](wiki:Tiefpass|Low-pass filter)), Schwingkreis, ZF und Spiegelfrequenzen, Pegel, Strahlungsleistung, Wellenlänge, Reflexion ([Stehwellenverhältnis](wiki:Stehwellenverhältnis|Standing wave ratio)), Rauschen, Modulation ([Amplitudenmodulation](wiki:Amplitudenmodulation|Amplitude modulation) und [Frequenzmodulation](wiki:Frequenzmodulation|Frequency modulation))) und ihre **Notation** ($X_\mathrm{L}$, $f_\mathrm{ZF}$, $s$, $|r|$, $g_\mathrm{d}$ …).[^bnetza-formelsammlung] Wer in unter 20 Sekunden den richtigen Abschnitt aufschlägt, spart pro Rechenaufgabe eine halbe Minute.
 2. **Viele Fragen haben ein Schaltbild.** Erst das Bild lesen: Bauteile benennen, Signalweg verfolgen (Eingang → Ausgang), Gleich- und Wechselanteile trennen. Dann erst die Antworten ansehen.
 3. **Zwei Durchgänge:** Erst alle Fragen, die du *sicher* weißt, dann die Rechen- und Schaltbildaufgaben. Rechne **mit Entwurfspapier**, nie im Kopf allein.
 4. **Plausibilität statt Perfektion:** Die Antworten liegen oft um Zehnerpotenzen auseinander. Ein Überschlag (Größenordnung, Einheit, „größer oder kleiner als …“) genügt häufig zum Ausschließen.
-5. **Richtung beachten:** Bei $f_\mathrm{ZF}=|f_\mathrm{E}-f_\mathrm{OSZ}|$ und der Spiegelfrequenz kommt es darauf an, ob der Oszillator über oder unter der Eingangsfrequenz liegt. Bei dB-Rechnungen: Leistung ($10\cdot\log$) oder Spannung ($20\cdot\log$).`,
+5. **Richtung beachten:** Bei $f_\mathrm{ZF}=|f_\mathrm{E}-f_\mathrm{OSZ}|$ und der Spiegelfrequenz ([Überlagerungsempfänger](wiki:Überlagerungsempfänger|Superheterodyne receiver)) kommt es darauf an, ob der Oszillator über oder unter der Eingangsfrequenz liegt. Bei dB-Rechnungen: Leistung ($10\cdot\log$) oder Spannung ($20\cdot\log$).`,
     },
     {
       id: 'demo-zeit', type: 'viz', viz: 'zeit-planer', title: 'Demo: Dein Zeitplan für Teil E',

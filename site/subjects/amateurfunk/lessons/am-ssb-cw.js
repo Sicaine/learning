@@ -8,48 +8,48 @@ const wavePath = (x0, x1, yc, amp, fn, n = 360) => {
   return d;
 };
 const waves = () => {
-  const w = 560, row = 74;
+  const w = 420, row = 92;
   const strips = [
     ['Unmodulierter Träger', t => Math.sin(2 * Math.PI * 22 * t), 'konstante Amplitude, konstante Frequenz'],
     ['AM: Amplitude folgt dem NF-Signal', t => (1 + 0.7 * Math.sin(2 * Math.PI * 3 * t)) / 1.7 * Math.sin(2 * Math.PI * 22 * t), 'Hüllkurve schwankt, Nulldurchgänge gleichmäßig'],
-    ['FM: Frequenz folgt dem NF-Signal', t => Math.sin(2 * Math.PI * 22 * t + 2.2 * Math.sin(2 * Math.PI * 3 * t) * 3.0), 'Amplitude konstant, Abstand der Nulldurchgänge wechselt'],
+    ['FM: Frequenz folgt dem NF-Signal', t => Math.sin(2 * Math.PI * 22 * t - 4.5 * Math.cos(2 * Math.PI * 3 * t)), 'Amplitude konstant, Abstand der Nulldurchgänge wechselt'],
   ];
   let g = '';
   strips.forEach(([title, fn, note], i) => {
-    const y = 12 + i * row;
-    g += `<text class="t" x="10" y="${y + 10}">${title}</text><text class="s" x="${w - 10}" y="${y + 10}" text-anchor="end">${note}</text>`;
-    g += `<line x1="10" x2="${w - 10}" y1="${y + 42}" y2="${y + 42}" stroke="var(--line-2)"/>`;
-    g += `<path d="${wavePath(10, w - 10, y + 42, 24, fn)}" fill="none" stroke="var(--accent)" stroke-width="1.5"/>`;
-    if (i === 1) g += `<path d="${wavePath(10, w - 10, y + 42, 24, t => (1 + 0.7 * Math.sin(2 * Math.PI * 3 * t)) / 1.7)}" fill="none" stroke="var(--accent-2)" stroke-dasharray="5 4"/>`;
+    const y = 6 + i * row;
+    g += `<text class="t" x="8" y="${y + 12}">${title}</text><text class="s" x="8" y="${y + 26}">${note}</text>`;
+    g += `<line x1="8" x2="${w - 8}" y1="${y + 56}" y2="${y + 56}" stroke="var(--line-2)"/>`;
+    g += `<path d="${wavePath(8, w - 8, y + 56, 24, fn, 420)}" fill="none" stroke="var(--accent)" stroke-width="1.5"/>`;
+    if (i === 1) g += `<path d="${wavePath(8, w - 8, y + 56, 24, t => (1 + 0.7 * Math.sin(2 * Math.PI * 3 * t)) / 1.7)}" fill="none" stroke="var(--accent-2)" stroke-dasharray="5 4"/>`;
   });
-  return `<svg viewBox="0 0 ${w} ${12 + 3 * row}" role="img" aria-label="Drei Zeitverläufe: unmodulierter Träger, amplitudenmodulierter Träger mit Hüllkurve, frequenzmodulierter Träger"><style>.t{font:600 12.5px system-ui,sans-serif;fill:var(--ink)}.s{font:11px system-ui,sans-serif;fill:var(--muted)}</style>${g}</svg>`;
+  return `<svg viewBox="0 0 ${w} ${6 + 3 * row}" role="img" aria-label="Drei Zeitverläufe: unmodulierter Träger, amplitudenmodulierter Träger mit Hüllkurve, frequenzmodulierter Träger"><style>.t{font:600 12.5px system-ui,sans-serif;fill:var(--ink)}.s{font:11px system-ui,sans-serif;fill:var(--muted)}</style>${g}</svg>`;
 };
-// Spektren: NF-Signal, AM, USB, LSB. 1 kHz = 38 px, Träger bei x = 330. Das NF-Signal fällt von 0,3 kHz (hoch) nach 2,7 kHz (niedrig) ab,
+// Spektren: NF-Signal, AM, USB, LSB. 1 kHz = 30 px, Träger bei x = 220. Das NF-Signal fällt von 0,3 kHz (hoch) nach 2,7 kHz (niedrig) ab,
 // damit die Spiegelung im unteren Seitenband sichtbar wird.
 const spectra = () => {
-  const w = 560, x0 = 330, k = 38, row = 86;
-  const amp = f => 46 - 17 * (f - 0.3) / 2.4;   // Höhe in px bei NF-Frequenz f (kHz)
-  const shape = (base, dir, off = 0) => {
+  const w = 440, x0 = 220, k = 30, row = 108;
+  const amp = f => 44 - 24 * (f - 0.3) / 2.4;   // Höhe in px bei NF-Frequenz f (kHz)
+  const shape = (base, dir) => {
     const f1 = 0.3, f2 = 2.7;
-    const pts = [[x0 + off + dir * f1 * k, base], [x0 + off + dir * f1 * k, base - amp(f1)], [x0 + off + dir * f2 * k, base - amp(f2)], [x0 + off + dir * f2 * k, base]];
+    const pts = [[x0 + dir * f1 * k, base], [x0 + dir * f1 * k, base - amp(f1)], [x0 + dir * f2 * k, base - amp(f2)], [x0 + dir * f2 * k, base]];
     return `<polygon points="${pts.map(p => p.join(',')).join(' ')}" fill="var(--accent)" fill-opacity=".28" stroke="var(--accent)" stroke-width="1.4"/>`;
   };
+  const carrierLine = (b, h, col, dash) => `<line x1="${x0}" x2="${x0}" y1="${b}" y2="${b - h}" stroke="${col}" stroke-width="${dash ? 1.6 : 4}"${dash ? ' stroke-dasharray="3 3"' : ''}/>`;
   const rows = [
-    ['NF-Signal (Sprache)', 'nur das Band 0,3 … 2,7 kHz', () => shape(0, 1, 0), false, 0],
-    ['AM', 'Träger + unteres + oberes Seitenband', b => shape(b, -1) + shape(b, 1) + `<line x1="${x0}" x2="${x0}" y1="${b}" y2="${b - 58}" stroke="var(--accent-2)" stroke-width="3.5"/>`, true, 1],
-    ['SSB, oberes Seitenband (USB)', 'Träger und unteres Seitenband unterdrückt', b => shape(b, 1) + `<line x1="${x0}" x2="${x0}" y1="${b}" y2="${b - 30}" stroke="var(--muted)" stroke-dasharray="3 3"/>`, true, 2],
-    ['SSB, unteres Seitenband (LSB)', 'Träger und oberes Seitenband unterdrückt, Frequenzlage gespiegelt', b => shape(b, -1) + `<line x1="${x0}" x2="${x0}" y1="${b}" y2="${b - 30}" stroke="var(--muted)" stroke-dasharray="3 3"/>`, true, 3],
+    ['NF-Signal (Sprache)', 'nur das Band 0,3 … 2,7 kHz', b => shape(b, 1), 0],
+    ['AM', 'Träger plus unteres und oberes Seitenband', b => shape(b, -1) + shape(b, 1) + carrierLine(b, 48, 'var(--accent-2)'), 1],
+    ['SSB, oberes Seitenband (USB)', 'Träger und unteres Seitenband unterdrückt', b => shape(b, 1) + carrierLine(b, 34, 'var(--muted)', true), 2],
+    ['SSB, unteres Seitenband (LSB)', 'Träger und oberes unterdrückt, Lage gespiegelt', b => shape(b, -1) + carrierLine(b, 34, 'var(--muted)', true), 3],
   ];
   let g = '';
-  rows.forEach(([title, sub, draw, carrier, i]) => {
-    const base = 62 + i * row;
-    g += `<text class="t" x="10" y="${base - 38}">${title}</text><text class="s" x="10" y="${base - 22}">${sub}</text>`;
-    g += `<line x1="150" x2="${w - 8}" y1="${base}" y2="${base}" stroke="var(--ink-2)"/>`;
+  rows.forEach(([title, sub, draw, i]) => {
+    const base = 80 + i * row;
+    g += `<text class="t" x="8" y="${base - 66}">${title}</text><text class="s" x="8" y="${base - 51}">${sub}</text>`;
+    g += `<line x1="8" x2="${w - 8}" y1="${base}" y2="${base}" stroke="var(--ink-2)"/>`;
     g += draw(base);
-    if (carrier) g += `<text class="s" x="${x0}" y="${base + 13}" text-anchor="middle">f<tspan baseline-shift="sub" font-size="8">T</tspan></text>`;
-    else g += `<text class="s" x="${x0}" y="${base + 13}" text-anchor="middle">0 Hz</text>`;
+    g += `<text class="s" x="${x0}" y="${base + 14}" text-anchor="middle">${i === 0 ? '0 Hz' : 'Träger f<tspan baseline-shift="sub" font-size="8">T</tspan>'}</text>`;
   });
-  return `<svg viewBox="0 0 ${w} ${62 + 4 * row - 20}" role="img" aria-label="Spektren von NF-Signal, AM, USB und LSB. Beim unteren Seitenband liegt die Frequenzfolge gespiegelt"><style>.t{font:600 12px system-ui,sans-serif;fill:var(--ink)}.s{font:10.5px system-ui,sans-serif;fill:var(--muted)}</style>${g}</svg>`;
+  return `<svg viewBox="0 0 ${w} ${80 + 4 * row - 58}" role="img" aria-label="Spektren von NF-Signal, AM, USB und LSB. Beim unteren Seitenband liegt die Frequenzfolge gespiegelt"><style>.t{font:600 12.5px system-ui,sans-serif;fill:var(--ink)}.s{font:11px system-ui,sans-serif;fill:var(--muted)}</style>${g}</svg>`;
 };
 
 export default {
@@ -72,12 +72,12 @@ Ein Sender erzeugt eine hochfrequente Schwingung, den [**Träger**](wiki:Träger
 
 Die Nachricht kommt erst dazu, wenn man eine der drei Eigenschaften des Trägers im Rhythmus der Nachricht verändert. Das ist **[[modulation|Modulation]]**: *Informationen werden auf einen (oder mehrere) Träger übertragen.* Das Gegenstück ist die **Demodulation**: Der Empfänger entnimmt dem modulierten Träger die Information wieder.
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Was wird verändert?</th><th>Verfahren (Beispiele)</th></tr>
-<tr><td><b>Amplitude</b></td><td>[Amplitudenmodulation](wiki:Amplitudenmodulation|Amplitude modulation) (AM), [Einseitenbandmodulation](wiki:Einseitenbandmodulation|Single-sideband modulation) (SSB), Ein-/Ausschalten bei CW</td></tr>
-<tr><td><b>Frequenz</b></td><td>[Frequenzmodulation](wiki:Frequenzmodulation|Frequency modulation) (FM), [Frequenzumtastung](wiki:Frequenzumtastung|Frequency-shift keying) (FSK)</td></tr>
-<tr><td><b>Phase</b></td><td>[Phasenmodulation](wiki:Phasenmodulation|Phase modulation) (PM), Phasenumtastung (PSK)</td></tr>
-</table>
+<tr><td><b>Amplitude</b></td><td>[Amplitudenmodulation](wiki:Amplitudenmodulation|Amplitude modulation) ([[amplitudenmodulation|AM]]), [Einseitenbandmodulation](wiki:Einseitenbandmodulation|Single-sideband modulation) ([[einseitenbandmodulation|SSB]]), Ein-/Ausschalten bei CW</td></tr>
+<tr><td><b>Frequenz</b></td><td>[Frequenzmodulation](wiki:Frequenzmodulation|Frequency modulation) ([[frequenzmodulation|FM]]), [Frequenzumtastung](wiki:Frequenzumtastung|Frequency-shift keying) ([[fsk|FSK]])</td></tr>
+<tr><td><b>Phase</b></td><td>[Phasenmodulation](wiki:Phasenmodulation|Phase modulation) (PM), Phasenumtastung ([[psk|PSK]])</td></tr>
+</table></div>
 
 Die Verfahren, die du für die Prüfung brauchst, sind alle drei Sorten in einfacher Form. Wir fangen mit dem einfachsten an: dem Ein- und Ausschalten des Trägers.
 `,
@@ -161,23 +161,23 @@ Entscheidend ist, dass der Träger **fehlt**. Bei einem Träger von 21,250 MHz u
     {
       id: 'bw-text', type: 'text', title: 'Bandbreite: Wie viel Platz belegt ein Signal?',
       md: `
-Die **Bandbreite** eines Signals ist der Frequenzbereich, den es beansprucht: Unterschied zwischen der höchsten und der niedrigsten Frequenz im [Frequenzspektrum](wiki:Frequenzspektrum|Signal frequency spectrum) der Aussendung. Ihre Einheit ist das [**Hertz**](wiki:Hertz (Einheit)|Hertz) (EA105). Nicht Baud, nicht Bit pro Sekunde, nicht Dezibel; mit denen messen wir Symbolrate, Datenrate und Pegel (dazu die Lektion über Digitaltechnik).
+Die **Bandbreite** eines Signals ist der Frequenzbereich, den es beansprucht: Unterschied zwischen der höchsten und der niedrigsten Frequenz im [Frequenzspektrum](wiki:Frequenzspektrum|Signal frequency spectrum) der Aussendung. Ihre Einheit ist das [**Hertz**](wiki:Hertz (Einheit)|Hertz) (EA105). Nicht [[baud|Baud]], nicht Bit pro Sekunde, nicht Dezibel; mit denen messen wir Symbolrate, Datenrate und Pegel (dazu die Lektion über Digitaltechnik).
 
 Rechtlich ist die [[belegte-bandbreite|belegte Bandbreite]] in der AFuV so definiert: die Bandbreite, bei der unterhalb der unteren und oberhalb der oberen Frequenzgrenze jeweils nur **0,5 %** der gesamten mittleren Leistung der Aussendung liegen (§ 2 Nr. 10).[^afuv] In der Praxis genügt dir die Faustregel:
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Sendeart</th><th>Bandbreite etwa</th></tr>
 <tr><td>CW</td><td>$\\lesssim$ 300 Hz (bei 20 WPM), die kleinste</td></tr>
 <tr><td>SSB</td><td>etwa die <b>NF-Bandbreite</b>: bei Sprache <b>2,4 kHz</b></td></tr>
 <tr><td>AM</td><td><b>zwei</b>mal die höchste NF-Frequenz: bei Sprache <b>5,4 kHz</b> (etwas mehr als das Doppelte der NF-Bandbreite)</td></tr>
 <tr><td>FM-Sprechfunk</td><td><b>12 bis 15 kHz</b>, abhängig vom Hub (nächste Lektion)</td></tr>
-</table>
+</table></div>
 
 **SSB** belegt also **weniger als die halbe Bandbreite von AM** (EE201), und zwar *weniger* als die Hälfte, weil bei SSB auch Anteile unterhalb von 300 Hz nicht übertragen werden. Die HF-Bandbreite eines SSB-Signals **entspricht der Bandbreite des NF-Signals** (EE202). Sie ist nicht null (der Träger fehlt, das Seitenband nicht), nicht die Hälfte und nicht das Doppelte (das gilt für AM). **CW ist schmaler als SSB und AM** (EE207); „CW ist breiter als …“ ist in beiden Richtungen falsch.
 
 ## Warum Sprache auf 2,7 kHz begrenzt wird
 
-Zu viel Bandbreite stört die Nachbarstation. Für gute Sprachverständlichkeit reichen etwa **300 Hz bis 3 kHz** völlig aus. Deshalb wird das Mikrofonsignal bandbegrenzt, und die **höchste NF-Frequenz sollte unter 3 kHz** liegen (EJ211). Die **Übertragungsbandbreite** bei SSB sollte **höchstens 2,7 kHz** betragen (EJ210; nicht 1,8 kHz, nicht 3,1 kHz, schon gar nicht 15 kHz). Im Sender erzeugt man SSB meist mit einem Filter, das das unerwünschte Seitenband heraussiebt; sein Durchlassbereich beträgt **2,4 kHz** (EF310). Die anderen Zahlen der Frage sind Filter für anderes: 800 Hz (ein enges CW-Filter), 455 kHz (typische Zwischenfrequenz von Rundfunkempfängern) und 10,7 MHz (UKW-Zwischenfrequenz).
+Zu viel Bandbreite stört die Nachbarstation. Für gute Sprachverständlichkeit reichen etwa **300 Hz bis 3 kHz** völlig aus. Deshalb wird das Mikrofonsignal bandbegrenzt, und die **höchste NF-Frequenz sollte unter 3 kHz** liegen (EJ211). Die **Übertragungsbandbreite** bei SSB sollte **höchstens 2,7 kHz** betragen (EJ210; nicht 1,8 kHz, nicht 3,1 kHz, schon gar nicht 15 kHz). Im Sender erzeugt man SSB meist mit einem Filter, das das unerwünschte Seitenband heraussiebt; sein Durchlassbereich beträgt **2,4 kHz** (EF310). Die anderen Zahlen der Frage sind Filter für anderes: 800 Hz (ein enges CW-Filter), 455 kHz (typische [[zwischenfrequenz|Zwischenfrequenz]] von Rundfunkempfängern) und 10,7 MHz (UKW-Zwischenfrequenz).
 `,
     },
     {
@@ -194,14 +194,14 @@ Zu viel Bandbreite stört die Nachbarstation. Für gute Sprachverständlichkeit 
       md: `
 Jedes Amateurfunkband hat in der **Anlage 1 der Amateurfunkverordnung** eine **zulässige belegte Bandbreite**, festgelegt in den *Zusätzlichen Nutzungsbestimmungen* (Teil B). Die Anlage liegt in der Prüfung als Hilfsmittel auf deinem Tisch, du musst die Zahlen also nicht auswendig kennen, aber du musst die Tabelle **lesen können**: In Spalte 7 stehen die **Nummern** der Bestimmungen, und in Teil B die Bandbreite. Die wichtigsten für Klasse E:[^afuv]
 
-<table>
-<tr><th>Frequenzbereich</th><th>Nr. in Spalte 7</th><th>max. belegte Bandbreite</th></tr>
-<tr><td>135,7 bis 137,8 kHz · 472 bis 479 kHz · 10100 bis 10150 kHz</td><td>1</td><td><b>800 Hz</b></td></tr>
-<tr><td>Kurzwelle, z. B. 3500 bis 3800 kHz, 7000 bis 7200 kHz, 14000 bis 14350 kHz, 21000 bis 21450 kHz</td><td>3</td><td><b>2,7 kHz</b></td></tr>
-<tr><td>28 bis 29,7 MHz</td><td>4</td><td><b>7 kHz</b> unterhalb 29 MHz, <b>40 kHz</b> oberhalb 29 MHz</td></tr>
-<tr><td>144 bis 146 MHz</td><td>6</td><td><b>40 kHz</b></td></tr>
-<tr><td>430 bis 440 MHz</td><td>7</td><td><b>2 MHz</b>; bei amplitudenmodulierten Fernsehaussendungen <b>7 MHz</b></td></tr>
-</table>
+<div style="overflow-x:auto"><table>
+<tr><th>Frequenzbereich (Nr. in Spalte 7)</th><th>max. belegte Bandbreite</th></tr>
+<tr><td>135,7–137,8 kHz, 472–479 kHz, 10100–10150 kHz (Nr. 1)</td><td><b>800 Hz</b></td></tr>
+<tr><td>Kurzwelle, z. B. 3500–3800 kHz, 7000–7200 kHz, 14000–14350 kHz, 21000–21450 kHz (Nr. 3)</td><td><b>2,7 kHz</b></td></tr>
+<tr><td>28–29,7 MHz (Nr. 4)</td><td><b>7 kHz</b> unterhalb 29 MHz, <b>40 kHz</b> oberhalb</td></tr>
+<tr><td>144–146 MHz (Nr. 6)</td><td><b>40 kHz</b></td></tr>
+<tr><td>430–440 MHz (Nr. 7)</td><td><b>2 MHz</b>; AM-Fernsehen <b>7 MHz</b></td></tr>
+</table></div>
 
 Wende das gleich an: *Wo beträgt die maximal zulässige Bandbreite 2,7 kHz?* Zum Beispiel im 80-m-Band (3500 bis 3800 kHz; VD739). *Wo 7 kHz?* Im Teil 28 bis 29 MHz (VD740). *Wo 40 kHz?* Im 2-m-Band 144 bis 146 MHz (VD741). *Wo 2 MHz beziehungsweise 7 MHz für AM-Fernsehen?* Im 70-cm-Band 430 bis 440 MHz (VD742). Und *800 Hz* gilt bei 135,7 bis 137,8 kHz, 472 bis 479 kHz und 10100 bis 10150 kHz (VD738).
 
@@ -223,7 +223,7 @@ Die falschen Antworten in VD738 bis VD742 sind **echte Frequenzbereiche** mit **
       md: `
 Auch die Bandgrenzen gelten für das **ganze Signal**. Steht bei **FM oder AM** die eingestellte Frequenz (= Trägerfrequenz) auf der Bandgrenze, liegt das Signal zur Hälfte außerhalb: Das Signal erstreckt sich um die Trägerfrequenz herum nach beiden Seiten. Deshalb: **mindestens die halbe belegte Bandbreite Abstand zur Bandgrenze.** Belegt eine FM-Aussendung 15 kHz, braucht die Einstellfrequenz mindestens $15\\,\\text{kHz}/2 = 7{,}5\\,\\text{kHz}$ Abstand (NE305). „0 kHz“ wäre die Antwort für jemanden, der nur die Trägerfrequenz betrachtet; „15 kHz“ verschenkt die Hälfte.
 
-Bei **SSB** ist es anders, weil das Signal nur **auf einer Seite** der (unterdrückten) Trägerfrequenz liegt: Beim **LSB** liegt es ganz **unterhalb** der eingestellten Frequenz, beim **USB** ganz **oberhalb**. Mit LSB darfst du also die eingestellte Frequenz auf die *obere* Bandgrenze legen, mit USB dort nicht (das ganze Signal wäre außerhalb!). Mit USB geht es dafür an der *unteren* Bandgrenze. Dieselbe Überlegung gilt für Digimodes, die per USB gesendet werden: Das Signal liegt oberhalb der eingestellten Frequenz.[^darc-50ohm]
+Bei **SSB** ist es anders, weil das Signal nur **auf einer Seite** der (unterdrückten) Trägerfrequenz liegt: Beim **LSB** liegt es ganz **unterhalb** der eingestellten Frequenz, beim **USB** ganz **oberhalb**. Mit LSB darfst du also die eingestellte Frequenz auf die *obere* Bandgrenze legen, mit USB dort nicht (das ganze Signal wäre außerhalb!). Mit USB geht es dafür an der *unteren* Bandgrenze. Dieselbe Überlegung gilt für [[digimode|Digimodes]], die per USB gesendet werden: Das Signal liegt oberhalb der eingestellten Frequenz.[^darc-50ohm]
 `,
     },
     {
@@ -234,9 +234,9 @@ Bei **SSB** ist es anders, weil das Signal nur **auf einer Seite** der (unterdr�
     {
       id: 'mission-qso', type: 'callout', tone: 'mission', title: 'Funkpraxis: Dein erstes SSB-Signal',
       md: `
-Auf dem 80-m-Band (3500 bis 3800 kHz) hörst du beim Drehen am VFO-Knopf, wie sich Sprache von unverständlichem „Entengeschnatter“ zu klarer Stimme verwandelt: Bei SSB fehlt der Träger, und schon ein paar hundert Hertz Abweichung machen die Stimme unnatürlich. Zwei Dinge gehören sofort zu deinem Alltag:
+Auf dem 80-m-Band (3500 bis 3800 kHz) hörst du beim Drehen am [[vfo|VFO]]-Knopf, wie sich Sprache von unverständlichem „Entengeschnatter“ zu klarer Stimme verwandelt: Bei SSB fehlt der Träger, und schon ein paar hundert Hertz Abweichung machen die Stimme unnatürlich. Zwei Dinge gehören sofort zu deinem Alltag:
 
-1. **Mikrofonverstärkung** nicht „so laut wie möglich“, sondern so, dass die ALC-Anzeige (mehr dazu in der Lektion über den Transceiver) gerade zuckt.
+1. **Mikrofonverstärkung** nicht „so laut wie möglich“, sondern so, dass die [[alc|ALC]]-Anzeige (mehr dazu in der Lektion über den [[transceiver|Transceiver]]) gerade zuckt.
 2. Vor jedem Sendebeginn **hinhören, ob die Frequenz frei ist**. Und dicht am Bandrand prüfen, ob dein **ganzes** Signal noch im Band liegt: USB ragt von der eingestellten Frequenz nach oben, LSB nach unten.
 `,
     },
@@ -246,10 +246,10 @@ Auf dem 80-m-Band (3500 bis 3800 kHz) hörst du beim Drehen am VFO-Knopf, wie si
 Bei SSB hängt die abgestrahlte Leistung direkt vom **NF-Pegel** ab: Ohne Sprache (und ohne Träger!) wird nichts ausgesendet, bei leiser Sprache wenig, bei lauter viel. Das ist der Unterschied zu FM (dort konstante Leistung).
 
 - **Mikrofonverstärkung zu gering** → geringe Modulation → **geringe Ausgangsleistung** (EE206). Die Gegenstation hört dich leise.
-- **Ausgangsleistung verringern** kannst du, indem du die **NF-Amplitude verringerst** (EE205), also leiser sprechen oder die Mikrofonverstärkung zurückdrehen. „Lauter ins Mikrofon sprechen“ erhöht die Leistung, die **Squelch** hat damit nichts zu tun (sie gehört zum Empfänger), und eine größere **NF-Bandbreite** verbreitert nur das Signal.
+- **Ausgangsleistung verringern** kannst du, indem du die **NF-Amplitude verringerst** (EE205), also leiser sprechen oder die Mikrofonverstärkung zurückdrehen. „Lauter ins Mikrofon sprechen“ erhöht die Leistung, die **[[squelch|Squelch]]** hat damit nichts zu tun (sie gehört zum Empfänger), und eine größere **NF-Bandbreite** verbreitert nur das Signal.
 - **Mikrofonverstärkung zu hoch** → die NF-Stufen und die Endstufe werden **übersteuert**: Das Sendesignal wird **breiter**, es entstehen Störungen auf **dicht benachbarten Frequenzen** (EJ215). Im Funkerjargon heißt das **[[splatter|Splatter]]**: Die Nachbarstation hört dich „spritzen“.
 
-Störungen auf einem *anderen Band*, in der Stromversorgung oder bei anderen elektronischen Geräten sind **keine** typische Folge zu hoher Mikrofonverstärkung: Das sind andere Fehler (Oberwellen, EMV), die in späteren Lektionen drankommen.
+Störungen auf einem *anderen Band*, in der Stromversorgung oder bei anderen elektronischen Geräten sind **keine** typische Folge zu hoher Mikrofonverstärkung: Das sind andere Fehler ([[oberwellen|Oberwellen]], EMV), die in späteren Lektionen drankommen.
 `,
     },
     {

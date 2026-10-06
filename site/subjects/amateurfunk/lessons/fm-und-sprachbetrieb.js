@@ -42,9 +42,9 @@ Bei der [Frequenzmodulation](wiki:Frequenzmodulation|Frequency modulation) verä
 Zwei Dinge musst du zuordnen können:
 
 - Die **Lautstärke** steckt in der **Größe der Auslenkung**, dem **[[frequenzhub|Frequenzhub]]** $\\Delta f$. Wer lauter spricht, lenkt den Träger weiter aus (EE306). „Häufigkeit der Frequenzänderung“ oder „Häufigkeit des Hubs“ ist dagegen die **Tonhöhe**, also die NF-Frequenz.
-- Die **Amplitude des Sendesignals** wird vom Modulationssignal **nicht** beeinflusst (NE303). Sie ist weder gleich der Amplitude des Mikrofonsignals, noch wächst sie bei schnellerer oder lauterer Modulation.
+- Die **Amplitude des Sendesignals** wird vom Modulationssignal **nicht** beeinflusst (NE303). Sie ist weder gleich der Amplitude des Mikrofonsignals, noch wächst sie bei schnellerer oder lauterer [[modulation|Modulation]].
 
-Daraus folgt gleich die **Leistungsfrage**: Wer in FM auf 70 cm mit 2 W sendet, strahlt **immer 2 W** ab, ob er laut spricht, leise oder gar nicht (NE304). Ohne Modulation sendet er einen unmodulierten Träger. Das ist der Unterschied zu SSB, wo die Leistung mit dem Sprachpegel mitwandert.
+Daraus folgt gleich die **Leistungsfrage**: Wer in FM auf 70 cm mit 2 W sendet, strahlt **immer 2 W** ab, ob er laut spricht, leise oder gar nicht (NE304). Ohne Modulation sendet er einen unmodulierten Träger. Das ist der Unterschied zu [[einseitenbandmodulation|SSB]], wo die Leistung mit dem Sprachpegel mitwandert.
 
 **[Phasenmodulation](wiki:Phasenmodulation|Phase modulation)** (PM) ist die Schwester der FM: Statt der Frequenz verändert das NF-Signal die Phase des Trägers. Für Sprechfunk ist das Ergebnis kaum zu unterscheiden; bei der Prüfung genügt „Frequenz- und Phasenmodulation“ als Verfahrensgruppe.
 `,
@@ -57,7 +57,7 @@ Daraus folgt gleich die **Leistungsfrage**: Wer in FM auf 70 cm mit 2 W sendet, 
     {
       id: 'recognize-fm', type: 'callout', tone: 'insight', title: 'FM im Oszilloskop-Bild erkennen',
       md: `
-Bei der Frage „Welches Modulationsverfahren zeigt das Bild?“ (EE301) gehst du zwei Fragen durch: **Schwankt die Höhe?** Wenn ja (Hüllkurve), ist es AM; sieht man *Pakete*, ist es SSB mit mehreren Tönen. **Bleibt die Höhe gleich, aber ändern sich die Abstände der Nulldurchgänge?** Dann ist es FM. Ein *Spektrum* mit nur einer Seite (links *oder* rechts vom Träger) ist LSB oder USB, siehe die vorige Lektion.
+Bei der Frage „Welches Modulationsverfahren zeigt das Bild?“ (EE301) gehst du zwei Fragen durch: **Schwankt die Höhe?** Wenn ja (Hüllkurve), ist es [[amplitudenmodulation|AM]]; sieht man *Pakete*, ist es SSB mit mehreren Tönen. **Bleibt die Höhe gleich, aber ändern sich die Abstände der Nulldurchgänge?** Dann ist es FM. Ein *Spektrum* mit nur einer Seite (links *oder* rechts vom Träger) ist LSB oder USB, siehe die vorige Lektion.
 `,
     },
     {
@@ -88,9 +88,9 @@ Was tust du, wenn die Bandbreite zu groß wird?
 
 Das gilt auch am **Rand des [Amateurfunkbandes](wiki:Amateurfunkband|Amateur radio frequency allocations)**: Die halbe Bandbreite muss noch ins Band passen (Lektion zur Bandbreite); die Bundesnetzagentur setzt die obere Grenze in Anlage 1 (2 m: 40 kHz).
 
-## Schmalband-FM auf 145,525 MHz
+## [[schmalband-fm|Schmalband-FM]] auf 145,525 MHz
 
-Der [IARU-Bandplan](wiki:International Amateur Radio Union|International Amateur Radio Union) empfiehlt im Bereich um **145,525 MHz**, nicht mehr als **12 kHz** Bandbreite zu belegen (BC216). Deshalb stellst du dein Funkgerät dort auf **Schmalband-FM** (Narrow FM, kurz „NFM“, „Narrow“ im Menü). Das ist die Empfehlung des Bandplans, nicht die gesetzliche Obergrenze von 40 kHz. Weder 25 kHz noch 50 kHz Kanalabstand noch 5 kHz Kanalraster sind die Begründung.
+Der [IARU-Bandplan](wiki:International Amateur Radio Union|International Amateur Radio Union) empfiehlt im Bereich um **145,525 MHz**, nicht mehr als **12 kHz** Bandbreite zu belegen (BC216).[^iaru-r1-bandplaene-uebersicht] Deshalb stellst du dein Funkgerät dort auf **Schmalband-FM** (Narrow FM, kurz „NFM“, „Narrow“ im Menü). Das ist die Empfehlung des Bandplans, nicht die gesetzliche Obergrenze von 40 kHz. Weder 25 kHz noch 50 kHz Kanalabstand noch 5 kHz Kanalraster sind die Begründung.
 `,
     },
     {
@@ -104,27 +104,27 @@ Wer an der Umsetzer-Frequenz ins Mikrofon schreit, wird nicht besser gehört, im
       md: `
 Störungen wie Blitze, Zündanlagen oder Motoren verändern vor allem die **Amplitude** eines Signals. Bei **AM und SSB** steckt die Information in der Amplitude, jede Störung klingt im Lautsprecher mit. Bei **FM** steckt sie in der Frequenz, und der Empfänger **begrenzt die Amplitude** ohnehin. FM ist dadurch gegenüber Amplitudenstörungen relativ unempfindlich (EE302). Im Kraftfahrzeug und in gestörter Umgebung wird FM deshalb **am wenigsten** beeinträchtigt (EE303); die Alternativen SSB, AM und DSB hören die Zündfunken mit.[^darc-50ohm]
 
-Das ist der Grund, warum UKW-Handfunkgeräte und Relais mit FM-Sprechfunk arbeiten. Zu den üblichen Verfahren der **VHF/UHF-Handfunkgeräte** gehören **FM-Sprechfunk, [DMR](wiki:Digital Mobile Radio|Digital mobile radio) und [D-STAR](wiki:D-STAR|D-STAR)** (NE307). Kurzwellenfunk mit SSB ist dort kein Thema, und FT8 oder CW sind keine üblichen Handfunkgeräte-Verfahren. Einzelheiten zu DMR und D-STAR in der Lektion über digitale Betriebsarten.
+Das ist der Grund, warum UKW-Handfunkgeräte und Relais mit FM-Sprechfunk arbeiten. Zu den üblichen Verfahren der **VHF/UHF-Handfunkgeräte** gehören **FM-Sprechfunk, [DMR](wiki:Digital Mobile Radio|Digital mobile radio) und [D-STAR](wiki:D-STAR|D-STAR)** (NE307). Kurzwellenfunk mit SSB ist dort kein Thema, und [[ft8|FT8]] oder [[cw-tastung|CW]] sind keine üblichen Handfunkgeräte-Verfahren. Einzelheiten zu DMR und D-STAR in der Lektion über digitale Betriebsarten.
 `,
     },
     {
       id: 'mode-text', type: 'text', title: 'Der MODE-Schalter: Sendeart und Seitenband',
       md: `
-An fast jedem Funkgerät wählst du die Sendeart mit einem Schalter, den die Hersteller meist **MODE** nennen: **CW, AM, FM, LSB, USB**.[^darc-50ohm] Als Modulationsarten zählen **SSB, FM und AM** (NE102). Begriffe wie RTTY, PSK31, SSTV, FT8, JS8, Olivia, THOR, M17 oder FreeDV sind **Übertragungsverfahren** (Digimodes), die ihrerseits per SSB oder FM übertragen werden.
+An fast jedem Funkgerät wählst du die Sendeart mit einem Schalter, den die Hersteller meist **MODE** nennen: **CW, AM, FM, LSB, USB**.[^darc-50ohm] Als Modulationsarten zählen **SSB, FM und AM** (NE102). Begriffe wie [[rtty|RTTY]], [[psk31|PSK31]], SSTV, FT8, JS8, Olivia, THOR, M17 oder FreeDV sind **Übertragungsverfahren** ([[digimode|Digimodes]]), die ihrerseits per SSB oder FM übertragen werden.
 
-Bei [SSB](wiki:Einseitenbandmodulation|Single-sideband modulation) musst du **das richtige [Seitenband](wiki:Seitenband|Sideband)** wählen. Die IARU empfiehlt:
+Bei [SSB](wiki:Einseitenbandmodulation|Single-sideband modulation) musst du **das richtige [Seitenband](wiki:Seitenband|Sideband)** wählen. Die IARU empfiehlt:[^iaru-r1-bandplaene-uebersicht]
 
-- **unterhalb von 10 MHz: unteres Seitenband (LSB)**, etwa im **80-m-Band** (BC202). Es gilt kein „Europaverkehr unten, sonst oben“ und keine Bandhälftenregel,
+- **unterhalb von 10 MHz: unteres [[seitenband|Seitenband]] (LSB)**, etwa im **80-m-Band** (BC202). Es gilt kein „Europaverkehr unten, sonst oben“ und keine Bandhälftenregel,
 - **ab 10 MHz: oberes Seitenband (USB)**, etwa im **20-m-Band** (BC203) und im **2-m-Band** (NE210); die Begründung „um die niedrige Frequenz auszugleichen“ gibt es nicht,
 - bei **digitalen Betriebsarten** immer USB, auch unter 10 MHz.
 
-Das Display zeigt dir, was eingestellt ist: Die Anzeige „**USB**“ bedeutet: Der Transceiver arbeitet in der Modulationsart SSB im **oberen Seitenband** (NE209). Mit „Unterspannung“ oder „Unterer Schmalband Betrieb“ hat sie nichts zu tun. Für den Empfang im 80-m-Band stellst du am MODE-Schalter **LSB** ein, nicht „SSB“, USB oder AM (NE211).
+Das Display zeigt dir, was eingestellt ist: Die Anzeige „**USB**“ bedeutet: Der [[transceiver|Transceiver]] arbeitet in der Modulationsart SSB im **oberen Seitenband** (NE209). Mit „Unterspannung“ oder „Unterer Schmalband Betrieb“ hat sie nichts zu tun. Für den Empfang im 80-m-Band stellst du am MODE-Schalter **LSB** ein, nicht „SSB“, USB oder AM (NE211).
 
 ## Warum das falsche Seitenband unverständlich klingt
 
 Ein Sprachsignal mit tiefen und hohen Tönen liegt im **oberen** Seitenband mit den tiefen Tönen *unten* und den hohen *oben*. Im **unteren** Seitenband ist es **gespiegelt**, die tiefste Frequenz liegt immer am nächsten am Träger. Wählt dein Empfänger das falsche Seitenband, hörst du tiefe Töne als hohe und hohe als tiefe: unverständliches Entengeschnatter.
 
-Dazu kommt: Bei SSB gibt es **keinen Träger**, an dem sich der Empfänger orientieren kann. Schon eine Abweichung von wenigen hundert Hertz verfälscht die Tonhöhe der Stimme. Deshalb gilt, wenn du SSB nicht verstehst (NE212): **Seitenband kontrollieren** und **feinfühlig am VFO-Knopf drehen**. Die TUNE-Taste sendet einen Träger, die PTT sendet, die RIT verstellt nur die Empfangsfrequenz, und mit AM empfängst du ein SSB-Signal gar nicht.
+Dazu kommt: Bei SSB gibt es **keinen Träger**, an dem sich der Empfänger orientieren kann. Schon eine Abweichung von wenigen hundert Hertz verfälscht die Tonhöhe der Stimme. Deshalb gilt, wenn du SSB nicht verstehst (NE212): **Seitenband kontrollieren** und **feinfühlig am [[vfo|VFO]]-Knopf drehen**. Die TUNE-Taste sendet einen Träger, die [[ptt|PTT]] sendet, die [[rit|RIT]] verstellt nur die Empfangsfrequenz, und mit AM empfängst du ein SSB-Signal gar nicht.
 `,
     },
     {
@@ -135,9 +135,9 @@ Dazu kommt: Bei SSB gibt es **keinen Träger**, an dem sich der Empfänger orien
     {
       id: 'komp-text', type: 'text', title: 'Dynamikkompressor: leise Silben anheben',
       md: `
-Sprache schwankt stark: laute Vokale, leise Konsonanten. Bei SSB und AM ist die Sendeleistung am Pegel der Silbe ausgerichtet, die leisen Anteile gehen daher schnell im Rauschen unter. Ein **[Dynamikkompressor](wiki:Dynamikkompressor|Dynamic range compression)** (englisch *dynamic compressor*, am Gerät oft „COMP“) schwächt zuerst laute Signalanteile über eine nichtlineare Kennlinie ab und verstärkt dann das gesamte Signal wieder. Ergebnis: **leise Anteile werden gegenüber den lauten angehoben**, die Verständlichkeit steigt, und der durchschnittliche Sendepegel ist höher und gleichmäßiger (EF306). Die Stufe heißt **Dynamic Compressor**, nicht Noise Blanker (der blendet Impulsstörungen im Empfänger aus), nicht Clarifier (so nennen manche Hersteller die RIT) und nicht Notchfilter.[^darc-50ohm]
+Sprache schwankt stark: laute Vokale, leise Konsonanten. Bei SSB und AM ist die Sendeleistung am Pegel der Silbe ausgerichtet, die leisen Anteile gehen daher schnell im Rauschen unter. Ein **[Dynamikkompressor](wiki:Dynamikkompressor|Dynamic range compression)** (englisch *dynamic compressor*, am Gerät oft „COMP“) schwächt zuerst laute Signalanteile über eine nichtlineare Kennlinie ab und verstärkt dann das gesamte Signal wieder. Ergebnis: **leise Anteile werden gegenüber den lauten angehoben**, die Verständlichkeit steigt, und der durchschnittliche Sendepegel ist höher und gleichmäßiger (EF306). Die Stufe heißt **Dynamic Compressor**, nicht [[noise-blanker|Noise Blanker]] (der blendet Impulsstörungen im Empfänger aus), nicht Clarifier (so nennen manche Hersteller die RIT) und nicht [[notchfilter|Notchfilter]].[^darc-50ohm]
 
-Übertreibst du die Kompression, klingt die Stimme „platt“, und die Endstufe wird dauerhaft stark ausgesteuert. Auch hier gilt: die ALC im Blick behalten.
+Übertreibst du die Kompression, klingt die Stimme „platt“, und die Endstufe wird dauerhaft stark ausgesteuert. Auch hier gilt: die [[alc|ALC]] im Blick behalten.
 `,
     },
     {

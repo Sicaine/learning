@@ -29,7 +29,7 @@ export default {
     {
       id: 'intro', type: 'text', title: 'Vom Detektor zum Superhet',
       md: `
-Der einfachste Empfänger ist der **[Detektorempfänger](wiki:Detektorempfänger|Crystal radio)**: ein **Parallelschwingkreis** aus Spule und abstimmbarem Kondensator wird vom Signal der Antenne angeregt, wenn er auf die Senderfrequenz abgestimmt ist. Eine **Diode** richtet das AM-Signal gleich, ein **hochohmiger Kopfhörer** (er bedämpft den Kreis kaum, und seine Trägheit wirkt wie ein Tiefpass, der die Hüllkurve übrig lässt) macht die Niederfrequenz hörbar. Eine Batterie gibt es nicht: Die Energie kommt aus dem Empfangssignal, deshalb reicht es nur für starke Ortssender. Das Schaltbild mit Spule, Drehkondensator, Diode und Kopfhörer gehört zum **Detektorempfänger** (EF101), nicht zu einem Verstärker, Oszillator oder Modulator.[^darc-50ohm]
+Der einfachste Empfänger ist der **[Detektorempfänger](wiki:Detektorempfänger|Crystal radio)**: ein **Parallelschwingkreis** aus Spule und abstimmbarem Kondensator wird vom Signal der Antenne angeregt, wenn er auf die Senderfrequenz abgestimmt ist. Eine **Diode** richtet das [[amplitudenmodulation|AM]]-Signal gleich, ein **hochohmiger Kopfhörer** (er bedämpft den Kreis kaum, und seine Trägheit wirkt wie ein [[tiefpass|Tiefpass]], der die Hüllkurve übrig lässt) macht die Niederfrequenz hörbar. Eine Batterie gibt es nicht: Die Energie kommt aus dem Empfangssignal, deshalb reicht es nur für starke Ortssender. Das Schaltbild mit Spule, Drehkondensator, Diode und Kopfhörer gehört zum **[[detektorempfaenger|Detektorempfänger]]** (EF101), nicht zu einem Verstärker, [[oszillator|Oszillator]] oder Modulator.[^darc-50ohm]
 `,
     },
     {
@@ -40,23 +40,27 @@ Der einfachste Empfänger ist der **[Detektorempfänger](wiki:Detektorempfänger
     {
       id: 'super-text', type: 'text', title: 'Geradeausempfänger gegen Superhet',
       md: `
-Beim **Geradeausempfänger** wird das Signal nach Empfang und eventueller Verstärkung nur noch **demoduliert**. Der Nachteil ist die **schlechte Trennschärfe**: Man müsste den Eingangsfilter aus vielen Stufen aufbauen, und bei jedem Frequenzwechsel müsste man **alle** Filter nachstimmen. Das ist sehr aufwendig.[^darc-50ohm]
+Beim **[[geradeausempfaenger|Geradeausempfänger]]** wird das Signal nach Empfang und eventueller Verstärkung nur noch **demoduliert**. Der Nachteil ist die **schlechte [[trennschaerfe|Trennschärfe]]**: Man müsste den Eingangsfilter aus vielen Stufen aufbauen, und bei jedem Frequenzwechsel müsste man **alle** Filter nachstimmen. Das ist sehr aufwendig.[^darc-50ohm]
 
-Die Lösung ist der **[Überlagerungsempfänger](wiki:Überlagerungsempfänger|Superheterodyne receiver)**, kurz **Superhet** (*Superheterodyne*): Statt abstimmbarer Filter benutzt man einen **variablen Oszillator (VFO)**. Ein **[Mischer](wiki:Mischer (Elektronik)|Frequency mixer)** setzt das Empfangssignal mit dem VFO auf eine **feste Frequenz** um, die **Zwischenfrequenz** (ZF, $f_\\text{z}$). Weil die ZF immer gleich ist, lassen sich dafür sehr gute, **trennscharfe Filter** bauen (Quarz-, Keramik- oder digitale Filter), die nicht abstimmbar sein müssen.
+Die Lösung ist der **[Überlagerungsempfänger](wiki:Überlagerungsempfänger|Superheterodyne receiver)**, kurz **[[ueberlagerungsempfaenger|Superhet]]** (*Superheterodyne*): Statt abstimmbarer Filter benutzt man einen **variablen Oszillator ([[vfo|VFO]])**. Ein **[Mischer](wiki:Mischer (Elektronik)|Frequency mixer)** setzt das Empfangssignal mit dem VFO auf eine **feste Frequenz** um, die **[[zwischenfrequenz|Zwischenfrequenz]]** (ZF, $f_\\text{z}$). Weil die ZF immer gleich ist, lassen sich dafür sehr gute, **trennscharfe Filter** bauen (Quarz-, Keramik- oder digitale Filter), die nicht abstimmbar sein müssen.
 
-Der **Vorteil gegenüber dem Geradeausempfänger ist die bessere Trennschärfe** (EF102): Es gibt keine „höheren Bandbreiten“, auch nicht geringere Anforderungen an die VFO-Stabilität (im Gegenteil) und keine wesentlich einfachere Konstruktion (auch hier umgekehrt). Zusätzlich arbeiten alle Stufen nach dem Mischer auf derselben Frequenz und müssen nie abgestimmt werden.
+Der **Vorteil gegenüber dem Geradeausempfänger ist die bessere Trennschärfe** (EF102): Es gibt keine „höheren Bandbreiten“, auch nicht geringere Anforderungen an die VFO-Stabilität (im Gegenteil) und keine wesentlich einfachere Konstruktion (auch hier umgekehrt). Zusätzlich arbeiten alle Stufen nach dem [[mischer|Mischer]] auf derselben Frequenz und müssen nie abgestimmt werden.
 
 ## Rechnen: Wo muss der VFO stehen?
 
 Der Mischer erzeugt aus Eingangs- und Oszillatorfrequenz (Formelsammlung: $f_\\text{e}$ und $f_\\text{o}$) die Frequenzen $f_\\text{z1} = f_\\text{e} + f_\\text{o}$ und $f_\\text{z2} = |f_\\text{e} - f_\\text{o}|$; eine davon wählt das ZF-Filter aus. Ziel: $|f_\\text{e} - f_\\text{o}| = f_\\text{z}$, also
 
-$$f_\\text{o} = f_\\text{e} + f_\\text{z} \\quad\\text{oder}\\quad f_\\text{o} = f_\\text{e} - f_\\text{z}.$$
+$$f_\\text{o} = f_\\text{e} + f_\\text{z}$$
+
+oder
+
+$$f_\\text{o} = f_\\text{e} - f_\\text{z}$$
 
 Mit $f_\\text{z} = 455\\,\\text{kHz}$ und einem Empfangsbereich von 3 bis 30 MHz liegt der VFO zwischen $3{,}455\\,\\text{MHz}$ und $30{,}455\\,\\text{MHz}$. Für 7,100 MHz zum Beispiel bei 7,555 MHz (oder bei 6,645 MHz).
 
 **Direktüberlagerungsempfänger:** Der einfachste Fall: Die ZF *ist* die NF. Dann liegt die Oszillatorfrequenz **in nächster Nähe der Empfangsfrequenz** (EF208), nicht sehr weit darüber oder darunter und auch nicht auf der ZF.
 
-<details><summary>Vertiefung (nicht Prüfungsstoff Klasse E): Spiegelfrequenz</summary>
+<details><summary>Vertiefung (nicht Prüfungsstoff Klasse E): [[spiegelfrequenz|Spiegelfrequenz]]</summary>
 Der Superhet hat einen Haken: Neben $f_\\text{e}$ wird auch eine zweite Frequenz auf die ZF gemischt, die **Spiegelfrequenz** auf der anderen Seite des VFO: $f_\\text{s} = f_\\text{e} + 2 f_\\text{z}$ (VFO oberhalb) beziehungsweise $f_\\text{e} - 2 f_\\text{z}$ (VFO unterhalb). Ein Sender dort ist nach dem Mischer nicht mehr vom Nutzsignal zu trennen. Man dämpft ihn **vor** dem Mischer (Eingangsfilter) oder wählt eine hohe ZF, bei der die Spiegelfrequenz weit weg liegt. Diese Probleme und der Mehrfachsuper kommen in der Klasse A; probiere sie aber im Rechner unten ruhig aus.
 </details>
 `,
@@ -83,7 +87,7 @@ Das lässt sich nicht eindeutig sagen: Um das Jahr 1918, mitten im Ersten Weltkr
       md: `
 Die **Trennschärfe** beschreibt das Vermögen eines Empfängers, das gewünschte Signal zu empfangen und **naheliegende unerwünschte Signale zu unterdrücken**. Voraussetzung ist eine **geringe Bandbreite**, die idealerweise nur so breit ist wie das zu empfangende Signal.[^darc-50ohm] **Eine schmale Empfängerbandbreite führt also zu hoher Trennschärfe** (EF210), nicht zu niedriger. Spiegelfrequenzunterdrückung ist eine andere Eigenschaft (sie hängt am Eingangsfilter), die Antwortoptionen dazu sind Ablenker.
 
-Praktische Werte (für ZF-Filter): **SSB-Sprache** etwa **2,4 kHz**, **Telegrafie** etwa **300 Hz**; AM, FM und Digimodes haben ihre eigenen angepassten Filter. Moderne Geräte bieten zusätzlich ein **Passband-Tuning** und umschaltbare Filter. Zu schmal darf es allerdings nicht sein: Dann geht Nutzsignal verloren (schmales CW-Filter bei Sprache: nur noch „Dumpfes“).
+Praktische Werte (für ZF-Filter): **[[einseitenbandmodulation|SSB]]-Sprache** etwa **2,4 kHz**, **Telegrafie** etwa **300 Hz**; AM, [[frequenzmodulation|FM]] und [[digimode|Digimodes]] haben ihre eigenen angepassten Filter. Moderne Geräte bieten zusätzlich ein **Passband-Tuning** und umschaltbare Filter. Zu schmal darf es allerdings nicht sein: Dann geht Nutzsignal verloren (schmales [[cw-tastung|CW]]-Filter bei Sprache: nur noch „Dumpfes“).
 `,
     },
     {
@@ -95,13 +99,13 @@ Praktische Werte (für ZF-Filter): **SSB-Sprache** etwa **2,4 kHz**, **Telegrafi
     {
       id: 'bfo-text', type: 'text', title: 'BFO: der „Träger“ für SSB und CW',
       md: `
-Einem SSB- oder CW-Signal fehlt der Träger, den ein AM-Demodulator braucht. Der **BFO** (*Beat Frequency Oscillator*, Hilfsträgeroszillator) erzeugt einen **Hilfsträger**, den ein Mischer mit dem **ZF-Signal** zusammenbringt, und macht daraus das NF-Signal. Er dient also **zur Hilfsträgererzeugung, um CW- oder SSB-Signale hörbar zu machen** (EF209). Mit der Erzeugung der ZF (das macht der VFO), der Unterdrückung von Amplitudenüberlagerung oder dem Unterdrücken von FM-Signalen hat der BFO nichts zu tun. Er muss auf **bestmögliche Verständlichkeit** eingestellt werden: Das ist der Grund, warum man bei SSB so feinfühlig abstimmen muss.[^darc-50ohm]
+Einem SSB- oder CW-Signal fehlt der Träger, den ein AM-Demodulator braucht. Der **[[bfo|BFO]]** (*Beat Frequency Oscillator*, Hilfsträgeroszillator) erzeugt einen **Hilfsträger**, den ein Mischer mit dem **ZF-Signal** zusammenbringt, und macht daraus das NF-Signal. Er dient also **zur Hilfsträgererzeugung, um CW- oder SSB-Signale hörbar zu machen** (EF209). Mit der Erzeugung der ZF (das macht der VFO), der Unterdrückung von Amplitudenüberlagerung oder dem Unterdrücken von FM-Signalen hat der BFO nichts zu tun. Er muss auf **bestmögliche Verständlichkeit** eingestellt werden: Das ist der Grund, warum man bei SSB so feinfühlig abstimmen muss.[^darc-50ohm]
 `,
     },
     {
       id: 'agc-text', type: 'text', title: 'AGC: Die Lautstärke gleichmäßig halten',
       md: `
-Funksignale schwanken (Fading), Stationen sind unterschiedlich stark. Die **[Automatische Verstärkungsregelung](wiki:Automatische Verstärkungsregelung|Automatic gain control)** (**AGC**, *Automatic Gain Control*) misst den Pegel am Ausgang des Empfangszweigs und regelt die HF-Verstärkung so, dass die **Empfangslautstärke auch bei schwankendem Eingangssignal nahezu konstant** bleibt (EF211, EF212). Nicht verwechseln mit: „NF-Störaustaster“, „NF-Filter“ oder „NF-Vorspannungsregelung“ (EF211) und mit „Automatischer Antennentuner“, „Gleichlaufsteuerung“ oder „Frequenzkorrektur“ (EF212). Und nicht mit der **ALC**, die zum Sendezweig gehört.[^darc-50ohm]
+Funksignale schwanken (Fading), Stationen sind unterschiedlich stark. Die **[Automatische Verstärkungsregelung](wiki:Automatische Verstärkungsregelung|Automatic gain control)** (**[[agc|AGC]]**, *Automatic Gain Control*) misst den Pegel am Ausgang des Empfangszweigs und regelt die HF-Verstärkung so, dass die **Empfangslautstärke auch bei schwankendem Eingangssignal nahezu konstant** bleibt (EF211, EF212). Nicht verwechseln mit: „NF-Störaustaster“, „NF-Filter“ oder „NF-Vorspannungsregelung“ (EF211) und mit „Automatischer Antennentuner“, „Gleichlaufsteuerung“ oder „Frequenzkorrektur“ (EF212). Und nicht mit der **[[alc|ALC]]**, die zum Sendezweig gehört.[^darc-50ohm]
 
 Die **Ansprechzeit** lässt sich oft wählen (**slow, normal, fast**): Für **SSB** passen „slow“ oder „normal“. Für **CW** „fast“ oder „normal“, damit ein starkes Signal ein schwaches dahinter nicht überdeckt. Bei manchen digitalen Verfahren schaltet man die AGC ganz ab; die Verstärkung regelt man dann von Hand (RF-Gain).
 `,
@@ -115,10 +119,10 @@ Die **Ansprechzeit** lässt sich oft wählen (**slow, normal, fast**): Für **SS
     {
       id: 'filt-text', type: 'text', title: 'Störungen im Empfänger: Notch, Noise Blanker, Noise Reduction',
       md: `
-Moderne Transceiver haben drei verschiedene Werkzeuge gegen drei verschiedene Störungen. Wer sie vertauscht, bekommt die Antworten im Katalog falsch:
+Moderne [[transceiver|Transceiver]] haben drei verschiedene Werkzeuge gegen drei verschiedene Störungen. Wer sie vertauscht, bekommt die Antworten im Katalog falsch:
 
-- **[Notchfilter](wiki:Notchfilter)** (Kerbfilter): ein **sehr schmalbandiges** Filter, das **eine bestimmte Frequenz** unterdrückt, zum Beispiel einen **störenden Träger** (Pfeifton), ohne den Rest der Sendung zu beeinflussen. Es kann im NF- oder (besser, gegen starke Störer und den AGC-Einfluss) im ZF-Bereich arbeiten. Im Frequenzgang ergibt sich eine **Kerbe**: eine schmale Senke (EF215, EF216). Tiefpass, Hochpass und Bandpass sind **keine** Filter für einen schmalen Störbereich.
-- **Noise Blanker** (NB, Störaustaster): tastet kurze **impulsförmige Störungen** aus dem Empfangssignal aus, z. B. Zündfunken von Fahrzeugen oder Schaltnetzteile (EF214). Notchfilter, Passband-Tuning und AGC sind dafür falsch.
+- **[Notchfilter](wiki:Notchfilter)** (Kerbfilter): ein **sehr schmalbandiges** Filter, das **eine bestimmte Frequenz** unterdrückt, zum Beispiel einen **störenden Träger** (Pfeifton), ohne den Rest der Sendung zu beeinflussen. Es kann im NF- oder (besser, gegen starke Störer und den AGC-Einfluss) im ZF-Bereich arbeiten. Im Frequenzgang ergibt sich eine **Kerbe**: eine schmale Senke (EF215, EF216). Tiefpass, [[hochpass|Hochpass]] und [[bandpass|Bandpass]] sind **keine** Filter für einen schmalen Störbereich.
+- **[[noise-blanker|Noise Blanker]]** (NB, Störaustaster): tastet kurze **impulsförmige Störungen** aus dem Empfangssignal aus, z. B. Zündfunken von Fahrzeugen oder Schaltnetzteile (EF214). [[notchfilter|Notchfilter]], Passband-Tuning und AGC sind dafür falsch.
 - **[Noise Reduction](wiki:Rauschunterdrückung|Noise reduction)** (NR, bei digitaler Ausführung DNR): **verringert den Rauschanteil im Signal** (EF213). Sie senkt weder das Rauschen der Versorgungsspannung noch Umgebungsgeräusche im Kopfhörer noch den Dynamikbereich der ZF.
 
 Das Bild zur **Kerbe** in der Prüfung (EF216): Ein flaches Band mit einer **schmalen, tiefen Senke** ist der Notchfilter-Frequenzgang. Eine breite Senke wäre eine Bandsperre.[^darc-50ohm]
@@ -127,15 +131,15 @@ Das Bild zur **Kerbe** in der Prüfung (EF216): Ein flaches Band mit einer **sch
     {
       id: 'warn-filt', type: 'callout', tone: 'warning', title: 'Welches Werkzeug für welche Störung?',
       md: `
-**Pfeifton oder Träger** → Notch. **Knacken, Zündfunken, Impulse** → Noise Blanker. **Rauschteppich** → Noise Reduction. **Starker Sender in der Nähe, Verzerrungen** → Dämpfungsglied. Merke dir den Satz: *Notch = eine Frequenz, Blanker = ein Zeitpunkt, Reduction = ein Teppich.*
+**Pfeifton oder Träger** → Notch. **Knacken, Zündfunken, Impulse** → Noise Blanker. **Rauschteppich** → [[noise-reduction|Noise Reduction]]. **Starker Sender in der Nähe, Verzerrungen** → [[daempfungsglied|Dämpfungsglied]]. Merke dir den Satz: *Notch = eine Frequenz, Blanker = ein Zeitpunkt, Reduction = ein Teppich.*
 `,
     },
     {
       id: 'att-text', type: 'text', title: 'Dämpfungsglied und Vorverstärker',
       md: `
-**Kurzwellenempfänger** können durch **starke Signale** übersteuert werden, im Eingangsbereich und im ersten Mischer. Das merkt man an verzerrter, unverständlicher Wiedergabe. Ein zuschaltbares **[Dämpfungsglied](wiki:Dämpfungsglied|Attenuator (electronics))** (Abschwächer, *Attenuator*, ATT) dämpft alle Eingangssignale um einen festen Betrag, so dass der Eingang nicht mehr übersteuert wird: **Das Dämpfungsglied vermindert die Übersteuerung eines Empfängereingangs** (EF217). ZF-Filter, Rauschsperre und Oszillator tun das nicht.[^darc-50ohm]
+**Kurzwellenempfänger** können durch **starke Signale** übersteuert werden, im Eingangsbereich und im ersten Mischer. Das merkt man an verzerrter, unverständlicher Wiedergabe. Ein zuschaltbares **[Dämpfungsglied](wiki:Dämpfungsglied|Attenuator (electronics))** (Abschwächer, *Attenuator*, ATT) dämpft alle Eingangssignale um einen festen Betrag, so dass der Eingang nicht mehr übersteuert wird: **Das Dämpfungsglied vermindert die [[uebersteuerung|Übersteuerung]] eines Empfängereingangs** (EF217). ZF-Filter, [[squelch|Rauschsperre]] und Oszillator tun das nicht.[^darc-50ohm]
 
-Auf **VHF/UHF** ist es umgekehrt: Signale werden oft schon in der **Antennenleitung abgeschwächt** und sollten verstärkt werden. Der **Vorverstärker** gehört **möglichst direkt an die UHF-Antenne** (EF218), damit er das Signal verstärkt, **bevor** das Kabel es dämpft und das Rauschen des Empfängers ins Spiel kommt; unmittelbar vor dem Empfängereingang, zwischen Senderausgang und Antennenkabel oder zwischen SWR-Messgerät und Empfänger wäre er falsch eingebaut. Beim **Senden** muss er abgeschaltet werden (PTT-gesteuert), und bei starken lokalen Signalen auch im Empfangsfall deaktivierbar sein.
+Auf **VHF/UHF** ist es umgekehrt: Signale werden oft schon in der **Antennenleitung abgeschwächt** und sollten verstärkt werden. Der **[[antennenvorverstaerker|Vorverstärker]]** gehört **möglichst direkt an die UHF-Antenne** (EF218), damit er das Signal verstärkt, **bevor** das Kabel es dämpft und das Rauschen des Empfängers ins Spiel kommt; unmittelbar vor dem Empfängereingang, zwischen Senderausgang und Antennenkabel oder zwischen [[swr|SWR]]-Messgerät und Empfänger wäre er falsch eingebaut. Beim **Senden** muss er abgeschaltet werden ([[ptt|PTT]]-gesteuert), und bei starken lokalen Signalen auch im Empfangsfall deaktivierbar sein.
 `,
     },
     {
@@ -155,7 +159,7 @@ Viele Zähler zeigen die Ziffern der Frequenz und rechts hochgestellt eine klein
 
 Beim Abgleich heißt es oft „auf ±10 Hz genau einstellen“: Dann musst du die **Stelle** finden, die 10 Hz bedeutet.
 
-## Messen mit Vorteiler
+## Messen mit [[frequenzteiler|Vorteiler]]
 
 Jeder Zähler arbeitet nur in einem Bereich (zum Beispiel 100 kHz bis 2 GHz). Für höhere Frequenzen schaltet man einen **[Frequenzteiler](wiki:Frequenzteiler|Frequency divider)** (Vorteiler) **vor** den Zähler; er teilt die Frequenz durch einen festen Wert, häufig 10. Der Zähler zeigt dann nur einen Bruchteil. Zeigt er bei einem **10:1-Teiler** 14,5625 MHz, ist die tatsächliche Frequenz **145,625 MHz** (EI504), nicht 1,45625 MHz oder 14,5625 kHz.
 

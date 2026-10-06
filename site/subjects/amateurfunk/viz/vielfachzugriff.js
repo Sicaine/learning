@@ -43,6 +43,7 @@ export default function mount(stage, { params = {}, complete }) {
     draw(v.v); note.innerHTML = '<b>' + INFO[v.v][0] + '.</b> ' + INFO[v.v][1];
     seen.add(v.v); if (seen.size === 3) g.reach('seen');
   }
+  root._test = { get target() { return target; } };
   void s;
   run(ui.values);
 }

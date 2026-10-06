@@ -194,7 +194,7 @@ Leistungsrechnen ist **Prüfungsstoff in Reinform**: EB504–EB506 (Formeln umst
     {
       id: 'deep-limits', type: 'callout', tone: 'deep', title: 'Zwei Grenzen: Leistung und Spannungsfestigkeit',
       md: `
-Ein Widerstand hat **zwei** Grenzen: die Belastbarkeit $P_\\max$ (Wärme) und die Spannungsfestigkeit $U_\\max$ (Überschlag). Es zählt, was zuerst erreicht wird. Beispiel (EB511): $R = 100\\ \\mathrm{k\\Omega}$, $P_\\max = 6$ W, $U_\\max = 1000$ V. Aus der Leistung folgt $U = \\sqrt{6\\cdot 100\\,000} = 775$ V — kleiner als 1000 V. Also begrenzt die **Leistung**: höchstens 775 V.`,
+Ein Widerstand hat **zwei** Grenzen: die Belastbarkeit $P_{\\max}$ (Wärme) und die Spannungsfestigkeit $U_{\\max}$ (Überschlag). Es zählt, was zuerst erreicht wird. Beispiel (EB511): $R = 100\\ \\mathrm{k\\Omega}$, $P_{\\max} = 6$ W, $U_{\\max} = 1000$ V. Aus der Leistung folgt $U = \\sqrt{6\\cdot 100\\,000} = 775$ V — kleiner als 1000 V. Also begrenzt die **Leistung**: höchstens 775 V.`,
     },
     {
       id: 'recall-quad', type: 'recall', title: 'Erkläre es',
@@ -216,7 +216,7 @@ Ein Widerstand hat **zwei** Grenzen: die Belastbarkeit $P_\\max$ (Wärme) und di
     { id: 'kwh-art', front: 'Ist die kWh eine Leistungs- oder Energieeinheit?', back: 'Energie (Leistung mal Zeit).' },
     { id: 'eta', front: 'Wirkungsgrad?', back: '$\\eta = \\dfrac{P_\\text{ab}}{P_\\text{zu}}\\cdot 100\\ \\%$ — immer unter 100 %.' },
     { id: 'p-verlust', front: 'Zusammenhang zwischen zu-, abgeführter und Verlustleistung?', back: '$P_\\text{ab} = P_\\text{zu} - P_V$.' },
-    { id: 'belastbarkeit', front: 'Belastbarkeit eines Widerstands prüfen?', back: 'Leistung $P = U^2/R$ (bzw. $I^2R$) ausrechnen und mit $P_\\max$ vergleichen; Reserve einplanen.' },
+    { id: 'belastbarkeit', front: 'Belastbarkeit eines Widerstands prüfen?', back: 'Leistung $P = U^2/R$ (bzw. $I^2R$) ausrechnen und mit $P_{\\max}$ vergleichen; Reserve einplanen.' },
     { id: 'dummy-belastung', front: 'Dummy Load aus $n$ gleichen Widerständen parallel: Belastbarkeit?', back: '$n\\cdot P_\\text{einzeln}$ (z. B. $11\\cdot 5\\ \\mathrm W = 55\\ \\mathrm W$); $R_\\text{ges} = R/n$.' },
   ],
 };

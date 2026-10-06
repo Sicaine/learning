@@ -55,5 +55,6 @@ export default function mount(stage, { params = {}, complete }) {
     fb.innerHTML = (ok ? '<b style="color:var(--good)">Richtig.</b> ' : '<b style="color:var(--bad)">Nicht ganz.</b> ') + q.explain;
     out.set({ s: streak + ' / ' + need, b: best, n: done }); nx.style.display = '';
   }
+  root._test = { get q() { return q; } };
   nx.onclick = next; out.set({ s: '0 / ' + need, b: 0, n: 0 }); next();
 }

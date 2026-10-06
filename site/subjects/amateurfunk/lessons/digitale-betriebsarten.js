@@ -18,7 +18,7 @@ export default {
     {
       id: 'intro', type: 'text', title: 'Digital funken: älter, als man denkt',
       md: `
-Digital heißt: Es gibt nur **bestimmte Stufen** und nichts dazwischen. CW kennt zwei (Träger an, Träger aus) und ist deshalb schon digital. Mit Computern kamen viele weitere Verfahren dazu, die **Digimodes**: Der Computer erzeugt und liest ein **NF-Signal**, das über das normale Funkgerät gesendet wird. Vom alten [Fernschreiber](wiki:Fernschreiber|Teleprinter) am Funkgerät (RTTY, *radio teletype*) ist nur der Name geblieben.[^darc-50ohm]
+Digital heißt: Es gibt nur **bestimmte Stufen** und nichts dazwischen. [[cw-tastung|CW]] kennt zwei (Träger an, Träger aus) und ist deshalb schon digital. Mit Computern kamen viele weitere Verfahren dazu, die **[[digimode|Digimodes]]**: Der Computer erzeugt und liest ein **NF-Signal**, das über das normale Funkgerät gesendet wird. Vom alten [Fernschreiber](wiki:Fernschreiber|Teleprinter) am Funkgerät ([[rtty|RTTY]], *radio teletype*) ist nur der Name geblieben.[^darc-50ohm]
 
 Jede digitale Verbindung braucht eine Absprache, die beim Sprechfunk nebenbei entsteht: Beide Stationen müssen dasselbe **Übertragungsverfahren** und gegebenenfalls dieselben **Verfahrensparameter** verwenden (NE401). Die Frequenz allein genügt nicht, weil viele Digimodes keine eigene Frequenz haben und man sie nur am Wasserfalldiagramm erkennt. Keine Rolle spielen die Zeitzone (Sommerzeit), die Tageszeit (Nacht/Abend) oder ein „möglichst schnelles Verfahren, um das Band zu entlasten“.
 `,
@@ -26,7 +26,7 @@ Jede digitale Verbindung braucht eine Absprache, die beim Sprechfunk nebenbei en
     {
       id: 'warn-ne401', type: 'callout', tone: 'warning', title: 'Verfahren, Zeit und Tempo',
       md: `
-Die falschen Antworten zu NE401 klingen nach Betriebserfahrung. „Beide brauchen dieselbe Zeitzoneneinstellung“: Die **Zeitzone** ist egal (FT8 braucht zwar eine genaue Uhr, aber eine genaue *Zeit*, keine bestimmte Zeitzone). „Bevorzugt abends und nachts senden“: Es gibt keine solche Regel. „Bevorzugt ein schnelles Verfahren, damit das Band entlastet wird“: Ein schnelles Verfahren ist nicht automatisch das bessere. Richtig ist allein, dass **Sender und Empfänger zueinander passen**.
+Die falschen Antworten zu NE401 klingen nach Betriebserfahrung. „Beide brauchen dieselbe Zeitzoneneinstellung“: Die **Zeitzone** ist egal ([[ft8|FT8]] braucht zwar eine genaue Uhr, aber eine genaue *Zeit*, keine bestimmte Zeitzone). „Bevorzugt abends und nachts senden“: Es gibt keine solche Regel. „Bevorzugt ein schnelles Verfahren, damit das Band entlastet wird“: Ein schnelles Verfahren ist nicht automatisch das bessere. Richtig ist allein, dass **Sender und Empfänger zueinander passen**.
 `,
     },
     {
@@ -34,7 +34,7 @@ Die falschen Antworten zu NE401 klingen nach Betriebserfahrung. „Beide brauche
       md: `
 Auch beim Morsen gilt: Es läuft ähnlich ab wie ein Sprechfunk-QSO, aber **abgekürzt**. Der Grund ist (BB101): Die **Abkürzungen und [Q-Gruppen](wiki:Q-Schlüssel|Q code)** vereinfachen den Betriebsablauf und **optimieren den Informationsgehalt pro Zeiteinheit**. Sie verschleiern nichts: Der **internationale Amateurschlüssel** und die **international gebräuchlichen Betriebsabkürzungen gelten als offene Sprache** (§ 16 Abs. 7 AFuV); Verschlüsselung ist verboten (Abs. 8).[^afuv] Sie dienen auch nicht dem Doppler-Ausgleich bei Satelliten oder als Kennung bei der Fuchsjagd.
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Abkürzung</th><th>Bedeutung</th></tr>
 <tr><td><b>CQ</b></td><td>allgemeiner Anruf</td></tr>
 <tr><td><b>DE</b></td><td>von</td></tr>
@@ -47,7 +47,7 @@ Auch beim Morsen gilt: Es läuft ähnlich ab wie ein Sprechfunk-QSO, aber **abge
 <tr><td>73</td><td>viele Grüße</td></tr>
 <tr><td>SK</td><td>Ende der Verbindung</td></tr>
 <tr><td>=</td><td>Trennzeichen innerhalb eines Durchgangs</td></tr>
-</table>
+</table></div>
 
 Die Falle in den Fragen sind die ähnlichen Bedeutungen: **K** heißt nicht „Unterbrechung“ (das ist BK), **R** nicht „Repeat“, „Rapport“ oder „Readability“, sondern **Received**, und **BK** nicht „Alles richtig verstanden“ oder „Beendigung des Funkverkehrs“ (das wäre SK). Prüfungsbezug: BB108, BB109, BB110.
 
@@ -86,9 +86,9 @@ Und: Eine **Morseprüfung ist nicht Pflicht**. Die Radio Regulations legen **nic
     {
       id: 'ssb-text', type: 'text', title: 'Digimodes per SSB: warum und wie breit',
       md: `
-Die meisten Digimodes brauchen nur eine **sehr kleine Bandbreite**: [PSK31](wiki:PSK31|PSK31) etwa **31,25 Hz**, [FT8](wiki:FT8|FT8) rund **50 Hz**, ein SSB-Sprachsignal dagegen etwa 2,4 kHz.[^darc-50ohm] Auf Kurzwelle gibt man sie daher meist über einen **SSB-Sender** aus: Der Computer liefert den Ton, der Transceiver macht per **Einseitenbandmodulation (SSB)** daraus das HF-Signal (EE402). Mit FM, AM oder PM bliebe die schmale Bandbreite nicht erhalten; deshalb ist SSB die richtige Antwort.
+Die meisten Digimodes brauchen nur eine **sehr kleine Bandbreite**: [PSK31](wiki:PSK31|PSK31) etwa **31,25 Hz**, [FT8](wiki:FT8|FT8) rund **50 Hz**, ein [[einseitenbandmodulation|SSB]]-Sprachsignal dagegen etwa 2,4 kHz.[^darc-50ohm] Auf Kurzwelle gibt man sie daher meist über einen **SSB-Sender** aus: Der Computer liefert den Ton, der [[transceiver|Transceiver]] macht per **Einseitenbandmodulation (SSB)** daraus das HF-Signal (EE402). Mit [[frequenzmodulation|FM]], [[amplitudenmodulation|AM]] oder PM bliebe die schmale Bandbreite nicht erhalten; deshalb ist SSB die richtige Antwort.
 
-Und nun der Rechenkniff: Bei SSB ist die HF-Bandbreite gleich der NF-Bandbreite. Speist du ein Digimode-Signal von **50 Hz** NF-Bandbreite ein, belegt es **50 Hz** auf der Funkfrequenz (EE403), nicht 100 Hz, nicht 25 Hz und nicht $\\sqrt{2}\\cdot 50$ Hz. Daraus ergibt sich eine Chance: In das **Filter eines SSB-Empfängers (2,4 kHz)** passen **viele** dieser schmalen Signale gleichzeitig (EE404): Rein rechnerisch bis zu $2400\\,\\text{Hz}/50\\,\\text{Hz} = 48$ FT8-Signale oder $2400/31{,}25 \\approx 76$ PSK31-Signale. Die Software am Computer dekodiert je nach Programm ein ausgewähltes oder gleich alle. Eine Begrenzung auf „zwei Signale, eins je Seitenband“ oder auf „ein Signal“ gibt es nicht.
+Und nun der Rechenkniff: Bei SSB ist die HF-Bandbreite gleich der NF-Bandbreite. Speist du ein Digimode-Signal von **50 Hz** NF-Bandbreite ein, belegt es **50 Hz** auf der Funkfrequenz (EE403), nicht 100 Hz, nicht 25 Hz und nicht $\\sqrt{2}\\cdot 50$ Hz. Daraus ergibt sich eine Chance: In das **Filter eines SSB-Empfängers (2,4 kHz)** passen **viele** dieser schmalen Signale gleichzeitig (EE404): Rein rechnerisch bis zu $2400\\,\\text{Hz}/50\\,\\text{Hz} = 48$ FT8-Signale oder $2400/31{,}25 \\approx 76$ [[psk31|PSK31]]-Signale. Die Software am Computer dekodiert je nach Programm ein ausgewähltes oder gleich alle. Eine Begrenzung auf „zwei Signale, eins je [[seitenband|Seitenband]]“ oder auf „ein Signal“ gibt es nicht.
 
 Im [Wasserfalldiagramm](wiki:Wasserfalldiagramm|Waterfall chart) trägt die Software die Frequenz waagerecht, die Zeit senkrecht und die Signalstärke als Farbe auf. Darin erkennt man die Verfahren auf einen Blick: Morse als getastete Striche, RTTY als zwei abwechselnde Töne ([Frequenzumtastung](wiki:Frequenzumtastung|Frequency-shift keying), meist mit 170 Hz Abstand), PSK31 als ruhige schmale Linie, FT8 als kurze Blöcke im 15-Sekunden-Takt, und Sprache als breites, pulsierendes Band.
 `,
@@ -107,12 +107,12 @@ Auch Bilder lassen sich funken. **[SSTV](wiki:Slow Scan Television|Slow-scan tel
     {
       id: 'pegel-text', type: 'text', title: 'NF-Pegel am Digimode-Eingang: die ALC darf nicht ansprechen',
       md: `
-Der häufigste Fehler beim ersten FT8-Betrieb: Der Computer liefert **zu viel NF-Pegel**. Ein Digimode-Signal soll sauber und klein sein, nicht „so laut wie möglich“. Wird der Eingang übersteuert, entstehen **Oberschwingungen** und **Nebenaussendungen** (Splatter); das Wasserfallbild des Nachbarn zeigt dann neben deinem gelben Strich weitere Linien. Viele Transceiver haben eine **automatische Pegelregelung**, die **ALC** (*Automatic Level Control*); sie senkt die Verstärkung der Sendestufe, wenn das Signal zu stark wird.[^darc-50ohm]
+Der häufigste Fehler beim ersten FT8-Betrieb: Der Computer liefert **zu viel NF-Pegel**. Ein Digimode-Signal soll sauber und klein sein, nicht „so laut wie möglich“. Wird der Eingang übersteuert, entstehen **Oberschwingungen** und **[[nebenaussendung|Nebenaussendungen]]** ([[splatter|Splatter]]); das Wasserfallbild des Nachbarn zeigt dann neben deinem gelben Strich weitere Linien. Viele Transceiver haben eine **automatische Pegelregelung**, die **[[alc|ALC]]** (*Automatic Level Control*); sie senkt die Verstärkung der Sendestufe, wenn das Signal zu stark wird.[^darc-50ohm]
 
 - Spricht die **ALC** an, ist das ein Zeichen: Das NF-Signal ist **zu stark** (bei konstanter Amplitude wie FT8 verbiegt die Regelung das Signal noch nicht, aber der Pegel ist bereits übersteuert).
 - Bei **veränderlicher Amplitude** (PSK31, QPSK, 16-QAM) macht die ALC das Signal **zusätzlich amplitudenmoduliert**: Es entstehen neue Frequenzanteile, die als Nebenaussendungen **auf benachbarten Frequenzen stören** und die Dekodierung erschweren (EJ217).
 - Deshalb: **NF-Pegel so niedrig, dass die ALC nicht eingreift** (EJ218). Nicht 18 dB über der ALC-Ansprechschwelle, nicht „alle Regler auf Maximum“, und auch nicht null.
-- Und wenn es doch passiert (EJ219): **NF-Pegel am Eingang des Funkgeräts reduzieren.** Mehr Sendeleistung, ein abgeschaltetes Oberwellenfilter oder die RIT helfen nicht, im Gegenteil.
+- Und wenn es doch passiert (EJ219): **NF-Pegel am Eingang des Funkgeräts reduzieren.** Mehr Sendeleistung, ein abgeschaltetes [[oberwellenfilter|Oberwellenfilter]] oder die [[rit|RIT]] helfen nicht, im Gegenteil.
 
 Eine praktische Einstellung: Mit der TUNE-Funktion einen gleichmäßigen Ton senden, den Ausgangspegel des Computers von seinem Maximum langsam herunterregeln, bis die **HF-Ausgangsleistung gerade leicht abfällt**, und dabei Ausgangsleistung und ALC-Anzeige beobachten. Das Optimum liegt bei ruhender ALC.
 `,
@@ -125,7 +125,7 @@ Eine praktische Einstellung: Mit der TUNE-Funktion einen gleichmäßigen Ton sen
     {
       id: 'mission-ft8', type: 'callout', tone: 'mission', title: 'Funkpraxis: Dein erstes FT8-Signal',
       md: `
-Stelle dein Funkgerät auf **USB**, binde den Transceiver per USB-Kabel oder Audio-Interface an den Computer an und starte FT8-Software (z. B. WSJT-X). Sende zuerst einen **TUNE-Ton**, hole den Pegel am Computer so weit herunter, dass die **ALC ruht**, und beobachte dich im **PSK-Reporter** (siehe unten): Dort siehst du nach wenigen Minuten, wer dich in welchem Land gehört hat. Die Leistung musst du dafür nicht ausreizen, oft genügen wenige Watt.
+Stelle dein Funkgerät auf **USB**, binde den Transceiver per USB-Kabel oder Audio-Interface an den Computer an und starte FT8-Software (z. B. WSJT-X). Sende zuerst einen **TUNE-Ton**, hole den Pegel am Computer so weit herunter, dass die **ALC ruht**, und beobachte dich im **[[psk|PSK]]-Reporter** (siehe unten): Dort siehst du nach wenigen Minuten, wer dich in welchem Land gehört hat. Die Leistung musst du dafür nicht ausreizen, oft genügen wenige Watt.
 `,
     },
     {
@@ -147,9 +147,9 @@ Sprache wird vor der Übertragung digitalisiert und in einen **Datenstrom** umge
 
 Über **vernetzte Relaisstellen** (HAMNET oder Internet) spricht man weltweit; wer keinen Relaiszugang hat, nutzt einen **Hotspot** zu Hause (nur als besetzte Station, solange keine Fernbedienungsgenehmigung vorliegt).
 
-**Zusätzliche Einstellungen.** Bei analogem FM genügen Frequenz und Modulation. Bei digitaler Sprache musst du außerdem **geeignete Parameter wählen**, etwa **Reflektor** (C4FM/D-STAR), **Zeitschlitz** oder **Color-Code** (DMR), damit die Verbindung zustande kommt (NE402). Nicht nötig oder nicht richtig: dieselbe Firmware wie das Repeaternetz, dieselbe Stationskennung (jeder hat seine eigene, z. B. die DMR-ID) oder Funkreichweite zum selben Repeater (die Verbindung läuft ja über das Netz).
+**Zusätzliche Einstellungen.** Bei analogem FM genügen Frequenz und [[modulation|Modulation]]. Bei digitaler Sprache musst du außerdem **geeignete Parameter wählen**, etwa **Reflektor** (C4FM/D-STAR), **Zeitschlitz** oder **Color-Code** (DMR), damit die Verbindung zustande kommt (NE402). Nicht nötig oder nicht richtig: dieselbe Firmware wie das Repeaternetz, dieselbe Stationskennung (jeder hat seine eigene, z. B. die DMR-ID) oder Funkreichweite zum selben Repeater (die Verbindung läuft ja über das Netz).
 
-**Zeitmultiplex.** Manche digitale Verfahren (DMR, TETRA) teilen die Frequenz in **kurze, periodische Zeitschlitze** auf: Mehrere Sprechverbindungen laufen **gleichzeitig auf derselben Frequenz im Empfangsgebiet** (NE403), indem die Daten abwechselnd gesendet werden. Das heißt **TDMA** (*Time Division Multiple Access*); mehr dazu in der nächsten Lektion. Ein Funkgerät muss dazu ständig schnell zwischen Senden und Empfangen umschalten, und **externe Leistungsverstärker** können das meist nicht: Für DMR und andere Zeitschlitz-Verfahren dürfen nur dafür geeignete Verstärker verwendet werden, sonst wird die Frequenz auch außerhalb des eigenen Zeitschlitzes belegt und stört andere. Dass sich gleichzeitige digitale Übertragungen „prinzipbedingt stören“ oder Sprache nicht in Pakete aufzuteilen sei, ist falsch.
+**Zeitmultiplex.** Manche digitale Verfahren (DMR, TETRA) teilen die Frequenz in **kurze, periodische Zeitschlitze** auf: Mehrere Sprechverbindungen laufen **gleichzeitig auf derselben Frequenz im Empfangsgebiet** (NE403), indem die Daten abwechselnd gesendet werden. Das heißt **[[tdma|TDMA]]** (*Time Division Multiple Access*); mehr dazu in der nächsten Lektion. Ein Funkgerät muss dazu ständig schnell zwischen Senden und Empfangen umschalten, und **externe Leistungsverstärker** können das meist nicht: Für DMR und andere Zeitschlitz-Verfahren dürfen nur dafür geeignete Verstärker verwendet werden, sonst wird die Frequenz auch außerhalb des eigenen Zeitschlitzes belegt und stört andere. Dass sich gleichzeitige digitale Übertragungen „prinzipbedingt stören“ oder Sprache nicht in Pakete aufzuteilen sei, ist falsch.
 `,
     },
     {
@@ -161,7 +161,7 @@ Digitale Verfahren und CW kann man **automatisch dekodieren lassen**: Empfangsst
 - Für **CW** gibt es das **Reverse Beacon Network** mit automatischen „Skimmer“-Stationen.[^reverse-beacon-network]
 - **PSK Reporter** sammelt Berichte für viele Verfahren (PSK31, FT8, FT4, RTTY, …).[^psk-reporter]
 
-Du erhältst also Empfangsberichte, indem du eine Nachricht mit einem geeigneten Verfahren (z. B. CW oder WSPR) sendest und dann **auf den passenden Internetplattformen nach deinem Rufzeichen suchst** (EE405). Du musst weder deine E-Mail-Adresse mitsenden noch „AUTO RSVP“ tasten noch auf einer 10 kHz tieferen oder höheren Frequenz lauschen: Das sind Erfindungen der falschen Antworten.
+Du erhältst also Empfangsberichte, indem du eine Nachricht mit einem geeigneten Verfahren (z. B. CW oder [[wspr|WSPR]]) sendest und dann **auf den passenden Internetplattformen nach deinem Rufzeichen suchst** (EE405). Du musst weder deine E-Mail-Adresse mitsenden noch „AUTO RSVP“ tasten noch auf einer 10 kHz tieferen oder höheren Frequenz lauschen: Das sind Erfindungen der falschen Antworten.
 `,
     },
     {
@@ -171,9 +171,9 @@ Digitale Daten lassen sich in kurze Abschnitte teilen, die **Pakete**. Jedes Pak
 
 Früher übernahm das [Packet Radio](wiki:Packet Radio|Packet radio) (AX.25, 1200 und 9600 Bit/s). Heute gibt es das **[HAMNET](wiki:HAMNET)** (*Highspeed Amateurradio Multimedia Network*): ein von Funkamateuren betriebenes, **IP-basiertes** Netz, das für die schnellen Verbindungen zwischen den Knoten überwiegend die Mikrowellenbänder **6 cm, 9 cm und 13 cm** nutzt. Man nutzt es wie das Internet, im einfachsten Fall mit dem Webbrowser.[^darc-50ohm]
 
-**Kann das Internetprotokoll (IP) im Amateurfunk verwendet werden?** Ja: **Es ist nicht auf das Internet beschränkt** (EE414). Weder wird das Rufzeichen in der Subnetzmaske codiert, noch öffnet das IP-Netz Internetnutzern den Weg ins Amateurfunkband, noch fehlt die Bandbreite.
+**Kann das Internetprotokoll (IP) im Amateurfunk verwendet werden?** Ja: **Es ist nicht auf das Internet beschränkt** (EE414). Weder wird das Rufzeichen in der [[subnetzmaske|Subnetzmaske]] codiert, noch öffnet das IP-Netz Internetnutzern den Weg ins Amateurfunkband, noch fehlt die Bandbreite.
 
-## IP-Adresse und Subnetzmaske
+## [[ip-adresse|IP-Adresse]] und Subnetzmaske
 
 Eine **IPv4-Adresse** besteht aus **32 Bit**, geschrieben als vier Zahlen von 0 bis 255 (jede 8 Bit, etwa 192.168.1.20). Ein Teil vorn ist der **Netzanteil** (alle Geräte im selben Netz beginnen gleich), der Rest der **Hostanteil**. Wie lang der Netzanteil ist, steht in der **[Subnetzmaske](wiki:Subnetzmaske|Subnet mask)**: so viele Einsen von links, wie der Netzanteil lang ist. 255.255.255.0 bedeutet 24 Bit Netzanteil, geschrieben auch /24.
 

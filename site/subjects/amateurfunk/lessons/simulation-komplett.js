@@ -13,7 +13,7 @@ export default {
     {
       id: 'ablauf', type: 'text', title: 'So läuft die Komplett-Simulation',
       md: String.raw`
-Die Komplett-Simulation bildet die schriftliche Prüfung zur Klasse E nach: **vier Teile in Folge**, jeder mit **25 Fragen** und **eigenem 45-Minuten-Zeitgeber**: Teil V (Vorschriften), Teil B (Betrieb), Teil N (Technik Einstieg) und Teil E (Technik Klasse E). Das sind **100 Fragen** und höchstens **4 × 45 = 180 Minuten** reine Bearbeitungszeit.[^bnetza-pruefungsordnung]
+Die Komplett-Simulation bildet die schriftliche [Prüfung](wiki:Prüfung|Exam) zur Klasse E der [Bundesnetzagentur](wiki:Bundesnetzagentur|Federal Network Agency) nach (eine [Amateurfunkprüfung](wiki:Amateurfunkprüfung) im [Multiple-Choice-Verfahren](wiki:Multiple Choice|Multiple choice)): **vier Teile in Folge**, jeder mit **25 Fragen** und **eigenem 45-Minuten-Zeitgeber**: Teil V (Vorschriften), Teil B (Betrieb), Teil N (Technik Einstieg) und Teil E (Technik Klasse E). Das sind **100 Fragen** und höchstens **4 × 45 = 180 Minuten** reine Bearbeitungszeit.[^bnetza-pruefungsordnung]
 
 Auf der Plattform gelten dabei dieselben Regeln wie am Prüfungstag:
 
@@ -25,7 +25,7 @@ Auf der Plattform gelten dabei dieselben Regeln wie am Prüfungstag:
     },
     {
       id: 'mission-vorbereitung', type: 'callout', tone: 'mission', title: 'Funkpraxis: Wie am echten Prüfungstag',
-      md: String.raw`Tu so, als wäre es die echte Prüfung: **Handy aus** (am Prüfungstag müssen elektronische Kommunikationsgeräte grundsätzlich ausgeschaltet sein), **nur Stift, Taschenrechner und die amtliche Formelsammlung**, dazu Entwurfspapier für Berechnungen. Keine Notizen, kein Nachschlagen in Lektionen. Nur so erfährst du, wie du *wirklich* unter Zeitdruck abschneidest, und kannst die Prüfungsangst dosieren.[^bnetza-pruefungsordnung]`,
+      md: String.raw`Tu so, als wäre es die echte Prüfung: **Handy aus** (am Prüfungstag müssen elektronische Kommunikationsgeräte grundsätzlich ausgeschaltet sein), **nur Stift, Taschenrechner und die amtliche Formelsammlung**, dazu Entwurfspapier für Berechnungen. Keine Notizen, kein Nachschlagen in Lektionen. Nur so erfährst du, wie du *wirklich* unter Zeitdruck abschneidest, und kannst die [Prüfungsangst](wiki:Prüfungsangst|Test anxiety) dosieren (ein guter Umgang mit der Zeit hilft: [Zeitmanagement](wiki:Zeitmanagement|Time management)).[^bnetza-pruefungsordnung]`,
     },
     {
       id: 'auswertung', type: 'text', title: 'Das Ergebnis lesen',
@@ -39,7 +39,7 @@ Am Ende zeigt die Plattform je Teil die erreichten **Punkte gegenüber der Beste
 <tr><td><b>Nicht bestanden</b></td><td>Ein Teil unter 17 Punkten oder <b>mehr als ein</b> Teil unter 19</td><td>Nicht bestandene Teile können innerhalb von <b>24 Monaten</b> einzeln wiederholt werden; bestandene Teile bleiben</td></tr>
 </table>
 
-Nach der Simulation öffnest du die **Fehlerliste**: Zu jedem Fehler steht die richtige Antwort, gegebenenfalls eine Erklärung und der Link „Dazu die Lektion“. Danach bringt dich der Modus [Letzte Prüfung](#/s/amateurfunk/practice/last) mit genau diesen Fragen in die Übung zurück.`,
+Nach der Simulation öffnest du die **Fehlerliste**: Zu jedem Fehler steht die richtige Antwort, gegebenenfalls eine Erklärung und der Link „Dazu die Lektion“; was sich nicht festsetzt, gehört in die [Lernkartei](wiki:Lernkartei|Flashcard) des [Gedächtnisses](wiki:Gedächtnis|Memory). Danach bringt dich der Modus [Letzte Prüfung](#/s/amateurfunk/practice/last) mit genau diesen Fragen in die Übung zurück.`,
     },
     {
       id: 'demo-punkte', type: 'viz', viz: 'pruefungs-fahrplan', title: 'Demo: Punkte-Rechner',

@@ -14,7 +14,7 @@ export default {
     {
       id: 'ablauf', type: 'text', title: 'So läuft Teil N',
       md: String.raw`
-Teil N („Technische Kenntnisse“ auf Einstiegsniveau) hat dieselbe Form wie die anderen Teile: **25** Fragen, **45 Minuten**, **19 Punkte** zum Bestehen, ab **17** Punkten bei genau einem verfehlten Teil mündliche Nachprüfung möglich.[^bnetza-pruefungsordnung] Neu gegenüber V und B: In den **Technikteilen** bekommst du die **Formelsammlung** und **Entwurfspapier** für Berechnungen (die Berechnungen auf dem Entwurfspapier zählen nicht für das Ergebnis). Mitbringen darfst du einen einfachen **wissenschaftlichen** oder **nicht programmierbaren Taschenrechner** ohne Textspeicher. Der N-Pool hat **195** Fragen.[^bnetza-fragenkatalog]
+Teil N („Technische Kenntnisse“ auf Einstiegsniveau, [Ohmsches Gesetz](wiki:Ohmsches Gesetz|Ohm's law), [Widerstände](wiki:Widerstand (Bauelement)|Resistor) und [Wechselstrom](wiki:Wechselstrom|Alternating current), [Kondensator](wiki:Kondensator (Elektrotechnik)|Capacitor) und [Spule](wiki:Spule (Elektrotechnik)|Electromagnetic coil)) hat dieselbe Form wie die anderen Teile: **25** Fragen, **45 Minuten**, **19 Punkte** zum Bestehen, ab **17** Punkten bei genau einem verfehlten Teil mündliche Nachprüfung möglich.[^bnetza-pruefungsordnung] Neu gegenüber V und B: In den **Technikteilen** bekommst du die **Formelsammlung** und **Entwurfspapier** für Berechnungen (die Berechnungen auf dem Entwurfspapier zählen nicht für das Ergebnis). Mitbringen darfst du einen einfachen **wissenschaftlichen** oder **nicht programmierbaren** [Taschenrechner](wiki:Taschenrechner|Calculator) ohne Textspeicher. Der N-Pool hat **195** Fragen.[^bnetza-fragenkatalog]
 
 **Jetzt starten:** [Prüfungssimulation](#/s/amateurfunk/exam), bei Teil N **„nur diesen Teil unter Prüfungsbedingungen“**. Dazu: [Übungsmodus für den ganzen Teil N](#/s/amateurfunk/practice/part:n) und die [Fehler der letzten Prüfung](#/s/amateurfunk/practice/last). Lege die amtliche Formelsammlung[^bnetza-formelsammlung] neben den Bildschirm; in der Prüfung liegt sie auch auf dem Tisch.
 
@@ -36,14 +36,14 @@ Teil N („Technische Kenntnisse“ auf Einstiegsniveau) hat dieselbe Form wie d
     {
       id: 'strategie', type: 'text', title: 'Strategie: erst die sicheren Punkte, dann das Rechnen',
       md: String.raw`
-Teil N besteht aus **Verständnisfragen** (Wirkung eines Bauteils, Schaltzeichen, Modulationsart, Antennenform) und **Rechenaufgaben** mit wenigen Schritten. Die Formeln musst du **nicht auswendig** können, wohl aber **wissen, dass sie in der Formelsammlung stehen, wo, und welche Größen was bedeuten**:
+Teil N besteht aus **Verständnisfragen** (Wirkung eines Bauteils, Schaltzeichen, Modulationsart, Antennenform) und **Rechenaufgaben** mit wenigen Schritten (z. B. zum [Spannungsteiler](wiki:Spannungsteiler|Voltage divider)). Die Formeln musst du **nicht auswendig** können, wohl aber **wissen, dass sie in der Formelsammlung stehen, wo, und welche Größen was bedeuten**:
 
 1. **Erster Durchgang, zügig:** Verständnisfragen sofort beantworten (etwa 30 bis 50 Sekunden). Rechenaufgaben, die länger als eine Minute brauchen, **markieren und überspringen**.
 2. **Zweiter Durchgang:** Rechenaufgaben mit Entwurfspapier. **Gegeben und gesucht** aufschreiben, **Formel suchen**, alle Werte in **Grundeinheiten** umrechnen, rechnen, **Plausibilität** prüfen (Größenordnung, Einheit).
 3. **Ausschlussverfahren:** Die Antworten unterscheiden sich oft um Zehnerpotenzen. Eine überschlägige Rechnung (z. B. $330\,\Omega \parallel 470\,\Omega$ muss kleiner als $330\,\Omega$ sein) streicht schon zwei Antworten.
 4. **Kontrolle:** Hast du Zeit, prüfe zuerst die Rechenaufgaben mit „komischem“ Ergebnis.
 
-**Fallen:** $\hat U$ (Spitzenwert), $U_\mathrm{eff}$ (Effektivwert), $U_\mathrm{SS}$ (Spitze-Spitze); Leistungs- und Spannungsverhältnis bei **dB** (3 dB bedeuten Faktor 2 bei Leistung, aber nur 1,41 bei Spannung); **m statt M**, **µ statt n**; bei der Parallelschaltung am Ende den Kehrwert vergessen.`,
+**Fallen:** $\hat U$ (Spitzenwert), $U_\mathrm{eff}$ (Effektivwert), $U_\mathrm{SS}$ (Spitze-Spitze); Leistungs- und Spannungsverhältnis bei **dB** ([Dezibel](wiki:Dezibel|Bel (unit)): 3 dB bedeuten Faktor 2 bei Leistung, aber nur 1,41 bei Spannung); **m statt M**, **µ statt n** (Schreibweise mit [Zehnerpotenzen](wiki:Zehnerpotenz|Power of 10)); bei der Parallelschaltung am Ende den Kehrwert vergessen.`,
     },
     {
       id: 'demo-zeit', type: 'viz', viz: 'zeit-planer', title: 'Demo: Dein Zeitplan für Teil N',

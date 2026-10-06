@@ -93,6 +93,7 @@ export default function mount(stage, { params = {}, complete }) {
     stats();
     if (streak >= need) g.reach('g');
   };
+  root._test = { get cur() { return cur; } };
   chk.onclick = check; inp.onkeydown = e => { if (e.key === 'Enter') check(); };
   stats();
 }

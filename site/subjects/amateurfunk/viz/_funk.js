@@ -28,7 +28,8 @@ export const rect = (x, y, w, hh, o = {}) => s('rect', { x, y, width: Math.max(0
  *   c.add(el, el, …) / c.clear();  c.X(v), c.Y(v) rechnen in SVG-Koordinaten um.
  */
 export function chart(root, o) {
-  const W = o.w ?? boxWidth(root), H = o.h ?? 200;
+  // Beim ersten mount() hängt der Container oft noch nicht im DOM (Breite 0): dann Fensterbreite abzüglich Rand schätzen.
+  const W = o.w ?? (root.isConnected && root.getBoundingClientRect().width > 40 ? boxWidth(root) : Math.max(300, Math.min(640, (document.documentElement.clientWidth || 390) - 56))), H = o.h ?? 200;
   const m = { l: o.yticks?.length || o.ylabel ? 46 : 12, r: 14, t: 12, b: o.xlabel ? 40 : 28, ...o.margin };
   const svg = s('svg', { class: 'vz-svg', viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': o.aria || 'Diagramm' });
   root.append(svg);

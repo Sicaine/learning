@@ -14,7 +14,7 @@ export default {
     {
       id: 'ablauf', type: 'text', title: 'So läuft Teil V',
       md: String.raw`
-Teil V („Kenntnisse von Vorschriften“) ist der erste der vier schriftlichen Teile. Die Eckdaten:[^bnetza-pruefungsordnung]
+Teil V („Kenntnisse von Vorschriften“) ist der erste der vier schriftlichen Teile ([Amateurfunkprüfung](wiki:Amateurfunkprüfung)). Die Eckdaten:[^bnetza-pruefungsordnung]
 
 <table>
 <tr><th>Merkmal</th><th>Teil V</th></tr>
@@ -32,7 +32,7 @@ Alle Fragen stammen aus dem amtlichen Katalog der [Bundesnetzagentur](wiki:Bunde
     {
       id: 'schwerpunkte', type: 'text', title: 'Wo die Fragen herkommen',
       md: String.raw`
-Der V-Pool verteilt sich auf fünf Themen. Die Zahlen helfen dir, deinen Lernaufwand zu gewichten (in der Simulation kommen die Fragen reihum aus allen Themen):
+Der V-Pool verteilt sich auf fünf Themen: die [Radio Regulations](wiki:Radio Regulations|ITU Radio Regulations) der [Internationalen Fernmeldeunion](wiki:Internationale Fernmeldeunion|International Telecommunication Union), die Regelungen der [CEPT](wiki:CEPT|European Conference of Postal and Telecommunications Administrations), das [Amateurfunkgesetz](wiki:Amateurfunkgesetz), die [Amateurfunkverordnung](wiki:Amateurfunkverordnung) und weitere Vorschriften. Die Zahlen helfen dir, deinen Lernaufwand zu gewichten (in der Simulation kommen die Fragen reihum aus allen Themen):
 
 <table>
 <tr><th>Thema</th><th>Fragen im Pool</th><th>Anteil</th></tr>
@@ -43,7 +43,7 @@ Der V-Pool verteilt sich auf fünf Themen. Die Zahlen helfen dir, deinen Lernauf
 <tr><td>Weitere Gesetze und Bestimmungen (EMVG, FuAG, TKG, TTDSG, BEMFV, Sicherheit …)</td><td>51</td><td>25 %</td></tr>
 </table>
 
-Die Verordnung und die weiteren Gesetze machen zusammen fast drei Viertel des Pools aus. Das ist die gute Nachricht: Die Zusammenhänge dort lassen sich **verstehen**, nicht nur auswendig lernen (z. B. die Idee „beide Seiten vorschriftsmäßig → Abhilfe in Zusammenarbeit“).`,
+Zu den weiteren Gesetzen zählen das [Funkanlagengesetz](wiki:Funkanlagengesetz), das Gesetz über die [elektromagnetische Verträglichkeit](wiki:Elektromagnetische Verträglichkeit|Electromagnetic compatibility) und das [Fernmeldegeheimnis](wiki:Fernmeldegeheimnis); Verstöße sind teils [Ordnungswidrigkeiten](wiki:Ordnungswidrigkeit|Contravention). Die Verordnung und die weiteren Gesetze machen zusammen fast drei Viertel des Pools aus. Das ist die gute Nachricht: Die Zusammenhänge dort lassen sich **verstehen**, nicht nur auswendig lernen (z. B. die Idee „beide Seiten vorschriftsmäßig → Abhilfe in Zusammenarbeit“).`,
     },
     {
       id: 'fallen', type: 'text', title: 'Typische Fallen in Teil V',

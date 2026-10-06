@@ -80,8 +80,8 @@ Silber leitet am besten, Kupfer ist fast ebenso gut und viel billiger — deshal
       id: 'calc-min-area', type: 'numeric', title: 'Mindest-Querschnitt',
       question: 'Wie groß muss der Querschnitt einer **20 m** langen Kupferleitung mindestens sein, damit bei **10 A** höchstens **0,5 V** abfallen?',
       answer: 7.2, tolerance: 0.1, unit: 'mm²',
-      hint: 'Zuerst den größten erlaubten Widerstand $R_\\max = U/I$, dann $A = \\rho\\cdot l/R_\\max$.',
-      explain: '$R_\\max = 0{,}5/10 = 0{,}05\\ \\Omega$, also $A = 0{,}018\\cdot 20/0{,}05 = 7{,}2\\ \\mathrm{mm^2}$ — das entspricht einem Durchmesser von etwa 3 mm. Genau das hast du in der Demo gefunden.',
+      hint: 'Zuerst den größten erlaubten Widerstand $R_{\\max} = U/I$, dann $A = \\rho\\cdot l/R_{\\max}$.',
+      explain: '$R_{\\max} = 0{,}5/10 = 0{,}05\\ \\Omega$, also $A = 0{,}018\\cdot 20/0{,}05 = 7{,}2\\ \\mathrm{mm^2}$ — das entspricht einem Durchmesser von etwa 3 mm. Genau das hast du in der Demo gefunden.',
     },
     {
       id: 'quiz-double-d', type: 'quiz', title: 'Doppelter Durchmesser',

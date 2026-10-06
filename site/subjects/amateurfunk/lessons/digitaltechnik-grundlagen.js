@@ -25,14 +25,14 @@ Computer und Digitalschaltungen arbeiten mit nur **zwei** Ziffern: 0 und 1. Dahi
     {
       id: 'dual-text', type: 'text', title: 'Dualzahlen: Stellenwerte verdoppeln sich',
       md: `
-Im Dezimalsystem ist jede Stelle zehnmal so viel wert wie die rechts daneben (1, 10, 100, 1000 …), weil es zehn Ziffern gibt. Im **Dualsystem** gibt es nur zwei, deshalb **verdoppeln** sich die Stellenwerte: 1, 2, 4, 8, 16, 32, 64, 128 …. Eine Stelle heißt **Bit**.
+Im Dezimalsystem ist jede Stelle zehnmal so viel wert wie die rechts daneben (1, 10, 100, 1000 …), weil es zehn Ziffern gibt. Im **[[dualsystem|Dualsystem]]** gibt es nur zwei, deshalb **verdoppeln** sich die Stellenwerte: 1, 2, 4, 8, 16, 32, 64, 128 …. Eine Stelle heißt **Bit**.
 
 **Dual → Dezimal:** Schreibe über jede Ziffer ihren Stellenwert und addiere die Stellenwerte, unter denen eine **1** steht.
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr>
 <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-</table>
+</table></div>
 
 $00101101_2 = 32 + 8 + 4 + 1 = 45$. Nullen vorn ändern den Wert nicht: In Hardware und Software hat jede Zahl eine feste **Breite** (8, 16, 32, 64 Bit), und vorn wird mit Nullen aufgefüllt.
 
@@ -52,14 +52,14 @@ Als Prüfungsrechnung genügt dir ein sicheres Gefühl für die Zweierpotenzen b
       md: `
 Drei Größen, die im Alltag („mein DSL hat 100 MBit/s Bandbreite“) vermischt werden, in der Prüfung aber **streng getrennt** sind:
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Größe</th><th>Was wird gemessen?</th><th>Einheit</th></tr>
 <tr><td><b>Bandbreite</b></td><td>der genutzte <b>Frequenzbereich</b></td><td><b>Hertz</b> (Hz)</td></tr>
-<tr><td><b>Datenübertragungsrate</b></td><td>die je Zeiteinheit übertragene <b>Datenmenge</b></td><td><b>Bit pro Sekunde</b> (Bit/s)</td></tr>
+<tr><td><b>[[datenuebertragungsrate|Datenübertragungsrate]]</b></td><td>die je Zeiteinheit übertragene <b>Datenmenge</b></td><td><b>Bit pro Sekunde</b> (Bit/s)</td></tr>
 <tr><td><b>Symbolrate</b></td><td>die je Sekunde gesendeten <b>Symbole</b> (Zustände, zwischen denen umgeschaltet wird)</td><td><b>[Baud](wiki:Baud|Baud)</b> (Bd)</td></tr>
-</table>
+</table></div>
 
-Die Datenrate ist die **Bit/s**-Größe (EA106): Baud, Hertz und Dezibel sind falsch. Die **Bandbreite** hat die Einheit Hertz (EA105). Der Unterschied (EE401): *Als Bandbreite wird der genutzte Frequenzbereich (in Hz), als Datenübertragungsrate die je Zeiteinheit übertragene Datenmenge (in Bit/s) bezeichnet.* Die falschen Antworten vertauschen Einheiten („Datenmenge in Hz“, „Datenrate in Baud“) oder behaupten Gleichheiten („Datenrate entspricht der Symbolrate“).[^darc-50ohm]
+Die Datenrate ist die **Bit/s**-Größe (EA106): [[baud|Baud]], Hertz und Dezibel sind falsch. Die **Bandbreite** hat die Einheit Hertz (EA105). Der Unterschied (EE401): *Als Bandbreite wird der genutzte Frequenzbereich (in Hz), als Datenübertragungsrate die je Zeiteinheit übertragene Datenmenge (in Bit/s) bezeichnet.* Die falschen Antworten vertauschen Einheiten („Datenmenge in Hz“, „Datenrate in Baud“) oder behaupten Gleichheiten („Datenrate entspricht der Symbolrate“).[^darc-50ohm]
 
 Zwischen Baud und Bit/s liegt der Faktor **Bit je Symbol**: $\\text{Datenrate} = \\text{Symbolrate} \\cdot \\text{Bit je Symbol}$. Mit zwei Zuständen je Symbol (ein Bit) sind 9600 Bd gleich 9600 Bit/s = 9,6 kbit/s. Mit vier Zuständen (zwei Bit je Symbol) schafft dieselbe Symbolrate das Doppelte. Mehr Daten pro Sekunde brauchen mehr Bandbreite; beide Größen hängen zusammen, sind aber **nicht dasselbe**.
 `,
@@ -69,10 +69,10 @@ Zwischen Baud und Bit/s liegt der Faktor **Bit je Symbol**: $\\text{Datenrate} =
       md: `
 Die drei Eigenschaften eines Trägers, Amplitude, Frequenz und Phase, kann man auch **zwischen festen Werten umschalten**. Das nennt man **Umtastung** (englisch *shift keying*); die festen Zustände heißen **Symbole**.[^darc-50ohm]
 
-- **[Amplitudenumtastung](wiki:Amplitudenumtastung|Amplitude-shift keying) (ASK)**: zwei Amplituden stehen für 0 und 1. Der Sonderfall, bei dem der Träger ganz aus- und eingeschaltet wird, heißt **On-Off-Keying (OOK)**: das ist die Telegrafie (CW).
-- **[Frequenzumtastung](wiki:Frequenzumtastung|Frequency-shift keying) (FSK)**: zwei Frequenzen stehen für 0 und 1; die Amplitude bleibt gleich (RTTY).
-- **Phasenumtastung (PSK)**: Die Phase springt (z. B. um 180°); Amplitude und Frequenz bleiben gleich (PSK31).
-- **AFSK** (*Audio Frequency Shift Keying*): Das „A“ steht hier für **Audio**. Es ist eine Frequenzumtastung im Hörbereich, oft zwischen 300 und 2700 Hz, die dann mit einem normalen Sprechfunkgerät per **FM, AM oder SSB** übertragen wird (EE408). Auf dem Band sieht ein SSB-übertragenes AFSK-Signal wieder aus wie ein FSK-Signal. Beispiel: **APRS** auf 144,800 MHz mit 1200 Bit/s per AFSK und FM-Funkgeräten.[^aprs-fi] AFSK ist langsam, funktioniert aber mit fast jedem Funkgerät: Mikrofon- und Lautsprecheranschluss genügen. AFSK ist **kein** PSK-Signal, **keine** Kombination aus Amplituden- und Frequenzmodulation und **kein** unmodulierter Träger.
+- **[Amplitudenumtastung](wiki:Amplitudenumtastung|Amplitude-shift keying) ([[ask|ASK]])**: zwei Amplituden stehen für 0 und 1. Der Sonderfall, bei dem der Träger ganz aus- und eingeschaltet wird, heißt **On-Off-Keying (OOK)**: das ist die Telegrafie ([[cw-tastung|CW]]).
+- **[Frequenzumtastung](wiki:Frequenzumtastung|Frequency-shift keying) ([[fsk|FSK]])**: zwei Frequenzen stehen für 0 und 1; die Amplitude bleibt gleich ([[rtty|RTTY]]).
+- **Phasenumtastung ([[psk|PSK]])**: Die Phase springt (z. B. um 180°); Amplitude und Frequenz bleiben gleich ([[psk31|PSK31]]).
+- **[[afsk|AFSK]]** (*Audio Frequency Shift Keying*): Das „A“ steht hier für **Audio**. Es ist eine Frequenzumtastung im Hörbereich, oft zwischen 300 und 2700 Hz, die dann mit einem normalen Sprechfunkgerät per **[[frequenzmodulation|FM]], [[amplitudenmodulation|AM]] oder [[einseitenbandmodulation|SSB]]** übertragen wird (EE408). Auf dem Band sieht ein SSB-übertragenes AFSK-Signal wieder aus wie ein FSK-Signal. Beispiel: **APRS** auf 144,800 MHz mit 1200 Bit/s per AFSK und FM-Funkgeräten.[^aprs-fi] AFSK ist langsam, funktioniert aber mit fast jedem Funkgerät: Mikrofon- und Lautsprecheranschluss genügen. AFSK ist **kein** PSK-Signal, **keine** Kombination aus Amplituden- und Frequenzmodulation und **kein** unmodulierter Träger.
 
 Beim Erkennen im Bild (EE406, EE407) achtest du auf das, was sich im Takt der Bits ändert: **Höhe** (ASK/OOK), **Abstand der Nulldurchgänge** (FSK).
 `,
@@ -87,12 +87,12 @@ Beim Erkennen im Bild (EE406, EE407) achtest du auf das, was sich im Takt der Bi
       md: `
 Wie teilen sich mehrere Teilnehmer ein Frequenzband?
 
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Verfahren</th><th>Trennung nach …</th><th>Merksatz</th><th>Beispiele</th></tr>
-<tr><td><b>FDMA</b> (Frequenzmultiplex)</td><td>Frequenz</td><td><b>zeitgleich auf unterschiedlichen Frequenzen</b></td><td>Relaiskanäle, frühe analoge Mobilfunknetze</td></tr>
-<tr><td><b>TDMA</b> (Zeitmultiplex)</td><td>Zeit</td><td><b>im schnellen zeitlichen Wechsel auf derselben Frequenz</b></td><td>DMR, GSM, DECT</td></tr>
-<tr><td><b>CDMA</b> (Codemultiplex)</td><td>Code</td><td><b>zeitgleich mit Spreizcodierung im selben Frequenzbereich</b></td><td>UMTS, GPS</td></tr>
-</table>
+<tr><td><b>[[fdma|FDMA]]</b> (Frequenzmultiplex)</td><td>Frequenz</td><td><b>zeitgleich auf unterschiedlichen Frequenzen</b></td><td>Relaiskanäle, frühe analoge Mobilfunknetze</td></tr>
+<tr><td><b>[[tdma|TDMA]]</b> (Zeitmultiplex)</td><td>Zeit</td><td><b>im schnellen zeitlichen Wechsel auf derselben Frequenz</b></td><td>DMR, GSM, DECT</td></tr>
+<tr><td><b>[[cdma|CDMA]]</b> (Codemultiplex)</td><td>Code</td><td><b>zeitgleich mit Spreizcodierung im selben Frequenzbereich</b></td><td>UMTS, GPS</td></tr>
+</table></div>
 
 Im Amateurfunk begegnet dir davon vor allem **TDMA bei DMR** (zwei Zeitschlitze auf einer Frequenz). Die Antwort „zeitgleich auf unterschiedlichen Wegen“ ist bei allen drei Fragen (EE409 bis EE411) falsch.[^darc-50ohm]
 `,
@@ -105,13 +105,13 @@ Im Amateurfunk begegnet dir davon vor allem **TDMA bei DMR** (zwei Zeitschlitze 
     {
       id: 'rig-text', type: 'text', title: 'Computer und Funkgerät verbinden',
       md: `
-Für Digimodes (z. B. FT8, WSPR) braucht der Computer zwei Dinge vom Funkgerät: das **NF-Signal** (hören und senden) und, bequemerweise, eine **Steuerung** (Frequenz, PTT). Dafür gibt es drei Anschlüsse, die du nicht verwechseln darfst:[^darc-50ohm]
+Für [[digimode|Digimodes]] (z. B. [[ft8|FT8]], [[wspr|WSPR]]) braucht der Computer zwei Dinge vom Funkgerät: das **NF-Signal** (hören und senden) und, bequemerweise, eine **Steuerung** (Frequenz, [[ptt|PTT]]). Dafür gibt es drei Anschlüsse, die du nicht verwechseln darfst:[^darc-50ohm]
 
-- **Audioverbindung**: Das NF-Signal geht über Audiobuchsen oder eine USB-Verbindung (bei vielen Geräten als USB-Soundkarte) zum Computer. Alternativ übernimmt ein **Hardware-Modem** die Umsetzung zwischen Daten und Audio (NF114). Mit dem **ALC-Anschluss** hat das nichts zu tun, und der **HF-Anschluss** (Antennenbuchse) wird nicht mit einem Y-Kabel an den Computer gehängt!
-- **CAT-Schnittstelle** (*Computer Aided Tuning/Transceiver*): Über ein **serielles Protokoll** steuert der Computer den Transceiver und fragt Werte ab, zum Beispiel **Frequenz, Sendeleistung und PTT** (NF116). Sie liefert kein NF-Signal und gibt kein HF-Signal an den Computer aus.
-- **DATA-/9600-Port** (bei FM-Transceivern): ein **analoger** Anschluss, der **Verstärker- und Filterstufen umgeht**, damit ein NF-Signal (z. B. für Digital Voice oder POCSAG) **möglichst verzerrungsfrei** abgegriffen oder eingespeist werden kann (NF115). Er ist keine Steuerschnittstelle und dient nicht dem Anschluss eines Drehgebers für die Frequenzeinstellung.
+- **Audioverbindung**: Das NF-Signal geht über Audiobuchsen oder eine USB-Verbindung (bei vielen Geräten als USB-Soundkarte) zum Computer. Alternativ übernimmt ein **Hardware-Modem** die Umsetzung zwischen Daten und Audio (NF114). Mit dem **[[alc|ALC]]-Anschluss** hat das nichts zu tun, und der **HF-Anschluss** (Antennenbuchse) wird nicht mit einem Y-Kabel an den Computer gehängt!
+- **[[cat-schnittstelle|CAT-Schnittstelle]]** (*Computer Aided Tuning/[[transceiver|Transceiver]]*): Über ein **serielles Protokoll** steuert der Computer den Transceiver und fragt Werte ab, zum Beispiel **Frequenz, Sendeleistung und PTT** (NF116). Sie liefert kein NF-Signal und gibt kein HF-Signal an den Computer aus.
+- **[[datenport|DATA-/9600-Port]]** (bei FM-Transceivern): ein **analoger** Anschluss, der **Verstärker- und Filterstufen umgeht**, damit ein NF-Signal (z. B. für [[digital-voice|Digital Voice]] oder POCSAG) **möglichst verzerrungsfrei** abgegriffen oder eingespeist werden kann (NF115). Er ist keine Steuerschnittstelle und dient nicht dem Anschluss eines Drehgebers für die Frequenzeinstellung.
 
-**Gefahr:** Wenn ein Funkgerät vom Computer gesteuert wird, kann es **unerwartet auf Sendung schalten** (ein Benachrichtigungston des Betriebssystems, eine falsch gesetzte PTT). Dann entstehen unerwünschte Aussendungen, und **Menschen können in Gefahr geraten**, die gerade an der Antennenanlage arbeiten oder in deren Nähe sind (NF117). Mit dem Vorverstärker, dem ALC-Zeiger oder einem „Kondensator im Antennenkreis“ hat das nichts zu tun. Fahre deshalb Systemklänge herunter und schalte das Funkgerät aus, bevor jemand an die Antenne geht.
+**Gefahr:** Wenn ein Funkgerät vom Computer gesteuert wird, kann es **unerwartet auf Sendung schalten** (ein Benachrichtigungston des Betriebssystems, eine falsch gesetzte PTT). Dann entstehen [[unerwuenschte-aussendung|unerwünschte Aussendungen]], und **Menschen können in Gefahr geraten**, die gerade an der Antennenanlage arbeiten oder in deren Nähe sind (NF117). Mit dem [[antennenvorverstaerker|Vorverstärker]], dem ALC-Zeiger oder einem „Kondensator im Antennenkreis“ hat das nichts zu tun. Fahre deshalb Systemklänge herunter und schalte das Funkgerät aus, bevor jemand an die Antenne geht.
 `,
     },
     {
@@ -125,7 +125,7 @@ Die falschen Antworten in NF114 bis NF116 sind **vertauschte Beschreibungen**: W
       md: `
 Moderne Funkgeräte verarbeiten Signale zunehmend **in Software**: Filter, Demodulation, Rauschminderung, Notch. Dazu muss das analoge Signal erst **digitalisiert** werden:[^darc-50ohm]
 
-1. Der **[Analog-Digital-Umsetzer](wiki:Analog-Digital-Umsetzer|Analog-to-digital converter)** (A/D-Umsetzer, ADC) misst die Spannung in **festen Zeitabständen** (**Abtastung**, englisch *sampling*; jeder Messwert ist ein *Sample*) und bildet jeden Wert auf eine Zahl ab, z. B. von −128 bis +127. Das sind 256 Werte, genau $2^8$: 8 Bit.
+1. Der **[Analog-Digital-Umsetzer](wiki:Analog-Digital-Umsetzer|Analog-to-digital converter)** ([[ad-umsetzer|A/D-Umsetzer]], ADC) misst die Spannung in **festen Zeitabständen** (**[[abtastung|Abtastung]]**, englisch *sampling*; jeder Messwert ist ein *Sample*) und bildet jeden Wert auf eine Zahl ab, z. B. von −128 bis +127. Das sind 256 Werte, genau $2^8$: 8 Bit.
 2. Die [digitale Signalverarbeitung](wiki:Digitale Signalverarbeitung|Digital signal processing) rechnet mit den Zahlen: Filtern, Mischen, Demodulieren. Die Voraussetzung für das Filtern eines analogen Signals ist also, dass es **zuerst digitalisiert** wird (EF602); Demodulieren, Rauschbefreien oder Oberschwingungen entfernen sind nicht die Voraussetzung, sondern höchstens das Ergebnis.
 3. Der **D/A-Umsetzer** (DAC) macht aus den Zahlen wieder eine **analoge Spannung**: für den Lautsprecher oder für die Antenne.
 

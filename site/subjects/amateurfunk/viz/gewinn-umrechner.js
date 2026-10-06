@@ -13,7 +13,7 @@ export default function mount(stage, { complete }) {
   root.append(svg);
   const ui = controls(root, [
     { id: 'tab', type: 'seg', label: 'Rechnen mit', options: [['conv', 'dBi ↔ dBd'], ['dish', 'Parabolspiegel']], value: 'conv' },
-    { id: 'gd', label: 'Gewinn in dBd (Bezug Dipol)', min: -3, max: 20, step: 0.05, value: 5, format: v => de(v, 2) + ' dBd', wide: true },
+    { id: 'gd', label: 'Gewinn in dBd (Bezug Dipol)', min: -3, max: 20, step: 0.05, value: 2, format: v => de(v, 2) + ' dBd', wide: true },
     { id: 'f', label: 'Frequenz', min: 1, max: 30, step: 0.1, scale: 'log', value: 10.4, format: v => de(v, 1) + ' GHz' },
     { id: 'D', label: 'Spiegeldurchmesser', min: 0.2, max: 3, step: 0.05, value: 0.6, format: v => de(v, 2) + ' m' },
   ], run);

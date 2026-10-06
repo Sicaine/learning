@@ -1,9 +1,0 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../assets/css/app.css"></head><body style="background:#fafafc;padding:12px"><div id="s" style="max-width:760px;margin:auto"></div>
-<script type="module">
-const q=new URLSearchParams(location.search); const name=q.get('v'); const params=q.get('p')?JSON.parse(q.get('p')):{};
-document.documentElement.style.setProperty('--accent','#4f46e5');
-window.done=false;
-const m=await import(`../subjects/elektrotechnik/viz/${name}.js`);
-m.default(document.getElementById('s'),{params,ctx:{},complete:()=>{window.done=true;document.title='DONE'},md:x=>x});
-</script></body></html>

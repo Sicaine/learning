@@ -64,7 +64,8 @@ function blocks(s, ctx) {
 const isRow = l => /^\s*\|.*\|\s*$/.test(l);
 const isSep = l => /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(l);
 function isTable(c) { const L = c.split('\n'); return L.length >= 2 && L.every(isRow) && L.some((l, i) => i > 0 && isSep(l)); }
-const cells = l => l.trim().replace(/^\||\|$/g, '').split('|').map(s => s.trim());
+// A wiki link may contain '|' (title|other-language title): protect it while splitting into cells.
+const cells = l => l.trim().replace(/^\||\|$/g, '').replace(/\(wiki:(?:[^()]|\([^()]*\))+\)/g, m => m.replace(/\|/g, '\u0002')).split('|').map(s => s.trim().replace(/\u0002/g, '|'));
 function table(c, ctx) {
   const L = c.split('\n'); const sep = L.findIndex((l, i) => i > 0 && isSep(l));
   const al = cells(L[sep]).map(s => (s.startsWith(':') && s.endsWith(':') ? 'center' : s.endsWith(':') ? 'right' : ''));

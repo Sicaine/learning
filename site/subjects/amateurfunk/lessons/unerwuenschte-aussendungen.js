@@ -49,9 +49,9 @@ export default {
     {
       id: 'intro', type: 'text', title: 'Was ist eine unerwünschte Aussendung?',
       md: `
-Dein Sender soll **genau das** abstrahlen, was du senden willst: **ein** Signal in der **erforderlichen Bandbreite**. Alles, was darüber hinausgeht, ist eine **unerwünschte Aussendung**: in der AFuV definiert als *jede Aussendung außerhalb der erforderlichen Bandbreite* (§ 2 Nr. 11), wobei die erforderliche Bandbreite gerade ausreicht, um die Nachricht in der nötigen Geschwindigkeit und Güte zu übertragen.[^afuv]
+Dein Sender soll **genau das** abstrahlen, was du senden willst: **ein** Signal in der **erforderlichen Bandbreite**. Alles, was darüber hinausgeht, ist eine **unerwünschte Aussendung**: in der [Amateurfunkverordnung](wiki:Amateurfunkverordnung) (AFuV) definiert als *jede Aussendung außerhalb der erforderlichen Bandbreite* (§ 2 Nr. 11), wobei die erforderliche Bandbreite gerade ausreicht, um die Nachricht in der nötigen Geschwindigkeit und Güte zu übertragen.[^afuv]
 
-Woher kommt sie? Wie schon beim Sender gesehen: **Mischer und Verstärker erzeugen neben den gewünschten auch unerwünschte Frequenzanteile.** Gelangen sie an die Antenne, werden sie abgestrahlt, und zwar häufig weit außerhalb der Amateurfunkbänder, in Bereichen des Flugfunks, des Rundfunks oder des Fernsehens, und der Nachbar hat Bildstörungen.[^darc-50ohm]
+Woher kommt sie? Wie schon beim Sender gesehen: **[[mischer|Mischer]] und Verstärker erzeugen neben den gewünschten auch unerwünschte Frequenzanteile.** Gelangen sie an die Antenne, werden sie abgestrahlt, und zwar häufig weit außerhalb der Amateurfunkbänder, in Bereichen des Flugfunks, des Rundfunks oder des Fernsehens, und der Nachbar hat Bildstörungen.[^darc-50ohm]
 
 Die Verordnung ist dabei bemerkenswert knapp: *Unerwünschte Amateurfunk-Aussendungen sind auf das **geringstmögliche Maß** zu beschränken* (§ 16 Abs. 4 AFuV; VD110). Es steht dort **keine** feste dB-Zahl wie „60 dB bezogen auf das Nutzsignal“ oder „40 dB“, und es heißt auch nicht „nicht zulässig“: Perfekte Filter gibt es nicht, ganz vermeiden lässt sich das nicht, also minimiert man. Dem entspricht der Grundsatz in NJ201: Ein Sender sollte so betrieben werden, dass er **keine unerwünschten Aussendungen hervorruft**. Selbsterregung, parasitäre Schwingungen und fehlende Oberwellenabschirmung sind das Gegenteil davon.
 `,
@@ -59,8 +59,8 @@ Die Verordnung ist dabei bemerkenswert knapp: *Unerwünschte Amateurfunk-Aussend
     {
       id: 'arten-text', type: 'text', title: 'Zwei Sorten: Oberwellen und Nebenaussendungen',
       md: `
-- **Oberwellen** (Harmonische) sind **ganzzahlige Vielfache der Grundfrequenz** $f_0$: $2f_0$, $3f_0$, $4f_0$ …. Sie liegen weit weg vom Nutzsignal, oft in anderen Funkdiensten. Beispiel: Ein Transceiver auf 145,9 MHz strahlt mit der vierfachen Frequenz $4 \\cdot 145{,}9\\,\\text{MHz} = 583{,}6\\,\\text{MHz}$ ab, mitten im Fernsehbereich. Von **Störung** spricht man, wenn solche Anteile so stark abgestrahlt werden, dass zulässige Grenzwerte überschritten werden.
-- **Nebenaussendungen** (englisch *spurious emissions*, umgangssprachlich **Splatter** und „Nebenprodukte“) liegen **dicht neben dem Nutzsignal**. Sie betreffen oft andere Funkamateure **auf demselben Band** und lassen sich mit Filtern nur schwer oder gar nicht entfernen: Man muss sie schon **bei der Signalaufbereitung** vermeiden. Typische Ursache: zu hoch eingestellte **Mikrofonverstärkung** oder zu hoher NF-Pegel, wodurch das Sendesignal ungewollt verbreitert wird (Lektion zur Bandbreite).[^darc-50ohm]
+- **Oberwellen** (Harmonische) sind **ganzzahlige Vielfache der Grundfrequenz** ([Harmonische](wiki:Harmonische|Harmonic)) $f_0$: $2f_0$, $3f_0$, $4f_0$ …. Sie liegen weit weg vom Nutzsignal, oft in anderen Funkdiensten. Beispiel: Ein [[transceiver|Transceiver]] auf 145,9 MHz strahlt mit der vierfachen Frequenz $4 \\cdot 145{,}9\\,\\text{MHz} = 583{,}6\\,\\text{MHz}$ ab, mitten im Fernsehbereich. Von **Störung** spricht man, wenn solche Anteile so stark abgestrahlt werden, dass zulässige Grenzwerte überschritten werden.
+- **[[nebenaussendung|Nebenaussendungen]]** (englisch *spurious emissions*, umgangssprachlich **[[splatter|Splatter]]** und „Nebenprodukte“) liegen **dicht neben dem Nutzsignal**. Sie betreffen oft andere Funkamateure **auf demselben Band** und lassen sich mit Filtern nur schwer oder gar nicht entfernen: Man muss sie schon **bei der Signalaufbereitung** vermeiden. Typische Ursache: zu hoch eingestellte **Mikrofonverstärkung** oder zu hoher NF-Pegel, wodurch das Sendesignal ungewollt verbreitert wird (Lektion zur Bandbreite).[^darc-50ohm]
 
 Beide haben **dieselbe Wurzel**: Der Sender arbeitet nicht **linear**. Und beide Sorten kannst du mit zwei Grundregeln eindämmen: **Sender nicht übersteuern** (Pegel!) und **Oberwellen filtern**.
 `,
@@ -72,7 +72,7 @@ Ein **sinusförmiges** Signal besteht aus **genau einer** Frequenz. Jede andere 
 
 Deshalb gilt (EJ201): **Der Träger einer hochfrequenten Schwingung sollte sinusförmig sein**, um Oberwellenstörungen zu vermeiden; rechteck- oder dreieckförmig wäre falsch, und „kreisförmig“ gibt es als Signalform nicht.
 
-Wie wird ein Sinus zu einer Kurve mit Ecken? Wenn die Endstufe **übersteuert** wird: Die Spitzen werden abgeschnitten, ein Rechteck-Stück entsteht. Dasselbe passiert bei falsch eingestelltem **Arbeitspunkt**: Eine Halbwelle wird stärker beschnitten als die andere. Dann entstehen sogar **gerade** Oberwellen. Eine **Übersteuerung eines Leistungsverstärkers führt zu einem hohen Anteil an Nebenaussendungen** (EJ213). Sie verbessert weder die Verständlichkeit am Empfangsort noch senkt sie die Ausgangsleistung oder macht nur „geringe Verzerrungen beim Empfang“.
+Wie wird ein Sinus zu einer Kurve mit Ecken? Wenn die Endstufe **übersteuert** wird: Die Spitzen werden abgeschnitten, ein Rechteck-Stück entsteht. Dasselbe passiert bei falsch eingestelltem **Arbeitspunkt**: Eine Halbwelle wird stärker beschnitten als die andere. Dann entstehen sogar **gerade** Oberwellen. Eine **[[uebersteuerung|Übersteuerung]] eines Leistungsverstärkers führt zu einem hohen Anteil an Nebenaussendungen** (EJ213). Sie verbessert weder die Verständlichkeit am Empfangsort noch senkt sie die Ausgangsleistung oder macht nur „geringe Verzerrungen beim Empfang“.
 `,
     },
     {
@@ -83,13 +83,13 @@ Wie wird ein Sinus zu einer Kurve mit Ecken? Wenn die Endstufe **übersteuert** 
     {
       id: 'filter-text', type: 'text', title: 'Das Oberwellenfilter ist ein Tiefpass',
       md: `
-Gegen Oberwellen setzt man **zwischen Sender und Antenne** ein **Tiefpassfilter** ein: ein **Oberwellenfilter**. Seine Kennlinie lässt Frequenzen unterhalb einer Grenzfrequenz **nahezu ungedämpft** passieren und schwächt Frequenzen darüber stark ab; die Grundwelle kommt durch, die Oberwellen nicht (EJ202, EJ203, EJ204).[^darc-50ohm]
+Gegen Oberwellen setzt man **zwischen Sender und Antenne** ein **[[tiefpass|Tiefpassfilter]]** ein: ein **[[oberwellenfilter|Oberwellenfilter]]**. Seine Kennlinie lässt Frequenzen unterhalb einer Grenzfrequenz **nahezu ungedämpft** passieren und schwächt Frequenzen darüber stark ab; die Grundwelle kommt durch, die Oberwellen nicht (EJ202, EJ203, EJ204).[^darc-50ohm]
 
-- **Tiefpassfilter** ist die Antwort, nicht **Hochpass** (würde die Grundwelle sperren und die Oberwellen durchlassen), **CW-Filter**, **NF-Filter**, **ZF-Filter** (Empfängerfilter!), **Nachbarkanalfilter**, **Antennenfilter** oder **Sperrkreisfilter**.
-- Bei einem **UHF-Sender** schaltet man ihm ein Tiefpassfilter **nach** (EJ205), nicht eine Bandsperre oder ein Notchfilter vor.
+- **Tiefpassfilter** ist die Antwort, nicht **[[hochpass|Hochpass]]** ([Wikipedia](wiki:Hochpass|High-pass filter)) (würde die Grundwelle sperren und die Oberwellen durchlassen), **[[cw-tastung|CW]]-Filter**, **NF-Filter**, **ZF-Filter** (Empfängerfilter!), **Nachbarkanalfilter**, **Antennenfilter** oder **Sperrkreisfilter**.
+- Bei einem **UHF-Sender** schaltet man ihm ein Tiefpassfilter **nach** (EJ205), nicht eine [Bandsperre](wiki:Bandsperre|Band-stop filter) oder ein [[notchfilter|Notchfilter]] vor.
 - Das Filter hinter einem **VHF-Sender** soll **den gewünschten Frequenzbereich durchlassen** (NF404), nicht die Oberschwingungen, nicht „alle Nebenaussendungen“ und schon gar nicht den gewünschten Bereich sperren.
-- Ein **Tiefpass aus Spulen und Kondensatoren**: **Spulen im Längszweig** (sie sperren hohe Frequenzen), **Kondensatoren gegen Masse** (sie schließen hohe Frequenzen kurz). Das ist die Schaltung, die in EJ206 gesucht wird; beim **Hochpass** wären Kondensatoren und Spulen vertauscht.
-- Bei **Mehrband-Sendern** gibt es für jedes Band ein passendes Tiefpassfilter, beim Bandwechsel werden sie umgeschaltet (das „Klicken“ des Relais). Ein **Bandpass** lässt nur ein Band durch und passt deshalb besser zu Einband-Sendern sowie zu Sendern für VHF/UHF/SHF; Oberwellen mit niedrigerer Frequenz als die Sendefrequenz (die im Sender entstehen können) unterdrückt er ebenfalls. Für das Ausgangsfilter eines **KW-Mehrband-Senders** (EJ208) und zur **Verringerung der Oberwellen** eines KW-Senders (EJ207) ist die Tiefpass-Kennlinie die richtige.
+- Ein **Tiefpass aus [Spulen](wiki:Spule (Elektrotechnik)|Electromagnetic coil) und [Kondensatoren](wiki:Kondensator (Elektrotechnik)|Capacitor)**: **Spulen im Längszweig** (sie sperren hohe Frequenzen), **Kondensatoren gegen Masse** (sie schließen hohe Frequenzen kurz). Das ist die Schaltung, die in EJ206 gesucht wird; beim **Hochpass** wären Kondensatoren und Spulen vertauscht.
+- Bei **Mehrband-Sendern** gibt es für jedes Band ein passendes Tiefpassfilter, beim Bandwechsel werden sie umgeschaltet (das „Klicken“ des Relais). Ein **[[bandpass|Bandpass]]** ([Wikipedia](wiki:Bandpass|Band-pass filter)) lässt nur ein Band durch und passt deshalb besser zu Einband-Sendern sowie zu Sendern für VHF/UHF/SHF; Oberwellen mit niedrigerer Frequenz als die Sendefrequenz (die im Sender entstehen können) unterdrückt er ebenfalls. Für das Ausgangsfilter eines **KW-Mehrband-Senders** (EJ208) und zur **Verringerung der Oberwellen** eines KW-Senders (EJ207) ist die Tiefpass-Kennlinie die richtige.
 `,
     },
     {
@@ -105,13 +105,13 @@ Gegen Oberwellen setzt man **zwischen Sender und Antenne** ein **Tiefpassfilter*
     {
       id: 'warn-filter', type: 'callout', tone: 'warning', title: 'Welches Filter wofür?',
       md: `
-Im Sender: **Tiefpass** gegen **Oberwellen** (nach der Endstufe), **Bandpass** gegen Mischprodukte (nach dem Mischer). Im Empfänger: **ZF-Filter** für die Trennschärfe, **Notchfilter** gegen einen Störträger. Den **Hochpass** brauchst du als Funkamateur vor allem **am Fernsehgerät des Nachbarn**, wenn dessen Antenneneingang durch deinen Kurzwellensender übersteuert wird, nicht am Sender (mehr dazu in der EMV-Lektion).
+Im Sender: **Tiefpass** gegen **Oberwellen** (nach der Endstufe), **Bandpass** gegen Mischprodukte (nach dem Mischer). Im Empfänger: **ZF-Filter** für die [[trennschaerfe|Trennschärfe]], **Notchfilter** gegen einen Störträger. Den **Hochpass** brauchst du als Funkamateur vor allem **am Fernsehgerät des Nachbarn**, wenn dessen Antenneneingang durch deinen Kurzwellensender übersteuert wird, nicht am Sender (mehr dazu in der EMV-Lektion).
 `,
     },
     {
       id: 'messen-text', type: 'text', title: 'Wo und wann misst man?',
       md: `
-Die **Messung der Leistungen, die zu unerwünschten Aussendungen führen**, erfolgt **am Senderausgang unter Einbeziehung eines gegebenenfalls verwendeten Stehwellenmessgeräts und des gegebenenfalls verwendeten Tiefpassfilters** (EJ209), im Gegensatz zur PEP-Messung der Nutzleistung. Dadurch erfasst man genau die Anteile, die auch die Antenne erreichen können. Nicht gemessen wird am Fußpunkt der Antenne unter Einbeziehung des Antennenanpassgeräts oder am Ausgang der Antennenleitung, und auch nicht mit einem hochohmigen HF-Tastkopf an einem Transistorvoltmeter. Das geeignete Messgerät ist ein **[Spektrumanalysator](wiki:Spektrumanalysator|Spectrum analyzer)**, der die Anteile als Linien über der Frequenz zeigt.[^darc-50ohm]
+Die **Messung der Leistungen, die zu unerwünschten Aussendungen führen**, erfolgt **am Senderausgang unter Einbeziehung eines gegebenenfalls verwendeten Stehwellenmessgeräts und des gegebenenfalls verwendeten Tiefpassfilters** (EJ209), im Gegensatz zur [[pep|PEP]]-Messung der Nutzleistung. Dadurch erfasst man genau die Anteile, die auch die Antenne erreichen können. Nicht gemessen wird am Fußpunkt der Antenne unter Einbeziehung des Antennenanpassgeräts oder am Ausgang der Antennenleitung, und auch nicht mit einem hochohmigen HF-Tastkopf an einem Transistorvoltmeter. Das geeignete Messgerät ist ein **[Spektrumanalysator](wiki:Spektrumanalysator|Spectrum analyzer)**, der die Anteile als Linien über der Frequenz zeigt.[^darc-50ohm]
 
 **Wann prüfst du auf Oberwellen?** **Wenn der Arbeitspunkt der Endstufe neu justiert wurde** (EF404): Dann ändert sich die Linearität der Stufe und damit die Oberwellen. Nicht „vor jedem Sendebetrieb“, nicht „bei Empfang eines Störsignals“ und nicht, „wenn Splatter-Störungen zu hören sind“ (Splatter ist eine Nebenaussendung neben dem Signal, keine Oberwelle). Auch nach jeder Änderung des Aufbaus ist die Kontrolle auf Oberwellenarmut sinnvoll.
 `,
@@ -121,9 +121,9 @@ Die **Messung der Leistungen, die zu unerwünschten Aussendungen führen**, erfo
       md: `
 Weil sich Nebenaussendungen schwer filtern lassen, vermeidest du sie an der Quelle:
 
-- **SSB**: Ein SSB-Sender verursacht **Störungen auf benachbarten Frequenzen, wenn der Leistungsverstärker übersteuert wird** (EJ214). Dazu führt eine zu hohe Mikrofonverstärkung: Das **Mikrofonlevel zu verringern** ist das Gegenmittel. Ein unterbrochenes Antennenkabel, ein falsch abgestimmter Tuner oder eine **zu geringe** NF-Ansteuerung erzeugen diesen Fehler nicht (zu wenig NF bringt nur wenig Leistung).
-- **FM mit AFSK** (z. B. Packet Radio): Zu große Bandbreite verringerst du durch **Absenken des NF-Pegels oder des Frequenzhubs** (EJ212). Anheben macht es breiter, und an Sendeleistung oder ZF ändert das nichts.
-- **Frequenzstabilität**: Ein Sender mit **mangelhafter Frequenzstabilität** (typisch bei älteren Selbstbaugeräten ohne Quarzoszillator) kann **außerhalb der Bandgrenzen** senden oder Nachbarn stören (EJ216); Spannungsüberschläge in der Endstufe, Überlastung der Endstufe oder verstärkte Oberwellen sind keine Folgen davon. Moderne Transceiver haben sehr stabile Referenzoszillatoren.[^darc-50ohm]
+- **[[einseitenbandmodulation|SSB]]**: Ein SSB-Sender verursacht **Störungen auf benachbarten Frequenzen, wenn der Leistungsverstärker übersteuert wird** (EJ214). Dazu führt eine zu hohe Mikrofonverstärkung: Das **Mikrofonlevel zu verringern** ist das Gegenmittel. Ein unterbrochenes Antennenkabel, ein falsch abgestimmter Tuner oder eine **zu geringe** NF-Ansteuerung erzeugen diesen Fehler nicht (zu wenig NF bringt nur wenig Leistung).
+- **[[frequenzmodulation|FM]] mit [[afsk|AFSK]]** (z. B. Packet Radio): Zu große Bandbreite verringerst du durch **Absenken des NF-Pegels oder des Frequenzhubs** (EJ212). Anheben macht es breiter, und an Sendeleistung oder ZF ändert das nichts.
+- **Frequenzstabilität**: Ein Sender mit **mangelhafter Frequenzstabilität** (typisch bei älteren Selbstbaugeräten ohne [Quarzoszillator](wiki:Quarzoszillator|Crystal oscillator)) kann **außerhalb der Bandgrenzen** senden oder Nachbarn stören (EJ216); Spannungsüberschläge in der Endstufe, Überlastung der Endstufe oder verstärkte Oberwellen sind keine Folgen davon. Moderne Transceiver haben sehr stabile Referenzoszillatoren.[^darc-50ohm]
 `,
     },
     {
@@ -141,7 +141,7 @@ Weil sich Nebenaussendungen schwer filtern lassen, vermeidest du sie an der Quel
     {
       id: 'mission-aussend', type: 'callout', tone: 'mission', title: 'Funkpraxis: Nachbar meldet Bildstörungen',
       md: `
-Wenn jemand meldet, dass dein Sender sein Fernsehbild oder sein Radio stört, ist Oberwelle die erste Verdächtige. Gehe so vor: **Sende mit geringerer Leistung** (sinkt die Störung?), **prüfe den Pegel** (ALC, Mikrofonverstärkung, Übersteuerung?), **setze ein Tiefpassfilter** (Oberwellenfilter) zwischen Sender und Antenne ein und **messe am Senderausgang** einschließlich Filter. Mehr zu Störungen beim Nachbarn in der Lektion zur EMV.
+Wenn jemand meldet, dass dein Sender sein Fernsehbild oder sein Radio stört, ist Oberwelle die erste Verdächtige. Gehe so vor: **Sende mit geringerer Leistung** (sinkt die Störung?), **prüfe den Pegel** ([[alc|ALC]], Mikrofonverstärkung, Übersteuerung?), **setze ein Tiefpassfilter** (Oberwellenfilter) zwischen Sender und Antenne ein und **messe am Senderausgang** einschließlich Filter. Mehr zu Störungen beim Nachbarn in der Lektion zur EMV.
 `,
     },
     {

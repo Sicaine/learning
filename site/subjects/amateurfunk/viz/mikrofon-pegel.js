@@ -55,7 +55,7 @@ export default function mount(stage, { params = {}, complete }) {
     const area = [[sp.X(-4), sp.Y(-70)], ...pts, [sp.X(8), sp.Y(-70)]];
     sp.add(s2('polygon', area, 'var(--accent)'), poly(pts, { color: 'var(--accent)', w: 1.8 }),
       rect(sp.X(2.7), sp.m.t, sp.X(5.4) - sp.X(2.7), sp.Y(-70) - sp.m.t, { fill: 'var(--ink)', fo: 0.035 }),
-      txt(sp.X(4.05), sp.m.t + 14, 'Nachbarstation', { anchor: 'middle', fill: 'var(--ink-2)', size: 11 }),
+      txt(sp.X(4.05), sp.Y(-30), 'Nachbarstation', { anchor: 'middle', fill: 'var(--ink-2)', size: 11 }),
       txt(sp.X(1.5), sp.Y(-1) - 6, 'USB 0,3 … 2,7 kHz', { anchor: 'middle', fill: 'var(--accent)', size: 11 }));
     const bad = M.skirt > -40;
     out.set({ pep: dec(M.pep, 0) + ' W', avg: dec(M.avg, 0) + ' W', alc: M.alc < 0.02 ? 'ruht' : M.alc < 0.85 ? 'zuckt (grün)' : 'zu hoch (rot)', sp: bad ? 'gestört: Splatter ' + dec(M.skirt, 0) + ' dB' : 'nicht gestört (' + dec(M.skirt, 0) + ' dB)' });

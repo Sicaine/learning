@@ -52,12 +52,12 @@ export default function mount(stage, { complete }) {
     kids.push(s('text', { x: cx - 22, y: top + 124, 'text-anchor': 'end', 'font-size': 12, fill: 'var(--accent-2)', 'font-weight': 800 }, 'I₂ (Schirm innen)'));
     const phase = (t * 40) % 20;
     if (i3 > 0.1) {
-      kids.push(arrow(cx + 34, top + 30, top + 160, 'var(--bad)', w(i3), null, 'i3'));
+      kids.push(arrow(cx + 34, top + 30, top + 160, 'var(--bad)', w(i3), null, 'start', 'i3'));
       kids.push(s('text', { x: cx + 46, y: top + 90, 'font-size': 12, fill: 'var(--bad)', 'font-weight': 800 }, 'I₃ Mantelstrom'));
       for (let k = 0; k < 3; k++) { const r = 20 + k * 14 + phase * 0.5; kids.push(s('path', { d: `M ${cx + 40} ${top + 95 - r * 0.8} A ${r} ${r} 0 0 1 ${cx + 40} ${top + 95 + r * 0.8}`, fill: 'none', stroke: 'var(--bad)', 'stroke-width': 1.4, 'stroke-dasharray': '3 4', opacity: Math.max(0.1, 0.8 - k * 0.2 - phase * 0.015), transform: `translate(${r * 0.35} 0)` })); }
       kids.push(s('text', { x: cx + 46, y: top + 108, 'font-size': 10, fill: 'var(--bad)' }, 'strahlt mit, stört,'), s('text', { x: cx + 46, y: top + 121, 'font-size': 10, fill: 'var(--bad)' }, 'fängt Störungen ein'));
     } else {
-      kids.push(arrow(cx + 34, top + 30, top + 160, 'var(--good)', 1.5, null, 'i3'));
+      kids.push(arrow(cx + 34, top + 30, top + 160, 'var(--good)', 1.5, null, 'start', 'i3'));
       kids.push(s('text', { x: cx + 46, y: top + 90, 'font-size': 12, fill: 'var(--good)', 'font-weight': 800 }, 'I₃ ≈ 0'), s('text', { x: cx + 46, y: top + 106, 'font-size': 10, fill: 'var(--muted)' }, 'Schirm außen stromlos'));
     }
     svg.replaceChildren(...kids);

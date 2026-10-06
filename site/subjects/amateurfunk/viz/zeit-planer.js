@@ -25,7 +25,7 @@ export default function mount(stage, { params = {}, complete }) {
   const note = h('div', { class: 'vz-note', style: 'line-height:1.55;margin-top:6px' }); root.append(note);
   const g = goals(root, [
     { id: 'over', label: 'einen Plan gesehen, der die 45 Minuten sprengt' },
-    { id: 'ok', label: 'einen Plan gebaut, der in 45 Minuten passt und mindestens 5 Minuten Puffer lässt' },
+    { id: 'ok', label: 'einen realistischen Plan gebaut: passt in 45 Minuten, lässt mindestens 5 Minuten Puffer, plant Kontrolle (ab 2 min) und stellt mindestens eine Frage zurück' },
   ], () => complete?.());
   function run(_, id) {
     const act = !!id, v = ui.values;
@@ -43,7 +43,7 @@ export default function mount(stage, { params = {}, complete }) {
       : `<b style="color:var(--good)">Passt:</b> ${dec(buf)} Minuten Puffer. Im Schnitt hast du 1,8 Minuten (108 Sekunden) je Frage, und ein Plan wie dieser verteilt sie klug: schnelle Fragen schnell, schwere zurückstellen.`;
     if (!act) return;
     if (sum > 45) g.reach('over');
-    if (sum <= 45 && buf >= 5) g.reach('ok');
+    if (sum <= 45 && buf >= 5 && v.chk >= 2 && sk >= 1) g.reach('ok');
   }
   run();
   stage._test = { ui, run };

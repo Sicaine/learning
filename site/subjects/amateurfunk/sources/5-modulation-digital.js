@@ -1,3 +1,8 @@
-// Quellen der Etappe 5-modulation-digital. Format: siehe CLAUDE.md.
+// Quellen der Etappe 5-modulation-digital. Format: siehe CLAUDE.md. URLs am 05.10.2026 per HTTP geprüft (alle 200).
 export default [
+  {"id": "wsprnet", "kind": "Docs", "title": "WSPRnet – Weak Signal Propagation Reporter Network", "authors": "WSPRnet", "year": 2026, "venue": "wsprnet.org (Karte der Empfangsberichte)", "url": "https://www.wsprnet.org/drupal/wsprnet/map", "note": "Plattform für automatische Empfangsberichte von WSPR-Aussendungen."},
+  {"id": "reverse-beacon-network", "kind": "Docs", "title": "Reverse Beacon Network", "authors": "Reverse Beacon Network", "year": 2026, "venue": "reversebeacon.net", "url": "https://www.reversebeacon.net/", "note": "Automatische Empfangsberichte für CW (und andere Verfahren) durch Skimmer-Stationen."},
+  {"id": "psk-reporter", "kind": "Docs", "title": "PSK Reporter", "authors": "Philip Gladstone", "year": 2026, "venue": "pskreporter.info", "url": "https://pskreporter.info/pskmap.html", "note": "Sammelt automatische Empfangsberichte vieler digitaler Betriebsarten (PSK31, FT8, FT4, RTTY …)."},
+  {"id": "aprs-fi", "kind": "Docs", "title": "aprs.fi – Automatic Packet Reporting System", "authors": "Heikki Hannikainen (OH7LZB)", "year": 2026, "venue": "aprs.fi", "url": "https://aprs.fi/", "note": "Darstellung von APRS-Positionsmeldungen (AFSK, 1200 Bit/s auf 144,800 MHz)."},
+  {"id": "iaru-r1-bandplaene-uebersicht", "kind": "Docs", "title": "IARU Region 1 – Bandpläne", "authors": "IARU Region 1", "year": 2026, "venue": "iaru-r1.org", "url": "https://www.iaru-r1.org/on-the-air/band-plans/", "note": "Empfehlungen zu Frequenznutzung, Betriebsarten und Bandbreiten (u. a. Seitenband-Wahl, Schmalband-FM)."},
 ];

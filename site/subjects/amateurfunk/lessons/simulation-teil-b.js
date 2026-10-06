@@ -41,12 +41,12 @@ Teil B ist **Faktenwissen und Verhalten**. Viele Fragen sind schnell beantwortet
 - Wofür ein Frequenzbereich im 2-m- oder 70-cm-Band vorgesehen ist (Auszug aus dem IARU-Bandplan).
 
 **Muss sitzen (liegt nicht aus):**
-- **Buchstabiertafel.** Typische Fallstricke: *Delta* (nicht „Denmark“), *Kilo* (nicht „Kilowatt“), *Quebec* (nicht „Queen“), *Uniform* (nicht „Uruguay“), *Charlie* (nicht „Caesar“).
-- **Q-Gruppen und betriebliche Abkürzungen** (CQ, DX, K, BK, R, PSE …).
+- **[Buchstabiertafel](wiki:Buchstabiertafel|Spelling alphabet).** Typische Fallstricke: *Delta* (nicht „Denmark“), *Kilo* (nicht „Kilowatt“), *Quebec* (nicht „Queen“), *Uniform* (nicht „Uruguay“), *Charlie* (nicht „Caesar“).
+- **[Q-Gruppen](wiki:Q-Schlüssel|Q code) und betriebliche Abkürzungen** (CQ, DX, K, BK, R, PSE …).
 - **Landeskenner** ([Landeskenner](wiki:Landeskenner|ITU prefix) der Nachbarländer und der großen Funkländer).
-- **Rufzeichenzusätze** (/p, /m, /mm, /am, /R, /T).
-- **Verhalten:** Anruf, Rapport, Pile-up, Split, Notfunk.
-- **Zeitumrechnung** für QSL-Karten (UTC).`,
+- **Rufzeichenzusätze** (/p, /m, /mm, /am, /R, /T) zum [Rufzeichen](wiki:Rufzeichen|Call sign).
+- **Verhalten:** Anruf, Rapport, Pile-up, Split, [Notfunk](wiki:Notfunk|Amateur radio emergency communications). Die Empfehlungen der [IARU](wiki:International Amateur Radio Union|International Amateur Radio Union) zu den [Amateurfunkbändern](wiki:Amateurfunkband|Amateur radio frequency allocations) sind nur Empfehlungen.
+- **Zeitumrechnung** für [QSL-Karten](wiki:QSL-Karte|QSL card) (UTC); der Standort wird oft als [QTH-Locator](wiki:QTH-Locator|Maidenhead Locator System) angegeben, und auf [Kurzwelle](wiki:Kurzwelle|High frequency) arbeitet man häufig in [Morsetelegrafie](wiki:Morsecode|Morse code).`,
     },
     {
       id: 'match-landeskenner', type: 'match', title: 'Landeskenner → Land',

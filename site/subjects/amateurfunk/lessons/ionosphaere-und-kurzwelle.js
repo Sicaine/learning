@@ -102,10 +102,10 @@ Zwischen zwei Orten gibt es immer **zwei Wege** entlang eines Großkreises: den 
     {
       id: 'map-longpath', type: 'map', title: 'Kurzer und langer Weg Deutschland – Australien',
       intro: 'Beide Wege liegen auf demselben Großkreis: der kurze führt über Asien, der lange über den Atlantik, Südamerika und den Pazifik.',
-      view: 'world',
+      view: [-180, -58, 180, 75],
       points: [{ lon: 10, lat: 51, label: 'Deutschland (DL)', detail: 'Antenne zeigt auf dem kurzen Weg nach Ost-Nordost (etwa 74°), auf dem langen Weg in die Gegenrichtung (etwa 254°).', pos: 't' }, { lon: 151.2, lat: -33.9, label: 'Australien (VK)', detail: 'Sydney als Beispiel für VK.', pos: 'l' }],
       lines: [
-        { label: 'Kurzer Weg (≈ 16 400 km)', coords: [[10, 51], [19.7, 52.3], [29.7, 52.8], [39.8, 52.5], [49.6, 51.3], [58.7, 49.3], [67, 46.7], [74.5, 43.6], [81.1, 40], [87.1, 36], [92.5, 31.8], [97.4, 27.4], [101.9, 22.9], [106.2, 18.2], [110.2, 13.4], [114, 8.6], [117.8, 3.7], [121.5, -1.2], [125.2, -6.1], [129, -10.9], [132.9, -15.7], [137, -20.5], [141.4, -25.1], [146.1, -29.6], [151.2, -33.9]], color: '#047857', labelAt: 0.55 },
+        { label: 'Kurzer Weg (≈ 16 400 km)', coords: [[10, 51], [19.7, 52.3], [29.7, 52.8], [39.8, 52.5], [49.6, 51.3], [58.7, 49.3], [67, 46.7], [74.5, 43.6], [81.1, 40], [87.1, 36], [92.5, 31.8], [97.4, 27.4], [101.9, 22.9], [106.2, 18.2], [110.2, 13.4], [114, 8.6], [117.8, 3.7], [121.5, -1.2], [125.2, -6.1], [129, -10.9], [132.9, -15.7], [137, -20.5], [141.4, -25.1], [146.1, -29.6], [151.2, -33.9]], color: '#047857', labelAt: 0.6 },
         { label: 'Langer Weg (≈ 23 700 km)', coords: [[10, 51], [-0.3, 48.5], [-9.5, 45.3], [-17.6, 41.3], [-24.8, 36.9], [-31.1, 32.1], [-36.8, 27], [-41.9, 21.6], [-46.7, 16.2], [-51.2, 10.6], [-55.6, 5], [-59.9, -0.6], [-64.2, -6.3], [-68.6, -11.9], [-73.2, -17.4], [-78.1, -22.9], [-83.3, -28.1], [-89.1, -33.2], [-95.6, -37.9], [-103, -42.3], [-111.3, -46.1], [-120.8, -49.2], [-131.3, -51.4], [-142.7, -52.6], [-154.4, -52.7], [-165.9, -51.7], [-176.6, -49.6], [-176.6, -49.6]], dashed: true, color: '#c2410c', labelAt: 0.5 },
         { label: 'Langer Weg, Fortsetzung', coords: [[178.5, -48.2], [173.8, -46.6], [169.4, -44.8], [165.3, -42.9], [161.4, -40.8], [157.8, -38.6], [154.4, -36.3], [151.2, -33.9]], dashed: true, color: '#c2410c', labelAt: 0.5 },
       ],

@@ -17,7 +17,7 @@ export default {
     {
       id: 'intro', type: 'text', title: 'Ein Gerät, zwei Aufgaben',
       md: `
-Ein [[transceiver|Transceiver]] (auf [Wikipedia](wiki:Transceiver|Transceiver)) ist ein Funkgerät, das **senden und empfangen** kann (*Trans*mitter + Re*ceiver*) und dabei Bauteile wie Oszillator und Filter gemeinsam nutzt. Wenn du verstehst, was im Gehäuse passiert, weißt du, warum die Knöpfe an der Frontplatte so heißen, und kannst Fehler eingrenzen. Wir gehen einmal durch den **Sender**, einmal durch den **Empfänger**, dann durch die Frontplatte.[^darc-50ohm]
+Ein [[transceiver|Transceiver]] (auf [Wikipedia](wiki:Transceiver|Transceiver)) ist ein Funkgerät, das **senden und empfangen** kann (*Trans*mitter + Re*ceiver*) und dabei Bauteile wie [[oszillator|Oszillator]] und Filter gemeinsam nutzt. Wenn du verstehst, was im Gehäuse passiert, weißt du, warum die Knöpfe an der Frontplatte so heißen, und kannst Fehler eingrenzen. Wir gehen einmal durch den **Sender**, einmal durch den **Empfänger**, dann durch die Frontplatte.[^darc-50ohm]
 
 Rechtlich verlangt die Amateurfunkverordnung von der **Amateurfunkstelle** nur, dass sie **nach den allgemein anerkannten Regeln der Technik einzurichten und zu unterhalten** ist (§ 16 Abs. 1 der [Amateurfunkverordnung](wiki:Amateurfunkverordnung), VD106). Weder gibt es eine Pflicht zu einem CE-Zeichen an *allen* Geräten noch zu Koaxkabel, und es steht dort auch nicht, dass die Anlage bauartbedingt nicht mehr Leistung erzeugen dürfte, als der Inhaber verwenden darf: Die Leistungsgrenze ist eine Pflicht des *Funkamateurs* (Anlage 1), keine Eigenschaft des Geräts.[^afuv]
 `,
@@ -25,20 +25,20 @@ Rechtlich verlangt die Amateurfunkverordnung von der **Amateurfunkstelle** nur, 
     {
       id: 'sender-text', type: 'text', title: 'Der Sender: Oszillator, Mischer, Filter, Verstärker',
       md: `
-Ein einfacher Sender besteht aus **Oszillator, Mischer, Filter und Leistungsverstärker** (NF402). Der Signalweg (NF403):
+Ein einfacher Sender besteht aus **Oszillator, [[mischer|Mischer]], Filter und Leistungsverstärker** (NF402). Der Signalweg (NF403):
 
 1. **Mikrofon**: wandelt Schall in eine niederfrequente Schwingung um (oder das NF-Signal kommt vom Computer).
 2. **NF-Verstärker**: verstärkt das schwache NF-Signal.
 3. **[Mischer](wiki:Mischer (Elektronik)|Frequency mixer)**: fügt das NF-Signal und den vom Oszillator erzeugten Träger zusammen. Mathematisch ist das eine **Multiplikation**; daher das Malkreuz im Schaltzeichen. Es entstehen Summen- und Differenzfrequenzen. Der Träger wird dabei moduliert.
 4. **[[hf-oszillator|HF-Oszillator]]**: erzeugt die Schwingung auf der Sendefrequenz (z. B. 29,5 MHz). Er liegt als **zweiter Eingang am Mischer**.
-5. **Filter (Bandpass)**: Der Mischer erzeugt neben den gewünschten Frequenzen auch weitere, unerwünschte. Das Filter lässt nur die gewünschten durch.
+5. **Filter ([[bandpass|Bandpass]])**: Der Mischer erzeugt neben den gewünschten Frequenzen auch weitere, unerwünschte. Das Filter lässt nur die gewünschten durch.
 6. **HF-Verstärker**: bringt das Signal auf die gewünschte **Sendeleistung**.
-7. **Filter (Tiefpass)**: Auch die Verstärkung erzeugt unerwünschte Frequenzen; ein weiteres Filter entfernt sie.
+7. **Filter ([[tiefpass|Tiefpass]])**: Auch die Verstärkung erzeugt unerwünschte Frequenzen; ein weiteres Filter entfernt sie.
 8. **Antenne**: strahlt das Signal ab.
 
 Die Reihenfolge im Katalog (NF403): *1 NF-Verstärker, 2 Mischer, 3 HF-Oszillator, 4 Filter, 5 HF-Verstärker, 6 Filter*. Die falschen Antwortketten vertauschen NF- und HF-Verstärker oder setzen Mischer und Filter an die falsche Stelle: Merke dir die **Richtung NF → Mischer (mit Oszillator) → Filter → HF-Verstärker → Filter → Antenne**.
 
-**Woran erkennst du ein Sender-Blockschaltbild?** Am **Mikrofon** (oder NF-Eingang) vorn und der **Antenne** hinten, am **Oszillator mit Mischer** und daran, dass die Leistungsstufe vor der Antenne steht. Mit **Demodulator** und **Lautsprecher** ist es dagegen ein Empfänger. Ein *Tongenerator*, eine *Relaisfunkstelle* oder ein *Antennenvorverstärker* sind falsche Antworten auf NF401. Die Antwortkette „Vorverstärker, Filter, Demodulator, NF-Verstärker“ (NF402) beschreibt einen Empfänger.
+**Woran erkennst du ein Sender-Blockschaltbild?** Am **Mikrofon** (oder NF-Eingang) vorn und der **Antenne** hinten, am **Oszillator mit Mischer** und daran, dass die Leistungsstufe vor der Antenne steht. Mit **Demodulator** und **Lautsprecher** ist es dagegen ein Empfänger. Ein *Tongenerator*, eine *Relaisfunkstelle* oder ein *Antennenvorverstärker* sind falsche Antworten auf NF401. Die Antwortkette „[[antennenvorverstaerker|Vorverstärker]], Filter, Demodulator, NF-Verstärker“ (NF402) beschreibt einen Empfänger.
 `,
     },
     {
@@ -53,9 +53,9 @@ Den einfachsten Aufbau nennt man **[Geradeausempfänger](wiki:Geradeausempfänge
 5. **NF-Verstärker**: verstärkt das NF-Signal für den Lautsprecher.
 6. **Lautsprecher** (oder Kopfhörer): macht es hörbar.
 
-Ein Blockdiagramm mit **Antenne am Anfang, Demodulator in der Mitte und Lautsprecher am Ende** ist ein **Empfänger** (NF201). Wie sich Superhet-Empfänger davon unterscheiden, kommt in der nächsten Lektion.
+Ein Blockdiagramm mit **Antenne am Anfang, Demodulator in der Mitte und Lautsprecher am Ende** ist ein **Empfänger** (NF201). Wie sich [[ueberlagerungsempfaenger|Superhet]]-Empfänger davon unterscheiden, kommt in der nächsten Lektion.
 
-**Empfindlichkeit** bezeichnet die **Fähigkeit, schwache Signale zu empfangen** (NF303). Das ist nicht die Stabilität des VFO, nicht die Bandbreite des HF-Vorverstärkers und nicht die Fähigkeit, starke Signale zu unterdrücken (das wäre Trennschärfe beziehungsweise Großsignalfestigkeit). Je empfindlicher ein Empfänger, desto schwächere Signale kann er empfangen.
+**[[empfindlichkeit|Empfindlichkeit]]** bezeichnet die **Fähigkeit, schwache Signale zu empfangen** (NF303). Das ist nicht die Stabilität des [[vfo|VFO]], nicht die Bandbreite des HF-Vorverstärkers und nicht die Fähigkeit, starke Signale zu unterdrücken (das wäre [[trennschaerfe|Trennschärfe]] beziehungsweise Großsignalfestigkeit). Je empfindlicher ein Empfänger, desto schwächere Signale kann er empfangen.
 `,
     },
     {
@@ -77,27 +77,27 @@ Ein Blockdiagramm mit **Antenne am Anfang, Demodulator in der Mitte und Lautspre
       md: `
 Fast jeder Transceiver bietet dieselben Bedienelemente, auch wenn die Hersteller sie unterschiedlich nennen.[^darc-50ohm]
 
-## RIT: nur die Empfangsfrequenz verstellen
+## [[rit|RIT]]: nur die Empfangsfrequenz verstellen
 
-Die **RIT** (*Receiver Incremental Tuning*, bei manchen Herstellern auch **Clarifier** oder „CLAR RX“) verstellt die **Empfangsfrequenz** geringfügig gegenüber der Sendefrequenz, vor allem bei **SSB**, wenn die Stimme der Gegenstation zu hoch oder zu tief klingt, weil deren Sendefrequenz leicht abweicht (NF111). Du hörst sie klar, ohne die **eigene** Sendefrequenz zu verstellen. Notchfilter, Passband-Tuning oder die PTT lösen das Problem nicht.
+Die **RIT** (*Receiver Incremental Tuning*, bei manchen Herstellern auch **Clarifier** oder „CLAR RX“) verstellt die **Empfangsfrequenz** geringfügig gegenüber der Sendefrequenz, vor allem bei **[[einseitenbandmodulation|SSB]]**, wenn die Stimme der Gegenstation zu hoch oder zu tief klingt, weil deren Sendefrequenz leicht abweicht (NF111). Du hörst sie klar, ohne die **eigene** Sendefrequenz zu verstellen. [[notchfilter|Notchfilter]], Passband-Tuning oder die [[ptt|PTT]] lösen das Problem nicht.
 
 Wozu der Aufwand? Die tatsächliche Sendefrequenz eines Transceivers weicht geringfügig von der eingestellten ab. Würden beide Stationen **Sende- und Empfangsfrequenz** gemeinsam nachstellen, wanderte das QSO über das Band. Mit der RIT korrigiert nur einer, und nur einmal.
 
 **Richtung:** Im **USB**: Stimme zu **hoch** → Empfangsfrequenz **erhöhen**; zu tief → verringern. Im **LSB** (Sprachfrequenzen gespiegelt) umgekehrt.
 
-**Aber:** Bleibt die RIT **eingeschaltet**, empfängst du auf einer anderen Frequenz, als du sendest. Meldet dir die Gegenstation im SSB-QSO „Du sendest nicht exakt auf meiner Frequenz“, dann ist **die RIT aktiviert** (NF112). Ein LSB-, USB- oder CW-Filter erklärt das nicht.
+**Aber:** Bleibt die RIT **eingeschaltet**, empfängst du auf einer anderen Frequenz, als du sendest. Meldet dir die Gegenstation im SSB-QSO „Du sendest nicht exakt auf meiner Frequenz“, dann ist **die RIT aktiviert** (NF112). Ein LSB-, USB- oder [[cw-tastung|CW]]-Filter erklärt das nicht.
 
-## VOX: Sprechen schaltet auf Senden
+## [[vox|VOX]]: Sprechen schaltet auf Senden
 
-Normalerweise schaltest du mit der **[PTT](wiki:Push-to-talk|Push-to-talk)**-Taste auf Sendung. Mit **[VOX](wiki:Voice Operated Exchange|Voice-operated switch)** (*voice-operated exchange*) geschieht das automatisch, sobald du sprichst; nach einer kurzen Verzögerung endet die Sendung (NF109). Schaltet dein Transceiver **von selbst auf Sendung**, ist meist die **VOX aktiviert** (NF110): Husten, Hintergrundgeräusche oder Lautsprecherton genügen. Mit Squelch, einer unterbrochenen PTT oder der Relaisablage hat das nichts zu tun.
+Normalerweise schaltest du mit der **[PTT](wiki:Push-to-talk|Push-to-talk)**-Taste auf Sendung. Mit **[VOX](wiki:Voice Operated Exchange|Voice-operated switch)** (*voice-operated exchange*) geschieht das automatisch, sobald du sprichst; nach einer kurzen Verzögerung endet die Sendung (NF109). Schaltet dein Transceiver **von selbst auf Sendung**, ist meist die **VOX aktiviert** (NF110): Husten, Hintergrundgeräusche oder Lautsprecherton genügen. Mit [[squelch|Squelch]], einer unterbrochenen PTT oder der Relaisablage hat das nichts zu tun.
 
 ## Squelch: Rauschen ausblenden
 
-Auf einer freien FM-Frequenz hört man lautes Rauschen. Die **[Rauschsperre](wiki:Rauschsperre|Squelch)** (*Squelch*, SQL) schaltet den Lautsprecher erst frei, wenn ein Signal mit ausreichender Amplitude anliegt (NF302). Richtig eingestellt ist sie, wenn es in den Sendepausen **gerade** nicht mehr rauscht: zu schwach, und es rauscht; zu stark, und schwache Signale werden mit ausgeblendet. VOX, RIT und Notchfilter sind keine Rauschsperren.
+Auf einer freien [[frequenzmodulation|FM]]-Frequenz hört man lautes Rauschen. Die **[Rauschsperre](wiki:Rauschsperre|Squelch)** (*Squelch*, SQL) schaltet den Lautsprecher erst frei, wenn ein Signal mit ausreichender Amplitude anliegt (NF302). Richtig eingestellt ist sie, wenn es in den Sendepausen **gerade** nicht mehr rauscht: zu schwach, und es rauscht; zu stark, und schwache Signale werden mit ausgeblendet. VOX, RIT und Notchfilter sind keine Rauschsperren.
 
 ## MODE und VFO
 
-Am **MODE**-Schalter wählst du die Sendeart (CW, AM, FM, LSB, USB; vorige Lektion), mit dem **VFO**-Knopf die Frequenz.
+Am **MODE**-Schalter wählst du die Sendeart (CW, [[amplitudenmodulation|AM]], FM, LSB, USB; vorige Lektion), mit dem **VFO**-Knopf die Frequenz.
 `,
     },
     {
@@ -113,15 +113,15 @@ Am **MODE**-Schalter wählst du die Sendeart (CW, AM, FM, LSB, USB; vorige Lekti
     {
       id: 'mission-erste-schritte', type: 'callout', tone: 'mission', title: 'Funkpraxis: Die ersten Minuten mit einem neuen Transceiver',
       md: `
-Bevor du das erste Mal sendest: **Dummy Load** an die Antennenbuchse (nicht die Antenne!), Mode auf USB oder LSB je nach Band, **VOX aus**, **RIT aus** (und Nullstellung kontrollieren), Squelch so, dass es nicht rauscht, Mikrofonverstärkung niedrig. Dann ein paar Sekunden senden und die **ALC** beobachten. Wenn das alles ruhig läuft, schließt du die Antenne an. Ein Stück Routine, das dir später viele Rätsel („Warum hört mich keiner?“) erspart.
+Bevor du das erste Mal sendest: **Dummy Load** an die Antennenbuchse (nicht die Antenne!), Mode auf USB oder LSB je nach Band, **VOX aus**, **RIT aus** (und Nullstellung kontrollieren), Squelch so, dass es nicht rauscht, Mikrofonverstärkung niedrig. Dann ein paar Sekunden senden und die **[[alc|ALC]]** beobachten. Wenn das alles ruhig läuft, schließt du die Antenne an. Ein Stück Routine, das dir später viele Rätsel („Warum hört mich keiner?“) erspart.
 `,
     },
     {
       id: 'alc-text', type: 'text', title: 'ALC: Die Pegelregelung im Sendezweig',
       md: `
-Die **ALC** (*Automatic Level Control*) regelt die Aussteuerung der Endstufe: Sie erfasst die Ausgangsleistung, vergleicht sie mit einem Maximalwert und gibt bei Überschreitung eine Regelspannung an die vorgelagerte HF-Verstärkerstufe. **Sie reduziert damit bei zu starkem NF-Signal die Amplitude des Signals im Sendezweig vor dem Leistungsverstärker** (EF305). Sie erhöht die Amplitude nicht, und sie hat mit Verstärkerstufen im **Empfangsteil** nichts zu tun; das wäre die **AGC** (nächste Lektion).[^darc-50ohm]
+Die **ALC** (*Automatic Level Control*) regelt die Aussteuerung der Endstufe: Sie erfasst die Ausgangsleistung, vergleicht sie mit einem Maximalwert und gibt bei Überschreitung eine Regelspannung an die vorgelagerte HF-Verstärkerstufe. **Sie reduziert damit bei zu starkem NF-Signal die Amplitude des Signals im Sendezweig vor dem Leistungsverstärker** (EF305). Sie erhöht die Amplitude nicht, und sie hat mit Verstärkerstufen im **Empfangsteil** nichts zu tun; das wäre die **[[agc|AGC]]** (nächste Lektion).[^darc-50ohm]
 
-Die ALC-Anzeige gibt dir einen Anhalt für die Aussteuerung: Solange sie nicht anspricht, wird der Sender nicht übersteuert. Bei **SSB** ist ein **leichtes Ansprechen erwünscht** (grüner Bereich), weil die ALC Lautstärkeschwankungen der Stimme ausgleicht und die Leistung gut nutzt; bis in den roten Bereich darf es nicht gehen. Praktisch: NF-Aussteuerung langsam erhöhen, bis die ALC gerade anspricht, dann wieder etwas zurückdrehen. Bei Digimodes soll die ALC dagegen ruhen (siehe Lektion über digitale Betriebsarten).
+Die ALC-Anzeige gibt dir einen Anhalt für die Aussteuerung: Solange sie nicht anspricht, wird der Sender nicht übersteuert. Bei **SSB** ist ein **leichtes Ansprechen erwünscht** (grüner Bereich), weil die ALC Lautstärkeschwankungen der Stimme ausgleicht und die Leistung gut nutzt; bis in den roten Bereich darf es nicht gehen. Praktisch: NF-Aussteuerung langsam erhöhen, bis die ALC gerade anspricht, dann wieder etwas zurückdrehen. Bei [[digimode|Digimodes]] soll die ALC dagegen ruhen (siehe Lektion über digitale Betriebsarten).
 `,
     },
     {
@@ -132,8 +132,8 @@ Nach einer Reparatur, bei einem selbstgebauten Sender oder wenn du die Leistung 
 Dazu drei Sätze aus dem Katalog:
 
 - **Bei Abgleicharbeiten und Messungen an Sendern** sind geeignete Maßnahmen zu treffen, die ein **freies Abstrahlen von Signalen wirkungsvoll verhindern** (§ 16 Abs. 6 AFuV, VD111). Das Gehäuse darfst du dabei öffnen, nicht „nur mit halber Leistung“ senden, und ob das Antennenkabel fest angeschlossen ist, hat damit nichts zu tun.[^afuv]
-- Beim Abgleich eines **selbstgebauten Senders** verhinderst du Störungen anderer Funkverbindungen, indem du einen **geeigneten Abschlusswiderstand (Dummy Load)** verwendest (NJ202), nicht durch eine ISM-Frequenz, halbe Leistung oder „unnötige Modulation vermeiden“.
-- Ein **Sender** darf **nie ohne angepasste Antenne oder Dummy Load** betrieben werden, weil sonst die gesamte Leistung am Antennenanschluss **reflektiert** wird und die **Endstufe beschädigen** kann (NF107). Es wird dabei nicht die Versorgungsspannung hochgeregelt, nicht das Netzteil überlastet, und das Messgerät für das [Stehwellenverhältnis](wiki:Stehwellenverhältnis|Standing wave ratio) (SWR) ist nicht das gefährdete Teil.
+- Beim Abgleich eines **selbstgebauten Senders** verhinderst du Störungen anderer Funkverbindungen, indem du einen **geeigneten Abschlusswiderstand (Dummy Load)** verwendest (NJ202), nicht durch eine ISM-Frequenz, halbe Leistung oder „unnötige [[modulation|Modulation]] vermeiden“.
+- Ein **Sender** darf **nie ohne angepasste Antenne oder Dummy Load** betrieben werden, weil sonst die gesamte Leistung am Antennenanschluss **reflektiert** wird und die **Endstufe beschädigen** kann (NF107). Es wird dabei nicht die Versorgungsspannung hochgeregelt, nicht das Netzteil überlastet, und das Messgerät für das [Stehwellenverhältnis](wiki:Stehwellenverhältnis|Standing wave ratio) ([[swr|SWR]]) ist nicht das gefährdete Teil.
 
 Ganz ohne Aussenden geht es nicht, wenn du zum Beispiel ein automatisches Antennenanpassgerät (Tuner) abstimmst: **Das Aussenden eines unmodulierten oder ungetasteten Trägers ist zulässig, wenn es kurzzeitig erfolgt, z. B. zum Abstimmen** (VD112). Dauerträger sind dagegen nicht zulässig (§ 16 Abs. 9 AFuV). Stimme nur auf einer **freien** Frequenz oder an der Dummy Load ab, sonst störst du andere Verbindungen. Eine Leistungsbegrenzung („unter 1 W“) oder die Tatsache, dass es „ein digitales Signal“ wäre, spielt keine Rolle.
 `,

@@ -14,19 +14,19 @@ export default {
     {
       id: 'warum', type: 'text', title: 'Wiederholen heißt: abrufen, nicht wiederlesen',
       md: String.raw`
-Du hast jetzt alle Stoffgebiete durch. Ab hier gibt es **keine neuen Themen** mehr, sondern nur noch eine Frage: *Was sitzt, was nicht?* Dafür ist der Übungsmodus gebaut. Er folgt einer einfachen Einsicht der Lernforschung: **Aktives Abrufen** (eine Frage beantworten, ohne nachzuschlagen) festigt Wissen deutlich besser als erneutes Lesen, und **verteilte Wiederholung** wirkt besser als alles am Stück zu pauken (vgl. [Vergessenskurve](wiki:Vergessenskurve|Forgetting curve) und [Lernkartei](wiki:Leitner-System|Flashcard)).
+Du hast jetzt alle Stoffgebiete durch. Ab hier gibt es **keine neuen Themen** mehr, sondern nur noch eine Frage: *Was sitzt, was nicht?* Dafür ist der Übungsmodus gebaut. Er folgt einer einfachen Einsicht der Lernforschung: **Aktives Abrufen** (eine Frage beantworten, ohne nachzuschlagen) festigt Wissen deutlich besser als erneutes Lesen, und **verteilte Wiederholung** wirkt besser als alles am Stück zu pauken (vgl. [Vergessenskurve](wiki:Vergessenskurve|Forgetting curve) und die [Lernkartei](wiki:Lernkartei|Flashcard) nach Leitner). Das Prinzip beruht darauf, dass das [Gedächtnis](wiki:Gedächtnis|Memory) Inhalte festhält, die man **wiederholt abruft**.
 
 So arbeitet der Übungsmodus dieser Plattform:
 
-- Jede der 1034 Katalogfragen[^bnetza-fragenkatalog] liegt in einer von **fünf Boxen**. Eine **richtige** Antwort schiebt die Frage eine Box weiter, eine **falsche** wirft sie zurück in **Box 1**.
+- Jede der 1034 Katalogfragen der [Bundesnetzagentur](wiki:Bundesnetzagentur|Federal Network Agency)[^bnetza-fragenkatalog] liegt in einer von **fünf Boxen**. Eine **richtige** Antwort schiebt die Frage eine Box weiter, eine **falsche** wirft sie zurück in **Box 1**.
 - Je höher die Box, desto später kommt die Frage wieder: **sofort, nach 1, 3, 7 und 21 Tagen**.
 - **Gemeistert** heißt: Box 4 oder höher und die letzte Antwort war richtig. **Schwach** heißt: die letzte Antwort war falsch oder die Frage liegt in Box 1 oder 2.
 - Jede Frage, die du in einer Prüfungssimulation beantwortest, fließt ebenfalls in diese Boxen ein.
 
-Das Ziel der letzten Wochen: möglichst viele Fragen in Box 4 und 5 bringen, und die schwachen zuerst. Die Prüfung verlangt aus jedem der vier Teile **19 von 25 richtig**, also höchstens **6 Fehler je Teil**.[^bnetza-pruefungsordnung]`,
+Eine Faustregel nach dem [Pareto-Prinzip](wiki:Pareto-Prinzip|Pareto principle): Mit etwa einem Fünftel der Themen verlierst du vermutlich die meisten Punkte; finde sie zuerst. Das Ziel der letzten Wochen: möglichst viele Fragen in Box 4 und 5 bringen, und die schwachen zuerst. Die Prüfung ([Multiple Choice](wiki:Multiple Choice|Multiple choice)) verlangt aus jedem der vier Teile **19 von 25 richtig**, also höchstens **6 Fehler je Teil**.[^bnetza-pruefungsordnung]`,
     },
     {
-      id: 'mission-routine', type: 'callout', tone: 'mission', title: 'Funkpraxis: Wie Funkamateure in der letzten Woche üben',
+      id: 'mission-routine', type: 'callout', tone: 'mission', title: 'Funkpraxis: Die letzten Tage',
       md: String.raw`Ein Rat, der sich bewährt: Die letzten Tage lieber **kurz und täglich** nutzen als in einem Marathon. Eine Viertelstunde „fällige Fragen“ am Morgen, eine Runde „schwache Fragen“ am Abend, einige Tage vor dem Termin eine Komplett-Simulation.`,
     },
     {
@@ -69,9 +69,9 @@ Eine Runde umfasst 15 Fragen; die Tasten 1 bis 4 wählen die Antwort, Enter geht
 Nicht jeder Fehler ist eine Wissenslücke. Wer die Ursache kennt, wählt die richtige Gegenmaßnahme:
 
 1. **Wissenslücke:** Du kennst die Regel nicht. → In der Lektion nachlesen, eine Karteikarte anlegen.
-2. **Verwechslung:** Du kennst zwei ähnliche Dinge, aber nicht den Unterschied (z. B. ERP und EIRP, Zulassung und Zeugnis, Einstrahlung und Einströmung). → Beides gegenüberstellen und die Unterscheidung als **eine** Karte merken.
+2. **Verwechslung:** Du kennst zwei ähnliche Dinge, aber nicht den Unterschied (z. B. ERP und EIRP, Zulassung und Zeugnis, Einstrahlung und Einströmung). → Beides gegenüberstellen und die Unterscheidung als **eine** Karte merken (eine [Eselsbrücke](wiki:Eselsbrücke|Mnemonic) hilft).
 3. **Überlesen:** „nur“, „immer“, „nicht“, „spätestens“, „vor“ oder „nach“ ändert die Aussage. → Frage langsam lesen, Schlüsselwörter markieren, Antworten *vergleichen* statt die erste plausible zu nehmen.
-4. **Rechenfehler:** Faktor 1000 daneben (m statt M, µ statt n), Klammer vergessen, Kehrwert vergessen. → Vorsätze zuerst in Grundeinheiten umrechnen und eine Plausibilitätsprobe machen (siehe [Taschenrechner-Lektion](#/s/amateurfunk/l/formelsammlung-und-taschenrechner)).`,
+4. **Rechenfehler:** Faktor 1000 daneben (m statt M, µ statt n), Klammer vergessen, Kehrwert vergessen. → Vorsätze zuerst in Grundeinheiten umrechnen und eine Plausibilitätsprobe machen (siehe [Taschenrechner-Lektion](#/s/amateurfunk/l/formelsammlung-und-taschenrechner) und [Taschenrechner](wiki:Taschenrechner|Calculator)).`,
     },
     {
       id: 'match-fehler', type: 'match', title: 'Fehlerursache → Gegenmaßnahme',

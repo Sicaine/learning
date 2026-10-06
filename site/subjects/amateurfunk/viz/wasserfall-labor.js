@@ -108,6 +108,7 @@ export default function mount(stage, { params = {}, complete }) {
     for (let i = 0; i < W; i++) { const c = color(v[i]); img.data[i * 4] = c[0]; img.data[i * 4 + 1] = c[1]; img.data[i * 4 + 2] = c[2]; img.data[i * 4 + 3] = 255; }
     ctx.putImageData(img, 0, 0);
   }
+  root._test = { get target() { return target; } };
   void loop; void shuffle;
   onUi(ui.values);
   for (let i = 0; i < H; i++) { t += ROW; step(); }   // Verlauf vorab füllen

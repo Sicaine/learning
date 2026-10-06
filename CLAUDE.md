@@ -116,6 +116,8 @@ export default { id, level: 'Basics'|'Intermediate'|'Advanced'|'Mastery', title,
 ```js
 export default { id, title, summary, minutes, goals: [..], blocks: [..], cards: [{ id, front, back }] };
 ```
+- `needs: ['lesson-id', 'other-subject/lesson-id']` (optional): prerequisite lessons, shown as "Vorher hilfreich" chips under the lesson summary (green once completed; may point into another subject, e.g. `'elektrotechnik/schwingkreis'`). The validator checks every entry.
+- If the subject has a question catalogue and questions carry `lesson: '<this lesson id>'`, the lesson end shows a card "N Prüfungsfragen zu dieser Lektion — Fragen üben" linking to `#/s/<sid>/practice/lesson:<id>` (practice mode `lesson:<id>`). Don't add such a button yourself.
 Block types (all text fields use the markup dialect):
 - `text` `{ title?, md }`
 - `callout` `{ tone: insight|warning|mission|deep|german|history|fact, title?, md }` — `mission` ties content to the user's real goal; `deep` is collapsible; `german` holds vocabulary tables.

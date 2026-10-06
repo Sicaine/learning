@@ -84,5 +84,6 @@ export default function mount(stage, { params = {}, complete }) {
     if (m === 'task') { queue = shuffle(ITEMS).slice(0, count); n = 0; ok = 0; next(); }
     else { cur = null; locked = true; nx.style.display = 'none'; info.textContent = 'Tippe ein Bedienelement an: Es ändert seinen Zustand, und hier steht, was es tut.'; }
   }
+  root._test = { get cur() { return cur; }, tap };
   paint(); setMode('explore');
 }
