@@ -1,1 +1,4 @@
 .cache/
+site/video/*.timeline.json
+site/dev/voices/
+site/dev/voices.html

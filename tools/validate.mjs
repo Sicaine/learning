@@ -103,7 +103,11 @@ for (const meta of subjects) {
       if (b.type === 'map') checkMap(w, b, meta);
       if (b.type === 'quiz' && !b.options?.some(o => o.correct)) err(`${w}: quiz without correct option`);
       if (b.type === 'numeric' && typeof b.answer !== 'number') err(`${w}: numeric answer must be a number`);
-      if (b.type === 'video' && !/^[\w-]{11}$/.test(b.youtube || '')) err(`${w}: bad youtube id`);
+      if (b.type === 'video' && b.src) {
+        if (b.youtube) err(`${w}: video has both src and youtube`);
+        if (!existsSync(join(root, b.src))) err(`${w}: video file missing: ${b.src}`);
+        if (b.poster && !existsSync(join(root, b.poster))) err(`${w}: video poster missing: ${b.poster}`);
+      } else if (b.type === 'video' && !/^[\w-]{11}$/.test(b.youtube || '')) err(`${w}: bad youtube id`);
       for (const c of b.cards || []) if (!lesson.cards?.some(x => x.id === c)) err(`${w}: references unknown card "${c}"`);
     }
     const cids = new Set();

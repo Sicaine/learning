@@ -1,0 +1,21 @@
+html, body { margin: 0; padding: 0; background: #f6f6f9; }
+.vstage { position: relative; width: 1280px; height: 720px; overflow: hidden; font-family: Inter, system-ui, sans-serif; color: #16162a; background: #f6f6f9; }
+.v-bg { position: absolute; inset: 0; background:
+  radial-gradient(900px 520px at 6% -6%, rgba(4, 120, 87, .10), transparent 70%),
+  radial-gradient(800px 480px at 100% 0%, rgba(14, 165, 233, .09), transparent 70%),
+  radial-gradient(circle, rgba(22, 22, 42, .07) 1px, transparent 1.5px) 0 0 / 32px 32px; }
+.v-brand { position: absolute; right: 36px; top: 26px; display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: 17px; color: #74748c; letter-spacing: -.01em; }
+.v-brand .mark { width: 22px; height: 22px; border-radius: 7px; background: linear-gradient(135deg, #047857, #0ea5e9); position: relative; }
+.v-brand .mark::after { content: ''; position: absolute; inset: 6px; border: 2px solid #fff; border-radius: 50%; }
+.v-head { position: absolute; left: 56px; top: 28px; }
+.v-kicker { font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #047857; }
+.v-title { font-family: 'Instrument Serif', Georgia, serif; font-size: 52px; line-height: 1.05; letter-spacing: -.01em; margin-top: 4px; }
+.v-scenes, .v-layer, .v-svg { position: absolute; inset: 0; }
+.v-abs { position: absolute; }
+.v-cap { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; justify-content: center; }
+.v-cap-in { max-width: 1060px; padding: 12px 26px; border-radius: 16px; background: rgba(22, 22, 42, .86); color: #fff; font-size: 27px; line-height: 1.32; text-align: center; font-weight: 500; box-shadow: 0 8px 30px rgba(22, 22, 42, .25); }
+.v-cap-in:empty { display: none; }
+.v-cap-in .katex { font-size: 1.08em; }
+.eq { font-size: 34px; }
+.eq .katex { font-size: 1em; }
+.chip { display: inline-block; padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 22px; background: #fff; border: 1.5px solid #d9d9e4; }

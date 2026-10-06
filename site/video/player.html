@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Video player (render target)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="player.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+</head>
+<body>
+  <div id="host"></div>
+  <script type="module">
+    // ?v=<name>[&tl=<timeline url>] — exposes window.__vid = { render(t), total } once ready.
+    import { Player } from './engine.js';
+    const q = new URLSearchParams(location.search);
+    const name = q.get('v');
+    const spec = (await import(`./${name}.js`)).default;
+    const tl = await (await fetch(q.get('tl') || `./${name}.timeline.json`, { cache: 'no-store' })).json();
+    await Promise.all([document.fonts.load('600 20px Inter'), document.fonts.load('400 52px "Instrument Serif"'), document.fonts.load('500 20px "JetBrains Mono"'),
+      // KaTeX fonts are lazy: load them up front, otherwise formulas render invisible in the first frames
+      ...['1em KaTeX_Main', 'bold 1em KaTeX_Main', 'italic 1em KaTeX_Main', 'italic 1em KaTeX_Math', '1em KaTeX_AMS', '1em KaTeX_Size1', '1em KaTeX_Size2', '1em KaTeX_Size3', '1em KaTeX_Size4', '1em KaTeX_Caligraphic'].map(f => document.fonts.load(f, 'AaΓ=+1∑'))]);
+    await document.fonts.ready;
+    const p = new Player(spec, tl, document.getElementById('host'));
+    window.__vid = { render: async t => { p.render(t); await new Promise(r => requestAnimationFrame(r)); await document.fonts.ready; await new Promise(r => requestAnimationFrame(r)); }, total: tl.total };
+    window.__ready = true;
+  </script>
+</body>
+</html>

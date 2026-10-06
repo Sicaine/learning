@@ -199,6 +199,15 @@ Only cite what you have verified (arXiv ids via `https://export.arxiv.org/api/qu
 `[[term-id]]` / `[[term-id|shown text]]`, `[^source-id]`, `## headings`, `- lists`, `1. lists`,
 `> quotes`, fenced code, **pipe tables** (`| A | B |` header, `|---|--:|` separator with optional alignment, then rows), raw HTML. Inside JS template literals escape backslashes: `\\cdot`.
 
+## Explainer videos (own animated videos with narration)
+Video block with a local file: `{ id, type: 'video', src: 'assets/video/<name>.mp4', poster: 'assets/video/<name>.jpg', label, channel: 'Learning (animiert)', minutes, why }` (exactly one of `src` / `youtube`; validator checks the files exist; ending the video marks it watched).
+
+Workshop (`site/video/`, `tools/video/`): a video is `site/video/<name>.js` = `defineVideo({ id, out, brand, poster, scenes })`. Each scene has `kicker`, `title`, `lines: [{ say, cap }]`, `init(ctx)` (build SVG/HTML once, return state) and `update(ctx, { t, at(j), end(j), state })` — a **pure function of scene time** (`at(j)` = start of narration line j; animate with `seg(t, t0, t1, ease)`). `say` = spoken text (spell out numbers, units, abbreviations: „S W R“, „vierzehn Komma zwei Megahertz“), `cap` = burned-in caption (symbols allowed). Helpers in `engine.js` (easing, `pathFn`, `text`, KaTeX `ctx.tex`, colours); examples: `swr-reflexion.js` (waves, image method), `superhet-spiegel.js` (spectrum).
+- Preview: `VIDEO_WORK=<scratch> node tools/video/build.mjs <name> --frame <seconds> --out f.png` (uses estimated timing unless narration is cached). Always look at frames for overlaps before the full build. `--estimate` renders a *silent full* video (slow) — don't use it for checks.
+- Full build: `node tools/video/build.mjs <name> --jobs 4` → TTS per sentence (cache `~/.cache/learning-video/tts`, key = voice|rate|text), frames via headless Chromium (CDP) → ffmpeg (crf 24) + narration → `site/assets/video/<name>.mp4` + `.jpg` poster (~2–5 min for 3–4 min of video). `site/video/*.timeline.json` is a gitignored intermediate.
+- Voice: default `edge:de-DE-SeraphinaMultilingualNeural` (rate `VIDEO_RATE`, default `+6%`) via `edge-tts` — a **cloud** voice (Microsoft's unofficial endpoint), fine for learning-only text, never send personal data. Local fallback: `--voice piper` (Piper `de_DE-thorsten-high`). Python venv with `edge-tts`, `piper-tts`, `numpy`: `~/.cache/learning-video/venv` (override `VIDEO_PY`). Needs ffmpeg + chromium.
+- Narration is never audited by ear here: check wording via captions, keep sentences short (one idea each).
+
 ## Content principles
 
 - Teach for understanding: intuition → formula → interactive check → retrieval (recall) → cards.

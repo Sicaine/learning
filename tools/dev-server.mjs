@@ -15,7 +15,7 @@ const host = process.argv[3] || process.env.HOST || '0.0.0.0';
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
-  '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml',
+  '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.mp4': 'video/mp4',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif',
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.md': 'text/markdown; charset=utf-8',
 };
@@ -37,7 +37,13 @@ const server = createServer(async (req, res) => {
     let body = await readFile(path);
     const type = TYPES[extname(path).toLowerCase()] || 'application/octet-stream';
     if (type.startsWith('text/html')) body = body.toString().replace('</body>', `${CLIENT}</body>`);
-    res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store' });
+    const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    if (m && type.startsWith('video/')) { // seekable video
+      const a = m[1] === '' ? body.length - Number(m[2]) : Number(m[1]), b = m[1] === '' || m[2] === '' ? body.length - 1 : Math.min(Number(m[2]), body.length - 1);
+      res.writeHead(206, { 'Content-Type': type, 'Content-Range': `bytes ${a}-${b}/${body.length}`, 'Accept-Ranges': 'bytes', 'Content-Length': b - a + 1, 'Cache-Control': 'no-store' });
+      res.end(body.subarray(a, b + 1)); return;
+    }
+    res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store', ...(type.startsWith('video/') ? { 'Accept-Ranges': 'bytes' } : {}) });
     res.end(body);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found');

@@ -66,6 +66,10 @@ Der Superhet hat einen Haken: Neben $f_\\text{e}$ wird auch eine zweite Frequenz
 `,
     },
     {
+      id: 'erklaervideo-superhet', type: 'video', src: 'assets/video/superhet-spiegel.mp4', poster: 'assets/video/superhet-spiegel.jpg', label: 'Erklärvideo: Mischer, Zwischenfrequenz und Spiegelfrequenz', channel: 'Learning (animiert)', minutes: 2.5,
+      why: 'Warum man das Signal verschiebt statt das Filter abzustimmen, was der Mischer tut und woher die Spiegelfrequenz kommt (Vertiefung). Untertitel sind eingebrannt.',
+    },
+    {
       id: 'hist-super', type: 'callout', tone: 'history', title: 'Wer hat den Superhet erfunden?',
       md: `
 Das lässt sich nicht eindeutig sagen: Um das Jahr 1918, mitten im Ersten Weltkrieg und unter intensiver Forschung aller Kriegsparteien, beschäftigten sich unabhängig voneinander mehrere Forscher mit dem Prinzip, darunter [Edwin Howard Armstrong](wiki:Edwin Howard Armstrong|Edwin Howard Armstrong) in den USA, Lucien Lévy in Frankreich und Walter Schottky in Deutschland. Der Name stammt aus lateinisch *super* („über“) und griechisch *hetero* („verschieden“) plus *dynamis* („Kraft“): die Mischung zweier Signale unterschiedlicher Frequenz.

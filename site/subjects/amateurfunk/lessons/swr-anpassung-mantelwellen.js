@@ -24,6 +24,10 @@ Weil hinlaufende und rücklaufende Welle auf der Leitung zusammenwirken, entsteh
 `,
     },
     {
+      id: 'erklaervideo-swr', type: 'video', src: 'assets/video/swr-reflexion.mp4', poster: 'assets/video/swr-reflexion.jpg', label: 'Erklärvideo: Reflexion, Stehwellen und SWR', channel: 'Learning (animiert)', minutes: 4.5,
+      why: 'Schritt für Schritt: Wellenwiderstand, Reflexion am Leitungsende, Reflexionsfaktor Γ, stehende Welle, SWR, zurücklaufende Leistung und warum ein Kabel das SWR „verschönert“. Untertitel sind eingebrannt.',
+    },
+    {
       id: 'swr', type: 'text', title: 'SWR: Werte, Tabelle, Rechnung',
       md: `
 Das [[swr|SWR]] ([Stehwellenverhältnis](wiki:Stehwellenverhältnis|Standing wave ratio)) kennt zwei Randwerte und viele Zwischenwerte:

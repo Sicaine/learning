@@ -44,16 +44,19 @@ const renderers = {
     const root = el(`
       <div class="task video">
         ${head(b, ctx, t('kind.watch'))}
-        <div class="video-frame" style="background-image:url(https://i.ytimg.com/vi/${b.youtube}/hqdefault.jpg)">
+        ${b.src
+          ? `<video class="video-frame video-local" controls preload="metadata" playsinline src="${esc(b.src)}"${b.poster ? ` poster="${esc(b.poster)}"` : ''}></video>`
+          : `<div class="video-frame" style="background-image:url(https://i.ytimg.com/vi/${b.youtube}/hqdefault.jpg)">
           <button class="video-play" aria-label="${t('video.play')}">${icon.play}</button>
-        </div>
+        </div>`}
         <div class="video-meta">
           <div><b>${esc(b.label || '')}</b><span>${esc([b.channel, b.minutes && `${b.minutes} min`].filter(Boolean).join(' · '))}</span></div>
           <button class="btn small watched">${ctx.task(b.id).done ? `${icon.check} ${t('video.watched')}` : t('video.mark')}</button>
         </div>
         ${b.why ? `<div class="prose small">${md(b.why, ctx)}</div>` : ''}
       </div>`);
-    $(root, '.video-play').onclick = () => {
+    if (b.src) $(root, 'video').addEventListener('ended', () => { ctx.done(b.id); $(root, '.watched').innerHTML = `${icon.check} ${t('video.watched')}`; setDone(root); });
+    else $(root, '.video-play').onclick = () => {
       const start = b.start ? `&start=${b.start}` : '';
       $(root, '.video-frame').innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.youtube}?autoplay=1&rel=0${start}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${esc(b.label || 'video')}"></iframe>`;
     };
