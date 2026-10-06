@@ -1,3 +1,4 @@
+import { loadAllLessons } from '../content.js';
 import { subjectProgress, stageProgress, lessonStatus, deckStats, nextLesson } from '../progress.js';
 import { el, ring, bar, icon } from '../ui.js';
 import { esc, md } from '../markup.js';
@@ -61,6 +62,27 @@ export default async function overview(main, { subject }) {
         }).join('')}
       </ol>
     </section>`));
+  markVideos(main, subject);   // async: small video badge on tiles of lessons that contain a video
+}
+
+async function markVideos(main, subject) {
+  try {
+    const all = await loadAllLessons(subject);
+    for (const l of all) {
+      const vids = (l.blocks || []).filter(b => b.type === 'video');
+      if (!vids.length) continue;
+      const tile = main.querySelector(`a.lesson-tile[href="#/s/${subject.id}/l/${l.id}"]`);
+      if (!tile || tile.querySelector('.lt-video')) continue;
+      const own = vids.some(b => b.src);
+      const n = vids.length;
+      const badge = document.createElement('span');
+      badge.className = `lt-video${own ? ' own' : ''}`;
+      badge.title = t(own ? 'tile.videoOwn' : 'tile.video', { n });
+      badge.setAttribute('aria-label', badge.title);
+      badge.innerHTML = icon.video;
+      tile.append(badge);
+    }
+  } catch (e) { console.warn('[subject] video badges failed', e); }
 }
 
 function practiceCard(subject) {
