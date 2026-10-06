@@ -205,7 +205,7 @@ for (const meta of subjects) {
       console.log(`  questions: ${qs.length} (${Object.entries(perTopic).map(([k, v]) => `${k}:${v.length}`).join(' ')}) · ${qs.filter(q => q.figure).length} with figure · ${qs.filter(q => q.explain).length} explained`);
     }
   }
-  for (const s of sources.keys()) if (!usedSources.has(s)) warn(`source ${s} is never cited`);
+  for (const s of sources.keys()) if (!usedSources.has(s) && !sources.get(s)?.learn) warn(`source ${s} is never cited`);
   const MIN_WIKI = meta.id === 'vision' ? 4 : 8;
   for (const w of wikiStats) if (w.wikis < MIN_WIKI) warn(`lesson ${w.id}: only ${w.wikis} distinct inline Wikipedia links (aim for ${MIN_WIKI}+)`);
   console.log(`  maps: ${wikiStats.reduce((a, w) => a + w.maps, 0)} · inline wiki links: ${wikiStats.reduce((a, w) => a + w.wikis, 0)}`);

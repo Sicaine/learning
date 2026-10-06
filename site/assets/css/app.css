@@ -754,3 +754,6 @@ a.wlink:hover { text-decoration: none; border-bottom-color: var(--accent); color
 /* Pipe tables in prose: scroll sideways on small screens instead of overflowing */
 .prose .tbl { overflow-x: auto; margin: 1em 0; }
 .prose .tbl table { margin: 0; min-width: 100%; }
+.learn-more { margin: 8px 0 36px; }
+.learn-more h3 { margin: 22px 0 8px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.learn-more .src-list li { grid-template-columns: 1fr; }
